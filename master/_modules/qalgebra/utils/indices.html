@@ -1,0 +1,800 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>qalgebra.utils.indices &mdash; QAlgebra 2.0.0-dev (d784b1d) documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/clipboard.min.js"></script>
+        <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script type="text/javascript" src="../../../_static/doctr-versions-menu.js"></script>
+        <script type="text/javascript">var copybuttonSkipText = '>>> ';</script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/mycss.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0.0-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">QAlgebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../history.html">History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../API/qalgebra.html">API of the QAlgebra package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../qalgebra.html">qalgebra</a> &raquo;</li>
+        
+      <li>qalgebra.utils.indices</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for qalgebra.utils.indices</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABCMeta</span><span class="p">,</span> <span class="n">abstractmethod</span>
+
+<span class="kn">import</span> <span class="nn">attr</span>
+<span class="kn">import</span> <span class="nn">sympy</span>
+<span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">Piecewise</span>
+<span class="kn">from</span> <span class="nn">sympy.core.cache</span> <span class="kn">import</span> <span class="n">cacheit</span> <span class="k">as</span> <span class="n">sympy_cacheit</span>
+
+<span class="kn">from</span> <span class="nn">._attrs</span> <span class="kn">import</span> <span class="n">immutable_attribs</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;IdxSym&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;IntIndex&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;FockIndex&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;StrLabel&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;FockLabel&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SpinIndex&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;IndexOverList&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;IndexOverRange&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;IndexOverFockSpace&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">__private__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;yield_from_ranges&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SymbolicLabelBase&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;IndexRangeBase&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;product&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<span class="c1"># support routines</span>
+
+
+<span class="k">def</span> <span class="nf">_merge_dicts</span><span class="p">(</span><span class="o">*</span><span class="n">dicts</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Given any number of dicts, shallow copy and merge into a new dict&quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">dictionary</span> <span class="ow">in</span> <span class="n">dicts</span><span class="p">:</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">dictionary</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+
+<div class="viewcode-block" id="product"><a class="viewcode-back" href="../../../API/qalgebra.utils.indices.html#qalgebra.utils.indices.product">[docs]</a><span class="k">def</span> <span class="nf">product</span><span class="p">(</span><span class="o">*</span><span class="n">generators</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Cartesian product akin to :func:`itertools.product`, but accepting</span>
+<span class="sd">    generator functions</span>
+
+<span class="sd">    Unlike :func:`itertools.product` this function does not convert the input</span>
+<span class="sd">    iterables into tuples. Thus, it can handle large or infinite inputs. As a</span>
+<span class="sd">    drawback, however, it only works with &quot;restartable&quot; iterables (something</span>
+<span class="sd">    that :func:`iter` can repeatably turn into an iterator, or a generator</span>
+<span class="sd">    function (but not the generator iterator that is returned by that</span>
+<span class="sd">    generator function)</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        generators: list of restartable iterators or generator functions</span>
+<span class="sd">        repeat: number of times `generators` should be repeated</span>
+
+<span class="sd">    Adapted from https://stackoverflow.com/q/12093364/</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">generators</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">generators</span> <span class="o">=</span> <span class="n">generators</span> <span class="o">*</span> <span class="n">repeat</span>
+        <span class="n">it</span> <span class="o">=</span> <span class="n">generators</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">it</span><span class="p">()</span> <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">it</span><span class="p">)</span> <span class="k">else</span> <span class="nb">iter</span><span class="p">(</span><span class="n">it</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">items</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span><span class="o">*</span><span class="n">generators</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+                <span class="k">yield</span> <span class="p">(</span><span class="n">item</span><span class="p">,)</span> <span class="o">+</span> <span class="n">items</span></div>
+
+
+<div class="viewcode-block" id="yield_from_ranges"><a class="viewcode-back" href="../../../API/qalgebra.utils.indices.html#qalgebra.utils.indices.yield_from_ranges">[docs]</a><span class="k">def</span> <span class="nf">yield_from_ranges</span><span class="p">(</span><span class="n">ranges</span><span class="p">):</span>
+    <span class="n">range_iters</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">index_range</span> <span class="ow">in</span> <span class="n">ranges</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="n">callable</span><span class="p">(</span><span class="n">index_range</span><span class="o">.</span><span class="n">iter</span><span class="p">)</span>
+        <span class="c1"># index_range.iter must be a generator (so that it&#39;s restartable),</span>
+        <span class="c1"># *not* an iterator, which would be index_range.iter()</span>
+        <span class="n">range_iters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">index_range</span><span class="o">.</span><span class="n">iter</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">dicts</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span><span class="o">*</span><span class="n">range_iters</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="n">_merge_dicts</span><span class="p">(</span><span class="o">*</span><span class="n">dicts</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="IdxSym"><a class="viewcode-back" href="../../../API/qalgebra.utils.indices.html#qalgebra.utils.indices.IdxSym">[docs]</a><span class="k">class</span> <span class="nc">IdxSym</span><span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">Symbol</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Index symbol in an indexed sum or product</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        name (str): The label for the symbol. It must be a simple Latin or</span>
+<span class="sd">            Greek letter, possibly with a subscript, e.g. ``&#39;i&#39;``, ``&#39;mu&#39;``,</span>
+<span class="sd">            ``&#39;gamma_A&#39;``</span>
+<span class="sd">        primed (int): Number of prime marks (&#39;) associated with the symbol</span>
+
+<span class="sd">    Notes:</span>
+
+<span class="sd">        The symbol can be used in arbitrary algebraic (sympy) expressions::</span>
+
+<span class="sd">            &gt;&gt;&gt; sympy.sqrt(IdxSym(&#39;n&#39;) + 1)</span>
+<span class="sd">            sqrt(n + 1)</span>
+
+<span class="sd">        By default, the symbol is assumed to represent an integer. If this is</span>
+<span class="sd">        not the case, you can instantiate explicitly as a non-integer::</span>
+
+<span class="sd">            &gt;&gt;&gt; IdxSym(&#39;i&#39;).is_integer</span>
+<span class="sd">            True</span>
+<span class="sd">            &gt;&gt;&gt; IdxSym(&#39;i&#39;, integer=False).is_integer</span>
+<span class="sd">            False</span>
+
+<span class="sd">        You may also declare the symbol as positive::</span>
+
+<span class="sd">            &gt;&gt;&gt; IdxSym(&#39;i&#39;).is_positive</span>
+<span class="sd">            &gt;&gt;&gt; IdxSym(&#39;i&#39;, positive=True).is_positive</span>
+<span class="sd">            True</span>
+
+<span class="sd">        The `primed` parameter is used to automatically create distinguishable</span>
+<span class="sd">        indices in products of sums, or more generally if the same index occurs</span>
+<span class="sd">        in an expression with potentially differnt values::</span>
+
+<span class="sd">            &gt;&gt;&gt; ascii(IdxSym(&#39;i&#39;, primed=2))</span>
+<span class="sd">            &quot;i&#39;&#39;&quot;</span>
+<span class="sd">            &gt;&gt;&gt; IdxSym(&#39;i&#39;) == IdxSym(&#39;i&#39;, primed=1)</span>
+<span class="sd">            False</span>
+
+<span class="sd">        It should not be used when creating indices &quot;by hand&quot;</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: if `name` is not a simple symbol label, or if primed &lt; 0</span>
+<span class="sd">        TypeError: if `name` is not a string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">is_finite</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">is_Symbol</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">is_symbol</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">is_Atom</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">_diff_wrt</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">_rx_name</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;^[A-Za-z]+(_[A-Za-z0-9().,+-]+)?$&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__new_stage2__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">primed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c1"># remove: start, stop, points</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_rx_name</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;name &#39;</span><span class="si">%s</span><span class="s2">&#39; does not match pattern &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span>
+                <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_rx_name</span><span class="o">.</span><span class="n">pattern</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="n">primed</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">primed</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">primed</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;`primed` must be an integer &gt;= 0&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">&#39;integer&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;integer&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__xnew__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="p">(</span><span class="n">primed</span><span class="p">,)</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">_primed</span> <span class="o">=</span> <span class="n">primed</span>
+        <span class="k">return</span> <span class="n">obj</span>
+
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">primed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">__xnew_cached_</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">primed</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">obj</span>
+
+    <span class="n">__xnew__</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">__new_stage2__</span><span class="p">)</span>
+    <span class="n">__xnew_cached_</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">sympy_cacheit</span><span class="p">(</span><span class="n">__new_stage2__</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_hashable_content</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">Symbol</span><span class="o">.</span><span class="n">_hashable_content</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">primed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_primed</span>
+
+<div class="viewcode-block" id="IdxSym.incr_primed"><a class="viewcode-back" href="../../../API/qalgebra.utils.indices.html#qalgebra.utils.indices.IdxSym.incr_primed">[docs]</a>    <span class="k">def</span> <span class="nf">incr_primed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">incr</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a copy of the index with an incremented :attr:`primed`&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">primed</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_primed</span> <span class="o">+</span> <span class="n">incr</span><span class="p">,</span>
+            <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_assumptions</span><span class="o">.</span><span class="n">generator</span>
+        <span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">prime</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;equivalent to :meth:`inc_primed` with ``incr=1``&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">incr_primed</span><span class="p">(</span><span class="n">incr</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_sympystr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">printer</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">printer</span><span class="o">.</span><span class="n">_print_Symbol</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;&#39;&quot;</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">primed</span>
+
+    <span class="k">def</span> <span class="nf">_sympyrepr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">printer</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">printer</span><span class="o">.</span><span class="n">_print_Symbol</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">primed</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;, primed=</span><span class="si">%d</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">primed</span>
+        <span class="k">return</span> <span class="n">res</span>
+
+    <span class="k">def</span> <span class="nf">_pretty</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">printer</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">printer</span><span class="o">.</span><span class="n">_print_Symbol</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">s</span> <span class="o">+</span> <span class="s2">&quot;&#39;&quot;</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">primed</span><span class="p">,</span> <span class="n">res</span><span class="o">.</span><span class="n">baseline</span><span class="p">,</span> <span class="n">res</span><span class="o">.</span><span class="n">binding</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_latex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">printer</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">printer</span><span class="o">.</span><span class="n">_print_Symbol</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">primed</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;{</span><span class="si">%s</span><span class="s1">^{</span><span class="si">%s</span><span class="s1">}}&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;\prime&#39;</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">primed</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">res</span></div>
+
+
+<span class="c1"># Classes for symbolic labels</span>
+
+
+<div class="viewcode-block" id="SymbolicLabelBase"><a class="viewcode-back" href="../../../API/qalgebra.utils.indices.html#qalgebra.utils.indices.SymbolicLabelBase">[docs]</a><span class="nd">@immutable_attribs</span>
+<span class="k">class</span> <span class="nc">SymbolicLabelBase</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base class for symbolic labels</span>
+
+<span class="sd">    A symbolic label is a SymPy expression that contains one or more</span>
+<span class="sd">    :class:`IdxSym`, and can be rendered into an integer or string label by</span>
+<span class="sd">    substituting integer values for each :class:`IdxSym`.</span>
+
+<span class="sd">    See :class:`IntIndex` for an example.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">expr</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">()</span>
+
+    <span class="nd">@expr</span><span class="o">.</span><span class="n">validator</span>
+    <span class="k">def</span> <span class="nf">_validate_expr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Basic</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;expr must be a sympy formula&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_has_idx_syms</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;expr must contain at least one IdxSym&quot;</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_has_idx_syms</span><span class="p">(</span><span class="n">expr</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">any</span><span class="p">([</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">sym</span><span class="p">,</span> <span class="n">IdxSym</span><span class="p">)</span> <span class="k">for</span> <span class="n">sym</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">free_symbols</span><span class="p">])</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">_render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Render `expr` into a a label. It can be assumed that `expr` does not</span>
+<span class="sd">        contain any :class:`IdxSym`&quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+<div class="viewcode-block" id="SymbolicLabelBase.substitute"><a class="viewcode-back" href="../../../API/qalgebra.utils.indices.html#qalgebra.utils.indices.SymbolicLabelBase.substitute">[docs]</a>    <span class="k">def</span> <span class="nf">substitute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var_map</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Substitute in the expression describing the label.</span>
+
+<span class="sd">        If the result of the substitution no longer contains any</span>
+<span class="sd">        :class:`IdxSym`, this returns a &quot;rendered&quot; label.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_expr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">expr</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">var_map</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_has_idx_syms</span><span class="p">(</span><span class="n">new_expr</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="n">new_expr</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render</span><span class="p">(</span><span class="n">new_expr</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">free_symbols</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Free symbols in the expression describing the label&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">expr</span><span class="o">.</span><span class="n">free_symbols</span></div>
+
+
+<div class="viewcode-block" id="IntIndex"><a class="viewcode-back" href="../../../API/qalgebra.utils.indices.html#qalgebra.utils.indices.IntIndex">[docs]</a><span class="k">class</span> <span class="nc">IntIndex</span><span class="p">(</span><span class="n">SymbolicLabelBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A symbolic label that evaluates to an integer</span>
+
+<span class="sd">    The label can be rendered via :meth:`substitute`::</span>
+
+<span class="sd">        &gt;&gt;&gt; i, j = symbols(&#39;i, j&#39;, cls=IdxSym)</span>
+<span class="sd">        &gt;&gt;&gt; idx = IntIndex(i+j)</span>
+<span class="sd">        &gt;&gt;&gt; idx.substitute({i: 1, j:1})</span>
+<span class="sd">        2</span>
+
+<span class="sd">    An &quot;incomplete&quot; substitution (anything that still leaves a :class:`IdxSym`</span>
+<span class="sd">    in the label expression) will result in another :class:`IntIndex`</span>
+<span class="sd">    instance::</span>
+
+<span class="sd">        &gt;&gt;&gt; idx.substitute({i: 1})</span>
+<span class="sd">        IntIndex(Add(IdxSym(&#39;j&#39;, integer=True), Integer(1)))</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">other</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">expr</span>
+
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">expr</span> <span class="o">+</span> <span class="n">other</span>
+
+    <span class="k">def</span> <span class="nf">_render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="FockIndex"><a class="viewcode-back" href="../../../API/qalgebra.utils.indices.html#qalgebra.utils.indices.FockIndex">[docs]</a><span class="k">class</span> <span class="nc">FockIndex</span><span class="p">(</span><span class="n">IntIndex</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Symbolic index labeling a basis state in a :class:`.LocalSpace`&quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">fock_index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">expr</span></div>
+
+
+<div class="viewcode-block" id="StrLabel"><a class="viewcode-back" href="../../../API/qalgebra.utils.indices.html#qalgebra.utils.indices.StrLabel">[docs]</a><span class="k">class</span> <span class="nc">StrLabel</span><span class="p">(</span><span class="n">SymbolicLabelBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Symbolic label that evaluates to a string</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        &gt;&gt;&gt; i = symbols(&#39;i&#39;, cls=IdxSym)</span>
+<span class="sd">        &gt;&gt;&gt; A = symbols(&#39;A&#39;, cls=sympy.IndexedBase)</span>
+<span class="sd">        &gt;&gt;&gt; lbl = StrLabel(A[i])</span>
+<span class="sd">        &gt;&gt;&gt; lbl.substitute({i: 1})</span>
+<span class="sd">        &#39;A_1&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">qalgebra.printing.sympy</span> <span class="kn">import</span> <span class="n">SympyStrPrinter</span>
+
+        <span class="k">return</span> <span class="n">SympyStrPrinter</span><span class="p">()</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="FockLabel"><a class="viewcode-back" href="../../../API/qalgebra.utils.indices.html#qalgebra.utils.indices.FockLabel">[docs]</a><span class="nd">@immutable_attribs</span>
+<span class="k">class</span> <span class="nc">FockLabel</span><span class="p">(</span><span class="n">StrLabel</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Symbolic label that evaluates to the label of a basis state</span>
+
+<span class="sd">    This evaluates first to an index, and then to the label for the basis state</span>
+<span class="sd">    of the Hilbert space for that index::</span>
+
+<span class="sd">        &gt;&gt;&gt; hs = LocalSpace(&#39;tls&#39;, basis=(&#39;g&#39;, &#39;e&#39;))</span>
+<span class="sd">        &gt;&gt;&gt; i = symbols(&#39;i&#39;, cls=IdxSym)</span>
+<span class="sd">        &gt;&gt;&gt; lbl = FockLabel(i, hs=hs)</span>
+<span class="sd">        &gt;&gt;&gt; lbl.substitute({i: 0})</span>
+<span class="sd">        &#39;g&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">hs</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">hs</span><span class="o">.</span><span class="n">basis_labels</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">fock_index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">expr</span>
+
+<div class="viewcode-block" id="FockLabel.substitute"><a class="viewcode-back" href="../../../API/qalgebra.utils.indices.html#qalgebra.utils.indices.FockLabel.substitute">[docs]</a>    <span class="k">def</span> <span class="nf">substitute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var_map</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Substitute in the expression describing the label.</span>
+
+<span class="sd">        If the result of the substitution no longer contains any</span>
+<span class="sd">        :class:`IdxSym`, this returns a &quot;rendered&quot; label.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_expr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">expr</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">var_map</span><span class="p">)</span>
+        <span class="n">new_hs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hs</span><span class="o">.</span><span class="n">substitute</span><span class="p">(</span><span class="n">var_map</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_has_idx_syms</span><span class="p">(</span><span class="n">new_expr</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="n">new_expr</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">new_hs</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render</span><span class="p">(</span><span class="n">new_expr</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="SpinIndex"><a class="viewcode-back" href="../../../API/qalgebra.utils.indices.html#qalgebra.utils.indices.SpinIndex">[docs]</a><span class="nd">@immutable_attribs</span>
+<span class="k">class</span> <span class="nc">SpinIndex</span><span class="p">(</span><span class="n">StrLabel</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Symbolic label for a spin degree of freedom</span>
+
+<span class="sd">    This evaluates to a string representation of an integer or half-integer.</span>
+<span class="sd">    For values of e.g.  1, -1, 1/2, -1/2, the rendered resulting string is</span>
+<span class="sd">    &quot;+1&quot;, &quot;-1&quot;, &quot;+1/2&quot;, &quot;-1/2&quot;, respectively (in agreement with the convention</span>
+<span class="sd">    for the basis labels in a spin degree of freedom)</span>
+
+<span class="sd">        &gt;&gt;&gt; i = symbols(&#39;i&#39;, cls=IdxSym)</span>
+<span class="sd">        &gt;&gt;&gt; hs = SpinSpace(&#39;s&#39;, spin=&#39;1/2&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; lbl = SpinIndex(i/2, hs)</span>
+<span class="sd">        &gt;&gt;&gt; lbl.substitute({i: 1})</span>
+<span class="sd">        &#39;+1/2&#39;</span>
+
+<span class="sd">    Rendering an expression that is not integer or half-integer valued results</span>
+<span class="sd">    in a :exc:`ValueError`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">hs</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">()</span>
+
+    <span class="nd">@hs</span><span class="o">.</span><span class="n">validator</span>
+    <span class="k">def</span> <span class="nf">_validate_hs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">qalgebra.library.spin_algebra</span> <span class="kn">import</span> <span class="n">SpinSpace</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">SpinSpace</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;hs must be a SpinSpace instance&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_static_render</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_static_render</span><span class="p">(</span><span class="n">expr</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">expr</span><span class="o">.</span><span class="n">is_integer</span><span class="p">:</span>
+            <span class="n">int_val</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">int_val</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;+&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">int_val</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">int_val</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># half-integer</span>
+            <span class="n">numer</span><span class="p">,</span> <span class="n">denom</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">as_numer_denom</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">numer</span><span class="o">.</span><span class="n">is_integer</span> <span class="ow">and</span> <span class="n">denom</span> <span class="o">==</span> <span class="mi">2</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;SpinIndex must evaluate to an integer or &quot;</span>
+                    <span class="s2">&quot;half-integer, not </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+                <span class="p">)</span>
+            <span class="k">if</span> <span class="n">numer</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;+</span><span class="si">%d</span><span class="s2">/</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">numer</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">denom</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%d</span><span class="s2">/</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">numer</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">denom</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">fock_index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">expr</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">hs</span><span class="o">.</span><span class="n">spin</span>
+
+<div class="viewcode-block" id="SpinIndex.substitute"><a class="viewcode-back" href="../../../API/qalgebra.utils.indices.html#qalgebra.utils.indices.SpinIndex.substitute">[docs]</a>    <span class="k">def</span> <span class="nf">substitute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var_map</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Substitute in the expression describing the label.</span>
+
+<span class="sd">        If the result of the substitution no longer contains any</span>
+<span class="sd">        :class:`IdxSym`, this returns a &quot;rendered&quot; label.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_expr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">expr</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">var_map</span><span class="p">)</span>
+        <span class="n">new_hs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hs</span><span class="o">.</span><span class="n">substitute</span><span class="p">(</span><span class="n">var_map</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_has_idx_syms</span><span class="p">(</span><span class="n">new_expr</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="n">new_expr</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">new_hs</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render</span><span class="p">(</span><span class="n">new_expr</span><span class="p">)</span></div></div>
+
+
+<span class="c1"># Index Ranges</span>
+
+
+<div class="viewcode-block" id="IndexRangeBase"><a class="viewcode-back" href="../../../API/qalgebra.utils.indices.html#qalgebra.utils.indices.IndexRangeBase">[docs]</a><span class="nd">@immutable_attribs</span>
+<span class="k">class</span> <span class="nc">IndexRangeBase</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base class for index ranges</span>
+
+<span class="sd">    Index ranges occur in indexed sums or products.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">index_symbol</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">validator</span><span class="o">=</span><span class="n">attr</span><span class="o">.</span><span class="n">validators</span><span class="o">.</span><span class="n">instance_of</span><span class="p">(</span><span class="n">IdxSym</span><span class="p">))</span>
+
+<div class="viewcode-block" id="IndexRangeBase.iter"><a class="viewcode-back" href="../../../API/qalgebra.utils.indices.html#qalgebra.utils.indices.IndexRangeBase.iter">[docs]</a>    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">iter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># this should *not* be a property: for `product`, we need to pass a</span>
+        <span class="c1"># generator function, i.e. IndexRangeBase.iter, not</span>
+        <span class="c1"># IndexRangeBase.iter()</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+<div class="viewcode-block" id="IndexRangeBase.substitute"><a class="viewcode-back" href="../../../API/qalgebra.utils.indices.html#qalgebra.utils.indices.IndexRangeBase.substitute">[docs]</a>    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">substitute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var_map</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="IndexRangeBase.piecewise_one"><a class="viewcode-back" href="../../../API/qalgebra.utils.indices.html#qalgebra.utils.indices.IndexRangeBase.piecewise_one">[docs]</a>    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">piecewise_one</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Value of 1 for all index values in the range, 0 otherwise</span>
+
+<span class="sd">        A :class:`~sympy.functions.elementary.piecewise.Piecewise` object that</span>
+<span class="sd">        is 1 for any value of `expr` in the range of possible index values,</span>
+<span class="sd">        and 0 otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div></div>
+
+
+<div class="viewcode-block" id="IndexOverList"><a class="viewcode-back" href="../../../API/qalgebra.utils.indices.html#qalgebra.utils.indices.IndexOverList">[docs]</a><span class="nd">@immutable_attribs</span>
+<span class="k">class</span> <span class="nc">IndexOverList</span><span class="p">(</span><span class="n">IndexRangeBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Index over a list of explicit values</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        index_symbol (IdxSym): The symbol iterating over the value</span>
+<span class="sd">        values (list): List of values for the index</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">values</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">converter</span><span class="o">=</span><span class="nb">tuple</span><span class="p">)</span>
+
+<div class="viewcode-block" id="IndexOverList.iter"><a class="viewcode-back" href="../../../API/qalgebra.utils.indices.html#qalgebra.utils.indices.IndexOverList.iter">[docs]</a>    <span class="k">def</span> <span class="nf">iter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">index_symbol</span><span class="p">:</span> <span class="n">val</span><span class="p">}</span></div>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span>
+
+<div class="viewcode-block" id="IndexOverList.substitute"><a class="viewcode-back" href="../../../API/qalgebra.utils.indices.html#qalgebra.utils.indices.IndexOverList.substitute">[docs]</a>    <span class="k">def</span> <span class="nf">substitute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var_map</span><span class="p">):</span>
+        <span class="n">new_index_symbol</span> <span class="o">=</span> <span class="n">var_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index_symbol</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_symbol</span><span class="p">)</span>
+        <span class="n">new_values</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">var_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">element</span><span class="p">)</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">index_symbol</span><span class="o">=</span><span class="n">new_index_symbol</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">new_values</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IndexOverList.piecewise_one"><a class="viewcode-back" href="../../../API/qalgebra.utils.indices.html#qalgebra.utils.indices.IndexOverList.piecewise_one">[docs]</a>    <span class="k">def</span> <span class="nf">piecewise_one</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Piecewise</span><span class="p">(</span>
+            <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">sympy</span><span class="o">.</span><span class="n">FiniteSet</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">expr</span><span class="p">)),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="IndexOverRange"><a class="viewcode-back" href="../../../API/qalgebra.utils.indices.html#qalgebra.utils.indices.IndexOverRange">[docs]</a><span class="nd">@immutable_attribs</span>
+<span class="k">class</span> <span class="nc">IndexOverRange</span><span class="p">(</span><span class="n">IndexRangeBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Index over the inclusive range between two integers</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        index_symbol (IdxSym): The symbol iterating over the range</span>
+<span class="sd">        start_from (int): Starting value for the index</span>
+<span class="sd">        to (int): End value of the index</span>
+<span class="sd">        step (int): Step width by which index increases</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">start_from</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">validator</span><span class="o">=</span><span class="n">attr</span><span class="o">.</span><span class="n">validators</span><span class="o">.</span><span class="n">instance_of</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+    <span class="n">to</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">validator</span><span class="o">=</span><span class="n">attr</span><span class="o">.</span><span class="n">validators</span><span class="o">.</span><span class="n">instance_of</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+    <span class="n">step</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">validator</span><span class="o">=</span><span class="n">attr</span><span class="o">.</span><span class="n">validators</span><span class="o">.</span><span class="n">instance_of</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<div class="viewcode-block" id="IndexOverRange.iter"><a class="viewcode-back" href="../../../API/qalgebra.utils.indices.html#qalgebra.utils.indices.IndexOverRange.iter">[docs]</a>    <span class="k">def</span> <span class="nf">iter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">index_symbol</span><span class="p">:</span> <span class="n">ind</span><span class="p">}</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">range</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">range</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">start_from</span><span class="p">,</span>
+            <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">range</span>
+
+<div class="viewcode-block" id="IndexOverRange.substitute"><a class="viewcode-back" href="../../../API/qalgebra.utils.indices.html#qalgebra.utils.indices.IndexOverRange.substitute">[docs]</a>    <span class="k">def</span> <span class="nf">substitute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var_map</span><span class="p">):</span>
+        <span class="n">new_index_symbol</span> <span class="o">=</span> <span class="n">var_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index_symbol</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_symbol</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
+            <span class="n">index_symbol</span><span class="o">=</span><span class="n">new_index_symbol</span><span class="p">,</span>
+            <span class="n">start_from</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">start_from</span><span class="p">,</span>
+            <span class="n">to</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">to</span><span class="p">,</span>
+            <span class="n">step</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="IndexOverRange.piecewise_one"><a class="viewcode-back" href="../../../API/qalgebra.utils.indices.html#qalgebra.utils.indices.IndexOverRange.piecewise_one">[docs]</a>    <span class="k">def</span> <span class="nf">piecewise_one</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Piecewise</span><span class="p">(</span>
+            <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">sympy</span><span class="o">.</span><span class="n">FiniteSet</span><span class="p">(</span><span class="o">*</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">range</span><span class="p">))</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">expr</span><span class="p">)),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="IndexOverFockSpace"><a class="viewcode-back" href="../../../API/qalgebra.utils.indices.html#qalgebra.utils.indices.IndexOverFockSpace">[docs]</a><span class="nd">@immutable_attribs</span>
+<span class="k">class</span> <span class="nc">IndexOverFockSpace</span><span class="p">(</span><span class="n">IndexRangeBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Index range over the integer indices of a :class:`.LocalSpace` basis</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        index_symbol (IdxSym): The symbol iterating over the range</span>
+<span class="sd">        hs (.LocalSpace): Hilbert space over whose basis to iterate</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">hs</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">()</span>
+    <span class="c1"># TODO: assert that hs is indeed a LocalSpace</span>
+
+<div class="viewcode-block" id="IndexOverFockSpace.iter"><a class="viewcode-back" href="../../../API/qalgebra.utils.indices.html#qalgebra.utils.indices.IndexOverFockSpace.iter">[docs]</a>    <span class="k">def</span> <span class="nf">iter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">hs</span><span class="o">.</span><span class="n">_dimension</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">index_symbol</span><span class="p">:</span> <span class="n">i</span><span class="p">}</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hs</span><span class="o">.</span><span class="n">dimension</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">index_symbol</span><span class="p">:</span> <span class="n">ind</span><span class="p">}</span></div>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">hs</span><span class="o">.</span><span class="n">_dimension</span>
+
+    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">hs</span><span class="o">.</span><span class="n">_dimension</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">val</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">val</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">hs</span><span class="o">.</span><span class="n">dimension</span>
+
+<div class="viewcode-block" id="IndexOverFockSpace.substitute"><a class="viewcode-back" href="../../../API/qalgebra.utils.indices.html#qalgebra.utils.indices.IndexOverFockSpace.substitute">[docs]</a>    <span class="k">def</span> <span class="nf">substitute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var_map</span><span class="p">):</span>
+        <span class="n">new_index_symbol</span> <span class="o">=</span> <span class="n">var_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index_symbol</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_symbol</span><span class="p">)</span>
+        <span class="n">new_hs</span> <span class="o">=</span> <span class="n">var_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">index_symbol</span><span class="o">=</span><span class="n">new_index_symbol</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">new_hs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="IndexOverFockSpace.piecewise_one"><a class="viewcode-back" href="../../../API/qalgebra.utils.indices.html#qalgebra.utils.indices.IndexOverFockSpace.piecewise_one">[docs]</a>    <span class="k">def</span> <span class="nf">piecewise_one</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">hs</span><span class="o">.</span><span class="n">_dimension</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">to_val</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">oo</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">to_val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hs</span><span class="o">.</span><span class="n">dimension</span>
+        <span class="k">return</span> <span class="n">Piecewise</span><span class="p">(</span>
+            <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Interval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">to_val</span><span class="p">)</span><span class="o">.</span><span class="n">as_relational</span><span class="p">(</span><span class="n">expr</span><span class="p">)),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Michael Goerz
+      <span class="lastupdated">
+        Last updated on Feb 06, 2020.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

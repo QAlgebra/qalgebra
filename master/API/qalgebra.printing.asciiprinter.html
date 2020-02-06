@@ -1,0 +1,363 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>qalgebra.printing.asciiprinter module &mdash; QAlgebra 2.0.0-dev (d784b1d) documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/clipboard.min.js"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script type="text/javascript" src="../_static/doctr-versions-menu.js"></script>
+        <script type="text/javascript">var copybuttonSkipText = '>>> ';</script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/mycss.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="qalgebra.printing.base module" href="qalgebra.printing.base.html" />
+    <link rel="prev" title="qalgebra.printing package" href="qalgebra.printing.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0.0-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">QAlgebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="qalgebra.html">API of the QAlgebra package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.pattern_matching.html">qalgebra.pattern_matching module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.convert.html">qalgebra.convert package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.core.html">qalgebra.core package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.library.html">qalgebra.library package</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="qalgebra.printing.html">qalgebra.printing package</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">qalgebra.printing.asciiprinter module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.printing.base.html">qalgebra.printing.base module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.printing.dot.html">qalgebra.printing.dot module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.printing.latexprinter.html">qalgebra.printing.latexprinter module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.printing.sreprprinter.html">qalgebra.printing.sreprprinter module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.printing.sympy.html">qalgebra.printing.sympy module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.printing.treeprinting.html">qalgebra.printing.treeprinting module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.printing.unicodeprinter.html">qalgebra.printing.unicodeprinter module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.printing.html#summary">Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.printing.html#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.toolbox.html">qalgebra.toolbox package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.utils.html">qalgebra.utils package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.html#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="qalgebra.html">qalgebra package</a> &raquo;</li>
+        
+          <li><a href="qalgebra.printing.html">qalgebra.printing package</a> &raquo;</li>
+        
+      <li>qalgebra.printing.asciiprinter module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-qalgebra.printing.asciiprinter">
+<span id="qalgebra-printing-asciiprinter-module"></span><h1>qalgebra.printing.asciiprinter module<a class="headerlink" href="#module-qalgebra.printing.asciiprinter" title="Permalink to this headline">¶</a></h1>
+<p>ASCII Printer</p>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Classes:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.printing.asciiprinter.QalgebraAsciiDefaultPrinter" title="qalgebra.printing.asciiprinter.QalgebraAsciiDefaultPrinter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">QalgebraAsciiDefaultPrinter</span></code></a></p></td>
+<td><p>Printer for an ASCII representation that accepts no settings.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.printing.asciiprinter.QalgebraAsciiPrinter" title="qalgebra.printing.asciiprinter.QalgebraAsciiPrinter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">QalgebraAsciiPrinter</span></code></a></p></td>
+<td><p>Printer for a string (ASCII) representation.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="qalgebra.printing.asciiprinter.QalgebraAsciiPrinter">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.printing.asciiprinter.</code><code class="sig-name descname">QalgebraAsciiPrinter</code><span class="sig-paren">(</span><em class="sig-param">cache=None</em>, <em class="sig-param">settings=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing/asciiprinter.html#QalgebraAsciiPrinter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.asciiprinter.QalgebraAsciiPrinter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.printing.base.html#qalgebra.printing.base.QalgebraBasePrinter" title="qalgebra.printing.base.QalgebraBasePrinter"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.printing.base.QalgebraBasePrinter</span></code></a></p>
+<p>Printer for a string (ASCII) representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_parenth_left</strong> (<em>str</em>) – String to use for a left parenthesis
+(e.g. ‘left(‘ in LaTeX). Used by <code class="xref py py-meth docutils literal notranslate"><span class="pre">_split_op()</span></code></p></li>
+<li><p><strong>_parenth_left</strong> (<em>str</em>) – String to use for a right parenthesis</p></li>
+<li><p><strong>_dagger_sym</strong> (<em>str</em>) – Symbol that indicates the complex conjugate of an
+operator. Used by <code class="xref py py-meth docutils literal notranslate"><span class="pre">_split_op()</span></code></p></li>
+<li><p><strong>_tensor_sym</strong> (<em>str</em>) – Symbol to use for tensor products. Used by
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">_render_hs_label()</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="qalgebra.printing.asciiprinter.QalgebraAsciiPrinter.sympy_printer_cls">
+<code class="sig-name descname">sympy_printer_cls</code><a class="headerlink" href="#qalgebra.printing.asciiprinter.QalgebraAsciiPrinter.sympy_printer_cls" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="qalgebra.printing.sympy.html#qalgebra.printing.sympy.SympyStrPrinter" title="qalgebra.printing.sympy.SympyStrPrinter"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.printing.sympy.SympyStrPrinter</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="qalgebra.printing.asciiprinter.QalgebraAsciiPrinter.printmethod">
+<code class="sig-name descname">printmethod</code><em class="property"> = '_ascii'</em><a class="headerlink" href="#qalgebra.printing.asciiprinter.QalgebraAsciiPrinter.printmethod" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qalgebra.printing.asciiprinter.QalgebraAsciiPrinter.parenthesize">
+<code class="sig-name descname">parenthesize</code><span class="sig-paren">(</span><em class="sig-param">expr</em>, <em class="sig-param">level</em>, <em class="sig-param">*args</em>, <em class="sig-param">strict=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing/asciiprinter.html#QalgebraAsciiPrinter.parenthesize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.asciiprinter.QalgebraAsciiPrinter.parenthesize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Render <cite>expr</cite> and wrap the result in parentheses if the precedence
+of <cite>expr</cite> is below the given <cite>level</cite> (or at the given <cite>level</cite> if
+<cite>strict</cite> is True. Extra <cite>args</cite> and <cite>kwargs</cite> are passed to the internal
+<cite>doit</cite> renderer</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qalgebra.printing.asciiprinter.QalgebraAsciiDefaultPrinter">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.printing.asciiprinter.</code><code class="sig-name descname">QalgebraAsciiDefaultPrinter</code><a class="reference internal" href="../_modules/qalgebra/printing/asciiprinter.html#QalgebraAsciiDefaultPrinter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.asciiprinter.QalgebraAsciiDefaultPrinter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qalgebra.printing.asciiprinter.QalgebraAsciiPrinter" title="qalgebra.printing.asciiprinter.QalgebraAsciiPrinter"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.printing.asciiprinter.QalgebraAsciiPrinter</span></code></a></p>
+<p>Printer for an ASCII representation that accepts no settings. This can
+be used internally when a well-defined, static representation is needed
+(e.g. as a sort key)</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="qalgebra.printing.base.html" class="btn btn-neutral float-right" title="qalgebra.printing.base module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="qalgebra.printing.html" class="btn btn-neutral float-left" title="qalgebra.printing package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Michael Goerz
+      <span class="lastupdated">
+        Last updated on Feb 06, 2020.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

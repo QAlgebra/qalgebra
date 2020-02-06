@@ -1,0 +1,1007 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>qalgebra.core.operator_algebra module &mdash; QAlgebra 2.0.0-dev (d784b1d) documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/clipboard.min.js"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script type="text/javascript" src="../_static/doctr-versions-menu.js"></script>
+        <script type="text/javascript">var copybuttonSkipText = '>>> ';</script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/mycss.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="qalgebra.core.scalar_algebra module" href="qalgebra.core.scalar_algebra.html" />
+    <link rel="prev" title="qalgebra.core.matrix_algebra module" href="qalgebra.core.matrix_algebra.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0.0-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">QAlgebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="qalgebra.html">API of the QAlgebra package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.pattern_matching.html">qalgebra.pattern_matching module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.convert.html">qalgebra.convert package</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="qalgebra.core.html">qalgebra.core package</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.abstract_algebra.html">qalgebra.core.abstract_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html">qalgebra.core.abstract_quantum_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.algebraic_properties.html">qalgebra.core.algebraic_properties module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.exceptions.html">qalgebra.core.exceptions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html">qalgebra.core.hilbert_space_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.indexed_operations.html">qalgebra.core.indexed_operations module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.matrix_algebra.html">qalgebra.core.matrix_algebra module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">qalgebra.core.operator_algebra module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.scalar_algebra.html">qalgebra.core.scalar_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.state_algebra.html">qalgebra.core.state_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.super_operator_algebra.html">qalgebra.core.super_operator_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.library.html">qalgebra.library package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.printing.html">qalgebra.printing package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.toolbox.html">qalgebra.toolbox package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.utils.html">qalgebra.utils package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.html#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="qalgebra.html">qalgebra package</a> &raquo;</li>
+        
+          <li><a href="qalgebra.core.html">qalgebra.core package</a> &raquo;</li>
+        
+      <li>qalgebra.core.operator_algebra module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-qalgebra.core.operator_algebra">
+<span id="qalgebra-core-operator-algebra-module"></span><h1>qalgebra.core.operator_algebra module<a class="headerlink" href="#module-qalgebra.core.operator_algebra" title="Permalink to this headline">¶</a></h1>
+<p>This module features classes and functions to define and manipulate symbolic
+Operator expressions.  For more details see <span class="xref std std-ref">operator_algebra</span>.</p>
+<p>For a list of all properties and methods of an operator object, see the
+documentation for the basic <a class="reference internal" href="#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></a> class.</p>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Classes:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.operator_algebra.Adjoint" title="qalgebra.core.operator_algebra.Adjoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Adjoint</span></code></a></p></td>
+<td><p>Symbolic Adjoint of an operator</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.operator_algebra.Commutator" title="qalgebra.core.operator_algebra.Commutator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Commutator</span></code></a></p></td>
+<td><p>Commutator of two operators</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.operator_algebra.LocalOperator" title="qalgebra.core.operator_algebra.LocalOperator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LocalOperator</span></code></a></p></td>
+<td><p>Base class for “known” operators on a <code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.operator_algebra.LocalSigma" title="qalgebra.core.operator_algebra.LocalSigma"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LocalSigma</span></code></a></p></td>
+<td><p>Level flip operator between two levels of a <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.operator_algebra.NullSpaceProjector" title="qalgebra.core.operator_algebra.NullSpaceProjector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NullSpaceProjector</span></code></a></p></td>
+<td><p>Projection operator onto the nullspace of its operand</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Operator</span></code></a></p></td>
+<td><p>Base class for all quantum operators.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.operator_algebra.OperatorDerivative" title="qalgebra.core.operator_algebra.OperatorDerivative"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OperatorDerivative</span></code></a></p></td>
+<td><p>Symbolic partial derivative of an operator</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.operator_algebra.OperatorIndexedSum" title="qalgebra.core.operator_algebra.OperatorIndexedSum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OperatorIndexedSum</span></code></a></p></td>
+<td><p>Indexed sum over operators</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.operator_algebra.OperatorPlus" title="qalgebra.core.operator_algebra.OperatorPlus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OperatorPlus</span></code></a></p></td>
+<td><p>Sum of Operators</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.operator_algebra.OperatorPlusMinusCC" title="qalgebra.core.operator_algebra.OperatorPlusMinusCC"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OperatorPlusMinusCC</span></code></a></p></td>
+<td><p>An operator plus or minus its complex conjugate</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.operator_algebra.OperatorSymbol" title="qalgebra.core.operator_algebra.OperatorSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OperatorSymbol</span></code></a></p></td>
+<td><p>Symbolic operator</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.operator_algebra.OperatorTimes" title="qalgebra.core.operator_algebra.OperatorTimes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OperatorTimes</span></code></a></p></td>
+<td><p>Product of operators</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.operator_algebra.OperatorTrace" title="qalgebra.core.operator_algebra.OperatorTrace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OperatorTrace</span></code></a></p></td>
+<td><p>(Partial) trace of an operator</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.operator_algebra.PseudoInverse" title="qalgebra.core.operator_algebra.PseudoInverse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PseudoInverse</span></code></a></p></td>
+<td><p>Unevaluated pseudo-inverse $Op{X}^+$ of an operator $Op{X}$</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.operator_algebra.ScalarTimesOperator" title="qalgebra.core.operator_algebra.ScalarTimesOperator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScalarTimesOperator</span></code></a></p></td>
+<td><p>Product of a <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code></a> coefficient and an <a class="reference internal" href="#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>Functions:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.operator_algebra.LocalProjector" title="qalgebra.core.operator_algebra.LocalProjector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LocalProjector</span></code></a></p></td>
+<td><p>A projector onto a specific level of a <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.operator_algebra.adjoint" title="qalgebra.core.operator_algebra.adjoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adjoint</span></code></a></p></td>
+<td><p>Return the adjoint of an obj.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.operator_algebra.decompose_space" title="qalgebra.core.operator_algebra.decompose_space"><code class="xref py py-obj docutils literal notranslate"><span class="pre">decompose_space</span></code></a></p></td>
+<td><p>Simplifies OperatorTrace expressions over tensor-product spaces by turning it into iterated partial traces.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.operator_algebra.factor_coeff" title="qalgebra.core.operator_algebra.factor_coeff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">factor_coeff</span></code></a></p></td>
+<td><p>Factor out coefficients of all factors.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.operator_algebra.factor_for_trace" title="qalgebra.core.operator_algebra.factor_for_trace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">factor_for_trace</span></code></a></p></td>
+<td><p>Given a <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a> <cite>ls</cite> to take the partial trace over and an operator <cite>op</cite>, factor the trace such that operators acting on disjoint degrees of freedom are pulled out of the trace.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.operator_algebra.get_coeffs" title="qalgebra.core.operator_algebra.get_coeffs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_coeffs</span></code></a></p></td>
+<td><p>Create a dictionary with all Operator terms of the expression (understood as a sum) as keys and their coefficients as values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.operator_algebra.rewrite_with_operator_pm_cc" title="qalgebra.core.operator_algebra.rewrite_with_operator_pm_cc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rewrite_with_operator_pm_cc</span></code></a></p></td>
+<td><p>Try to rewrite expr using <a class="reference internal" href="#qalgebra.core.operator_algebra.OperatorPlusMinusCC" title="qalgebra.core.operator_algebra.OperatorPlusMinusCC"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorPlusMinusCC</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>Data:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.operator_algebra.II" title="qalgebra.core.operator_algebra.II"><code class="xref py py-obj docutils literal notranslate"><span class="pre">II</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">IdentityOperator</span></code> constant (singleton) object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.operator_algebra.IdentityOperator" title="qalgebra.core.operator_algebra.IdentityOperator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IdentityOperator</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">IdentityOperator</span></code> constant (singleton) object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.operator_algebra.ZeroOperator" title="qalgebra.core.operator_algebra.ZeroOperator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ZeroOperator</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ZeroOperator</span></code> constant (singleton) object.</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">__all__</span></code>: <a class="reference internal" href="#qalgebra.core.operator_algebra.Adjoint" title="qalgebra.core.operator_algebra.Adjoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">Adjoint</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.Commutator" title="qalgebra.core.operator_algebra.Commutator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Commutator</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.IdentityOperator" title="qalgebra.core.operator_algebra.IdentityOperator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">II</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.IdentityOperator" title="qalgebra.core.operator_algebra.IdentityOperator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IdentityOperator</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.LocalOperator" title="qalgebra.core.operator_algebra.LocalOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalOperator</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.LocalProjector" title="qalgebra.core.operator_algebra.LocalProjector"><code class="xref py py-func docutils literal notranslate"><span class="pre">LocalProjector</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.LocalSigma" title="qalgebra.core.operator_algebra.LocalSigma"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSigma</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.NullSpaceProjector" title="qalgebra.core.operator_algebra.NullSpaceProjector"><code class="xref py py-class docutils literal notranslate"><span class="pre">NullSpaceProjector</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.OperatorDerivative" title="qalgebra.core.operator_algebra.OperatorDerivative"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorDerivative</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.OperatorIndexedSum" title="qalgebra.core.operator_algebra.OperatorIndexedSum"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorIndexedSum</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.OperatorPlus" title="qalgebra.core.operator_algebra.OperatorPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorPlus</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.OperatorPlusMinusCC" title="qalgebra.core.operator_algebra.OperatorPlusMinusCC"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorPlusMinusCC</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.OperatorSymbol" title="qalgebra.core.operator_algebra.OperatorSymbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorSymbol</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.OperatorTimes" title="qalgebra.core.operator_algebra.OperatorTimes"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorTimes</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.OperatorTrace" title="qalgebra.core.operator_algebra.OperatorTrace"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorTrace</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.PseudoInverse" title="qalgebra.core.operator_algebra.PseudoInverse"><code class="xref py py-class docutils literal notranslate"><span class="pre">PseudoInverse</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.ScalarTimesOperator" title="qalgebra.core.operator_algebra.ScalarTimesOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarTimesOperator</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.ZeroOperator" title="qalgebra.core.operator_algebra.ZeroOperator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ZeroOperator</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.adjoint" title="qalgebra.core.operator_algebra.adjoint"><code class="xref py py-func docutils literal notranslate"><span class="pre">adjoint</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.decompose_space" title="qalgebra.core.operator_algebra.decompose_space"><code class="xref py py-func docutils literal notranslate"><span class="pre">decompose_space</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.factor_coeff" title="qalgebra.core.operator_algebra.factor_coeff"><code class="xref py py-func docutils literal notranslate"><span class="pre">factor_coeff</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.factor_for_trace" title="qalgebra.core.operator_algebra.factor_for_trace"><code class="xref py py-func docutils literal notranslate"><span class="pre">factor_for_trace</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.get_coeffs" title="qalgebra.core.operator_algebra.get_coeffs"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_coeffs</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.rewrite_with_operator_pm_cc" title="qalgebra.core.operator_algebra.rewrite_with_operator_pm_cc"><code class="xref py py-func docutils literal notranslate"><span class="pre">rewrite_with_operator_pm_cc</span></code></a>, <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-func docutils literal notranslate"><span class="pre">tr</span></code></a></p>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="qalgebra.core.operator_algebra.Operator">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.operator_algebra.</code><code class="sig-name descname">Operator</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#Operator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.Operator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumExpression" title="qalgebra.core.abstract_quantum_algebra.QuantumExpression"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumExpression</span></code></a></p>
+<p>Base class for all quantum operators.</p>
+<dl class="method">
+<dt id="qalgebra.core.operator_algebra.Operator.pseudo_inverse">
+<code class="sig-name descname">pseudo_inverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#Operator.pseudo_inverse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.Operator.pseudo_inverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pseudo-inverse <span class="math notranslate nohighlight">\(\Op{X}^+\)</span> of the operator <span class="math notranslate nohighlight">\(\Op{X}\)</span></p>
+<p>It is defined via the relationship</p>
+<div class="math notranslate nohighlight">
+\[\Op{X} \Op{X}^+ \Op{X} =  \Op{X}  \
+\Op{X}^+ \Op{X} \Op{X}^+ =  \Op{X}^+  \
+(\Op{X}^+ \Op{X})^\dagger = \Op{X}^+ \Op{X}  \
+(\Op{X} \Op{X}^+)^\dagger = \Op{X} \Op{X}^+\]</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="qalgebra.core.operator_algebra.Operator.expand_in_basis">
+<code class="sig-name descname">expand_in_basis</code><span class="sig-paren">(</span><em class="sig-param">basis_states=None</em>, <em class="sig-param">hermitian=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#Operator.expand_in_basis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.Operator.expand_in_basis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the operator as an expansion into all
+<a class="reference internal" href="qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.KetBra" title="qalgebra.core.state_algebra.KetBra"><code class="xref py py-class docutils literal notranslate"><span class="pre">KetBras</span></code></a>
+spanned by <cite>basis_states</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>basis_states</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a>) – List of basis states (<a class="reference internal" href="qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.State" title="qalgebra.core.state_algebra.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">State</span></code></a>
+instances) into which to expand the operator. If None, use the
+operator’s <cite>space.basis_states</cite></p></li>
+<li><p><strong>hermitian</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – If True, assume that the operator is Hermitian
+and represent all elements in the lower triangle of the
+expansion via <a class="reference internal" href="#qalgebra.core.operator_algebra.OperatorPlusMinusCC" title="qalgebra.core.operator_algebra.OperatorPlusMinusCC"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorPlusMinusCC</span></code></a>. This is meant to
+enhance readability</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.BasisNotSetError" title="qalgebra.core.exceptions.BasisNotSetError"><strong>BasisNotSetError</strong></a> – If <cite>basis_states</cite> is None and the operator’s
+    Hilbert space has no well-defined basis</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hs</span> <span class="o">=</span> <span class="n">LocalSpace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">op</span> <span class="o">=</span> <span class="n">LocalSigma</span><span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span> <span class="o">+</span> <span class="n">LocalSigma</span><span class="p">(</span><span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">ascii</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">sig_as_ketbra</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="go">sigma_e,g^(1) + sigma_g,e^(1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">ascii</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">expand_in_basis</span><span class="p">()))</span>
+<span class="go">|e&gt;&lt;g|^(1) + |g&gt;&lt;e|^(1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">ascii</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">expand_in_basis</span><span class="p">(</span><span class="n">hermitian</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span>
+<span class="go">|g&gt;&lt;e|^(1) + c.c.</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qalgebra.core.operator_algebra.LocalOperator">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.operator_algebra.</code><code class="sig-name descname">LocalOperator</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">hs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#LocalOperator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.LocalOperator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.operator_algebra.Operator</span></code></a></p>
+<p>Base class for “known” operators on a <code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></p>
+<p>All <a class="reference internal" href="#qalgebra.core.operator_algebra.LocalOperator" title="qalgebra.core.operator_algebra.LocalOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalOperator</span></code></a> instances have known algebraic properties and a
+fixed associated identifier (symbol) that is used when printing that
+operator. A custom identifier can be used through the associated
+<a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a>’s <cite>local_identifiers</cite> parameter. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hs1_custom</span> <span class="o">=</span> <span class="n">LocalSpace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">local_identifiers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Destroy&#39;</span><span class="p">:</span> <span class="s1">&#39;b&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">Destroy</span><span class="p">(</span><span class="n">hs</span><span class="o">=</span><span class="n">hs1_custom</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ascii</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="go">&#39;b^(1)&#39;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is recommended that subclasses use the <a class="reference internal" href="qalgebra.utils.properties_for_args.html#qalgebra.utils.properties_for_args.properties_for_args" title="qalgebra.utils.properties_for_args.properties_for_args"><code class="xref py py-func docutils literal notranslate"><span class="pre">properties_for_args()</span></code></a>
+class decorator if they define any position arguments (via the
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">_arg_names</span></code> class attribute)</p>
+</div>
+<dl class="attribute">
+<dt id="qalgebra.core.operator_algebra.LocalOperator.simplifications">
+<code class="sig-name descname">simplifications</code><em class="property"> = [&lt;function implied_local_space.&lt;locals&gt;.kwargs_to_local_space&gt;]</em><a class="headerlink" href="#qalgebra.core.operator_algebra.LocalOperator.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qalgebra.core.operator_algebra.LocalOperator.space">
+<em class="property">property </em><code class="sig-name descname">space</code><a class="headerlink" href="#qalgebra.core.operator_algebra.LocalOperator.space" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hilbert space of the operator (<a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a> instance)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qalgebra.core.operator_algebra.LocalOperator.args">
+<em class="property">property </em><code class="sig-name descname">args</code><a class="headerlink" href="#qalgebra.core.operator_algebra.LocalOperator.args" title="Permalink to this definition">¶</a></dt>
+<dd><p>The positional arguments used for instantiating the operator</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qalgebra.core.operator_algebra.LocalOperator.kwargs">
+<em class="property">property </em><code class="sig-name descname">kwargs</code><a class="headerlink" href="#qalgebra.core.operator_algebra.LocalOperator.kwargs" title="Permalink to this definition">¶</a></dt>
+<dd><p>The keyword arguments used for instantiating the operator</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qalgebra.core.operator_algebra.LocalOperator.identifier">
+<em class="property">property </em><code class="sig-name descname">identifier</code><a class="headerlink" href="#qalgebra.core.operator_algebra.LocalOperator.identifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>The identifier (symbol) that is used when printing the operator.</p>
+<p>A custom identifier can be used through the associated
+<a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a>’s <cite>local_identifiers</cite> parameter. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Destroy</span><span class="p">(</span><span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">identifier</span>
+<span class="go">&#39;a&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hs1_custom</span> <span class="o">=</span> <span class="n">LocalSpace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">local_identifiers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Destroy&#39;</span><span class="p">:</span> <span class="s1">&#39;b&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">Destroy</span><span class="p">(</span><span class="n">hs</span><span class="o">=</span><span class="n">hs1_custom</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">identifier</span>
+<span class="go">&#39;b&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ascii</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="go">&#39;b^(1)&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qalgebra.core.operator_algebra.OperatorSymbol">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.operator_algebra.</code><code class="sig-name descname">OperatorSymbol</code><span class="sig-paren">(</span><em class="sig-param">label</em>, <em class="sig-param">*sym_args</em>, <em class="sig-param">hs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#OperatorSymbol"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.OperatorSymbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumSymbol" title="qalgebra.core.abstract_quantum_algebra.QuantumSymbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumSymbol</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.operator_algebra.Operator</span></code></a></p>
+<p>Symbolic operator</p>
+<p>See <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumSymbol" title="qalgebra.core.abstract_quantum_algebra.QuantumSymbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumSymbol</span></code></a>.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="qalgebra.core.operator_algebra.IdentityOperator">
+<code class="sig-prename descclassname">qalgebra.core.operator_algebra.</code><code class="sig-name descname">IdentityOperator</code><em class="property"> = IdentityOperator</em><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#IdentityOperator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.IdentityOperator" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">IdentityOperator</span></code> constant (singleton) object.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="qalgebra.core.operator_algebra.II">
+<code class="sig-prename descclassname">qalgebra.core.operator_algebra.</code><code class="sig-name descname">II</code><em class="property"> = IdentityOperator</em><a class="headerlink" href="#qalgebra.core.operator_algebra.II" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">IdentityOperator</span></code> constant (singleton) object.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="qalgebra.core.operator_algebra.ZeroOperator">
+<code class="sig-prename descclassname">qalgebra.core.operator_algebra.</code><code class="sig-name descname">ZeroOperator</code><em class="property"> = ZeroOperator</em><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#ZeroOperator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.ZeroOperator" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">ZeroOperator</span></code> constant (singleton) object.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qalgebra.core.operator_algebra.LocalSigma">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.operator_algebra.</code><code class="sig-name descname">LocalSigma</code><span class="sig-paren">(</span><em class="sig-param">j</em>, <em class="sig-param">k</em>, <em class="sig-param">*</em>, <em class="sig-param">hs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#LocalSigma"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.LocalSigma" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qalgebra.core.operator_algebra.LocalOperator" title="qalgebra.core.operator_algebra.LocalOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.operator_algebra.LocalOperator</span></code></a></p>
+<p>Level flip operator between two levels of a <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a></p>
+<div class="math notranslate nohighlight">
+\[\Op{\sigma}_{jk}^{\rm hs} =
+\left| j\right\rangle_{\rm hs} \left \langle k \right |_{\rm hs}\]</div>
+<p>For <span class="math notranslate nohighlight">\(j=k\)</span> this becomes a projector <span class="math notranslate nohighlight">\(\Op{P}_k\)</span> onto the eigenstate
+<span class="math notranslate nohighlight">\(\ket{k}\)</span>; see <a class="reference internal" href="#qalgebra.core.operator_algebra.LocalProjector" title="qalgebra.core.operator_algebra.LocalProjector"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalProjector</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>j</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The label or index identifying <span class="math notranslate nohighlight">\(\ket{j}\)</span></p></li>
+<li><p><strong>k</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The label or index identifying <span class="math notranslate nohighlight">\(\ket{k}\)</span></p></li>
+<li><p><strong>hs</strong> (<a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><em>LocalSpace</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The Hilbert space on which the
+operator acts. If an <a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> or a <a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, an implicit
+Hilbert space will be constructed as a subclass of
+<code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code>, as configured by <code class="xref py py-func docutils literal notranslate"><span class="pre">init_algebra()</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The parameters <cite>j</cite> or <cite>k</cite> may be an integer or a string. A string
+refers to the label of an eigenstate in the basis of <cite>hs</cite>, which needs
+to be set. An integer refers to the (zero-based) index of eigenstate of
+the Hilbert space. This works if <cite>hs</cite> has an unknown dimension.
+Assuming the Hilbert space has a defined basis, using integer or string
+labels is equivalent:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hs</span> <span class="o">=</span> <span class="n">LocalSpace</span><span class="p">(</span><span class="s1">&#39;tls&#39;</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">LocalSigma</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span> <span class="o">==</span> <span class="n">LocalSigma</span><span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.8/library/exceptions.html#ValueError" title="(in Python v3.8)"><strong>ValueError</strong></a> – If <cite>j</cite> or <cite>k</cite> are invalid value for the given <cite>hs</cite></p>
+</dd>
+</dl>
+<p>Printers should represent this operator either in braket notation, or using
+the operator identifier</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">LocalSigma</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">identifier</span>
+<span class="go">&#39;sigma&#39;</span>
+</pre></div>
+</div>
+<p>For <code class="docutils literal notranslate"><span class="pre">j</span> <span class="pre">==</span> <span class="pre">k</span></code>, an alternative (fixed) identifier may be used</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">LocalSigma</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">_identifier_projector</span>
+<span class="go">&#39;Pi&#39;</span>
+</pre></div>
+</div>
+<dl class="attribute">
+<dt id="qalgebra.core.operator_algebra.LocalSigma.simplifications">
+<code class="sig-name descname">simplifications</code><em class="property"> = [&lt;function implied_local_space.&lt;locals&gt;.kwargs_to_local_space&gt;, &lt;function match_replace&gt;]</em><a class="headerlink" href="#qalgebra.core.operator_algebra.LocalSigma.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qalgebra.core.operator_algebra.LocalSigma.args">
+<em class="property">property </em><code class="sig-name descname">args</code><a class="headerlink" href="#qalgebra.core.operator_algebra.LocalSigma.args" title="Permalink to this definition">¶</a></dt>
+<dd><p>The two eigenstate labels <cite>j</cite> and <cite>k</cite> that the operator connects</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qalgebra.core.operator_algebra.LocalSigma.index_j">
+<em class="property">property </em><code class="sig-name descname">index_j</code><a class="headerlink" href="#qalgebra.core.operator_algebra.LocalSigma.index_j" title="Permalink to this definition">¶</a></dt>
+<dd><p>Index <cite>j</cite> or (zero-based) index of the label <cite>j</cite> in the basis</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qalgebra.core.operator_algebra.LocalSigma.index_k">
+<em class="property">property </em><code class="sig-name descname">index_k</code><a class="headerlink" href="#qalgebra.core.operator_algebra.LocalSigma.index_k" title="Permalink to this definition">¶</a></dt>
+<dd><p>Index <cite>k</cite> or (zero-based) index of the label <cite>k</cite> in the basis</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qalgebra.core.operator_algebra.LocalSigma.raise_jk">
+<code class="sig-name descname">raise_jk</code><span class="sig-paren">(</span><em class="sig-param">j_incr=0</em>, <em class="sig-param">k_incr=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#LocalSigma.raise_jk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.LocalSigma.raise_jk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a new <a class="reference internal" href="#qalgebra.core.operator_algebra.LocalSigma" title="qalgebra.core.operator_algebra.LocalSigma"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSigma</span></code></a> instance with incremented <cite>j</cite>,
+<cite>k</cite>, on the same Hilbert space:</p>
+<div class="math notranslate nohighlight">
+\[\Op{\sigma}_{jk}^{\rm hs} \rightarrow \Op{\sigma}_{j'k'}^{\rm hs}\]</div>
+<p>This is the result of multiplying <span class="math notranslate nohighlight">\(\Op{\sigma}_{jk}^{\rm hs}\)</span>
+with any raising or lowering operators.</p>
+<p>If <span class="math notranslate nohighlight">\(j'\)</span> or <span class="math notranslate nohighlight">\(k'\)</span> are outside the Hilbert space <span class="math notranslate nohighlight">\({\rm hs}\)</span>, the result is
+the <a class="reference internal" href="#qalgebra.core.operator_algebra.ZeroOperator" title="qalgebra.core.operator_algebra.ZeroOperator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ZeroOperator</span></code></a> .</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>j_incr</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – The increment between labels <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(j'\)</span></p></li>
+<li><p><strong>k_incr</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – The increment between labels <span class="math notranslate nohighlight">\(k\)</span> and <span class="math notranslate nohighlight">\(k'\)</span>. Both
+increments may be negative.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="qalgebra.core.operator_algebra.LocalSigma.j">
+<em class="property">property </em><code class="sig-name descname">j</code><a class="headerlink" href="#qalgebra.core.operator_algebra.LocalSigma.j" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <cite>j</cite> argument.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qalgebra.core.operator_algebra.LocalSigma.k">
+<em class="property">property </em><code class="sig-name descname">k</code><a class="headerlink" href="#qalgebra.core.operator_algebra.LocalSigma.k" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <cite>k</cite> argument.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.operator_algebra.LocalProjector">
+<code class="sig-prename descclassname">qalgebra.core.operator_algebra.</code><code class="sig-name descname">LocalProjector</code><span class="sig-paren">(</span><em class="sig-param">j</em>, <em class="sig-param">*</em>, <em class="sig-param">hs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#LocalProjector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.LocalProjector" title="Permalink to this definition">¶</a></dt>
+<dd><p>A projector onto a specific level of a <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>j</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The label or index identifying the state onto which
+is projected</p></li>
+<li><p><strong>hs</strong> (<a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.HilbertSpace" title="qalgebra.core.hilbert_space_algebra.HilbertSpace"><em>HilbertSpace</em></a>) – The Hilbert space on which the operator acts</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="qalgebra.core.operator_algebra.OperatorPlus">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.operator_algebra.</code><code class="sig-name descname">OperatorPlus</code><span class="sig-paren">(</span><em class="sig-param">*operands</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#OperatorPlus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.OperatorPlus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumPlus" title="qalgebra.core.abstract_quantum_algebra.QuantumPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumPlus</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.operator_algebra.Operator</span></code></a></p>
+<p>Sum of Operators</p>
+<dl class="attribute">
+<dt id="qalgebra.core.operator_algebra.OperatorPlus.simplifications">
+<code class="sig-name descname">simplifications</code><em class="property"> = [&lt;function assoc&gt;, &lt;function scalars_to_op&gt;, &lt;function orderby&gt;, &lt;function collect_summands&gt;, &lt;function match_replace_binary&gt;]</em><a class="headerlink" href="#qalgebra.core.operator_algebra.OperatorPlus.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qalgebra.core.operator_algebra.OperatorTimes">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.operator_algebra.</code><code class="sig-name descname">OperatorTimes</code><span class="sig-paren">(</span><em class="sig-param">*operands</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#OperatorTimes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.OperatorTimes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumTimes" title="qalgebra.core.abstract_quantum_algebra.QuantumTimes"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumTimes</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.operator_algebra.Operator</span></code></a></p>
+<p>Product of operators</p>
+<p>This serves both as a product within a Hilbert space as well as a tensor
+product.</p>
+<dl class="attribute">
+<dt id="qalgebra.core.operator_algebra.OperatorTimes.simplifications">
+<code class="sig-name descname">simplifications</code><em class="property"> = [&lt;function assoc&gt;, &lt;function orderby&gt;, &lt;function filter_neutral&gt;, &lt;function match_replace_binary&gt;]</em><a class="headerlink" href="#qalgebra.core.operator_algebra.OperatorTimes.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qalgebra.core.operator_algebra.ScalarTimesOperator">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.operator_algebra.</code><code class="sig-name descname">ScalarTimesOperator</code><span class="sig-paren">(</span><em class="sig-param">coeff</em>, <em class="sig-param">term</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#ScalarTimesOperator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.ScalarTimesOperator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.operator_algebra.Operator</span></code></a>, <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression" title="qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression</span></code></a></p>
+<p>Product of a <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code></a> coefficient and an <a class="reference internal" href="#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></a></p>
+<dl class="attribute">
+<dt id="qalgebra.core.operator_algebra.ScalarTimesOperator.simplifications">
+<code class="sig-name descname">simplifications</code><em class="property"> = [&lt;function match_replace&gt;]</em><a class="headerlink" href="#qalgebra.core.operator_algebra.ScalarTimesOperator.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qalgebra.core.operator_algebra.ScalarTimesOperator.has_minus_prefactor">
+<em class="property">static </em><code class="sig-name descname">has_minus_prefactor</code><span class="sig-paren">(</span><em class="sig-param">c</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#ScalarTimesOperator.has_minus_prefactor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.ScalarTimesOperator.has_minus_prefactor" title="Permalink to this definition">¶</a></dt>
+<dd><p>For a scalar object c, determine whether it is prepended by a “-” sign.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qalgebra.core.operator_algebra.OperatorDerivative">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.operator_algebra.</code><code class="sig-name descname">OperatorDerivative</code><span class="sig-paren">(</span><em class="sig-param">op</em>, <em class="sig-param">*</em>, <em class="sig-param">derivs</em>, <em class="sig-param">vals=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#OperatorDerivative"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.OperatorDerivative" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumDerivative" title="qalgebra.core.abstract_quantum_algebra.QuantumDerivative"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumDerivative</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.operator_algebra.Operator</span></code></a></p>
+<p>Symbolic partial derivative of an operator</p>
+<p>See <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumDerivative" title="qalgebra.core.abstract_quantum_algebra.QuantumDerivative"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumDerivative</span></code></a>.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="qalgebra.core.operator_algebra.Commutator">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.operator_algebra.</code><code class="sig-name descname">Commutator</code><span class="sig-paren">(</span><em class="sig-param">A</em>, <em class="sig-param">B</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#Commutator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.Commutator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumOperation" title="qalgebra.core.abstract_quantum_algebra.QuantumOperation"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumOperation</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.operator_algebra.Operator</span></code></a></p>
+<p>Commutator of two operators</p>
+<div class="math notranslate nohighlight">
+\[[\Op{A}, \Op{B}] = \Op{A}\Op{B} - \Op{A}\Op{B}\]</div>
+<dl class="attribute">
+<dt id="qalgebra.core.operator_algebra.Commutator.simplifications">
+<code class="sig-name descname">simplifications</code><em class="property"> = [&lt;function scalars_to_op&gt;, &lt;function disjunct_hs_zero&gt;, &lt;function commutator_order&gt;, &lt;function match_replace&gt;]</em><a class="headerlink" href="#qalgebra.core.operator_algebra.Commutator.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qalgebra.core.operator_algebra.Commutator.order_key">
+<code class="sig-name descname">order_key</code><a class="headerlink" href="#qalgebra.core.operator_algebra.Commutator.order_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="qalgebra.utils.ordering.html#qalgebra.utils.ordering.FullCommutativeHSOrder" title="qalgebra.utils.ordering.FullCommutativeHSOrder"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.utils.ordering.FullCommutativeHSOrder</span></code></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qalgebra.core.operator_algebra.Commutator.A">
+<em class="property">property </em><code class="sig-name descname">A</code><a class="headerlink" href="#qalgebra.core.operator_algebra.Commutator.A" title="Permalink to this definition">¶</a></dt>
+<dd><p>Left side of the commutator</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qalgebra.core.operator_algebra.Commutator.B">
+<em class="property">property </em><code class="sig-name descname">B</code><a class="headerlink" href="#qalgebra.core.operator_algebra.Commutator.B" title="Permalink to this definition">¶</a></dt>
+<dd><p>Left side of the commutator</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qalgebra.core.operator_algebra.Commutator.doit">
+<code class="sig-name descname">doit</code><span class="sig-paren">(</span><em class="sig-param">classes=None</em>, <em class="sig-param">recursive=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#Commutator.doit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.Commutator.doit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write out commutator</p>
+<p>Write out the commutator according to its definition
+<span class="math notranslate nohighlight">\([\Op{A}, \Op{B}] = \Op{A}\Op{B} - \Op{A}\Op{B}\)</span>.</p>
+<p>See <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.doit" title="qalgebra.core.abstract_algebra.Expression.doit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Expression.doit()</span></code></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qalgebra.core.operator_algebra.OperatorTrace">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.operator_algebra.</code><code class="sig-name descname">OperatorTrace</code><span class="sig-paren">(</span><em class="sig-param">op</em>, <em class="sig-param">*</em>, <em class="sig-param">over_space</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#OperatorTrace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.OperatorTrace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation" title="qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.operator_algebra.Operator</span></code></a></p>
+<p>(Partial) trace of an operator</p>
+<p>Trace of an operator <cite>op</cite> ($Op{O}) over the degrees
+of freedom of a Hilbert space <cite>over_space</cite> (<span class="math notranslate nohighlight">\(\mathcal{H}\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[{\rm Tr}_{\mathcal{H}} \Op{O}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>over_space</strong> (<a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.HilbertSpace" title="qalgebra.core.hilbert_space_algebra.HilbertSpace"><em>HilbertSpace</em></a>) – The degrees of freedom to trace over</p></li>
+<li><p><strong>op</strong> (<a class="reference internal" href="#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><em>Operator</em></a>) – The operator to take the trace of.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="qalgebra.core.operator_algebra.OperatorTrace.simplifications">
+<code class="sig-name descname">simplifications</code><em class="property"> = [&lt;function scalars_to_op&gt;, &lt;function implied_local_space.&lt;locals&gt;.kwargs_to_local_space&gt;, &lt;function match_replace&gt;]</em><a class="headerlink" href="#qalgebra.core.operator_algebra.OperatorTrace.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="qalgebra.core.operator_algebra.OperatorTrace.kwargs">
+<em class="property">property </em><code class="sig-name descname">kwargs</code><a class="headerlink" href="#qalgebra.core.operator_algebra.OperatorTrace.kwargs" title="Permalink to this definition">¶</a></dt>
+<dd><p>The dictionary of keyword-only arguments for the instantiation of
+the Expression</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qalgebra.core.operator_algebra.OperatorTrace.operand">
+<em class="property">property </em><code class="sig-name descname">operand</code><a class="headerlink" href="#qalgebra.core.operator_algebra.OperatorTrace.operand" title="Permalink to this definition">¶</a></dt>
+<dd><p>The operator that the operation acts on</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qalgebra.core.operator_algebra.OperatorTrace.space">
+<em class="property">property </em><code class="sig-name descname">space</code><a class="headerlink" href="#qalgebra.core.operator_algebra.OperatorTrace.space" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hilbert space of the operation result</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qalgebra.core.operator_algebra.Adjoint">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.operator_algebra.</code><code class="sig-name descname">Adjoint</code><span class="sig-paren">(</span><em class="sig-param">op</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#Adjoint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.Adjoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumAdjoint" title="qalgebra.core.abstract_quantum_algebra.QuantumAdjoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumAdjoint</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.operator_algebra.Operator</span></code></a></p>
+<p>Symbolic Adjoint of an operator</p>
+<dl class="attribute">
+<dt id="qalgebra.core.operator_algebra.Adjoint.simplifications">
+<code class="sig-name descname">simplifications</code><em class="property"> = [&lt;function scalars_to_op&gt;, &lt;function delegate_to_method.&lt;locals&gt;._delegate_to_method&gt;]</em><a class="headerlink" href="#qalgebra.core.operator_algebra.Adjoint.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qalgebra.core.operator_algebra.OperatorPlusMinusCC">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.operator_algebra.</code><code class="sig-name descname">OperatorPlusMinusCC</code><span class="sig-paren">(</span><em class="sig-param">op</em>, <em class="sig-param">*</em>, <em class="sig-param">sign=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#OperatorPlusMinusCC"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.OperatorPlusMinusCC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation" title="qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.operator_algebra.Operator</span></code></a></p>
+<p>An operator plus or minus its complex conjugate</p>
+<dl class="method">
+<dt id="qalgebra.core.operator_algebra.OperatorPlusMinusCC.kwargs">
+<em class="property">property </em><code class="sig-name descname">kwargs</code><a class="headerlink" href="#qalgebra.core.operator_algebra.OperatorPlusMinusCC.kwargs" title="Permalink to this definition">¶</a></dt>
+<dd><p>The dictionary of keyword-only arguments for the instantiation of
+the Expression</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qalgebra.core.operator_algebra.OperatorPlusMinusCC.minimal_kwargs">
+<em class="property">property </em><code class="sig-name descname">minimal_kwargs</code><a class="headerlink" href="#qalgebra.core.operator_algebra.OperatorPlusMinusCC.minimal_kwargs" title="Permalink to this definition">¶</a></dt>
+<dd><p>A “minimal” dictionary of keyword-only arguments, i.e. a subset of
+<cite>kwargs</cite> that may exclude default options</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qalgebra.core.operator_algebra.OperatorPlusMinusCC.doit">
+<code class="sig-name descname">doit</code><span class="sig-paren">(</span><em class="sig-param">classes=None</em>, <em class="sig-param">recursive=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#OperatorPlusMinusCC.doit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.OperatorPlusMinusCC.doit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write out the complex conjugate summand</p>
+<p>See <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.doit" title="qalgebra.core.abstract_algebra.Expression.doit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Expression.doit()</span></code></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qalgebra.core.operator_algebra.PseudoInverse">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.operator_algebra.</code><code class="sig-name descname">PseudoInverse</code><span class="sig-paren">(</span><em class="sig-param">op</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#PseudoInverse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.PseudoInverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation" title="qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.operator_algebra.Operator</span></code></a></p>
+<p>Unevaluated pseudo-inverse <span class="math notranslate nohighlight">\(\Op{X}^+\)</span> of an operator <span class="math notranslate nohighlight">\(\Op{X}\)</span></p>
+<p>It is defined via the relationship</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\Op{X} \Op{X}^+ \Op{X} =  \Op{X}  \\
+\Op{X}^+ \Op{X} \Op{X}^+ =  \Op{X}^+  \\
+(\Op{X}^+ \Op{X})^\dagger = \Op{X}^+ \Op{X}  \\
+(\Op{X} \Op{X}^+)^\dagger = \Op{X} \Op{X}^+\end{split}\]</div>
+<dl class="attribute">
+<dt id="qalgebra.core.operator_algebra.PseudoInverse.simplifications">
+<code class="sig-name descname">simplifications</code><em class="property"> = [&lt;function scalars_to_op&gt;, &lt;function delegate_to_method.&lt;locals&gt;._delegate_to_method&gt;]</em><a class="headerlink" href="#qalgebra.core.operator_algebra.PseudoInverse.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qalgebra.core.operator_algebra.NullSpaceProjector">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.operator_algebra.</code><code class="sig-name descname">NullSpaceProjector</code><span class="sig-paren">(</span><em class="sig-param">op</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#NullSpaceProjector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.NullSpaceProjector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation" title="qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.operator_algebra.Operator</span></code></a></p>
+<p>Projection operator onto the nullspace of its operand</p>
+<p>Returns the operator <span class="math notranslate nohighlight">\(\mathcal{P}_{{\rm Ker} X}\)</span> with</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}X \mathcal{P}_{{\rm Ker} X}
+  = 0
+\Leftrightarrow
+X (1 - \mathcal{P}_{{\rm Ker} X})
+  = X \\
+\mathcal{P}_{{\rm Ker} X}^\dagger
+  = \mathcal{P}_{{\rm Ker} X}
+  = \mathcal{P}_{{\rm Ker} X}^2\end{split}\]</div>
+<dl class="attribute">
+<dt id="qalgebra.core.operator_algebra.NullSpaceProjector.simplifications">
+<code class="sig-name descname">simplifications</code><em class="property"> = [&lt;function scalars_to_op&gt;, &lt;function match_replace&gt;]</em><a class="headerlink" href="#qalgebra.core.operator_algebra.NullSpaceProjector.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qalgebra.core.operator_algebra.OperatorIndexedSum">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.operator_algebra.</code><code class="sig-name descname">OperatorIndexedSum</code><span class="sig-paren">(</span><em class="sig-param">term</em>, <em class="sig-param">*ranges</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#OperatorIndexedSum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.OperatorIndexedSum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum" title="qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.operator_algebra.Operator</span></code></a></p>
+<p>Indexed sum over operators</p>
+<dl class="attribute">
+<dt id="qalgebra.core.operator_algebra.OperatorIndexedSum.simplifications">
+<code class="sig-name descname">simplifications</code><em class="property"> = [&lt;function assoc_indexed&gt;, &lt;function scalars_to_op&gt;, &lt;function indexed_sum_over_kronecker&gt;, &lt;function indexed_sum_over_const&gt;, &lt;function match_replace&gt;]</em><a class="headerlink" href="#qalgebra.core.operator_algebra.OperatorIndexedSum.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.operator_algebra.factor_for_trace">
+<code class="sig-prename descclassname">qalgebra.core.operator_algebra.</code><code class="sig-name descname">factor_for_trace</code><span class="sig-paren">(</span><em class="sig-param">ls</em>, <em class="sig-param">op</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#factor_for_trace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.factor_for_trace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a> <cite>ls</cite> to take the partial trace over and an
+operator <cite>op</cite>, factor the trace such that operators acting on disjoint
+degrees of freedom are pulled out of the trace. If the operator acts
+trivially on ls the trace yields only a pre-factor equal to the dimension
+of ls. If there are <a class="reference internal" href="#qalgebra.core.operator_algebra.LocalSigma" title="qalgebra.core.operator_algebra.LocalSigma"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSigma</span></code></a> operators among a product, the
+trace’s cyclical property is used to move to sandwich the full product by
+<a class="reference internal" href="#qalgebra.core.operator_algebra.LocalSigma" title="qalgebra.core.operator_algebra.LocalSigma"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSigma</span></code></a> operators:</p>
+<div class="math notranslate nohighlight">
+\[{\rm Tr} A \sigma_{jk} B = {\rm Tr} \sigma_{jk} B A \sigma_{jj}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ls</strong> (<a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.HilbertSpace" title="qalgebra.core.hilbert_space_algebra.HilbertSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">HilbertSpace</span></code></a>) – Degree of Freedom to trace over</p></li>
+<li><p><strong>op</strong> (<a class="reference internal" href="#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></a>) – Operator to take the trace of</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The (partial) trace over the operator’s spc-degrees of freedom</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.operator_algebra.decompose_space">
+<code class="sig-prename descclassname">qalgebra.core.operator_algebra.</code><code class="sig-name descname">decompose_space</code><span class="sig-paren">(</span><em class="sig-param">H</em>, <em class="sig-param">A</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#decompose_space"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.decompose_space" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simplifies OperatorTrace expressions over tensor-product spaces by
+turning it into iterated partial traces.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>H</strong> (<a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.ProductSpace" title="qalgebra.core.hilbert_space_algebra.ProductSpace"><em>ProductSpace</em></a>) – The full space.</p></li>
+<li><p><strong>A</strong> (<a class="reference internal" href="#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><em>Operator</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Iterative partial trace expression</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator">Operator</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.operator_algebra.get_coeffs">
+<code class="sig-prename descclassname">qalgebra.core.operator_algebra.</code><code class="sig-name descname">get_coeffs</code><span class="sig-paren">(</span><em class="sig-param">expr</em>, <em class="sig-param">expand=False</em>, <em class="sig-param">epsilon=0.0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#get_coeffs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.get_coeffs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a dictionary with all Operator terms of the expression
+(understood as a sum) as keys and their coefficients as values.</p>
+<p>The returned object is a defaultdict that return 0. if a term/key
+doesn’t exist.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expr</strong> – The operator expression to get all coefficients from.</p></li>
+<li><p><strong>expand</strong> – Whether to expand the expression distributively.</p></li>
+<li><p><strong>epsilon</strong> – If non-zero, drop all Operators with coefficients that have
+absolute value less than epsilon.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A dictionary <code class="docutils literal notranslate"><span class="pre">{op1:</span> <span class="pre">coeff1,</span> <span class="pre">op2:</span> <span class="pre">coeff2,</span> <span class="pre">...}</span></code></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.operator_algebra.factor_coeff">
+<code class="sig-prename descclassname">qalgebra.core.operator_algebra.</code><code class="sig-name descname">factor_coeff</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#factor_coeff"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.factor_coeff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Factor out coefficients of all factors.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.operator_algebra.adjoint">
+<code class="sig-prename descclassname">qalgebra.core.operator_algebra.</code><code class="sig-name descname">adjoint</code><span class="sig-paren">(</span><em class="sig-param">obj</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#adjoint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.adjoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the adjoint of an obj.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.operator_algebra.rewrite_with_operator_pm_cc">
+<code class="sig-prename descclassname">qalgebra.core.operator_algebra.</code><code class="sig-name descname">rewrite_with_operator_pm_cc</code><span class="sig-paren">(</span><em class="sig-param">expr</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/operator_algebra.html#rewrite_with_operator_pm_cc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.operator_algebra.rewrite_with_operator_pm_cc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Try to rewrite expr using <a class="reference internal" href="#qalgebra.core.operator_algebra.OperatorPlusMinusCC" title="qalgebra.core.operator_algebra.OperatorPlusMinusCC"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorPlusMinusCC</span></code></a></p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">OperatorSymbol</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">A</span><span class="o">.</span><span class="n">dag</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sum2</span> <span class="o">=</span> <span class="n">rewrite_with_operator_pm_cc</span><span class="p">(</span><span class="nb">sum</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">ascii</span><span class="p">(</span><span class="n">sum2</span><span class="p">))</span>
+<span class="go">A^(1) + c.c.</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="qalgebra.core.scalar_algebra.html" class="btn btn-neutral float-right" title="qalgebra.core.scalar_algebra module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="qalgebra.core.matrix_algebra.html" class="btn btn-neutral float-left" title="qalgebra.core.matrix_algebra module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Michael Goerz
+      <span class="lastupdated">
+        Last updated on Feb 06, 2020.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

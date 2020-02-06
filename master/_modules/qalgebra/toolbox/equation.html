@@ -1,0 +1,597 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>qalgebra.toolbox.equation &mdash; QAlgebra 2.0.0-dev (d784b1d) documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/clipboard.min.js"></script>
+        <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script type="text/javascript" src="../../../_static/doctr-versions-menu.js"></script>
+        <script type="text/javascript">var copybuttonSkipText = '>>> ';</script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/mycss.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0.0-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">QAlgebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../history.html">History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../API/qalgebra.html">API of the QAlgebra package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../qalgebra.html">qalgebra</a> &raquo;</li>
+        
+      <li>qalgebra.toolbox.equation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for qalgebra.toolbox.equation</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Tools for working with equations&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">sympy.core.sympify</span> <span class="kn">import</span> <span class="n">SympifyError</span>
+
+<span class="kn">from</span> <span class="nn">..core.abstract_algebra</span> <span class="kn">import</span> <span class="n">substitute</span>
+<span class="kn">from</span> <span class="nn">..utils.unicode</span> <span class="kn">import</span> <span class="n">grapheme_len</span><span class="p">,</span> <span class="n">ljust</span><span class="p">,</span> <span class="n">rjust</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Eq&#39;</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="Eq"><a class="viewcode-back" href="../../../API/qalgebra.toolbox.equation.html#qalgebra.toolbox.equation.Eq">[docs]</a><span class="k">class</span> <span class="nc">Eq</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Symbolic equation</span>
+
+<span class="sd">    This class keeps track of the `lhs` and `rhs` of an equation across</span>
+<span class="sd">    arbitrary manipulations</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        lhs (Expression): the left-hand-side of the equation</span>
+<span class="sd">        rhs (Expression): the right-hand-side of the equation</span>
+<span class="sd">        tag (None or str): a tag (equation number) to be shown when printing</span>
+<span class="sd">            the equation</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        &gt;&gt;&gt; ω, E0 = sympy.symbols(&#39;omega, E_0&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; hbar = sympy.symbols(&#39;hbar&#39;, positive=True)</span>
+<span class="sd">        &gt;&gt;&gt; H_0, H_1 = (OperatorSymbol(s, hs=0) for s in (&#39;H_0&#39;, &#39;H_1&#39;))</span>
+<span class="sd">        &gt;&gt;&gt; H = OperatorSymbol(&#39;H&#39;, hs=0)</span>
+<span class="sd">        &gt;&gt;&gt; mu = OperatorSymbol(&#39;mu&#39;, hs=0)</span>
+<span class="sd">        &gt;&gt;&gt; eq0 = Eq(H_0, ω * Create(hs=0) * Destroy(hs=0) + E0, tag=&#39;0&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; print(unicode(eq0, show_hs_label=False))</span>
+<span class="sd">        Ĥ₀ = E₀ + ω â^† â    (0)</span>
+<span class="sd">        &gt;&gt;&gt; eq1 = Eq(H_1, mu + E0, tag=&#39;1&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; print(unicode(eq1, show_hs_label=False))</span>
+<span class="sd">        Ĥ₁ = E₀ + μ̂    (1)</span>
+<span class="sd">        &gt;&gt;&gt; eq = (</span>
+<span class="sd">        ...     (eq0 + eq1).set_tag(&#39;2&#39;)</span>
+<span class="sd">        ...     .apply_to_rhs(lambda expr: expr - 2*E0, cont=True)</span>
+<span class="sd">        ...     .apply(lambda expr: expr * hbar, cont=True)</span>
+<span class="sd">        ...     .apply_mtd_to_lhs(</span>
+<span class="sd">        ...         &#39;substitute&#39;, var_map={H_0 + H_1: H}, cont=True)</span>
+<span class="sd">        ...     .apply(lambda expr: expr**2, cont=True)</span>
+<span class="sd">        ...     .apply_mtd_to_rhs(&#39;substitute&#39;, var_map={mu: 0}, cont=True)</span>
+<span class="sd">        ...     .apply_mtd_to_rhs(&#39;expand&#39;, cont=True, tag=&#39;⋆&#39;)</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt; print(unicode(eq, show_hs_label=False))</span>
+<span class="sd">            Ĥ₀ + Ĥ₁ = 2 E₀ + μ̂ + ω â^† â                 (2)</span>
+<span class="sd">                    = μ̂ + ω â^† â</span>
+<span class="sd">        h̅ (Ĥ₀ + Ĥ₁) = h̅ (μ̂ + ω â^† â)</span>
+<span class="sd">                h̅ Ĥ = h̅ (μ̂ + ω â^† â)</span>
+<span class="sd">             h̅² Ĥ Ĥ = h̅² (μ̂ + ω â^† â) (μ̂ + ω â^† â)</span>
+<span class="sd">                    = h̅² ω² â^† (𝟙 + â^† â) â</span>
+<span class="sd">                    = h̅² ω² â^† â^† â â + h̅² ω² â^† â    (⋆)</span>
+<span class="sd">        &gt;&gt;&gt; (eq</span>
+<span class="sd">        ...  .apply_mtd_to_lhs(&#39;substitute&#39;, eq.as_dict)</span>
+<span class="sd">        ...  .verify().is_zero)</span>
+<span class="sd">        True</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">lhs</span><span class="p">,</span>
+        <span class="n">rhs</span><span class="p">,</span>
+        <span class="n">tag</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">_prev_lhs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">_prev_rhs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">_prev_tags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lhs</span> <span class="o">=</span> <span class="n">lhs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prev_lhs</span> <span class="o">=</span> <span class="n">_prev_lhs</span> <span class="ow">or</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prev_rhs</span> <span class="o">=</span> <span class="n">_prev_rhs</span> <span class="ow">or</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prev_tags</span> <span class="o">=</span> <span class="n">_prev_tags</span> <span class="ow">or</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rhs</span> <span class="o">=</span> <span class="n">rhs</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_tag</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_tag</span> <span class="o">=</span> <span class="n">tag</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">lhs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The left-hand-side of the equation&quot;&quot;&quot;</span>
+        <span class="n">lhs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lhs</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">lhs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">i</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="n">lhs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prev_lhs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">lhs</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">rhs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The right-hand-side of the equation&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rhs</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">tag</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;A tag (equation number) to be shown when printing the equation, or</span>
+<span class="sd">        None&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tag</span>
+
+<div class="viewcode-block" id="Eq.set_tag"><a class="viewcode-back" href="../../../API/qalgebra.toolbox.equation.html#qalgebra.toolbox.equation.Eq.set_tag">[docs]</a>    <span class="k">def</span> <span class="nf">set_tag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a copy of the equation with a new `tag`&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Eq</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lhs</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_rhs</span><span class="p">,</span>
+            <span class="n">tag</span><span class="o">=</span><span class="n">tag</span><span class="p">,</span>
+            <span class="n">_prev_lhs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_prev_lhs</span><span class="p">,</span>
+            <span class="n">_prev_rhs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_prev_rhs</span><span class="p">,</span>
+            <span class="n">_prev_tags</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_prev_tags</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">as_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Mapping of the lhs to the rhs</span>
+
+<span class="sd">        This allows to plug an equation into another expression via</span>
+<span class="sd">        :meth:`~.Expression.substitute`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">lhs</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">rhs</span><span class="p">}</span>
+
+<div class="viewcode-block" id="Eq.apply"><a class="viewcode-back" href="../../../API/qalgebra.toolbox.equation.html#qalgebra.toolbox.equation.Eq.apply">[docs]</a>    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">cont</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Apply `func` to both sides of the equation</span>
+
+<span class="sd">        Returns a new equation where the left-hand-side and right-hand side</span>
+<span class="sd">        are replaced by the application of `func`::</span>
+
+<span class="sd">            lhs=func(lhs, *args, **kwargs)</span>
+<span class="sd">            rhs=func(rhs, *args, **kwargs)</span>
+
+<span class="sd">        If ``cont=True``, the resulting equation will keep a history of its</span>
+<span class="sd">        previous state (resulting in multiple lines of equations when printed,</span>
+<span class="sd">        as in the main example above).</span>
+
+<span class="sd">        The resulting equation with have the given `tag`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_lhs</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lhs</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">new_lhs</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">lhs</span> <span class="ow">and</span> <span class="n">cont</span><span class="p">:</span>
+            <span class="n">new_lhs</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">new_rhs</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rhs</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">new_tag</span> <span class="o">=</span> <span class="n">tag</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update</span><span class="p">(</span><span class="n">new_lhs</span><span class="p">,</span> <span class="n">new_rhs</span><span class="p">,</span> <span class="n">new_tag</span><span class="p">,</span> <span class="n">cont</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Eq.apply_to_lhs"><a class="viewcode-back" href="../../../API/qalgebra.toolbox.equation.html#qalgebra.toolbox.equation.Eq.apply_to_lhs">[docs]</a>    <span class="k">def</span> <span class="nf">apply_to_lhs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">cont</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Apply `func` to lhs of equation only</span>
+
+<span class="sd">        Like :meth:`apply`, but modifying only the left-hand-side.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_lhs</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lhs</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">new_rhs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rhs</span>
+        <span class="n">new_tag</span> <span class="o">=</span> <span class="n">tag</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update</span><span class="p">(</span><span class="n">new_lhs</span><span class="p">,</span> <span class="n">new_rhs</span><span class="p">,</span> <span class="n">new_tag</span><span class="p">,</span> <span class="n">cont</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Eq.apply_to_rhs"><a class="viewcode-back" href="../../../API/qalgebra.toolbox.equation.html#qalgebra.toolbox.equation.Eq.apply_to_rhs">[docs]</a>    <span class="k">def</span> <span class="nf">apply_to_rhs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">cont</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Apply `func` to rhs of equation only</span>
+
+<span class="sd">        Like :meth:`apply`, but modifying only the right-hand-side.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">cont</span><span class="p">:</span>
+            <span class="n">new_lhs</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">new_lhs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lhs</span>
+        <span class="n">new_rhs</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rhs</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">new_tag</span> <span class="o">=</span> <span class="n">tag</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update</span><span class="p">(</span><span class="n">new_lhs</span><span class="p">,</span> <span class="n">new_rhs</span><span class="p">,</span> <span class="n">new_tag</span><span class="p">,</span> <span class="n">cont</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Eq.apply_mtd"><a class="viewcode-back" href="../../../API/qalgebra.toolbox.equation.html#qalgebra.toolbox.equation.Eq.apply_mtd">[docs]</a>    <span class="k">def</span> <span class="nf">apply_mtd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mtd</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">cont</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Call the method `mtd` on both sides of the equation</span>
+
+<span class="sd">        That is, the left-hand-side and right-hand-side are replaced by::</span>
+
+<span class="sd">            lhs=lhs.&lt;mtd&gt;(*args, **kwargs)</span>
+<span class="sd">            rhs=rhs.&lt;mtd&gt;(*args, **kwargs)</span>
+
+<span class="sd">        The `cont` and `tag` parameters are as in :meth:`apply`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_lhs</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lhs</span><span class="p">,</span> <span class="n">mtd</span><span class="p">)(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">new_lhs</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">lhs</span> <span class="ow">and</span> <span class="n">cont</span><span class="p">:</span>
+            <span class="n">new_lhs</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">new_rhs</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rhs</span><span class="p">,</span> <span class="n">mtd</span><span class="p">)(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">new_tag</span> <span class="o">=</span> <span class="n">tag</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update</span><span class="p">(</span><span class="n">new_lhs</span><span class="p">,</span> <span class="n">new_rhs</span><span class="p">,</span> <span class="n">new_tag</span><span class="p">,</span> <span class="n">cont</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Eq.apply_mtd_to_lhs"><a class="viewcode-back" href="../../../API/qalgebra.toolbox.equation.html#qalgebra.toolbox.equation.Eq.apply_mtd_to_lhs">[docs]</a>    <span class="k">def</span> <span class="nf">apply_mtd_to_lhs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mtd</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">cont</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Call the method `mtd` on the lhs of the equation only.</span>
+
+<span class="sd">        Like :meth:`apply_mtd`, but modifying only the left-hand-side.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_lhs</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lhs</span><span class="p">,</span> <span class="n">mtd</span><span class="p">)(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">new_rhs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rhs</span>
+        <span class="n">new_tag</span> <span class="o">=</span> <span class="n">tag</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update</span><span class="p">(</span><span class="n">new_lhs</span><span class="p">,</span> <span class="n">new_rhs</span><span class="p">,</span> <span class="n">new_tag</span><span class="p">,</span> <span class="n">cont</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Eq.apply_mtd_to_rhs"><a class="viewcode-back" href="../../../API/qalgebra.toolbox.equation.html#qalgebra.toolbox.equation.Eq.apply_mtd_to_rhs">[docs]</a>    <span class="k">def</span> <span class="nf">apply_mtd_to_rhs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mtd</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">cont</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Call the method `mtd` on the rhs of the equation</span>
+
+<span class="sd">        Like :meth:`apply_mtd`, but modifying only the right-hand-side.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_lhs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lhs</span>
+        <span class="k">if</span> <span class="n">cont</span><span class="p">:</span>
+            <span class="n">new_lhs</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">new_rhs</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rhs</span><span class="p">,</span> <span class="n">mtd</span><span class="p">)(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">new_tag</span> <span class="o">=</span> <span class="n">tag</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update</span><span class="p">(</span><span class="n">new_lhs</span><span class="p">,</span> <span class="n">new_rhs</span><span class="p">,</span> <span class="n">new_tag</span><span class="p">,</span> <span class="n">cont</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Eq.substitute"><a class="viewcode-back" href="../../../API/qalgebra.toolbox.equation.html#qalgebra.toolbox.equation.Eq.substitute">[docs]</a>    <span class="k">def</span> <span class="nf">substitute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var_map</span><span class="p">,</span> <span class="n">cont</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Substitute sub-expressions both on the lhs and rhs</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            var_map (dict): Dictionary with entries of the form</span>
+<span class="sd">                ``{expr: substitution}``</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">substitute</span><span class="p">,</span> <span class="n">var_map</span><span class="o">=</span><span class="n">var_map</span><span class="p">,</span> <span class="n">cont</span><span class="o">=</span><span class="n">cont</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="n">tag</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_lhs</span><span class="p">,</span> <span class="n">new_rhs</span><span class="p">,</span> <span class="n">new_tag</span><span class="p">,</span> <span class="n">cont</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">cont</span><span class="p">:</span>
+            <span class="n">new_prev_lhs</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">new_prev_rhs</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">new_prev_tags</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">new_prev_lhs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prev_lhs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">new_prev_lhs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lhs</span><span class="p">)</span>
+            <span class="n">new_prev_rhs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prev_rhs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">new_prev_rhs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rhs</span><span class="p">)</span>
+            <span class="n">new_prev_tags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prev_tags</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">new_prev_tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Eq</span><span class="p">(</span>
+            <span class="n">new_lhs</span><span class="p">,</span>
+            <span class="n">new_rhs</span><span class="p">,</span>
+            <span class="n">tag</span><span class="o">=</span><span class="n">new_tag</span><span class="p">,</span>
+            <span class="n">_prev_lhs</span><span class="o">=</span><span class="n">new_prev_lhs</span><span class="p">,</span>
+            <span class="n">_prev_rhs</span><span class="o">=</span><span class="n">new_prev_rhs</span><span class="p">,</span>
+            <span class="n">_prev_tags</span><span class="o">=</span><span class="n">new_prev_tags</span><span class="p">,</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="Eq.verify"><a class="viewcode-back" href="../../../API/qalgebra.toolbox.equation.html#qalgebra.toolbox.equation.Eq.verify">[docs]</a>    <span class="k">def</span> <span class="nf">verify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Subtract the rhs from the lhs of the equation</span>
+
+<span class="sd">        Before the substraction, each side is expanded and any scalars are</span>
+<span class="sd">        simplified. If given, `func` with the positional arguments `args` and</span>
+<span class="sd">        keyword-arguments `kwargs` is applied to the result before returning</span>
+<span class="sd">        it.</span>
+
+<span class="sd">        You may complete the verification by checking the :attr:`is_zero`</span>
+<span class="sd">        attribute of the returned expression.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lhs</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span><span class="o">.</span><span class="n">simplify_scalar</span><span class="p">()</span>
+            <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">rhs</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span><span class="o">.</span><span class="n">simplify_scalar</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">func</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">res</span></div>
+
+<div class="viewcode-block" id="Eq.copy"><a class="viewcode-back" href="../../../API/qalgebra.toolbox.equation.html#qalgebra.toolbox.equation.Eq.copy">[docs]</a>    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a copy of the equation&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Eq</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lhs</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_rhs</span><span class="p">,</span>
+            <span class="n">tag</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_tag</span><span class="p">,</span>
+            <span class="n">_prev_lhs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_prev_lhs</span><span class="p">,</span>
+            <span class="n">_prev_rhs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_prev_rhs</span><span class="p">,</span>
+            <span class="n">_prev_tags</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_prev_tags</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">free_symbols</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set of free SymPy symbols contained within the equation.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">lhs_syms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lhs</span><span class="o">.</span><span class="n">free_symbols</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="n">lhs_syms</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">rhs_syms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rhs</span><span class="o">.</span><span class="n">free_symbols</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="n">rhs_syms</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">lhs_syms</span> <span class="o">|</span> <span class="n">rhs_syms</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">bound_symbols</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set of bound SymPy symbols contained within the equation.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">lhs_syms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lhs</span><span class="o">.</span><span class="n">bound_symbols</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="n">lhs_syms</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">rhs_syms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rhs</span><span class="o">.</span><span class="n">bound_symbols</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="n">rhs_syms</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">lhs_syms</span> <span class="o">|</span> <span class="n">rhs_syms</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">all_symbols</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Combination of :attr:`free_symbols` and :attr:`bound_symbols`&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">free_symbols</span> <span class="o">|</span> <span class="bp">self</span><span class="o">.</span><span class="n">bound_symbols</span>
+
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Eq</span><span class="p">(</span><span class="n">lhs</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lhs</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">lhs</span><span class="p">),</span> <span class="n">rhs</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rhs</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">rhs</span><span class="p">))</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Eq</span><span class="p">(</span><span class="n">lhs</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lhs</span> <span class="o">+</span> <span class="n">other</span><span class="p">),</span> <span class="n">rhs</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rhs</span> <span class="o">+</span> <span class="n">other</span><span class="p">))</span>
+
+    <span class="fm">__radd__</span> <span class="o">=</span> <span class="fm">__add__</span>
+
+    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Eq</span><span class="p">(</span><span class="n">lhs</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lhs</span> <span class="o">-</span> <span class="n">other</span><span class="o">.</span><span class="n">lhs</span><span class="p">),</span> <span class="n">rhs</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rhs</span> <span class="o">-</span> <span class="n">other</span><span class="o">.</span><span class="n">rhs</span><span class="p">))</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Eq</span><span class="p">(</span><span class="n">lhs</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lhs</span> <span class="o">-</span> <span class="n">other</span><span class="p">),</span> <span class="n">rhs</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rhs</span> <span class="o">-</span> <span class="n">other</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Eq</span><span class="p">(</span><span class="n">lhs</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lhs</span> <span class="o">*</span> <span class="n">other</span><span class="p">),</span> <span class="n">rhs</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rhs</span> <span class="o">*</span> <span class="n">other</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="fm">__rmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Eq</span><span class="p">(</span><span class="n">lhs</span><span class="o">=</span><span class="p">(</span><span class="n">other</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">lhs</span><span class="p">),</span> <span class="n">rhs</span><span class="o">=</span><span class="p">(</span><span class="n">other</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">rhs</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="fm">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Eq</span><span class="p">(</span><span class="n">lhs</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lhs</span> <span class="o">/</span> <span class="n">other</span><span class="p">),</span> <span class="n">rhs</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rhs</span> <span class="o">/</span> <span class="n">other</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">lhs</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">lhs</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">rhs</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">rhs</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rhs</span> <span class="o">==</span> <span class="n">other</span>
+
+    <span class="k">def</span> <span class="nf">_render_str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">renderer</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">rendered_lhs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">rendered_rhs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">rendered_tags</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">rhs</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_prev_rhs</span><span class="p">):</span>
+            <span class="n">lhs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prev_lhs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">tag</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prev_tags</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">lhs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">rendered_lhs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">rendered_lhs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">renderer</span><span class="p">(</span><span class="n">lhs</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+            <span class="n">rendered_rhs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">renderer</span><span class="p">(</span><span class="n">rhs</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">tag</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">rendered_tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">rendered_tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">renderer</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lhs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">rendered_lhs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">rendered_lhs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">renderer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lhs</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+        <span class="n">rendered_rhs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">renderer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rhs</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tag</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">rendered_tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">rendered_tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">renderer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tag</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+        <span class="n">len_lhs</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">grapheme_len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">rendered_lhs</span><span class="p">])</span>
+        <span class="n">len_rhs</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">grapheme_len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">rendered_rhs</span><span class="p">])</span>
+        <span class="n">len_tag</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">grapheme_len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">rendered_tags</span><span class="p">])</span> <span class="o">+</span> <span class="mi">2</span>
+
+        <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">lhs</span><span class="p">,</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">tag</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">rendered_lhs</span><span class="p">,</span> <span class="n">rendered_rhs</span><span class="p">,</span> <span class="n">rendered_tags</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">tag</span> <span class="o">=</span> <span class="s2">&quot;(&quot;</span> <span class="o">+</span> <span class="n">tag</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span>
+            <span class="n">lhs</span> <span class="o">=</span> <span class="n">rjust</span><span class="p">(</span><span class="n">lhs</span><span class="p">,</span> <span class="n">len_lhs</span><span class="p">)</span>
+            <span class="n">rhs</span> <span class="o">=</span> <span class="n">ljust</span><span class="p">(</span><span class="n">rhs</span><span class="p">,</span> <span class="n">len_rhs</span><span class="p">)</span>
+            <span class="n">tag</span> <span class="o">=</span> <span class="n">ljust</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">len_tag</span><span class="p">)</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">lhs</span> <span class="o">+</span> <span class="s1">&#39; = &#39;</span> <span class="o">+</span> <span class="n">rhs</span> <span class="o">+</span> <span class="s2">&quot;    &quot;</span> <span class="o">+</span> <span class="n">tag</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">())</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_str</span><span class="p">(</span><span class="n">renderer</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_str</span><span class="p">(</span><span class="n">renderer</span><span class="o">=</span><span class="nb">repr</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_repr_latex_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">qalgebra.printing</span> <span class="kn">import</span> <span class="n">latex</span>
+
+        <span class="k">return</span> <span class="n">latex</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_sympy_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">SympifyError</span><span class="p">(</span><span class="s2">&quot;QAlgebra Eq cannot be converted to SymPy&quot;</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Michael Goerz
+      <span class="lastupdated">
+        Last updated on Feb 06, 2020.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,694 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>qalgebra.core.algebraic_properties module &mdash; QAlgebra 2.0.0-dev (d784b1d) documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/clipboard.min.js"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script type="text/javascript" src="../_static/doctr-versions-menu.js"></script>
+        <script type="text/javascript">var copybuttonSkipText = '>>> ';</script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/mycss.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="qalgebra.core.exceptions module" href="qalgebra.core.exceptions.html" />
+    <link rel="prev" title="qalgebra.core.abstract_quantum_algebra module" href="qalgebra.core.abstract_quantum_algebra.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0.0-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">QAlgebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="qalgebra.html">API of the QAlgebra package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.pattern_matching.html">qalgebra.pattern_matching module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.convert.html">qalgebra.convert package</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="qalgebra.core.html">qalgebra.core package</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.abstract_algebra.html">qalgebra.core.abstract_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html">qalgebra.core.abstract_quantum_algebra module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">qalgebra.core.algebraic_properties module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.exceptions.html">qalgebra.core.exceptions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html">qalgebra.core.hilbert_space_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.indexed_operations.html">qalgebra.core.indexed_operations module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.matrix_algebra.html">qalgebra.core.matrix_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.operator_algebra.html">qalgebra.core.operator_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.scalar_algebra.html">qalgebra.core.scalar_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.state_algebra.html">qalgebra.core.state_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.super_operator_algebra.html">qalgebra.core.super_operator_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.library.html">qalgebra.library package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.printing.html">qalgebra.printing package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.toolbox.html">qalgebra.toolbox package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.utils.html">qalgebra.utils package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.html#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="qalgebra.html">qalgebra package</a> &raquo;</li>
+        
+          <li><a href="qalgebra.core.html">qalgebra.core package</a> &raquo;</li>
+        
+      <li>qalgebra.core.algebraic_properties module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-qalgebra.core.algebraic_properties">
+<span id="qalgebra-core-algebraic-properties-module"></span><h1>qalgebra.core.algebraic_properties module<a class="headerlink" href="#module-qalgebra.core.algebraic_properties" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Functions:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.accept_bras" title="qalgebra.core.algebraic_properties.accept_bras"><code class="xref py py-obj docutils literal notranslate"><span class="pre">accept_bras</span></code></a></p></td>
+<td><p>Accept operands that are all bras, and turn that into to bra of the operation applied to all corresponding kets</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.assoc" title="qalgebra.core.algebraic_properties.assoc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assoc</span></code></a></p></td>
+<td><p>Associatively expand out nested arguments of the flat class.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.assoc_indexed" title="qalgebra.core.algebraic_properties.assoc_indexed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assoc_indexed</span></code></a></p></td>
+<td><p>Flatten nested indexed structures while pulling out possible prefactors</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.basis_ket_zero_outside_hs" title="qalgebra.core.algebraic_properties.basis_ket_zero_outside_hs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">basis_ket_zero_outside_hs</span></code></a></p></td>
+<td><p>For <code class="docutils literal notranslate"><span class="pre">BasisKet.create(ind,</span> <span class="pre">hs)</span></code> with an integer label <cite>ind</cite>, return a <code class="xref py py-class docutils literal notranslate"><span class="pre">ZeroKet</span></code> if <cite>ind</cite> is outside of the range of the underlying Hilbert space</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.check_cdims" title="qalgebra.core.algebraic_properties.check_cdims"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_cdims</span></code></a></p></td>
+<td><p>Check that all operands (<cite>ops</cite>) have equal channel dimension.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.collect_scalar_summands" title="qalgebra.core.algebraic_properties.collect_scalar_summands"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collect_scalar_summands</span></code></a></p></td>
+<td><p>Collect <code class="xref py py-class docutils literal notranslate"><span class="pre">ValueScalar</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarExpression</span></code> summands</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.collect_summands" title="qalgebra.core.algebraic_properties.collect_summands"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collect_summands</span></code></a></p></td>
+<td><p>Collect summands that occur multiple times into a single summand</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.commutator_order" title="qalgebra.core.algebraic_properties.commutator_order"><code class="xref py py-obj docutils literal notranslate"><span class="pre">commutator_order</span></code></a></p></td>
+<td><p>Apply anti-commutative property of the commutator to apply a standard ordering of the commutator arguments</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.convert_to_scalars" title="qalgebra.core.algebraic_properties.convert_to_scalars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_to_scalars</span></code></a></p></td>
+<td><p>Convert any entry in <cite>ops</cite> that is not a <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code></a> instance into a <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.ScalarValue" title="qalgebra.core.scalar_algebra.ScalarValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarValue</span></code></a> instance</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.convert_to_spaces" title="qalgebra.core.algebraic_properties.convert_to_spaces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_to_spaces</span></code></a></p></td>
+<td><p>For all operands that are merely of type str or int, substitute LocalSpace objects with corresponding labels: For a string, just itself, for an int, a string version of that int.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.delegate_to_method" title="qalgebra.core.algebraic_properties.delegate_to_method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delegate_to_method</span></code></a></p></td>
+<td><p>Create a simplification rule that delegates the instantiation to the method <cite>mtd</cite> of the operand (if defined)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.derivative_via_diff" title="qalgebra.core.algebraic_properties.derivative_via_diff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">derivative_via_diff</span></code></a></p></td>
+<td><p>Implementation of the <code class="xref py py-meth docutils literal notranslate"><span class="pre">QuantumDerivative.create()</span></code> interface via the use of <code class="xref py py-meth docutils literal notranslate"><span class="pre">QuantumExpression._diff()</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.disjunct_hs_zero" title="qalgebra.core.algebraic_properties.disjunct_hs_zero"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disjunct_hs_zero</span></code></a></p></td>
+<td><p>Return ZeroOperator if all the operators in <cite>ops</cite> have a disjunct Hilbert space, or an unchanged <cite>ops</cite>, <cite>kwargs</cite> otherwise</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.empty_trivial" title="qalgebra.core.algebraic_properties.empty_trivial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">empty_trivial</span></code></a></p></td>
+<td><p>A ProductSpace of zero Hilbert spaces should yield the TrivialSpace</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.filter_cid" title="qalgebra.core.algebraic_properties.filter_cid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter_cid</span></code></a></p></td>
+<td><p>Remove occurrences of the <code class="xref py py-func docutils literal notranslate"><span class="pre">circuit_identity()</span></code> <code class="docutils literal notranslate"><span class="pre">cid(n)</span></code> for any <code class="docutils literal notranslate"><span class="pre">n</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.filter_neutral" title="qalgebra.core.algebraic_properties.filter_neutral"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter_neutral</span></code></a></p></td>
+<td><p>Remove occurrences of a neutral element from the argument/operand list, if that list has at least two elements.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.idem" title="qalgebra.core.algebraic_properties.idem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">idem</span></code></a></p></td>
+<td><p>Remove duplicate arguments and order them via the cls’s order_key key object/function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.implied_local_space" title="qalgebra.core.algebraic_properties.implied_local_space"><code class="xref py py-obj docutils literal notranslate"><span class="pre">implied_local_space</span></code></a></p></td>
+<td><p>Return a simplification that converts the positional argument <cite>arg_index</cite> from (str, int) to a subclass of <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a>, as well as any keyword argument with one of the given keys.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.indexed_sum_over_const" title="qalgebra.core.algebraic_properties.indexed_sum_over_const"><code class="xref py py-obj docutils literal notranslate"><span class="pre">indexed_sum_over_const</span></code></a></p></td>
+<td><p>Execute an indexed sum over a term that does not depend on the summation indices</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.indexed_sum_over_kronecker" title="qalgebra.core.algebraic_properties.indexed_sum_over_kronecker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">indexed_sum_over_kronecker</span></code></a></p></td>
+<td><p>Execute sums over KroneckerDelta prefactors</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.match_replace" title="qalgebra.core.algebraic_properties.match_replace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">match_replace</span></code></a></p></td>
+<td><p>Match and replace a full operand specification to a function that provides a replacement for the whole expression or raises a <a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.CannotSimplify" title="qalgebra.core.exceptions.CannotSimplify"><code class="xref py py-exc docutils literal notranslate"><span class="pre">CannotSimplify</span></code></a> exception.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.match_replace_binary" title="qalgebra.core.algebraic_properties.match_replace_binary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">match_replace_binary</span></code></a></p></td>
+<td><p>Similar to func:<cite>match_replace</cite>, but for arbitrary length operations, such that each two pairs of subsequent operands are matched pairwise.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.orderby" title="qalgebra.core.algebraic_properties.orderby"><code class="xref py py-obj docutils literal notranslate"><span class="pre">orderby</span></code></a></p></td>
+<td><p>Re-order arguments via the class’s <code class="docutils literal notranslate"><span class="pre">order_key</span></code> key object/function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.scalars_to_op" title="qalgebra.core.algebraic_properties.scalars_to_op"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scalars_to_op</span></code></a></p></td>
+<td><p>Convert any scalar $alpha$ in <cite>ops</cite> into an operator $alpha identity$</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="qalgebra.core.algebraic_properties.assoc">
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">assoc</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#assoc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.assoc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Associatively expand out nested arguments of the flat class.
+E.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Plus</span><span class="p">(</span><span class="n">Operation</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span><span class="n">assoc</span><span class="p">,</span> <span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Plus</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">Plus</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="go">Plus(1, 2, 3)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.algebraic_properties.assoc_indexed">
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">assoc_indexed</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#assoc_indexed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.assoc_indexed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flatten nested indexed structures while pulling out possible prefactors</p>
+<p>For example, for an <a class="reference internal" href="qalgebra.core.indexed_operations.html#qalgebra.core.indexed_operations.IndexedSum" title="qalgebra.core.indexed_operations.IndexedSum"><code class="xref py py-class docutils literal notranslate"><span class="pre">IndexedSum</span></code></a>:</p>
+<div class="math notranslate nohighlight">
+\[\sum_j \left( a \sum_i \dots \right) = a \sum_{j, i} \dots\]</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.algebraic_properties.idem">
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">idem</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#idem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.idem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove duplicate arguments and order them via the cls’s order_key key
+object/function.
+E.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Set</span><span class="p">(</span><span class="n">Operation</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">order_key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">val</span><span class="p">:</span> <span class="n">val</span>
+<span class="gp">... </span>    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span><span class="n">idem</span><span class="p">,</span> <span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Set</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">Set(1, 2, 3)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.algebraic_properties.orderby">
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">orderby</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#orderby"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.orderby" title="Permalink to this definition">¶</a></dt>
+<dd><p>Re-order arguments via the class’s <code class="docutils literal notranslate"><span class="pre">order_key</span></code> key object/function.
+Use this for commutative operations:
+E.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Times</span><span class="p">(</span><span class="n">Operation</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">order_key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">val</span><span class="p">:</span> <span class="n">val</span>
+<span class="gp">... </span>    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span><span class="n">orderby</span><span class="p">,</span> <span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Times</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">Times(1, 2)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.algebraic_properties.filter_neutral">
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">filter_neutral</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#filter_neutral"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.filter_neutral" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove occurrences of a neutral element from the argument/operand list,
+if that list has at least two elements.  To use this, one must also specify
+a neutral element, which can be anything that allows for an equality check
+with each argument.  E.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">X</span><span class="p">(</span><span class="n">Operation</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">_neutral_element</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">... </span>    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span><span class="n">filter_neutral</span><span class="p">,</span> <span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">X(2, 3)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.algebraic_properties.collect_summands">
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">collect_summands</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#collect_summands"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.collect_summands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Collect summands that occur multiple times into a single summand</p>
+<p>Also filters out zero-summands.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="p">(</span><span class="n">OperatorSymbol</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">collect_summands</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">OperatorPlus</span><span class="p">,</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">ZeroOperator</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="o">-</span><span class="n">C</span><span class="p">)</span> <span class="p">,</span> <span class="p">{})</span>
+<span class="go">((3 * A^(0), 2 * B^(0)), {})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">collect_summands</span><span class="p">(</span><span class="n">OperatorPlus</span><span class="p">,</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="o">-</span><span class="n">A</span><span class="p">),</span> <span class="p">{})</span>
+<span class="go">ZeroOperator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">collect_summands</span><span class="p">(</span><span class="n">OperatorPlus</span><span class="p">,</span> <span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="o">-</span><span class="n">B</span><span class="p">),</span> <span class="p">{})</span>
+<span class="go">A^(0)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.algebraic_properties.collect_scalar_summands">
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">collect_scalar_summands</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#collect_scalar_summands"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.collect_scalar_summands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Collect <code class="xref py py-class docutils literal notranslate"><span class="pre">ValueScalar</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarExpression</span></code> summands</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">srepr</span><span class="p">(</span><span class="n">collect_scalar_summands</span><span class="p">(</span><span class="n">Scalar</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">{}))</span>
+<span class="go">&#39;ScalarValue(6)&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">collect_scalar_summands</span><span class="p">(</span><span class="n">Scalar</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">{})</span>
+<span class="go">One</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">collect_scalar_summands</span><span class="p">(</span><span class="n">Scalar</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">{})</span>
+<span class="go">Zero</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Psi</span> <span class="o">=</span> <span class="n">KetSymbol</span><span class="p">(</span><span class="s2">&quot;Psi&quot;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Phi</span> <span class="o">=</span> <span class="n">KetSymbol</span><span class="p">(</span><span class="s2">&quot;Phi&quot;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">braket</span> <span class="o">=</span> <span class="n">BraKet</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">Psi</span><span class="p">,</span> <span class="n">Phi</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">collect_scalar_summands</span><span class="p">(</span><span class="n">Scalar</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">braket</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">{})</span>
+<span class="go">&lt;Psi|Phi&gt;^(0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">collect_scalar_summands</span><span class="p">(</span><span class="n">Scalar</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">braket</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">braket</span><span class="p">),</span> <span class="p">{})</span>
+<span class="go">((3, 4 * &lt;Psi|Phi&gt;^(0)), {})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">collect_scalar_summands</span><span class="p">(</span><span class="n">Scalar</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">braket</span><span class="p">,</span> <span class="o">-</span><span class="n">braket</span><span class="p">,</span> <span class="o">-</span><span class="n">braket</span><span class="p">),</span> <span class="p">{})</span>
+<span class="go">Zero</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.algebraic_properties.match_replace">
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">match_replace</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#match_replace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.match_replace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Match and replace a full operand specification to a function that
+provides a replacement for the whole expression
+or raises a <a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.CannotSimplify" title="qalgebra.core.exceptions.CannotSimplify"><code class="xref py py-exc docutils literal notranslate"><span class="pre">CannotSimplify</span></code></a> exception.
+E.g.</p>
+<p>First define an operation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Invert</span><span class="p">(</span><span class="n">Operation</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span><span class="n">match_replace</span><span class="p">,</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>Then some _rules:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">wc</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A_float</span> <span class="o">=</span> <span class="n">wc</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="n">head</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Invert_A</span> <span class="o">=</span> <span class="n">pattern</span><span class="p">(</span><span class="n">Invert</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Invert</span><span class="o">.</span><span class="n">_rules</span><span class="o">.</span><span class="n">update</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="s1">&#39;r1&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">pattern_head</span><span class="p">(</span><span class="n">Invert_A</span><span class="p">),</span> <span class="k">lambda</span> <span class="n">A</span><span class="p">:</span> <span class="n">A</span><span class="p">)),</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="s1">&#39;r2&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">pattern_head</span><span class="p">(</span><span class="n">A_float</span><span class="p">),</span> <span class="k">lambda</span> <span class="n">A</span><span class="p">:</span> <span class="mf">1.</span><span class="o">/</span><span class="n">A</span><span class="p">)),</span>
+<span class="gp">... </span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Check rule application:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">srepr</span><span class="p">(</span><span class="n">Invert</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&quot;hallo&quot;</span><span class="p">)))</span>  <span class="c1"># matches no rule</span>
+<span class="go">Invert(&#39;hallo&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Invert</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">Invert</span><span class="p">(</span><span class="s2">&quot;hallo&quot;</span><span class="p">))</span>        <span class="c1"># matches first rule</span>
+<span class="go">&#39;hallo&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Invert</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">.</span><span class="mi">2</span><span class="p">)</span>                     <span class="c1"># matches second rule</span>
+<span class="go">5.0</span>
+</pre></div>
+</div>
+<p>A pattern can also have the same wildcard appear twice:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">X</span><span class="p">(</span><span class="n">Operation</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">_rules</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span>        <span class="s1">&#39;r1&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">pattern_head</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">A</span><span class="p">),</span> <span class="k">lambda</span> <span class="n">A</span><span class="p">:</span> <span class="n">A</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="p">}</span>
+<span class="gp">... </span>    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span><span class="n">match_replace</span><span class="p">,</span> <span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">X(1, 2)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.algebraic_properties.match_replace_binary">
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">match_replace_binary</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#match_replace_binary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.match_replace_binary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Similar to func:<cite>match_replace</cite>, but for arbitrary length operations,
+such that each two pairs of subsequent operands are matched pairwise.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">wc</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">FilterDupes</span><span class="p">(</span><span class="n">Operation</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">_binary_rules</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span>         <span class="s1">&#39;filter_dupes&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">pattern_head</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">A</span><span class="p">),</span> <span class="k">lambda</span> <span class="n">A</span><span class="p">:</span> <span class="n">A</span><span class="p">)}</span>
+<span class="gp">... </span>    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span><span class="n">match_replace_binary</span><span class="p">,</span> <span class="n">assoc</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="n">_neutral_element</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">FilterDupes</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>         <span class="c1"># No duplicates</span>
+<span class="go">FilterDupes(1, 2, 3, 4)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">FilterDupes</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>       <span class="c1"># Some duplicates</span>
+<span class="go">FilterDupes(1, 2, 3, 4)</span>
+</pre></div>
+</div>
+<p>Note that this only works for <em>subsequent</em> duplicate entries:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">FilterDupes</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>       <span class="c1"># No *subsequent* duplicates</span>
+<span class="go">FilterDupes(1, 2, 3, 2, 4)</span>
+</pre></div>
+</div>
+<p>Any operation that uses binary reduction must be associative and define a
+neutral element. The binary rules must be compatible with associativity,
+i.e. there is no specific order in which the rules are applied to pairs of
+operands.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.algebraic_properties.check_cdims">
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">check_cdims</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#check_cdims"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.check_cdims" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that all operands (<cite>ops</cite>) have equal channel dimension.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.algebraic_properties.filter_cid">
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">filter_cid</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#filter_cid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.filter_cid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove occurrences of the <code class="xref py py-func docutils literal notranslate"><span class="pre">circuit_identity()</span></code> <code class="docutils literal notranslate"><span class="pre">cid(n)</span></code> for any
+<code class="docutils literal notranslate"><span class="pre">n</span></code>. Cf. <a class="reference internal" href="#qalgebra.core.algebraic_properties.filter_neutral" title="qalgebra.core.algebraic_properties.filter_neutral"><code class="xref py py-func docutils literal notranslate"><span class="pre">filter_neutral()</span></code></a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.algebraic_properties.convert_to_spaces">
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">convert_to_spaces</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#convert_to_spaces"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.convert_to_spaces" title="Permalink to this definition">¶</a></dt>
+<dd><p>For all operands that are merely of type str or int, substitute
+LocalSpace objects with corresponding labels:
+For a string, just itself, for an int, a string version of that int.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.algebraic_properties.empty_trivial">
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">empty_trivial</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#empty_trivial"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.empty_trivial" title="Permalink to this definition">¶</a></dt>
+<dd><p>A ProductSpace of zero Hilbert spaces should yield the TrivialSpace</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.algebraic_properties.implied_local_space">
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">implied_local_space</code><span class="sig-paren">(</span><em class="sig-param">*</em>, <em class="sig-param">arg_index=None</em>, <em class="sig-param">keys=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#implied_local_space"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.implied_local_space" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a simplification that converts the positional argument
+<cite>arg_index</cite> from (str, int) to a subclass of <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a>, as well
+as any keyword argument with one of the given keys.</p>
+<p>The exact type of the resulting Hilbert space is determined by
+the <cite>default_hs_cls</cite> argument of <code class="xref py py-func docutils literal notranslate"><span class="pre">init_algebra()</span></code>.</p>
+<p>In many cases, we have <a class="reference internal" href="#qalgebra.core.algebraic_properties.implied_local_space" title="qalgebra.core.algebraic_properties.implied_local_space"><code class="xref py py-func docutils literal notranslate"><span class="pre">implied_local_space()</span></code></a> (in <code class="docutils literal notranslate"><span class="pre">create</span></code>) in
+addition to a conversion in <code class="docutils literal notranslate"><span class="pre">__init__</span></code>, so
+that <a class="reference internal" href="#qalgebra.core.algebraic_properties.match_replace" title="qalgebra.core.algebraic_properties.match_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace()</span></code></a> etc can rely on the relevant arguments being a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">HilbertSpace</span></code> instance.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.algebraic_properties.delegate_to_method">
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">delegate_to_method</code><span class="sig-paren">(</span><em class="sig-param">mtd</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#delegate_to_method"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.delegate_to_method" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a simplification rule that delegates the instantiation to the
+method <cite>mtd</cite> of the operand (if defined)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.algebraic_properties.scalars_to_op">
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">scalars_to_op</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#scalars_to_op"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.scalars_to_op" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert any scalar <span class="math notranslate nohighlight">\(\alpha\)</span> in <cite>ops</cite> into an operator <span class="math notranslate nohighlight">\(\alpha
+\identity\)</span></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.algebraic_properties.convert_to_scalars">
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">convert_to_scalars</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#convert_to_scalars"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.convert_to_scalars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert any entry in <cite>ops</cite> that is not a <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code></a> instance into
+a <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.ScalarValue" title="qalgebra.core.scalar_algebra.ScalarValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarValue</span></code></a> instance</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.algebraic_properties.disjunct_hs_zero">
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">disjunct_hs_zero</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#disjunct_hs_zero"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.disjunct_hs_zero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return ZeroOperator if all the operators in <cite>ops</cite> have a disjunct
+Hilbert space, or an unchanged <cite>ops</cite>, <cite>kwargs</cite> otherwise</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.algebraic_properties.commutator_order">
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">commutator_order</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#commutator_order"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.commutator_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply anti-commutative property of the commutator to apply a standard
+ordering of the commutator arguments</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.algebraic_properties.accept_bras">
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">accept_bras</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#accept_bras"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.accept_bras" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accept operands that are all bras, and turn that into to bra of the
+operation applied to all corresponding kets</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.algebraic_properties.basis_ket_zero_outside_hs">
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">basis_ket_zero_outside_hs</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#basis_ket_zero_outside_hs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.basis_ket_zero_outside_hs" title="Permalink to this definition">¶</a></dt>
+<dd><p>For <code class="docutils literal notranslate"><span class="pre">BasisKet.create(ind,</span> <span class="pre">hs)</span></code> with an integer label <cite>ind</cite>, return a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ZeroKet</span></code> if <cite>ind</cite> is outside of the range of the underlying Hilbert
+space</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.algebraic_properties.indexed_sum_over_const">
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">indexed_sum_over_const</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#indexed_sum_over_const"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.indexed_sum_over_const" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute an indexed sum over a term that does not depend on the
+summation indices</p>
+<div class="math notranslate nohighlight">
+\[\sum_{j=1}^{N} a = N a\]</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="p">,</span> <span class="n">j</span>  <span class="o">=</span> <span class="p">(</span><span class="n">IdxSym</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;j&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">unicode</span><span class="p">(</span><span class="n">Sum</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)(</span><span class="n">a</span><span class="p">))</span>
+<span class="go">&#39;2 a&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">unicode</span><span class="p">(</span><span class="n">Sum</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)(</span><span class="n">Sum</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)(</span><span class="n">a</span> <span class="o">*</span> <span class="n">i</span><span class="p">)))</span>
+<span class="go">&#39;∑_{i=1}^{2} 2 i a&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.algebraic_properties.indexed_sum_over_kronecker">
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">indexed_sum_over_kronecker</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#indexed_sum_over_kronecker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.indexed_sum_over_kronecker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute sums over KroneckerDelta prefactors</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qalgebra.core.algebraic_properties.derivative_via_diff">
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">derivative_via_diff</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#derivative_via_diff"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.derivative_via_diff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implementation of the <code class="xref py py-meth docutils literal notranslate"><span class="pre">QuantumDerivative.create()</span></code> interface via the
+use of <code class="xref py py-meth docutils literal notranslate"><span class="pre">QuantumExpression._diff()</span></code>.</p>
+<p>Thus, by having <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumExpression.diff" title="qalgebra.core.abstract_quantum_algebra.QuantumExpression.diff"><code class="xref py py-meth docutils literal notranslate"><span class="pre">QuantumExpression.diff()</span></code></a> delegate to
+<a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumDerivative.create" title="qalgebra.core.abstract_quantum_algebra.QuantumDerivative.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">QuantumDerivative.create()</span></code></a>, instead of
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">QuantumExpression._diff()</span></code> directly, we get automatic caching of
+derivatives</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="qalgebra.core.exceptions.html" class="btn btn-neutral float-right" title="qalgebra.core.exceptions module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="qalgebra.core.abstract_quantum_algebra.html" class="btn btn-neutral float-left" title="qalgebra.core.abstract_quantum_algebra module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Michael Goerz
+      <span class="lastupdated">
+        Last updated on Feb 06, 2020.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

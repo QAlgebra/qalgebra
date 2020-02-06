@@ -1,0 +1,479 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>qalgebra.printing.unicodeprinter &mdash; QAlgebra 2.0.0-dev (d784b1d) documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/clipboard.min.js"></script>
+        <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script type="text/javascript" src="../../../_static/doctr-versions-menu.js"></script>
+        <script type="text/javascript">var copybuttonSkipText = '>>> ';</script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/mycss.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0.0-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">QAlgebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../history.html">History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../API/qalgebra.html">API of the QAlgebra package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../qalgebra.html">qalgebra</a> &raquo;</li>
+        
+          <li><a href="../printing.html">qalgebra.printing</a> &raquo;</li>
+        
+      <li>qalgebra.printing.unicodeprinter</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for qalgebra.printing.unicodeprinter</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Unicode Printer&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">sympy.printing.conventions</span> <span class="kn">import</span> <span class="n">split_super_sub</span>
+<span class="kn">from</span> <span class="nn">sympy.printing.pretty.pretty_symbology</span> <span class="kn">import</span> <span class="n">modifier_dict</span>
+
+<span class="kn">from</span> <span class="nn">..utils.indices</span> <span class="kn">import</span> <span class="n">StrLabel</span>
+<span class="kn">from</span> <span class="nn">._precedence</span> <span class="kn">import</span> <span class="n">PRECEDENCE</span><span class="p">,</span> <span class="n">precedence</span>
+<span class="kn">from</span> <span class="nn">._unicode_mappings</span> <span class="kn">import</span> <span class="n">render_unicode_sub_super</span>
+<span class="kn">from</span> <span class="nn">.asciiprinter</span> <span class="kn">import</span> <span class="n">QalgebraAsciiPrinter</span>
+<span class="kn">from</span> <span class="nn">.sympy</span> <span class="kn">import</span> <span class="n">SympyUnicodePrinter</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">__private__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;QalgebraUnicodePrinter&#39;</span><span class="p">,</span> <span class="s1">&#39;SubSupFmt&#39;</span><span class="p">,</span> <span class="s1">&#39;SubSupFmtNoUni&#39;</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="SubSupFmt"><a class="viewcode-back" href="../../../API/qalgebra.printing.unicodeprinter.html#qalgebra.printing.unicodeprinter.SubSupFmt">[docs]</a><span class="k">class</span> <span class="nc">SubSupFmt</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;A format string that divides into a name, subscript, and superscript</span>
+
+<span class="sd">    &gt;&gt;&gt; fmt = SubSupFmt(&#39;{name}&#39;, sub=&#39;({i},{j})&#39;, sup=&#39;({sup})&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; fmt.format(name=&#39;alpha&#39;, i=&#39;mu&#39;, j=&#39;nu&#39;, sup=1)</span>
+<span class="sd">    &#39;α_(μ,ν)^(1)&#39;</span>
+<span class="sd">    &gt;&gt;&gt; fmt = SubSupFmt(&#39;{name}&#39;, sub=&#39;{sub}&#39;, sup=&#39;({sup})&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; fmt.format(name=&#39;alpha&#39;, sub=&#39;1&#39;, sup=1)</span>
+<span class="sd">    &#39;α₁⁽¹⁾&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">sub</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sup</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">unicode_sub_super</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sub</span> <span class="o">=</span> <span class="n">sub</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sup</span> <span class="o">=</span> <span class="n">sup</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unicode_sub_super</span> <span class="o">=</span> <span class="n">unicode_sub_super</span>
+
+<div class="viewcode-block" id="SubSupFmt.format"><a class="viewcode-back" href="../../../API/qalgebra.printing.unicodeprinter.html#qalgebra.printing.unicodeprinter.SubSupFmt.format">[docs]</a>    <span class="k">def</span> <span class="nf">format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Format and combine the name, subscript, and superscript&quot;&quot;&quot;</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="n">subs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sub</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">subs</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">sub</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)]</span>
+        <span class="n">supers</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sup</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">supers</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">sup</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)]</span>
+
+        <span class="k">return</span> <span class="n">render_unicode_sub_super</span><span class="p">(</span>
+            <span class="n">name</span><span class="p">,</span>
+            <span class="n">subs</span><span class="p">,</span>
+            <span class="n">supers</span><span class="p">,</span>
+            <span class="n">sub_first</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">translate_symbols</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">unicode_sub_super</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">unicode_sub_super</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">(</span><span class="si">%r</span><span class="s2">, sub=</span><span class="si">%r</span><span class="s2">, sup=</span><span class="si">%r</span><span class="s2">, unicode_sub_super=</span><span class="si">%r</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sub</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sup</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">unicode_sub_super</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SubSupFmtNoUni"><a class="viewcode-back" href="../../../API/qalgebra.printing.unicodeprinter.html#qalgebra.printing.unicodeprinter.SubSupFmtNoUni">[docs]</a><span class="k">class</span> <span class="nc">SubSupFmtNoUni</span><span class="p">(</span><span class="n">SubSupFmt</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;SubSupFmt with default unicode_sub_super=False&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">sub</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sup</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">unicode_sub_super</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">sub</span><span class="p">,</span> <span class="n">sup</span><span class="p">,</span> <span class="n">unicode_sub_super</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QalgebraUnicodePrinter"><a class="viewcode-back" href="../../../API/qalgebra.printing.unicodeprinter.html#qalgebra.printing.unicodeprinter.QalgebraUnicodePrinter">[docs]</a><span class="k">class</span> <span class="nc">QalgebraUnicodePrinter</span><span class="p">(</span><span class="n">QalgebraAsciiPrinter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Printer for a string (Unicode) representation.&quot;&quot;&quot;</span>
+
+    <span class="n">sympy_printer_cls</span> <span class="o">=</span> <span class="n">SympyUnicodePrinter</span>
+    <span class="n">printmethod</span> <span class="o">=</span> <span class="s1">&#39;_unicode&#39;</span>
+
+    <span class="n">_default_settings</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;show_hs_label&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># alternatively: False, &#39;subscript&#39;</span>
+        <span class="s1">&#39;sig_as_ketbra&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s1">&#39;unicode_sub_super&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s1">&#39;unicode_op_hats&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">_dagger_sym</span> <span class="o">=</span> <span class="s1">&#39;†&#39;</span>
+    <span class="n">_tensor_sym</span> <span class="o">=</span> <span class="s1">&#39;⊗&#39;</span>
+    <span class="n">_product_sym</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span>
+    <span class="n">_circuit_series_sym</span> <span class="o">=</span> <span class="s1">&#39;◁&#39;</span>
+    <span class="n">_circuit_concat_sym</span> <span class="o">=</span> <span class="s1">&#39;⊞&#39;</span>
+    <span class="n">_sum_sym</span> <span class="o">=</span> <span class="s1">&#39;∑&#39;</span>
+    <span class="n">_element_sym</span> <span class="o">=</span> <span class="s1">&#39;∈&#39;</span>
+    <span class="n">_ellipsis</span> <span class="o">=</span> <span class="s1">&#39;…&#39;</span>
+
+    <span class="k">def</span> <span class="nf">_render_str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returned a unicodified version of the string&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="n">StrLabel</span><span class="p">):</span>
+            <span class="n">string</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">_render</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">expr</span><span class="p">)</span>
+        <span class="n">string</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">name</span><span class="p">,</span> <span class="n">supers</span><span class="p">,</span> <span class="n">subs</span> <span class="o">=</span> <span class="n">split_super_sub</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">render_unicode_sub_super</span><span class="p">(</span>
+            <span class="n">name</span><span class="p">,</span>
+            <span class="n">subs</span><span class="p">,</span>
+            <span class="n">supers</span><span class="p">,</span>
+            <span class="n">sub_first</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">translate_symbols</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">unicode_sub_super</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">[</span><span class="s1">&#39;unicode_sub_super&#39;</span><span class="p">],</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_braket_fmt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr_type</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a format string for printing an `expr_type`</span>
+<span class="sd">        ket/bra/ketbra/braket&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">[</span><span class="s1">&#39;unicode_sub_super&#39;</span><span class="p">]:</span>
+            <span class="n">sub_sup_fmt</span> <span class="o">=</span> <span class="n">SubSupFmt</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sub_sup_fmt</span> <span class="o">=</span> <span class="n">SubSupFmtNoUni</span>
+        <span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;bra&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="kc">True</span><span class="p">:</span> <span class="n">sub_sup_fmt</span><span class="p">(</span><span class="s1">&#39;⟨</span><span class="si">{label}</span><span class="s1">|&#39;</span><span class="p">,</span> <span class="n">sup</span><span class="o">=</span><span class="s1">&#39;(</span><span class="si">{space}</span><span class="s1">)&#39;</span><span class="p">),</span>
+                <span class="s1">&#39;subscript&#39;</span><span class="p">:</span> <span class="n">sub_sup_fmt</span><span class="p">(</span><span class="s1">&#39;⟨</span><span class="si">{label}</span><span class="s1">|&#39;</span><span class="p">,</span> <span class="n">sub</span><span class="o">=</span><span class="s1">&#39;(</span><span class="si">{space}</span><span class="s1">)&#39;</span><span class="p">),</span>
+                <span class="kc">False</span><span class="p">:</span> <span class="n">sub_sup_fmt</span><span class="p">(</span><span class="s1">&#39;⟨</span><span class="si">{label}</span><span class="s1">|&#39;</span><span class="p">),</span>
+            <span class="p">},</span>
+            <span class="s1">&#39;ket&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="kc">True</span><span class="p">:</span> <span class="n">sub_sup_fmt</span><span class="p">(</span><span class="s1">&#39;|</span><span class="si">{label}</span><span class="s1">⟩&#39;</span><span class="p">,</span> <span class="n">sup</span><span class="o">=</span><span class="s1">&#39;(</span><span class="si">{space}</span><span class="s1">)&#39;</span><span class="p">),</span>
+                <span class="s1">&#39;subscript&#39;</span><span class="p">:</span> <span class="n">sub_sup_fmt</span><span class="p">(</span><span class="s1">&#39;|</span><span class="si">{label}</span><span class="s1">⟩&#39;</span><span class="p">,</span> <span class="n">sub</span><span class="o">=</span><span class="s1">&#39;(</span><span class="si">{space}</span><span class="s1">)&#39;</span><span class="p">),</span>
+                <span class="kc">False</span><span class="p">:</span> <span class="n">sub_sup_fmt</span><span class="p">(</span><span class="s1">&#39;|</span><span class="si">{label}</span><span class="s1">⟩&#39;</span><span class="p">),</span>
+            <span class="p">},</span>
+            <span class="s1">&#39;ketbra&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="kc">True</span><span class="p">:</span> <span class="n">sub_sup_fmt</span><span class="p">(</span><span class="s1">&#39;|</span><span class="si">{label_i}</span><span class="s1">⟩⟨</span><span class="si">{label_j}</span><span class="s1">|&#39;</span><span class="p">,</span> <span class="n">sup</span><span class="o">=</span><span class="s1">&#39;(</span><span class="si">{space}</span><span class="s1">)&#39;</span><span class="p">),</span>
+                <span class="s1">&#39;subscript&#39;</span><span class="p">:</span> <span class="n">sub_sup_fmt</span><span class="p">(</span>
+                    <span class="s1">&#39;|</span><span class="si">{label_i}</span><span class="s1">⟩⟨</span><span class="si">{label_j}</span><span class="s1">|&#39;</span><span class="p">,</span> <span class="n">sub</span><span class="o">=</span><span class="s1">&#39;(</span><span class="si">{space}</span><span class="s1">)&#39;</span>
+                <span class="p">),</span>
+                <span class="kc">False</span><span class="p">:</span> <span class="n">sub_sup_fmt</span><span class="p">(</span><span class="s1">&#39;|</span><span class="si">{label_i}</span><span class="s1">⟩⟨</span><span class="si">{label_j}</span><span class="s1">|&#39;</span><span class="p">),</span>
+            <span class="p">},</span>
+            <span class="s1">&#39;braket&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="kc">True</span><span class="p">:</span> <span class="n">sub_sup_fmt</span><span class="p">(</span><span class="s1">&#39;⟨</span><span class="si">{label_i}</span><span class="s1">|</span><span class="si">{label_j}</span><span class="s1">⟩&#39;</span><span class="p">,</span> <span class="n">sup</span><span class="o">=</span><span class="s1">&#39;(</span><span class="si">{space}</span><span class="s1">)&#39;</span><span class="p">),</span>
+                <span class="s1">&#39;subscript&#39;</span><span class="p">:</span> <span class="n">sub_sup_fmt</span><span class="p">(</span>
+                    <span class="s1">&#39;⟨</span><span class="si">{label_i}</span><span class="s1">|</span><span class="si">{label_j}</span><span class="s1">⟩&#39;</span><span class="p">,</span> <span class="n">sub</span><span class="o">=</span><span class="s1">&#39;(</span><span class="si">{space}</span><span class="s1">)&#39;</span>
+                <span class="p">),</span>
+                <span class="kc">False</span><span class="p">:</span> <span class="n">sub_sup_fmt</span><span class="p">(</span><span class="s1">&#39;⟨</span><span class="si">{label_i}</span><span class="s1">|</span><span class="si">{label_j}</span><span class="s1">⟩&#39;</span><span class="p">),</span>
+            <span class="p">},</span>
+        <span class="p">}</span>
+        <span class="n">hs_setting</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">[</span><span class="s1">&#39;show_hs_label&#39;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">[</span><span class="s1">&#39;show_hs_label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;subscript&#39;</span><span class="p">:</span>
+            <span class="n">hs_setting</span> <span class="o">=</span> <span class="s1">&#39;subscript&#39;</span>
+        <span class="k">return</span> <span class="n">mapping</span><span class="p">[</span><span class="n">expr_type</span><span class="p">][</span><span class="n">hs_setting</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_render_op</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">identifier</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dagger</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">superop</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Render an operator</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            identifier (str or SymbolicLabelBase): The identifier (name/symbol)</span>
+<span class="sd">                of the operator. May include a subscript, denoted by &#39;_&#39;.</span>
+<span class="sd">            hs (HilbertSpace): The Hilbert space in which the operator is</span>
+<span class="sd">                defined</span>
+<span class="sd">            dagger (bool): Whether the operator should be daggered</span>
+<span class="sd">            args (list): A list of expressions that will be rendered with</span>
+<span class="sd">                :meth:`doprint`, joined with commas, enclosed in parenthesis</span>
+<span class="sd">            superop (bool): Whether the operator is a super-operator</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">hs_label</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">hs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">[</span><span class="s1">&#39;show_hs_label&#39;</span><span class="p">]:</span>
+            <span class="n">hs_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_hs_label</span><span class="p">(</span><span class="n">hs</span><span class="p">)</span>
+        <span class="n">name</span><span class="p">,</span> <span class="n">total_subscript</span><span class="p">,</span> <span class="n">total_superscript</span><span class="p">,</span> <span class="n">args_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_split_op</span><span class="p">(</span>
+            <span class="n">identifier</span><span class="p">,</span> <span class="n">hs_label</span><span class="p">,</span> <span class="n">dagger</span><span class="p">,</span> <span class="n">args</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">[</span><span class="s1">&#39;unicode_op_hats&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">superop</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">name</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">modifier_dict</span><span class="p">[</span><span class="s1">&#39;hat&#39;</span><span class="p">](</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">render_unicode_sub_super</span><span class="p">(</span>
+            <span class="n">res</span><span class="p">,</span>
+            <span class="p">[</span><span class="n">total_subscript</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">total_superscript</span><span class="p">],</span>
+            <span class="n">sub_first</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">translate_symbols</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">unicode_sub_super</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">[</span><span class="s1">&#39;unicode_sub_super&#39;</span><span class="p">],</span>
+        <span class="p">)</span>
+        <span class="n">res</span> <span class="o">+=</span> <span class="n">args_str</span>
+        <span class="k">return</span> <span class="n">res</span>
+
+    <span class="k">def</span> <span class="nf">_print_Feedback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="n">operand</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">operand</span><span class="p">)</span>
+        <span class="n">o</span><span class="p">,</span> <span class="n">i</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">out_in_pair</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">[</span><span class="s1">&#39;unicode_sub_super&#39;</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">render_unicode_sub_super</span><span class="p">(</span>
+                <span class="s1">&#39;[</span><span class="si">%s</span><span class="s1">]&#39;</span> <span class="o">%</span> <span class="n">operand</span><span class="p">,</span>
+                <span class="n">subs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">i</span><span class="p">)],</span>
+                <span class="n">translate_symbols</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">subscript_max_len</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;[</span><span class="si">%s</span><span class="s1">]_</span><span class="si">%s</span><span class="s1">→</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">operand</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_SeriesInverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">r</span><span class="s1">&#39;[</span><span class="si">{operand}</span><span class="s1">]⁻¹&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">operand</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">operand</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_print_HilbertSpace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">render_unicode_sub_super</span><span class="p">(</span>
+            <span class="s1">&#39;ℌ&#39;</span><span class="p">,</span> <span class="n">subs</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_render_hs_label</span><span class="p">(</span><span class="n">expr</span><span class="p">)]</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_IdentityOperator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;𝟙&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_print_IdentitySuperOperator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">superop</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;𝟙&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_print_QuantumDerivative</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">sym</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">derivs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">sym_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">sym</span><span class="p">)</span>
+            <span class="k">if</span> <span class="s2">&quot; &quot;</span> <span class="ow">in</span> <span class="n">sym_str</span><span class="p">:</span>
+                <span class="n">sym_str</span> <span class="o">=</span> <span class="s2">&quot;(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">sym_str</span>
+            <span class="n">subs</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">sym_str</span><span class="p">,</span>
+            <span class="p">]</span>
+            <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">supers</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">supers</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">n</span><span class="p">),</span>
+                <span class="p">]</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="p">(</span>
+                <span class="n">render_unicode_sub_super</span><span class="p">(</span>
+                    <span class="s1">&#39;∂&#39;</span><span class="p">,</span>
+                    <span class="n">subs</span><span class="p">,</span>
+                    <span class="n">supers</span><span class="p">,</span>
+                    <span class="n">sub_first</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">translate_symbols</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">unicode_sub_super</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">[</span><span class="s1">&#39;unicode_sub_super&#39;</span><span class="p">],</span>
+                <span class="p">)</span>
+                <span class="o">+</span> <span class="s2">&quot; &quot;</span>
+            <span class="p">)</span>
+        <span class="n">res</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parenthesize</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">operand</span><span class="p">,</span> <span class="n">PRECEDENCE</span><span class="p">[</span><span class="s1">&#39;Mul&#39;</span><span class="p">],</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">expr</span><span class="o">.</span><span class="n">vals</span><span class="p">:</span>
+            <span class="n">evaluation_strs</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">sym</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">vals</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">evaluation_strs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">sym</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
+                <span class="p">)</span>
+            <span class="n">evaluation_str</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">evaluation_strs</span><span class="p">)</span>
+            <span class="k">if</span> <span class="s2">&quot; &quot;</span> <span class="ow">in</span> <span class="n">evaluation_str</span><span class="p">:</span>
+                <span class="n">evaluation_str</span> <span class="o">=</span> <span class="s2">&quot;(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">evaluation_str</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="n">render_unicode_sub_super</span><span class="p">(</span>
+                <span class="s1">&#39; |&#39;</span><span class="p">,</span>
+                <span class="n">subs</span><span class="o">=</span><span class="p">[</span><span class="n">evaluation_str</span><span class="p">,],</span>
+                <span class="n">supers</span><span class="o">=</span><span class="p">[],</span>
+                <span class="n">sub_first</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">translate_symbols</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">unicode_sub_super</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">[</span><span class="s1">&#39;unicode_sub_super&#39;</span><span class="p">],</span>
+                <span class="n">subscript_max_len</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">res</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Michael Goerz
+      <span class="lastupdated">
+        Last updated on Feb 06, 2020.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

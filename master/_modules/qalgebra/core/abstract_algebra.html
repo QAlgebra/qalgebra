@@ -1,0 +1,1097 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>qalgebra.core.abstract_algebra &mdash; QAlgebra 2.0.0-dev (d784b1d) documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/clipboard.min.js"></script>
+        <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script type="text/javascript" src="../../../_static/doctr-versions-menu.js"></script>
+        <script type="text/javascript">var copybuttonSkipText = '>>> ';</script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/mycss.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0.0-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">QAlgebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../history.html">History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../API/qalgebra.html">API of the QAlgebra package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../qalgebra.html">qalgebra</a> &raquo;</li>
+        
+      <li>qalgebra.core.abstract_algebra</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for qalgebra.core.abstract_algebra</h1><div class="highlight"><pre>
+<span></span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Base classes for all Expressions and Operations.</span>
+
+<span class="sd">The abstract algebra package provides the foundation for</span>
+<span class="sd">symbolic algebra of quantum objects or circuits. All symbolic objects are</span>
+<span class="sd">an instance of :class:`Expression`. Algebraic combinations of atomic</span>
+<span class="sd">expressions are instances of :class:`Operation`. In this way, any symbolic</span>
+<span class="sd">expression is a tree of operations, with children of each node defined through</span>
+<span class="sd">the :attr:`Operation.operands` attribute, and the leaves being atomic</span>
+<span class="sd">expressions.</span>
+
+<span class="sd">See :ref:`abstract_algebra` for design details and usage.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">inspect</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">textwrap</span>
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABCMeta</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
+
+<span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">Basic</span> <span class="k">as</span> <span class="n">SympyBasic</span>
+<span class="kn">from</span> <span class="nn">sympy.core.sympify</span> <span class="kn">import</span> <span class="n">SympifyError</span>
+
+<span class="kn">from</span> <span class="nn">..pattern_matching</span> <span class="kn">import</span> <span class="n">ProtoExpr</span>
+<span class="kn">from</span> <span class="nn">..utils.containers</span> <span class="kn">import</span> <span class="n">nested_tuple</span>
+<span class="kn">from</span> <span class="nn">..utils.singleton</span> <span class="kn">import</span> <span class="n">Singleton</span>
+<span class="kn">from</span> <span class="nn">.exceptions</span> <span class="kn">import</span> <span class="n">CannotSimplify</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Expression&#39;</span><span class="p">,</span> <span class="s1">&#39;Operation&#39;</span><span class="p">,</span> <span class="s1">&#39;substitute&#39;</span><span class="p">]</span>
+
+<span class="n">__private__</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># anything not in __all__ must be in __private__</span>
+
+<span class="n">LEVEL</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># for debugging create method</span>
+
+<span class="n">LOG</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># emit debug logging messages?</span>
+<span class="n">LOG_NO_MATCH</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># also log non-matching rules? (very verbose!)</span>
+<span class="c1"># Note: you may manually set the above variables to True for debugging. Some</span>
+<span class="c1"># tests (e.g. the tests for the algebraic rules) will also automatically</span>
+<span class="c1"># activate this logging functionality, as they rely on inspecting the debug</span>
+<span class="c1"># messages from object creation.</span>
+
+
+<div class="viewcode-block" id="Expression"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression">[docs]</a><span class="k">class</span> <span class="nc">Expression</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base class for all QAlgebra Expressions</span>
+
+<span class="sd">    Expressions should generally be instantiated using the :meth:`create` class</span>
+<span class="sd">    method, which takes into account the algebraic properties of the Expression</span>
+<span class="sd">    and and applies simplifications. It also uses memoization to cache all</span>
+<span class="sd">    known (sub-)expression. This is possible because expressions are intended</span>
+<span class="sd">    to be immutable. Any changes to an expression should be made through e.g.</span>
+<span class="sd">    :meth:`substitute` or :meth:`apply_rule`, which returns a new modified</span>
+<span class="sd">    expression.</span>
+
+<span class="sd">    Every expression has a well-defined list of positional and keyword</span>
+<span class="sd">    arguments that uniquely determine the expression and that may be accessed</span>
+<span class="sd">    through the :attr:`args` and :attr:`kwargs` property. That is,</span>
+
+<span class="sd">    ::</span>
+
+<span class="sd">        expr.__class__(*expr.args, **expr.kwargs)</span>
+
+<span class="sd">    will return and object identical to `expr`.</span>
+
+<span class="sd">    Class attributes:</span>
+<span class="sd">        instance_caching (bool):  Flag to indicate whether the :meth:`create`</span>
+<span class="sd">            class method should cache the instantiation of instances. If True,</span>
+<span class="sd">            repeated calls to :meth:`create` with the same arguments return</span>
+<span class="sd">            instantly, instead of re-evaluating all simplifications and rules.</span>
+<span class="sd">        simplifications (list): List of callable simplifications that</span>
+<span class="sd">            :meth:`create` will use to process its positional and keyword</span>
+<span class="sd">            arguments. Each callable must take three parameters (the class, the</span>
+<span class="sd">            list `args` of positional arguments given to :meth:`create` and a</span>
+<span class="sd">            dictionary `kwargs` of keyword arguments given to :meth:`create`)</span>
+<span class="sd">            and return either a tuple of new `args` and `kwargs` (which are</span>
+<span class="sd">            then handed to the next callable), or an :class:`Expression` (which</span>
+<span class="sd">            is directly returned as the result of the call to :meth:`create`).</span>
+<span class="sd">            The built-in available simplification callables are in</span>
+<span class="sd">            :mod:`~qalgebra.core.algebraic_properties`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Note: all subclasses of Exression that override `__init__` or `create`</span>
+    <span class="c1"># *must* call the corresponding superclass method *at the end*. Otherwise,</span>
+    <span class="c1"># caching will not work correctly</span>
+
+    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># we cache all instances of Expressions for fast construction</span>
+    <span class="n">_instances</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">instance_caching</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># eventually, we should ensure that the create method is idempotent, i.e.</span>
+    <span class="c1"># expr.create(*expr.args, **expr.kwargs) == expr(*expr.args, **expr.kwargs)</span>
+    <span class="n">_create_idempotent</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="c1"># At this point, match_replace_binary does not yet guarantee this</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hash</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_free_symbols</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_bound_symbols</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_all_symbols</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_instance_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_instance_key</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Expression.create"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.create">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Instantiate while applying automatic simplifications</span>
+
+<span class="sd">        Instead of directly instantiating `cls`, it is recommended to use</span>
+<span class="sd">        :meth:`create`, which applies simplifications to the args and keyword</span>
+<span class="sd">        arguments according to the :attr:`simplifications` class attribute, and</span>
+<span class="sd">        returns an appropriate object (which may or may not be an instance of</span>
+<span class="sd">        the original `cls`).</span>
+
+<span class="sd">        Two simplifications of particular importance are :func:`.match_replace`</span>
+<span class="sd">        and :func:`.match_replace_binary` which apply rule-based</span>
+<span class="sd">        simplifications.</span>
+
+<span class="sd">        The :func:`.temporary_rules` context manager may be used to allow</span>
+<span class="sd">        temporary modification of the automatic simplifications that</span>
+<span class="sd">        :meth:`create` uses, in particular the rules for</span>
+<span class="sd">        :func:`.match_replace` and :func:`.match_replace_binary`. Inside the</span>
+<span class="sd">        managed context, the :attr:`simplifications` class attribute may be</span>
+<span class="sd">        modified and rules can be managed with :meth:`add_rule` and</span>
+<span class="sd">        :meth:`del_rules`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">global</span> <span class="n">LEVEL</span>
+        <span class="k">if</span> <span class="n">LOG</span><span class="p">:</span>
+            <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;QAlgebra.create&#39;</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                <span class="s2">&quot;</span><span class="si">%s%s</span><span class="s2">.create(*args, **kwargs); args = </span><span class="si">%s</span><span class="s2">, kwargs = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="p">(</span><span class="s2">&quot;  &quot;</span> <span class="o">*</span> <span class="n">LEVEL</span><span class="p">),</span>
+                <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+                <span class="n">args</span><span class="p">,</span>
+                <span class="n">kwargs</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">LEVEL</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_get_instance_key</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">instance_caching</span><span class="p">:</span>
+                <span class="n">instance</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_instances</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">LOG</span><span class="p">:</span>
+                    <span class="n">LEVEL</span> <span class="o">-=</span> <span class="mi">1</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">(cached)-&gt; </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;  &quot;</span> <span class="o">*</span> <span class="n">LEVEL</span><span class="p">),</span> <span class="n">instance</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">instance</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">simplification</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">simplifications</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">LOG</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">simpl_name</span> <span class="o">=</span> <span class="n">simplification</span><span class="o">.</span><span class="vm">__name__</span>
+                <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                    <span class="n">simpl_name</span> <span class="o">=</span> <span class="s2">&quot;simpl</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">i</span>
+            <span class="n">simplified</span> <span class="o">=</span> <span class="n">simplification</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="n">simplified</span>
+                <span class="k">if</span> <span class="n">LOG</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                        <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">(</span><span class="si">%s</span><span class="s2">)-&gt; args = </span><span class="si">%s</span><span class="s2">, kwargs = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                        <span class="p">(</span><span class="s2">&quot;  &quot;</span> <span class="o">*</span> <span class="n">LEVEL</span><span class="p">),</span>
+                        <span class="n">simpl_name</span><span class="p">,</span>
+                        <span class="n">args</span><span class="p">,</span>
+                        <span class="n">kwargs</span><span class="p">,</span>
+                    <span class="p">)</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+                <span class="c1"># We assume that if the simplification didn&#39;t return a tuple,</span>
+                <span class="c1"># the result is a fully instantiated object</span>
+                <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">instance_caching</span><span class="p">:</span>
+                    <span class="bp">cls</span><span class="o">.</span><span class="n">_instances</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">simplified</span>
+                <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_create_idempotent</span> <span class="ow">and</span> <span class="bp">cls</span><span class="o">.</span><span class="n">instance_caching</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">key2</span> <span class="o">=</span> <span class="n">simplified</span><span class="o">.</span><span class="n">_instance_key</span>
+                        <span class="k">if</span> <span class="n">key2</span> <span class="o">!=</span> <span class="n">key</span><span class="p">:</span>
+                            <span class="bp">cls</span><span class="o">.</span><span class="n">_instances</span><span class="p">[</span><span class="n">key2</span><span class="p">]</span> <span class="o">=</span> <span class="n">simplified</span>  <span class="c1"># simplified key</span>
+                    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                        <span class="c1">#  simplified might e.g. be a scalar and not have</span>
+                        <span class="c1">#  _instance_key</span>
+                        <span class="k">pass</span>
+                <span class="k">if</span> <span class="n">LOG</span><span class="p">:</span>
+                    <span class="n">LEVEL</span> <span class="o">-=</span> <span class="mi">1</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                        <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">(</span><span class="si">%s</span><span class="s2">)-&gt; </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;  &quot;</span> <span class="o">*</span> <span class="n">LEVEL</span><span class="p">),</span> <span class="n">simpl_name</span><span class="p">,</span> <span class="n">simplified</span>
+                    <span class="p">)</span>
+                <span class="k">return</span> <span class="n">simplified</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">_has_kwargs</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">instance</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">instance_caching</span><span class="p">:</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">_instances</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">instance</span>
+        <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_create_idempotent</span> <span class="ow">and</span> <span class="bp">cls</span><span class="o">.</span><span class="n">instance_caching</span><span class="p">:</span>
+            <span class="n">key2</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_get_instance_key</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">key2</span> <span class="o">!=</span> <span class="n">key</span><span class="p">:</span>
+                <span class="bp">cls</span><span class="o">.</span><span class="n">_instances</span><span class="p">[</span><span class="n">key2</span><span class="p">]</span> <span class="o">=</span> <span class="n">instance</span>  <span class="c1"># instantiated key</span>
+        <span class="k">if</span> <span class="n">LOG</span><span class="p">:</span>
+            <span class="n">LEVEL</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> -&gt; </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;  &quot;</span> <span class="o">*</span> <span class="n">LEVEL</span><span class="p">),</span> <span class="n">instance</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">instance</span></div>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_get_instance_key</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Function that calculates a unique &quot;key&quot; (as a tuple) for the</span>
+<span class="sd">        given args and kwargs. It is the basis of the hash of an Expression,</span>
+<span class="sd">        and is used for the internal caching of instances. Every Expression</span>
+<span class="sd">        stores this key in the `_instance_key` attribute.</span>
+
+<span class="sd">        Two expressions for which `expr._instance_key` is the same are</span>
+<span class="sd">        identical by definition (although `expr1 is expr2` generally only holds</span>
+<span class="sd">        for explicit Singleton instances)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">cls</span><span class="p">,)</span> <span class="o">+</span> <span class="n">nested_tuple</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="n">nested_tuple</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_rules_attr</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the name of the attribute with rules for :meth:`create`&quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">qalgebra.core.algebraic_properties</span> <span class="kn">import</span> <span class="p">(</span>
+            <span class="n">match_replace</span><span class="p">,</span>
+            <span class="n">match_replace_binary</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">match_replace</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">simplifications</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;_rules&#39;</span>
+        <span class="k">elif</span> <span class="n">match_replace_binary</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">simplifications</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;_binary_rules&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                <span class="s2">&quot;class </span><span class="si">%s</span><span class="s2"> does not have match_replace or &quot;</span>
+                <span class="s2">&quot;match_replace_binary in its simplifications&quot;</span> <span class="o">%</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span>
+            <span class="p">)</span>
+
+<div class="viewcode-block" id="Expression.add_rule"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.add_rule">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">add_rule</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">replacement</span><span class="p">,</span> <span class="n">attr</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Add an algebraic rule for :meth:`create` to the class</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            name (str): Name of the rule. This is used for debug logging to</span>
+<span class="sd">                allow an analysis of which rules where applied when creating an</span>
+<span class="sd">                expression. The `name` can be arbitrary, but it must be unique.</span>
+<span class="sd">                Built-in rules have names ``&#39;Rxxx&#39;`` where ``x`` is a digit</span>
+<span class="sd">            pattern (.Pattern): A pattern constructed by :func:`.pattern_head`</span>
+<span class="sd">                to match a :class:`.ProtoExpr`</span>
+<span class="sd">            replacement (callable): callable that takes the wildcard names</span>
+<span class="sd">                defined in `pattern` as keyword arguments and returns an</span>
+<span class="sd">                evaluated expression.</span>
+<span class="sd">            attr (None or str): Name of the class attribute to which to add the</span>
+<span class="sd">                rule. If None, one of ``&#39;_rules&#39;``, ``&#39;_binary_rules&#39;`` is</span>
+<span class="sd">                automatically chosen</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            TypeError: if `name` is not a :class:`str` or `pattern` is not a</span>
+<span class="sd">                :class:`.Pattern` instance</span>
+<span class="sd">            ValueError: if `pattern` is not set up to match a</span>
+<span class="sd">                :class:`.ProtoExpr`; if there there is already a rule with the</span>
+<span class="sd">                same `name`; if `replacement` is not a callable or does not</span>
+<span class="sd">                take all the wildcard names in `pattern` as arguments</span>
+<span class="sd">            AttributeError: If invalid `attr`</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            The &quot;automatic&quot; rules added by this method are applied *before*</span>
+<span class="sd">            expressions are instantiated (against a corresponding</span>
+<span class="sd">            :class:`.ProtoExpr`). In contrast,</span>
+<span class="sd">            :meth:`apply_rules`/:meth:`apply_rule` are applied to fully</span>
+<span class="sd">            instantiated objects.</span>
+
+<span class="sd">            The :func:`.temporary_rules` context manager may be used to create</span>
+<span class="sd">            a context in which rules may be defined locally.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">qalgebra.utils.check_rules</span> <span class="kn">import</span> <span class="n">check_rules_dict</span>
+
+        <span class="k">if</span> <span class="n">attr</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">attr</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_rules_attr</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Duplicate key &#39;</span><span class="si">%s</span><span class="s2">&#39;: rule already exists&quot;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
+        <span class="nb">getattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+            <span class="n">check_rules_dict</span><span class="p">([(</span><span class="n">name</span><span class="p">,</span> <span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">replacement</span><span class="p">))])</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Expression.show_rules"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.show_rules">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">show_rules</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">names</span><span class="p">,</span> <span class="n">attr</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Print algebraic rules used by :class:`create`</span>
+
+<span class="sd">        Print a summary of the algebraic rules with the given names, or all</span>
+<span class="sd">        rules if not names a given.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            names (str): Names of rules to show</span>
+<span class="sd">            attr (None or str): Name of the class attribute from which to get</span>
+<span class="sd">                the rules. Cf. :meth:`add_rule`.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            AttributeError: If invalid `attr`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">qalgebra.printing</span> <span class="kn">import</span> <span class="n">srepr</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">attr</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">attr</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_rules_attr</span><span class="p">()</span>
+            <span class="n">rules</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="n">rules</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">rule</span><span class="p">)</span> <span class="ow">in</span> <span class="n">rules</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">pat</span><span class="p">,</span> <span class="n">repl</span> <span class="o">=</span> <span class="n">rule</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    PATTERN:&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="n">textwrap</span><span class="o">.</span><span class="n">indent</span><span class="p">(</span>
+                    <span class="n">textwrap</span><span class="o">.</span><span class="n">dedent</span><span class="p">(</span><span class="n">srepr</span><span class="p">(</span><span class="n">pat</span><span class="p">,</span> <span class="n">indented</span><span class="o">=</span><span class="kc">True</span><span class="p">)),</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="mi">8</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    REPLACEMENT:&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="n">textwrap</span><span class="o">.</span><span class="n">indent</span><span class="p">(</span>
+                    <span class="n">textwrap</span><span class="o">.</span><span class="n">dedent</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">getsource</span><span class="p">(</span><span class="n">repl</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()),</span>
+                    <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="mi">8</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Expression.del_rules"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.del_rules">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">del_rules</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">names</span><span class="p">,</span> <span class="n">attr</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Delete algebraic rules used by :meth:`create`</span>
+
+<span class="sd">        Remove the rules with the given `names`, or all rules if no names are</span>
+<span class="sd">        given</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            names (str): Names of rules to delete</span>
+<span class="sd">            attr (None or str): Name of the class attribute from which to</span>
+<span class="sd">                delete the rules. Cf. :meth:`add_rule`.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            KeyError: If any rules in `names` does not exist</span>
+<span class="sd">            AttributeError: If invalid `attr`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">attr</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">attr</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_rules_attr</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">getattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>  <span class="c1"># raise AttributeError if wrong attr</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">OrderedDict</span><span class="p">())</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+                <span class="k">del</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">attr</span><span class="p">)[</span><span class="n">name</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Expression.rules"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.rules">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">rules</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">attr</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Iterable of rule names used by :meth:`create`</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            attr (None or str): Name of the class attribute to which to get the</span>
+<span class="sd">                names. If None, one of ``&#39;_rules&#39;``, ``&#39;_binary_rules&#39;`` is</span>
+<span class="sd">                automatically chosen</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">attr</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">attr</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_rules_attr</span><span class="p">()</span>
+            <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">()</span></div>
+
+    <span class="nd">@property</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">args</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The tuple of positional arguments for the instantiation of the</span>
+<span class="sd">        Expression&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The dictionary of keyword-only arguments for the instantiation of</span>
+<span class="sd">        the Expression&quot;&quot;&quot;</span>
+        <span class="c1"># Subclasses must override this property if and only if they define</span>
+        <span class="c1"># keyword-only arguments in their __init__ method</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_has_kwargs&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_has_kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+                <span class="s2">&quot;Class </span><span class="si">%s</span><span class="s2"> does not provide a kwargs property&quot;</span>
+                <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="p">{}</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">minimal_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;A &quot;minimal&quot; dictionary of keyword-only arguments, i.e. a subset of</span>
+<span class="sd">        `kwargs` that may exclude default options&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="bp">self</span> <span class="ow">is</span> <span class="n">other</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_instance_key</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_instance_key</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hash</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_hash</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_instance_key</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hash</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># This method will be replaced by init_printing()</span>
+        <span class="kn">from</span> <span class="nn">qalgebra.printing</span> <span class="kn">import</span> <span class="n">init_printing</span>
+
+        <span class="n">init_printing</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># This method will be replaced by init_printing()</span>
+        <span class="kn">from</span> <span class="nn">qalgebra.printing</span> <span class="kn">import</span> <span class="n">init_printing</span>
+
+        <span class="n">init_printing</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Expression.substitute"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.substitute">[docs]</a>    <span class="k">def</span> <span class="nf">substitute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var_map</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Substitute sub-expressions</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            var_map (dict): Dictionary with entries of the form</span>
+<span class="sd">                ``{expr: substitution}``</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span> <span class="ow">in</span> <span class="n">var_map</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">var_map</span><span class="p">[</span><span class="bp">self</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_substitute</span><span class="p">(</span><span class="n">var_map</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_substitute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var_map</span><span class="p">,</span> <span class="n">safe</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Implementation of :meth:`substitute`.</span>
+
+<span class="sd">        For internal use, the `safe` keyword argument allows to perform a</span>
+<span class="sd">        substitution on the `args` and `kwargs` of the expression only,</span>
+<span class="sd">        guaranteeing that the type of the expression does not change, at the</span>
+<span class="sd">        cost of possibly not returning a maximally simplified expression. The</span>
+<span class="sd">        `safe` keyword is not handled recursively, i.e. any `args`/`kwargs`</span>
+<span class="sd">        will be fully simplified, possibly changing their types.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span> <span class="ow">in</span> <span class="n">var_map</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">safe</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">var_map</span><span class="p">[</span><span class="bp">self</span><span class="p">])</span> <span class="o">==</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)):</span>
+                <span class="k">return</span> <span class="n">var_map</span><span class="p">[</span><span class="bp">self</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="n">Singleton</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span>
+        <span class="n">new_args</span> <span class="o">=</span> <span class="p">[</span><span class="n">substitute</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">var_map</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">]</span>
+        <span class="n">new_kwargs</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">key</span><span class="p">:</span> <span class="n">substitute</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">var_map</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">safe</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="o">*</span><span class="n">new_args</span><span class="p">,</span> <span class="o">**</span><span class="n">new_kwargs</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">*</span><span class="n">new_args</span><span class="p">,</span> <span class="o">**</span><span class="n">new_kwargs</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Expression.doit"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.doit">[docs]</a>    <span class="k">def</span> <span class="nf">doit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Rewrite (sub-)expressions in a more explicit form</span>
+
+<span class="sd">        Return a modified expression that is more explicit than the original</span>
+<span class="sd">        expression. The definition of &quot;more explicit&quot; is decided by the</span>
+<span class="sd">        relevant subclass, e.g. a :meth:`Commutator &lt;.Commutator.doit&gt;` is</span>
+<span class="sd">        written out according to its definition.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            classes (None or list): an optional list of classes. If given,</span>
+<span class="sd">                only (sub-)expressions that an instance of one of the classes</span>
+<span class="sd">                in the list will be rewritten.</span>
+<span class="sd">            recursive (bool): If True, also rewrite any sub-expressions of any</span>
+<span class="sd">                rewritten expression. Note that :meth:`doit` always recurses</span>
+<span class="sd">                into sub-expressions of expressions not affected by it.</span>
+<span class="sd">            kwargs: Any remaining keyword arguments may be used by the</span>
+<span class="sd">                :meth:`doit` method of a particular expression.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">            Consider the following expression::</span>
+
+<span class="sd">                &gt;&gt;&gt; from sympy import IndexedBase</span>
+<span class="sd">                &gt;&gt;&gt; i = IdxSym(&#39;i&#39;); N = symbols(&#39;N&#39;)</span>
+<span class="sd">                &gt;&gt;&gt; Asym, Csym = symbols(&#39;A, C&#39;, cls=IndexedBase)</span>
+<span class="sd">                &gt;&gt;&gt; A = lambda i: OperatorSymbol(StrLabel(Asym[i]), hs=0)</span>
+<span class="sd">                &gt;&gt;&gt; B = OperatorSymbol(&#39;B&#39;, hs=0)</span>
+<span class="sd">                &gt;&gt;&gt; C = lambda i: OperatorSymbol(StrLabel(Csym[i]), hs=0)</span>
+<span class="sd">                &gt;&gt;&gt; def show(expr):</span>
+<span class="sd">                ...     print(unicode(expr, show_hs_label=False))</span>
+<span class="sd">                &gt;&gt;&gt; expr = Sum(i, 1, 3)(Commutator(A(i), B) + C(i)) / N</span>
+<span class="sd">                &gt;&gt;&gt; show(expr)</span>
+<span class="sd">                1/N (∑_{i=1}^{3} (Ĉ_i + [Â_i, B̂]))</span>
+
+<span class="sd">            Calling :meth:`doit` without parameters rewrites both the indexed</span>
+<span class="sd">            sum and the commutator::</span>
+
+<span class="sd">                &gt;&gt;&gt; show(expr.doit())</span>
+<span class="sd">                1/N (Ĉ₁ + Ĉ₂ + Ĉ₃ + Â₁ B̂ + Â₂ B̂ + Â₃ B̂ - B̂ Â₁ - B̂ Â₂ - B̂ Â₃)</span>
+
+<span class="sd">            A non-recursive call only expands the sum, as it does not recurse</span>
+<span class="sd">            into the expanded summands::</span>
+
+<span class="sd">                &gt;&gt;&gt; show(expr.doit(recursive=False))</span>
+<span class="sd">                1/N (Ĉ₁ + Ĉ₂ + Ĉ₃ + [Â₁, B̂] + [Â₂, B̂] + [Â₃, B̂])</span>
+
+<span class="sd">            We can selectively expand only the sum or only the commutator::</span>
+
+<span class="sd">                &gt;&gt;&gt; show(expr.doit(classes=[IndexedSum]))</span>
+<span class="sd">                1/N (Ĉ₁ + Ĉ₂ + Ĉ₃ + [Â₁, B̂] + [Â₂, B̂] + [Â₃, B̂])</span>
+
+<span class="sd">                &gt;&gt;&gt; show(expr.doit(classes=[Commutator]))</span>
+<span class="sd">                1/N (∑_{i=1}^{3} (Ĉ_i - B̂ Â_i + Â_i B̂))</span>
+
+<span class="sd">            Also we can pass a keyword argument that expands the sum only to</span>
+<span class="sd">            the 2nd term, as documented in :meth:`.Commutator.doit`</span>
+
+<span class="sd">                &gt;&gt;&gt; show(expr.doit(classes=[IndexedSum], max_terms=2))</span>
+<span class="sd">                1/N (Ĉ₁ + Ĉ₂ + [Â₁, B̂] + [Â₂, B̂])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">in_classes</span> <span class="o">=</span> <span class="p">(</span><span class="n">classes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">any</span><span class="p">(</span>
+            <span class="p">[</span><span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span> <span class="k">for</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">in_classes</span><span class="p">:</span>
+            <span class="n">new</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_doit</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">new</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">new</span> <span class="o">==</span> <span class="bp">self</span><span class="p">)</span> <span class="ow">or</span> <span class="n">recursive</span><span class="p">:</span>
+            <span class="n">new_args</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">new</span><span class="o">.</span><span class="n">args</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">Expression</span><span class="p">):</span>
+                    <span class="n">new_args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="n">arg</span><span class="o">.</span><span class="n">doit</span><span class="p">(</span>
+                            <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="n">recursive</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">new_args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+            <span class="n">new_kwargs</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">([])</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span> <span class="ow">in</span> <span class="n">new</span><span class="o">.</span><span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">Expression</span><span class="p">):</span>
+                    <span class="n">new_kwargs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="n">doit</span><span class="p">(</span>
+                        <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="n">recursive</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">new_kwargs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+            <span class="n">new</span> <span class="o">=</span> <span class="n">new</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">*</span><span class="n">new_args</span><span class="p">,</span> <span class="o">**</span><span class="n">new_kwargs</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">new</span> <span class="o">!=</span> <span class="bp">self</span> <span class="ow">and</span> <span class="n">recursive</span><span class="p">:</span>
+                <span class="n">new</span> <span class="o">=</span> <span class="n">new</span><span class="o">.</span><span class="n">doit</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">new</span></div>
+
+    <span class="k">def</span> <span class="nf">_doit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Non-recursively rewrite expression in a more explicit form&quot;&quot;&quot;</span>
+        <span class="c1"># Any subclass that overrides :meth:`_doit` should also override</span>
+        <span class="c1"># :meth:`doit` with a stub (calling ``super().doit`` only), but</span>
+        <span class="c1"># also provide the documentation for :meth:`_doit` (since :meth:`_doit`</span>
+        <span class="c1"># won&#39;t be rendered by Sphinx)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+<div class="viewcode-block" id="Expression.apply"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.apply">[docs]</a>    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Apply `func` to expression.</span>
+
+<span class="sd">        Equivalent to ``func(self, *args, **kwargs)``. This method exists for</span>
+<span class="sd">        easy chaining::</span>
+
+<span class="sd">            &gt;&gt;&gt; A, B, C, D = (</span>
+<span class="sd">            ...     OperatorSymbol(s, hs=1) for s in (&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;))</span>
+<span class="sd">            &gt;&gt;&gt; expr = (</span>
+<span class="sd">            ...     Commutator(A * B, C * D)</span>
+<span class="sd">            ...     .apply(lambda expr: expr**2)</span>
+<span class="sd">            ...     .apply(expand_commutators_leibniz, expand_expr=False)</span>
+<span class="sd">            ...     .substitute({A: IdentityOperator}))</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Expression.apply_rules"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.apply_rules">[docs]</a>    <span class="k">def</span> <span class="nf">apply_rules</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rules</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Rebuild the expression while applying a list of rules</span>
+
+<span class="sd">        The rules are applied against the instantiated expression, and any</span>
+<span class="sd">        sub-expressions if `recursive` is True. Rule application is best though</span>
+<span class="sd">        of as a pattern-based substitution. This is different from the</span>
+<span class="sd">        *automatic* rules that :meth:`create` uses (see :meth:`add_rule`),</span>
+<span class="sd">        which are applied *before* expressions are instantiated.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            rules (list or ~collections.OrderedDict): List of rules or</span>
+<span class="sd">                dictionary mapping names to rules, where each rule is a tuple</span>
+<span class="sd">                (:class:`Pattern`, replacement callable), cf.</span>
+<span class="sd">                :meth:`apply_rule`</span>
+<span class="sd">            recursive (bool): If true (default), apply rules to all arguments</span>
+<span class="sd">                and keyword arguments of the expression. Otherwise, only the</span>
+<span class="sd">                expression itself will be re-instantiated.</span>
+
+<span class="sd">        If `rules` is a dictionary, the keys (rules names) are used only for</span>
+<span class="sd">        debug logging, to allow an analysis of which rules lead to the final</span>
+<span class="sd">        form of an expression.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">recursive</span><span class="p">:</span>
+            <span class="n">new_args</span> <span class="o">=</span> <span class="p">[</span><span class="n">_apply_rules</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">rules</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">]</span>
+            <span class="n">new_kwargs</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="n">key</span><span class="p">:</span> <span class="n">_apply_rules</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">rules</span><span class="p">)</span>
+                <span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="p">}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">new_args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span>
+            <span class="n">new_kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span>
+        <span class="n">simplified</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">*</span><span class="n">new_args</span><span class="p">,</span> <span class="o">**</span><span class="n">new_kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_apply_rules_no_recurse</span><span class="p">(</span><span class="n">simplified</span><span class="p">,</span> <span class="n">rules</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Expression.apply_rule"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.apply_rule">[docs]</a>    <span class="k">def</span> <span class="nf">apply_rule</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">replacement</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Apply a single rules to the expression</span>
+
+<span class="sd">        This is equivalent to :meth:`apply_rules` with</span>
+<span class="sd">        ``rules=[(pattern, replacement)]``</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            pattern (.Pattern): A pattern containing one or more wildcards</span>
+<span class="sd">            replacement (callable): A callable that takes the wildcard names in</span>
+<span class="sd">                `pattern` as keyword arguments, and returns a replacement for</span>
+<span class="sd">                any expression that `pattern` matches.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            Consider the following Heisenberg Hamiltonian::</span>
+
+<span class="sd">                &gt;&gt;&gt; tls = SpinSpace(label=&#39;s&#39;, spin=&#39;1/2&#39;)</span>
+<span class="sd">                &gt;&gt;&gt; i, j, n = symbols(&#39;i, j, n&#39;, cls=IdxSym)</span>
+<span class="sd">                &gt;&gt;&gt; J = symbols(&#39;J&#39;, cls=sympy.IndexedBase)</span>
+<span class="sd">                &gt;&gt;&gt; def Sig(i):</span>
+<span class="sd">                ...     return OperatorSymbol(</span>
+<span class="sd">                ...         StrLabel(sympy.Indexed(&#39;sigma&#39;, i)), hs=tls)</span>
+<span class="sd">                &gt;&gt;&gt; H = - Sum(i, tls)(Sum(j, tls)(</span>
+<span class="sd">                ...     J[i, j] * Sig(i) * Sig(j)))</span>
+<span class="sd">                &gt;&gt;&gt; unicode(H)</span>
+<span class="sd">                &#39;- (∑_{i,j ∈ ℌₛ} J_ij σ̂_i^(s) σ̂_j^(s))&#39;</span>
+
+<span class="sd">            We can transform this into a classical Hamiltonian by replacing the</span>
+<span class="sd">            operators with scalars::</span>
+
+<span class="sd">                &gt;&gt;&gt; H_classical = H.apply_rule(</span>
+<span class="sd">                ...     pattern(OperatorSymbol, wc(&#39;label&#39;, head=StrLabel)),</span>
+<span class="sd">                ...     lambda label: label.expr * IdentityOperator)</span>
+<span class="sd">                &gt;&gt;&gt; unicode(H_classical)</span>
+<span class="sd">                &#39;- (∑_{i,j ∈ ℌₛ} J_ij σ_i σ_j)&#39;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_rules</span><span class="p">([(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">replacement</span><span class="p">)],</span> <span class="n">recursive</span><span class="o">=</span><span class="n">recursive</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Expression.rebuild"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.rebuild">[docs]</a>    <span class="k">def</span> <span class="nf">rebuild</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Recursively re-instantiate the expression</span>
+
+<span class="sd">        This is generally used within a managed context such as</span>
+<span class="sd">        :func:`.extra_rules`, :func:`.extra_binary_rules`, or</span>
+<span class="sd">        :func:`.no_rules`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_rules</span><span class="p">(</span><span class="n">rules</span><span class="o">=</span><span class="p">{})</span></div>
+
+    <span class="k">def</span> <span class="nf">_repr_latex_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;For compatibility with the IPython notebook, generate TeX expression</span>
+<span class="sd">        and surround it with $&#39;s.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># This method will be replaced by init_printing()</span>
+        <span class="kn">from</span> <span class="nn">qalgebra.printing</span> <span class="kn">import</span> <span class="n">init_printing</span>
+
+        <span class="n">init_printing</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_repr_latex_</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_sympy_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># By default, when a QAlgebra expression occurring in a SymPy context</span>
+        <span class="c1"># (e.g.  when converting a QAlgebra Matrix to a Sympy Matrix), sympify</span>
+        <span class="c1"># will try to parse the string representation of the Expression. This</span>
+        <span class="c1"># will usually fail, but when it doesn&#39;t, it always produces nonsense.</span>
+        <span class="c1"># Thus, we make it fail explicitly</span>
+        <span class="k">raise</span> <span class="n">SympifyError</span><span class="p">(</span><span class="s2">&quot;QAlgebra expressions cannot be converted to SymPy&quot;</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">free_symbols</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set of free SymPy symbols contained within the expression.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_free_symbols</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="nb">set</span><span class="o">.</span><span class="n">union</span><span class="p">(</span>
+                <span class="nb">set</span><span class="p">([]),</span>  <span class="c1"># dummy arg (union fails without arguments)</span>
+                <span class="o">*</span><span class="p">[</span><span class="n">_free_symbols</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+            <span class="p">)</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+                <span class="nb">set</span><span class="p">([]),</span>  <span class="c1"># dummy arg (update fails without arguments)</span>
+                <span class="o">*</span><span class="p">[</span><span class="n">_free_symbols</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_free_symbols</span> <span class="o">=</span> <span class="n">res</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_free_symbols</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">bound_symbols</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set of bound SymPy symbols in the expression&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bound_symbols</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="nb">set</span><span class="o">.</span><span class="n">union</span><span class="p">(</span>
+                <span class="nb">set</span><span class="p">([]),</span>  <span class="c1"># dummy arg (union fails without arguments)</span>
+                <span class="o">*</span><span class="p">[</span><span class="n">_bound_symbols</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+            <span class="p">)</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+                <span class="nb">set</span><span class="p">([]),</span>  <span class="c1"># dummy arg (update fails without arguments)</span>
+                <span class="o">*</span><span class="p">[</span><span class="n">_bound_symbols</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_bound_symbols</span> <span class="o">=</span> <span class="n">res</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bound_symbols</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">all_symbols</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Combination of :attr:`free_symbols` and :attr:`bound_symbols`&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_all_symbols</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_all_symbols</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">free_symbols</span> <span class="o">|</span> <span class="bp">self</span><span class="o">.</span><span class="n">bound_symbols</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_all_symbols</span>
+
+<div class="viewcode-block" id="Expression.__ne__"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.__ne__">[docs]</a>    <span class="k">def</span> <span class="fm">__ne__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;If it is well-defined (i.e. boolean), simply return</span>
+<span class="sd">        the negation of ``self.__eq__(other)``</span>
+<span class="sd">        Otherwise return NotImplemented.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">eq</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__eq__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">eq</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">bool</span><span class="p">:</span>
+            <span class="k">return</span> <span class="ow">not</span> <span class="n">eq</span>
+        <span class="k">return</span> <span class="bp">NotImplemented</span></div></div>
+
+
+<div class="viewcode-block" id="substitute"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.substitute">[docs]</a><span class="k">def</span> <span class="nf">substitute</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">var_map</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Substitute symbols or (sub-)expressions with the given replacements and</span>
+<span class="sd">    re-evalute the result</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        expr: The expression in which to perform the substitution</span>
+<span class="sd">        var_map (dict): The substitution dictionary.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">SympyBasic</span><span class="p">):</span>
+            <span class="n">sympy_var_map</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="n">var_map</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">SympyBasic</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="n">expr</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">sympy_var_map</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">expr</span><span class="o">.</span><span class="n">substitute</span><span class="p">(</span><span class="n">var_map</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">expr</span> <span class="ow">in</span> <span class="n">var_map</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">var_map</span><span class="p">[</span><span class="n">expr</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">expr</span></div>
+
+
+<span class="k">def</span> <span class="nf">_apply_rules_no_recurse</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">rules</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Non-recursively match expr again all rules&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># `rules` is an OrderedDict key =&gt; (pattern, replacement)</span>
+        <span class="n">items</span> <span class="o">=</span> <span class="n">rules</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+        <span class="c1"># `rules` is a list of (pattern, replacement) tuples</span>
+        <span class="n">items</span> <span class="o">=</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">rules</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="p">(</span><span class="n">pat</span><span class="p">,</span> <span class="n">replacement</span><span class="p">)</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="n">matched</span> <span class="o">=</span> <span class="n">pat</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">matched</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">replacement</span><span class="p">(</span><span class="o">**</span><span class="n">matched</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">CannotSimplify</span><span class="p">:</span>
+                <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">expr</span>
+
+
+<span class="k">def</span> <span class="nf">_apply_rules</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">rules</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Recursively re-instantiate the expression, while applying all of the</span>
+<span class="sd">    given `rules` to all encountered (sub-) expressions</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        expr:  Any Expression or scalar object</span>
+<span class="sd">        rules (list, ~collections.OrderedDict): A list of rules dictionary</span>
+<span class="sd">            mapping names to rules, where each rule is a tuple ``(pattern,</span>
+<span class="sd">            replacement)`` where `pattern` is an instance of :class:`.Pattern`)</span>
+<span class="sd">            and `replacement` is a callable. The pattern will be matched</span>
+<span class="sd">            against any expression that is encountered during the</span>
+<span class="sd">            re-instantiation. If the `pattern` matches, then the</span>
+<span class="sd">            (sub-)expression is replaced by the result of calling `replacement`</span>
+<span class="sd">            while passing any wildcards from `pattern` as keyword arguments. If</span>
+<span class="sd">            `replacement` raises :exc:`.CannotSimplify`, it will be ignored</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        Instead of or in addition to passing `rules`, `simplify` can often be</span>
+<span class="sd">        combined with e.g. `extra_rules` / `extra_binary_rules` context</span>
+<span class="sd">        managers. If a simplification can be handled through these context</span>
+<span class="sd">        managers, this is usually more efficient than an equivalent rule.</span>
+<span class="sd">        However, both really are complementary: the rules defined in the</span>
+<span class="sd">        context managers are applied *before* instantiation (hence these these</span>
+<span class="sd">        patterns are instantiated through `pattern_head`). In contrast, the</span>
+<span class="sd">        patterns defined in `rules` are applied against instantiated</span>
+<span class="sd">        expressions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">LOG</span><span class="p">:</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;QAlgebra.create&#39;</span><span class="p">)</span>
+    <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">Expression</span><span class="p">):</span>
+        <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ProtoExpr</span><span class="o">.</span><span class="n">from_expr</span><span class="p">(</span><span class="n">expr</span><span class="p">))</span>
+        <span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">LOG</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                <span class="s2">&quot;Starting at level 1: placing expr on stack: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">expr</span>
+            <span class="p">)</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="n">path</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">arg</span> <span class="o">=</span> <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">LOG</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                        <span class="s2">&quot;At level </span><span class="si">%d</span><span class="s2">: considering arg </span><span class="si">%d</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                        <span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">),</span>
+                        <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+                        <span class="n">arg</span><span class="p">,</span>
+                    <span class="p">)</span>
+            <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+                <span class="c1"># done at this level</span>
+                <span class="n">path</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                <span class="n">expr</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span><span class="o">.</span><span class="n">instantiate</span><span class="p">()</span>
+                <span class="n">expr</span> <span class="o">=</span> <span class="n">_apply_rules_no_recurse</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">rules</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">LOG</span><span class="p">:</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                            <span class="s2">&quot;Complete level 1: returning simplified expr: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                            <span class="n">expr</span><span class="p">,</span>
+                        <span class="p">)</span>
+                    <span class="k">return</span> <span class="n">expr</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">path</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">expr</span>
+                    <span class="n">path</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="k">if</span> <span class="n">LOG</span><span class="p">:</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                            <span class="s2">&quot;Complete level </span><span class="si">%d</span><span class="s2">. At level </span><span class="si">%d</span><span class="s2">, setting arg </span><span class="si">%d</span><span class="s2"> &quot;</span>
+                            <span class="s2">&quot;to simplified expr: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                            <span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+                            <span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">),</span>
+                            <span class="n">path</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+                            <span class="n">expr</span><span class="p">,</span>
+                        <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">Expression</span><span class="p">):</span>
+                    <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ProtoExpr</span><span class="o">.</span><span class="n">from_expr</span><span class="p">(</span><span class="n">arg</span><span class="p">))</span>
+                    <span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">LOG</span><span class="p">:</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;   placing arg on stack&quot;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>  <span class="c1"># scalar</span>
+                    <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">_apply_rules_no_recurse</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">rules</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">LOG</span><span class="p">:</span>
+                        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                            <span class="s2">&quot;   arg is leaf, replacing with simplified expr: &quot;</span>
+                            <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                            <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">],</span>
+                        <span class="p">)</span>
+                    <span class="n">path</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_apply_rules_no_recurse</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">rules</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_free_symbols</span><span class="p">(</span><span class="n">expr</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">expr</span><span class="o">.</span><span class="n">free_symbols</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">set</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">_bound_symbols</span><span class="p">(</span><span class="n">expr</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">expr</span><span class="o">.</span><span class="n">bound_symbols</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">set</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="Operation"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Operation">[docs]</a><span class="k">class</span> <span class="nc">Operation</span><span class="p">(</span><span class="n">Expression</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base class for &quot;operations&quot;</span>
+
+<span class="sd">    Operations are Expressions that act algebraically on other expressions</span>
+<span class="sd">    (their &quot;operands&quot;).</span>
+
+<span class="sd">    Operations differ from more general Expressions by the convention that the</span>
+<span class="sd">    arguments of the Operator are exactly the operands (which must be members</span>
+<span class="sd">    of the algebra!) Any other parameters (non-operands) that may be required</span>
+<span class="sd">    must be given as keyword-arguments.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">operands</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_operands</span> <span class="o">=</span> <span class="n">operands</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">operands</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">operands</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Tuple of operands of the operation&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_operands</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">args</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Alias for operands&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_operands</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Michael Goerz
+      <span class="lastupdated">
+        Last updated on Feb 06, 2020.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

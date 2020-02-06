@@ -1,0 +1,330 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>qalgebra.core.exceptions &mdash; QAlgebra 2.0.0-dev (d784b1d) documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/clipboard.min.js"></script>
+        <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script type="text/javascript" src="../../../_static/doctr-versions-menu.js"></script>
+        <script type="text/javascript">var copybuttonSkipText = '>>> ';</script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/mycss.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0.0-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">QAlgebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../history.html">History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../API/qalgebra.html">API of the QAlgebra package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../qalgebra.html">qalgebra</a> &raquo;</li>
+        
+      <li>qalgebra.core.exceptions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for qalgebra.core.exceptions</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Exceptions and Errors raised by QAlgebra&quot;&quot;&quot;</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;AlgebraException&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;AlgebraError&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;InfiniteSumError&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;CannotSimplify&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;CannotConvertToSLH&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;CannotVisualize&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;WrongCDimError&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;IncompatibleBlockStructures&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;CannotEliminateAutomatically&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;BasisNotSetError&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;UnequalSpaces&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;OverlappingSpaces&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SpaceTooLargeError&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;CannotSymbolicallyDiagonalize&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;BadLiouvillianError&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;NonSquareMatrix&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;NoConjugateMatrix&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<div class="viewcode-block" id="AlgebraException"><a class="viewcode-back" href="../../../API/qalgebra.core.exceptions.html#qalgebra.core.exceptions.AlgebraException">[docs]</a><span class="k">class</span> <span class="nc">AlgebraException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base class for all algebraic exceptions&quot;&quot;&quot;</span>
+
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="AlgebraError"><a class="viewcode-back" href="../../../API/qalgebra.core.exceptions.html#qalgebra.core.exceptions.AlgebraError">[docs]</a><span class="k">class</span> <span class="nc">AlgebraError</span><span class="p">(</span><span class="n">AlgebraException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base class for all algebraic errors&quot;&quot;&quot;</span>
+
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="InfiniteSumError"><a class="viewcode-back" href="../../../API/qalgebra.core.exceptions.html#qalgebra.core.exceptions.InfiniteSumError">[docs]</a><span class="k">class</span> <span class="nc">InfiniteSumError</span><span class="p">(</span><span class="n">AlgebraError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raised when expanding a sum into an infinite number of terms&quot;&quot;&quot;</span>
+
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="CannotSimplify"><a class="viewcode-back" href="../../../API/qalgebra.core.exceptions.html#qalgebra.core.exceptions.CannotSimplify">[docs]</a><span class="k">class</span> <span class="nc">CannotSimplify</span><span class="p">(</span><span class="n">AlgebraException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raised when a rule cannot further simplify an expression&quot;&quot;&quot;</span>
+
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="CannotConvertToSLH"><a class="viewcode-back" href="../../../API/qalgebra.core.exceptions.html#qalgebra.core.exceptions.CannotConvertToSLH">[docs]</a><span class="k">class</span> <span class="nc">CannotConvertToSLH</span><span class="p">(</span><span class="n">AlgebraException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raised when a circuit algebra object cannot be converted to SLH&quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="CannotVisualize"><a class="viewcode-back" href="../../../API/qalgebra.core.exceptions.html#qalgebra.core.exceptions.CannotVisualize">[docs]</a><span class="k">class</span> <span class="nc">CannotVisualize</span><span class="p">(</span><span class="n">AlgebraException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raised when a circuit cannot be visually represented.&quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="WrongCDimError"><a class="viewcode-back" href="../../../API/qalgebra.core.exceptions.html#qalgebra.core.exceptions.WrongCDimError">[docs]</a><span class="k">class</span> <span class="nc">WrongCDimError</span><span class="p">(</span><span class="n">AlgebraError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raised for mismatched channel number in circuit series&quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="IncompatibleBlockStructures"><a class="viewcode-back" href="../../../API/qalgebra.core.exceptions.html#qalgebra.core.exceptions.IncompatibleBlockStructures">[docs]</a><span class="k">class</span> <span class="nc">IncompatibleBlockStructures</span><span class="p">(</span><span class="n">AlgebraError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raised for invalid block-decomposition</span>
+
+<span class="sd">    This is raised when a circuit decomposition into a block-structure is</span>
+<span class="sd">    requested that is icompatible with the actual block structure of the</span>
+<span class="sd">    circuit expression.&quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="CannotEliminateAutomatically"><a class="viewcode-back" href="../../../API/qalgebra.core.exceptions.html#qalgebra.core.exceptions.CannotEliminateAutomatically">[docs]</a><span class="k">class</span> <span class="nc">CannotEliminateAutomatically</span><span class="p">(</span><span class="n">AlgebraError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raised when attempted automatic adiabatic elimination fails.&quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="BasisNotSetError"><a class="viewcode-back" href="../../../API/qalgebra.core.exceptions.html#qalgebra.core.exceptions.BasisNotSetError">[docs]</a><span class="k">class</span> <span class="nc">BasisNotSetError</span><span class="p">(</span><span class="n">AlgebraError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raised if the basis or a Hilbert space dimension is unavailable&quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="UnequalSpaces"><a class="viewcode-back" href="../../../API/qalgebra.core.exceptions.html#qalgebra.core.exceptions.UnequalSpaces">[docs]</a><span class="k">class</span> <span class="nc">UnequalSpaces</span><span class="p">(</span><span class="n">AlgebraError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raised when objects fail to be in the same Hilbert space.</span>
+
+<span class="sd">    This happens for example when trying to add two states from different</span>
+<span class="sd">    Hilbert spaces.&quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="OverlappingSpaces"><a class="viewcode-back" href="../../../API/qalgebra.core.exceptions.html#qalgebra.core.exceptions.OverlappingSpaces">[docs]</a><span class="k">class</span> <span class="nc">OverlappingSpaces</span><span class="p">(</span><span class="n">AlgebraError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raised when objects fail to be in separate Hilbert spaces.&quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="SpaceTooLargeError"><a class="viewcode-back" href="../../../API/qalgebra.core.exceptions.html#qalgebra.core.exceptions.SpaceTooLargeError">[docs]</a><span class="k">class</span> <span class="nc">SpaceTooLargeError</span><span class="p">(</span><span class="n">AlgebraError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raised when objects fail to be have overlapping Hilbert spaces.&quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="CannotSymbolicallyDiagonalize"><a class="viewcode-back" href="../../../API/qalgebra.core.exceptions.html#qalgebra.core.exceptions.CannotSymbolicallyDiagonalize">[docs]</a><span class="k">class</span> <span class="nc">CannotSymbolicallyDiagonalize</span><span class="p">(</span><span class="n">AlgebraException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Matrix cannot be diagonalized analytically.</span>
+
+<span class="sd">    Signals that a fallback to numerical diagonalization is required.</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="BadLiouvillianError"><a class="viewcode-back" href="../../../API/qalgebra.core.exceptions.html#qalgebra.core.exceptions.BadLiouvillianError">[docs]</a><span class="k">class</span> <span class="nc">BadLiouvillianError</span><span class="p">(</span><span class="n">AlgebraError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raised when a Liouvillian is not of standard Lindblad form.&quot;&quot;&quot;</span>
+
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="NonSquareMatrix"><a class="viewcode-back" href="../../../API/qalgebra.core.exceptions.html#qalgebra.core.exceptions.NonSquareMatrix">[docs]</a><span class="k">class</span> <span class="nc">NonSquareMatrix</span><span class="p">(</span><span class="n">AlgebraError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raised when a :class:`.Matrix` fails to be square&quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="NoConjugateMatrix"><a class="viewcode-back" href="../../../API/qalgebra.core.exceptions.html#qalgebra.core.exceptions.NoConjugateMatrix">[docs]</a><span class="k">class</span> <span class="nc">NoConjugateMatrix</span><span class="p">(</span><span class="n">AlgebraError</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raised when entries of :class:`.Matrix` have no defined conjugate&quot;&quot;&quot;</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Michael Goerz
+      <span class="lastupdated">
+        Last updated on Feb 06, 2020.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

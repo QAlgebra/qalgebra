@@ -1,0 +1,431 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>qalgebra.printing.base &mdash; QAlgebra 2.0.0-dev (d784b1d) documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/clipboard.min.js"></script>
+        <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script type="text/javascript" src="../../../_static/doctr-versions-menu.js"></script>
+        <script type="text/javascript">var copybuttonSkipText = '>>> ';</script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/mycss.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0.0-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">QAlgebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../history.html">History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../API/qalgebra.html">API of the QAlgebra package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../qalgebra.html">qalgebra</a> &raquo;</li>
+        
+          <li><a href="../printing.html">qalgebra.printing</a> &raquo;</li>
+        
+      <li>qalgebra.printing.base</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for qalgebra.printing.base</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Provides the base class for Printers&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">sympy.core.basic</span> <span class="kn">import</span> <span class="n">Basic</span> <span class="k">as</span> <span class="n">SympyBasic</span>
+<span class="kn">from</span> <span class="nn">sympy.printing.printer</span> <span class="kn">import</span> <span class="n">Printer</span> <span class="k">as</span> <span class="n">SympyPrinter</span>
+
+<span class="kn">from</span> <span class="nn">..core.scalar_algebra</span> <span class="kn">import</span> <span class="n">Scalar</span>
+<span class="kn">from</span> <span class="nn">..utils.indices</span> <span class="kn">import</span> <span class="n">StrLabel</span>
+<span class="kn">from</span> <span class="nn">._render_head_repr</span> <span class="kn">import</span> <span class="n">render_head_repr</span>
+<span class="kn">from</span> <span class="nn">.sympy</span> <span class="kn">import</span> <span class="n">SympyStrPrinter</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">__private__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;QalgebraBasePrinter&#39;</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="QalgebraBasePrinter"><a class="viewcode-back" href="../../../API/qalgebra.printing.base.html#qalgebra.printing.base.QalgebraBasePrinter">[docs]</a><span class="k">class</span> <span class="nc">QalgebraBasePrinter</span><span class="p">(</span><span class="n">SympyPrinter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base class for all QAlgebra expression printers</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        cache (dict or None): A dict that maps expressions to strings. It may</span>
+<span class="sd">            be given during istantiation to use pre-defined strings for</span>
+<span class="sd">            specific expressions. The cache will be updated as the printer is</span>
+<span class="sd">            used.</span>
+<span class="sd">        settings (dict or None): A dict of settings.</span>
+
+<span class="sd">    Class Attributes:</span>
+<span class="sd">        sympy_printer_cls (type): The class that will be instantiated to print</span>
+<span class="sd">            Sympy expressions</span>
+<span class="sd">        _default_settings (dict): The default value of all settings. Note only</span>
+<span class="sd">            settings for which there are defaults defined here are accepted</span>
+<span class="sd">            when instantiating the printer</span>
+<span class="sd">        printmethod (None or str): Name of a method that expressions may define</span>
+<span class="sd">            to print themeselves.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        cache (dict): Dictionary where the results of any call to</span>
+<span class="sd">            :meth:`doprint` is stored. When :meth:`doprint` is called for an</span>
+<span class="sd">            expression that is already in `cache`, the result from the</span>
+<span class="sd">            cache is returned.</span>
+<span class="sd">        _sympy_printer (sympy.printing.printer.Printer): The printer instance</span>
+<span class="sd">            that will be used to print any Sympy expression.</span>
+<span class="sd">        _allow_caching (bool): A flag that may be set to completely disable</span>
+<span class="sd">            caching</span>
+<span class="sd">        _print_level (int): The recursion depth of :meth:`doprint`</span>
+<span class="sd">            (&gt;= 1 inside any of the ``_print*`` methods)</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        TypeError: If any key in `settings` is not defined in the</span>
+<span class="sd">            `_default_settings` of the printer, respectively the</span>
+<span class="sd">            `sympy_printer_cls`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">sympy_printer_cls</span> <span class="o">=</span> <span class="n">SympyStrPrinter</span>
+
+    <span class="n">_default_settings</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># note that subclasses should always define their own _default_settings</span>
+
+    <span class="n">_allow_caching</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">printmethod</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">settings</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="c1"># This would be more elegant if we declared this as **settings, but we</span>
+        <span class="c1"># want to closely mirror the SymPy implementation. The frontend-facing</span>
+        <span class="c1"># routines, e.g. init_printing or ascii do flatten out the settings</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cache</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">cache</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cache</span> <span class="o">=</span> <span class="n">cache</span>
+        <span class="n">sympy_settings</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">qalgebra_settings</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">settings</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">settings</span><span class="p">:</span>
+                <span class="n">key_ok</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sympy_printer_cls</span><span class="o">.</span><span class="n">_default_settings</span><span class="p">:</span>
+                    <span class="n">key_ok</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="n">sympy_settings</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">settings</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_settings</span><span class="p">:</span>
+                    <span class="n">key_ok</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="n">qalgebra_settings</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">settings</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">key_ok</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                        <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> is not a valid setting for either </span><span class="si">%s</span><span class="s2"> or </span><span class="si">%s</span><span class="s2">&quot;</span>
+                        <span class="o">%</span> <span class="p">(</span>
+                            <span class="n">key</span><span class="p">,</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">sympy_printer_cls</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sympy_printer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sympy_printer_cls</span><span class="p">(</span><span class="n">settings</span><span class="o">=</span><span class="n">sympy_settings</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">settings</span><span class="o">=</span><span class="n">qalgebra_settings</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_render_str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="n">StrLabel</span><span class="p">):</span>
+            <span class="n">string</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">_render</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">expr</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+
+<div class="viewcode-block" id="QalgebraBasePrinter.emptyPrinter"><a class="viewcode-back" href="../../../API/qalgebra.printing.base.html#qalgebra.printing.base.QalgebraBasePrinter.emptyPrinter">[docs]</a>    <span class="k">def</span> <span class="nf">emptyPrinter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fallback method for expressions that neither know how to print</span>
+<span class="sd">        themeselves, nor for which the printer has a suitable ``_print*``</span>
+<span class="sd">        method&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">render_head_repr</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span></div>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">classname</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check whether `expr` is an instance of the class with name</span>
+<span class="sd">        `classname`</span>
+
+<span class="sd">        This is like the builtin `isinstance`, but it take the `classname` a</span>
+<span class="sd">        string, instead of the class directly. Useful for when we don&#39;t want to</span>
+<span class="sd">        import the class for which we want to check (also, remember that</span>
+<span class="sd">        printer choose rendering method based on the class name, so this is</span>
+<span class="sd">        totally ok)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="nb">type</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span><span class="o">.</span><span class="vm">__mro__</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">==</span> <span class="n">classname</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">_get_from_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the result of :meth:`doprint` from the internal cache&quot;&quot;&quot;</span>
+        <span class="c1"># The reason method this is separated out from `doprint` is that</span>
+        <span class="c1"># printers that use identation, e.g. IndentedSReprPrinter, need to</span>
+        <span class="c1"># override how caching is handled, applying variable indentation even</span>
+        <span class="c1"># for cached results</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">is_cached</span> <span class="o">=</span> <span class="n">expr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="c1"># expr is unhashable</span>
+            <span class="n">is_cached</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">is_cached</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">expr</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">_write_to_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">res</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Store the result of :meth:`doprint` in the internal cache&quot;&quot;&quot;</span>
+        <span class="c1"># Well be overwritten by printers that use indentation, see</span>
+        <span class="c1"># _get_from_cache</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">expr</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="c1"># expr is unhashable</span>
+            <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">_print_SCALAR_TYPES</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Render scalars&quot;&quot;&quot;</span>
+        <span class="n">adjoint</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;adjoint&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">adjoint</span><span class="p">:</span>
+            <span class="n">expr</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">conjugate</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">SympyBasic</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_sympy_printer</span><span class="o">.</span><span class="n">_print_level</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_print_level</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sympy_printer</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># numeric type</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span> <span class="o">==</span> <span class="n">expr</span><span class="p">:</span>
+                    <span class="c1"># In Python, objects that evaluate equal (e.g. 2.0 == 2)</span>
+                    <span class="c1"># have the same hash. We want to normalize this, so that we</span>
+                    <span class="c1"># get consistent results when printing with a cache</span>
+                    <span class="n">expr</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="k">if</span> <span class="n">adjoint</span><span class="p">:</span>
+                <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="n">key</span><span class="p">:</span> <span class="n">val</span>
+                    <span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">key</span> <span class="o">!=</span> <span class="s1">&#39;adjoint&#39;</span>
+                <span class="p">}</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_print</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">res</span>
+
+<div class="viewcode-block" id="QalgebraBasePrinter.doprint"><a class="viewcode-back" href="../../../API/qalgebra.printing.base.html#qalgebra.printing.base.QalgebraBasePrinter.doprint">[docs]</a>    <span class="k">def</span> <span class="nf">doprint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns printer&#39;s representation for expr (as a string)</span>
+
+<span class="sd">        The representation is obtained by the following methods:</span>
+
+<span class="sd">        1. from the :attr:`cache`</span>
+<span class="sd">        2. If `expr` is a Sympy object, delegate to the</span>
+<span class="sd">           :meth:`~sympy.printing.printer.Printer.doprint` method of</span>
+<span class="sd">           :attr:`_sympy_printer`</span>
+<span class="sd">        3. Let the `expr` print itself if has the :attr:`printmethod`</span>
+<span class="sd">        4. Take the best fitting ``_print_*`` method of the printer</span>
+<span class="sd">        5. As fallback, delegate to :meth:`emptyPrinter`</span>
+
+<span class="sd">        Any extra `args` or `kwargs` are passed to the internal `_print`</span>
+<span class="sd">        method.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">allow_caching</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_allow_caching</span>
+        <span class="n">is_cached</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># we don&#39;t want to cache &quot;custom&quot; rendering, such as the adjoint of</span>
+            <span class="c1"># the actual expression (kwargs[&#39;adjoint&#39;] is True). Otherwise, we</span>
+            <span class="c1"># might return a cached values for args/kwargs that are different</span>
+            <span class="c1"># from the the expression was originally cached.</span>
+            <span class="n">allow_caching</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="n">allow_caching</span><span class="p">:</span>
+            <span class="n">is_cached</span><span class="p">,</span> <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_from_cache</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_cached</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">Scalar</span><span class="o">.</span><span class="n">_val_types</span><span class="p">):</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_print_SCALAR_TYPES</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_str</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># the _print method, inherited from SympyPrinter implements the</span>
+                <span class="c1"># internal dispatcher for (3-5)</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_print</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">allow_caching</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_write_to_cache</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">res</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Michael Goerz
+      <span class="lastupdated">
+        Last updated on Feb 06, 2020.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

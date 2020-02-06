@@ -1,0 +1,1042 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>qalgebra.core.state_algebra &mdash; QAlgebra 2.0.0-dev (d784b1d) documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/clipboard.min.js"></script>
+        <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script type="text/javascript" src="../../../_static/doctr-versions-menu.js"></script>
+        <script type="text/javascript">var copybuttonSkipText = '>>> ';</script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/mycss.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0.0-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">QAlgebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../history.html">History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../API/qalgebra.html">API of the QAlgebra package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../qalgebra.html">qalgebra</a> &raquo;</li>
+        
+      <li>qalgebra.core.state_algebra</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for qalgebra.core.state_algebra</h1><div class="highlight"><pre>
+<span></span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;This module implements the algebra of states in a Hilbert space</span>
+
+<span class="sd">For more details see :ref:`state_algebra`.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABCMeta</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span> <span class="k">as</span> <span class="n">cartesian_product</span>
+
+<span class="kn">import</span> <span class="nn">sympy</span>
+
+<span class="kn">from</span> <span class="nn">..utils.indices</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">FockIndex</span><span class="p">,</span>
+    <span class="n">IdxSym</span><span class="p">,</span>
+    <span class="n">IndexOverFockSpace</span><span class="p">,</span>
+    <span class="n">IndexOverRange</span><span class="p">,</span>
+    <span class="n">SymbolicLabelBase</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">..utils.ordering</span> <span class="kn">import</span> <span class="n">FullCommutativeHSOrder</span>
+<span class="kn">from</span> <span class="nn">..utils.singleton</span> <span class="kn">import</span> <span class="n">Singleton</span><span class="p">,</span> <span class="n">singleton_object</span>
+<span class="kn">from</span> <span class="nn">.abstract_algebra</span> <span class="kn">import</span> <span class="n">Expression</span><span class="p">,</span> <span class="n">Operation</span>
+<span class="kn">from</span> <span class="nn">.abstract_quantum_algebra</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">QuantumAdjoint</span><span class="p">,</span>
+    <span class="n">QuantumDerivative</span><span class="p">,</span>
+    <span class="n">QuantumExpression</span><span class="p">,</span>
+    <span class="n">QuantumIndexedSum</span><span class="p">,</span>
+    <span class="n">QuantumPlus</span><span class="p">,</span>
+    <span class="n">QuantumSymbol</span><span class="p">,</span>
+    <span class="n">QuantumTimes</span><span class="p">,</span>
+    <span class="n">ScalarTimesQuantumExpression</span><span class="p">,</span>
+    <span class="n">_series_expand_combine_prod</span><span class="p">,</span>
+    <span class="n">ensure_local_space</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">.algebraic_properties</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">accept_bras</span><span class="p">,</span>
+    <span class="n">assoc</span><span class="p">,</span>
+    <span class="n">assoc_indexed</span><span class="p">,</span>
+    <span class="n">basis_ket_zero_outside_hs</span><span class="p">,</span>
+    <span class="n">collect_summands</span><span class="p">,</span>
+    <span class="n">filter_neutral</span><span class="p">,</span>
+    <span class="n">indexed_sum_over_const</span><span class="p">,</span>
+    <span class="n">indexed_sum_over_kronecker</span><span class="p">,</span>
+    <span class="n">match_replace</span><span class="p">,</span>
+    <span class="n">match_replace_binary</span><span class="p">,</span>
+    <span class="n">orderby</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">.exceptions</span> <span class="kn">import</span> <span class="n">OverlappingSpaces</span><span class="p">,</span> <span class="n">SpaceTooLargeError</span><span class="p">,</span> <span class="n">UnequalSpaces</span>
+<span class="kn">from</span> <span class="nn">.hilbert_space_algebra</span> <span class="kn">import</span> <span class="n">FullSpace</span><span class="p">,</span> <span class="n">TrivialSpace</span>
+<span class="kn">from</span> <span class="nn">.operator_algebra</span> <span class="kn">import</span> <span class="n">Operator</span><span class="p">,</span> <span class="n">OperatorPlus</span><span class="p">,</span> <span class="n">PseudoInverse</span>
+<span class="kn">from</span> <span class="nn">.scalar_algebra</span> <span class="kn">import</span> <span class="n">ScalarExpression</span><span class="p">,</span> <span class="n">is_scalar</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;BasisKet&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Bra&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;BraKet&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;CoherentStateKet&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;State&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;KetBra&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;KetPlus&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;KetSymbol&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;LocalKet&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;OperatorTimesKet&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ScalarTimesKet&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;TensorKet&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;TrivialKet&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ZeroKet&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;KetIndexedSum&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;StateDerivative&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">__private__</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># anything not in __all__ must be in __private__</span>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1"># Algebraic properties</span>
+<span class="c1">###############################################################################</span>
+
+
+<div class="viewcode-block" id="State"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.State">[docs]</a><span class="k">class</span> <span class="nc">State</span><span class="p">(</span><span class="n">QuantumExpression</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base class for states in a Hilbert space&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isket</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Bra</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ket</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">isket</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Whether the state represents a ket&quot;&quot;&quot;</span>
+        <span class="c1"># We enforce that all sub-classes of Ket except Bra are normal</span>
+        <span class="c1"># Hilbert space vectors. For example, KetPlus(Bra(...), Bra(...))</span>
+        <span class="c1"># is disallowed, and is represented as Bra(KetPlus(.., ...)). Thus,</span>
+        <span class="c1"># all State instances that are not directly an instance of Bra are</span>
+        <span class="c1"># kets. Name of property &#39;isket&#39; is taken from QuTiP</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Bra</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">isbra</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Wether the state represents a bra (adjoint ket)&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Bra</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">bra</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The bra associated with a ket&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isbra</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adjoint</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">ket</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The ket associated with a bra&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isket</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adjoint</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="c1"># In the State algebra, any adjoint is a Bra</span>
+        <span class="c1"># instance at the top level. To enforce this, we need some custom</span>
+        <span class="c1"># __mul__ implementations, in particular for KetIndexedSums</span>
+
+        <span class="k">def</span> <span class="nf">check_if_sum</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">[</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">KetIndexedSum</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">State</span><span class="p">):</span>
+            <span class="n">isket</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">isket</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">isket</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">isket</span> <span class="o">==</span> <span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">):</span>
+                <span class="c1"># Ket * Ket</span>
+                <span class="n">is_sum</span> <span class="o">=</span> <span class="n">check_if_sum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">is_sum</span> <span class="o">==</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">]:</span>
+                    <span class="k">return</span> <span class="n">QuantumIndexedSum</span><span class="o">.</span><span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">is_sum</span> <span class="o">==</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]:</span>
+                    <span class="k">return</span> <span class="n">QuantumIndexedSum</span><span class="o">.</span><span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">is_sum</span> <span class="o">==</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]:</span>
+                    <span class="k">return</span> <span class="n">QuantumIndexedSum</span><span class="o">.</span><span class="fm">__rmul__</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">is_sum</span> <span class="o">==</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">]:</span>
+                    <span class="k">return</span> <span class="n">TensorKet</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">isket</span> <span class="o">==</span> <span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+                <span class="c1"># Ket * Bra</span>
+                <span class="n">is_sum</span> <span class="o">=</span> <span class="n">check_if_sum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">ket</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">is_sum</span> <span class="o">==</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">]:</span>
+                    <span class="n">other_ket</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">make_disjunct_indices</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+                    <span class="n">new_term</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">term</span> <span class="o">*</span> <span class="n">Bra</span><span class="p">(</span><span class="n">other_ket</span><span class="o">.</span><span class="n">term</span><span class="p">)</span>
+                    <span class="n">new_ranges</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranges</span> <span class="o">+</span> <span class="n">other_ket</span><span class="o">.</span><span class="n">ranges</span>
+                    <span class="k">return</span> <span class="n">new_term</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_indexed_sum_cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                        <span class="n">new_term</span><span class="p">,</span> <span class="o">*</span><span class="n">new_ranges</span>
+                    <span class="p">)</span>
+                <span class="k">elif</span> <span class="n">is_sum</span> <span class="o">==</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]:</span>
+                    <span class="k">return</span> <span class="n">QuantumIndexedSum</span><span class="o">.</span><span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">is_sum</span> <span class="o">==</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]:</span>
+                    <span class="n">new_term</span> <span class="o">=</span> <span class="bp">self</span> <span class="o">*</span> <span class="n">Bra</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">term</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="n">new_term</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_indexed_sum_cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                        <span class="n">new_term</span><span class="p">,</span> <span class="o">*</span><span class="n">other</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">ranges</span>
+                    <span class="p">)</span>
+                <span class="k">elif</span> <span class="n">is_sum</span> <span class="o">==</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">]:</span>
+                    <span class="k">return</span> <span class="n">KetBra</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">ket</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">isket</span> <span class="o">==</span> <span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">):</span>
+                <span class="c1"># Bra * Ket</span>
+                <span class="n">is_sum</span> <span class="o">=</span> <span class="n">check_if_sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ket</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">is_sum</span> <span class="o">==</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">]:</span>
+                    <span class="n">other</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">make_disjunct_indices</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ket</span><span class="p">)</span>
+                    <span class="n">new_term</span> <span class="o">=</span> <span class="n">Bra</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">term</span><span class="p">)</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">term</span>
+                    <span class="n">new_ranges</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">ranges</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">ranges</span>
+                    <span class="k">return</span> <span class="n">new_term</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_indexed_sum_cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                        <span class="n">new_term</span><span class="p">,</span> <span class="o">*</span><span class="n">new_ranges</span>
+                    <span class="p">)</span>
+                <span class="k">elif</span> <span class="n">is_sum</span> <span class="o">==</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]:</span>
+                    <span class="n">new_term</span> <span class="o">=</span> <span class="n">Bra</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">term</span><span class="p">)</span> <span class="o">*</span> <span class="n">other</span>
+                    <span class="k">return</span> <span class="n">new_term</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_indexed_sum_cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                        <span class="n">new_term</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">ranges</span>
+                    <span class="p">)</span>
+                <span class="k">elif</span> <span class="n">is_sum</span> <span class="o">==</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]:</span>
+                    <span class="k">return</span> <span class="n">QuantumIndexedSum</span><span class="o">.</span><span class="fm">__rmul__</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">is_sum</span> <span class="o">==</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">]:</span>
+                    <span class="k">return</span> <span class="n">BraKet</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ket</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">isket</span> <span class="o">==</span> <span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+                <span class="c1"># Bra * Bra</span>
+                <span class="k">return</span> <span class="n">Bra</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ket</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">ket</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Operator</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isbra</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">Bra</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">adjoint</span><span class="p">()</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ket</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__mul__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">NotImplemented</span>
+
+    <span class="k">def</span> <span class="fm">__rmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isket</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Operator</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">OperatorTimesKet</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">isbra</span> <span class="ow">and</span> <span class="n">is_scalar</span><span class="p">(</span><span class="n">other</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">Bra</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">conjugate</span><span class="p">()</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ket</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__rmul__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">NotImplemented</span></div>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1"># Operator algebra elements</span>
+<span class="c1">###############################################################################</span>
+
+
+<div class="viewcode-block" id="KetSymbol"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.KetSymbol">[docs]</a><span class="k">class</span> <span class="nc">KetSymbol</span><span class="p">(</span><span class="n">QuantumSymbol</span><span class="p">,</span> <span class="n">State</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Symbolic state</span>
+
+<span class="sd">    See :class:`.QuantumSymbol`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_rx_label</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+        <span class="sa">r</span><span class="s1">&#39;(^[+-]?\d+(/\d+)?$|&#39;</span> <span class="sa">r</span><span class="s1">&#39;^[A-Za-z0-9+-]+([A-Za-z0-9()_,.+-=]+)?$)&#39;</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LocalKet"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.LocalKet">[docs]</a><span class="k">class</span> <span class="nc">LocalKet</span><span class="p">(</span><span class="n">State</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A state on a :class:`LocalSpace`</span>
+
+<span class="sd">    This does not include operations, even if these operations only involve</span>
+<span class="sd">    states acting on the same local space&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">hs</span><span class="p">):</span>
+        <span class="n">hs</span> <span class="o">=</span> <span class="n">ensure_local_space</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_default_hs_cls</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hs</span> <span class="o">=</span> <span class="n">hs</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">space</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hs</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;hs&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hs</span><span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="ZeroKet"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.ZeroKet">[docs]</a><span class="nd">@singleton_object</span>
+<span class="k">class</span> <span class="nc">ZeroKet</span><span class="p">(</span><span class="n">State</span><span class="p">,</span> <span class="n">Expression</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">Singleton</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;ZeroKet constant (singleton) object for the null-state.&quot;&quot;&quot;</span>
+
+    <span class="n">_order_index</span> <span class="o">=</span> <span class="mi">2</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">space</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">FullSpace</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">args</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sym</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+
+<div class="viewcode-block" id="TrivialKet"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.TrivialKet">[docs]</a><span class="nd">@singleton_object</span>
+<span class="k">class</span> <span class="nc">TrivialKet</span><span class="p">(</span><span class="n">State</span><span class="p">,</span> <span class="n">Expression</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">Singleton</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;TrivialKet constant (singleton) object.</span>
+<span class="sd">    This is the neutral element under the state tensor-product.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_order_index</span> <span class="o">=</span> <span class="mi">2</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">space</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">TrivialSpace</span>
+
+    <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Bra</span><span class="p">(</span><span class="n">TrivialKet</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">args</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sym</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">ZeroKet</span></div>
+
+
+<div class="viewcode-block" id="BasisKet"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.BasisKet">[docs]</a><span class="k">class</span> <span class="nc">BasisKet</span><span class="p">(</span><span class="n">LocalKet</span><span class="p">,</span> <span class="n">KetSymbol</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Local basis state, identified by index or label</span>
+
+<span class="sd">    Basis kets are orthornormal, and the :meth:`next` and :meth:`prev` methods</span>
+<span class="sd">    can be used to move between basis states.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        label_or_index: If `str`, the label of the basis state (must be an</span>
+<span class="sd">            element of `hs.basis_labels`). If `int`, the (zero-based)</span>
+<span class="sd">            index of the basis state. This works if `hs` has an unknown</span>
+<span class="sd">            dimension. For a symbolic index, `label_or_index` can be an</span>
+<span class="sd">            instance of an appropriate subclass of</span>
+<span class="sd">            :class:`~qalgebra.indices.SymbolicLabelBase`</span>
+<span class="sd">        hs (LocalSpace): The Hilbert space in which the basis is defined</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: if `label_or_index` is not in the Hilbert space</span>
+<span class="sd">        TypeError: if `label_or_index` is not of an appropriate type</span>
+<span class="sd">        .BasisNotSetError: if `label_or_index` is a `str` but no basis is</span>
+<span class="sd">            defined for `hs`</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        Basis states that are instantiated via a label or via an index are</span>
+<span class="sd">        equivalent::</span>
+
+<span class="sd">            &gt;&gt;&gt; hs = LocalSpace(&#39;tls&#39;, basis=(&#39;g&#39;, &#39;e&#39;))</span>
+<span class="sd">            &gt;&gt;&gt; BasisKet(&#39;g&#39;, hs=hs) == BasisKet(0, hs=hs)</span>
+<span class="sd">            True</span>
+<span class="sd">            &gt;&gt;&gt; print(ascii(BasisKet(0, hs=hs)))</span>
+<span class="sd">            |g&gt;^(tls)</span>
+
+<span class="sd">        When instantiating the :class:`BasisKet` via</span>
+<span class="sd">        :meth:`~qalgebra.abstract_algebra.Expression.create`, an integer</span>
+<span class="sd">        label outside the range of the underlying Hilbert space results in a</span>
+<span class="sd">        :class:`ZeroKet`::</span>
+
+<span class="sd">            &gt;&gt;&gt; BasisKet.create(-1, hs=0)</span>
+<span class="sd">            ZeroKet</span>
+<span class="sd">            &gt;&gt;&gt; BasisKet.create(2, hs=LocalSpace(&#39;tls&#39;, dimension=2))</span>
+<span class="sd">            ZeroKet</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span><span class="n">basis_ket_zero_outside_hs</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_or_index</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">hs</span><span class="p">):</span>
+        <span class="n">hs</span> <span class="o">=</span> <span class="n">ensure_local_space</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_default_hs_cls</span><span class="p">)</span>
+        <span class="n">label</span><span class="p">,</span> <span class="n">ind</span> <span class="o">=</span> <span class="n">hs</span><span class="o">.</span><span class="n">_unpack_basis_label_or_index</span><span class="p">(</span><span class="n">label_or_index</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_index</span> <span class="o">=</span> <span class="n">ind</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">args</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Tuple containing `label_or_index` as its only element.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">has_basis</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">SymbolicLabelBase</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">,)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">,)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The index of the state in the Hilbert space basis</span>
+
+<span class="sd">        &gt;&gt;&gt; hs = LocalSpace(&#39;tls&#39;, basis=(&#39;g&#39;, &#39;e&#39;))</span>
+<span class="sd">        &gt;&gt;&gt; BasisKet(&#39;g&#39;, hs=hs).index</span>
+<span class="sd">        0</span>
+<span class="sd">        &gt;&gt;&gt; BasisKet(&#39;e&#39;, hs=hs).index</span>
+<span class="sd">        1</span>
+<span class="sd">        &gt;&gt;&gt; BasisKet(1, hs=hs).index</span>
+<span class="sd">        1</span>
+
+<span class="sd">        For a :class:`BasisKet` with an indexed label, this may return a sympy</span>
+<span class="sd">        expression::</span>
+
+<span class="sd">        &gt;&gt;&gt; hs = SpinSpace(&#39;s&#39;, spin=&#39;3/2&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; i = symbols(&#39;i&#39;, cls=IdxSym)</span>
+<span class="sd">        &gt;&gt;&gt; lbl = SpinIndex(i/2, hs)</span>
+<span class="sd">        &gt;&gt;&gt; ket = BasisKet(lbl, hs=hs)</span>
+<span class="sd">        &gt;&gt;&gt; ket.index</span>
+<span class="sd">        i/2 + 3/2</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_index</span>
+
+<div class="viewcode-block" id="BasisKet.next"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.BasisKet.next">[docs]</a>    <span class="k">def</span> <span class="nf">next</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Move up by `n` steps in the Hilbert space::</span>
+
+<span class="sd">            &gt;&gt;&gt; hs =  LocalSpace(&#39;tls&#39;, basis=(&#39;g&#39;, &#39;e&#39;))</span>
+<span class="sd">            &gt;&gt;&gt; ascii(BasisKet(&#39;g&#39;, hs=hs).next())</span>
+<span class="sd">            &#39;|e&gt;^(tls)&#39;</span>
+<span class="sd">            &gt;&gt;&gt; ascii(BasisKet(0, hs=hs).next())</span>
+<span class="sd">            &#39;|e&gt;^(tls)&#39;</span>
+
+<span class="sd">        We can also go multiple steps:</span>
+
+<span class="sd">            &gt;&gt;&gt; hs =  LocalSpace(&#39;ten&#39;, dimension=10)</span>
+<span class="sd">            &gt;&gt;&gt; ascii(BasisKet(0, hs=hs).next(2))</span>
+<span class="sd">            &#39;|2&gt;^(ten)&#39;</span>
+
+<span class="sd">        An increment that leads out of the Hilbert space returns zero::</span>
+
+<span class="sd">            &gt;&gt;&gt; BasisKet(0, hs=hs).next(10)</span>
+<span class="sd">            ZeroKet</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">SymbolicLabelBase</span><span class="p">):</span>
+            <span class="n">next_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">next_basis_label_or_index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">BasisKet</span><span class="p">(</span><span class="n">next_label</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">next_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">next_basis_label_or_index</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">n</span>
+                <span class="p">)</span>
+                <span class="k">return</span> <span class="n">BasisKet</span><span class="p">(</span><span class="n">next_index</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">ZeroKet</span></div>
+
+<div class="viewcode-block" id="BasisKet.prev"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.BasisKet.prev">[docs]</a>    <span class="k">def</span> <span class="nf">prev</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Move down by `n` steps in the Hilbert space, cf. :meth:`next`.</span>
+
+<span class="sd">        &gt;&gt;&gt; hs =  LocalSpace(&#39;3l&#39;, basis=(&#39;g&#39;, &#39;e&#39;, &#39;r&#39;))</span>
+<span class="sd">        &gt;&gt;&gt; ascii(BasisKet(&#39;r&#39;, hs=hs).prev(2))</span>
+<span class="sd">        &#39;|g&gt;^(3l)&#39;</span>
+<span class="sd">        &gt;&gt;&gt; BasisKet(&#39;r&#39;, hs=hs).prev(3)</span>
+<span class="sd">        ZeroKet</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">next</span><span class="p">(</span><span class="n">n</span><span class="o">=-</span><span class="n">n</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="CoherentStateKet"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.CoherentStateKet">[docs]</a><span class="k">class</span> <span class="nc">CoherentStateKet</span><span class="p">(</span><span class="n">LocalKet</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Local coherent state, labeled by a complex amplitude</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        hs (LocalSpace): The local Hilbert space degree of freedom.</span>
+<span class="sd">        ampl (Scalar): The coherent displacement amplitude.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_rx_label</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;^.*$&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ampl</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">hs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ampl</span> <span class="o">=</span> <span class="n">ampl</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">ampl</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">args</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ampl</span><span class="p">,)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">ampl</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ampl</span>
+
+    <span class="k">def</span> <span class="nf">_diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sym</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">qalgebra.library.fock_operators</span> <span class="kn">import</span> <span class="n">Destroy</span><span class="p">,</span> <span class="n">Create</span>
+
+        <span class="n">hs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ampl</span> <span class="o">*</span> <span class="n">Create</span><span class="p">(</span><span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span>
+            <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ampl</span><span class="o">.</span><span class="n">conjugate</span><span class="p">()</span> <span class="o">*</span> <span class="n">Destroy</span><span class="p">(</span><span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">sym</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span>
+
+<div class="viewcode-block" id="CoherentStateKet.to_fock_representation"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.CoherentStateKet.to_fock_representation">[docs]</a>    <span class="k">def</span> <span class="nf">to_fock_representation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index_symbol</span><span class="o">=</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="n">max_terms</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the coherent state written out as an indexed sum over Fock</span>
+<span class="sd">        basis states&quot;&quot;&quot;</span>
+        <span class="n">phase_factor</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span>
+            <span class="n">sympy</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ampl</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ampl</span><span class="o">.</span><span class="n">conjugate</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">index_symbol</span><span class="p">,</span> <span class="n">IdxSym</span><span class="p">):</span>
+            <span class="n">index_symbol</span> <span class="o">=</span> <span class="n">IdxSym</span><span class="p">(</span><span class="n">index_symbol</span><span class="p">)</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">index_symbol</span>
+        <span class="k">if</span> <span class="n">max_terms</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">index_range</span> <span class="o">=</span> <span class="n">IndexOverFockSpace</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_hs</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">index_range</span> <span class="o">=</span> <span class="n">IndexOverRange</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">max_terms</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">term</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ampl</span> <span class="o">**</span> <span class="n">n</span> <span class="o">/</span> <span class="n">sympy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">)))</span> <span class="o">*</span> <span class="n">BasisKet</span><span class="p">(</span>
+            <span class="n">FockIndex</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">hs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_hs</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">phase_factor</span> <span class="o">*</span> <span class="n">KetIndexedSum</span><span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="n">index_range</span><span class="p">)</span></div></div>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1"># Algebra Operations</span>
+<span class="c1">###############################################################################</span>
+
+
+<div class="viewcode-block" id="KetPlus"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.KetPlus">[docs]</a><span class="k">class</span> <span class="nc">KetPlus</span><span class="p">(</span><span class="n">State</span><span class="p">,</span> <span class="n">QuantumPlus</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sum of states&quot;&quot;&quot;</span>
+
+    <span class="n">_neutral_element</span> <span class="o">=</span> <span class="n">ZeroKet</span>
+    <span class="n">_binary_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">accept_bras</span><span class="p">,</span>
+        <span class="n">assoc</span><span class="p">,</span>
+        <span class="n">orderby</span><span class="p">,</span>
+        <span class="n">collect_summands</span><span class="p">,</span>
+        <span class="n">match_replace_binary</span><span class="p">,</span>
+    <span class="p">]</span>
+
+    <span class="n">order_key</span> <span class="o">=</span> <span class="n">FullCommutativeHSOrder</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">operands</span><span class="p">):</span>
+        <span class="n">_check_kets</span><span class="p">(</span><span class="o">*</span><span class="n">operands</span><span class="p">,</span> <span class="n">same_space</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">operands</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TensorKet"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.TensorKet">[docs]</a><span class="k">class</span> <span class="nc">TensorKet</span><span class="p">(</span><span class="n">State</span><span class="p">,</span> <span class="n">QuantumTimes</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A tensor product of kets</span>
+
+<span class="sd">    Each ket must belong to different degree of freedom (:class:`.LocalSpace`).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_binary_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="n">_neutral_element</span> <span class="o">=</span> <span class="n">TrivialKet</span>
+    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">accept_bras</span><span class="p">,</span>
+        <span class="n">assoc</span><span class="p">,</span>
+        <span class="n">orderby</span><span class="p">,</span>
+        <span class="n">filter_neutral</span><span class="p">,</span>
+        <span class="n">match_replace_binary</span><span class="p">,</span>
+    <span class="p">]</span>
+
+    <span class="n">order_key</span> <span class="o">=</span> <span class="n">FullCommutativeHSOrder</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">operands</span><span class="p">):</span>
+        <span class="n">_check_kets</span><span class="p">(</span><span class="o">*</span><span class="n">operands</span><span class="p">,</span> <span class="n">disjunct_space</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">operands</span><span class="p">)</span>
+
+<div class="viewcode-block" id="TensorKet.create"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.TensorKet.create">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">ops</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">o</span> <span class="o">==</span> <span class="n">ZeroKet</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">ops</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">ZeroKet</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">*</span><span class="n">ops</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="ScalarTimesKet"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.ScalarTimesKet">[docs]</a><span class="k">class</span> <span class="nc">ScalarTimesKet</span><span class="p">(</span><span class="n">State</span><span class="p">,</span> <span class="n">ScalarTimesQuantumExpression</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Product of a :class:`.Scalar` coefficient and a ket</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        coeff (Scalar): coefficient</span>
+<span class="sd">        term (State): the ket that is multiplied</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">match_replace</span><span class="p">,</span>
+    <span class="p">]</span>
+
+<div class="viewcode-block" id="ScalarTimesKet.create"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.ScalarTimesKet.create">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">coeff</span><span class="p">,</span> <span class="n">term</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">term</span><span class="o">.</span><span class="n">isbra</span><span class="p">:</span>
+            <span class="n">scalar_times_ket</span> <span class="o">=</span> <span class="n">coeff</span><span class="o">.</span><span class="n">conjugate</span><span class="p">()</span> <span class="o">*</span> <span class="n">term</span><span class="o">.</span><span class="n">ket</span>
+            <span class="k">return</span> <span class="n">Bra</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">scalar_times_ket</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">coeff</span><span class="p">,</span> <span class="n">term</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coeff</span><span class="p">,</span> <span class="n">term</span><span class="p">):</span>
+        <span class="n">_check_kets</span><span class="p">(</span><span class="n">term</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">coeff</span><span class="p">,</span> <span class="n">term</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="OperatorTimesKet"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.OperatorTimesKet">[docs]</a><span class="k">class</span> <span class="nc">OperatorTimesKet</span><span class="p">(</span><span class="n">State</span><span class="p">,</span> <span class="n">Operation</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Product of an operator and a state.&quot;&quot;&quot;</span>
+
+    <span class="n">_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span><span class="n">match_replace</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operator</span><span class="p">,</span> <span class="n">ket</span><span class="p">):</span>
+        <span class="n">_check_kets</span><span class="p">(</span><span class="n">ket</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">operator</span><span class="o">.</span><span class="n">space</span> <span class="o">&lt;=</span> <span class="n">ket</span><span class="o">.</span><span class="n">space</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">SpaceTooLargeError</span><span class="p">(</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">space</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &lt;!= &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ket</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="n">ket</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">space</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">space</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">operator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">ket</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_expand</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">c</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">operands</span>
+        <span class="n">ct</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span>
+        <span class="n">et</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">et</span><span class="p">,</span> <span class="n">KetPlus</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ct</span><span class="p">,</span> <span class="n">OperatorPlus</span><span class="p">):</span>
+                <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span>
+                    <span class="p">(</span><span class="n">cto</span> <span class="o">*</span> <span class="n">eto</span> <span class="k">for</span> <span class="n">eto</span> <span class="ow">in</span> <span class="n">et</span><span class="o">.</span><span class="n">operands</span> <span class="k">for</span> <span class="n">cto</span> <span class="ow">in</span> <span class="n">ct</span><span class="o">.</span><span class="n">operands</span><span class="p">),</span>
+                    <span class="n">ZeroKet</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="nb">sum</span><span class="p">((</span><span class="n">c</span> <span class="o">*</span> <span class="n">eto</span> <span class="k">for</span> <span class="n">eto</span> <span class="ow">in</span> <span class="n">et</span><span class="o">.</span><span class="n">operands</span><span class="p">),</span> <span class="n">ZeroKet</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ct</span><span class="p">,</span> <span class="n">OperatorPlus</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">sum</span><span class="p">((</span><span class="n">cto</span> <span class="o">*</span> <span class="n">et</span> <span class="k">for</span> <span class="n">cto</span> <span class="ow">in</span> <span class="n">ct</span><span class="o">.</span><span class="n">operands</span><span class="p">),</span> <span class="n">ZeroKet</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ct</span> <span class="o">*</span> <span class="n">et</span>
+
+    <span class="k">def</span> <span class="nf">_diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sym</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">operator</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span>
+            <span class="n">sym</span>
+        <span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ket</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">operator</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">sym</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_series_expand</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">about</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+        <span class="n">ce</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">operator</span><span class="o">.</span><span class="n">series_expand</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">about</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+        <span class="n">te</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">series_expand</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">about</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span>
+            <span class="n">ce</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">te</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StateDerivative"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.StateDerivative">[docs]</a><span class="k">class</span> <span class="nc">StateDerivative</span><span class="p">(</span><span class="n">QuantumDerivative</span><span class="p">,</span> <span class="n">State</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Symbolic partial derivative of a state</span>
+
+<span class="sd">    See :class:`.QuantumDerivative`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="Bra"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.Bra">[docs]</a><span class="k">class</span> <span class="nc">Bra</span><span class="p">(</span><span class="n">State</span><span class="p">,</span> <span class="n">QuantumAdjoint</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The associated dual/adjoint state for any ket&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ket</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">ket</span><span class="o">.</span><span class="n">isbra</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;ket cannot be a Bra instance&quot;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">ket</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">ket</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The original :class:`State`&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">bra</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="n">operand</span> <span class="o">=</span> <span class="n">ket</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">isket</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;False, by defintion&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">isbra</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;True, by definition&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ket</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">label</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">label</span>
+
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Bra</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">Bra</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ket</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">ket</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">NotImplemented</span>
+
+    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Bra</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">Bra</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ket</span> <span class="o">-</span> <span class="n">other</span><span class="o">.</span><span class="n">ket</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">NotImplemented</span>
+
+    <span class="k">def</span> <span class="fm">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">is_scalar</span><span class="p">(</span><span class="n">other</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">Bra</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ket</span> <span class="o">/</span> <span class="n">other</span><span class="o">.</span><span class="n">conjugate</span><span class="p">())</span>
+        <span class="k">return</span> <span class="bp">NotImplemented</span></div>
+
+
+<div class="viewcode-block" id="BraKet"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.BraKet">[docs]</a><span class="k">class</span> <span class="nc">BraKet</span><span class="p">(</span><span class="n">ScalarExpression</span><span class="p">,</span> <span class="n">Operation</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The symbolic inner product between two states</span>
+
+<span class="sd">    This mathermatically corresponds to:</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        \langle b | k \rangle</span>
+
+<span class="sd">    which we define to be linear in the state :math:`k` and anti-linear in</span>
+<span class="sd">    :math:`b`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        bra (State): The anti-linear state argument. Note that this is *not* a</span>
+<span class="sd">            :class:`Bra` instance.</span>
+<span class="sd">        ket (State): The linear state argument.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="n">_space</span> <span class="o">=</span> <span class="n">TrivialSpace</span>
+    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span><span class="n">match_replace</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bra</span><span class="p">,</span> <span class="n">ket</span><span class="p">):</span>
+        <span class="n">_check_kets</span><span class="p">(</span><span class="n">bra</span><span class="p">,</span> <span class="n">ket</span><span class="p">,</span> <span class="n">same_space</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bra</span><span class="p">,</span> <span class="n">ket</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">ket</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The ket of the braket&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">bra</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The bra of the braket (:class:`Bra` instance)&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Bra</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">_diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sym</span><span class="p">):</span>
+        <span class="n">bra</span><span class="p">,</span> <span class="n">ket</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">operands</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <span class="n">bra</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">sym</span><span class="p">),</span> <span class="n">ket</span>
+        <span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">bra</span><span class="p">,</span> <span class="n">ket</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">sym</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">BraKet</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">*</span><span class="nb">reversed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">operands</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_expand</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">b</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">operands</span>
+        <span class="n">be</span><span class="p">,</span> <span class="n">ke</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">expand</span><span class="p">(),</span> <span class="n">k</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span>
+        <span class="n">besummands</span> <span class="o">=</span> <span class="n">be</span><span class="o">.</span><span class="n">operands</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">be</span><span class="p">,</span> <span class="n">KetPlus</span><span class="p">)</span> <span class="k">else</span> <span class="p">(</span><span class="n">be</span><span class="p">,)</span>
+        <span class="n">kesummands</span> <span class="o">=</span> <span class="n">ke</span><span class="o">.</span><span class="n">operands</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ke</span><span class="p">,</span> <span class="n">KetPlus</span><span class="p">)</span> <span class="k">else</span> <span class="p">(</span><span class="n">ke</span><span class="p">,)</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span>
+            <span class="n">BraKet</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">bes</span><span class="p">,</span> <span class="n">kes</span><span class="p">)</span> <span class="k">for</span> <span class="n">bes</span> <span class="ow">in</span> <span class="n">besummands</span> <span class="k">for</span> <span class="n">kes</span> <span class="ow">in</span> <span class="n">kesummands</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_series_expand</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">about</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+        <span class="n">be</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bra</span><span class="o">.</span><span class="n">series_expand</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">about</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+        <span class="n">ke</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">series_expand</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">about</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_series_expand_combine_prod</span><span class="p">(</span><span class="n">be</span><span class="p">,</span> <span class="n">ke</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KetBra"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.KetBra">[docs]</a><span class="k">class</span> <span class="nc">KetBra</span><span class="p">(</span><span class="n">Operator</span><span class="p">,</span> <span class="n">Operation</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Outer product of two states</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ket (State): The left factor in the product</span>
+<span class="sd">        bra (State): The right factor in the product. Note that this is *not* a</span>
+<span class="sd">            :class:`Bra` instance.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span><span class="n">match_replace</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ket</span><span class="p">,</span> <span class="n">bra</span><span class="p">):</span>
+        <span class="n">_check_kets</span><span class="p">(</span><span class="n">ket</span><span class="p">,</span> <span class="n">bra</span><span class="p">,</span> <span class="n">same_space</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">ket</span><span class="p">,</span> <span class="n">bra</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">ket</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The left factor in the product&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">bra</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The co-state right factor in the product</span>
+
+<span class="sd">        This is a :class:`Bra` instance (unlike the `bra` given to the</span>
+<span class="sd">        constructor</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Bra</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">space</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The Hilbert space of the states being multiplied&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">space</span>
+
+    <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">KetBra</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">*</span><span class="nb">reversed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">operands</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_pseudo_inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">PseudoInverse</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sym</span><span class="p">):</span>
+        <span class="n">ket</span><span class="p">,</span> <span class="n">bra</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">operands</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <span class="n">ket</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">sym</span><span class="p">),</span> <span class="n">bra</span>
+        <span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">ket</span><span class="p">,</span> <span class="n">bra</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">sym</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_expand</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">k</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ket</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bra</span><span class="o">.</span><span class="n">ket</span>
+        <span class="n">be</span><span class="p">,</span> <span class="n">ke</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">expand</span><span class="p">(),</span> <span class="n">k</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span>
+        <span class="n">kesummands</span> <span class="o">=</span> <span class="n">ke</span><span class="o">.</span><span class="n">operands</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ke</span><span class="p">,</span> <span class="n">KetPlus</span><span class="p">)</span> <span class="k">else</span> <span class="p">(</span><span class="n">ke</span><span class="p">,)</span>
+        <span class="n">besummands</span> <span class="o">=</span> <span class="n">be</span><span class="o">.</span><span class="n">operands</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">be</span><span class="p">,</span> <span class="n">KetPlus</span><span class="p">)</span> <span class="k">else</span> <span class="p">(</span><span class="n">be</span><span class="p">,)</span>
+        <span class="n">res_summands</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="ow">in</span> <span class="n">cartesian_product</span><span class="p">(</span><span class="n">kesummands</span><span class="p">,</span> <span class="n">besummands</span><span class="p">):</span>
+            <span class="n">res_summands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">KetBra</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">OperatorPlus</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">*</span><span class="n">res_summands</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_series_expand</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">about</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+        <span class="n">ke</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">series_expand</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">about</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+        <span class="n">be</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bra</span><span class="o">.</span><span class="n">series_expand</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">about</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span>
+            <span class="n">ke</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">be</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KetIndexedSum"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.KetIndexedSum">[docs]</a><span class="k">class</span> <span class="nc">KetIndexedSum</span><span class="p">(</span><span class="n">State</span><span class="p">,</span> <span class="n">QuantumIndexedSum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Indexed sum over Kets&quot;&quot;&quot;</span>
+
+    <span class="c1"># Must inherit from State first, so that proper __mul__ is used</span>
+
+    <span class="n">_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">assoc_indexed</span><span class="p">,</span>
+        <span class="n">indexed_sum_over_kronecker</span><span class="p">,</span>
+        <span class="n">indexed_sum_over_const</span><span class="p">,</span>
+        <span class="n">match_replace</span><span class="p">,</span>
+    <span class="p">]</span>
+
+<div class="viewcode-block" id="KetIndexedSum.create"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.KetIndexedSum.create">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">term</span><span class="p">,</span> <span class="o">*</span><span class="n">ranges</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">term</span><span class="o">.</span><span class="n">isbra</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Bra</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">KetIndexedSum</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">term</span><span class="o">.</span><span class="n">ket</span><span class="p">,</span> <span class="o">*</span><span class="n">ranges</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="o">*</span><span class="n">ranges</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">term</span><span class="p">,</span> <span class="o">*</span><span class="n">ranges</span><span class="p">):</span>
+        <span class="n">_check_kets</span><span class="p">(</span><span class="n">term</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="o">*</span><span class="n">ranges</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">_check_kets</span><span class="p">(</span><span class="o">*</span><span class="n">ops</span><span class="p">,</span> <span class="n">same_space</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">disjunct_space</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Check that all operands are Kets from the same Hilbert space.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">([(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">State</span><span class="p">)</span> <span class="ow">and</span> <span class="n">o</span><span class="o">.</span><span class="n">isket</span><span class="p">)</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">ops</span><span class="p">]):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;All operands must be Kets&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">same_space</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">({</span><span class="n">o</span><span class="o">.</span><span class="n">space</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">ops</span> <span class="k">if</span> <span class="n">o</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">ZeroKet</span><span class="p">})</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">UnequalSpaces</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ops</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">disjunct_space</span><span class="p">:</span>
+        <span class="n">spc</span> <span class="o">=</span> <span class="n">TrivialSpace</span>
+        <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">ops</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">o</span><span class="o">.</span><span class="n">space</span> <span class="o">&amp;</span> <span class="n">spc</span> <span class="o">&gt;</span> <span class="n">TrivialSpace</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">OverlappingSpaces</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ops</span><span class="p">))</span>
+            <span class="n">spc</span> <span class="o">*=</span> <span class="n">o</span><span class="o">.</span><span class="n">space</span>
+
+
+<span class="n">State</span><span class="o">.</span><span class="n">_zero</span> <span class="o">=</span> <span class="n">ZeroKet</span>
+<span class="n">State</span><span class="o">.</span><span class="n">_one</span> <span class="o">=</span> <span class="n">TrivialKet</span>
+<span class="n">State</span><span class="o">.</span><span class="n">_base_cls</span> <span class="o">=</span> <span class="n">State</span>
+<span class="n">State</span><span class="o">.</span><span class="n">_scalar_times_expr_cls</span> <span class="o">=</span> <span class="n">ScalarTimesKet</span>
+<span class="n">State</span><span class="o">.</span><span class="n">_plus_cls</span> <span class="o">=</span> <span class="n">KetPlus</span>
+<span class="n">State</span><span class="o">.</span><span class="n">_times_cls</span> <span class="o">=</span> <span class="n">TensorKet</span>
+<span class="n">State</span><span class="o">.</span><span class="n">_adjoint_cls</span> <span class="o">=</span> <span class="n">Bra</span>
+<span class="n">State</span><span class="o">.</span><span class="n">_indexed_sum_cls</span> <span class="o">=</span> <span class="n">KetIndexedSum</span>
+<span class="n">State</span><span class="o">.</span><span class="n">_derivative_cls</span> <span class="o">=</span> <span class="n">StateDerivative</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Michael Goerz
+      <span class="lastupdated">
+        Last updated on Feb 06, 2020.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

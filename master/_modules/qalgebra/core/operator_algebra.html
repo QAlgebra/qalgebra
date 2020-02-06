@@ -1,0 +1,1333 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>qalgebra.core.operator_algebra &mdash; QAlgebra 2.0.0-dev (d784b1d) documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/clipboard.min.js"></script>
+        <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script type="text/javascript" src="../../../_static/doctr-versions-menu.js"></script>
+        <script type="text/javascript">var copybuttonSkipText = '>>> ';</script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/mycss.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0.0-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">QAlgebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../history.html">History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../API/qalgebra.html">API of the QAlgebra package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../qalgebra.html">qalgebra</a> &raquo;</li>
+        
+      <li>qalgebra.core.operator_algebra</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for qalgebra.core.operator_algebra</h1><div class="highlight"><pre>
+<span></span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module features classes and functions to define and manipulate symbolic</span>
+<span class="sd">Operator expressions.  For more details see :ref:`operator_algebra`.</span>
+
+<span class="sd">For a list of all properties and methods of an operator object, see the</span>
+<span class="sd">documentation for the basic :class:`Operator` class.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABCMeta</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span><span class="p">,</span> <span class="n">defaultdict</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span> <span class="k">as</span> <span class="n">cartesian_product</span>
+
+<span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">sympify</span>
+
+<span class="kn">from</span> <span class="nn">..pattern_matching</span> <span class="kn">import</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">pattern_head</span><span class="p">,</span> <span class="n">wc</span>
+<span class="kn">from</span> <span class="nn">..utils.indices</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">FockIndex</span><span class="p">,</span>
+    <span class="n">IdxSym</span><span class="p">,</span>
+    <span class="n">IndexOverFockSpace</span><span class="p">,</span>
+    <span class="n">SymbolicLabelBase</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">..utils.ordering</span> <span class="kn">import</span> <span class="n">FullCommutativeHSOrder</span>
+<span class="kn">from</span> <span class="nn">..utils.properties_for_args</span> <span class="kn">import</span> <span class="n">properties_for_args</span>
+<span class="kn">from</span> <span class="nn">..utils.singleton</span> <span class="kn">import</span> <span class="n">Singleton</span><span class="p">,</span> <span class="n">singleton_object</span>
+<span class="kn">from</span> <span class="nn">.abstract_quantum_algebra</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">QuantumAdjoint</span><span class="p">,</span>
+    <span class="n">QuantumDerivative</span><span class="p">,</span>
+    <span class="n">QuantumExpression</span><span class="p">,</span>
+    <span class="n">QuantumIndexedSum</span><span class="p">,</span>
+    <span class="n">QuantumOperation</span><span class="p">,</span>
+    <span class="n">QuantumPlus</span><span class="p">,</span>
+    <span class="n">QuantumSymbol</span><span class="p">,</span>
+    <span class="n">QuantumTimes</span><span class="p">,</span>
+    <span class="n">ScalarTimesQuantumExpression</span><span class="p">,</span>
+    <span class="n">SingleQuantumOperation</span><span class="p">,</span>
+    <span class="n">ensure_local_space</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">.algebraic_properties</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">assoc</span><span class="p">,</span>
+    <span class="n">assoc_indexed</span><span class="p">,</span>
+    <span class="n">collect_summands</span><span class="p">,</span>
+    <span class="n">commutator_order</span><span class="p">,</span>
+    <span class="n">delegate_to_method</span><span class="p">,</span>
+    <span class="n">disjunct_hs_zero</span><span class="p">,</span>
+    <span class="n">filter_neutral</span><span class="p">,</span>
+    <span class="n">implied_local_space</span><span class="p">,</span>
+    <span class="n">indexed_sum_over_const</span><span class="p">,</span>
+    <span class="n">indexed_sum_over_kronecker</span><span class="p">,</span>
+    <span class="n">match_replace</span><span class="p">,</span>
+    <span class="n">match_replace_binary</span><span class="p">,</span>
+    <span class="n">orderby</span><span class="p">,</span>
+    <span class="n">scalars_to_op</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">.exceptions</span> <span class="kn">import</span> <span class="n">CannotSimplify</span>
+<span class="kn">from</span> <span class="nn">.hilbert_space_algebra</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">HilbertSpace</span><span class="p">,</span>
+    <span class="n">LocalSpace</span><span class="p">,</span>
+    <span class="n">ProductSpace</span><span class="p">,</span>
+    <span class="n">TrivialSpace</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">.scalar_algebra</span> <span class="kn">import</span> <span class="n">Scalar</span><span class="p">,</span> <span class="n">ScalarValue</span><span class="p">,</span> <span class="n">is_scalar</span>
+
+
+<span class="n">sympyOne</span> <span class="o">=</span> <span class="n">sympify</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># for hilbert space dimensions less than or equal to this,</span>
+<span class="c1"># compute numerically PseudoInverse and NullSpaceProjector representations</span>
+<span class="n">DENSE_DIMENSION_LIMIT</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;Adjoint&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;LocalOperator&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;LocalSigma&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;NullSpaceProjector&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Operator&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;OperatorPlus&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;OperatorPlusMinusCC&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;OperatorSymbol&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;OperatorTimes&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;OperatorTrace&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;PseudoInverse&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ScalarTimesOperator&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;LocalProjector&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;adjoint&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;rewrite_with_operator_pm_cc&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;decompose_space&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;factor_coeff&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;factor_for_trace&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;get_coeffs&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;II&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;IdentityOperator&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ZeroOperator&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;OperatorDerivative&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Commutator&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;OperatorIndexedSum&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;tr&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">__private__</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># anything not in __all__ must be in __private__</span>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1"># Abstract base classes</span>
+<span class="c1">###############################################################################</span>
+
+
+<div class="viewcode-block" id="Operator"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.Operator">[docs]</a><span class="k">class</span> <span class="nc">Operator</span><span class="p">(</span><span class="n">QuantumExpression</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base class for all quantum operators.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Operator.pseudo_inverse"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.Operator.pseudo_inverse">[docs]</a>    <span class="k">def</span> <span class="nf">pseudo_inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Pseudo-inverse $\Op{X}^+$ of the operator $\Op{X}$</span>
+
+<span class="sd">        It is defined via the relationship</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">            \Op{X} \Op{X}^+ \Op{X} =  \Op{X}  \\</span>
+<span class="sd">            \Op{X}^+ \Op{X} \Op{X}^+ =  \Op{X}^+  \\</span>
+<span class="sd">            (\Op{X}^+ \Op{X})^\dagger = \Op{X}^+ \Op{X}  \\</span>
+<span class="sd">            (\Op{X} \Op{X}^+)^\dagger = \Op{X} \Op{X}^+</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pseudo_inverse</span><span class="p">()</span></div>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">_pseudo_inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Operator.expand_in_basis"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.Operator.expand_in_basis">[docs]</a>    <span class="k">def</span> <span class="nf">expand_in_basis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">basis_states</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hermitian</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Write the operator as an expansion into all</span>
+<span class="sd">        :class:`KetBras &lt;.KetBra&gt;`</span>
+<span class="sd">        spanned by `basis_states`.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            basis_states (list or None): List of basis states (:class:`.State`</span>
+<span class="sd">                instances) into which to expand the operator. If None, use the</span>
+<span class="sd">                operator&#39;s `space.basis_states`</span>
+<span class="sd">            hermitian (bool): If True, assume that the operator is Hermitian</span>
+<span class="sd">                and represent all elements in the lower triangle of the</span>
+<span class="sd">                expansion via :class:`OperatorPlusMinusCC`. This is meant to</span>
+<span class="sd">                enhance readability</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            .BasisNotSetError: If `basis_states` is None and the operator&#39;s</span>
+<span class="sd">                Hilbert space has no well-defined basis</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">            &gt;&gt;&gt; hs = LocalSpace(1, basis=(&#39;g&#39;, &#39;e&#39;))</span>
+<span class="sd">            &gt;&gt;&gt; op = LocalSigma(&#39;g&#39;, &#39;e&#39;, hs=hs) + LocalSigma(&#39;e&#39;, &#39;g&#39;, hs=hs)</span>
+<span class="sd">            &gt;&gt;&gt; print(ascii(op, sig_as_ketbra=False))</span>
+<span class="sd">            sigma_e,g^(1) + sigma_g,e^(1)</span>
+<span class="sd">            &gt;&gt;&gt; print(ascii(op.expand_in_basis()))</span>
+<span class="sd">            |e&gt;&lt;g|^(1) + |g&gt;&lt;e|^(1)</span>
+<span class="sd">            &gt;&gt;&gt; print(ascii(op.expand_in_basis(hermitian=True)))</span>
+<span class="sd">            |g&gt;&lt;e|^(1) + c.c.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">qalgebra.core.state_algebra</span> <span class="kn">import</span> <span class="n">KetBra</span>
+
+        <span class="c1"># KetBra is imported locally to avoid circular imports</span>
+        <span class="k">if</span> <span class="n">basis_states</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">basis_states</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">basis_states</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">basis_states</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">basis_states</span><span class="p">)</span>
+        <span class="n">diag_terms</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">terms</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ket_i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">basis_states</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">ket_j</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">basis_states</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">j</span> <span class="ow">and</span> <span class="n">hermitian</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="n">op_ij</span> <span class="o">=</span> <span class="p">(</span><span class="n">ket_i</span><span class="o">.</span><span class="n">dag</span><span class="p">()</span> <span class="o">*</span> <span class="bp">self</span> <span class="o">*</span> <span class="n">ket_j</span><span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span>
+                <span class="n">ketbra</span> <span class="o">=</span> <span class="n">KetBra</span><span class="p">(</span><span class="n">ket_i</span><span class="p">,</span> <span class="n">ket_j</span><span class="p">)</span>
+                <span class="n">term</span> <span class="o">=</span> <span class="n">op_ij</span> <span class="o">*</span> <span class="n">ketbra</span>
+                <span class="k">if</span> <span class="n">term</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">ZeroOperator</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">j</span><span class="p">:</span>
+                        <span class="n">diag_terms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">op_ij</span> <span class="o">*</span> <span class="n">ketbra</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">terms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">op_ij</span> <span class="o">*</span> <span class="n">ketbra</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">hermitian</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">OperatorPlus</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">*</span><span class="n">diag_terms</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">terms</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">res</span> <span class="o">+</span> <span class="n">OperatorPlusMinusCC</span><span class="p">(</span><span class="n">OperatorPlus</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">*</span><span class="n">terms</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">res</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">OperatorPlus</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">*</span><span class="n">diag_terms</span><span class="p">)</span> <span class="o">+</span> <span class="n">OperatorPlus</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="o">*</span><span class="n">terms</span>
+            <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="LocalOperator"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.LocalOperator">[docs]</a><span class="k">class</span> <span class="nc">LocalOperator</span><span class="p">(</span><span class="n">Operator</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base class for &quot;known&quot; operators on a :class:`LocalSpace`</span>
+
+<span class="sd">    All :class:`LocalOperator` instances have known algebraic properties and a</span>
+<span class="sd">    fixed associated identifier (symbol) that is used when printing that</span>
+<span class="sd">    operator. A custom identifier can be used through the associated</span>
+<span class="sd">    :class:`.LocalSpace`&#39;s `local_identifiers` parameter. For example::</span>
+
+<span class="sd">        &gt;&gt;&gt; hs1_custom = LocalSpace(1, local_identifiers={&#39;Destroy&#39;: &#39;b&#39;})</span>
+<span class="sd">        &gt;&gt;&gt; b = Destroy(hs=hs1_custom)</span>
+<span class="sd">        &gt;&gt;&gt; ascii(b)</span>
+<span class="sd">        &#39;b^(1)&#39;</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        It is recommended that subclasses use the :func:`.properties_for_args`</span>
+<span class="sd">        class decorator if they define any position arguments (via the</span>
+<span class="sd">        :attr:`_arg_names` class attribute)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">implied_local_space</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;hs&#39;</span><span class="p">,]),</span>
+    <span class="p">]</span>
+
+    <span class="n">_identifier</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># must be overridden by subclasses!</span>
+    <span class="n">_dagger</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># do representations include a dagger?</span>
+    <span class="n">_arg_names</span> <span class="o">=</span> <span class="p">()</span>  <span class="c1"># names of args that can be passed to __init__</span>
+    <span class="n">_scalar_args</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># convert args to Scalar?</span>
+    <span class="n">_hs_cls</span> <span class="o">=</span> <span class="n">LocalSpace</span>  <span class="c1"># allowed type of `hs`</span>
+    <span class="n">_rx_identifier</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;^[A-Za-z][A-Za-z0-9]*(_[A-Za-z0-9().+-]+)?$&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">hs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_arg_names</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;expected </span><span class="si">%d</span><span class="s2"> arguments, gotten </span><span class="si">%d</span><span class="s2">&quot;</span>
+                <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_arg_names</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">))</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scalar_args</span><span class="p">:</span>
+            <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="n">ScalarValue</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">arg_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_arg_names</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s1">&#39;_</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">arg_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">hs</span> <span class="o">=</span> <span class="n">ensure_local_space</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_hs_cls</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hs</span> <span class="o">=</span> <span class="n">hs</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_identifier</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                <span class="sa">r</span><span class="s2">&quot;Can&#39;t instantiate abstract class </span><span class="si">%s</span><span class="s2"> with undefined &quot;</span>
+                <span class="sa">r</span><span class="s2">&quot;_identifier&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_args</span> <span class="o">=</span> <span class="n">args</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">space</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Hilbert space of the operator (:class:`.LocalSpace` instance)&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hs</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">args</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The positional arguments used for instantiating the operator&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The keyword arguments used for instantiating the operator&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;hs&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hs</span><span class="p">)])</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">identifier</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The identifier (symbol) that is used when printing the operator.</span>
+
+<span class="sd">        A custom identifier can be used through the associated</span>
+<span class="sd">        :class:`.LocalSpace`&#39;s `local_identifiers` parameter. For example::</span>
+
+<span class="sd">            &gt;&gt;&gt; a = Destroy(hs=1)</span>
+<span class="sd">            &gt;&gt;&gt; a.identifier</span>
+<span class="sd">            &#39;a&#39;</span>
+<span class="sd">            &gt;&gt;&gt; hs1_custom = LocalSpace(1, local_identifiers={&#39;Destroy&#39;: &#39;b&#39;})</span>
+<span class="sd">            &gt;&gt;&gt; b = Destroy(hs=hs1_custom)</span>
+<span class="sd">            &gt;&gt;&gt; b.identifier</span>
+<span class="sd">            &#39;b&#39;</span>
+<span class="sd">            &gt;&gt;&gt; ascii(b)</span>
+<span class="sd">            &#39;b^(1)&#39;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">identifier</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hs</span><span class="o">.</span><span class="n">_local_identifiers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_identifier</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rx_identifier</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">identifier</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;identifier &#39;</span><span class="si">%s</span><span class="s2">&#39; does not match pattern &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span>
+                <span class="o">%</span> <span class="p">(</span><span class="n">identifier</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rx_identifier</span><span class="o">.</span><span class="n">pattern</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">identifier</span>
+
+    <span class="k">def</span> <span class="nf">_diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sym</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">OperatorDerivative</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">derivs</span><span class="o">=</span><span class="p">{</span><span class="n">sym</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+
+    <span class="k">def</span> <span class="nf">_simplify_scalar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scalar_args</span><span class="p">:</span>
+            <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="n">arg</span><span class="o">.</span><span class="n">simplify_scalar</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">func</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">]</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_simplify_scalar</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">func</span><span class="p">)</span></div>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1"># Operator algebra elements</span>
+<span class="c1">###############################################################################</span>
+
+
+<div class="viewcode-block" id="OperatorSymbol"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.OperatorSymbol">[docs]</a><span class="k">class</span> <span class="nc">OperatorSymbol</span><span class="p">(</span><span class="n">QuantumSymbol</span><span class="p">,</span> <span class="n">Operator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Symbolic operator</span>
+
+<span class="sd">    See :class:`.QuantumSymbol`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_pseudo_inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">PseudoInverse</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="IdentityOperator"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.IdentityOperator">[docs]</a><span class="nd">@singleton_object</span>
+<span class="k">class</span> <span class="nc">IdentityOperator</span><span class="p">(</span><span class="n">Operator</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">Singleton</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;``IdentityOperator`` constant (singleton) object.&quot;&quot;&quot;</span>
+
+    <span class="n">_order_index</span> <span class="o">=</span> <span class="mi">2</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">space</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;:class:`.TrivialSpace`&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">TrivialSpace</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">args</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sym</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">ZeroOperator</span>
+
+    <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">_pseudo_inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+
+<span class="n">II</span> <span class="o">=</span> <span class="n">IdentityOperator</span>
+
+
+<div class="viewcode-block" id="ZeroOperator"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.ZeroOperator">[docs]</a><span class="nd">@singleton_object</span>
+<span class="k">class</span> <span class="nc">ZeroOperator</span><span class="p">(</span><span class="n">Operator</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">Singleton</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;``ZeroOperator`` constant (singleton) object.&quot;&quot;&quot;</span>
+
+    <span class="n">_order_index</span> <span class="o">=</span> <span class="mi">2</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">space</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;:class:`.TrivialSpace`&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">TrivialSpace</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">args</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sym</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">_pseudo_inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+
+<div class="viewcode-block" id="LocalSigma"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.LocalSigma">[docs]</a><span class="nd">@properties_for_args</span>
+<span class="k">class</span> <span class="nc">LocalSigma</span><span class="p">(</span><span class="n">LocalOperator</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&#39;&#39;&#39;Level flip operator between two levels of a :class:`.LocalSpace`</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \Op{\sigma}_{jk}^{\rm hs} =</span>
+<span class="sd">        \left| j\right\rangle_{\rm hs} \left \langle k \right |_{\rm hs}</span>
+
+<span class="sd">    For $j=k$ this becomes a projector $\Op{P}_k$ onto the eigenstate</span>
+<span class="sd">    $\ket{k}$; see :class:`LocalProjector`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        j (int or str): The label or index identifying $\ket{j}$</span>
+<span class="sd">        k (int or str):  The label or index identifying $\ket{k}$</span>
+<span class="sd">        hs (LocalSpace or int or str): The Hilbert space on which the</span>
+<span class="sd">            operator acts. If an :class:`int` or a :class:`str`, an implicit</span>
+<span class="sd">            Hilbert space will be constructed as a subclass of</span>
+<span class="sd">            :class:`LocalSpace`, as configured by :func:`init_algebra`.</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        The parameters `j` or `k` may be an integer or a string. A string</span>
+<span class="sd">        refers to the label of an eigenstate in the basis of `hs`, which needs</span>
+<span class="sd">        to be set. An integer refers to the (zero-based) index of eigenstate of</span>
+<span class="sd">        the Hilbert space. This works if `hs` has an unknown dimension.</span>
+<span class="sd">        Assuming the Hilbert space has a defined basis, using integer or string</span>
+<span class="sd">        labels is equivalent::</span>
+
+<span class="sd">            &gt;&gt;&gt; hs = LocalSpace(&#39;tls&#39;, basis=(&#39;g&#39;, &#39;e&#39;))</span>
+<span class="sd">            &gt;&gt;&gt; LocalSigma(0, 1, hs=hs) == LocalSigma(&#39;g&#39;, &#39;e&#39;, hs=hs)</span>
+<span class="sd">            True</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: If `j` or `k` are invalid value for the given `hs`</span>
+
+<span class="sd">    Printers should represent this operator either in braket notation, or using</span>
+<span class="sd">    the operator identifier</span>
+
+<span class="sd">        &gt;&gt;&gt; LocalSigma(0, 1, hs=0).identifier</span>
+<span class="sd">        &#39;sigma&#39;</span>
+
+<span class="sd">    For ``j == k``, an alternative (fixed) identifier may be used</span>
+
+<span class="sd">        &gt;&gt;&gt; LocalSigma(0, 0, hs=0)._identifier_projector</span>
+<span class="sd">        &#39;Pi&#39;</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">_identifier</span> <span class="o">=</span> <span class="s2">&quot;sigma&quot;</span>
+    <span class="n">_identifier_projector</span> <span class="o">=</span> <span class="s2">&quot;Pi&quot;</span>
+    <span class="n">_rx_identifier</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;^[A-Za-z][A-Za-z0-9]*$&#39;</span><span class="p">)</span>
+    <span class="n">_arg_names</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;j&#39;</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">_scalar_args</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># args are labels, not scalar coefficients</span>
+    <span class="n">_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span><span class="n">implied_local_space</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;hs&#39;</span><span class="p">,]),</span> <span class="n">match_replace</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">hs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">)):</span>
+            <span class="n">hs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_hs_cls</span><span class="p">(</span><span class="n">hs</span><span class="p">)</span>
+        <span class="n">hs</span><span class="o">.</span><span class="n">_unpack_basis_label_or_index</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>  <span class="c1"># for applying checks only ...</span>
+        <span class="n">hs</span><span class="o">.</span><span class="n">_unpack_basis_label_or_index</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>  <span class="c1"># ... (disregard returned tuple)</span>
+        <span class="k">if</span> <span class="n">hs</span><span class="o">.</span><span class="n">has_basis</span><span class="p">:</span>
+            <span class="c1"># normalize integer i/j to str label, if possible</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                <span class="n">j</span> <span class="o">=</span> <span class="n">hs</span><span class="o">.</span><span class="n">basis_labels</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                <span class="n">k</span> <span class="o">=</span> <span class="n">hs</span><span class="o">.</span><span class="n">basis_labels</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">args</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The two eigenstate labels `j` and `k` that the operator connects&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">j</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">index_j</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Index `j` or (zero-based) index of the label `j` in the basis&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">j</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">SymbolicLabelBase</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">j</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">basis_labels</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">j</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;</span><span class="si">%r</span><span class="s2"> is not one of the basis labels </span><span class="si">%r</span><span class="s2">&quot;</span>
+                    <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">j</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">basis_labels</span><span class="p">)</span>
+                <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">index_k</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Index `k` or (zero-based) index of the label `k` in the basis&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">SymbolicLabelBase</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">basis_labels</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;</span><span class="si">%r</span><span class="s2"> is not one of the basis labels </span><span class="si">%r</span><span class="s2">&quot;</span>
+                    <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">basis_labels</span><span class="p">)</span>
+                <span class="p">)</span>
+
+<div class="viewcode-block" id="LocalSigma.raise_jk"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.LocalSigma.raise_jk">[docs]</a>    <span class="k">def</span> <span class="nf">raise_jk</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">j_incr</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">k_incr</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&#39;&#39;&#39;Return a new :class:`LocalSigma` instance with incremented `j`,</span>
+<span class="sd">        `k`, on the same Hilbert space:</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">            \Op{\sigma}_{jk}^{\rm hs} \rightarrow \Op{\sigma}_{j&#39;k&#39;}^{\rm hs}</span>
+
+<span class="sd">        This is the result of multiplying $\Op{\sigma}_{jk}^{\rm hs}$</span>
+<span class="sd">        with any raising or lowering operators.</span>
+
+<span class="sd">        If $j&#39;$ or $k&#39;$ are outside the Hilbert space ${\rm hs}$, the result is</span>
+<span class="sd">        the :obj:`ZeroOperator` .</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            j_incr (int): The increment between labels $j$ and $j&#39;$</span>
+<span class="sd">            k_incr (int): The increment between labels $k$ and $k&#39;$. Both</span>
+<span class="sd">                increments may be negative.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">j</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                <span class="n">new_j</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">j</span> <span class="o">+</span> <span class="n">j_incr</span>
+            <span class="k">else</span><span class="p">:</span>  <span class="c1"># str</span>
+                <span class="n">new_j</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">next_basis_label_or_index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">j</span><span class="p">,</span> <span class="n">j_incr</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                <span class="n">new_k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">+</span> <span class="n">k_incr</span>
+            <span class="k">else</span><span class="p">:</span>  <span class="c1"># str or SymbolicLabelBase</span>
+                <span class="n">new_k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">next_basis_label_or_index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="n">k_incr</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">LocalSigma</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">new_j</span><span class="p">,</span> <span class="n">new_k</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">IndexError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">ZeroOperator</span></div>
+
+    <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">LocalSigma</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">j</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_pseudo_inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adjoint</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="LocalProjector"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.LocalProjector">[docs]</a><span class="k">def</span> <span class="nf">LocalProjector</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">hs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A projector onto a specific level of a :class:`.LocalSpace`</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        j (int or str): The label or index identifying the state onto which</span>
+<span class="sd">            is projected</span>
+<span class="sd">        hs (HilbertSpace): The Hilbert space on which the operator acts</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">LocalSigma</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span></div>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1"># Algebra Operations</span>
+<span class="c1">###############################################################################</span>
+
+
+<div class="viewcode-block" id="OperatorPlus"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.OperatorPlus">[docs]</a><span class="k">class</span> <span class="nc">OperatorPlus</span><span class="p">(</span><span class="n">QuantumPlus</span><span class="p">,</span> <span class="n">Operator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sum of Operators&quot;&quot;&quot;</span>
+
+    <span class="n">_neutral_element</span> <span class="o">=</span> <span class="n">ZeroOperator</span>
+    <span class="n">_binary_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">assoc</span><span class="p">,</span>
+        <span class="n">scalars_to_op</span><span class="p">,</span>
+        <span class="n">orderby</span><span class="p">,</span>
+        <span class="n">collect_summands</span><span class="p">,</span>
+        <span class="n">match_replace_binary</span><span class="p">,</span>
+    <span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_pseudo_inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">PseudoInverse</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="OperatorTimes"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.OperatorTimes">[docs]</a><span class="k">class</span> <span class="nc">OperatorTimes</span><span class="p">(</span><span class="n">QuantumTimes</span><span class="p">,</span> <span class="n">Operator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Product of operators</span>
+
+<span class="sd">    This serves both as a product within a Hilbert space as well as a tensor</span>
+<span class="sd">    product.&quot;&quot;&quot;</span>
+
+    <span class="n">_neutral_element</span> <span class="o">=</span> <span class="n">IdentityOperator</span>
+    <span class="n">_binary_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span><span class="n">assoc</span><span class="p">,</span> <span class="n">orderby</span><span class="p">,</span> <span class="n">filter_neutral</span><span class="p">,</span> <span class="n">match_replace_binary</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_pseudo_inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <span class="o">*</span><span class="p">[</span><span class="n">o</span><span class="o">.</span><span class="n">_pseudo_inverse</span><span class="p">()</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">operands</span><span class="p">)]</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ScalarTimesOperator"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.ScalarTimesOperator">[docs]</a><span class="k">class</span> <span class="nc">ScalarTimesOperator</span><span class="p">(</span><span class="n">Operator</span><span class="p">,</span> <span class="n">ScalarTimesQuantumExpression</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Product of a :class:`.Scalar` coefficient and an :class:`Operator`&quot;&quot;&quot;</span>
+
+    <span class="n">_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">match_replace</span><span class="p">,</span>
+    <span class="p">]</span>
+
+<div class="viewcode-block" id="ScalarTimesOperator.has_minus_prefactor"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.ScalarTimesOperator.has_minus_prefactor">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">has_minus_prefactor</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        For a scalar object c, determine whether it is prepended by a &quot;-&quot; sign.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># TODO: check if this is necessary; if yes, move</span>
+        <span class="n">cs</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">cs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;-&quot;</span></div>
+
+    <span class="k">def</span> <span class="nf">_pseudo_inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">c</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">operands</span>
+        <span class="k">return</span> <span class="n">t</span><span class="o">.</span><span class="n">pseudo_inverse</span><span class="p">()</span> <span class="o">/</span> <span class="n">c</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="c1"># TODO: review, and add this to ScalarTimesQuantumExpression</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">term</span> <span class="ow">is</span> <span class="n">IdentityOperator</span> <span class="ow">and</span> <span class="n">is_scalar</span><span class="p">(</span><span class="n">other</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">coeff</span> <span class="o">==</span> <span class="n">other</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__eq__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># TODO: review, and add this to ScalarTimesQuantumExpression</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__hash__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">ScalarTimesOperator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coeff</span><span class="o">.</span><span class="n">conjugate</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">term</span><span class="o">.</span><span class="n">adjoint</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="OperatorDerivative"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.OperatorDerivative">[docs]</a><span class="k">class</span> <span class="nc">OperatorDerivative</span><span class="p">(</span><span class="n">QuantumDerivative</span><span class="p">,</span> <span class="n">Operator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Symbolic partial derivative of an operator</span>
+
+<span class="sd">    See :class:`.QuantumDerivative`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_pseudo_inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">PseudoInverse</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Commutator"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.Commutator">[docs]</a><span class="k">class</span> <span class="nc">Commutator</span><span class="p">(</span><span class="n">QuantumOperation</span><span class="p">,</span> <span class="n">Operator</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&#39;&#39;&#39;Commutator of two operators</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        [\Op{A}, \Op{B}] = \Op{A}\Op{B} - \Op{A}\Op{B}</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">scalars_to_op</span><span class="p">,</span>
+        <span class="n">disjunct_hs_zero</span><span class="p">,</span>
+        <span class="n">commutator_order</span><span class="p">,</span>
+        <span class="n">match_replace</span><span class="p">,</span>
+    <span class="p">]</span>
+    <span class="c1"># TODO: doit method</span>
+
+    <span class="n">order_key</span> <span class="o">=</span> <span class="n">FullCommutativeHSOrder</span>
+
+    <span class="c1"># commutator_order makes FullCommutativeHSOrder anti-commutative</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hs</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">space</span> <span class="o">*</span> <span class="n">B</span><span class="o">.</span><span class="n">space</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">A</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Left side of the commutator&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">B</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Left side of the commutator&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<div class="viewcode-block" id="Commutator.doit"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.Commutator.doit">[docs]</a>    <span class="k">def</span> <span class="nf">doit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Write out commutator</span>
+
+<span class="sd">        Write out the commutator according to its definition</span>
+<span class="sd">        $[\Op{A}, \Op{B}] = \Op{A}\Op{B} - \Op{A}\Op{B}$.</span>
+
+<span class="sd">        See :meth:`.Expression.doit`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">doit</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span> <span class="n">recursive</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_doit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">B</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">B</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span>
+
+    <span class="k">def</span> <span class="nf">_expand</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">A</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span>
+        <span class="n">B</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">B</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">OperatorPlus</span><span class="p">):</span>
+            <span class="n">A_summands</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">operands</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">A_summands</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span><span class="p">,)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">OperatorPlus</span><span class="p">):</span>
+            <span class="n">B_summands</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">operands</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">B_summands</span> <span class="o">=</span> <span class="p">(</span><span class="n">B</span><span class="p">,)</span>
+        <span class="n">summands</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">combo</span> <span class="ow">in</span> <span class="n">cartesian_product</span><span class="p">(</span><span class="n">A_summands</span><span class="p">,</span> <span class="n">B_summands</span><span class="p">):</span>
+            <span class="n">summands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Commutator</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">*</span><span class="n">combo</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">OperatorPlus</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">*</span><span class="n">summands</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_series_expand</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">about</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+        <span class="n">A_series</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="o">.</span><span class="n">series_expand</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">about</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+        <span class="n">B_series</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">B</span><span class="o">.</span><span class="n">series_expand</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">about</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">summands</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">A_series</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">B_series</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="n">k</span><span class="p">])</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="p">]</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">OperatorPlus</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">*</span><span class="n">summands</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sym</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">sym</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">B</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">B</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">sym</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Commutator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">B</span><span class="o">.</span><span class="n">adjoint</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="o">.</span><span class="n">adjoint</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">_pseudo_inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">PseudoInverse</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="OperatorTrace"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.OperatorTrace">[docs]</a><span class="k">class</span> <span class="nc">OperatorTrace</span><span class="p">(</span><span class="n">SingleQuantumOperation</span><span class="p">,</span> <span class="n">Operator</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&#39;&#39;&#39;(Partial) trace of an operator</span>
+
+<span class="sd">    Trace of an operator `op` ($\Op{O}) over the degrees</span>
+<span class="sd">    of freedom of a Hilbert space `over_space` ($\mathcal{H}$):</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        {\rm Tr}_{\mathcal{H}} \Op{O}</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        over_space (.HilbertSpace): The degrees of freedom to trace over</span>
+<span class="sd">        op (Operator): The operator to take the trace of.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">scalars_to_op</span><span class="p">,</span>
+        <span class="n">implied_local_space</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;over_space&#39;</span><span class="p">,]),</span>
+        <span class="n">match_replace</span><span class="p">,</span>
+    <span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">over_space</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">over_space</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">)):</span>
+            <span class="n">over_space</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_hs_cls</span><span class="p">(</span><span class="n">over_space</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">over_space</span><span class="p">,</span> <span class="n">HilbertSpace</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_over_space</span> <span class="o">=</span> <span class="n">over_space</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">over_space</span><span class="o">=</span><span class="n">over_space</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_space</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;over_space&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_over_space</span><span class="p">}</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">operand</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">space</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_space</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">space</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_over_space</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_space</span>
+
+    <span class="k">def</span> <span class="nf">_expand</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_over_space</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">operand</span>
+        <span class="k">return</span> <span class="n">OperatorTrace</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">expand</span><span class="p">(),</span> <span class="n">over_space</span><span class="o">=</span><span class="n">s</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_series_expand</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">about</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+        <span class="n">ope</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">operand</span><span class="o">.</span><span class="n">series_expand</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">about</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span>
+            <span class="n">OperatorTrace</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">opet</span><span class="p">,</span> <span class="n">over_space</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_over_space</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">opet</span> <span class="ow">in</span> <span class="n">ope</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sym</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_over_space</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">operand</span>
+        <span class="k">return</span> <span class="n">OperatorTrace</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">_diff</span><span class="p">(</span><span class="n">sym</span><span class="p">),</span> <span class="n">over_space</span><span class="o">=</span><span class="n">s</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># there is a rule Tr[A^\dagger] -&gt; Tr[A]^\dagger, which we don&#39;t want</span>
+        <span class="c1"># to counteract here with an inverse rule</span>
+        <span class="k">return</span> <span class="n">Adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_pseudo_inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">PseudoInverse</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Adjoint"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.Adjoint">[docs]</a><span class="k">class</span> <span class="nc">Adjoint</span><span class="p">(</span><span class="n">QuantumAdjoint</span><span class="p">,</span> <span class="n">Operator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Symbolic Adjoint of an operator&quot;&quot;&quot;</span>
+
+    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span><span class="n">scalars_to_op</span><span class="p">,</span> <span class="n">delegate_to_method</span><span class="p">(</span><span class="s1">&#39;_adjoint&#39;</span><span class="p">)]</span>
+    <span class="c1"># The reason that Adjoint does not have have `match_replace` in</span>
+    <span class="c1"># `simplifications`, respectively a `_rules` class attribute is that the</span>
+    <span class="c1"># `_adjoint` property that we delegate to is mandatory. Thus, if we had</span>
+    <span class="c1"># rules on top of that, it would create the confusing situation of the rule</span>
+    <span class="c1"># contradicting the `_adjoint` property.</span>
+
+    <span class="k">def</span> <span class="nf">_pseudo_inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">operand</span><span class="o">.</span><span class="n">pseudo_inverse</span><span class="p">()</span><span class="o">.</span><span class="n">adjoint</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="OperatorPlusMinusCC"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.OperatorPlusMinusCC">[docs]</a><span class="k">class</span> <span class="nc">OperatorPlusMinusCC</span><span class="p">(</span><span class="n">SingleQuantumOperation</span><span class="p">,</span> <span class="n">Operator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;An operator plus or minus its complex conjugate&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">sign</span><span class="o">=+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sign</span> <span class="o">=</span> <span class="n">sign</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">sign</span><span class="o">=</span><span class="n">sign</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sign</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span>
+                <span class="s1">&#39;sign&#39;</span><span class="p">:</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span>
+                <span class="s1">&#39;sign&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+            <span class="p">}</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">minimal_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sign</span> <span class="o">==</span> <span class="o">+</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span>
+
+    <span class="k">def</span> <span class="nf">_expand</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">_diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sym</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">OperatorPlusMinusCC</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">operands</span><span class="o">.</span><span class="n">_diff</span><span class="p">(</span><span class="n">sym</span><span class="p">),</span> <span class="n">sign</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_sign</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">OperatorPlusMinusCC</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">operand</span><span class="o">.</span><span class="n">adjoint</span><span class="p">(),</span> <span class="n">sign</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_sign</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_pseudo_inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">PseudoInverse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">doit</span><span class="p">())</span>
+
+<div class="viewcode-block" id="OperatorPlusMinusCC.doit"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.OperatorPlusMinusCC.doit">[docs]</a>    <span class="k">def</span> <span class="nf">doit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Write out the complex conjugate summand</span>
+
+<span class="sd">        See :meth:`.Expression.doit`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">doit</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span> <span class="n">recursive</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_doit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sign</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">operand</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">operand</span><span class="o">.</span><span class="n">adjoint</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">operand</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">operand</span><span class="o">.</span><span class="n">adjoint</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="PseudoInverse"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.PseudoInverse">[docs]</a><span class="k">class</span> <span class="nc">PseudoInverse</span><span class="p">(</span><span class="n">SingleQuantumOperation</span><span class="p">,</span> <span class="n">Operator</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Unevaluated pseudo-inverse $\Op{X}^+$ of an operator $\Op{X}$</span>
+
+<span class="sd">    It is defined via the relationship</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \Op{X} \Op{X}^+ \Op{X} =  \Op{X}  \\</span>
+<span class="sd">        \Op{X}^+ \Op{X} \Op{X}^+ =  \Op{X}^+  \\</span>
+<span class="sd">        (\Op{X}^+ \Op{X})^\dagger = \Op{X}^+ \Op{X}  \\</span>
+<span class="sd">        (\Op{X} \Op{X}^+)^\dagger = \Op{X} \Op{X}^+</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span><span class="n">scalars_to_op</span><span class="p">,</span> <span class="n">delegate_to_method</span><span class="p">(</span><span class="s1">&#39;_pseudo_inverse&#39;</span><span class="p">)]</span>
+    <span class="c1"># `PseudoInverse` does not use rules because it delegates to</span>
+    <span class="c1"># `_pseudo_inverse`, cf. `Adjoint`</span>
+
+    <span class="k">def</span> <span class="nf">_expand</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">_pseudo_inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">operand</span>
+
+    <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="NullSpaceProjector"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.NullSpaceProjector">[docs]</a><span class="k">class</span> <span class="nc">NullSpaceProjector</span><span class="p">(</span><span class="n">SingleQuantumOperation</span><span class="p">,</span> <span class="n">Operator</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Projection operator onto the nullspace of its operand</span>
+
+<span class="sd">    Returns the operator :math:`\mathcal{P}_{{\rm Ker} X}` with</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        X \mathcal{P}_{{\rm Ker} X}</span>
+<span class="sd">          = 0</span>
+<span class="sd">        \Leftrightarrow</span>
+<span class="sd">        X (1 - \mathcal{P}_{{\rm Ker} X})</span>
+<span class="sd">          = X \\</span>
+<span class="sd">        \mathcal{P}_{{\rm Ker} X}^\dagger</span>
+<span class="sd">          = \mathcal{P}_{{\rm Ker} X}</span>
+<span class="sd">          = \mathcal{P}_{{\rm Ker} X}^2</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">scalars_to_op</span><span class="p">,</span>
+        <span class="n">match_replace</span><span class="p">,</span>
+    <span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_expand</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_pseudo_inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">PseudoInverse</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="OperatorIndexedSum"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.OperatorIndexedSum">[docs]</a><span class="k">class</span> <span class="nc">OperatorIndexedSum</span><span class="p">(</span><span class="n">QuantumIndexedSum</span><span class="p">,</span> <span class="n">Operator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Indexed sum over operators&quot;&quot;&quot;</span>
+
+    <span class="n">_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">assoc_indexed</span><span class="p">,</span>
+        <span class="n">scalars_to_op</span><span class="p">,</span>
+        <span class="n">indexed_sum_over_kronecker</span><span class="p">,</span>
+        <span class="n">indexed_sum_over_const</span><span class="p">,</span>
+        <span class="n">match_replace</span><span class="p">,</span>
+    <span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_pseudo_inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">PseudoInverse</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1"># Constructor Routines</span>
+<span class="c1">###############################################################################</span>
+
+
+<span class="n">tr</span> <span class="o">=</span> <span class="n">OperatorTrace</span><span class="o">.</span><span class="n">create</span>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1"># Auxilliary routines</span>
+<span class="c1">###############################################################################</span>
+
+
+<div class="viewcode-block" id="factor_for_trace"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.factor_for_trace">[docs]</a><span class="k">def</span> <span class="nf">factor_for_trace</span><span class="p">(</span><span class="n">ls</span><span class="p">:</span> <span class="n">HilbertSpace</span><span class="p">,</span> <span class="n">op</span><span class="p">:</span> <span class="n">Operator</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Operator</span><span class="p">:</span>
+    <span class="sa">r</span><span class="sd">&#39;&#39;&#39;Given a :class:`.LocalSpace` `ls` to take the partial trace over and an</span>
+<span class="sd">    operator `op`, factor the trace such that operators acting on disjoint</span>
+<span class="sd">    degrees of freedom are pulled out of the trace. If the operator acts</span>
+<span class="sd">    trivially on ls the trace yields only a pre-factor equal to the dimension</span>
+<span class="sd">    of ls. If there are :class:`LocalSigma` operators among a product, the</span>
+<span class="sd">    trace&#39;s cyclical property is used to move to sandwich the full product by</span>
+<span class="sd">    :class:`LocalSigma` operators:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        {\rm Tr} A \sigma_{jk} B = {\rm Tr} \sigma_{jk} B A \sigma_{jj}</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ls: Degree of Freedom to trace over</span>
+<span class="sd">        op: Operator to take the trace of</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The (partial) trace over the operator&#39;s spc-degrees of freedom</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">op</span><span class="o">.</span><span class="n">space</span> <span class="o">==</span> <span class="n">ls</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">OperatorTimes</span><span class="p">):</span>
+            <span class="n">pull_out</span> <span class="o">=</span> <span class="p">[</span><span class="n">o</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">op</span><span class="o">.</span><span class="n">operands</span> <span class="k">if</span> <span class="n">o</span><span class="o">.</span><span class="n">space</span> <span class="ow">is</span> <span class="n">TrivialSpace</span><span class="p">]</span>
+            <span class="n">rest</span> <span class="o">=</span> <span class="p">[</span><span class="n">o</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">op</span><span class="o">.</span><span class="n">operands</span> <span class="k">if</span> <span class="n">o</span><span class="o">.</span><span class="n">space</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">TrivialSpace</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">pull_out</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">OperatorTimes</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">*</span><span class="n">pull_out</span><span class="p">)</span> <span class="o">*</span> <span class="n">OperatorTrace</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                    <span class="n">OperatorTimes</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">*</span><span class="n">rest</span><span class="p">),</span> <span class="n">over_space</span><span class="o">=</span><span class="n">ls</span>
+                <span class="p">)</span>
+        <span class="k">raise</span> <span class="n">CannotSimplify</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">ls</span> <span class="o">&amp;</span> <span class="n">op</span><span class="o">.</span><span class="n">space</span> <span class="o">==</span> <span class="n">TrivialSpace</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ls</span><span class="o">.</span><span class="n">dimension</span> <span class="o">*</span> <span class="n">op</span>
+    <span class="k">if</span> <span class="n">ls</span> <span class="o">&lt;</span> <span class="n">op</span><span class="o">.</span><span class="n">space</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">OperatorTimes</span><span class="p">):</span>
+        <span class="n">pull_out</span> <span class="o">=</span> <span class="p">[</span><span class="n">o</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">op</span><span class="o">.</span><span class="n">operands</span> <span class="k">if</span> <span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">space</span> <span class="o">&amp;</span> <span class="n">ls</span><span class="p">)</span> <span class="o">==</span> <span class="n">TrivialSpace</span><span class="p">]</span>
+
+        <span class="n">rest</span> <span class="o">=</span> <span class="p">[</span><span class="n">o</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">op</span><span class="o">.</span><span class="n">operands</span> <span class="k">if</span> <span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">space</span> <span class="o">&amp;</span> <span class="n">ls</span><span class="p">)</span> <span class="o">!=</span> <span class="n">TrivialSpace</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rest</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">LocalSigma</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span>
+            <span class="n">rest</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">LocalSigma</span>
+        <span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">rest</span><span class="p">):</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">LocalSigma</span><span class="p">):</span>
+                    <span class="n">m</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">j</span>
+                    <span class="n">rest</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="n">rest</span><span class="p">[</span><span class="n">j</span><span class="p">:]</span> <span class="o">+</span> <span class="n">rest</span><span class="p">[:</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">LocalSigma</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">ls</span><span class="p">),]</span>
+                    <span class="p">)</span>
+                    <span class="k">break</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">rest</span><span class="p">:</span>
+            <span class="n">rest</span> <span class="o">=</span> <span class="p">[</span><span class="n">IdentityOperator</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pull_out</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">OperatorTimes</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">*</span><span class="n">pull_out</span><span class="p">)</span> <span class="o">*</span> <span class="n">OperatorTrace</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="n">OperatorTimes</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">*</span><span class="n">rest</span><span class="p">),</span> <span class="n">over_space</span><span class="o">=</span><span class="n">ls</span>
+            <span class="p">)</span>
+    <span class="k">raise</span> <span class="n">CannotSimplify</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="decompose_space"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.decompose_space">[docs]</a><span class="k">def</span> <span class="nf">decompose_space</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">A</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Simplifies OperatorTrace expressions over tensor-product spaces by</span>
+<span class="sd">    turning it into iterated partial traces.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        H (ProductSpace): The full space.</span>
+<span class="sd">        A (Operator):</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Operator: Iterative partial trace expression</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">OperatorTrace</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+        <span class="n">OperatorTrace</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">over_space</span><span class="o">=</span><span class="n">H</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span>
+        <span class="n">over_space</span><span class="o">=</span><span class="n">ProductSpace</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">*</span><span class="n">H</span><span class="o">.</span><span class="n">operands</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_coeffs"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.get_coeffs">[docs]</a><span class="k">def</span> <span class="nf">get_coeffs</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Create a dictionary with all Operator terms of the expression</span>
+<span class="sd">    (understood as a sum) as keys and their coefficients as values.</span>
+
+<span class="sd">    The returned object is a defaultdict that return 0. if a term/key</span>
+<span class="sd">    doesn&#39;t exist.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        expr: The operator expression to get all coefficients from.</span>
+<span class="sd">        expand: Whether to expand the expression distributively.</span>
+<span class="sd">        epsilon: If non-zero, drop all Operators with coefficients that have</span>
+<span class="sd">            absolute value less than epsilon.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: A dictionary ``{op1: coeff1, op2: coeff2, ...}``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">expand</span><span class="p">:</span>
+        <span class="n">expr</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">operands</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">operands</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">OperatorPlus</span><span class="p">)</span> <span class="k">else</span> <span class="p">[</span><span class="n">expr</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">operands</span><span class="p">:</span>
+        <span class="n">c</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">_coeff_term</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">complex</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="o">&lt;</span> <span class="n">epsilon</span><span class="p">:</span>
+                <span class="k">continue</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="n">ret</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+=</span> <span class="n">c</span>
+    <span class="k">return</span> <span class="n">ret</span></div>
+
+
+<span class="k">def</span> <span class="nf">_coeff_term</span><span class="p">(</span><span class="n">op</span><span class="p">):</span>
+    <span class="c1"># TODO: remove</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">ScalarTimesOperator</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">op</span><span class="o">.</span><span class="n">coeff</span><span class="p">,</span> <span class="n">op</span><span class="o">.</span><span class="n">term</span>
+    <span class="k">elif</span> <span class="n">is_scalar</span><span class="p">(</span><span class="n">op</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">op</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ZeroOperator</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">op</span><span class="p">,</span> <span class="n">IdentityOperator</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">,</span> <span class="n">op</span>
+
+
+<div class="viewcode-block" id="factor_coeff"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.factor_coeff">[docs]</a><span class="k">def</span> <span class="nf">factor_coeff</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ops</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Factor out coefficients of all factors.&quot;&quot;&quot;</span>
+    <span class="n">coeffs</span><span class="p">,</span> <span class="n">nops</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="n">_coeff_term</span><span class="p">,</span> <span class="n">ops</span><span class="p">))</span>
+    <span class="n">coeff</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">coeffs</span><span class="p">:</span>
+        <span class="n">coeff</span> <span class="o">*=</span> <span class="n">c</span>
+    <span class="k">if</span> <span class="n">coeff</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">nops</span><span class="p">,</span> <span class="n">coeffs</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">coeff</span> <span class="o">*</span> <span class="bp">cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">*</span><span class="n">nops</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="adjoint"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.adjoint">[docs]</a><span class="k">def</span> <span class="nf">adjoint</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the adjoint of an obj.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">adjoint</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">conjugate</span><span class="p">()</span></div>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1"># Extra (&quot;manual&quot;) simplifications</span>
+<span class="c1">###############################################################################</span>
+
+
+<div class="viewcode-block" id="rewrite_with_operator_pm_cc"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.rewrite_with_operator_pm_cc">[docs]</a><span class="k">def</span> <span class="nf">rewrite_with_operator_pm_cc</span><span class="p">(</span><span class="n">expr</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Try to rewrite expr using :class:`OperatorPlusMinusCC`</span>
+
+<span class="sd">    Example:</span>
+
+<span class="sd">        &gt;&gt;&gt; A = OperatorSymbol(&#39;A&#39;, hs=1)</span>
+<span class="sd">        &gt;&gt;&gt; sum = A + A.dag()</span>
+<span class="sd">        &gt;&gt;&gt; sum2 = rewrite_with_operator_pm_cc(sum)</span>
+<span class="sd">        &gt;&gt;&gt; print(ascii(sum2))</span>
+<span class="sd">        A^(1) + c.c.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># TODO: move this to the toolbox</span>
+    <span class="kn">from</span> <span class="nn">qalgebra.toolbox.core</span> <span class="kn">import</span> <span class="n">temporary_rules</span>
+
+    <span class="k">def</span> <span class="nf">_combine_operator_p_cc</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">B</span><span class="o">.</span><span class="n">adjoint</span><span class="p">()</span> <span class="o">==</span> <span class="n">A</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">OperatorPlusMinusCC</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">sign</span><span class="o">=+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">CannotSimplify</span>
+
+    <span class="k">def</span> <span class="nf">_combine_operator_m_cc</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">B</span><span class="o">.</span><span class="n">adjoint</span><span class="p">()</span> <span class="o">==</span> <span class="n">A</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">OperatorPlusMinusCC</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">sign</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">CannotSimplify</span>
+
+    <span class="k">def</span> <span class="nf">_scal_combine_operator_pm_cc</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">B</span><span class="o">.</span><span class="n">adjoint</span><span class="p">()</span> <span class="o">==</span> <span class="n">A</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="n">d</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">c</span> <span class="o">*</span> <span class="n">OperatorPlusMinusCC</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">sign</span><span class="o">=+</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">c</span> <span class="o">==</span> <span class="o">-</span><span class="n">d</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">c</span> <span class="o">*</span> <span class="n">OperatorPlusMinusCC</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">sign</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">CannotSimplify</span>
+
+    <span class="n">A</span> <span class="o">=</span> <span class="n">wc</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="n">head</span><span class="o">=</span><span class="n">Operator</span><span class="p">)</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="n">wc</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="n">head</span><span class="o">=</span><span class="n">Operator</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">wc</span><span class="p">(</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="n">head</span><span class="o">=</span><span class="n">Scalar</span><span class="p">)</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">wc</span><span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">head</span><span class="o">=</span><span class="n">Scalar</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">temporary_rules</span><span class="p">(</span><span class="n">OperatorPlus</span><span class="p">,</span> <span class="n">clear</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">OperatorPlus</span><span class="o">.</span><span class="n">add_rule</span><span class="p">(</span>
+            <span class="s1">&#39;PM1&#39;</span><span class="p">,</span> <span class="n">pattern_head</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">),</span> <span class="n">_combine_operator_p_cc</span>
+        <span class="p">)</span>
+        <span class="n">OperatorPlus</span><span class="o">.</span><span class="n">add_rule</span><span class="p">(</span>
+            <span class="s1">&#39;PM2&#39;</span><span class="p">,</span>
+            <span class="n">pattern_head</span><span class="p">(</span><span class="n">pattern</span><span class="p">(</span><span class="n">ScalarTimesOperator</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">B</span><span class="p">),</span> <span class="n">A</span><span class="p">),</span>
+            <span class="n">_combine_operator_m_cc</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">OperatorPlus</span><span class="o">.</span><span class="n">add_rule</span><span class="p">(</span>
+            <span class="s1">&#39;PM3&#39;</span><span class="p">,</span>
+            <span class="n">pattern_head</span><span class="p">(</span>
+                <span class="n">pattern</span><span class="p">(</span><span class="n">ScalarTimesOperator</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">),</span>
+                <span class="n">pattern</span><span class="p">(</span><span class="n">ScalarTimesOperator</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">B</span><span class="p">),</span>
+            <span class="p">),</span>
+            <span class="n">_scal_combine_operator_pm_cc</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">expr</span><span class="o">.</span><span class="n">rebuild</span><span class="p">()</span></div>
+
+
+<span class="n">Operator</span><span class="o">.</span><span class="n">_zero</span> <span class="o">=</span> <span class="n">ZeroOperator</span>
+<span class="n">Operator</span><span class="o">.</span><span class="n">_one</span> <span class="o">=</span> <span class="n">IdentityOperator</span>
+<span class="n">Operator</span><span class="o">.</span><span class="n">_base_cls</span> <span class="o">=</span> <span class="n">Operator</span>
+<span class="n">Operator</span><span class="o">.</span><span class="n">_scalar_times_expr_cls</span> <span class="o">=</span> <span class="n">ScalarTimesOperator</span>
+<span class="n">Operator</span><span class="o">.</span><span class="n">_plus_cls</span> <span class="o">=</span> <span class="n">OperatorPlus</span>
+<span class="n">Operator</span><span class="o">.</span><span class="n">_times_cls</span> <span class="o">=</span> <span class="n">OperatorTimes</span>
+<span class="n">Operator</span><span class="o">.</span><span class="n">_adjoint_cls</span> <span class="o">=</span> <span class="n">Adjoint</span>
+<span class="n">Operator</span><span class="o">.</span><span class="n">_indexed_sum_cls</span> <span class="o">=</span> <span class="n">OperatorIndexedSum</span>
+<span class="n">Operator</span><span class="o">.</span><span class="n">_derivative_cls</span> <span class="o">=</span> <span class="n">OperatorDerivative</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Michael Goerz
+      <span class="lastupdated">
+        Last updated on Feb 06, 2020.
+      </span>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
