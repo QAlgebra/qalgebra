@@ -7,7 +7,7 @@ from setuptools import find_packages, setup
 
 
 def get_version(filename):
-    """Extract the package version"""
+    """Extract the package version."""
     with open(filename, encoding='utf8') as in_fh:
         for line in in_fh:
             if line.startswith('__version__'):
@@ -25,7 +25,14 @@ except OSError:
     history = ''
 
 # requirements for use
-requirements = []
+requirements = [
+    'attrs',
+    'numpy',
+    'scipy',
+    'sympy',
+    'uniseg',
+    'watermark',
+]
 
 # requirements for development (testing, generating docs)
 dev_requirements = [
@@ -35,27 +42,31 @@ dev_requirements = [
     # https://github.com/codecov/codecov-python/issues/224
     'coveralls',
     'doctr',
+    'doctr-versions-menu',
     'flake8',
     'gitpython',
-    'isort',
     'ipython',
-    'pre-commit',
+    'isort',
+    'jupyter',
+    'matplotlib',
+    'nbsphinx',
+    'nbval',
     'pdbpp',
+    'pre-commit',
     'pylint',
     'pytest',
     'pytest-cov',
     'pytest-xdist',
+    'qutip',
     'sphinx',
     'sphinx-autobuild',
     'sphinx-autodoc-typehints',
+    'sphinx-copybutton',
+    'sphinx-math-dollar',
     'sphinx_rtd_theme',
     'travis-encrypt',
     'twine',
     'wheel',
-    'jupyter',
-    'nbval',
-    'nbsphinx',
-    'watermark',
 ]
 
 if sys.version_info >= (3, 6):
@@ -75,9 +86,7 @@ setup(
         'Programming Language :: Python :: 3.9',
         'Natural Language :: English',
     ],
-    description=(
-        "Python package for symbolic quantum algebra"
-    ),
+    description=("Python package for symbolic quantum algebra"),
     python_requires='>=3.8',
     install_requires=requirements,
     extras_require={'dev': dev_requirements},
@@ -85,7 +94,18 @@ setup(
     long_description=readme + '\n\n' + history,
     long_description_content_type='text/x-rst',
     include_package_data=True,
-    keywords='qalgebra',
+    keywords=[
+        'qnet',
+        'computer algebra',
+        'symbolic algebra',
+        'science',
+        'quantum computing',
+        'quantum mechanics',
+        'quantum optics',
+        'quantum networks',
+        'qutip',
+        'sympy',
+    ],
     name='qalgebra',
     packages=find_packages(where="src"),
     package_dir={"": "src"},

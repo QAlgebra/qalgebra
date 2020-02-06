@@ -22,7 +22,7 @@ ROOT = Path(__file__).parent
 
 
 def get_version(filename):
-    """Extract the package version"""
+    """Extract the package version."""
     with open(filename, encoding='utf8') as in_fh:
         for line in in_fh:
             if line.startswith('__version__'):
@@ -31,7 +31,7 @@ def get_version(filename):
 
 
 def _patch_line(line):
-    if line.startswith('\sphinxhref{') and line.endswith(".svg}}\n"):
+    if line.startswith(r'\sphinxhref{') and line.endswith(".svg}}\n"):
         return None
     if line == r'\chapter{References}' + "\n":
         return None

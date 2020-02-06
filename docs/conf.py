@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import datetime
 from pathlib import Path
+import sphinx_rtd_theme
 import os
 import sys
 
@@ -12,9 +13,9 @@ import qalgebra
 DOCS = Path(__file__).parent
 ROOT = DOCS / '..'
 
-sys.path.insert(0, os.path.abspath('_extensions'))
-
 # -- Generate API documentation ------------------------------------------------
+
+
 def run_apidoc(app):
     """Generage API documentation"""
     import better_apidoc
@@ -42,23 +43,24 @@ nitpicky = True
 nitpick_ignore = [('py:class', 'callable')]
 
 extensions = [
+    'doctr_versions_menu',
+    'nbsphinx',
     'sphinx.ext.autodoc',
-    'sphinx.ext.doctest',
-    'sphinx.ext.coverage',
-    'sphinx.ext.mathjax',
-    'sphinx.ext.viewcode',
-    'sphinx.ext.napoleon',
-    'sphinx.ext.intersphinx',
     'sphinx.ext.autosummary',
+    'sphinx.ext.coverage',
+    'sphinx.ext.doctest',
     'sphinx.ext.extlinks',
     'sphinx.ext.ifconfig',
-    'sphinx.ext.todo',
     'sphinx.ext.inheritance_diagram',
-    'dollarmath',
+    'sphinx.ext.intersphinx',
+    'sphinx.ext.mathjax',
+    'sphinx.ext.napoleon',
+    'sphinx.ext.todo',
+    'sphinx.ext.viewcode',
     'sphinx_autodoc_typehints',
+    'sphinx_copybutton',
+    'sphinx_math_dollar',
 ]
-
-extensions.append('nbsphinx')
 
 
 if os.getenv('SPELLCHECK'):
@@ -74,6 +76,7 @@ intersphinx_mapping = {
     'scipy': ('https://docs.scipy.org/doc/scipy/reference/', None),
     'numpy': ('https://docs.scipy.org/doc/numpy/', None),
     'matplotlib': ('https://matplotlib.org/', None),
+    'qutip': ('http://qutip.org/docs/latest/', None),
 }
 
 # Add any paths that contain templates here, relative to this directory.
@@ -125,6 +128,41 @@ mathjax_config = {
     'TeX': {
         'extensions': ["AMSmath.js", "AMSsymbols.js"],
         'Macros': {
+            'tr': ['{\\operatorname{tr}}', 0],
+            'Tr': ['{\\operatorname{tr}}', 0],
+            'diag': ['{\\operatorname{diag}}', 0],
+            'abs': ['{\\operatorname{abs}}', 0],
+            'pop': ['{\\operatorname{pop}}', 0],
+            'SLH': ['{\\operatorname{SLH}}', 0],
+            'aux': ['{\\text{aux}}', 0],
+            'opt': ['{\\text{opt}}', 0],
+            'tgt': ['{\\text{tgt}}', 0],
+            'init': ['{\\text{init}}', 0],
+            'lab': ['{\\text{lab}}', 0],
+            'rwa': ['{\\text{rwa}}', 0],
+            'fwhm': ['{\\text{fwhm}}', 0],
+            'bra': ['{\\langle#1\\vert}', 1],
+            'ket': ['{\\vert#1\\rangle}', 1],
+            'Bra': ['{\\left\\langle#1\\right\\vert}', 1],
+            'Braket': [
+                '{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}',
+                2,
+            ],
+            'Ket': ['{\\left\\vert#1\\right\\rangle}', 1],
+            'mat': ['{\\mathbf{#1}}', 1],
+            'op': ['{\\hat{#1}}', 1],
+            'Op': ['{\\hat{#1}}', 1],
+            'dd': ['{\\,\\text{d}}', 0],
+            'daggered': ['{^{\\dagger}}', 0],
+            'transposed': ['{^{\\text{T}}}', 0],
+            'Liouville': ['{\\mathcal{L}}', 0],
+            'DynMap': ['{\\mathcal{E}}', 0],
+            'identity': ['{\\mathbf{1}}', 0],
+            'Norm': ['{\\lVert#1\\rVert}', 1],
+            'Abs': ['{\\left\\vert#1\\right\\vert}', 1],
+            'avg': ['{\\langle#1\\rangle}', 1],
+            'Avg': ['{\\left\langle#1\\right\\rangle}', 1],
+            'AbsSq': ['{\\left\\vert#1\\right\\vert^2}', 1],
             'Re': ['{\\operatorname{Re}}', 0],
             'Im': ['{\\operatorname{Im}}', 0],
             'Real': ['{\\mathbb{R}}', 0],
@@ -147,6 +185,45 @@ napoleon_use_ivar = False
 napoleon_use_param = True
 napoleon_use_rtype = True
 
+# -- Extensions to the  Napoleon GoogleDocstring class ---------------------
+
+from sphinx.ext.napoleon.docstring import GoogleDocstring
+
+# first, we define new methods for any new sections and add them to the class
+def parse_keys_section(self, section):
+    return self._format_fields('Keys', self._consume_fields())
+
+
+GoogleDocstring._parse_keys_section = parse_keys_section
+
+
+def parse_attributes_section(self, section):
+    return self._format_fields('Attributes', self._consume_fields())
+
+
+GoogleDocstring._parse_attributes_section = parse_attributes_section
+
+
+def parse_class_attributes_section(self, section):
+    return self._format_fields('Class Attributes', self._consume_fields())
+
+
+GoogleDocstring._parse_class_attributes_section = (
+    parse_class_attributes_section
+)
+
+# we now patch the parse method to guarantee that the the above methods are
+# assigned to the _section dict
+def patched_parse(self):
+    self._sections['keys'] = self._parse_keys_section
+    self._sections['class attributes'] = self._parse_class_attributes_section
+    self._unpatched_parse()
+
+
+GoogleDocstring._unpatched_parse = GoogleDocstring._parse
+GoogleDocstring._parse = patched_parse
+
+
 # -- Monkeypatch for instance attribs (sphinx bug #2044) -----------------------
 
 from sphinx.ext.autodoc import (
@@ -161,6 +238,22 @@ def iad_add_directive_header(self, sig):
 
 InstanceAttributeDocumenter.add_directive_header = iad_add_directive_header
 
+
+# -- Documenter for Singletons -------------------------------------------------
+
+from sphinx.ext.autodoc import DataDocumenter
+
+
+class SingletonDocumenter(DataDocumenter):
+    directivetype = 'data'
+    objtype = 'singleton'
+    priority = 20
+
+    @classmethod
+    def can_document_member(cls, member, membername, isattr, parent):
+        return isinstance(member, qalgebra.utils.singleton.SingletonType)
+
+
 # -- Options for HTML output ---------------------------------------------------
 
 # on_rtd is whether we are on readthedocs.org, this line of code grabbed from
@@ -169,12 +262,9 @@ on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-if not on_rtd:  # only import and set the theme if we're building docs locally
-    import sphinx_rtd_theme
 
-    html_theme = "sphinx_rtd_theme"
-    html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
-# html_theme = 'sphinxdoc'
+html_theme = "sphinx_rtd_theme"
+html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -182,7 +272,6 @@ if not on_rtd:  # only import and set the theme if we're building docs locally
 html_theme_options = {
     'collapse_navigation': True,
     'display_version': True,
-    'navigation_depth': 4,
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
@@ -208,9 +297,6 @@ html_theme_options = {
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
-
-# JavaScript filenames, relative to html_static_path
-html_js_files = ["version-menu.js"]
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
@@ -287,4 +373,5 @@ latex_show_urls = 'no'
 
 
 def setup(app):
+    app.add_autodocumenter(SingletonDocumenter)
     app.connect('builder-inited', run_apidoc)
