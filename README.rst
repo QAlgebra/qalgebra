@@ -22,9 +22,9 @@ QAlgebra
    :alt: AppVeyor Continuous Integration
    :target: https://ci.appveyor.com/project/goerz/qalgebra
 
-.. image:: https://img.shields.io/coveralls/github/qalgebra/qalgebra/master.svg
+.. image:: https://img.shields.io/coveralls/github/QAlgebra/qalgebra/master.svg
    :alt: Coveralls
-   :target: https://coveralls.io/github/qalgebra/qalgebra?branch=master
+   :target: https://coveralls.io/github/QAlgebra/qalgebra
 
 .. image:: https://img.shields.io/badge/License-MIT-green.svg
    :alt: MIT License
