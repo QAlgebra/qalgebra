@@ -18,7 +18,7 @@ QAlgebra
    :alt: Travis Continuous Integration
    :target: https://travis-ci.org/qalgebra/qalgebra
 
-.. image:: https://img.shields.io/badge/appveyor-no%20id-red.svg
+.. image:: https://ci.appveyor.com/api/projects/status/ryq6xbm702ogosqk/branch/master?svg=true
    :alt: AppVeyor Continuous Integration
    :target: https://ci.appveyor.com/project/goerz/qalgebra
 
