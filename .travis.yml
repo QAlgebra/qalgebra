@@ -14,27 +14,12 @@ matrix:
       python: 3.8
       env:
         - DOCS="true"
-        # TODO: Doctr deploy key
-        #       * Run `tox -e run-cmd -- doctr configure --no-upload-key --no-authenticate --keypath docs/doctr_deploy_key`
-        #       * Follow doctr's instructions regarding setting up the deploy key on Github
-        #       * Replace the "secure: ..." line below with the "secure" line printed by doctr
-        # - secure: ...
-        # TODO: Environment variables for deployment of documentation artifacts to Bintray
-        #       * Set up a Bintray repo and package (preferably mirroring the username/repo name on Github
-        #       * Uncomment lines and set values for:
-        #           * BINTRAY_USER - The username for the Bintray account
-        #           * BINTRAY_SUBJECT - The "subject" (user name or organization name) hosting the package
-        #           * BINTRAY_REPO - The "repo" on Bintray (should match the git repo name)
-        #           * BINTRAY_PACKAGE - The "package" on Bintray (should also match the git repo name)
-        #       * run `tox -e run-travis-encrypt`
-        #       * paste in e.g. "BINTRAY_TOKEN=0a23802f7c9907f9087e37f21346a3a2805feb1a" when prompted for "Password"
-        #       * replace the "secure: ..." information below with the "secure" information printed by travis-encrypt
-        # - BINTRAY_USER=qalgebra
-        # - BINTRAY_SUBJECT=qalgebra
-        # - BINTRAY_REPO=qalgebra
-        # - BINTRAY_PACKAGE=qalgebra
-        # # BINTRAY_TOKEN
-        # - secure: ...
+        - secure: "FfWOPCxwhF7H6UFqdOAiO7OIoeAVjHQpTTvQ84QxZpH4TC0zLPUMfhB1H5yKJdWfxb0L9RKRH6XYVF5G2UQEnVUkyW2dkZ/KFZbndtIH2ytA3WDGQ+D24LCkVuYiiBsJj8NyWUwvnHyumSlGgTi7BbA+unIkEWLBA2/0SkvLsSTHh80b96dmkOn/7hbaVI+q3IHv3Y/Mu12pIXNGlsesa6nJmtfhgzSKopwjHlCE6XWVq+BRC6pYTlgLPImuE6Tss+v3tJf6Ipv+CL2LgghFcn1vggZAS34yld66s4TKO1RD5UiYuvnTrDxIHJJC64TFGiBZP3wQNfSMLDx8MzN8jw6wxkA+gFCxxcASGyG8eKPQJkfNczODS0CVLThpoAUxIwljmO9hmfa+BUV9+4oXPdIBGAsuriEOLhOI9iRgBfH3ou44z1cos8kdn9duKZiI2Sitk4XfpdN/O9DDev5s8JJraxGpJh3zIZLRcwnHl4va5wMG45Sw0ivJaeufc7wb0ac3JlPAEvChrMnidUmdD2iy24WHaNlmf8d5aHQ3YKootI3hbi3ju0VmMug5SDiKEnuFTaVvj1aToSIEBWOU7Vz7dwb3ZDim97hcfWLTVhlVGopCu8JFRhuKSMti3EAlcuucV/2FZPLN42G01VXiH4OVe9/98AupxsgQoKfb9ps="
+        - BINTRAY_USER=goerz
+        - BINTRAY_SUBJECT=qalgebra
+        - BINTRAY_REPO=qalgebra
+        - BINTRAY_PACKAGE=qalgebra
+        - secure: WdN0tTvb6g0wvRhPLj06SEd1CWQYB5O6ZXpahABz9QqZSSRKUkBa/hR8qqWb+DBt9DZwBelEH30mGJcnIy5+JyGtpdq/vRsyZ+0XweCVMe5SlynEj15ZMUCS3p8Vf3qxWElNM3w1q6Pg7wBimthfF/DJxr0fF0DKNllG/7AOQ/zikV39QBWHAuBwchpjALJC32UJXYVg1kpKnWBZike1zwsb12Gd88uIFDj8yQGF6hlelwR1/LrI85XaSd4b5Yq4s4fsTjhIOQgEBsfljef5C2jwwD5nWhmWjnDASFlxZDSnEerjwvWIVLI+0qcBb0JDq4GnxB9p+IDZtJdmL5xa8xOiLGuiNrzScdX3r/G+OGopjeOXKaoVQyDdpWVyVS/rmYccPdvrLT871f+Z8I/7mgwrS13OgQWB7Ka7oFTfhmhdDRbv9I8zV3gKK7z2DOT5P888xfggfPYjeqPzd9x9PzcfInenHiPpVKUlN9/15/t3JQQ8wGS/z/+00tc0CsuFKTHwoWsxo8aLr99vimShsGpsuRrJBVNMeqkB8mFCPjrA5kuPJNwEu8OtK/nr3ak35zjB43DPnYuGI9Lmq5Vd1Kivch5IXrK7fCOJ1pa3mZhugyjPAUws/AMahgPA3CRDinnFHzZYRQLdBZdfRPQZhEIGGo1Yp+RJPo1XpC1dEuQ=
       addons:
         apt_packages:
           - pandoc
