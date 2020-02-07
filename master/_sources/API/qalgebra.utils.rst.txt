@@ -17,7 +17,6 @@ qalgebra.utils package
        qalgebra.utils.containers
        qalgebra.utils.indices
        qalgebra.utils.ordering
-       qalgebra.utils.permutations
        qalgebra.utils.properties_for_args
        qalgebra.utils.singleton
        qalgebra.utils.testing

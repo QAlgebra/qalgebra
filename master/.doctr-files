@@ -37,7 +37,6 @@ master/API/qalgebra.utils.containers.html
 master/API/qalgebra.utils.html
 master/API/qalgebra.utils.indices.html
 master/API/qalgebra.utils.ordering.html
-master/API/qalgebra.utils.permutations.html
 master/API/qalgebra.utils.properties_for_args.html
 master/API/qalgebra.utils.singleton.html
 master/API/qalgebra.utils.testing.html
@@ -77,7 +76,6 @@ master/_modules/qalgebra/utils/check_rules.html
 master/_modules/qalgebra/utils/containers.html
 master/_modules/qalgebra/utils/indices.html
 master/_modules/qalgebra/utils/ordering.html
-master/_modules/qalgebra/utils/permutations.html
 master/_modules/qalgebra/utils/properties_for_args.html
 master/_modules/qalgebra/utils/singleton.html
 master/_modules/qalgebra/utils/testing.html
@@ -121,7 +119,6 @@ master/_sources/API/qalgebra.utils.check_rules.rst.txt
 master/_sources/API/qalgebra.utils.containers.rst.txt
 master/_sources/API/qalgebra.utils.indices.rst.txt
 master/_sources/API/qalgebra.utils.ordering.rst.txt
-master/_sources/API/qalgebra.utils.permutations.rst.txt
 master/_sources/API/qalgebra.utils.properties_for_args.rst.txt
 master/_sources/API/qalgebra.utils.rst.txt
 master/_sources/API/qalgebra.utils.singleton.rst.txt

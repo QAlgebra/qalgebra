@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.printing.latexprinter &mdash; QAlgebra 2.0.0-dev (86a0058) documentation</title>
+  <title>qalgebra.printing.latexprinter &mdash; QAlgebra 2.0.0-dev (a137cf6) documentation</title>
   
 
   
@@ -223,8 +223,6 @@
     <span class="n">_dagger_sym</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;\dagger&#39;</span>
     <span class="n">_tensor_sym</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;\otimes&#39;</span>
     <span class="n">_product_sym</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span>
-    <span class="n">_circuit_series_sym</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;\lhd&#39;</span>
-    <span class="n">_circuit_concat_sym</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;\boxplus&#39;</span>
     <span class="n">_cid</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;{\rm cid}(</span><span class="si">%d</span><span class="s1">)&#39;</span>
     <span class="n">_sum_sym</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;\sum&#39;</span>
     <span class="n">_element_sym</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;\in&#39;</span>
@@ -407,52 +405,6 @@
         <span class="k">return</span> <span class="sa">r</span><span class="s1">&#39;{{\rm tr}}_{{</span><span class="si">{space}</span><span class="s1">}}\left[</span><span class="si">{operand}</span><span class="s1">\right]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="n">space</span><span class="o">=</span><span class="n">s</span><span class="p">,</span> <span class="n">operand</span><span class="o">=</span><span class="n">o</span>
         <span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">_print_Feedback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
-        <span class="n">operand</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">operand</span><span class="p">)</span>
-        <span class="n">o</span><span class="p">,</span> <span class="n">i</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">out_in_pair</span>
-        <span class="k">return</span> <span class="sa">r</span><span class="s1">&#39;\left\lfloor{</span><span class="si">%s</span><span class="s1">}\right\rfloor_{</span><span class="si">%s</span><span class="s1">\rightarrow</span><span class="si">{}%s</span><span class="s1">}&#39;</span> <span class="o">%</span> <span class="p">(</span>
-            <span class="n">operand</span><span class="p">,</span>
-            <span class="n">o</span><span class="p">,</span>
-            <span class="n">i</span><span class="p">,</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">_print_SeriesInverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">r</span><span class="s1">&#39;\left[</span><span class="si">%s</span><span class="s1">\right]^{\rhd}&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">operand</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">_print_CircuitSymbol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_str</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">sym_args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">res</span> <span class="o">+=</span> <span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_left</span>
-                <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">sym_args</span><span class="p">])</span>
-                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_right</span>
-            <span class="p">)</span>
-        <span class="k">return</span> <span class="n">res</span>
-
-    <span class="k">def</span> <span class="nf">_print_Component</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;{\rm </span><span class="si">%s</span><span class="s1">}&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_str</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">sym_args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">res</span> <span class="o">+=</span> <span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_left</span>
-                <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">sym_args</span><span class="p">])</span>
-                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_right</span>
-            <span class="p">)</span>
-        <span class="k">return</span> <span class="n">res</span>
-
-    <span class="k">def</span> <span class="nf">_print_CPermutation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
-        <span class="n">permutation_sym</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;\mathbf</span><span class="si">{P}</span><span class="s1">_{\sigma}&#39;</span>
-        <span class="k">return</span> <span class="sa">r</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">\begin</span><span class="si">{pmatrix}</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> </span><span class="se">\\</span><span class="s1"> </span><span class="si">%s</span><span class="s1"> \end</span><span class="si">{pmatrix}</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span>
-            <span class="n">permutation_sym</span><span class="p">,</span>
-            <span class="s2">&quot; &amp; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">cdim</span><span class="p">))),</span>
-            <span class="s2">&quot; &amp; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">expr</span><span class="o">.</span><span class="n">permutation</span><span class="p">)),</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">_print_CIdentity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">r</span><span class="s1">&#39;{\rm cid}(1)&#39;</span>
-
-    <span class="k">def</span> <span class="nf">_print_CircuitZero</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">r</span><span class="s1">&#39;{\rm cid}(0)&#39;</span>
 
     <span class="k">def</span> <span class="nf">_print_HilbertSpace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
         <span class="k">return</span> <span class="sa">r</span><span class="s1">&#39;\mathcal{{H}}_{{</span><span class="si">{label}</span><span class="s1">}}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
@@ -769,7 +721,7 @@
     <p>
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Feb 06, 2020.
+        Last updated on Feb 07, 2020.
       </span>
 
     </p>

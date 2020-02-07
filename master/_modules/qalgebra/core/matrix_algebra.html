@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.matrix_algebra &mdash; QAlgebra 2.0.0-dev (86a0058) documentation</title>
+  <title>qalgebra.core.matrix_algebra &mdash; QAlgebra 2.0.0-dev (a137cf6) documentation</title>
   
 
   
@@ -186,7 +186,6 @@
 <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">zeros</span> <span class="k">as</span> <span class="n">np_zeros</span>
 <span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">I</span><span class="p">,</span> <span class="n">Symbol</span><span class="p">,</span> <span class="n">sympify</span>
 
-<span class="kn">from</span> <span class="nn">..utils.permutations</span> <span class="kn">import</span> <span class="n">check_permutation</span>
 <span class="kn">from</span> <span class="nn">.abstract_algebra</span> <span class="kn">import</span> <span class="n">Expression</span><span class="p">,</span> <span class="n">substitute</span>
 <span class="kn">from</span> <span class="nn">.abstract_quantum_algebra</span> <span class="kn">import</span> <span class="n">QuantumExpression</span>
 <span class="kn">from</span> <span class="nn">.exceptions</span> <span class="kn">import</span> <span class="n">NoConjugateMatrix</span><span class="p">,</span> <span class="n">NonSquareMatrix</span>
@@ -205,9 +204,7 @@
     <span class="s1">&#39;zerosm&#39;</span><span class="p">,</span>
 <span class="p">]</span>
 
-<span class="n">__private__</span> <span class="o">=</span> <span class="p">[</span>  <span class="c1"># anything not in __all__ must be in __private__</span>
-    <span class="s1">&#39;permutation_matrix&#39;</span>
-<span class="p">]</span>
+<span class="n">__private__</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># anything not in __all__ must be in __private__</span>
 
 
 <div class="viewcode-block" id="Matrix"><a class="viewcode-back" href="../../../API/qalgebra.core.matrix_algebra.html#qalgebra.core.matrix_algebra.Matrix">[docs]</a><span class="k">class</span> <span class="nc">Matrix</span><span class="p">(</span><span class="n">Expression</span><span class="p">):</span>
@@ -625,45 +622,6 @@
 <div class="viewcode-block" id="zerosm"><a class="viewcode-back" href="../../../API/qalgebra.core.matrix_algebra.html#qalgebra.core.matrix_algebra.zerosm">[docs]</a><span class="k">def</span> <span class="nf">zerosm</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Generalizes ``numpy.zeros`` to :py:class:`Matrix` objects.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">Matrix</span><span class="p">(</span><span class="n">np_zeros</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span></div>
-
-
-<div class="viewcode-block" id="permutation_matrix"><a class="viewcode-back" href="../../../API/qalgebra.core.matrix_algebra.html#qalgebra.core.matrix_algebra.permutation_matrix">[docs]</a><span class="k">def</span> <span class="nf">permutation_matrix</span><span class="p">(</span><span class="n">permutation</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return orthogonal permutation matrix for permutation tuple</span>
-
-<span class="sd">    Return an orthogonal permutation matrix :math:`M_\sigma`</span>
-<span class="sd">    for a permutation :math:`\sigma` defined by the image tuple</span>
-<span class="sd">    :math:`(\sigma(1), \sigma(2),\dots \sigma(n))`,</span>
-<span class="sd">    such that</span>
-
-<span class="sd">    .. math::</span>
-
-<span class="sd">        M_\sigma \vec{e}_i = \vec{e}_{\sigma(i)}</span>
-
-<span class="sd">    where :math:`\vec{e}_k` is the k-th standard basis vector.</span>
-<span class="sd">    This definition ensures a composition law:</span>
-
-<span class="sd">    .. math::</span>
-
-<span class="sd">        M_{\sigma \cdot \tau} = M_\sigma M_\tau.</span>
-
-<span class="sd">    The column form of :math:`M_\sigma` is thus given by</span>
-
-<span class="sd">    .. math::</span>
-
-<span class="sd">        M = (</span>
-<span class="sd">            \vec{e}_{\sigma(1)},</span>
-<span class="sd">            \vec{e}_{\sigma(2)},</span>
-<span class="sd">            \dots \vec{e}_{\sigma(n)}).</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        permutation (tuple): A permutation image tuple (zero-based indices!)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">assert</span> <span class="n">check_permutation</span><span class="p">(</span><span class="n">permutation</span><span class="p">)</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">permutation</span><span class="p">)</span>
-    <span class="n">op_matrix</span> <span class="o">=</span> <span class="n">np_zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">permutation</span><span class="p">):</span>
-        <span class="n">op_matrix</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="n">Matrix</span><span class="p">(</span><span class="n">op_matrix</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
@@ -678,7 +636,7 @@
     <p>
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Feb 06, 2020.
+        Last updated on Feb 07, 2020.
       </span>
 
     </p>

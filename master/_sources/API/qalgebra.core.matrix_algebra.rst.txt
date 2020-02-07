@@ -7,7 +7,7 @@ qalgebra.core.matrix_algebra module
 .. currentmodule:: qalgebra.core.matrix_algebra
 
 .. automodule:: qalgebra.core.matrix_algebra
-    :members: Matrix, block_matrix, diagm, hstackm, identity_matrix, np_conjugate, permutation_matrix, vstackm, zerosm
+    :members: Matrix, block_matrix, diagm, hstackm, identity_matrix, np_conjugate, vstackm, zerosm
     :undoc-members:
     :show-inheritance:
     :member-order: bysource
@@ -31,7 +31,6 @@ qalgebra.core.matrix_algebra module
         diagm
         hstackm
         identity_matrix
-        permutation_matrix
         vstackm
         zerosm
 

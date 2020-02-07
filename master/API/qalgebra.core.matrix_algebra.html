@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.matrix_algebra module &mdash; QAlgebra 2.0.0-dev (86a0058) documentation</title>
+  <title>qalgebra.core.matrix_algebra module &mdash; QAlgebra 2.0.0-dev (a137cf6) documentation</title>
   
 
   
@@ -271,13 +271,10 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.matrix_algebra.identity_matrix" title="qalgebra.core.matrix_algebra.identity_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">identity_matrix</span></code></a></p></td>
 <td><p>Generate the N-dimensional identity matrix.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.matrix_algebra.permutation_matrix" title="qalgebra.core.matrix_algebra.permutation_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">permutation_matrix</span></code></a></p></td>
-<td><p>Return orthogonal permutation matrix for permutation tuple</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.matrix_algebra.vstackm" title="qalgebra.core.matrix_algebra.vstackm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vstackm</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.matrix_algebra.vstackm" title="qalgebra.core.matrix_algebra.vstackm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vstackm</span></code></a></p></td>
 <td><p>Generalizes <cite>numpy.vstack</cite> to <a class="reference internal" href="#qalgebra.core.matrix_algebra.Matrix" title="qalgebra.core.matrix_algebra.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix</span></code></a> objects.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.matrix_algebra.zerosm" title="qalgebra.core.matrix_algebra.zerosm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zerosm</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.matrix_algebra.zerosm" title="qalgebra.core.matrix_algebra.zerosm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zerosm</span></code></a></p></td>
 <td><p>Generalizes <code class="docutils literal notranslate"><span class="pre">numpy.zeros</span></code> to <a class="reference internal" href="#qalgebra.core.matrix_algebra.Matrix" title="qalgebra.core.matrix_algebra.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix</span></code></a> objects.</p></td>
 </tr>
 </tbody>
@@ -569,33 +566,6 @@ coefficients.</p>
 <dd><p>Generalizes <code class="docutils literal notranslate"><span class="pre">numpy.zeros</span></code> to <a class="reference internal" href="#qalgebra.core.matrix_algebra.Matrix" title="qalgebra.core.matrix_algebra.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix</span></code></a> objects.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="qalgebra.core.matrix_algebra.permutation_matrix">
-<code class="sig-prename descclassname">qalgebra.core.matrix_algebra.</code><code class="sig-name descname">permutation_matrix</code><span class="sig-paren">(</span><em class="sig-param">permutation</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/matrix_algebra.html#permutation_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.matrix_algebra.permutation_matrix" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return orthogonal permutation matrix for permutation tuple</p>
-<p>Return an orthogonal permutation matrix <span class="math notranslate nohighlight">\(M_\sigma\)</span>
-for a permutation <span class="math notranslate nohighlight">\(\sigma\)</span> defined by the image tuple
-<span class="math notranslate nohighlight">\((\sigma(1), \sigma(2),\dots \sigma(n))\)</span>,
-such that</p>
-<div class="math notranslate nohighlight">
-\[M_\sigma \vec{e}_i = \vec{e}_{\sigma(i)}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\vec{e}_k\)</span> is the k-th standard basis vector.
-This definition ensures a composition law:</p>
-<div class="math notranslate nohighlight">
-\[M_{\sigma \cdot \tau} = M_\sigma M_\tau.\]</div>
-<p>The column form of <span class="math notranslate nohighlight">\(M_\sigma\)</span> is thus given by</p>
-<div class="math notranslate nohighlight">
-\[M = (
-    \vec{e}_{\sigma(1)},
-    \vec{e}_{\sigma(2)},
-    \dots \vec{e}_{\sigma(n)}).\]</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>permutation</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#tuple" title="(in Python v3.8)"><em>tuple</em></a>) – A permutation image tuple (zero-based indices!)</p>
-</dd>
-</dl>
-</dd></dl>
-
 </div>
 </div>
 
@@ -621,7 +591,7 @@ This definition ensures a composition law:</p>
     <p>
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Feb 06, 2020.
+        Last updated on Feb 07, 2020.
       </span>
 
     </p>
