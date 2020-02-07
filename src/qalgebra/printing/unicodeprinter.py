@@ -14,7 +14,7 @@ __private__ = ['QalgebraUnicodePrinter', 'SubSupFmt', 'SubSupFmtNoUni']
 
 
 class SubSupFmt:
-    """A format string that divides into a name, subscript, and superscript
+    """A format string that divides into a name, subscript, and superscript.
 
     >>> fmt = SubSupFmt('{name}', sub='({i},{j})', sup='({sup})')
     >>> fmt.format(name='alpha', i='mu', j='nu', sup=1)
@@ -31,7 +31,7 @@ class SubSupFmt:
         self.unicode_sub_super = unicode_sub_super
 
     def format(self, **kwargs):
-        """Format and combine the name, subscript, and superscript"""
+        """Format and combine the name, subscript, and superscript."""
         name = self.name.format(**kwargs)
 
         subs = []
@@ -61,7 +61,7 @@ class SubSupFmt:
 
 
 class SubSupFmtNoUni(SubSupFmt):
-    """SubSupFmt with default unicode_sub_super=False"""
+    """SubSupFmt with default unicode_sub_super=False."""
 
     def __init__(self, name, sub=None, sup=None, unicode_sub_super=False):
         super().__init__(name, sub, sup, unicode_sub_super)
@@ -82,14 +82,12 @@ class QalgebraUnicodePrinter(QalgebraAsciiPrinter):
     _dagger_sym = '†'
     _tensor_sym = '⊗'
     _product_sym = ' '
-    _circuit_series_sym = '◁'
-    _circuit_concat_sym = '⊞'
     _sum_sym = '∑'
     _element_sym = '∈'
     _ellipsis = '…'
 
     def _render_str(self, string):
-        """Returned a unicodified version of the string"""
+        """Returned a unicodified version of the string."""
         if isinstance(string, StrLabel):
             string = string._render(string.expr)
         string = str(string)

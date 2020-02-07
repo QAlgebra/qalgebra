@@ -2,9 +2,6 @@ from textwrap import dedent
 
 import pytest
 from numpy import array, complex128, float64, int64
-
-# We need lots of extra import so that all "srepr" have a context in which they
-# can be evaluated
 from sympy import (
     Float,
     I,

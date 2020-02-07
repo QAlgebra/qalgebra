@@ -46,8 +46,6 @@ class QalgebraLatexPrinter(QalgebraAsciiPrinter):
     _dagger_sym = r'\dagger'
     _tensor_sym = r'\otimes'
     _product_sym = ' '
-    _circuit_series_sym = r'\lhd'
-    _circuit_concat_sym = r'\boxplus'
     _cid = r'{\rm cid}(%d)'
     _sum_sym = r'\sum'
     _element_sym = r'\in'
@@ -230,52 +228,6 @@ class QalgebraLatexPrinter(QalgebraAsciiPrinter):
         return r'{{\rm tr}}_{{{space}}}\left[{operand}\right]'.format(
             space=s, operand=o
         )
-
-    def _print_Feedback(self, expr):
-        operand = self.doprint(expr.operand)
-        o, i = expr.out_in_pair
-        return r'\left\lfloor{%s}\right\rfloor_{%s\rightarrow{}%s}' % (
-            operand,
-            o,
-            i,
-        )
-
-    def _print_SeriesInverse(self, expr):
-        return r'\left[%s\right]^{\rhd}' % self.doprint(expr.operand)
-
-    def _print_CircuitSymbol(self, expr):
-        res = self._render_str(expr.label)
-        if len(expr.sym_args) > 0:
-            res += (
-                self._parenth_left
-                + ", ".join([self.doprint(arg) for arg in expr.sym_args])
-                + self._parenth_right
-            )
-        return res
-
-    def _print_Component(self, expr):
-        res = r'{\rm %s}' % self._render_str(expr.label)
-        if len(expr.sym_args) > 0:
-            res += (
-                self._parenth_left
-                + ", ".join([self.doprint(arg) for arg in expr.sym_args])
-                + self._parenth_right
-            )
-        return res
-
-    def _print_CPermutation(self, expr):
-        permutation_sym = r'\mathbf{P}_{\sigma}'
-        return r'%s\begin{pmatrix} %s \\ %s \end{pmatrix}' % (
-            permutation_sym,
-            " & ".join(map(str, range(expr.cdim))),
-            " & ".join(map(str, expr.permutation)),
-        )
-
-    def _print_CIdentity(self, expr):
-        return r'{\rm cid}(1)'
-
-    def _print_CircuitZero(self, expr):
-        return r'{\rm cid}(0)'
 
     def _print_HilbertSpace(self, expr):
         return r'\mathcal{{H}}_{{{label}}}'.format(

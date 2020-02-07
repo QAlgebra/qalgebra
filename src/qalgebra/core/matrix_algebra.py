@@ -11,7 +11,6 @@ from numpy import vstack as np_vstack
 from numpy import zeros as np_zeros
 from sympy import I, Symbol, sympify
 
-from ..utils.permutations import check_permutation
 from .abstract_algebra import Expression, substitute
 from .abstract_quantum_algebra import QuantumExpression
 from .exceptions import NoConjugateMatrix, NonSquareMatrix
@@ -30,9 +29,7 @@ __all__ = [
     'zerosm',
 ]
 
-__private__ = [  # anything not in __all__ must be in __private__
-    'permutation_matrix'
-]
+__private__ = []  # anything not in __all__ must be in __private__
 
 
 class Matrix(Expression):
@@ -450,42 +447,3 @@ def identity_matrix(N):
 def zerosm(shape, *args, **kwargs):
     """Generalizes ``numpy.zeros`` to :py:class:`Matrix` objects."""
     return Matrix(np_zeros(shape, *args, **kwargs))
-
-
-def permutation_matrix(permutation):
-    r"""Return orthogonal permutation matrix for permutation tuple
-
-    Return an orthogonal permutation matrix :math:`M_\sigma`
-    for a permutation :math:`\sigma` defined by the image tuple
-    :math:`(\sigma(1), \sigma(2),\dots \sigma(n))`,
-    such that
-
-    .. math::
-
-        M_\sigma \vec{e}_i = \vec{e}_{\sigma(i)}
-
-    where :math:`\vec{e}_k` is the k-th standard basis vector.
-    This definition ensures a composition law:
-
-    .. math::
-
-        M_{\sigma \cdot \tau} = M_\sigma M_\tau.
-
-    The column form of :math:`M_\sigma` is thus given by
-
-    .. math::
-
-        M = (
-            \vec{e}_{\sigma(1)},
-            \vec{e}_{\sigma(2)},
-            \dots \vec{e}_{\sigma(n)}).
-
-    Args:
-        permutation (tuple): A permutation image tuple (zero-based indices!)
-    """
-    assert check_permutation(permutation)
-    n = len(permutation)
-    op_matrix = np_zeros((n, n), dtype=int)
-    for i, j in enumerate(permutation):
-        op_matrix[j, i] = 1
-    return Matrix(op_matrix)

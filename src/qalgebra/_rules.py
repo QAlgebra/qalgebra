@@ -78,7 +78,6 @@ from .library.spin_algebra import (
 from .pattern_matching import pattern, pattern_head, wc
 from .utils.check_rules import check_rules_dict
 from .utils.indices import IndexRangeBase, SymbolicLabelBase
-from .utils.permutations import concatenate_permutations
 
 
 SCALAR_TYPES = (Scalar,) + Scalar._val_types

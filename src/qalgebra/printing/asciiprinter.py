@@ -38,8 +38,6 @@ class QalgebraAsciiPrinter(QalgebraBasePrinter):
     _dagger_sym = 'H'
     _tensor_sym = '*'
     _product_sym = '*'
-    _circuit_series_sym = "<<"
-    _circuit_concat_sym = "+"
     _cid = 'cid(%d)'
     _sum_sym = 'Sum'
     _element_sym = 'in'
@@ -218,66 +216,6 @@ class QalgebraAsciiPrinter(QalgebraBasePrinter):
             + ", ".join([self.doprint(c) for c in expr])
             + self._bracket_right
         )
-
-    def _print_CircuitSymbol(self, expr):
-        res = self._render_str(expr.label)
-        if len(expr.sym_args) > 0:
-            res += (
-                self._parenth_left
-                + ", ".join([self.doprint(arg) for arg in expr.sym_args])
-                + self._parenth_right
-            )
-        return res
-
-    def _print_CPermutation(self, expr):
-        return r'Perm(%s)' % (
-            ", ".join(map(self._render_str, expr.permutation))
-        )
-
-    def _print_SeriesProduct(self, expr):
-        prec = precedence(expr)
-        circuit_series_sym = " " + self._circuit_series_sym + " "
-        return circuit_series_sym.join(
-            [self.parenthesize(op, prec) for op in expr.operands]
-        )
-
-    def _print_Concatenation(self, expr):
-        prec = precedence(expr)
-        reduced_operands = []  # reduce consecutive identities to a str
-        id_count = 0
-        for o in expr.operands:
-            if self._isinstance(o, 'CIdentity'):
-                id_count += 1
-            else:
-                if id_count > 0:
-                    reduced_operands.append(self._cid % id_count)
-                    id_count = 0
-                reduced_operands.append(o)
-        if id_count > 0:
-            reduced_operands.append(self._cid % id_count)
-        circuit_concat_sym = " " + self._circuit_concat_sym + " "
-        parts = []
-        for op in reduced_operands:
-            if self._isinstance(op, 'SeriesProduct'):
-                # while a SeriesProduct has a higher precedence than a
-                # Concatenation, for most readers, extra parentheses will be
-                # helpful
-                # TODO: make this an option
-                parts.append(
-                    self._parenth_left + self.doprint(op) + self._parenth_right
-                )
-            else:
-                parts.append(self.parenthesize(op, prec))
-        return circuit_concat_sym.join(parts)
-
-    def _print_Feedback(self, expr):
-        o, i = expr.out_in_pair
-        return '[{operand}]_{{{output}->{input}}}'.format(
-            operand=self.doprint(expr.operand), output=o, input=i
-        )
-
-    def _print_SeriesInverse(self, expr):
-        return r'[{operand}]^{{-1}}'.format(operand=self.doprint(expr.operand))
 
     def _print_HilbertSpace(self, expr):
         return r'H_{label}'.format(label=self._render_hs_label(expr))
