@@ -1,14 +1,19 @@
 environment:
 
   matrix:
-    - TOXENV: py38-test
+    - PYTHON: C:\\Miniconda3-x64\\envs\\qalgebra_testenv\\python.exe
+      PATH: C:\Miniconda3-x64\envs\qalgebra_testenv\Scripts;%PATH%
 
 install:
-  - C:\Miniconda3-x64\\Scripts\\activate"
-  - conda.exe install -c conda-forge -y tox
+  - C:\\Miniconda3-x64\\Scripts\\activate
+  - conda.exe update -n base -c defaults -y conda
+  - conda.exe create -n qalgebra_testenv -y python=3.8
+  - "%PYTHON% --version"
+  - "%PYTHON% -m pip install cython numpy scipy tox"
+  - "%PYTHON% -m pip install qutip"
+  - "%PYTHON% -m pip install -e .[dev]"
 
 build: off
 
 test_script:
-  - python.exe -m tox -c .appveyor-tox-debug.ini -vv -e run-cmd -- python.exe -c "import qutip; print(qutip.__version__)"
-    #- "python.exe -m tox -c .appveyor-tox.ini -vv -e %TOXENV%"
+  - "%PYTHON% -m pytest -vvv --doctest-modules --cov=qalgebra --nbval --sanitize-with docs\nbval_sanitize.cfg --durations=10 -x -s src tests docs README.rst"
