@@ -1,41 +1,14 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.printing.asciiprinter module &mdash; QAlgebra 2.0.0-dev (314cff2) documentation</title>
+  <title>qalgebra.printing.asciiprinter module &mdash; QAlgebra 2.0.0-dev (76bc3a8) documentation</title>
   
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script type="text/javascript" src="../_static/clipboard.min.js"></script>
-        <script type="text/javascript" src="../_static/copybutton.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script type="text/javascript" src="../_static/doctr-versions-menu.js"></script>
-        <script type="text/javascript">var copybuttonSkipText = '>>> ';</script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
@@ -43,6 +16,33 @@
   <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <link rel="stylesheet" href="../_static/mycss.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/doctr-versions-menu.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="qalgebra.printing.base module" href="qalgebra.printing.base.html" />
@@ -60,7 +60,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> QAlgebra
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> QAlgebra
           
 
           
@@ -87,6 +87,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -136,6 +137,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -256,9 +258,9 @@
 </div>
 <div class="section" id="reference">
 <h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="qalgebra.printing.asciiprinter.QalgebraAsciiPrinter">
-<em class="property">class </em><code class="sig-prename descclassname">qalgebra.printing.asciiprinter.</code><code class="sig-name descname">QalgebraAsciiPrinter</code><span class="sig-paren">(</span><em class="sig-param">cache=None</em>, <em class="sig-param">settings=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing/asciiprinter.html#QalgebraAsciiPrinter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.asciiprinter.QalgebraAsciiPrinter" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.printing.asciiprinter.</code><code class="sig-name descname">QalgebraAsciiPrinter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cache</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">settings</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing/asciiprinter.html#QalgebraAsciiPrinter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.asciiprinter.QalgebraAsciiPrinter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="qalgebra.printing.base.html#qalgebra.printing.base.QalgebraBasePrinter" title="qalgebra.printing.base.QalgebraBasePrinter"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.printing.base.QalgebraBasePrinter</span></code></a></p>
 <p>Printer for a string (ASCII) representation.</p>
 <dl class="field-list simple">
@@ -274,20 +276,20 @@ operator. Used by <code class="xref py py-meth docutils literal notranslate"><sp
 </ul>
 </dd>
 </dl>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="qalgebra.printing.asciiprinter.QalgebraAsciiPrinter.sympy_printer_cls">
 <code class="sig-name descname">sympy_printer_cls</code><a class="headerlink" href="#qalgebra.printing.asciiprinter.QalgebraAsciiPrinter.sympy_printer_cls" title="Permalink to this definition">¶</a></dt>
 <dd><p>alias of <a class="reference internal" href="qalgebra.printing.sympy.html#qalgebra.printing.sympy.SympyStrPrinter" title="qalgebra.printing.sympy.SympyStrPrinter"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.printing.sympy.SympyStrPrinter</span></code></a></p>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="qalgebra.printing.asciiprinter.QalgebraAsciiPrinter.printmethod">
 <code class="sig-name descname">printmethod</code><em class="property"> = '_ascii'</em><a class="headerlink" href="#qalgebra.printing.asciiprinter.QalgebraAsciiPrinter.printmethod" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="qalgebra.printing.asciiprinter.QalgebraAsciiPrinter.parenthesize">
-<code class="sig-name descname">parenthesize</code><span class="sig-paren">(</span><em class="sig-param">expr</em>, <em class="sig-param">level</em>, <em class="sig-param">*args</em>, <em class="sig-param">strict=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing/asciiprinter.html#QalgebraAsciiPrinter.parenthesize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.asciiprinter.QalgebraAsciiPrinter.parenthesize" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">parenthesize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em>, <em class="sig-param"><span class="n">level</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">strict</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing/asciiprinter.html#QalgebraAsciiPrinter.parenthesize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.asciiprinter.QalgebraAsciiPrinter.parenthesize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Render <cite>expr</cite> and wrap the result in parentheses if the precedence
 of <cite>expr</cite> is below the given <cite>level</cite> (or at the given <cite>level</cite> if
 <cite>strict</cite> is True. Extra <cite>args</cite> and <cite>kwargs</cite> are passed to the internal
@@ -296,7 +298,7 @@ of <cite>expr</cite> is below the given <cite>level</cite> (or at the given <cit
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="qalgebra.printing.asciiprinter.QalgebraAsciiDefaultPrinter">
 <em class="property">class </em><code class="sig-prename descclassname">qalgebra.printing.asciiprinter.</code><code class="sig-name descname">QalgebraAsciiDefaultPrinter</code><a class="reference internal" href="../_modules/qalgebra/printing/asciiprinter.html#QalgebraAsciiDefaultPrinter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.asciiprinter.QalgebraAsciiDefaultPrinter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qalgebra.printing.asciiprinter.QalgebraAsciiPrinter" title="qalgebra.printing.asciiprinter.QalgebraAsciiPrinter"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.printing.asciiprinter.QalgebraAsciiPrinter</span></code></a></p>
@@ -328,14 +330,22 @@ be used internally when a well-defined, static representation is needed
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Feb 08, 2020.
+        Last updated on Jun 28, 2020.
       </span>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -346,7 +356,6 @@ be used internally when a well-defined, static representation is needed
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

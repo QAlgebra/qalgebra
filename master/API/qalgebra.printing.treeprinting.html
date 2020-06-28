@@ -1,41 +1,14 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.printing.treeprinting module &mdash; QAlgebra 2.0.0-dev (314cff2) documentation</title>
+  <title>qalgebra.printing.treeprinting module &mdash; QAlgebra 2.0.0-dev (76bc3a8) documentation</title>
   
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script type="text/javascript" src="../_static/clipboard.min.js"></script>
-        <script type="text/javascript" src="../_static/copybutton.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script type="text/javascript" src="../_static/doctr-versions-menu.js"></script>
-        <script type="text/javascript">var copybuttonSkipText = '>>> ';</script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
@@ -43,6 +16,33 @@
   <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <link rel="stylesheet" href="../_static/mycss.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/doctr-versions-menu.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="qalgebra.printing.unicodeprinter module" href="qalgebra.printing.unicodeprinter.html" />
@@ -60,7 +60,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> QAlgebra
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> QAlgebra
           
 
           
@@ -87,6 +87,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -136,6 +137,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -257,9 +259,9 @@
 </div>
 <div class="section" id="reference">
 <h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="qalgebra.printing.treeprinting.print_tree">
-<code class="sig-prename descclassname">qalgebra.printing.treeprinting.</code><code class="sig-name descname">print_tree</code><span class="sig-paren">(</span><em class="sig-param">expr</em>, <em class="sig-param">attr='operands'</em>, <em class="sig-param">padding=''</em>, <em class="sig-param">exclude_type=None</em>, <em class="sig-param">depth=None</em>, <em class="sig-param">unicode=True</em>, <em class="sig-param">srepr_leaves=False</em>, <em class="sig-param">_last=False</em>, <em class="sig-param">_root=True</em>, <em class="sig-param">_level=0</em>, <em class="sig-param">_print=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing/treeprinting.html#print_tree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.treeprinting.print_tree" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.printing.treeprinting.</code><code class="sig-name descname">print_tree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em>, <em class="sig-param"><span class="n">attr</span><span class="o">=</span><span class="default_value">'operands'</span></em>, <em class="sig-param"><span class="n">padding</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">exclude_type</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">depth</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">unicode</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">srepr_leaves</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">_last</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">_root</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">_level</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">_print</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing/treeprinting.html#print_tree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.treeprinting.print_tree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print a tree representation of the structure of <cite>expr</cite></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -284,9 +286,9 @@ instead of <cite>ascii</cite>/<cite>unicode</cite></p></li>
 </div>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="qalgebra.printing.treeprinting.tree">
-<code class="sig-prename descclassname">qalgebra.printing.treeprinting.</code><code class="sig-name descname">tree</code><span class="sig-paren">(</span><em class="sig-param">expr</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing/treeprinting.html#tree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.treeprinting.tree" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.printing.treeprinting.</code><code class="sig-name descname">tree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing/treeprinting.html#tree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.treeprinting.tree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Give the output of <cite>tree</cite> as a multiline string, using line drawings to
 visualize the hierarchy of expressions (similar to the <code class="docutils literal notranslate"><span class="pre">tree</span></code> unix
 command line program for showing directory trees)</p>
@@ -321,14 +323,22 @@ re-evaluated to the original expression.</p>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Feb 08, 2020.
+        Last updated on Jun 28, 2020.
       </span>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -339,7 +349,6 @@ re-evaluated to the original expression.</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

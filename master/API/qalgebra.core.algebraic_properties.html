@@ -1,41 +1,14 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.algebraic_properties module &mdash; QAlgebra 2.0.0-dev (314cff2) documentation</title>
+  <title>qalgebra.core.algebraic_properties module &mdash; QAlgebra 2.0.0-dev (76bc3a8) documentation</title>
   
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script type="text/javascript" src="../_static/clipboard.min.js"></script>
-        <script type="text/javascript" src="../_static/copybutton.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script type="text/javascript" src="../_static/doctr-versions-menu.js"></script>
-        <script type="text/javascript">var copybuttonSkipText = '>>> ';</script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
@@ -43,6 +16,33 @@
   <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <link rel="stylesheet" href="../_static/mycss.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/doctr-versions-menu.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="qalgebra.core.exceptions module" href="qalgebra.core.exceptions.html" />
@@ -60,7 +60,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> QAlgebra
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> QAlgebra
           
 
           
@@ -87,6 +87,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -138,6 +139,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -323,9 +325,9 @@
 </div>
 <div class="section" id="reference">
 <h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.assoc">
-<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">assoc</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#assoc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.assoc" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">assoc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#assoc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.assoc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Associatively expand out nested arguments of the flat class.
 E.g.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Plus</span><span class="p">(</span><span class="n">Operation</span><span class="p">):</span>
@@ -336,18 +338,18 @@ E.g.:</p>
 </div>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.assoc_indexed">
-<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">assoc_indexed</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#assoc_indexed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.assoc_indexed" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">assoc_indexed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#assoc_indexed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.assoc_indexed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Flatten nested indexed structures while pulling out possible prefactors</p>
 <p>For example, for an <a class="reference internal" href="qalgebra.core.indexed_operations.html#qalgebra.core.indexed_operations.IndexedSum" title="qalgebra.core.indexed_operations.IndexedSum"><code class="xref py py-class docutils literal notranslate"><span class="pre">IndexedSum</span></code></a>:</p>
 <div class="math notranslate nohighlight">
 \[\sum_j \left( a \sum_i \dots \right) = a \sum_{j, i} \dots\]</div>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.idem">
-<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">idem</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#idem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.idem" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">idem</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#idem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.idem" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove duplicate arguments and order them via the cls’s order_key key
 object/function.
 E.g.:</p>
@@ -360,9 +362,9 @@ E.g.:</p>
 </div>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.orderby">
-<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">orderby</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#orderby"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.orderby" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">orderby</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#orderby"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.orderby" title="Permalink to this definition">¶</a></dt>
 <dd><p>Re-order arguments via the class’s <code class="docutils literal notranslate"><span class="pre">order_key</span></code> key object/function.
 Use this for commutative operations:
 E.g.:</p>
@@ -375,9 +377,9 @@ E.g.:</p>
 </div>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.filter_neutral">
-<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">filter_neutral</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#filter_neutral"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.filter_neutral" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">filter_neutral</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#filter_neutral"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.filter_neutral" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove occurrences of a neutral element from the argument/operand list,
 if that list has at least two elements.  To use this, one must also specify
 a neutral element, which can be anything that allows for an equality check
@@ -391,9 +393,9 @@ with each argument.  E.g.:</p>
 </div>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.collect_summands">
-<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">collect_summands</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#collect_summands"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.collect_summands" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">collect_summands</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#collect_summands"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.collect_summands" title="Permalink to this definition">¶</a></dt>
 <dd><p>Collect summands that occur multiple times into a single summand</p>
 <p>Also filters out zero-summands.</p>
 <p class="rubric">Example</p>
@@ -409,9 +411,9 @@ with each argument.  E.g.:</p>
 </div>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.collect_scalar_summands">
-<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">collect_scalar_summands</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#collect_scalar_summands"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.collect_scalar_summands" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">collect_scalar_summands</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#collect_scalar_summands"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.collect_scalar_summands" title="Permalink to this definition">¶</a></dt>
 <dd><p>Collect <code class="xref py py-class docutils literal notranslate"><span class="pre">ValueScalar</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarExpression</span></code> summands</p>
 <p class="rubric">Example</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">srepr</span><span class="p">(</span><span class="n">collect_scalar_summands</span><span class="p">(</span><span class="n">Scalar</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">{}))</span>
@@ -437,9 +439,9 @@ with each argument.  E.g.:</p>
 </div>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.match_replace">
-<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">match_replace</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#match_replace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.match_replace" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">match_replace</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#match_replace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.match_replace" title="Permalink to this definition">¶</a></dt>
 <dd><p>Match and replace a full operand specification to a function that
 provides a replacement for the whole expression
 or raises a <a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.CannotSimplify" title="qalgebra.core.exceptions.CannotSimplify"><code class="xref py py-exc docutils literal notranslate"><span class="pre">CannotSimplify</span></code></a> exception.
@@ -483,9 +485,9 @@ E.g.</p>
 </div>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.match_replace_binary">
-<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">match_replace_binary</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#match_replace_binary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.match_replace_binary" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">match_replace_binary</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#match_replace_binary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.match_replace_binary" title="Permalink to this definition">¶</a></dt>
 <dd><p>Similar to func:<cite>match_replace</cite>, but for arbitrary length operations,
 such that each two pairs of subsequent operands are matched pairwise.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">wc</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
@@ -511,36 +513,36 @@ i.e. there is no specific order in which the rules are applied to pairs of
 operands.</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.check_cdims">
-<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">check_cdims</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#check_cdims"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.check_cdims" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">check_cdims</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#check_cdims"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.check_cdims" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check that all operands (<cite>ops</cite>) have equal channel dimension.</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.filter_cid">
-<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">filter_cid</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#filter_cid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.filter_cid" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">filter_cid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#filter_cid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.filter_cid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove occurrences of the <code class="xref py py-func docutils literal notranslate"><span class="pre">circuit_identity()</span></code> <code class="docutils literal notranslate"><span class="pre">cid(n)</span></code> for any
 <code class="docutils literal notranslate"><span class="pre">n</span></code>. Cf. <a class="reference internal" href="#qalgebra.core.algebraic_properties.filter_neutral" title="qalgebra.core.algebraic_properties.filter_neutral"><code class="xref py py-func docutils literal notranslate"><span class="pre">filter_neutral()</span></code></a></p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.convert_to_spaces">
-<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">convert_to_spaces</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#convert_to_spaces"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.convert_to_spaces" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">convert_to_spaces</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#convert_to_spaces"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.convert_to_spaces" title="Permalink to this definition">¶</a></dt>
 <dd><p>For all operands that are merely of type str or int, substitute
 LocalSpace objects with corresponding labels:
 For a string, just itself, for an int, a string version of that int.</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.empty_trivial">
-<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">empty_trivial</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#empty_trivial"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.empty_trivial" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">empty_trivial</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#empty_trivial"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.empty_trivial" title="Permalink to this definition">¶</a></dt>
 <dd><p>A ProductSpace of zero Hilbert spaces should yield the TrivialSpace</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.implied_local_space">
-<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">implied_local_space</code><span class="sig-paren">(</span><em class="sig-param">*</em>, <em class="sig-param">arg_index=None</em>, <em class="sig-param">keys=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#implied_local_space"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.implied_local_space" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">implied_local_space</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">arg_index</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">keys</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#implied_local_space"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.implied_local_space" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a simplification that converts the positional argument
 <cite>arg_index</cite> from (str, int) to a subclass of <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a>, as well
 as any keyword argument with one of the given keys.</p>
@@ -552,59 +554,59 @@ that <a class="reference internal" href="#qalgebra.core.algebraic_properties.mat
 <code class="xref py py-class docutils literal notranslate"><span class="pre">HilbertSpace</span></code> instance.</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.delegate_to_method">
-<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">delegate_to_method</code><span class="sig-paren">(</span><em class="sig-param">mtd</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#delegate_to_method"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.delegate_to_method" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">delegate_to_method</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtd</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#delegate_to_method"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.delegate_to_method" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a simplification rule that delegates the instantiation to the
 method <cite>mtd</cite> of the operand (if defined)</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.scalars_to_op">
-<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">scalars_to_op</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#scalars_to_op"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.scalars_to_op" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">scalars_to_op</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#scalars_to_op"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.scalars_to_op" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert any scalar <span class="math notranslate nohighlight">\(\alpha\)</span> in <cite>ops</cite> into an operator <span class="math notranslate nohighlight">\(\alpha
 \identity\)</span></p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.convert_to_scalars">
-<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">convert_to_scalars</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#convert_to_scalars"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.convert_to_scalars" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">convert_to_scalars</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#convert_to_scalars"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.convert_to_scalars" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert any entry in <cite>ops</cite> that is not a <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code></a> instance into
 a <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.ScalarValue" title="qalgebra.core.scalar_algebra.ScalarValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarValue</span></code></a> instance</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.disjunct_hs_zero">
-<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">disjunct_hs_zero</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#disjunct_hs_zero"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.disjunct_hs_zero" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">disjunct_hs_zero</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#disjunct_hs_zero"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.disjunct_hs_zero" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return ZeroOperator if all the operators in <cite>ops</cite> have a disjunct
 Hilbert space, or an unchanged <cite>ops</cite>, <cite>kwargs</cite> otherwise</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.commutator_order">
-<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">commutator_order</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#commutator_order"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.commutator_order" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">commutator_order</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#commutator_order"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.commutator_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply anti-commutative property of the commutator to apply a standard
 ordering of the commutator arguments</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.accept_bras">
-<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">accept_bras</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#accept_bras"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.accept_bras" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">accept_bras</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#accept_bras"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.accept_bras" title="Permalink to this definition">¶</a></dt>
 <dd><p>Accept operands that are all bras, and turn that into to bra of the
 operation applied to all corresponding kets</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.basis_ket_zero_outside_hs">
-<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">basis_ket_zero_outside_hs</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#basis_ket_zero_outside_hs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.basis_ket_zero_outside_hs" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">basis_ket_zero_outside_hs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#basis_ket_zero_outside_hs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.basis_ket_zero_outside_hs" title="Permalink to this definition">¶</a></dt>
 <dd><p>For <code class="docutils literal notranslate"><span class="pre">BasisKet.create(ind,</span> <span class="pre">hs)</span></code> with an integer label <cite>ind</cite>, return a
 <code class="xref py py-class docutils literal notranslate"><span class="pre">ZeroKet</span></code> if <cite>ind</cite> is outside of the range of the underlying Hilbert
 space</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.indexed_sum_over_const">
-<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">indexed_sum_over_const</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#indexed_sum_over_const"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.indexed_sum_over_const" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">indexed_sum_over_const</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#indexed_sum_over_const"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.indexed_sum_over_const" title="Permalink to this definition">¶</a></dt>
 <dd><p>Execute an indexed sum over a term that does not depend on the
 summation indices</p>
 <div class="math notranslate nohighlight">
@@ -619,15 +621,15 @@ summation indices</p>
 </div>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.indexed_sum_over_kronecker">
-<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">indexed_sum_over_kronecker</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#indexed_sum_over_kronecker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.indexed_sum_over_kronecker" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">indexed_sum_over_kronecker</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#indexed_sum_over_kronecker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.indexed_sum_over_kronecker" title="Permalink to this definition">¶</a></dt>
 <dd><p>Execute sums over KroneckerDelta prefactors</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.derivative_via_diff">
-<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">derivative_via_diff</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">ops</em>, <em class="sig-param">kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#derivative_via_diff"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.derivative_via_diff" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">derivative_via_diff</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#derivative_via_diff"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.derivative_via_diff" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implementation of the <code class="xref py py-meth docutils literal notranslate"><span class="pre">QuantumDerivative.create()</span></code> interface via the
 use of <code class="xref py py-meth docutils literal notranslate"><span class="pre">QuantumExpression._diff()</span></code>.</p>
 <p>Thus, by having <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumExpression.diff" title="qalgebra.core.abstract_quantum_algebra.QuantumExpression.diff"><code class="xref py py-meth docutils literal notranslate"><span class="pre">QuantumExpression.diff()</span></code></a> delegate to
@@ -659,14 +661,22 @@ derivatives</p>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Feb 08, 2020.
+        Last updated on Jun 28, 2020.
       </span>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -677,7 +687,6 @@ derivatives</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

@@ -37,6 +37,9 @@ Welcome to QAlgebra's documentation!
    contributing
    authors
    history
+   library_structure
+   symbolic_algebra
+   printing
    tutorial.ipynb
 
 
@@ -48,7 +51,4 @@ API
 
    API of the QAlgebra package <API/qalgebra>
 
-Indices and tables
-==================
-* :ref:`genindex`
 * :ref:`modindex`

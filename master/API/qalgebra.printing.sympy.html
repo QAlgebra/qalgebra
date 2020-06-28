@@ -1,41 +1,14 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.printing.sympy module &mdash; QAlgebra 2.0.0-dev (314cff2) documentation</title>
+  <title>qalgebra.printing.sympy module &mdash; QAlgebra 2.0.0-dev (76bc3a8) documentation</title>
   
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script type="text/javascript" src="../_static/clipboard.min.js"></script>
-        <script type="text/javascript" src="../_static/copybutton.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script type="text/javascript" src="../_static/doctr-versions-menu.js"></script>
-        <script type="text/javascript">var copybuttonSkipText = '>>> ';</script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
@@ -43,6 +16,33 @@
   <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <link rel="stylesheet" href="../_static/mycss.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/doctr-versions-menu.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="qalgebra.printing.treeprinting module" href="qalgebra.printing.treeprinting.html" />
@@ -60,7 +60,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> QAlgebra
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> QAlgebra
           
 
           
@@ -87,6 +87,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -136,6 +137,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -249,13 +251,13 @@ between the algebraic structure of an expression and how it is printed.</p></li>
 <li><p>Symbols (especially greek letters) are extremely common, and it’s much more
 readable if the string representation of an expression uses unicode for
 these. SymPy supports unicode “pretty-printing”
-(<a class="reference external" href="https://docs.sympy.org/latest/modules/printing.html#sympy.printing.pretty.pretty.pretty_print" title="(in SymPy v1.5.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">sympy.printing.pretty.pretty.pretty_print()</span></code></a>) only in “2D”, where
+(<a class="reference external" href="https://docs.sympy.org/latest/modules/printing.html#sympy.printing.pretty.pretty.pretty_print" title="(in SymPy v1.6)"><code class="xref py py-func docutils literal notranslate"><span class="pre">sympy.printing.pretty.pretty.pretty_print()</span></code></a>) only in “2D”, where
 expressions are rendered as multiline unicode strings. While this is fine for
 interactive display, it does not work so well for a simple <code class="docutils literal notranslate"><span class="pre">str</span></code>. The
 <a class="reference internal" href="#qalgebra.printing.sympy.SympyUnicodePrinter" title="qalgebra.printing.sympy.SympyUnicodePrinter"><code class="xref py py-class docutils literal notranslate"><span class="pre">SympyUnicodePrinter</span></code></a> solves this by producing simple strings with
 unicode symbols.</p></li>
 <li><p>Some algebraic structures such as factorials, complex-conjugates and indexed
-symbols have sub-optimal rendering in <a class="reference external" href="https://docs.sympy.org/latest/modules/printing.html#sympy.printing.str.StrPrinter" title="(in SymPy v1.5.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.printing.str.StrPrinter</span></code></a></p></li>
+symbols have sub-optimal rendering in <a class="reference external" href="https://docs.sympy.org/latest/modules/printing.html#sympy.printing.str.StrPrinter" title="(in SymPy v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.printing.str.StrPrinter</span></code></a></p></li>
 <li><p>QAlgebra contains some custom subclasses of SymPy objects (e.g.
 <a class="reference internal" href="qalgebra.utils.indices.html#qalgebra.utils.indices.IdxSym" title="qalgebra.utils.indices.IdxSym"><code class="xref py py-class docutils literal notranslate"><span class="pre">IdxSym</span></code></a>) that the default printers don’t know how to deal with
 (respectively, render incorrectly!)</p></li>
@@ -298,9 +300,9 @@ symbols have sub-optimal rendering in <a class="reference external" href="https:
 </div>
 <div class="section" id="reference">
 <h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="qalgebra.printing.sympy.derationalize_denom">
-<code class="sig-prename descclassname">qalgebra.printing.sympy.</code><code class="sig-name descname">derationalize_denom</code><span class="sig-paren">(</span><em class="sig-param">expr</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing/sympy.html#derationalize_denom"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.sympy.derationalize_denom" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.printing.sympy.</code><code class="sig-name descname">derationalize_denom</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing/sympy.html#derationalize_denom"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.sympy.derationalize_denom" title="Permalink to this definition">¶</a></dt>
 <dd><p>Try to de-rationalize the denominator of the given expression.</p>
 <p>The purpose is to allow to reconstruct e.g. <code class="docutils literal notranslate"><span class="pre">1/sqrt(2)</span></code> from
 <code class="docutils literal notranslate"><span class="pre">sqrt(2)/2</span></code>.</p>
@@ -320,32 +322,32 @@ following identity:</p>
 raised.</p>
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="qalgebra.printing.sympy.SympyStrPrinter">
-<em class="property">class </em><code class="sig-prename descclassname">qalgebra.printing.sympy.</code><code class="sig-name descname">SympyStrPrinter</code><span class="sig-paren">(</span><em class="sig-param">settings=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing/sympy.html#SympyStrPrinter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.sympy.SympyStrPrinter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.sympy.org/latest/modules/printing.html#sympy.printing.str.StrPrinter" title="(in SymPy v1.5.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.printing.str.StrPrinter</span></code></a></p>
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.printing.sympy.</code><code class="sig-name descname">SympyStrPrinter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">settings</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing/sympy.html#SympyStrPrinter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.sympy.SympyStrPrinter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.sympy.org/latest/modules/printing.html#sympy.printing.str.StrPrinter" title="(in SymPy v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.printing.str.StrPrinter</span></code></a></p>
 <p>Variation of sympy StrPrinter that derationalizes denominators.</p>
 <p>Additionally, it contains the following modifications:</p>
 <ul class="simple">
 <li><p>Support for <a class="reference internal" href="qalgebra.utils.indices.html#qalgebra.utils.indices.IdxSym" title="qalgebra.utils.indices.IdxSym"><code class="xref py py-class docutils literal notranslate"><span class="pre">IdxSym</span></code></a></p></li>
-<li><p>Rendering of <a class="reference external" href="https://docs.sympy.org/latest/modules/tensor/indexed.html#sympy.tensor.indexed.Indexed" title="(in SymPy v1.5.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.tensor.indexed.Indexed</span></code></a> as subscripts</p></li>
-<li><p>Rendering of <a class="reference external" href="https://docs.sympy.org/latest/modules/functions/combinatorial.html#sympy.functions.combinatorial.factorials.factorial" title="(in SymPy v1.5.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.functions.combinatorial.factorials.factorial</span></code></a>
+<li><p>Rendering of <a class="reference external" href="https://docs.sympy.org/latest/modules/tensor/indexed.html#sympy.tensor.indexed.Indexed" title="(in SymPy v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.tensor.indexed.Indexed</span></code></a> as subscripts</p></li>
+<li><p>Rendering of <a class="reference external" href="https://docs.sympy.org/latest/modules/functions/combinatorial.html#sympy.functions.combinatorial.factorials.factorial" title="(in SymPy v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.functions.combinatorial.factorials.factorial</span></code></a>
 as <code class="docutils literal notranslate"><span class="pre">!</span></code></p></li>
 <li><p>Option <cite>conjg_style</cite> to configure how complex conjugates are rendered:
 <code class="docutils literal notranslate"><span class="pre">'func'</span> <span class="pre">renders</span> <span class="pre">it</span> <span class="pre">as</span> <span class="pre">``conjugate(...)</span></code>, and <code class="docutils literal notranslate"><span class="pre">'star'</span></code> uses an
 exponentiated asterisk</p></li>
 </ul>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="qalgebra.printing.sympy.SympyStrPrinter.printmethod">
 <code class="sig-name descname">printmethod</code><em class="property"> = '_sympystr'</em><a class="headerlink" href="#qalgebra.printing.sympy.SympyStrPrinter.printmethod" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="qalgebra.printing.sympy.SympyLatexPrinter">
-<em class="property">class </em><code class="sig-prename descclassname">qalgebra.printing.sympy.</code><code class="sig-name descname">SympyLatexPrinter</code><span class="sig-paren">(</span><em class="sig-param">settings=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing/sympy.html#SympyLatexPrinter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.sympy.SympyLatexPrinter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.sympy.org/latest/modules/printing.html#sympy.printing.latex.LatexPrinter" title="(in SymPy v1.5.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.printing.latex.LatexPrinter</span></code></a></p>
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.printing.sympy.</code><code class="sig-name descname">SympyLatexPrinter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">settings</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing/sympy.html#SympyLatexPrinter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.sympy.SympyLatexPrinter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.sympy.org/latest/modules/printing.html#sympy.printing.latex.LatexPrinter" title="(in SymPy v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.printing.latex.LatexPrinter</span></code></a></p>
 <p>Variation of sympy LatexPrinter that derationalizes denominators</p>
 <p>Additionally, it contains the following modifications:</p>
 <ul class="simple">
@@ -355,33 +357,33 @@ rendered: <code class="docutils literal notranslate"><span class="pre">'overline
 ‘star’ uses an exponentiated asterisk, and ‘func’ renders a a
 <code class="docutils literal notranslate"><span class="pre">conjugate</span></code> function</p></li>
 </ul>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="qalgebra.printing.sympy.SympyLatexPrinter.printmethod">
 <code class="sig-name descname">printmethod</code><em class="property"> = '_latex'</em><a class="headerlink" href="#qalgebra.printing.sympy.SympyLatexPrinter.printmethod" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="qalgebra.printing.sympy.SympyUnicodePrinter">
-<em class="property">class </em><code class="sig-prename descclassname">qalgebra.printing.sympy.</code><code class="sig-name descname">SympyUnicodePrinter</code><span class="sig-paren">(</span><em class="sig-param">settings=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing/sympy.html#SympyUnicodePrinter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.sympy.SympyUnicodePrinter" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.printing.sympy.</code><code class="sig-name descname">SympyUnicodePrinter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">settings</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing/sympy.html#SympyUnicodePrinter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.sympy.SympyUnicodePrinter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qalgebra.printing.sympy.SympyStrPrinter" title="qalgebra.printing.sympy.SympyStrPrinter"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.printing.sympy.SympyStrPrinter</span></code></a></p>
 <p>Printer that represents SymPy expressions as (single-line) unicode
 strings.</p>
 <p>This is a mixture of <code class="xref py py-class docutils literal notranslate"><span class="pre">StrPrinter</span></code>
-and <a class="reference external" href="https://docs.sympy.org/latest/modules/printing.html#sympy.printing.pretty.pretty.PrettyPrinter" title="(in SymPy v1.5.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.printing.pretty.pretty.PrettyPrinter</span></code></a> (minus the 2D
+and <a class="reference external" href="https://docs.sympy.org/latest/modules/printing.html#sympy.printing.pretty.pretty.PrettyPrinter" title="(in SymPy v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.printing.pretty.pretty.PrettyPrinter</span></code></a> (minus the 2D
 printing), with the same extensions as <a class="reference internal" href="#qalgebra.printing.sympy.SympyStrPrinter" title="qalgebra.printing.sympy.SympyStrPrinter"><code class="xref py py-class docutils literal notranslate"><span class="pre">SympyStrPrinter</span></code></a></p>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="qalgebra.printing.sympy.SympyUnicodePrinter.printmethod">
 <code class="sig-name descname">printmethod</code><em class="property"> = '_sympystr'</em><a class="headerlink" href="#qalgebra.printing.sympy.SympyUnicodePrinter.printmethod" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt id="qalgebra.printing.sympy.SympyReprPrinter">
-<em class="property">class </em><code class="sig-prename descclassname">qalgebra.printing.sympy.</code><code class="sig-name descname">SympyReprPrinter</code><span class="sig-paren">(</span><em class="sig-param">settings=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing/sympy.html#SympyReprPrinter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.sympy.SympyReprPrinter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.sympy.org/latest/modules/printing.html#sympy.printing.repr.ReprPrinter" title="(in SymPy v1.5.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.printing.repr.ReprPrinter</span></code></a></p>
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.printing.sympy.</code><code class="sig-name descname">SympyReprPrinter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">settings</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing/sympy.html#SympyReprPrinter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.sympy.SympyReprPrinter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.sympy.org/latest/modules/printing.html#sympy.printing.repr.ReprPrinter" title="(in SymPy v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.printing.repr.ReprPrinter</span></code></a></p>
 <p>Representation printer with support for
 <a class="reference internal" href="qalgebra.utils.indices.html#qalgebra.utils.indices.IdxSym" title="qalgebra.utils.indices.IdxSym"><code class="xref py py-class docutils literal notranslate"><span class="pre">IdxSym</span></code></a></p>
 </dd></dl>
@@ -409,14 +411,22 @@ printing), with the same extensions as <a class="reference internal" href="#qalg
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Feb 08, 2020.
+        Last updated on Jun 28, 2020.
       </span>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -427,7 +437,6 @@ printing), with the same extensions as <a class="reference internal" href="#qalg
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
