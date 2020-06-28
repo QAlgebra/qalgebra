@@ -274,6 +274,9 @@ html_theme_options = {
     'display_version': True,
 }
 
+inheritance_graph_attrs = dict(size='""')
+graphviz_output_format = 'svg'
+
 # Add any paths that contain custom themes here, relative to this directory.
 # html_theme_path = []
 

@@ -208,9 +208,8 @@ def test_quantum_derivative_evaluated(MyScalarFunc):
         fdot._diff(2)
 
 
-@pytest.mark.xfail(reason="TODO")
 def test_quantum_derivative_nonatomic_free_symbols(MyScalarFunc):
-    """Test the fee_symbols of an evaluated derivative for non-atomic
+    """Test the free_symbols of an evaluated derivative for non-atomic
     symbols"""
     s = IndexedBase('s')
     t = IndexedBase('t')
@@ -228,16 +227,18 @@ def test_quantum_derivative_nonatomic_free_symbols(MyScalarFunc):
     assert fdot.derivs == {s[i]: 2, t[j]: 1}
     assert fdot.syms == {s[i], t[j]}
     assert fdot.vals == {t[j]: t0}
-    assert fdot.free_symbols == set([s.args[0], i, t0])
-    assert fdot.bound_symbols == set([t.args[0], j])
-    assert fdot.all_symbols == set([s.args[0], t.args[0], t0, i, j])
+    assert fdot.free_symbols == set([s.args[0], s[i], i, t0])
+    assert fdot.bound_symbols == set([t.args[0], j, t[j]])
+    assert fdot.all_symbols == set(
+        [s.args[0], t.args[0], t0, i, j, s[i], t[j]]
+    )
     assert fdot.diff(s[i]).n == 4
     assert fdot.diff(t[j]) == Zero
 
-    f = MyScalarFunc("f", s[i], t[j], j)
+    f = MyScalarFunc("f", s[i], t[j], j)  # additional argument j
     fdot = f.diff(s[i], n=2).diff(t[j]).evaluate_at({t[j]: t0})
-    assert fdot.free_symbols == set([s.args[0], i, j, t0])
-    assert fdot.bound_symbols == set([t.args[0], j])
+    assert fdot.free_symbols == set([s.args[0], i, j, s[i], t0])
+    assert fdot.bound_symbols == set([t.args[0], j, t[j]])
 
 
 def test_abstract_taylor_series(MyScalarFunc):
@@ -266,7 +267,6 @@ def test_abstract_taylor_series(MyScalarFunc):
     assert series[3] == D(f, derivs={t[j]: 3}, vals={t[j]: t0}) / 6
 
 
-@pytest.mark.xfail(reason="TODO")
 def test_quantum_symbols_with_symargs():
     """Test properties and behavior of symbols with scalar arguments,
     through the example of an OperatorSymbol"""
@@ -290,7 +290,7 @@ def test_quantum_symbols_with_symargs():
     assert A.substitute({t[i]: beta}) == A_beta
     half = sympy.sympify(1) / 2
     assert A.sym_args == (t[i], (alpha + 1) ** 2)
-    assert A.free_symbols == {symbols('t'), i, alpha}
+    assert A.free_symbols == {symbols('t'), i, t[i], alpha}
     assert len(A.bound_symbols) == 0
     assert A.simplify_scalar(sympy.expand) == OperatorSymbol(
         "A", t[i], alpha ** 2 + 2 * alpha + 1, hs=0

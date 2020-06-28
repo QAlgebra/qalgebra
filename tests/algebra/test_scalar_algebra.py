@@ -1,9 +1,10 @@
 import numpy as np
 import pytest
+import sympy
 from sympy import Basic as SympyBasic
 from sympy import I, IndexedBase
 from sympy import KroneckerDelta as SympyKroneckerDelta
-from sympy import SympifyError
+from sympy import Rational, SympifyError
 from sympy import sqrt as sympy_sqrt
 from sympy import symbols, sympify
 from sympy import zoo as sympy_infinity
@@ -94,7 +95,6 @@ def test_algebraic_properties(a_b_c):
     assert (a * b).conjugate() == a.conjugate() * b.conjugate()
 
 
-@pytest.mark.xfail(reason="TODO")
 def test_scalar_numeric_methods(braket):
     """Test all of the numerical magic methods for scalars"""
     three = ScalarValue(3)
@@ -302,7 +302,8 @@ def test_scalar_numeric_methods(braket):
     with pytest.raises(TypeError):
         None // three
     v = 2 / three
-    assert v == 2 / 3
+    assert float(v) == 2 / 3
+    assert v == Rational(2, 3)
     assert isinstance(v, ScalarValue)
     v = two / three
     assert v == 2 / 3
@@ -311,9 +312,9 @@ def test_scalar_numeric_methods(braket):
     assert v == 1 / 3
     assert isinstance(v, ScalarValue)
     v = 1 / three
-    assert v == 1 / 3
+    assert v == Rational(1, 3)
     assert isinstance(v, ScalarValue)
-    assert spOne / three == 1 / 3
+    assert float(spOne / three) == 1 / 3
     v = Zero / three
     assert v is Zero
     v = spZero / three
@@ -607,7 +608,8 @@ def test_scalar_numeric_methods(braket):
     with pytest.raises(ZeroDivisionError):
         assert 0 / Zero
     with pytest.raises(ZeroDivisionError):
-        assert 0 / ScalarValue(0)
+        assert 0 / ScalarValue.create(0)
+    assert 0 / ScalarValue(0) == sympy.nan
     A = OperatorSymbol('A', hs=0)
     v = A / braket
     assert isinstance(v, ScalarTimesOperator)
@@ -1062,7 +1064,6 @@ def test_differentiation(braket):
     assert expr.diff(t, 1) is Zero
 
 
-@pytest.mark.xfail(reason="TODO")
 def test_series_expand(braket):
     """Test expansion of scalar into a series"""
     t = symbols('t', real=True)

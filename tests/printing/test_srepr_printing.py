@@ -334,7 +334,6 @@ def test_foreign_srepr(matrix_expr, bell1_expr):
     assert res == expected
 
 
-@pytest.mark.xfail(reason="TODO")
 def test_cached_srepr(bell1_expr):
     """Test that we can get simplified expressions by passing a cache, and that
     the cache is updated appropriately while printing"""

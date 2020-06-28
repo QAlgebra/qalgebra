@@ -102,7 +102,6 @@ def test_scalar_coeffs():
     assert 2 * convert_to_qutip(a) == convert_to_qutip(2 * a)
 
 
-@pytest.mark.xfail(reason="TODO")
 def test_tensor_key():
     hs_mech = LocalSpace('m', dimension=5)
     hs_opt = LocalSpace('o', dimension=5)

@@ -196,7 +196,7 @@ class Matrix(Expression):
         """
         try:
             return Matrix(np_conjugate(self.matrix))
-        except AttributeError:
+        except (AttributeError, TypeError):
             raise NoConjugateMatrix(
                 "Matrix %s contains entries that have no defined "
                 "conjugate" % str(self)

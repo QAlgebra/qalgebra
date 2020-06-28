@@ -264,6 +264,11 @@ class ScalarValue(Scalar):
         super().__init__(val)
 
     def __getattr__(self, name):
+        if name == '__sympy__':
+            # if we were to delegate __sympy__ to self.val, the _sympy_
+            # conversion method would become inactive, as SymPy would think
+            # that self is already a SymPy object
+            return None
         return getattr(self.val, name)
 
     def _diff(self, sym):
@@ -471,9 +476,9 @@ class ScalarValue(Scalar):
 
     def __rtruediv__(self, other):
         if other == 1:
-            return self.create(1 / self.val)
+            return self.create(sympy.Rational(1, self.val))
         elif isinstance(other, self._val_types):
-            return self.create(other / self.val)
+            return self.create(sympy.Rational(other, self.val))
         else:
             return super().__rtruediv__(other)  # other == 0, 1/x -> x^(-1)
 

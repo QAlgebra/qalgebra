@@ -337,7 +337,6 @@ def _convert_ket_to_qutip(expr, full_space, mapping):
             ]
         )
         return qutip.tensor(*factors)
-        return qutip.coherent(n, complex(expr.operands[1]))
     elif isinstance(expr, KetPlus):
         return sum(
             (
@@ -367,6 +366,8 @@ def _convert_ket_to_qutip(expr, full_space, mapping):
         return convert_to_qutip(
             expr.coeff, full_space, mapping=mapping
         ) * convert_to_qutip(expr.term, full_space, mapping=mapping)
+    elif isinstance(expr, BasisKet):
+        return qutip.basis(expr.space.dimension, expr.index)
     else:
         raise ValueError(
             "Cannot convert '%s' of type %s" % (str(expr), type(expr))

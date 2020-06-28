@@ -136,10 +136,10 @@ def symbols(names, **args):
             >>> A_t, B_t = symbols(
             ...     'A B', cls=lambda s: OperatorSymbol(s, t, hs=0))
             >>> srepr(A_t, cache={t: 't'})
-            "OperatorSymbol('A', ScalarValue(t), hs=LocalSpace('0'))"
+            "OperatorSymbol('A', t, hs=LocalSpace('0'))"
             >>> A_t, B_t = (OperatorSymbol(s, t, hs=0) for s in ('A', 'B'))
             >>> srepr(B_t, cache={t: 't'})
-            "OperatorSymbol('B', ScalarValue(t), hs=LocalSpace('0'))"
+            "OperatorSymbol('B', t, hs=LocalSpace('0'))"
     """
     # this wraps the sympy symbols function (instead of just importing and
     # exposing it directly) solely for the extra documentation

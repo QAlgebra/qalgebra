@@ -56,7 +56,6 @@ def test_matrix_block_structure():
     assert m.block_structure == (2, 1, 3)
 
 
-@pytest.mark.xfail(reason="TODO")
 def test_matrix_real_imag_conjugate():
     """Test getting a real and imaginary part and conjugate of a matrix"""
     a, b, c, d = symbols('a, b, c, d')

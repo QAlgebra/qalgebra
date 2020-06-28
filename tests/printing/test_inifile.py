@@ -23,7 +23,6 @@ from qalgebra.utils.testing import QalgebraAsciiTestPrinter, datadir
 datadir = pytest.fixture(datadir)
 
 
-@pytest.mark.xfail(reason="TODO")
 def test_initfile(datadir):
     psi = (BasisKet(0, hs=1) + BasisKet(1, hs=1)) / sqrt(2)
     x = symbols('x')
@@ -45,8 +44,7 @@ def test_initfile(datadir):
     )
     assert (
         latex(atan(x) * sig)
-        == r'\operatorname{atan}{\left (x \right )} \left\lvert 0 '
-        r'\middle\rangle\!\middle\langle 1 \right\rvert^{(1)}'
+        == r'\operatorname{atan}{\left(x \right)} \left\lvert 0 \middle\rangle\!\middle\langle 1 \right\rvert^{(1)}'
     )
 
     with configure_printing(inifile=join(datadir, 'printing.ini')):
@@ -74,7 +72,7 @@ def test_initfile(datadir):
         )
         assert (
             latex(atan(x) * sig)
-            == r'\arctan{\left (x \right )} \Op{\sigma}_{0,1}'
+            == r'\arctan{\left(x \right)} \Op{\sigma}_{0,1}'
         )
 
     assert 'use_unicode' in Printer._global_settings
@@ -94,7 +92,7 @@ def test_initfile(datadir):
     )
     assert (
         latex(atan(x) * sig)
-        == r'\operatorname{atan}{\left (x \right )} \left\lvert 0 '
+        == r'\operatorname{atan}{\left(x \right)} \left\lvert 0 '
         r'\middle\rangle\!\middle\langle 1 \right\rvert^{(1)}'
     )
 

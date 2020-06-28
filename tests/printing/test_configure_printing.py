@@ -25,18 +25,15 @@ def test_sympy_tex_cached():
     assert latex(expr, cache=cache) == r'\frac{\alpha^{2}}{2} \hat{A}^{(1)}'
 
 
-@pytest.mark.xfail(reason="TODO")
 def test_sympy_setting():
     """Test that we can pass settings to the sympy sub-printer"""
     x = symbols('a')
     A = OperatorSymbol("A", hs=1)
     expr = atan(x) * A
-    assert (
-        latex(expr) == r'\operatorname{atan}{\left (a \right )} \hat{A}^{(1)}'
-    )
+    assert latex(expr) == r'\operatorname{atan}{\left(a \right)} \hat{A}^{(1)}'
     assert (
         latex(expr, inv_trig_style='full')
-        == r'\arctan{\left (a \right )} \hat{A}^{(1)}'
+        == r'\arctan{\left(a \right)} \hat{A}^{(1)}'
     )
 
 

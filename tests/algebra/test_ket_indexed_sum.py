@@ -34,7 +34,6 @@ from qalgebra import (
 )
 
 
-@pytest.mark.xfail(reason="TODO")
 def test_qubit_state():
     """Test  sum_i alpha_i |i> for TLS"""
     i = IdxSym('i')
@@ -96,9 +95,9 @@ def test_qubit_state():
         assert latex(expr3) == r'\sum_{i=0}^{1} \alpha_{i} \Ket{i}^{(tls)}'
 
     for expr in (expr1, expr2, expr3):
-        assert expr.term.free_symbols == set([i, symbols('alpha')])
+        assert expr.term.free_symbols == set([i, symbols('alpha'), alpha_i])
         assert expr.term.bound_symbols == set()
-        assert expr.free_symbols == set([symbols('alpha'),])
+        assert expr.free_symbols == set([symbols('alpha'), alpha_i])
         assert expr.variables == [i]
         assert expr.bound_symbols == set([i])
         assert len(expr) == len(expr.ranges[0]) == 2
@@ -128,7 +127,6 @@ def test_qubit_state():
     assert "label_or_index must be an instance of" in str(exc_info.value)
 
 
-@pytest.mark.xfail(reason="TODO")
 def test_qubit_state_bra():
     """Test  sum_i alpha_i <i| for TLS"""
     i = IdxSym('i')
@@ -144,8 +142,8 @@ def test_qubit_state_bra():
 
     assert ascii(expr) == "Sum_{i in H_tls} alpha_i * <i|^(tls)"
 
-    assert expr.ket.term.free_symbols == set([i, symbols('alpha')])
-    assert expr.free_symbols == set([symbols('alpha'),])
+    assert expr.ket.term.free_symbols == set([i, symbols('alpha'), alpha_i])
+    assert expr.free_symbols == set([symbols('alpha'), alpha_i])
     assert expr.ket.variables == [i]
     assert expr.space == hs_tls
     assert len(expr.ket.args) == 2
@@ -224,7 +222,6 @@ def test_coherent_state():
     ) == psi_expanded_3.substitute({hs0: hs1})
 
 
-@pytest.mark.xfail(reason="TODO")
 def test_two_hs_symbol_sum():
     """Test sum_{ij} a_{ij} Psi_{ij}"""
     i = IdxSym('i')
@@ -247,8 +244,12 @@ def test_two_hs_symbol_sum():
         term, IndexOverRange(i, 0, 2), IndexOverRange(j, 0, 2)
     )
 
-    assert expr1.term.free_symbols == set([i, j, symbols('a'), symbols('Psi')])
-    assert expr1.free_symbols == set([symbols('a'), symbols('Psi')])
+    assert expr1.term.free_symbols == set(
+        [i, j, symbols('a'), symbols('Psi'), a_ij, Psi_ij]
+    )
+    assert expr1.free_symbols == set(
+        [symbols('a'), symbols('Psi'), a_ij, Psi_ij]
+    )
     assert expr1.variables == [i, j]
 
     assert (

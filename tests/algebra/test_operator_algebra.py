@@ -772,7 +772,6 @@ class TestOperatorTrace(unittest.TestCase):
         assert lhs == rhs
 
 
-@pytest.mark.xfail(reason="TODO")
 def test_opmatrix_construction():
     h1, h2, h3 = LocalSpace("h1"), LocalSpace("h2"), LocalSpace("h3")
     a, b, c = Destroy(hs=h1), Destroy(hs=h2), Destroy(hs=h3)
