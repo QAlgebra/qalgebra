@@ -1,17 +1,28 @@
 # -*- coding: utf-8 -*-
 import datetime
-from pathlib import Path
-import sphinx_rtd_theme
 import os
 import sys
+from pathlib import Path
 
 import git
+import sphinx_rtd_theme
+from sphinx.ext.autodoc import (
+    ClassLevelDocumenter,
+    DataDocumenter,
+    InstanceAttributeDocumenter,
+)
+from sphinx.ext.napoleon.docstring import GoogleDocstring
 
 import qalgebra
 
 
 DOCS = Path(__file__).parent
 ROOT = DOCS / '..'
+
+# If extensions (or modules to document with autodoc) are in another directory,
+# add these directories to sys.path here. If the directory is relative to the
+# documentation root, use os.path.abspath to make it absolute, like shown here.
+sys.path.insert(0, os.path.abspath('_extensions'))
 
 # -- Generate API documentation ------------------------------------------------
 
@@ -43,6 +54,8 @@ nitpicky = True
 nitpick_ignore = [('py:class', 'callable')]
 
 extensions = [
+    'graphviz_ext',
+    'inheritance_diagram',
     'doctr_versions_menu',
     'nbsphinx',
     'sphinx.ext.autodoc',
@@ -51,7 +64,6 @@ extensions = [
     'sphinx.ext.doctest',
     'sphinx.ext.extlinks',
     'sphinx.ext.ifconfig',
-    'sphinx.ext.inheritance_diagram',
     'sphinx.ext.intersphinx',
     'sphinx.ext.mathjax',
     'sphinx.ext.napoleon',
@@ -59,7 +71,7 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx_autodoc_typehints',
     'sphinx_copybutton',
-    'sphinx_math_dollar',
+    'dollarmath',
 ]
 
 
@@ -187,7 +199,6 @@ napoleon_use_rtype = True
 
 # -- Extensions to the  Napoleon GoogleDocstring class ---------------------
 
-from sphinx.ext.napoleon.docstring import GoogleDocstring
 
 # first, we define new methods for any new sections and add them to the class
 def parse_keys_section(self, section):
@@ -226,11 +237,6 @@ GoogleDocstring._parse = patched_parse
 
 # -- Monkeypatch for instance attribs (sphinx bug #2044) -----------------------
 
-from sphinx.ext.autodoc import (
-    ClassLevelDocumenter,
-    InstanceAttributeDocumenter,
-)
-
 
 def iad_add_directive_header(self, sig):
     ClassLevelDocumenter.add_directive_header(self, sig)
@@ -240,8 +246,6 @@ InstanceAttributeDocumenter.add_directive_header = iad_add_directive_header
 
 
 # -- Documenter for Singletons -------------------------------------------------
-
-from sphinx.ext.autodoc import DataDocumenter
 
 
 class SingletonDocumenter(DataDocumenter):
