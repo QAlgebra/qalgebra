@@ -7,13 +7,12 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.library.spin_algebra module &mdash; QAlgebra 2.0.0-dev (1a907e3) documentation</title>
+  <title>qalgebra.library.spin_algebra module &mdash; QAlgebra 2.0.0-dev (447e44f) documentation</title>
   
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <link rel="stylesheet" href="../_static/mycss.css" type="text/css" />
 
@@ -101,6 +100,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library_structure.html">Library Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../symbolic_algebra.html">Symbolic Algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../printing.html">The Printing System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
 </ul>
 <ul class="current">
@@ -267,13 +269,13 @@ for integer and half-integer spin</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.library.spin_algebra.Jmjmcoeff" title="qalgebra.library.spin_algebra.Jmjmcoeff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Jmjmcoeff</span></code></a></p></td>
-<td><p>Eigenvalue of the $Op{J}_{-}$ (<a class="reference internal" href="#qalgebra.library.spin_algebra.Jminus" title="qalgebra.library.spin_algebra.Jminus"><code class="xref py py-class docutils literal notranslate"><span class="pre">Jminus</span></code></a>) operator</p></td>
+<td><p>Eigenvalue of the <span class="math notranslate nohighlight">\(\Op{J}_{-}\)</span> (<a class="reference internal" href="#qalgebra.library.spin_algebra.Jminus" title="qalgebra.library.spin_algebra.Jminus"><code class="xref py py-class docutils literal notranslate"><span class="pre">Jminus</span></code></a>) operator</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.library.spin_algebra.Jpjmcoeff" title="qalgebra.library.spin_algebra.Jpjmcoeff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Jpjmcoeff</span></code></a></p></td>
-<td><p>Eigenvalue of the $Op{J}_{+}$ (<a class="reference internal" href="#qalgebra.library.spin_algebra.Jplus" title="qalgebra.library.spin_algebra.Jplus"><code class="xref py py-class docutils literal notranslate"><span class="pre">Jplus</span></code></a>) operator</p></td>
+<td><p>Eigenvalue of the <span class="math notranslate nohighlight">\(\Op{J}_{+}\)</span> (<a class="reference internal" href="#qalgebra.library.spin_algebra.Jplus" title="qalgebra.library.spin_algebra.Jplus"><code class="xref py py-class docutils literal notranslate"><span class="pre">Jplus</span></code></a>) operator</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.library.spin_algebra.Jzjmcoeff" title="qalgebra.library.spin_algebra.Jzjmcoeff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Jzjmcoeff</span></code></a></p></td>
-<td><p>Eigenvalue of the $Op{J}_z$ (<a class="reference internal" href="#qalgebra.library.spin_algebra.Jz" title="qalgebra.library.spin_algebra.Jz"><code class="xref py py-class docutils literal notranslate"><span class="pre">Jz</span></code></a>) operator</p></td>
+<td><p>Eigenvalue of the <span class="math notranslate nohighlight">\(\Op{J}_z\)</span> (<a class="reference internal" href="#qalgebra.library.spin_algebra.Jz" title="qalgebra.library.spin_algebra.Jz"><code class="xref py py-class docutils literal notranslate"><span class="pre">Jz</span></code></a>) operator</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.library.spin_algebra.SpinBasisKet" title="qalgebra.library.spin_algebra.SpinBasisKet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpinBasisKet</span></code></a></p></td>
 <td><p>Constructor for a <code class="xref py py-class docutils literal notranslate"><span class="pre">BasisKet</span></code> for a <a class="reference internal" href="#qalgebra.library.spin_algebra.SpinSpace" title="qalgebra.library.spin_algebra.SpinSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpinSpace</span></code></a></p></td>
@@ -572,7 +574,7 @@ the zero-based index of the basis state. Otherwise, directly the
 quantum number <span class="math notranslate nohighlight">\(m\)</span>.</p></li>
 <li><p><strong>shift</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – If True for a integer value of <cite>m</cite>, treat <cite>m</cite> as the
 zero-based index of the basis state (i.e., shift <cite>m</cite> down by <span class="math notranslate nohighlight">\(s\)</span> to
-obtain the quantum number <span class="math notranslate nohighlight">\(m\)</span>)</p></li>
+obtain the quantum number $m$)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>

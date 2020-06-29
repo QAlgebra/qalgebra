@@ -1,0 +1,472 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>The Printing System &mdash; QAlgebra 2.0.0-dev (447e44f) documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="_static/mycss.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+        <script src="_static/doctr-versions-menu.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tutorial" href="tutorial.html" />
+    <link rel="prev" title="Symbolic Algebra" href="symbolic_algebra.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0.0-dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">QAlgebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="library_structure.html">Library Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="symbolic_algebra.html">Symbolic Algebra</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The Printing System</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#basic-customization">Basic Customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#printer-classes">Printer classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customization-through-an-ini-file">Customization through an INI file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="API/qalgebra.html">API of the QAlgebra package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>The Printing System</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="the-printing-system">
+<span id="printing"></span><h1>The Printing System<a class="headerlink" href="#the-printing-system" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>As a computer algebra framework, QAlgebra puts great emphasis on the appropriate
+display of expressions, both in the context of a Jupyter notebook (QAlgebra’s main
+“graphical interface”) and in the terminal. It also provides the possibility
+for you to completely customize the display.</p>
+<p>The printing system is modeled closely after the printing system of SymPy (and
+directly builds on it). Unlike SymPy, however, the display of an expression
+will always directly reflect the algebraic structure (summands will not be
+reordered, for example).</p>
+<p>In the context of a Jupyter notebook, expressions will be shown via LaTeX.
+In an interactive (I)Python terminal, a unicode rendering will be used if the
+terminal has unicode support, with a fallback to ascii. We can force this
+manually by:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">init_printing</span><span class="p">(</span><span class="n">repr_format</span><span class="o">=</span><span class="s1">&#39;unicode&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Create</span><span class="p">(</span><span class="n">hs</span><span class="o">=</span><span class="s1">&#39;q_1&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="n">CoherentStateKet</span><span class="p">(</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;eta&#39;</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="s1">&#39;q_1&#39;</span><span class="p">)</span>
+<span class="go">â^(q₁)† |α=η²/2⟩^(q₁)</span>
+</pre></div>
+</div>
+<p>These textual renderings can be obtained manually through the <a class="reference internal" href="API/qalgebra.printing.html#qalgebra.printing.ascii" title="qalgebra.printing.ascii"><code class="xref py py-func docutils literal notranslate"><span class="pre">ascii()</span></code></a> and
+<a class="reference internal" href="API/qalgebra.printing.html#qalgebra.printing.unicode" title="qalgebra.printing.unicode"><code class="xref py py-func docutils literal notranslate"><span class="pre">unicode()</span></code></a> functions.</p>
+<p>Unlike SymPy, the unicode rendering will not span multiple lines. Also, QAlgebgra
+will not rationalize the denominators of scalar fractions by default, to match
+the standard notation in quantum mechanics:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">BasisKet</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">BasisKet</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">1/√2 (|0⟩⁽¹⁾ + |1⟩⁽¹⁾)</span>
+</pre></div>
+</div>
+<p>Compare this to the default in SymPy:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">))</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  
+<span class="go">√2⋅(a + b)</span>
+<span class="go">──────────</span>
+<span class="go">    2</span>
+</pre></div>
+</div>
+<p>With the default settings, the LaTeX renderer that produces the output in the
+Jupyter notebook uses only tex macros that <a class="reference external" href="https://www.mathjax.org">MathJax</a> understands. You can obtain
+the LaTeX code through the <a class="reference internal" href="API/qalgebra.printing.html#qalgebra.printing.latex" title="qalgebra.printing.latex"><code class="xref py py-func docutils literal notranslate"><span class="pre">latex()</span></code></a> function. When generating code for a
+paper or report, it is better to customize the output for better readability
+with a more semantic use of macros, e.g. as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">latex</span><span class="p">((</span><span class="n">BasisKet</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">BasisKet</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">tex_use_braket</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="go">\frac{1}{\sqrt{2}} \left(\Ket{0}^{(1)} + \Ket{1}^{(1)}\right)</span>
+</pre></div>
+</div>
+<p>In addition to the “mathematical” display of expressions, QAlgebgra also has
+functions to show the exact internal (tree) structure of an expression, either
+for debugging or for designing algebraic transformations.</p>
+<p>The <a class="reference internal" href="API/qalgebra.printing.html#qalgebra.printing.srepr" title="qalgebra.printing.srepr"><code class="xref py py-func docutils literal notranslate"><span class="pre">srepr()</span></code></a> function returns the most direct representation of the
+expression: it is a string (possibly with indentation for the tree structure)
+that if evaluated results in the exact same expression.</p>
+<p>An alternative, specifically for interactive use, is the
+<a class="reference internal" href="API/qalgebra.printing.treeprinting.html#qalgebra.printing.treeprinting.print_tree" title="qalgebra.printing.treeprinting.print_tree"><code class="xref py py-func docutils literal notranslate"><span class="pre">print_tree()</span></code></a> function. To generate a graphic
+representation of the tree structure, the <a class="reference internal" href="API/qalgebra.printing.dot.html#qalgebra.printing.dot.dotprint" title="qalgebra.printing.dot.dotprint"><code class="xref py py-func docutils literal notranslate"><span class="pre">dotprint()</span></code></a>
+function produces a graph in the DOT language.</p>
+</div>
+<div class="section" id="basic-customization">
+<h2>Basic Customization<a class="headerlink" href="#basic-customization" title="Permalink to this headline">¶</a></h2>
+<p>At the beginning of an interactive session or notebook, the
+<a class="reference internal" href="API/qalgebra.printing.html#qalgebra.printing.init_printing" title="qalgebra.printing.init_printing"><code class="xref py py-func docutils literal notranslate"><span class="pre">init_printing()</span></code></a> routine should be called. This routine associates specific
+printing functions, e.g. <a class="reference internal" href="API/qalgebra.printing.html#qalgebra.printing.unicode" title="qalgebra.printing.unicode"><code class="xref py py-func docutils literal notranslate"><span class="pre">unicode()</span></code></a>, with the <code class="docutils literal notranslate"><span class="pre">__str__</span></code> and <code class="docutils literal notranslate"><span class="pre">__repr__</span></code>
+representation of an expression. This is what is returned by <code class="docutils literal notranslate"><span class="pre">str(expr)</span></code>, and
+by <code class="docutils literal notranslate"><span class="pre">repr(expr)</span></code> or as the output in an interactive (I)Python session.
+The initialization also specifies the default settings for each
+printing function. For example, you could suppress the display of Hilbert space
+labels:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">init_printing</span><span class="p">(</span><span class="n">show_hs_label</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">repr_format</span><span class="o">=</span><span class="s1">&#39;unicode&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">BasisKet</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">BasisKet</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">1/√2 (|0⟩ + |1⟩)</span>
+</pre></div>
+</div>
+<p>Or, in a debugging session, you could switch the default representation to use
+the indented <a class="reference internal" href="API/qalgebra.printing.html#qalgebra.printing.srepr" title="qalgebra.printing.srepr"><code class="xref py py-func docutils literal notranslate"><span class="pre">srepr()</span></code></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">init_printing</span><span class="p">(</span><span class="n">repr_format</span><span class="o">=</span><span class="s1">&#39;indsrepr&#39;</span><span class="p">)</span>              
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">BasisKet</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">BasisKet</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  
+<span class="go">ScalarTimesKet(</span>
+<span class="go">    Mul(Rational(1, 2), Pow(Integer(2), Rational(1, 2))),</span>
+<span class="go">    KetPlus(</span>
+<span class="go">        BasisKet(</span>
+<span class="go">            0,</span>
+<span class="go">            hs=LocalSpace(</span>
+<span class="go">                &#39;1&#39;)),</span>
+<span class="go">        BasisKet(</span>
+<span class="go">            1,</span>
+<span class="go">            hs=LocalSpace(</span>
+<span class="go">                &#39;1&#39;))))</span>
+</pre></div>
+</div>
+<p>The settings can also be changed <em>temporarily</em> via the <a class="reference internal" href="API/qalgebra.printing.html#qalgebra.printing.configure_printing" title="qalgebra.printing.configure_printing"><code class="xref py py-func docutils literal notranslate"><span class="pre">configure_printing()</span></code></a>
+context manager.</p>
+<p>Note that <a class="reference internal" href="API/qalgebra.printing.html#qalgebra.printing.init_printing" title="qalgebra.printing.init_printing"><code class="xref py py-func docutils literal notranslate"><span class="pre">init_printing()</span></code></a> should only be called once; or else it should
+be given the <code class="docutils literal notranslate"><span class="pre">reset</span></code> parameter:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">init_printing</span><span class="p">(</span><span class="n">repr_format</span><span class="o">=</span><span class="s1">&#39;unicode&#39;</span><span class="p">,</span> <span class="n">reset</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="printer-classes">
+<h2>Printer classes<a class="headerlink" href="#printer-classes" title="Permalink to this headline">¶</a></h2>
+<p>The printing functions <a class="reference internal" href="API/qalgebra.printing.html#qalgebra.printing.ascii" title="qalgebra.printing.ascii"><code class="xref py py-func docutils literal notranslate"><span class="pre">ascii()</span></code></a>, <a class="reference internal" href="API/qalgebra.printing.html#qalgebra.printing.unicode" title="qalgebra.printing.unicode"><code class="xref py py-func docutils literal notranslate"><span class="pre">unicode()</span></code></a>, and <a class="reference internal" href="API/qalgebra.printing.html#qalgebra.printing.latex" title="qalgebra.printing.latex"><code class="xref py py-func docutils literal notranslate"><span class="pre">latex()</span></code></a> each
+delegate to an internal printer object that subclasses
+<a class="reference internal" href="API/qalgebra.printing.base.html#qalgebra.printing.base.QalgebraBasePrinter" title="qalgebra.printing.base.QalgebraBasePrinter"><code class="xref py py-class docutils literal notranslate"><span class="pre">QalgebraBasePrinter</span></code></a>. After initialization,
+the printer class is referenced at e.g. <code class="xref py py-attr docutils literal notranslate"><span class="pre">ascii.printer</span></code>.</p>
+<p>For the ultimate control in customizing the printing system, you can implement your
+own subclasses of <code class="xref py py-class docutils literal notranslate"><span class="pre">QalgrebraBasePrinter</span></code>, which is in
+turn a subclass of <a class="reference external" href="https://docs.sympy.org/latest/modules/printing.html#sympy.printing.printer.Printer" title="(in SymPy v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.printing.printer.Printer</span></code></a>. Thus, the
+overview of <a class="reference external" href="http://docs.sympy.org/latest/modules/printing.html#module-sympy.printing.printer">SymPy’s printing system</a> applies.</p>
+<p>The QAlgebra printers conceptually extend SymPy printers in the following ways:</p>
+<ul class="simple">
+<li><p>QAlgebra printers have support for caching. One reason for this is efficiency.
+More importantly, it allows to pass a pre-initialized cache to
+force certain expressions to be represented by fixed strings, which can make
+expressions considerably more readable, and aids in generating code from
+expressions, see the example for <a class="reference internal" href="API/qalgebra.printing.html#qalgebra.printing.srepr" title="qalgebra.printing.srepr"><code class="xref py py-func docutils literal notranslate"><span class="pre">srepr()</span></code></a> .</p></li>
+<li><p>Every printer contains a sub-printer in the <cite>_sympy_printer</cite> attribute,
+instantiated from the  <cite>sympy_printer_cls</cite> class attribute. Actual SymPy
+objects (e.g., scalar coefficients) are delegated to this sub-printer, while
+the main printer handles all
+<a class="reference internal" href="API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression" title="qalgebra.core.abstract_algebra.Expression"><code class="xref py py-class docutils literal notranslate"><span class="pre">Expression</span></code></a> instances. Not that the
+default sub-printers use classes from <a class="reference internal" href="API/qalgebra.printing.sympy.html#module-qalgebra.printing.sympy" title="qalgebra.printing.sympy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qalgebra.printing.sympy</span></code></a> that
+implement some custom printing more in line with the conventions of quantum
+physics.</p></li>
+</ul>
+<p>When <a class="reference internal" href="API/qalgebra.printing.html#qalgebra.printing.init_printing" title="qalgebra.printing.init_printing"><code class="xref py py-func docutils literal notranslate"><span class="pre">init_printing()</span></code></a> is called with direct settings as in the previous
+section, these will be used as
+<em>global</em> settings, and will affect any printers (including SymPy sub-printers)
+that are instantiated afterwards.</p>
+<p>The settings that are given to any printing function will be used for that
+specific call of the printing function only. If you define custom classes with
+different or additional settings and set them up for use with the printing
+function (see below), the accepted arguments to the printing functions change
+accordingly.</p>
+</div>
+<div class="section" id="customization-through-an-ini-file">
+<span id="ini-file-printing"></span><h2>Customization through an INI file<a class="headerlink" href="#customization-through-an-ini-file" title="Permalink to this headline">¶</a></h2>
+<p>While <a class="reference internal" href="API/qalgebra.printing.html#qalgebra.printing.init_printing" title="qalgebra.printing.init_printing"><code class="xref py py-func docutils literal notranslate"><span class="pre">init_printing()</span></code></a> can simply be called with explicit settings to configure the
+printing system globally (see above), for a more advanced set up an INI-file
+can be used. In this case, the path to the file must be the only argument:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">init_printing</span><span class="p">(</span><span class="n">inifile</span><span class="o">=&lt;</span><span class="n">path</span> <span class="n">to</span> <span class="n">file</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This allows to associate custom printer classes with the printing functions,
+and also define the settings settings for those particular printers (as opposed
+to just global settings).</p>
+<p>The INI file may have sections ‘global’, ‘ascii’, ‘unicode’, and ‘latex’.
+Parameters in the ‘global’ section are equivalent to those could be passed to
+<a class="reference internal" href="API/qalgebra.printing.html#qalgebra.printing.init_printing" title="qalgebra.printing.init_printing"><code class="xref py py-func docutils literal notranslate"><span class="pre">init_printing()</span></code></a> as direct settings. That is, they set up the printing
+function to be used for <code class="docutils literal notranslate"><span class="pre">__str__</span></code> and <code class="docutils literal notranslate"><span class="pre">__repr__</span></code>, and set the global
+options for all printer classes.</p>
+<p>The ‘ascii’, ‘unicode’, and ‘latex’ sections configure the respective printing
+functions. To link them to custom Printer classes, you may specify <code class="docutils literal notranslate"><span class="pre">printer</span></code>
+and <code class="docutils literal notranslate"><span class="pre">sympy_printer</span></code> as the full path to the Printer class that should be used
+for the main printer and the sub-printer for SymPy expressions. All other
+settings in the sections override the settings from ‘global’ for that
+particular printer.</p>
+<p>Consider the following annotated example for an INI file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="k">global</span><span class="p">]</span>
+<span class="c1"># The settings in the &#39;global&#39; section are for all Printer classes (both</span>
+<span class="c1"># SymPy and QAlgebra). They are equivalent to passing them to init_printing</span>
+<span class="c1"># directly</span>
+
+<span class="c1"># the printing function to use for str(expr)</span>
+<span class="n">str_format</span> <span class="o">=</span> <span class="n">ascii</span>
+<span class="c1"># the printing function to use for expr(expr)</span>
+<span class="n">repr_format</span> <span class="o">=</span> <span class="n">unicode</span>
+<span class="c1"># direct global settings</span>
+<span class="n">show_hs_label</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">sig_as_ketbra</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="c1"># note that boolean values must be specified as &quot;True&quot;, or &quot;False&quot;</span>
+
+<span class="c1"># The three sections below associate the printing functions with particular</span>
+<span class="c1"># Printer classes, and override the global settings for those particular</span>
+<span class="c1"># printers</span>
+
+<span class="p">[</span><span class="n">ascii</span><span class="p">]</span>
+<span class="n">printer</span> <span class="o">=</span> <span class="n">qalgebra</span><span class="o">.</span><span class="n">printing</span><span class="o">.</span><span class="n">asciiprinter</span><span class="o">.</span><span class="n">QalgebraAsciiPrinter</span>
+<span class="c1"># we use the SymPy StrPrinter here, instead of the default</span>
+<span class="c1"># qalgebra.printing.sympy.SympyStrPrinter that is customized to not</span>
+<span class="c1"># rationalize denominators</span>
+<span class="n">sympy_printer</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">printing</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">StrPrinter</span>
+<span class="c1"># we override the the settings from the &#39;global&#39; section</span>
+<span class="n">show_hs_label</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">sig_as_ketbra</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="p">[</span><span class="n">unicode</span><span class="p">]</span>
+<span class="n">printer</span> <span class="o">=</span> <span class="n">qalgebra</span><span class="o">.</span><span class="n">printing</span><span class="o">.</span><span class="n">unicodeprinter</span><span class="o">.</span><span class="n">QalgebraUnicodePrinter</span>
+<span class="n">sympy_printer</span> <span class="o">=</span> <span class="n">qalgebra</span><span class="o">.</span><span class="n">printing</span><span class="o">.</span><span class="n">sympy</span><span class="o">.</span><span class="n">SympyUnicodePrinter</span>
+<span class="n">show_hs_label</span> <span class="o">=</span> <span class="n">subscript</span>
+<span class="n">unicode_op_hats</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="p">[</span><span class="n">latex</span><span class="p">]</span>
+<span class="n">printer</span> <span class="o">=</span> <span class="n">qalgebra</span><span class="o">.</span><span class="n">printing</span><span class="o">.</span><span class="n">latexprinter</span><span class="o">.</span><span class="n">QalgebraLatexPrinter</span>
+<span class="n">sympy_printer</span> <span class="o">=</span> <span class="n">qalgebra</span><span class="o">.</span><span class="n">printing</span><span class="o">.</span><span class="n">sympy</span><span class="o">.</span><span class="n">SympyLatexPrinter</span>
+<span class="c1"># string values can be written un-escaped</span>
+<span class="n">tex_op_macro</span> <span class="o">=</span> \<span class="n">Op</span><span class="p">{{{</span><span class="n">name</span><span class="p">}}}</span>
+<span class="n">tex_use_braket</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="c1"># You can also include options for the sympy_printer</span>
+<span class="n">inv_trig_style</span> <span class="o">=</span> <span class="n">full</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tutorial.html" class="btn btn-neutral float-right" title="Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="symbolic_algebra.html" class="btn btn-neutral float-left" title="Symbolic Algebra" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Michael Goerz
+      <span class="lastupdated">
+        Last updated on Jun 29, 2020.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

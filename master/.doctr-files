@@ -125,7 +125,10 @@ master/_sources/authors.rst.txt
 master/_sources/contributing.rst.txt
 master/_sources/history.rst.txt
 master/_sources/index.rst.txt
+master/_sources/library_structure.rst.txt
+master/_sources/printing.rst.txt
 master/_sources/readme.rst.txt
+master/_sources/symbolic_algebra.rst.txt
 master/_sources/tutorial.ipynb.txt
 master/_static/basic.css
 master/_static/clipboard.min.js
@@ -202,7 +205,6 @@ master/_static/fonts/lato-normal-italic.woff
 master/_static/fonts/lato-normal-italic.woff2
 master/_static/fonts/lato-normal.woff
 master/_static/fonts/lato-normal.woff2
-master/_static/graphviz.css
 master/_static/jquery-3.5.1.js
 master/_static/jquery.js
 master/_static/js/badge_only.js
@@ -224,10 +226,13 @@ master/contributing.html
 master/genindex.html
 master/history.html
 master/index.html
+master/library_structure.html
 master/objects.inv
+master/printing.html
 master/py-modindex.html
 master/readme.html
 master/search.html
 master/searchindex.js
+master/symbolic_algebra.html
 master/tutorial.html
 master/tutorial.ipynb

@@ -7,13 +7,12 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.operator_algebra module &mdash; QAlgebra 2.0.0-dev (1a907e3) documentation</title>
+  <title>qalgebra.core.operator_algebra module &mdash; QAlgebra 2.0.0-dev (447e44f) documentation</title>
   
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <link rel="stylesheet" href="../_static/mycss.css" type="text/css" />
 
@@ -101,6 +100,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library_structure.html">Library Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../symbolic_algebra.html">Symbolic Algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../printing.html">The Printing System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
 </ul>
 <ul class="current">
@@ -240,7 +242,7 @@
 <div class="section" id="module-qalgebra.core.operator_algebra">
 <span id="qalgebra-core-operator-algebra-module"></span><h1>qalgebra.core.operator_algebra module<a class="headerlink" href="#module-qalgebra.core.operator_algebra" title="Permalink to this headline">¶</a></h1>
 <p>This module features classes and functions to define and manipulate symbolic
-Operator expressions.  For more details see <span class="xref std std-ref">operator_algebra</span>.</p>
+Operator expressions.  For more details see <a class="reference internal" href="../symbolic_algebra.html#operator-algebra"><span class="std std-ref">Operator Algebra</span></a>.</p>
 <p>For a list of all properties and methods of an operator object, see the
 documentation for the basic <a class="reference internal" href="#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></a> class.</p>
 <div class="section" id="summary">
@@ -292,7 +294,7 @@ documentation for the basic <a class="reference internal" href="#qalgebra.core.o
 <td><p>(Partial) trace of an operator</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.operator_algebra.PseudoInverse" title="qalgebra.core.operator_algebra.PseudoInverse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PseudoInverse</span></code></a></p></td>
-<td><p>Unevaluated pseudo-inverse $Op{X}^+$ of an operator $Op{X}$</p></td>
+<td><p>Unevaluated pseudo-inverse <span class="math notranslate nohighlight">\(\Op{X}^+\)</span> of an operator <span class="math notranslate nohighlight">\(\Op{X}\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.operator_algebra.ScalarTimesOperator" title="qalgebra.core.operator_algebra.ScalarTimesOperator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScalarTimesOperator</span></code></a></p></td>
 <td><p>Product of a <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code></a> coefficient and an <a class="reference internal" href="#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></a></p></td>
@@ -684,7 +686,7 @@ product.</p>
 <dd><p>Bases: <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation" title="qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation</span></code></a>, <a class="reference internal" href="#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.operator_algebra.Operator</span></code></a></p>
 <p>(Partial) trace of an operator</p>
 <p>Trace of an operator <cite>op</cite> ($Op{O}) over the degrees
-of freedom of a Hilbert space <cite>over_space</cite> (<span class="math notranslate nohighlight">\(\mathcal{H}\)</span>):</p>
+of freedom of a Hilbert space <cite>over_space</cite> ($mathcal{H}$):</p>
 <div class="math notranslate nohighlight">
 \[{\rm Tr}_{\mathcal{H}} \Op{O}\]</div>
 <dl class="field-list simple">
