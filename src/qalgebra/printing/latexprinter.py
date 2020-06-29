@@ -53,12 +53,14 @@ class QalgebraLatexPrinter(QalgebraAsciiPrinter):
     _set_delim_left = r'\{'
     _set_delim_right = r'\}'
 
-    def __init__(self, cache=None, settings=None):
+    def __init__(self, *, cache=None, settings=None):
         super().__init__(cache=cache, settings=settings)
         # enable the cache to provide strings for symbols *inside* SymPy
         # Expressions
         if cache is not None:
             if 'symbol_names' in self._sympy_printer._default_settings:
+                if not isinstance(cache, dict):
+                    raise ValueError("cache must be dict")
                 self._sympy_printer._settings['symbol_names'] = cache
 
     def _print_SCALAR_TYPES(self, expr, *args, **kwargs):
@@ -327,7 +329,7 @@ class QalgebraLatexPrinter(QalgebraAsciiPrinter):
         )
 
     def _print_Eq(self, expr):
-        # print for qalgebra.toolbox.equality.Eq, but also works for any
+        # print for symbolic_equation.Eq, but also works for any
         # Eq class that has the minimum requirement to have an `lhs` and `rhs`
         # attribute
         try:
@@ -363,8 +365,8 @@ class QalgebraLatexPrinter(QalgebraAsciiPrinter):
                     self.doprint(lhs),
                     self.doprint(expr.rhs),
                 )
-            if expr.tag is not None:
-                res += r'\tag{%s}' % expr.tag
+            if expr._tag is not None:
+                res += r'\tag{%s}' % expr._tag
             res += r'\end{align}' + "\n"
         else:
             res = r'\begin{equation}' + "\n"
@@ -373,8 +375,8 @@ class QalgebraLatexPrinter(QalgebraAsciiPrinter):
                 self.doprint(expr.rhs),
             )
             try:
-                if expr.tag is not None:
-                    res += r'\tag{%s}' % expr.tag
+                if expr._tag is not None:
+                    res += r'\tag{%s}' % expr._tag
             except AttributeError:
                 pass
             res += r'\end{equation}' + "\n"

@@ -330,7 +330,7 @@ def configure_printing(**kwargs):
                 setattr(obj, attr, val)
 
 
-def ascii(expr, cache=None, **settings):
+def ascii(expr, *, cache=None, **settings):
     """Return an ASCII representation of the given object / expression
 
     Args:
@@ -377,7 +377,7 @@ def ascii(expr, cache=None, **settings):
         return ascii(expr, cache, **settings)
 
 
-def unicode(expr, cache=None, **settings):
+def unicode(expr, *, cache=None, **settings):
     """Return a unicode representation of the given object / expression
 
     Args:
@@ -432,7 +432,7 @@ def unicode(expr, cache=None, **settings):
         return unicode(expr, cache, **settings)
 
 
-def latex(expr, cache=None, **settings):
+def latex(expr, *, cache=None, **settings):
     r"""Return a LaTeX representation of the given object / expression
 
     Args:
@@ -515,21 +515,21 @@ def latex(expr, cache=None, **settings):
         if cache is None and len(settings) == 0:
             return latex.printer.doprint(expr)
         else:
-            printer = latex._printer_cls(cache, settings)
+            printer = latex._printer_cls(cache=cache, settings=settings)
             return printer.doprint(expr)
     except AttributeError:
         # init_printing was not called. Setting up defaults
         latex._printer_cls = QalgebraLatexPrinter
         latex.printer = latex._printer_cls()
-        return latex(expr, cache, **settings)
+        return latex(expr, cache=cache, **settings)
 
 
-def tex(expr, cache=None, **settings):
+def tex(expr, *, cache=None, **settings):
     """Alias for :func:`latex`"""
     return latex(expr, cache, **settings)
 
 
-def srepr(expr, indented=False, cache=None):
+def srepr(expr, *, indented=False, cache=None):
     """Render the given expression into a string that can be evaluated in an
     appropriate context to re-instantiate an identical expression. If
     `indented` is False (default), the resulting string is a single line.

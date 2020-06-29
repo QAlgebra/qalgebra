@@ -64,6 +64,7 @@ dev_requirements = [
     'sphinx-copybutton',
     'sphinx-math-dollar',
     'sphinx_rtd_theme',
+    'symbolic_equation',
     'travis-encrypt',
     'twine',
     'wheel',

@@ -2,6 +2,7 @@ from functools import partial
 
 import pytest
 import sympy
+from symbolic_equation import Eq
 from sympy import I, IndexedBase, Rational, exp, sqrt, symbols
 
 from qalgebra import (
@@ -14,7 +15,6 @@ from qalgebra import (
     Create,
     Destroy,
     Displace,
-    Eq,
     FockIndex,
     FullSpace,
     IdentityOperator,
@@ -126,20 +126,22 @@ def test_unicode_matrix():
 def test_unicode_equation():
     """Test printing of the Eq class"""
     eq_1 = Eq(lhs=OperatorSymbol('H', hs=0), rhs=Create(hs=0) * Destroy(hs=0))
+    # fmt: off
     eq = (
-        eq_1.apply_to_lhs(lambda expr: expr + 1, cont=True)
-        .apply_to_rhs(lambda expr: expr + 1, cont=True)
-        .apply_to_rhs(lambda expr: expr ** 2, cont=True, tag=3)
-        .apply(lambda expr: expr + 1, cont=True, tag=4)
-        .apply_mtd_to_rhs('expand', cont=True)
-        .apply_to_lhs(lambda expr: expr ** 2, cont=True, tag=5)
-        .apply_mtd('expand', cont=True)
-        .apply_to_lhs(lambda expr: expr ** 2, cont=True, tag=6)
-        .apply_mtd_to_lhs('expand', cont=True)
-        .apply_to_rhs(lambda expr: expr + 1, cont=True)
+        eq_1.apply_to_lhs(lambda expr: expr + 1)
+        .apply_to_rhs(lambda expr: expr + 1)
+        .apply_to_rhs(lambda expr: expr ** 2).tag(3)
+        .transform(lambda eq: eq + 1).tag(4)
+        .apply_to_rhs('expand')
+        .apply_to_lhs(lambda expr: expr ** 2).tag(5)
+        .apply('expand')
+        .apply_to_lhs(lambda expr: expr ** 2).tag(6)
+        .apply_to_lhs('expand')
+        .apply_to_rhs(lambda expr: expr + 1)
     )
+    # fmt: on
     assert unicode(eq_1) == 'Ĥ⁽⁰⁾ = â^(0)† â⁽⁰⁾'
-    assert unicode(eq_1.set_tag(1)) == 'Ĥ⁽⁰⁾ = â^(0)† â⁽⁰⁾    (1)'
+    assert unicode(eq_1.tag(1)) == 'Ĥ⁽⁰⁾ = â^(0)† â⁽⁰⁾    (1)'
     unicode_lines = unicode(eq, show_hs_label=False).split("\n")
     expected = [
         '                                     Ĥ = â^† â',

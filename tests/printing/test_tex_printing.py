@@ -1,6 +1,7 @@
 from functools import partial
 
 import pytest
+from symbolic_equation import Eq
 from sympy import I, IndexedBase, Rational, exp, sqrt, symbols
 
 from qalgebra import (
@@ -13,7 +14,6 @@ from qalgebra import (
     Create,
     Destroy,
     Displace,
-    Eq,
     FockIndex,
     FullSpace,
     IdentityOperator,
@@ -173,25 +173,27 @@ def test_tex_matrix():
 def test_tex_equation():
     """Test printing of the Eq class"""
     eq_1 = Eq(lhs=OperatorSymbol('H', hs=0), rhs=Create(hs=0) * Destroy(hs=0))
+    # fmt: off
     eq = (
-        eq_1.apply_to_lhs(lambda expr: expr + 1, cont=True)
-        .apply_to_rhs(lambda expr: expr + 1, cont=True)
-        .apply_to_rhs(lambda expr: expr ** 2, cont=True, tag=3)
-        .apply(lambda expr: expr + 1, cont=True, tag=4)
-        .apply_mtd_to_rhs('expand', cont=True)
-        .apply_to_lhs(lambda expr: expr ** 2, cont=True, tag=5)
-        .apply_mtd('expand', cont=True)
-        .apply_to_lhs(lambda expr: expr ** 2, cont=True, tag=6)
-        .apply_mtd_to_lhs('expand', cont=True)
-        .apply_to_rhs(lambda expr: expr + 1, cont=True)
+        eq_1.apply_to_lhs(lambda expr: expr + 1)
+        .apply_to_rhs(lambda expr: expr + 1)
+        .apply_to_rhs(lambda expr: expr ** 2).tag(3)
+        .transform(lambda eq: eq + 1).tag(4)
+        .apply_to_rhs('expand')
+        .apply_to_lhs(lambda expr: expr ** 2).tag(5)
+        .apply('expand')
+        .apply_to_lhs(lambda expr: expr ** 2).tag(6)
+        .apply_to_lhs('expand')
+        .apply_to_rhs(lambda expr: expr + 1)
     )
+    # fmt: on
     assert latex(eq_1).split("\n") == [
         r'\begin{equation}',
         r'  \hat{H}^{(0)} = \hat{a}^{(0)\dagger} \hat{a}^{(0)}',
         r'\end{equation}',
         '',
     ]
-    assert latex(eq_1.set_tag(1)).split("\n") == [
+    assert latex(eq_1.tag(1).reset()).split("\n") == [
         r'\begin{equation}',
         r'  \hat{H}^{(0)} = \hat{a}^{(0)\dagger} \hat{a}^{(0)}',
         r'\tag{1}\end{equation}',

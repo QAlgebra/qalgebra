@@ -802,7 +802,7 @@ class QalgebraAsciiPrinter(QalgebraBasePrinter):
         )
 
     def _print_Eq(self, expr):
-        # print for qalgebra.toolbox.equality.Eq, but also works for any
+        # print for symbolic_equation.Eq, but also works for any
         # Eq class that has the minimum requirement to have an `lhs` and `rhs`
         # attribute
         try:
