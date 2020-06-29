@@ -98,8 +98,6 @@ qalgebra package
          - Bosonic annihilation operator
        * - :class:`Displace <qalgebra.library.fock_operators.Displace>`
          - Unitary coherent displacement operator
-       * - :class:`Eq <qalgebra.toolbox.equation.Eq>`
-         - Symbolic equation
        * - :class:`Expression <qalgebra.core.abstract_algebra.Expression>`
          - Base class for all QAlgebra Expressions
        * - :class:`FockIndex <qalgebra.utils.indices.FockIndex>`

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.printing &mdash; QAlgebra 2.0.0-dev (ea856bc) documentation</title>
+  <title>qalgebra.printing &mdash; QAlgebra 2.0.0-dev (1a907e3) documentation</title>
   
 
   
@@ -507,7 +507,7 @@
                 <span class="nb">setattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="ascii"><a class="viewcode-back" href="../../API/qalgebra.printing.html#qalgebra.printing.ascii">[docs]</a><span class="k">def</span> <span class="nf">ascii</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">):</span>
+<div class="viewcode-block" id="ascii"><a class="viewcode-back" href="../../API/qalgebra.printing.html#qalgebra.printing.ascii">[docs]</a><span class="k">def</span> <span class="nf">ascii</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return an ASCII representation of the given object / expression</span>
 
 <span class="sd">    Args:</span>
@@ -554,7 +554,7 @@
         <span class="k">return</span> <span class="n">ascii</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">cache</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="unicode"><a class="viewcode-back" href="../../API/qalgebra.printing.html#qalgebra.printing.unicode">[docs]</a><span class="k">def</span> <span class="nf">unicode</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">):</span>
+<div class="viewcode-block" id="unicode"><a class="viewcode-back" href="../../API/qalgebra.printing.html#qalgebra.printing.unicode">[docs]</a><span class="k">def</span> <span class="nf">unicode</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a unicode representation of the given object / expression</span>
 
 <span class="sd">    Args:</span>
@@ -609,7 +609,7 @@
         <span class="k">return</span> <span class="n">unicode</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">cache</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="latex"><a class="viewcode-back" href="../../API/qalgebra.printing.html#qalgebra.printing.latex">[docs]</a><span class="k">def</span> <span class="nf">latex</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">):</span>
+<div class="viewcode-block" id="latex"><a class="viewcode-back" href="../../API/qalgebra.printing.html#qalgebra.printing.latex">[docs]</a><span class="k">def</span> <span class="nf">latex</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return a LaTeX representation of the given object / expression</span>
 
 <span class="sd">    Args:</span>
@@ -692,21 +692,21 @@
         <span class="k">if</span> <span class="n">cache</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">latex</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">printer</span> <span class="o">=</span> <span class="n">latex</span><span class="o">.</span><span class="n">_printer_cls</span><span class="p">(</span><span class="n">cache</span><span class="p">,</span> <span class="n">settings</span><span class="p">)</span>
+            <span class="n">printer</span> <span class="o">=</span> <span class="n">latex</span><span class="o">.</span><span class="n">_printer_cls</span><span class="p">(</span><span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">,</span> <span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">printer</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
         <span class="c1"># init_printing was not called. Setting up defaults</span>
         <span class="n">latex</span><span class="o">.</span><span class="n">_printer_cls</span> <span class="o">=</span> <span class="n">QalgebraLatexPrinter</span>
         <span class="n">latex</span><span class="o">.</span><span class="n">printer</span> <span class="o">=</span> <span class="n">latex</span><span class="o">.</span><span class="n">_printer_cls</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">latex</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">cache</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">latex</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="tex"><a class="viewcode-back" href="../../API/qalgebra.printing.html#qalgebra.printing.tex">[docs]</a><span class="k">def</span> <span class="nf">tex</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">):</span>
+<div class="viewcode-block" id="tex"><a class="viewcode-back" href="../../API/qalgebra.printing.html#qalgebra.printing.tex">[docs]</a><span class="k">def</span> <span class="nf">tex</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Alias for :func:`latex`&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">latex</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">cache</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="srepr"><a class="viewcode-back" href="../../API/qalgebra.printing.html#qalgebra.printing.srepr">[docs]</a><span class="k">def</span> <span class="nf">srepr</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">indented</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="srepr"><a class="viewcode-back" href="../../API/qalgebra.printing.html#qalgebra.printing.srepr">[docs]</a><span class="k">def</span> <span class="nf">srepr</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">indented</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Render the given expression into a string that can be evaluated in an</span>
 <span class="sd">    appropriate context to re-instantiate an identical expression. If</span>
 <span class="sd">    `indented` is False (default), the resulting string is a single line.</span>
@@ -784,7 +784,7 @@
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Jun 28, 2020.
+        Last updated on Jun 29, 2020.
       </span>
 
     </p>

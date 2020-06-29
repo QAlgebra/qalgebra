@@ -15,21 +15,11 @@ qalgebra.toolbox package
 
        qalgebra.toolbox.commutator_manipulation
        qalgebra.toolbox.core
-       qalgebra.toolbox.equation
 
 
 
     Summary
     -------
-
-    ``__all__`` Classes:
-
-
-    .. list-table::
-    
-       * - :class:`Eq <qalgebra.toolbox.equation.Eq>`
-         - Symbolic equation
-    
 
     ``__all__`` Functions:
 

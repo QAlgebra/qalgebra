@@ -30,7 +30,6 @@ master/API/qalgebra.printing.treeprinting.html
 master/API/qalgebra.printing.unicodeprinter.html
 master/API/qalgebra.toolbox.commutator_manipulation.html
 master/API/qalgebra.toolbox.core.html
-master/API/qalgebra.toolbox.equation.html
 master/API/qalgebra.toolbox.html
 master/API/qalgebra.utils.check_rules.html
 master/API/qalgebra.utils.containers.html
@@ -71,7 +70,6 @@ master/_modules/qalgebra/printing/treeprinting.html
 master/_modules/qalgebra/printing/unicodeprinter.html
 master/_modules/qalgebra/toolbox/commutator_manipulation.html
 master/_modules/qalgebra/toolbox/core.html
-master/_modules/qalgebra/toolbox/equation.html
 master/_modules/qalgebra/utils/check_rules.html
 master/_modules/qalgebra/utils/containers.html
 master/_modules/qalgebra/utils/indices.html
@@ -113,7 +111,6 @@ master/_sources/API/qalgebra.printing.unicodeprinter.rst.txt
 master/_sources/API/qalgebra.rst.txt
 master/_sources/API/qalgebra.toolbox.commutator_manipulation.rst.txt
 master/_sources/API/qalgebra.toolbox.core.rst.txt
-master/_sources/API/qalgebra.toolbox.equation.rst.txt
 master/_sources/API/qalgebra.toolbox.rst.txt
 master/_sources/API/qalgebra.utils.check_rules.rst.txt
 master/_sources/API/qalgebra.utils.containers.rst.txt

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.printing package &mdash; QAlgebra 2.0.0-dev (ea856bc) documentation</title>
+  <title>qalgebra.printing package &mdash; QAlgebra 2.0.0-dev (1a907e3) documentation</title>
   
 
   
@@ -291,7 +291,7 @@
 <h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="qalgebra.printing.ascii">
-<code class="sig-prename descclassname">qalgebra.printing.</code><code class="sig-name descname">ascii</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em>, <em class="sig-param"><span class="n">cache</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">settings</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing.html#ascii"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.ascii" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.printing.</code><code class="sig-name descname">ascii</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">cache</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">settings</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing.html#ascii"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.ascii" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return an ASCII representation of the given object / expression</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -407,7 +407,7 @@ system from what was configured in <a class="reference internal" href="#qalgebra
 
 <dl class="py function">
 <dt id="qalgebra.printing.latex">
-<code class="sig-prename descclassname">qalgebra.printing.</code><code class="sig-name descname">latex</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em>, <em class="sig-param"><span class="n">cache</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">settings</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing.html#latex"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.latex" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.printing.</code><code class="sig-name descname">latex</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">cache</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">settings</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing.html#latex"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.latex" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a LaTeX representation of the given object / expression</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -493,7 +493,7 @@ through <a class="reference internal" href="#qalgebra.printing.init_printing" ti
 
 <dl class="py function">
 <dt id="qalgebra.printing.srepr">
-<code class="sig-prename descclassname">qalgebra.printing.</code><code class="sig-name descname">srepr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em>, <em class="sig-param"><span class="n">indented</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">cache</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing.html#srepr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.srepr" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.printing.</code><code class="sig-name descname">srepr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">indented</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">cache</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing.html#srepr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.srepr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Render the given expression into a string that can be evaluated in an
 appropriate context to re-instantiate an identical expression. If
 <cite>indented</cite> is False (default), the resulting string is a single line.
@@ -541,13 +541,13 @@ explore the tree structure of an expression.</p>
 
 <dl class="py function">
 <dt id="qalgebra.printing.tex">
-<code class="sig-prename descclassname">qalgebra.printing.</code><code class="sig-name descname">tex</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em>, <em class="sig-param"><span class="n">cache</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">settings</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing.html#tex"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.tex" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.printing.</code><code class="sig-name descname">tex</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">cache</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">settings</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing.html#tex"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.tex" title="Permalink to this definition">¶</a></dt>
 <dd><p>Alias for <a class="reference internal" href="#qalgebra.printing.latex" title="qalgebra.printing.latex"><code class="xref py py-func docutils literal notranslate"><span class="pre">latex()</span></code></a></p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="qalgebra.printing.unicode">
-<code class="sig-prename descclassname">qalgebra.printing.</code><code class="sig-name descname">unicode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em>, <em class="sig-param"><span class="n">cache</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">settings</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing.html#unicode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.unicode" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">qalgebra.printing.</code><code class="sig-name descname">unicode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">cache</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">settings</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing.html#unicode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.unicode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a unicode representation of the given object / expression</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -619,7 +619,7 @@ through <a class="reference internal" href="#qalgebra.printing.init_printing" ti
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Jun 28, 2020.
+        Last updated on Jun 29, 2020.
       </span>
 
     </p>
