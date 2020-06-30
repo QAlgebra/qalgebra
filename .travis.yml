@@ -45,7 +45,7 @@ script:
   - set -e
   - |
     if [[ "${DOCS}" == "true" ]]; then
-      source .travis/doctr_build.sh
+      source .travis/docs.sh
     else
       tox -e $TOXENV
     fi
