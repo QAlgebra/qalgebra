@@ -29,26 +29,57 @@ Welcome to QAlgebra's documentation!
    :alt: MIT License
    :target: https://opensource.org/licenses/MIT
 
+
+.. Tutorials (learning oriented):
+
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Getting Started
 
-   readme
+   Installation & Usage <readme>
+.. tutorial.ipynb
+
+
+.. Explanation / Discussion (understanding-oriented):
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Quantum Algebra
+
+   symbolic_algebra
+   printing
+
+
+.. Examples (learning oriented):
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Examples
+
+
+.. How-to (problem-oriented):
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Howtos
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Development
+
    contributing
    authors
    history
-   library_structure
-   symbolic_algebra
-   printing
-   tutorial.ipynb
 
 
-API
-===
+.. Reference (information oriented):
 
 .. toctree::
    :maxdepth: 1
+   :caption: Reference
 
+   library_structure
    API of the QAlgebra package <API/qalgebra>
 
 * :ref:`modindex`
