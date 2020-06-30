@@ -22,9 +22,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
 
-DOCSDIR = ROOT / 'docs'
+DOCS_SOURCES = ROOT / 'docs' / 'sources'
 
-DOCSBUILDDIR = DOCSDIR / '_build'
+DOCS_BUILDDIR = ROOT / 'docs' / '_build'
 
 # fmt: off
 FILES_TO_DELETE = {
@@ -41,10 +41,10 @@ FILES_TO_DELETE = {
         (ROOT, '**/.DS_Store'),
     ],
     'docs': [
-        DOCSBUILDDIR,
-        (DOCSDIR / 'API', '*.rst'),
-        (DOCSDIR, '*.ipynb.log'),
-        (DOCSDIR, '**/.ipynb_checkpoints'),
+        DOCS_BUILDDIR,
+        (DOCS_SOURCES / 'API', '*.rst'),
+        (DOCS_SOURCES, '*.ipynb.log'),
+        (DOCS_SOURCES, '**/.ipynb_checkpoints'),
     ],
     'venv': [
         ROOT / '.tox',

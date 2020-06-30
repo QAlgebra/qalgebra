@@ -16,8 +16,8 @@ from sphinx.ext.napoleon.docstring import GoogleDocstring
 import qalgebra
 
 
-DOCS = Path(__file__).parent
-ROOT = DOCS / '..'
+DOCS_SOURCES = Path(__file__).parent
+ROOT = DOCS_SOURCES / '..' / '..'  # project root
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -36,13 +36,13 @@ def run_apidoc(app):
         [
             'better-apidoc',
             '-t',
-            str(DOCS / '_templates'),
+            str(DOCS_SOURCES / '_templates'),
             '--force',
             '--no-toc',
             '--separate',
             '-o',
-            str(DOCS / 'API'),
-            os.path.join(DOCS / '..' / 'src' / 'qalgebra'),
+            str(DOCS_SOURCES / 'API'),
+            os.path.join(ROOT / 'src' / 'qalgebra'),
         ]
     )
 
@@ -259,10 +259,6 @@ class SingletonDocumenter(DataDocumenter):
 
 
 # -- Options for HTML output ---------------------------------------------------
-
-# on_rtd is whether we are on readthedocs.org, this line of code grabbed from
-# docs.readthedocs.org
-on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
