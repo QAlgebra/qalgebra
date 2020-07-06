@@ -1,7 +1,7 @@
 from sympy import Basic as SympyBasic
 from sympy import I, exp, sqrt
 
-from .core.exceptions import CannotSimplify, IncompatibleBlockStructures
+from .core.exceptions import CannotSimplify
 from .core.hilbert_space_algebra import (
     HilbertSpace,
     LocalSpace,

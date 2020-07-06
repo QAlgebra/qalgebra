@@ -22,9 +22,8 @@ from qalgebra.core.super_operator_algebra import (
     SuperOperatorTimesOperator,
     ZeroSuperOperator,
     liouvillian,
-    liouvillian_normal_form,
 )
-from qalgebra.library.fock_operators import Create, Destroy
+from qalgebra.library.fock_operators import Create
 from qalgebra.pattern_matching import ProtoExpr, pattern_head, wc
 
 
@@ -225,27 +224,3 @@ class TestSuperOperatorTimesOperator(unittest.TestCase):
         a = SuperOperatorSymbol("a", hs=h1)
         b = SuperOperatorSymbol("b", hs=h2)
         assert (5 * (a * b)).space == h1 * h2
-
-
-def test_liouvillian_normal_form():
-    kappa_1, kappa_2 = symbols('kappa_1, kappa_2', positive=True)
-    Delta = symbols('Delta', real=True)
-    alpha = symbols('alpha')
-    H = Delta * Create(hs=1) * Destroy(hs=1) + (sqrt(kappa_1) / (2 * I)) * (
-        alpha * Create(hs=1) - alpha.conjugate() * Destroy(hs=1)
-    )
-    Ls = [sqrt(kappa_1) * Destroy(hs=1) + alpha, sqrt(kappa_2) * Destroy(hs=1)]
-    LL = liouvillian(H, Ls)
-    Hnf, Lsnf = liouvillian_normal_form(LL)
-    Hnf_expected = OperatorPlus(
-        ScalarTimesOperator(-I * alpha * sqrt(kappa_1), Create(hs=1)),
-        ScalarTimesOperator(
-            I * sqrt(kappa_1) * conjugate(alpha), Destroy(hs=1)
-        ),
-        ScalarTimesOperator(Delta, OperatorTimes(Create(hs=1), Destroy(hs=1))),
-    )
-    assert Hnf == Hnf_expected
-    Lsnf_expected = [
-        ScalarTimesOperator(sqrt(kappa_1 + kappa_2), Destroy(hs=1))
-    ]
-    assert Lsnf == Lsnf_expected

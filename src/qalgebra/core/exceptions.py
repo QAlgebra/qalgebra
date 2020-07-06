@@ -1,4 +1,4 @@
-"""Exceptions and Errors raised by QAlgebra"""
+"""Exceptions and Errors raised by QAlgebra."""
 
 
 __all__ = [
@@ -6,79 +6,46 @@ __all__ = [
     'AlgebraError',
     'InfiniteSumError',
     'CannotSimplify',
-    'CannotConvertToSLH',
-    'CannotVisualize',
-    'WrongCDimError',
-    'IncompatibleBlockStructures',
-    'CannotEliminateAutomatically',
     'BasisNotSetError',
     'UnequalSpaces',
     'OverlappingSpaces',
     'SpaceTooLargeError',
     'CannotSymbolicallyDiagonalize',
-    'BadLiouvillianError',
     'NonSquareMatrix',
     'NoConjugateMatrix',
 ]
 
 
 class AlgebraException(Exception):
-    """Base class for all algebraic exceptions"""
+    """Base class for all algebraic exceptions.
 
-    pass
+    These should only be used for internat signaling, and never be raised to a
+    user.
+    """
 
 
-class AlgebraError(AlgebraException):
-    """Base class for all algebraic errors"""
-
-    pass
+class AlgebraError(ValueError):
+    """Base class for all algebraic errors."""
 
 
 class InfiniteSumError(AlgebraError):
-    """Raised when expanding a sum into an infinite number of terms"""
-
-    pass
+    """Raised when expanding a sum into an infinite number of terms."""
 
 
 class CannotSimplify(AlgebraException):
-    """Raised when a rule cannot further simplify an expression"""
-
-    pass
-
-
-class CannotConvertToSLH(AlgebraException):
-    """Raised when a circuit algebra object cannot be converted to SLH"""
-
-
-class CannotVisualize(AlgebraException):
-    """Raised when a circuit cannot be visually represented."""
-
-
-class WrongCDimError(AlgebraError):
-    """Raised for mismatched channel number in circuit series"""
-
-
-class IncompatibleBlockStructures(AlgebraError):
-    """Raised for invalid block-decomposition
-
-    This is raised when a circuit decomposition into a block-structure is
-    requested that is icompatible with the actual block structure of the
-    circuit expression."""
-
-
-class CannotEliminateAutomatically(AlgebraError):
-    """Raised when attempted automatic adiabatic elimination fails."""
+    """Raised when a rule cannot further simplify an expression."""
 
 
 class BasisNotSetError(AlgebraError):
-    """Raised if the basis or a Hilbert space dimension is unavailable"""
+    """Raised if the basis or a Hilbert space dimension is unavailable."""
 
 
 class UnequalSpaces(AlgebraError):
     """Raised when objects fail to be in the same Hilbert space.
 
     This happens for example when trying to add two states from different
-    Hilbert spaces."""
+    Hilbert spaces.
+    """
 
 
 class OverlappingSpaces(AlgebraError):
@@ -96,15 +63,9 @@ class CannotSymbolicallyDiagonalize(AlgebraException):
     """
 
 
-class BadLiouvillianError(AlgebraError):
-    """Raised when a Liouvillian is not of standard Lindblad form."""
-
-    pass
-
-
 class NonSquareMatrix(AlgebraError):
-    """Raised when a :class:`.Matrix` fails to be square"""
+    """Raised when a :class:`.Matrix` fails to be square."""
 
 
 class NoConjugateMatrix(AlgebraError):
-    """Raised when entries of :class:`.Matrix` have no defined conjugate"""
+    """Raised when entries of :class:`.Matrix` have no defined conjugate."""

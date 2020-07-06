@@ -425,7 +425,7 @@ class LocalSpace(HilbertSpace, Expression):
         that form the canonical basis of the Hilbert space
 
         Raises:
-            .BasisNotSetError: if the Hilbert space has no defined basis
+            BasisNotSetError: if the Hilbert space has no defined basis
         """
         from qalgebra.core.state_algebra import BasisKet  # avoid circ. import
 
@@ -436,7 +436,7 @@ class LocalSpace(HilbertSpace, Expression):
         """Return the basis state with the given index or label.
 
         Raises:
-            .BasisNotSetError: if the Hilbert space has no defined basis
+            BasisNotSetError: if the Hilbert space has no defined basis
             IndexError: if there is no basis state with the given index
             KeyError: if there is not basis state with the given label
         """
@@ -444,6 +444,8 @@ class LocalSpace(HilbertSpace, Expression):
 
         try:
             return BasisKet(index_or_label, hs=self)
+        except BasisNotSetError:
+            raise
         except ValueError as exc_info:
             if isinstance(index_or_label, int):
                 raise IndexError(str(exc_info))
