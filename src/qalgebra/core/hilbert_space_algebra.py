@@ -528,7 +528,7 @@ class LocalSpace(HilbertSpace, Expression):
                 Hilbert space
             .BasisNotSetError: If the Hilbert space has no defined basis
             TypeError: if `label_or_index` is neither a :class:`str` nor an
-                :class:`int`, nor a :class:`SymbolicLabelBase`
+                :class:`int`, nor a :class:`.SymbolicLabelBase`
         """
         if isinstance(label_or_index, int):
             new_index = label_or_index + n
@@ -762,9 +762,10 @@ class ProductSpace(HilbertSpace, Operation):
         Raises:
             .BasisNotSetError: if the Hilbert space has no defined basis
         """
-        from qalgebra.core.state_algebra import BasisKet, TensorKet
-
+        # fmt: off
+        from qalgebra.core.state_algebra import BasisKet, TensorKet   # isort:skip
         # importing locally avoids circular import
+        # fmt: on
         ls_bases = [ls.basis_labels for ls in self.local_factors]
         for label_tuple in cartesian_product(*ls_bases):
             yield TensorKet(

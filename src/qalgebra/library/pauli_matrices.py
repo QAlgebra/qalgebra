@@ -20,7 +20,7 @@ def _get_pauli_args(local_space, states):
 
 
 def PauliX(local_space, states=None):
-    r"""Pauli-type X-operator
+    r"""Pauli-type X-operator.
 
     .. math::
 
@@ -32,8 +32,8 @@ def PauliX(local_space, states=None):
     on an arbitrary two-level system.
 
     Args:
-        local_space (str or int or .LocalSpace): Associated Hilbert space.
-            If :class:`str` or :class:`int`, a :class:`LocalSpace` with a
+        local_space (str or int or LocalSpace): Associated Hilbert space.
+            If :class:`str` or :class:`int`, a :class:`.LocalSpace` with a
             matching label will be created.
         states (None or tuple[int or str]): The labels for the basis states
             for the two levels on which the operator acts. If None, the two
@@ -41,7 +41,7 @@ def PauliX(local_space, states=None):
 
     Returns:
         Operator: Local X-operator as a linear combination of
-        :class:`LocalSigma`
+        :class:`.LocalSigma`
     """
     local_space, states = _get_pauli_args(local_space, states)
     g, e = states

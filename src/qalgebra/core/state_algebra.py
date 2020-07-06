@@ -204,7 +204,7 @@ class State(QuantumExpression, metaclass=ABCMeta):
 
 
 class KetSymbol(QuantumSymbol, State):
-    """Symbolic state
+    """Symbolic state.
 
     See :class:`.QuantumSymbol`.
     """
@@ -215,10 +215,11 @@ class KetSymbol(QuantumSymbol, State):
 
 
 class LocalKet(State, metaclass=ABCMeta):
-    """A state on a :class:`LocalSpace`
+    """A state on a :class:`.LocalSpace`.
 
     This does not include operations, even if these operations only involve
-    states acting on the same local space"""
+    states acting on the same local space
+    """
 
     def __init__(self, *args, hs):
         hs = ensure_local_space(hs, cls=self._default_hs_cls)
@@ -287,7 +288,7 @@ class BasisKet(LocalKet, KetSymbol):
             index of the basis state. This works if `hs` has an unknown
             dimension. For a symbolic index, `label_or_index` can be an
             instance of an appropriate subclass of
-            :class:`~qalgebra.indices.SymbolicLabelBase`
+            :class:`.SymbolicLabelBase`
         hs (LocalSpace): The Hilbert space in which the basis is defined
 
     Raises:
@@ -307,9 +308,8 @@ class BasisKet(LocalKet, KetSymbol):
             |g>^(tls)
 
         When instantiating the :class:`BasisKet` via
-        :meth:`~qalgebra.abstract_algebra.Expression.create`, an integer
-        label outside the range of the underlying Hilbert space results in a
-        :class:`ZeroKet`::
+        :meth:`~.Expression.create`, an integer label outside the range of the
+        underlying Hilbert space results in a :class:`ZeroKet`::
 
             >>> BasisKet.create(-1, hs=0)
             ZeroKet
@@ -335,30 +335,34 @@ class BasisKet(LocalKet, KetSymbol):
 
     @property
     def index(self):
-        """The index of the state in the Hilbert space basis
+        """The index of the state in the Hilbert space basis.
 
-        >>> hs = LocalSpace('tls', basis=('g', 'e'))
-        >>> BasisKet('g', hs=hs).index
-        0
-        >>> BasisKet('e', hs=hs).index
-        1
-        >>> BasisKet(1, hs=hs).index
-        1
+        ::
+
+            >>> hs = LocalSpace('tls', basis=('g', 'e'))
+            >>> BasisKet('g', hs=hs).index
+            0
+            >>> BasisKet('e', hs=hs).index
+            1
+            >>> BasisKet(1, hs=hs).index
+            1
 
         For a :class:`BasisKet` with an indexed label, this may return a sympy
         expression::
 
-        >>> hs = SpinSpace('s', spin='3/2')
-        >>> i = symbols('i', cls=IdxSym)
-        >>> lbl = SpinIndex(i/2, hs)
-        >>> ket = BasisKet(lbl, hs=hs)
-        >>> ket.index
-        i/2 + 3/2
+            >>> hs = SpinSpace('s', spin='3/2')
+            >>> i = symbols('i', cls=IdxSym)
+            >>> lbl = SpinIndex(i/2, hs)
+            >>> ket = BasisKet(lbl, hs=hs)
+            >>> ket.index
+            i/2 + 3/2
         """
         return self._index
 
     def next(self, n=1):
-        """Move up by `n` steps in the Hilbert space::
+        """Move up by `n` steps in the Hilbert space.
+
+        ::
 
             >>> hs =  LocalSpace('tls', basis=('g', 'e'))
             >>> ascii(BasisKet('g', hs=hs).next())
@@ -366,7 +370,7 @@ class BasisKet(LocalKet, KetSymbol):
             >>> ascii(BasisKet(0, hs=hs).next())
             '|e>^(tls)'
 
-        We can also go multiple steps:
+        We can also go multiple steps::
 
             >>> hs =  LocalSpace('ten', dimension=10)
             >>> ascii(BasisKet(0, hs=hs).next(2))
@@ -393,17 +397,19 @@ class BasisKet(LocalKet, KetSymbol):
     def prev(self, n=1):
         """Move down by `n` steps in the Hilbert space, cf. :meth:`next`.
 
-        >>> hs =  LocalSpace('3l', basis=('g', 'e', 'r'))
-        >>> ascii(BasisKet('r', hs=hs).prev(2))
-        '|g>^(3l)'
-        >>> BasisKet('r', hs=hs).prev(3)
-        ZeroKet
+        ::
+
+            >>> hs =  LocalSpace('3l', basis=('g', 'e', 'r'))
+            >>> ascii(BasisKet('r', hs=hs).prev(2))
+            '|g>^(3l)'
+            >>> BasisKet('r', hs=hs).prev(3)
+            ZeroKet
         """
         return self.next(n=-n)
 
 
 class CoherentStateKet(LocalKet):
-    """Local coherent state, labeled by a complex amplitude
+    """Local coherent state, labeled by a complex amplitude.
 
     Args:
         hs (LocalSpace): The local Hilbert space degree of freedom.
@@ -425,7 +431,7 @@ class CoherentStateKet(LocalKet):
         return self._ampl
 
     def _diff(self, sym):
-        from qalgebra.library.fock_operators import Destroy, Create
+        from qalgebra.library.fock_operators import Create, Destroy
 
         hs = self.space
         return (
@@ -458,7 +464,7 @@ class CoherentStateKet(LocalKet):
 
 
 class KetPlus(State, QuantumPlus):
-    """Sum of states"""
+    """Sum of states."""
 
     _neutral_element = ZeroKet
     _binary_rules = OrderedDict()
@@ -478,7 +484,7 @@ class KetPlus(State, QuantumPlus):
 
 
 class TensorKet(State, QuantumTimes):
-    """A tensor product of kets
+    """A tensor product of kets.
 
     Each ket must belong to different degree of freedom (:class:`.LocalSpace`).
     """

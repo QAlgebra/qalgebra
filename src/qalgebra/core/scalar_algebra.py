@@ -1161,7 +1161,7 @@ class ScalarDerivative(QuantumDerivative, Scalar):
 
 
 def KroneckerDelta(i, j, simplify=True):
-    """Kronecker delta symbol
+    """Kronecker delta symbol.
 
     Return :class:`One` (`i` equals `j`)), :class:`Zero` (`i` and `j` are
     non-symbolic an unequal), or a :class:`ScalarValue` wrapping SymPy's
@@ -1187,9 +1187,9 @@ def KroneckerDelta(i, j, simplify=True):
 
     Raises:
         TypeError: if `i` or `j` is not an integer or sympy expression. There
-        is no automatic sympification of `i` and `j`.
+            is no automatic sympification of `i` and `j`.
     """
-    from qalgebra.core.scalar_algebra import ScalarValue, One
+    from qalgebra.core.scalar_algebra import One, ScalarValue
 
     if not isinstance(i, (int, sympy.Basic)):
         raise TypeError(
@@ -1209,7 +1209,7 @@ def KroneckerDelta(i, j, simplify=True):
 
 
 def sqrt(scalar):
-    """Square root of a :class:`Scalar` or scalar value
+    """Square root of a :class:`.Scalar` or scalar value.
 
     This always returns a :class:`Scalar`, and uses a symbolic square root if
     possible (i.e., for non-floats)::

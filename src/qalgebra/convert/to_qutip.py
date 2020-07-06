@@ -7,6 +7,7 @@ from numpy import arange
 from numpy import cos as np_cos
 from numpy import diag as np_diag
 from numpy import sin as np_sin
+from scipy.linalg import pinv, svd
 from scipy.sparse import csr_matrix
 from sympy import symbols
 from sympy.utilities.lambdify import lambdify
@@ -256,8 +257,6 @@ def _convert_operator_operation_to_qutip(expr, full_space, mapping):
         )
         if full_space.dimension <= DENSE_DIMENSION_LIMIT:
             arr = mo.data.toarray()
-            from scipy.linalg import pinv
-
             piarr = pinv(arr)
             pimo = qutip.Qobj(piarr)
             pimo.dims = mo.dims
@@ -273,8 +272,6 @@ def _convert_operator_operation_to_qutip(expr, full_space, mapping):
         )
         if full_space.dimension <= DENSE_DIMENSION_LIMIT:
             arr = mo.data.toarray()
-            from scipy.linalg import svd
-
             # compute Singular Value Decomposition
             U, s, Vh = svd(arr)
             tol = 1e-8 * s[0]

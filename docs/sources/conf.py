@@ -119,7 +119,7 @@ extlinks = {
 }
 
 # autodoc settings
-autoclass_content = 'both'
+autoclass_content = 'class'
 autodoc_member_order = 'bysource'
 autodoc_mock_imports = []  # e.g.: 'numpy', 'scipy', ...
 

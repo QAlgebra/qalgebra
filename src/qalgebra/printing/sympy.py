@@ -99,7 +99,7 @@ def derationalize_denom(expr):
 
 
 class SympyStrPrinter(StrPrinter):
-    """Variation of sympy StrPrinter that derationalizes denominators.
+    """Variation of sympy ``StrPrinter`` that derationalizes denominators.
 
     Additionally, it contains the following modifications:
 
@@ -179,7 +179,7 @@ class SympyStrPrinter(StrPrinter):
 
 
 class SympyLatexPrinter(LatexPrinter):
-    """Variation of sympy LatexPrinter that derationalizes denominators
+    """Variation of sympy ``LatexPrinter`` that derationalizes denominators.
 
     Additionally, it contains the following modifications:
 
@@ -279,8 +279,8 @@ class SympyUnicodePrinter(SympyStrPrinter):
     """Printer that represents SymPy expressions as (single-line) unicode
     strings.
 
-    This is a mixture of :class:`.StrPrinter`
-    and :class:`sympy.printing.pretty.pretty.PrettyPrinter` (minus the 2D
+    This is a mixture of SymPy's ``StrPrinter`` and
+    :class:`sympy.printing.pretty.pretty.PrettyPrinter` (minus the 2D
     printing), with the same extensions as :class:`SympyStrPrinter`
     """
 

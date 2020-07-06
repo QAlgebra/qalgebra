@@ -12,7 +12,7 @@ def properties_for_args(cls, arg_names='_arg_names'):
 
     It is assumed that there is an instance attribute  ``self._<arg_name>``,
     which is returned by the `arg_name` property. The decorator also adds a
-    class attribute :attr:`_has_properties_for_args` that may be used to ensure
+    class attribute ``_has_properties_for_args`` that may be used to ensure
     that a class is decorated.
     """
     from qalgebra.core.scalar_algebra import Scalar

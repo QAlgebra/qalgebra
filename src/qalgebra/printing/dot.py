@@ -150,11 +150,11 @@ def dotprint(
     get_children=_op_children,
     **kwargs
 ):
-    """Return the `DOT`_ (graph) description of an Expression tree as a string
+    """Return the DOT (graph) description of an Expression tree as a string.
 
     Args:
         expr (object): The expression to render into a graph. Typically an
-            instance of :class:`~qalgebra.abstract_algebra.Expression`, but
+            instance of :class:`.Expression`, but
             with appropriate `get_children`, `labelfunc`, and `id_func`, this
             could be any tree-like object
         styles (list or None): A list of tuples ``(expr_filter, style_dict)``
@@ -180,8 +180,8 @@ def dotprint(
             like ``hash`` or ``str`` would make a good `idfunc`.
         get_children (callable): A function that return a list of
             sub-expressions (the children of `expr`). Defaults to the operands
-            of an :class:`~qalgebra.abstract_algebra.Operation` (thus,
-            anything that is not an Operation is a leaf)
+            of an :class:`.Operation` (thus, anything that is not an operation
+            is a leaf)
         kwargs: All further keyword arguments set custom `DOT`_ graph
             attributes
 

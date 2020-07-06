@@ -33,11 +33,7 @@ __private__ = []  # anything not in __all__ must be in __private__
 
 
 class Matrix(Expression):
-    """Matrix of Expressions
-
-    Matrices of :class:`Operator` expressions are required for the SLH
-    formalism.
-    """
+    """Matrix of Expressions."""
 
     matrix = None
     _hash = None
@@ -188,7 +184,7 @@ class Matrix(Expression):
         This is defined only if all the entries in the matrix have a defined
         conjugate (i.e., they have a `conjugate` method). This is *not* the
         case for a matrix of operators. In such a case, only an
-        :meth:`elementwise` :func:`adjoint` would be applicable, but this is
+        elementwise :func:`adjoint` would be applicable, but this is
         mathematically different from a complex conjugate.
 
         Raises:
@@ -308,7 +304,7 @@ class Matrix(Expression):
         new operator matrix of the same shape.
 
         Args:
-            func (FunctionType): A function to be applied to each element. It
+            func (callable): A function to be applied to each element. It
                 must take the element as its first argument.
             args: Additional positional arguments to be passed to `func`
             kwargs: Additional keyword arguments to be passed to `func`
@@ -394,12 +390,12 @@ class Matrix(Expression):
 
 
 def hstackm(matrices):
-    """Generalizes `numpy.hstack` to :class:`Matrix` objects."""
+    """Generalizes `numpy.hstack` to :class:`.Matrix` objects."""
     return Matrix(np_hstack(tuple(m.matrix for m in matrices)))
 
 
 def vstackm(matrices):
-    """Generalizes `numpy.vstack` to :class:`Matrix` objects."""
+    """Generalizes `numpy.vstack` to :class:`.Matrix` objects."""
     arr = np_vstack(tuple(m.matrix for m in matrices))
     #    print(tuple(m.matrix.dtype for m in matrices))
     #    print(arr.dtype)
@@ -408,7 +404,7 @@ def vstackm(matrices):
 
 def diagm(v, k=0):
     """Generalizes the diagonal matrix creation capabilities of `numpy.diag` to
-    :class:`Matrix` objects."""
+    :class:`.Matrix` objects."""
     return Matrix(np_diag(v, k))
 
 
@@ -445,5 +441,5 @@ def identity_matrix(N):
 
 
 def zerosm(shape, *args, **kwargs):
-    """Generalizes ``numpy.zeros`` to :py:class:`Matrix` objects."""
+    """Generalizes ``numpy.zeros`` to :class:`.Matrix` objects."""
     return Matrix(np_zeros(shape, *args, **kwargs))

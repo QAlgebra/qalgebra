@@ -51,14 +51,13 @@ def convert_to_sympy_matrix(expr, full_space=None):
 
     Parameters:
         expr: a QAlgebra expression
-        full_space (qalgebra.hilbert_space_algebra.HilbertSpace): The
+        full_space (HilbertSpace): The
             Hilbert space in which `expr` is defined. If not given,
             ``expr.space`` is used. The Hilbert space must have a well-defined
             basis.
 
     Raises:
-        qalgebra.hilbert_space_algebra.BasisNotSetError: if `full_space`
-            does not have a defined basis
+        BasisNotSetError: if `full_space` does not have a defined basis
         ValueError: if `expr` is not in `full_space`, or if `expr` cannot be
             converted.
     """

@@ -19,17 +19,14 @@ def sorted_if_possible(iterable, **kwargs):
 
     See `sorted` for details on optional arguments to customize the sorting.
 
-    Parameters
-    ----------
-    iterable : Iterable
-        Iterable returning a finite number of elements to sort.
-    kwargs
+    Args:
+        Iterable of a finite number of elements to sort.
+    kwargs:
         Keyword arguments are passed on to `sorted`.
 
-    Returns
-    -------
-    list
-        List of elements, sorted if orderable, otherwise kept in the order of iteration.
+    Returns:
+        List of elements in `iterable`, sorted if orderable, otherwise kept in
+        the order of iteration.
 
     """
     try:
@@ -41,31 +38,25 @@ def sorted_if_possible(iterable, **kwargs):
 def nested_tuple(container):
     """Recursively transform a container structure to a nested tuple.
 
-    The function understands container types inheriting from the selected abstract base
-    classes in `collections.abc`, and performs the following replacements:
-    `Mapping`
-        `tuple` of key-value pair `tuple`s. The order is preserved in the case of an
-        `OrderedDict`, otherwise the key-value pairs are sorted if orderable and
-        otherwise kept in the order of iteration.
-    `Sequence`
-        `tuple` containing the same elements in unchanged order.
-    `Container and Iterable and Sized` (equivalent to `Collection` in python >= 3.6)
-        `tuple` containing the same elements in sorted order if orderable and otherwise
-        kept in the order of iteration.
-    The function recurses into these container types to perform the same replacement,
-    and leaves objects of other types untouched.
+    The function understands container types inheriting from the selected
+    abstract base classes in `collections.abc`, and performs the following
+    replacements:
 
-    The returned container is hashable if and only if all the values contained in the
-    original data structure are hashable.
+    * `Mapping` to tuple of key-value pair tuples.
+    * `Sequence` to tuple containing the same elements in unchanged order.
+    * `Collection` to tuple containing the same elements in sorted order if
+        orderable and otherwise in the order of iteration.
 
-    Parameters
-    ----------
-    container
-        Data structure to transform into a nested tuple.
+    The function recurses into these container types to perform the same
+    replacement, and leaves objects of other types untouched.
 
-    Returns
-    -------
-    tuple
+    The returned container is hashable if and only if all the values contained
+    in the original data structure are hashable.
+
+    Args:
+        container: Data structure to transform into a nested tuple.
+
+    Returns:
         Nested tuple containing the same data as `container`.
 
     """

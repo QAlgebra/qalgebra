@@ -155,9 +155,10 @@ class Operator(QuantumExpression, metaclass=ABCMeta):
             >>> print(ascii(op.expand_in_basis(hermitian=True)))
             |g><e|^(1) + c.c.
         """
-        from qalgebra.core.state_algebra import KetBra
-
+        # fmt: off
+        from qalgebra.core.state_algebra import KetBra  # isort:skip
         # KetBra is imported locally to avoid circular imports
+        # fmt: on
         if basis_states is None:
             basis_states = list(self.space.basis_states)
         else:
@@ -188,7 +189,7 @@ class Operator(QuantumExpression, metaclass=ABCMeta):
 
 
 class LocalOperator(Operator, metaclass=ABCMeta):
-    """Base class for "known" operators on a :class:`LocalSpace`
+    """Base class for "known" operators on a :class:`.LocalSpace`.
 
     All :class:`LocalOperator` instances have known algebraic properties and a
     fixed associated identifier (symbol) that is used when printing that
@@ -203,7 +204,7 @@ class LocalOperator(Operator, metaclass=ABCMeta):
     Note:
         It is recommended that subclasses use the :func:`.properties_for_args`
         class decorator if they define any position arguments (via the
-        :attr:`_arg_names` class attribute)
+        ``_arg_names`` class attribute)
     """
 
     simplifications = [
@@ -211,10 +212,10 @@ class LocalOperator(Operator, metaclass=ABCMeta):
     ]
 
     _identifier = None  # must be overridden by subclasses!
-    _dagger = False  # do representations include a dagger?
-    _arg_names = ()  # names of args that can be passed to __init__
-    _scalar_args = True  # convert args to Scalar?
-    _hs_cls = LocalSpace  # allowed type of `hs`
+    _dagger = False  #: do representations include a dagger?
+    _arg_names = ()  #: names of args that can be passed to __init__
+    _scalar_args = True  #: convert args to Scalar?
+    _hs_cls = LocalSpace  #: allowed type of `hs`
     _rx_identifier = re.compile('^[A-Za-z][A-Za-z0-9]*(_[A-Za-z0-9().+-]+)?$')
 
     def __init__(self, *args, hs):
@@ -239,7 +240,7 @@ class LocalOperator(Operator, metaclass=ABCMeta):
 
     @property
     def space(self):
-        """Hilbert space of the operator (:class:`.LocalSpace` instance)"""
+        """Hilbert space of the operator (:class:`.LocalSpace` instance)."""
         return self._hs
 
     @property
@@ -361,7 +362,7 @@ class ZeroOperator(Operator, metaclass=Singleton):
 
 @properties_for_args
 class LocalSigma(LocalOperator):
-    r'''Level flip operator between two levels of a :class:`.LocalSpace`
+    r'''Level flip operator between two levels of a :class:`.LocalSpace`.
 
     .. math::
 
@@ -369,7 +370,7 @@ class LocalSigma(LocalOperator):
         \left| j\right\rangle_{\rm hs} \left \langle k \right |_{\rm hs}
 
     For $j=k$ this becomes a projector $\Op{P}_k$ onto the eigenstate
-    $\ket{k}$; see :class:`LocalProjector`.
+    $\ket{k}$.
 
     Args:
         j (int or str): The label or index identifying $\ket{j}$
@@ -377,7 +378,7 @@ class LocalSigma(LocalOperator):
         hs (LocalSpace or int or str): The Hilbert space on which the
             operator acts. If an :class:`int` or a :class:`str`, an implicit
             Hilbert space will be constructed as a subclass of
-            :class:`LocalSpace`, as configured by :func:`init_algebra`.
+            :class:`.LocalSpace`, as configured by :func:`.init_algebra`.
 
     Note:
         The parameters `j` or `k` may be an integer or a string. A string
@@ -549,7 +550,7 @@ class OperatorTimes(QuantumTimes, Operator):
 
 
 class ScalarTimesOperator(Operator, ScalarTimesQuantumExpression):
-    """Product of a :class:`.Scalar` coefficient and an :class:`Operator`"""
+    """Product of a :class:`.Scalar` coefficient and an :class:`.Operator`."""
 
     _rules = OrderedDict()
     simplifications = [
@@ -765,7 +766,7 @@ class Adjoint(QuantumAdjoint, Operator):
 
 
 class OperatorPlusMinusCC(SingleQuantumOperation, Operator):
-    """An operator plus or minus its complex conjugate"""
+    """An operator plus or minus its complex conjugate."""
 
     def __init__(self, op, *, sign=+1):
         self._sign = sign
@@ -816,7 +817,7 @@ class OperatorPlusMinusCC(SingleQuantumOperation, Operator):
 
 
 class PseudoInverse(SingleQuantumOperation, Operator):
-    r"""Unevaluated pseudo-inverse $\Op{X}^+$ of an operator $\Op{X}$
+    r"""Unevaluated pseudo-inverse $\Op{X}^+$ of an operator $\Op{X}$.
 
     It is defined via the relationship
 
@@ -842,7 +843,7 @@ class PseudoInverse(SingleQuantumOperation, Operator):
 
 
 class NullSpaceProjector(SingleQuantumOperation, Operator):
-    r"""Projection operator onto the nullspace of its operand
+    r"""Projection operator onto the nullspace of its operand.
 
     Returns the operator :math:`\mathcal{P}_{{\rm Ker} X}` with
 
@@ -904,11 +905,13 @@ tr = OperatorTrace.create
 
 
 def factor_for_trace(ls: HilbertSpace, op: Operator) -> Operator:
-    r'''Given a :class:`.LocalSpace` `ls` to take the partial trace over and an
+    r'''Factor `ls` out of `op` for easy tracing.
+
+    Given a :class:`.LocalSpace` `ls` to take the partial trace over and an
     operator `op`, factor the trace such that operators acting on disjoint
     degrees of freedom are pulled out of the trace. If the operator acts
     trivially on ls the trace yields only a pre-factor equal to the dimension
-    of ls. If there are :class:`LocalSigma` operators among a product, the
+    of ls. If there are :class:`.LocalSigma` operators among a product, the
     trace's cyclical property is used to move to sandwich the full product by
     :class:`LocalSigma` operators:
 
@@ -917,7 +920,7 @@ def factor_for_trace(ls: HilbertSpace, op: Operator) -> Operator:
         {\rm Tr} A \sigma_{jk} B = {\rm Tr} \sigma_{jk} B A \sigma_{jj}
 
     Args:
-        ls: Degree of Freedom to trace over
+        ls: Degree of freedom to trace over
         op: Operator to take the trace of
 
     Returns:
@@ -1044,9 +1047,9 @@ def adjoint(obj):
 
 
 def rewrite_with_operator_pm_cc(expr):
-    """Try to rewrite expr using :class:`OperatorPlusMinusCC`
+    """Try to rewrite expr using :class:`.OperatorPlusMinusCC`.
 
-    Example:
+    Example::
 
         >>> A = OperatorSymbol('A', hs=1)
         >>> sum = A + A.dag()

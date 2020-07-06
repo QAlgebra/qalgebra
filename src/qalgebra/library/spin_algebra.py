@@ -24,7 +24,7 @@ __private__ = ['Jpjmcoeff', 'Jzjmcoeff', 'Jmjmcoeff']
 
 
 class SpinSpace(LocalSpace):
-    """A Hilbert space for an integer or half-integer spin system
+    """A Hilbert space for an integer or half-integer spin system.
 
     For a given spin $N$, the resulting Hilbert space has dimension $2 N + 1$
     with levels labeled from $-N$ to $+N$ (as strings)
@@ -147,8 +147,8 @@ class SpinSpace(LocalSpace):
         More generally, if `n` is given, return the `n`'th next basis state
         label/index; `n` may also be negative to obtain previous basis state
         labels. Returns a :class:`str` label if `label_or_index` is a
-        :class:`str` or :class:`int`, or a :class:`SpinIndex` if
-        `label_or_index` is a :class:`SpinIndex`.
+        :class:`str` or :class:`int`, or a :class:`.SpinIndex` if
+        `label_or_index` is a :class:`.SpinIndex`.
 
         Args:
             label_or_index (int or str or SpinIndex): If `int`, the
@@ -162,12 +162,12 @@ class SpinSpace(LocalSpace):
                 Hilbert space
             .BasisNotSetError: If the Hilbert space has no defined basis
             TypeError: if `label_or_index` is neither a :class:`str` nor an
-                :class:`int`, nor a :class:`SpinIndex`
+                :class:`int`, nor a :class:`.SpinIndex`
 
         Note:
             This differs from its super-method only by never returning an
             integer index (which is not accepted when instantiating a
-            :class:`BasisKet` for a :class:`SpinSpace`)
+            :class:`.BasisKet` for a :class:`.SpinSpace`)
         """
         if isinstance(label_or_index, int):
             new_index = label_or_index + n
@@ -193,7 +193,7 @@ class SpinSpace(LocalSpace):
 
     @property
     def spin(self) -> sympy.Rational:
-        """The spin-number associated with the :class:`SpinSpace`
+        """The spin-number associated with the :class:`.SpinSpace`
 
         This can be a SymPy integer or a half-integer.
         """
@@ -213,7 +213,7 @@ class SpinSpace(LocalSpace):
 
 
 def SpinBasisKet(*numer_denom, hs):
-    """Constructor for a :class:`BasisKet` for a :class:`SpinSpace`
+    """Constructor for a :class:`.BasisKet` for a :class:`.SpinSpace`.
 
     For a half-integer spin system::
 
@@ -235,7 +235,7 @@ def SpinBasisKet(*numer_denom, hs):
         TypeError: label_or_index must be an instance of one of str, SpinIndex; not int
 
     Raises:
-        TypeError: if `hs` is not a :class:`SpinSpace` or the wrong number of
+        TypeError: if `hs` is not a :class:`.SpinSpace` or the wrong number of
             positional arguments is given
         ValueError: if any of the positional arguments are out range for the
             given `hs`

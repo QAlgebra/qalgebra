@@ -30,7 +30,7 @@ __private__ = ['ProtoExpr']  # anything not in __all__ must be in __private__
 
 
 class MatchDict(OrderedDict):
-    """Result of a :meth:`Pattern.match`
+    """Result of a :meth:`.Pattern.match`.
 
     Dictionary of wildcard names to expressions. Once the value for a key is
     set, attempting to set it again with a different value raises a
@@ -126,7 +126,7 @@ class Pattern:
         wc_name (str or None): If pattern matches an expression, key in the
             resulting :class:`MatchDict` for the expression. If None, the match
             will not be recorded in the result
-        conditions (list of callables, or None): If not None, a list of
+        conditions (List[callable], or None): If not None, a list of
             callables that take `expr` and return a boolean value. If the
             return value is False, the pattern is determined not to match
             `expr`.
@@ -217,8 +217,8 @@ class Pattern:
     def extended_arg_patterns(self):
         """Iterator over patterns for positional arguments to be matched.
 
-        This yields the elements of :attr:`args`, extended by their `mode`
-        value.
+        This yields the elements of :attr:`~.Expression.args`, extended by
+        their `mode` value.
         """
         for arg in self._arg_iterator(self.args):
             if isinstance(arg, Pattern):
@@ -457,7 +457,7 @@ class Pattern:
 def pattern(
     head, *args, mode=1, wc_name=None, conditions=None, **kwargs
 ) -> Pattern:
-    """'Flat' constructor for the Pattern class
+    """'Flat' constructor for :class:`.Pattern`.
 
     Positional and keyword arguments are mapped into `args` and `kwargs`,
     respectively. Useful for defining rules that match an instantiated
@@ -473,11 +473,11 @@ def pattern(
 
 
 def pattern_head(*args, conditions=None, wc_name=None, **kwargs) -> Pattern:
-    """Constructor for a :class:`Pattern` matching a :class:`ProtoExpr`.
+    """Constructor for a :class:`.Pattern` matching a :class:`.ProtoExpr`.
 
-    The patterns associated with :attr:`_rules` and :attr:`_binary_rules`
-    of an :class:`Expression` subclass, or those passed to
-    :meth:`Expression.add_rule`, must be instantiated through this
+    The patterns associated with ``_rules`` and `_binary_rules``
+    of an :class:`.Expression` subclass, or those passed to
+    :meth:`.Expression.add_rule`, must be instantiated through this
     routine. The function does not allow to set a wildcard name
     (`wc_name` must not be given / be None)"""
     # This routine is indented for the _rules and _binary_rules class
@@ -505,7 +505,7 @@ def pattern_head(*args, conditions=None, wc_name=None, **kwargs) -> Pattern:
 def wc(
     name_mode="_", head=None, args=None, kwargs=None, *, conditions=None
 ) -> Pattern:
-    """Constructor for a wildcard-:class:`Pattern`.
+    """Constructor for a wildcard-:class:`.Pattern`.
 
     Helper function to create a Pattern object with an emphasis on wildcard
     patterns, if we don't care about the arguments of the matched expressions
@@ -543,9 +543,9 @@ def wc(
 # Proto-Expressions the provide just the 'args' and 'kwargs' properties,
 # allowing `match_pattern` to match them via duck typing
 class ProtoExpr(Sequence):
-    """Object representing an un-instantiated :class:`Expression`.
+    """Object representing an un-instantiated :class:`.Expression`.
 
-    A :class:`ProtoExpr` may be matched by a :class:`Pattern` created via
+    A :class:`.ProtoExpr` may be matched by a :class:`.Pattern` created via
     :func:`pattern_head`. This is used in :meth:`.Expression.create`: before an
     expression is instantiated, a :class:`ProtoExpr` is constructed with the
     positional and keyword arguments passed to :meth:`~.Expression.create`.
@@ -557,8 +557,8 @@ class ProtoExpr(Sequence):
             instantiation of the Expression
         kwargs (dict):  keyword arguments. Will we converted to an
             :class:`~.collections.OrderedDict`
-        cls (class or None): The class of the Expression that will ultimately
-            be instantiated.
+        cls: The class of the Expression that will ultimately
+            be instantiated, or None if the class is unknown.
 
     The combined values of `args` and `kwargs` are accessible as a (mutable)
     sequence.
@@ -612,12 +612,13 @@ class ProtoExpr(Sequence):
         )
 
     def instantiate(self, cls=None):
-        """Return an instantiated Expression as
-        ``cls.create(*self.args, **self.kwargs)``
+        """Return an instantiated Expression.
+
+        Equivalent to ``cls.create(*self.args, **self.kwargs)``.
 
         Args:
-            cls (class): The class of the instantiated expression. If not
-            given, ``self.cls`` will be used.
+            cls: The class of the instantiated expression. If not
+                given, ``self.cls`` will be used.
         """
         if cls is None:
             cls = self.cls
@@ -627,7 +628,7 @@ class ProtoExpr(Sequence):
 
     @classmethod
     def from_expr(cls, expr):
-        """Instantiate proto-expression from the given Expression"""
+        """Instantiate proto-expression from the given Expression."""
         return cls(expr.args, expr.kwargs, cls=expr.__class__)
 
     def __hash__(self):

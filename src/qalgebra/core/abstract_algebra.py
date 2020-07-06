@@ -40,7 +40,7 @@ LOG_NO_MATCH = False  # also log non-matching rules? (very verbose!)
 
 
 class Expression(metaclass=ABCMeta):
-    """Base class for all QAlgebra Expressions
+    """Base class for all QAlgebra Expressions.
 
     Expressions should generally be instantiated using the :meth:`create` class
     method, which takes into account the algebraic properties of the Expression
@@ -77,7 +77,7 @@ class Expression(metaclass=ABCMeta):
             :mod:`~qalgebra.core.algebraic_properties`
     """
 
-    # Note: all subclasses of Exression that override `__init__` or `create`
+    # Note: all subclasses of Expression that override `__init__` or `create`
     # *must* call the corresponding superclass method *at the end*. Otherwise,
     # caching will not work correctly
 
@@ -106,7 +106,7 @@ class Expression(metaclass=ABCMeta):
 
         Instead of directly instantiating `cls`, it is recommended to use
         :meth:`create`, which applies simplifications to the args and keyword
-        arguments according to the :attr:`simplifications` class attribute, and
+        arguments according to the `simplifications` class attribute, and
         returns an appropriate object (which may or may not be an instance of
         the original `cls`).
 
@@ -118,9 +118,9 @@ class Expression(metaclass=ABCMeta):
         temporary modification of the automatic simplifications that
         :meth:`create` uses, in particular the rules for
         :func:`.match_replace` and :func:`.match_replace_binary`. Inside the
-        managed context, the :attr:`simplifications` class attribute may be
-        modified and rules can be managed with :meth:`add_rule` and
-        :meth:`del_rules`.
+        managed context, the `simplifications` class attribute may be
+        modified and rules can be managed with :meth:`~.Expression.add_rule`
+        and :meth:`~.Expression.del_rules`.
         """
         global LEVEL
         if LOG:
@@ -227,7 +227,7 @@ class Expression(metaclass=ABCMeta):
 
     @classmethod
     def add_rule(cls, name, pattern, replacement, attr=None):
-        """Add an algebraic rule for :meth:`create` to the class
+        """Add an algebraic rule for :meth:`create` to the class.
 
         Args:
             name (str): Name of the rule. This is used for debug logging to
@@ -274,7 +274,7 @@ class Expression(metaclass=ABCMeta):
 
     @classmethod
     def show_rules(cls, *names, attr=None):
-        """Print algebraic rules used by :class:`create`
+        """Print algebraic rules used by :class:`create`.
 
         Print a summary of the algebraic rules with the given names, or all
         rules if not names a given.
@@ -282,7 +282,7 @@ class Expression(metaclass=ABCMeta):
         Args:
             names (str): Names of rules to show
             attr (None or str): Name of the class attribute from which to get
-                the rules. Cf. :meth:`add_rule`.
+                the rules. Cf. :meth:`~.Expression.add_rule`.
 
         Raises:
             AttributeError: If invalid `attr`
@@ -559,7 +559,7 @@ class Expression(metaclass=ABCMeta):
         return func(self, *args, **kwargs)
 
     def apply_rules(self, rules, recursive=True):
-        """Rebuild the expression while applying a list of rules
+        """Rebuild the expression while applying a list of rules.
 
         The rules are applied against the instantiated expression, and any
         sub-expressions if `recursive` is True. Rule application is best though
@@ -570,7 +570,7 @@ class Expression(metaclass=ABCMeta):
         Args:
             rules (list or ~collections.OrderedDict): List of rules or
                 dictionary mapping names to rules, where each rule is a tuple
-                (:class:`Pattern`, replacement callable), cf.
+                (:class:`.Pattern`, replacement callable), cf.
                 :meth:`apply_rule`
             recursive (bool): If true (default), apply rules to all arguments
                 and keyword arguments of the expression. Otherwise, only the
@@ -599,7 +599,7 @@ class Expression(metaclass=ABCMeta):
         ``rules=[(pattern, replacement)]``
 
         Args:
-            pattern (.Pattern): A pattern containing one or more wildcards
+            pattern (Pattern): A pattern containing one or more wildcards
             replacement (callable): A callable that takes the wildcard names in
                 `pattern` as keyword arguments, and returns a replacement for
                 any expression that `pattern` matches.
@@ -630,17 +630,17 @@ class Expression(metaclass=ABCMeta):
         return self.apply_rules([(pattern, replacement)], recursive=recursive)
 
     def rebuild(self):
-        """Recursively re-instantiate the expression
+        """Recursively re-instantiate the expression.
 
         This is generally used within a managed context such as
-        :func:`.extra_rules`, :func:`.extra_binary_rules`, or
-        :func:`.no_rules`.
+        :func:`.temporary_rules`.
         """
         return self.apply_rules(rules={})
 
     def _repr_latex_(self):
-        """For compatibility with the IPython notebook, generate TeX expression
-        and surround it with $'s.
+        """TeX representation for IPython notebook.
+
+        Generates the TeX representation and surround it with dollar signs.
         """
         # This method will be replaced by init_printing()
         from qalgebra.printing import init_printing
@@ -673,7 +673,7 @@ class Expression(metaclass=ABCMeta):
 
     @property
     def bound_symbols(self):
-        """Set of bound SymPy symbols in the expression"""
+        """Set of bound SymPy symbols in the expression."""
         if self._bound_symbols is None:
             res = set.union(
                 set([]),  # dummy arg (union fails without arguments)
@@ -688,7 +688,7 @@ class Expression(metaclass=ABCMeta):
 
     @property
     def all_symbols(self):
-        """Combination of :attr:`free_symbols` and :attr:`bound_symbols`"""
+        """Combination of :attr:`free_symbols` and :attr:`bound_symbols`."""
         if self._all_symbols is None:
             self._all_symbols = self.free_symbols | self.bound_symbols
         return self._all_symbols

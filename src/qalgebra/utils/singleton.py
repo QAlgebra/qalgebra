@@ -77,7 +77,7 @@ def singleton_object(cls):
 
 
 class Singleton(ABCMeta):
-    """Metaclass for singletons
+    """Metaclass for singletons.
 
     Any instantiation of a singleton class yields the exact same object, e.g.::
 
@@ -110,10 +110,9 @@ class Singleton(ABCMeta):
 
 
 class SingletonType(metaclass=Singleton):
-    """A dummy type that may be used to check whether an object is a
-    Singleton::
+    """A dummy type that for checking whether an object is a Singleton.
+
+    ::
 
         isinstance(obj, SingletonType)
     """
-
-    pass

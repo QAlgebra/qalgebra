@@ -193,8 +193,8 @@ class SuperOperatorTimes(QuantumTimes, SuperOperator):
 
 
 class ScalarTimesSuperOperator(SuperOperator, ScalarTimesQuantumExpression):
-    """Product of a :class:`.Scalar` coefficient and a
-    :class:`SuperOperator`"""
+    """Product of a :class:`.Scalar` coefficient and a :class:`.SuperOperator`.
+    """
 
     def _adjoint(self):
         pass
@@ -211,7 +211,7 @@ class ScalarTimesSuperOperator(SuperOperator, ScalarTimesQuantumExpression):
 
 
 class SuperAdjoint(QuantumAdjoint, SuperOperator):
-    r"""Adjoint of a super-operator
+    r"""Adjoint of a super-operator.
 
     The mathematical notation for this is typically
 
@@ -302,12 +302,12 @@ class SPost(SuperOperator, Operation):
 
 
 class SuperOperatorTimesOperator(Operator, Operation):
-    """Application of a super-operator to an operator
+    """Application of a super-operator to an operator.
 
-    The result of this operation is(result is an :class:`Operator`
+    The result of this operation an :class:`.Operator`.
     """
 
-    _rules = OrderedDict()  # see end of module
+    _rules = OrderedDict()
     simplifications = [
         match_replace,
     ]
@@ -453,7 +453,7 @@ def liouvillian(H, Ls=None):
 
     Args:
         H (Operator): The associated Hamilton operator
-        Ls (sequence or Matrix): A sequence of Lindblad operators.
+        Ls (list or Matrix): A sequence of Lindblad operators.
 
     Returns:
         SuperOperator: The Liouvillian super-operator.

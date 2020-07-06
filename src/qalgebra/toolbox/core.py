@@ -128,7 +128,7 @@ def symbols(names, **args):
     instantiator. Obviously, this is extremely flexible.
 
     Note:
-        :func:`symbol` does not pass *positional* arguments to the
+        :func:`symbols` does not pass *positional* arguments to the
         instantiator. Two possible workarounds to create symbols with e.g. a
         scalar argument are::
 

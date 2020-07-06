@@ -48,7 +48,7 @@ Compare this to the default in SymPy::
 
 With the default settings, the LaTeX renderer that produces the output in the
 Jupyter notebook uses only tex macros that MathJax_ understands. You can obtain
-the LaTeX code through the :func:`latex` function. When generating code for a
+the LaTeX code through the :func:`.latex` function. When generating code for a
 paper or report, it is better to customize the output for better readability
 with a more semantic use of macros, e.g. as::
 
@@ -116,13 +116,13 @@ be given the ``reset`` parameter::
 Printer classes
 ---------------
 
-The printing functions :func:`ascii`, :func:`unicode`, and :func:`latex` each
+The printing functions :func:`.ascii`, :func:`.unicode`, and :func:`.latex` each
 delegate to an internal printer object that subclasses
 :class:`.QalgebraBasePrinter`. After initialization,
-the printer class is referenced at e.g. :attr:`ascii.printer`.
+the printer class is referenced at an attribute ``printer`` of :func:`ascii`.
 
 For the ultimate control in customizing the printing system, you can implement your
-own subclasses of :class:`.QalgrebraBasePrinter`, which is in
+own subclasses of :class:`.QalgebraBasePrinter`, which is in
 turn a subclass of :class:`sympy.printing.printer.Printer`. Thus, the
 overview of `SymPy's printing system`_ applies.
 

@@ -114,8 +114,8 @@ def init_printing(*, reset=False, init_sympy=True, **kwargs):
     are rendered graphically via LaTeX, using the settings as they affect the
     :func:`latex` printer.
 
-    The :func:`sympy.init_printing()` routine is called automatically, unless
-    `init_sympy` is given as ``False``.
+    The SymPy :func:`sympy.interactive.printing.init_printing` routine is
+    called automatically, unless `init_sympy` is given as ``False``.
 
     See also:
         :func:`configure_printing` allows to temporarily change the printing
@@ -525,7 +525,7 @@ def latex(expr, *, cache=None, **settings):
 
 
 def tex(expr, *, cache=None, **settings):
-    """Alias for :func:`latex`"""
+    """Alias for :func:`.latex`."""
     return latex(expr, cache, **settings)
 
 
@@ -534,11 +534,11 @@ def srepr(expr, *, indented=False, cache=None):
     appropriate context to re-instantiate an identical expression. If
     `indented` is False (default), the resulting string is a single line.
     Otherwise, the result is a multiline string, and each positional and
-    keyword argument of each `Expression` is on a separate line, recursively
-    indented to produce a tree-like output. The `cache` may be used to generate
-    more readable expressions.
+    keyword argument of each :class:`.Expression` is on a separate line,
+    recursively indented to produce a tree-like output. The `cache` may be used
+    to generate more readable expressions.
 
-    Example:
+    Example::
 
         >>> hs = LocalSpace('1')
         >>> A = OperatorSymbol('A', hs=hs); B = OperatorSymbol('B', hs=hs)
@@ -565,13 +565,12 @@ def srepr(expr, *, indented=False, cache=None):
         True
 
     See also:
-        :func:`~qalgebra.printing.tree.print_tree`, respectively
-        :func:`qalgebra.printing.tree.tree`, produces an output similar to
-        the indented :func:`srepr`, for interactive use. Their result
+        :func:`.print_tree`, respectively :func:`.tree`, produces an output
+        similar to the indented :func:`srepr`, for interactive use. Their result
         cannot be evaluated and the exact output depends on
         :func:`init_printing`.
 
-        :func:`~qalgebra.printing.dot.dotprint` provides a way to graphically
+        :func:`.dotprint` provides a way to graphically
         explore the tree structure of an expression.
     """
     if indented:

@@ -55,7 +55,7 @@ class IndexedSum(Operation, metaclass=ABCMeta):
     def variables(self):
         """List of the dummy (index) variable symbols
 
-        See also :property:`bound_symbols` for a set of the same symbols
+        See also :attr:`bound_symbols` for a set of the same symbols
         """
         return [r.index_symbol for r in self.ranges]
 
@@ -63,7 +63,7 @@ class IndexedSum(Operation, metaclass=ABCMeta):
     def bound_symbols(self):
         """Set of bound variables, i.e. the index variable symbols
 
-        See also :property:`variables` for an ordered list of the same symbols
+        See also :attr:`variables` for an ordered list of the same symbols
         """
         return set(self.variables)
 
@@ -128,7 +128,7 @@ class IndexedSum(Operation, metaclass=ABCMeta):
         Args:
             classes (None or list): see :meth:`.Expression.doit`
             recursive (bool): see :meth:`.Expression.doit`
-            indices (list): List of :class:`IdxSym` indices for which the sum
+            indices (list): List of :class:`.IdxSym` indices for which the sum
                 should be expanded. If `indices` is a subset of the indices
                 over which the sum runs, it will be partially expanded. If not
                 given, expand the sum completely

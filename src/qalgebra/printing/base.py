@@ -173,10 +173,11 @@ class QalgebraBasePrinter(SympyPrinter):
 
         The representation is obtained by the following methods:
 
-        1. from the :attr:`cache`
+        1. from the Printer cache
         2. If `expr` is a Sympy object, delegate to the
            :meth:`~sympy.printing.printer.Printer.doprint` method of
-           :attr:`_sympy_printer`
+           the SymPy printer referenced by the QAlgebra printer's
+           ``_sympy_printer`` class attribute.
         3. Let the `expr` print itself if has the :attr:`printmethod`
         4. Take the best fitting ``_print_*`` method of the printer
         5. As fallback, delegate to :meth:`emptyPrinter`

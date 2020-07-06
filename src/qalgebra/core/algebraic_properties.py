@@ -20,7 +20,6 @@ __private__ = [
     'idem',
     'orderby',
     'filter_neutral',
-    'filter_cid',
     'match_replace',
     'match_replace_binary',
     'check_cdims',
@@ -207,9 +206,9 @@ def collect_summands(cls, ops, kwargs):
 
 
 def collect_scalar_summands(cls, ops, kwargs):
-    """Collect :class:`ValueScalar` and :class:`ScalarExpression` summands
+    """Collect :class:`.ScalarValue` and :class:`.ScalarExpression` summands.
 
-    Example:
+    Example::
         >>> srepr(collect_scalar_summands(Scalar, (1, 2, 3), {}))
         'ScalarValue(6)'
         >>> collect_scalar_summands(Scalar, (1, 1, -1), {})
@@ -232,11 +231,11 @@ def collect_scalar_summands(cls, ops, kwargs):
     # "ScalarTimesQuantumExpression" for scalars: we have to extract
     # coefficiencts from ScalarTimes instead
     from qalgebra.core.scalar_algebra import (
-        Zero,
         One,
         Scalar,
         ScalarTimes,
         ScalarValue,
+        Zero,
     )
 
     a_0 = Zero
@@ -486,28 +485,11 @@ def check_cdims(cls, ops, kwargs):
     return ops, kwargs
 
 
-def filter_cid(cls, ops, kwargs):
-    """Remove occurrences of the :func:`.circuit_identity` ``cid(n)`` for any
-    ``n``. Cf. :func:`filter_neutral`
-    """
-    from qalgebra.core.circuit_algebra import CircuitZero, circuit_identity
-
-    if len(ops) == 0:
-        return CircuitZero
-    fops = [op for op in ops if op != circuit_identity(op.cdim)]
-    if len(fops) > 1:
-        return fops, kwargs
-    elif len(fops) == 1:
-        # the remaining operand is the single non-trivial one
-        return fops[0]
-    else:
-        # the original list of operands consists only of neutral elements
-        return ops[0]
-
-
 def convert_to_spaces(cls, ops, kwargs):
-    """For all operands that are merely of type str or int, substitute
-    LocalSpace objects with corresponding labels:
+    """Allow for :class:`str`, :class:`int` as :class:`.LocalSpace` shorthand.
+
+    For all operands that are merely of type str or int, substitute
+    :class:`.LocalSpace` objects with corresponding labels:
     For a string, just itself, for an int, a string version of that int.
     """
     from qalgebra.core.hilbert_space_algebra import HilbertSpace, LocalSpace
@@ -517,7 +499,7 @@ def convert_to_spaces(cls, ops, kwargs):
 
 
 def empty_trivial(cls, ops, kwargs):
-    """A ProductSpace of zero Hilbert spaces should yield the TrivialSpace"""
+    """A ProductSpace of zero Hilbert spaces should yield the TrivialSpace."""
     from qalgebra.core.hilbert_space_algebra import TrivialSpace
 
     if len(ops) == 0:
@@ -532,12 +514,12 @@ def implied_local_space(*, arg_index=None, keys=None):
     as any keyword argument with one of the given keys.
 
     The exact type of the resulting Hilbert space is determined by
-    the `default_hs_cls` argument of :func:`init_algebra`.
+    the `default_hs_cls` argument of :func:`.init_algebra`.
 
     In many cases, we have :func:`implied_local_space` (in ``create``) in
     addition to a conversion in ``__init__``, so
     that :func:`match_replace` etc can rely on the relevant arguments being a
-    :class:`HilbertSpace` instance.
+    :class:`.HilbertSpace` instance.
     """
     from qalgebra.core.hilbert_space_algebra import HilbertSpace, LocalSpace
 
@@ -684,7 +666,7 @@ def accept_bras(cls, ops, kwargs):
 
 def basis_ket_zero_outside_hs(cls, ops, kwargs):
     """For ``BasisKet.create(ind, hs)`` with an integer label `ind`, return a
-    :class:`ZeroKet` if `ind` is outside of the range of the underlying Hilbert
+    :obj:`.ZeroKet` if `ind` is outside of the range of the underlying Hilbert
     space
     """
     from qalgebra.core.state_algebra import ZeroKet
@@ -819,10 +801,10 @@ def _factors_for_expand_delta(expr):
 
     Auxiliary routine for :func:`_expand_delta`.
     """
-    from qalgebra.core.scalar_algebra import ScalarValue
     from qalgebra.core.abstract_quantum_algebra import (
         ScalarTimesQuantumExpression,
     )
+    from qalgebra.core.scalar_algebra import ScalarValue
 
     if isinstance(expr, ScalarTimesQuantumExpression):
         yield from _factors_for_expand_delta(expr.coeff)
@@ -885,7 +867,7 @@ def _split_sympy_quantum_factor(expr):
         QuantumExpression,
         ScalarTimesQuantumExpression,
     )
-    from qalgebra.core.scalar_algebra import ScalarValue, ScalarTimes, One
+    from qalgebra.core.scalar_algebra import One, ScalarTimes, ScalarValue
 
     if isinstance(expr, ScalarTimesQuantumExpression):
         sympy_factor, quantum_factor = _split_sympy_quantum_factor(expr.coeff)
@@ -1031,13 +1013,11 @@ def _deltasummation(term, ranges, i_range):
 
 
 def derivative_via_diff(cls, ops, kwargs):
-    """Implementation of the :meth:`QuantumDerivative.create` interface via the
-    use of :meth:`QuantumExpression._diff`.
+    """Delegate :meth:`.QuantumDerivative.create` to the ``_diff`` method.
 
     Thus, by having :meth:`.QuantumExpression.diff` delegate to
-    :meth:`.QuantumDerivative.create`, instead of
-    :meth:`.QuantumExpression._diff` directly, we get automatic caching of
-    derivatives
+    :meth:`.QuantumDerivative.create`, instead of the ``_diff`` method
+    directly, we get automatic caching of derivatives
     """
     assert len(ops) == 1
     op = ops[0]
@@ -1047,7 +1027,7 @@ def derivative_via_diff(cls, ops, kwargs):
     # that's happening in `QuantumDerivative.create`
     for (sym, n) in derivs:
         if sym.free_symbols.issubset(op.free_symbols):
-            for k in range(n):
+            for _ in range(n):
                 op = op._diff(sym)
         else:
             return op.__class__._zero

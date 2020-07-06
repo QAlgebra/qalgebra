@@ -177,10 +177,6 @@ class QuantumExpression(Expression, metaclass=ABCMeta):
                 deriv = deriv.expand().simplify_scalar()
             return deriv
         else:
-            # the "issubset" of free symbols is a sufficient, but not a
-            # necessary condition; if `sym` is non-atomic, determining whether
-            # `self` depends on `sym` is not completely trivial (you'd have to
-            # substitute with a Dummy)
             return self.__class__._zero
 
     @abstractmethod
@@ -259,7 +255,7 @@ class QuantumExpression(Expression, metaclass=ABCMeta):
         return self.__add__(other)
 
     def __mul__(self, other):
-        from qalgebra.core.scalar_algebra import is_scalar, ScalarValue
+        from qalgebra.core.scalar_algebra import ScalarValue, is_scalar
 
         if not isinstance(other, self._base_cls):
             if is_scalar(other):
@@ -336,9 +332,9 @@ class QuantumSymbol(QuantumExpression, metaclass=ABCMeta):
             becomes a function.
         hs (HilbertSpace, str, int, tuple): the Hilbert space associated with
             the symbol. If a `str` or an `int`, an implicit (sub-)instance of
-            :class:`LocalSpace` with a corresponding label will be created, or,
-            for a tuple of `str` or `int`, a :class:`ProducSpace. The type of
-            the implicit Hilbert space is set by :func:`.init_algebra`.
+            :class:`.LocalSpace` with a corresponding label will be created,
+            or, for a tuple of `str` or `int`, a :class:`.ProductSpace`. The
+            type of the implicit Hilbert space is set by :func:`.init_algebra`.
     """
 
     _rx_label = re.compile('^[A-Za-z][A-Za-z0-9]*(_[A-Za-z0-9().+-=]+)?$')
@@ -606,7 +602,7 @@ class QuantumTimes(QuantumOperation, metaclass=ABCMeta):
 class ScalarTimesQuantumExpression(
     QuantumExpression, Operation, metaclass=ABCMeta
 ):
-    """Product of a :class:`.Scalar` and a :class:`QuantumExpression`"""
+    """Product of a :class:`.Scalar` and a :class:`.QuantumExpression`"""
 
     @classmethod
     def create(cls, coeff, term):
@@ -706,7 +702,7 @@ class ScalarTimesQuantumExpression(
 
 
 class QuantumDerivative(SingleQuantumOperation):
-    r"""Symbolic partial derivative
+    r"""Symbolic partial derivative.
 
     .. math::
 
@@ -732,10 +728,11 @@ class QuantumDerivative(SingleQuantumOperation):
 
     Note:
         :class:`QuantumDerivative` is intended to be instantiated only inside
-        the :meth:`_diff` method of a :class:`QuantumExpression`, for
-        expressions that depend on scalar arguments in an unspecified way.
-        Generally, if a derivative can be calculated explicitly, the explicit
-        form is preferred over the abstract :class:`QuantumDerivative`.
+        the ``_diff`` method to which :meth:`.QuantumExpression.diff`
+        delegates, for expressions that depend on scalar arguments in an
+        implicit way.  Generally, if a derivative can be calculated
+        explicitly, the explicit form is preferred over the abstract
+        :class:`.QuantumDerivative`.
     """
     simplifications = [
         derivative_via_diff,
@@ -745,9 +742,11 @@ class QuantumDerivative(SingleQuantumOperation):
 
     @classmethod
     def create(cls, op, *, derivs, vals=None):
-        """Instantiate the derivative by repeatedly calling
-        the :meth:`~QuantumExpression._diff` method of `op` and evaluating the
-        result at the given `vals`.
+        """Instantiate the derivative.
+
+        This is done by repeatedly calling the ``_diff`` method of a
+        :class:`.QuantumExpression` `op` and evaluating the result at the given
+        `vals`.
         """
         # To ensure stable ordering in Expression._get_instance_key, we
         # explicitly convert `derivs` and `vals` to a tuple structure with a
@@ -1100,7 +1099,7 @@ def Sum(idx, *args, **kwargs):
 
 
 def ensure_local_space(hs, cls=LocalSpace):
-    """Ensure that the given `hs` is an instance of :class:`LocalSpace`.
+    """Ensure that the given `hs` is an instance of :class:`.LocalSpace`.
 
     If `hs` an instance of :class:`str` or :class:`int`, it will be converted
     to a `cls` (if possible). If it already is an instace of `cls`, `hs`
@@ -1110,7 +1109,7 @@ def ensure_local_space(hs, cls=LocalSpace):
         hs (HilbertSpace or str or int): The Hilbert space (or label) to
             convert/check
         cls (type): The class to which an int/str label for a Hilbert space
-            should be converted. Must be a subclass of :class:`LocalSpace`.
+            should be converted. Must be a subclass of :class:`.LocalSpace`.
 
     Raises:
         TypeError: If `hs` is not a :class:`.LocalSpace`, :class:`str`, or

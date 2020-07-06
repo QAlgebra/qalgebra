@@ -11,16 +11,15 @@ __private__ = ['QalgebraAsciiPrinter', 'QalgebraAsciiDefaultPrinter']
 
 
 class QalgebraAsciiPrinter(QalgebraBasePrinter):
-    """Printer for a string (ASCII) representation.
+    r"""Printer for a string (ASCII) representation.
 
     Attributes:
         _parenth_left (str): String to use for a left parenthesis
-            (e.g. '\left(' in LaTeX). Used by :meth:`_split_op`
+            (e.g. '\left(' in LaTeX).
         _parenth_left (str): String to use for a right parenthesis
         _dagger_sym (str): Symbol that indicates the complex conjugate of an
-            operator. Used by :meth:`_split_op`
-        _tensor_sym (str): Symbol to use for tensor products. Used by
-            :meth:`_render_hs_label`.
+            operator.
+        _tensor_sym (str): Symbol to use for tensor products.
     """
 
     sympy_printer_cls = SympyStrPrinter
@@ -36,7 +35,7 @@ class QalgebraAsciiPrinter(QalgebraBasePrinter):
     _bracket_left = '['
     _bracket_right = ']'
     _dagger_sym = 'H'
-    _tensor_sym = '*'
+    _tensor_sym = '*'  # used by _render_hs_label
     _product_sym = '*'
     _cid = 'cid(%d)'
     _sum_sym = 'Sum'

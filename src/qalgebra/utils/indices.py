@@ -79,7 +79,7 @@ def yield_from_ranges(ranges):
 
 
 class IdxSym(sympy.Symbol):
-    """Index symbol in an indexed sum or product
+    """Index symbol in an indexed sum or product.
 
     Args:
         name (str): The label for the symbol. It must be a simple Latin or
@@ -173,7 +173,7 @@ class IdxSym(sympy.Symbol):
 
     @property
     def prime(self):
-        """equivalent to :meth:`inc_primed` with ``incr=1``"""
+        """equivalent to :meth:`incr_primed` with ``incr=1``"""
         return self.incr_primed(incr=1)
 
     def _sympystr(self, printer, *args):
@@ -250,9 +250,9 @@ class SymbolicLabelBase(metaclass=ABCMeta):
 
 
 class IntIndex(SymbolicLabelBase):
-    """A symbolic label that evaluates to an integer
+    """A symbolic label that evaluates to an integer.
 
-    The label can be rendered via :meth:`substitute`::
+    The label can be rendered via :meth:`~.Expression.substitute`::
 
         >>> i, j = symbols('i, j', cls=IdxSym)
         >>> idx = IntIndex(i+j)
