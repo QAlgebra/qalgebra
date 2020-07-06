@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.library.spin_algebra &mdash; QAlgebra 2.0.0-dev (191a4de) documentation</title>
+  <title>qalgebra.library.spin_algebra &mdash; QAlgebra 2.0.0-dev (9c7cf0a) documentation</title>
   
 
   
@@ -209,7 +209,7 @@
 
 
 <div class="viewcode-block" id="SpinSpace"><a class="viewcode-back" href="../../../API/qalgebra.library.spin_algebra.html#qalgebra.library.spin_algebra.SpinSpace">[docs]</a><span class="k">class</span> <span class="nc">SpinSpace</span><span class="p">(</span><span class="n">LocalSpace</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;A Hilbert space for an integer or half-integer spin system</span>
+    <span class="sd">&quot;&quot;&quot;A Hilbert space for an integer or half-integer spin system.</span>
 
 <span class="sd">    For a given spin $N$, the resulting Hilbert space has dimension $2 N + 1$</span>
 <span class="sd">    with levels labeled from $-N$ to $+N$ (as strings)</span>
@@ -332,8 +332,8 @@
 <span class="sd">        More generally, if `n` is given, return the `n`&#39;th next basis state</span>
 <span class="sd">        label/index; `n` may also be negative to obtain previous basis state</span>
 <span class="sd">        labels. Returns a :class:`str` label if `label_or_index` is a</span>
-<span class="sd">        :class:`str` or :class:`int`, or a :class:`SpinIndex` if</span>
-<span class="sd">        `label_or_index` is a :class:`SpinIndex`.</span>
+<span class="sd">        :class:`str` or :class:`int`, or a :class:`.SpinIndex` if</span>
+<span class="sd">        `label_or_index` is a :class:`.SpinIndex`.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            label_or_index (int or str or SpinIndex): If `int`, the</span>
@@ -347,12 +347,12 @@
 <span class="sd">                Hilbert space</span>
 <span class="sd">            .BasisNotSetError: If the Hilbert space has no defined basis</span>
 <span class="sd">            TypeError: if `label_or_index` is neither a :class:`str` nor an</span>
-<span class="sd">                :class:`int`, nor a :class:`SpinIndex`</span>
+<span class="sd">                :class:`int`, nor a :class:`.SpinIndex`</span>
 
 <span class="sd">        Note:</span>
 <span class="sd">            This differs from its super-method only by never returning an</span>
 <span class="sd">            integer index (which is not accepted when instantiating a</span>
-<span class="sd">            :class:`BasisKet` for a :class:`SpinSpace`)</span>
+<span class="sd">            :class:`.BasisKet` for a :class:`.SpinSpace`)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">label_or_index</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
             <span class="n">new_index</span> <span class="o">=</span> <span class="n">label_or_index</span> <span class="o">+</span> <span class="n">n</span>
@@ -378,7 +378,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">spin</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Rational</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;The spin-number associated with the :class:`SpinSpace`</span>
+        <span class="sd">&quot;&quot;&quot;The spin-number associated with the :class:`.SpinSpace`</span>
 
 <span class="sd">        This can be a SymPy integer or a half-integer.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -398,7 +398,7 @@
 
 
 <div class="viewcode-block" id="SpinBasisKet"><a class="viewcode-back" href="../../../API/qalgebra.library.spin_algebra.html#qalgebra.library.spin_algebra.SpinBasisKet">[docs]</a><span class="k">def</span> <span class="nf">SpinBasisKet</span><span class="p">(</span><span class="o">*</span><span class="n">numer_denom</span><span class="p">,</span> <span class="n">hs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Constructor for a :class:`BasisKet` for a :class:`SpinSpace`</span>
+    <span class="sd">&quot;&quot;&quot;Constructor for a :class:`.BasisKet` for a :class:`.SpinSpace`.</span>
 
 <span class="sd">    For a half-integer spin system::</span>
 
@@ -420,7 +420,7 @@
 <span class="sd">        TypeError: label_or_index must be an instance of one of str, SpinIndex; not int</span>
 
 <span class="sd">    Raises:</span>
-<span class="sd">        TypeError: if `hs` is not a :class:`SpinSpace` or the wrong number of</span>
+<span class="sd">        TypeError: if `hs` is not a :class:`.SpinSpace` or the wrong number of</span>
 <span class="sd">            positional arguments is given</span>
 <span class="sd">        ValueError: if any of the positional arguments are out range for the</span>
 <span class="sd">            given `hs`</span>
@@ -702,7 +702,7 @@
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Jun 30, 2020.
+        Last updated on Jul 06, 2020.
       </span>
 
     </p>

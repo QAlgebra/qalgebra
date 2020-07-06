@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.utils.containers module &mdash; QAlgebra 2.0.0-dev (191a4de) documentation</title>
+  <title>qalgebra.utils.containers module &mdash; QAlgebra 2.0.0-dev (9c7cf0a) documentation</title>
   
 
   
@@ -272,16 +272,17 @@
 <p>See <cite>sorted</cite> for details on optional arguments to customize the sorting.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>iterable</strong> (<em>Iterable</em>) – Iterable returning a finite number of elements to sort.</p></li>
-<li><p><strong>kwargs</strong> – Keyword arguments are passed on to <cite>sorted</cite>.</p></li>
-</ul>
+<dd class="field-odd"><p><strong>of a finite number of elements to sort.</strong> (<em>Iterable</em>) – </p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>List of elements, sorted if orderable, otherwise kept in the order of iteration.</p>
+</dl>
+<dl class="simple">
+<dt>kwargs:</dt><dd><p>Keyword arguments are passed on to <cite>sorted</cite>.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List of elements in <cite>iterable</cite>, sorted if orderable, otherwise kept in
+the order of iteration.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -290,34 +291,28 @@
 <dt id="qalgebra.utils.containers.nested_tuple">
 <code class="sig-prename descclassname">qalgebra.utils.containers.</code><code class="sig-name descname">nested_tuple</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">container</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/containers.html#nested_tuple"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.containers.nested_tuple" title="Permalink to this definition">¶</a></dt>
 <dd><p>Recursively transform a container structure to a nested tuple.</p>
-<p>The function understands container types inheriting from the selected abstract base
-classes in <cite>collections.abc</cite>, and performs the following replacements:
-<cite>Mapping</cite></p>
-<blockquote>
-<div><p><cite>tuple</cite> of key-value pair <cite>tuple`s. The order is preserved in the case of an
-`OrderedDict</cite>, otherwise the key-value pairs are sorted if orderable and
-otherwise kept in the order of iteration.</p>
-</div></blockquote>
-<dl class="simple">
-<dt><cite>Sequence</cite></dt><dd><p><cite>tuple</cite> containing the same elements in unchanged order.</p>
-</dd>
-<dt><cite>Container and Iterable and Sized</cite> (equivalent to <cite>Collection</cite> in python &gt;= 3.6)</dt><dd><p><cite>tuple</cite> containing the same elements in sorted order if orderable and otherwise
-kept in the order of iteration.</p>
+<p>The function understands container types inheriting from the selected
+abstract base classes in <cite>collections.abc</cite>, and performs the following
+replacements:</p>
+<ul class="simple">
+<li><p><cite>Mapping</cite> to tuple of key-value pair tuples.</p></li>
+<li><p><cite>Sequence</cite> to tuple containing the same elements in unchanged order.</p></li>
+<li><dl class="simple">
+<dt><cite>Collection</cite> to tuple containing the same elements in sorted order if</dt><dd><p>orderable and otherwise in the order of iteration.</p>
 </dd>
 </dl>
-<p>The function recurses into these container types to perform the same replacement,
-and leaves objects of other types untouched.</p>
-<p>The returned container is hashable if and only if all the values contained in the
-original data structure are hashable.</p>
+</li>
+</ul>
+<p>The function recurses into these container types to perform the same
+replacement, and leaves objects of other types untouched.</p>
+<p>The returned container is hashable if and only if all the values contained
+in the original data structure are hashable.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>container</strong> – Data structure to transform into a nested tuple.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Nested tuple containing the same data as <cite>container</cite>.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#tuple" title="(in Python v3.8)">tuple</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -348,7 +343,7 @@ original data structure are hashable.</p>
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Jun 30, 2020.
+        Last updated on Jul 06, 2020.
       </span>
 
     </p>

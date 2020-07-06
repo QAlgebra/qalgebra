@@ -39,3 +39,5 @@ The following is an inheritance diagram of *all* the classes defined in QAlgebra
 
 .. inheritance-diagram:: qalgebra
    :parts: 1
+   :top-classes: sympy.core.symbol.Symbol
+   :cluster_modules:

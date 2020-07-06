@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.scalar_algebra module &mdash; QAlgebra 2.0.0-dev (191a4de) documentation</title>
+  <title>qalgebra.core.scalar_algebra module &mdash; QAlgebra 2.0.0-dev (9c7cf0a) documentation</title>
   
 
   
@@ -291,13 +291,13 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.scalar_algebra.KroneckerDelta" title="qalgebra.core.scalar_algebra.KroneckerDelta"><code class="xref py py-obj docutils literal notranslate"><span class="pre">KroneckerDelta</span></code></a></p></td>
-<td><p>Kronecker delta symbol</p></td>
+<td><p>Kronecker delta symbol.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.scalar_algebra.is_scalar" title="qalgebra.core.scalar_algebra.is_scalar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_scalar</span></code></a></p></td>
 <td><p>Check if <cite>scalar</cite> is a <a class="reference internal" href="#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code></a> or a scalar value</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.scalar_algebra.sqrt" title="qalgebra.core.scalar_algebra.sqrt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sqrt</span></code></a></p></td>
-<td><p>Square root of a <a class="reference internal" href="#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code></a> or scalar value</p></td>
+<td><p>Square root of a <a class="reference internal" href="#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code></a> or scalar value.</p></td>
 </tr>
 </tbody>
 </table>
@@ -621,7 +621,7 @@ that are states.</p>
 <dl class="py function">
 <dt id="qalgebra.core.scalar_algebra.sqrt">
 <code class="sig-prename descclassname">qalgebra.core.scalar_algebra.</code><code class="sig-name descname">sqrt</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">scalar</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/scalar_algebra.html#sqrt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.scalar_algebra.sqrt" title="Permalink to this definition">¶</a></dt>
-<dd><p>Square root of a <a class="reference internal" href="#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code></a> or scalar value</p>
+<dd><p>Square root of a <a class="reference internal" href="#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code></a> or scalar value.</p>
 <p>This always returns a <a class="reference internal" href="#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code></a>, and uses a symbolic square root if
 possible (i.e., for non-floats):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -665,10 +665,10 @@ possible (i.e., for non-floats):</p>
 <dl class="py function">
 <dt id="qalgebra.core.scalar_algebra.KroneckerDelta">
 <code class="sig-prename descclassname">qalgebra.core.scalar_algebra.</code><code class="sig-name descname">KroneckerDelta</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">i</span></em>, <em class="sig-param"><span class="n">j</span></em>, <em class="sig-param"><span class="n">simplify</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/scalar_algebra.html#KroneckerDelta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.scalar_algebra.KroneckerDelta" title="Permalink to this definition">¶</a></dt>
-<dd><p>Kronecker delta symbol</p>
+<dd><p>Kronecker delta symbol.</p>
 <p>Return <a class="reference internal" href="#qalgebra.core.scalar_algebra.One" title="qalgebra.core.scalar_algebra.One"><code class="xref py py-class docutils literal notranslate"><span class="pre">One</span></code></a> (<cite>i</cite> equals <cite>j</cite>)), <a class="reference internal" href="#qalgebra.core.scalar_algebra.Zero" title="qalgebra.core.scalar_algebra.Zero"><code class="xref py py-class docutils literal notranslate"><span class="pre">Zero</span></code></a> (<cite>i</cite> and <cite>j</cite> are
 non-symbolic an unequal), or a <a class="reference internal" href="#qalgebra.core.scalar_algebra.ScalarValue" title="qalgebra.core.scalar_algebra.ScalarValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarValue</span></code></a> wrapping SymPy’s
-<a class="reference external" href="https://docs.sympy.org/latest/modules/functions/special.html#sympy.functions.special.tensor_functions.KroneckerDelta" title="(in SymPy v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">KroneckerDelta</span></code></a>.</p>
+<a class="reference external" href="https://docs.sympy.org/latest/modules/functions/special.html#sympy.functions.special.tensor_functions.KroneckerDelta" title="(in SymPy v1.6.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">KroneckerDelta</span></code></a>.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">IdxSym</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">),</span> <span class="n">IdxSym</span><span class="p">(</span><span class="s1">&#39;j&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">KroneckerDelta</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
 <span class="go">One</span>
@@ -690,10 +690,8 @@ non-symbolic an unequal), or a <a class="reference internal" href="#qalgebra.cor
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><a class="reference external" href="https://docs.python.org/3.8/library/exceptions.html#TypeError" title="(in Python v3.8)"><strong>TypeError</strong></a> – if <cite>i</cite> or <cite>j</cite> is not an integer or sympy expression. There</p></li>
-<li><p><strong>is no automatic sympification of i and j.</strong> – </p></li>
-</ul>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.8/library/exceptions.html#TypeError" title="(in Python v3.8)"><strong>TypeError</strong></a> – if <cite>i</cite> or <cite>j</cite> is not an integer or sympy expression. There
+    is no automatic sympification of <cite>i</cite> and <cite>j</cite>.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -734,7 +732,7 @@ instance of a numeric or symbolic type that could be wrapped in
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Jun 30, 2020.
+        Last updated on Jul 06, 2020.
       </span>
 
     </p>

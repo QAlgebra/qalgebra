@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.super_operator_algebra &mdash; QAlgebra 2.0.0-dev (191a4de) documentation</title>
+  <title>qalgebra.core.super_operator_algebra &mdash; QAlgebra 2.0.0-dev (9c7cf0a) documentation</title>
   
 
   
@@ -219,7 +219,7 @@
     <span class="n">match_replace_binary</span><span class="p">,</span>
     <span class="n">orderby</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">.exceptions</span> <span class="kn">import</span> <span class="n">BadLiouvillianError</span><span class="p">,</span> <span class="n">CannotSymbolicallyDiagonalize</span>
+<span class="kn">from</span> <span class="nn">.exceptions</span> <span class="kn">import</span> <span class="n">CannotSymbolicallyDiagonalize</span>
 <span class="kn">from</span> <span class="nn">.hilbert_space_algebra</span> <span class="kn">import</span> <span class="n">TrivialSpace</span>
 <span class="kn">from</span> <span class="nn">.matrix_algebra</span> <span class="kn">import</span> <span class="n">Matrix</span>
 <span class="kn">from</span> <span class="nn">.operator_algebra</span> <span class="kn">import</span> <span class="p">(</span>
@@ -247,7 +247,6 @@
     <span class="s1">&#39;commutator&#39;</span><span class="p">,</span>
     <span class="s1">&#39;lindblad&#39;</span><span class="p">,</span>
     <span class="s1">&#39;liouvillian&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;liouvillian_normal_form&#39;</span><span class="p">,</span>
     <span class="s1">&#39;IdentitySuperOperator&#39;</span><span class="p">,</span>
     <span class="s1">&#39;ZeroSuperOperator&#39;</span><span class="p">,</span>
     <span class="s1">&#39;SuperOperatorDerivative&#39;</span><span class="p">,</span>
@@ -378,8 +377,8 @@
 
 
 <div class="viewcode-block" id="ScalarTimesSuperOperator"><a class="viewcode-back" href="../../../API/qalgebra.core.super_operator_algebra.html#qalgebra.core.super_operator_algebra.ScalarTimesSuperOperator">[docs]</a><span class="k">class</span> <span class="nc">ScalarTimesSuperOperator</span><span class="p">(</span><span class="n">SuperOperator</span><span class="p">,</span> <span class="n">ScalarTimesQuantumExpression</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Product of a :class:`.Scalar` coefficient and a</span>
-<span class="sd">    :class:`SuperOperator`&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Product of a :class:`.Scalar` coefficient and a :class:`.SuperOperator`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span>
@@ -396,7 +395,7 @@
 
 
 <div class="viewcode-block" id="SuperAdjoint"><a class="viewcode-back" href="../../../API/qalgebra.core.super_operator_algebra.html#qalgebra.core.super_operator_algebra.SuperAdjoint">[docs]</a><span class="k">class</span> <span class="nc">SuperAdjoint</span><span class="p">(</span><span class="n">QuantumAdjoint</span><span class="p">,</span> <span class="n">SuperOperator</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjoint of a super-operator</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjoint of a super-operator.</span>
 
 <span class="sd">    The mathematical notation for this is typically</span>
 
@@ -487,12 +486,12 @@
 
 
 <div class="viewcode-block" id="SuperOperatorTimesOperator"><a class="viewcode-back" href="../../../API/qalgebra.core.super_operator_algebra.html#qalgebra.core.super_operator_algebra.SuperOperatorTimesOperator">[docs]</a><span class="k">class</span> <span class="nc">SuperOperatorTimesOperator</span><span class="p">(</span><span class="n">Operator</span><span class="p">,</span> <span class="n">Operation</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Application of a super-operator to an operator</span>
+    <span class="sd">&quot;&quot;&quot;Application of a super-operator to an operator.</span>
 
-<span class="sd">    The result of this operation is(result is an :class:`Operator`</span>
+<span class="sd">    The result of this operation an :class:`.Operator`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>  <span class="c1"># see end of module</span>
+    <span class="n">_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
     <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span>
         <span class="n">match_replace</span><span class="p">,</span>
     <span class="p">]</span>
@@ -638,7 +637,7 @@
 
 <span class="sd">    Args:</span>
 <span class="sd">        H (Operator): The associated Hamilton operator</span>
-<span class="sd">        Ls (sequence or Matrix): A sequence of Lindblad operators.</span>
+<span class="sd">        Ls (list or Matrix): A sequence of Lindblad operators.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        SuperOperator: The Liouvillian super-operator.</span>
@@ -652,245 +651,6 @@
     <span class="p">]</span>
     <span class="n">summands</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">lindblad</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="k">for</span> <span class="n">L</span> <span class="ow">in</span> <span class="n">Ls</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">SuperOperatorPlus</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">*</span><span class="n">summands</span><span class="p">)</span></div>
-
-
-<span class="c1">###############################################################################</span>
-<span class="c1"># Auxilliary routines</span>
-<span class="c1">###############################################################################</span>
-
-
-<div class="viewcode-block" id="liouvillian_normal_form"><a class="viewcode-back" href="../../../API/qalgebra.core.super_operator_algebra.html#qalgebra.core.super_operator_algebra.liouvillian_normal_form">[docs]</a><span class="k">def</span> <span class="nf">liouvillian_normal_form</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">symbolic</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return a Hamilton operator ``H`` and a minimal list of collapse</span>
-<span class="sd">    operators ``Ls`` that generate the liouvillian ``L``.</span>
-
-<span class="sd">    A Liouvillian defined by a hermitian Hamilton operator :math:`H` and a</span>
-<span class="sd">    vector of collapse operators</span>
-<span class="sd">    :math:`\mathbf{L} = (L_1, L_2, \dots L_n)^T` is invariant under the</span>
-<span class="sd">    following two operations:</span>
-
-<span class="sd">    .. math::</span>
-<span class="sd">        \left(H, \mathbf{L}\right) &amp; \mapsto \left(H + {1\over 2i}\left(\mathbf{w}^\dagger \mathbf{L} - \mathbf{L}^\dagger \mathbf{w}\right), \mathbf{L} + \mathbf{w} \right) \\</span>
-<span class="sd">        \left(H, \mathbf{L}\right) &amp; \mapsto \left(H, \mathbf{U}\mathbf{L}\right)\\</span>
-
-<span class="sd">    where :math:`\mathbf{w}` is just a vector of complex numbers and</span>
-<span class="sd">    :math:`\mathbf{U}` is a complex unitary matrix.  It turns out that for</span>
-<span class="sd">    quantum optical circuit models the set of collapse operators is often</span>
-<span class="sd">    linearly dependent.  This routine tries to find a representation of the</span>
-<span class="sd">    Liouvillian in terms of a Hamilton operator ``H`` with as few non-zero</span>
-<span class="sd">    collapse operators ``Ls`` as possible.  Consider the following example,</span>
-<span class="sd">    which results from a two-port linear cavity with a coherent input into the</span>
-<span class="sd">    first port:</span>
-
-<span class="sd">    &gt;&gt;&gt; kappa_1, kappa_2 = sympy.symbols(&#39;kappa_1, kappa_2&#39;, positive = True)</span>
-<span class="sd">    &gt;&gt;&gt; Delta = sympy.symbols(&#39;Delta&#39;, real = True)</span>
-<span class="sd">    &gt;&gt;&gt; alpha = sympy.symbols(&#39;alpha&#39;)</span>
-<span class="sd">    &gt;&gt;&gt; H = (Delta * Create(hs=1) * Destroy(hs=1) +</span>
-<span class="sd">    ...      (sqrt(kappa_1) / (2 * I)) *</span>
-<span class="sd">    ...      (alpha * Create(hs=1) - alpha.conjugate() * Destroy(hs=1)))</span>
-<span class="sd">    &gt;&gt;&gt; Ls = [sqrt(kappa_1) * Destroy(hs=1) + alpha,</span>
-<span class="sd">    ...       sqrt(kappa_2) * Destroy(hs=1)]</span>
-<span class="sd">    &gt;&gt;&gt; LL = liouvillian(H, Ls)</span>
-<span class="sd">    &gt;&gt;&gt; Hnf, Lsnf = liouvillian_normal_form(LL)</span>
-<span class="sd">    &gt;&gt;&gt; print(ascii(Hnf))</span>
-<span class="sd">    -I*alpha*sqrt(kappa_1) * a^(1)H + I*sqrt(kappa_1)*conjugate(alpha) * a^(1) + Delta * a^(1)H * a^(1)</span>
-<span class="sd">    &gt;&gt;&gt; len(Lsnf)</span>
-<span class="sd">    1</span>
-<span class="sd">    &gt;&gt;&gt; print(ascii(Lsnf[0]))</span>
-<span class="sd">    sqrt(kappa_1 + kappa_2) * a^(1)</span>
-
-<span class="sd">    In terms of the ensemble dynamics this final system is equivalent.</span>
-<span class="sd">    Note that this function will only work for proper Liouvillians.</span>
-
-
-<span class="sd">    Args:</span>
-<span class="sd">        L (SuperOperator): The Liouvillian</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        tuple: ``(H, Ls)``</span>
-
-<span class="sd">    Raises:</span>
-<span class="sd">        .BadLiouvillianError</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">L</span> <span class="o">=</span> <span class="n">L</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span>
-
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">SuperOperatorPlus</span><span class="p">):</span>
-        <span class="n">spres</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">sposts</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">collapse_form</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
-        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">L</span><span class="o">.</span><span class="n">operands</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">ScalarTimesSuperOperator</span><span class="p">):</span>
-                <span class="n">coeff</span><span class="p">,</span> <span class="n">term</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">operands</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">coeff</span><span class="p">,</span> <span class="n">term</span> <span class="o">=</span> <span class="n">One</span><span class="p">,</span> <span class="n">s</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="n">SPre</span><span class="p">):</span>
-                <span class="n">spres</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coeff</span> <span class="o">*</span> <span class="n">term</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="n">SPost</span><span class="p">):</span>
-                <span class="n">sposts</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">coeff</span> <span class="o">*</span> <span class="n">term</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">if</span> <span class="p">(</span>
-                    <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="n">SuperOperatorTimes</span><span class="p">)</span>
-                    <span class="ow">or</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">term</span><span class="o">.</span><span class="n">operands</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
-                    <span class="ow">or</span> <span class="ow">not</span> <span class="p">(</span>
-                        <span class="nb">isinstance</span><span class="p">(</span><span class="n">term</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">SPre</span><span class="p">)</span>
-                        <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">term</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">SPost</span><span class="p">)</span>
-                    <span class="p">)</span>
-                <span class="p">):</span>
-                    <span class="k">raise</span> <span class="n">BadLiouvillianError</span><span class="p">(</span>
-                        <span class="s2">&quot;All terms of the Liouvillian need to be of form &quot;</span>
-                        <span class="s2">&quot;SPre(X), SPost(X) or SPre(X)*SPost(X): This term &quot;</span>
-                        <span class="s2">&quot;is in violation </span><span class="si">{!s}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">term</span><span class="p">)</span>
-                    <span class="p">)</span>
-                <span class="n">spreL</span><span class="p">,</span> <span class="n">spostL</span> <span class="o">=</span> <span class="n">term</span><span class="o">.</span><span class="n">operands</span>
-                <span class="n">Li</span><span class="p">,</span> <span class="n">Ljd</span> <span class="o">=</span> <span class="n">spreL</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">spostL</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-                <span class="k">try</span><span class="p">:</span>
-                    <span class="nb">complex</span><span class="p">(</span><span class="n">coeff</span><span class="p">)</span>
-                <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
-                    <span class="n">symbolic</span> <span class="o">=</span> <span class="kc">True</span>
-                    <span class="n">coeff</span> <span class="o">=</span> <span class="n">coeff</span><span class="o">.</span><span class="n">simplify_scalar</span><span class="p">()</span>
-
-                <span class="n">collapse_form</span><span class="p">[</span><span class="n">Li</span><span class="p">][</span><span class="n">Ljd</span><span class="p">]</span> <span class="o">=</span> <span class="n">coeff</span>
-
-        <span class="n">basis</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">collapse_form</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-
-        <span class="n">warn_msg</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="s2">&quot;Warning: the Liouvillian is probably malformed: &quot;</span>
-            <span class="s2">&quot;The coefficients of SPre(</span><span class="si">{!s}</span><span class="s2">)*SPost(</span><span class="si">{!s}</span><span class="s2">) and &quot;</span>
-            <span class="s2">&quot;SPre(</span><span class="si">{!s}</span><span class="s2">)*SPost(</span><span class="si">{!s}</span><span class="s2">) should be complex conjugates &quot;</span>
-            <span class="s2">&quot;of each other&quot;</span>
-        <span class="p">)</span>
-        <span class="k">for</span> <span class="n">ii</span><span class="p">,</span> <span class="n">Li</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">basis</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">Lj</span> <span class="ow">in</span> <span class="n">basis</span><span class="p">[</span><span class="n">ii</span><span class="p">:]:</span>
-                <span class="n">cij</span> <span class="o">=</span> <span class="n">collapse_form</span><span class="p">[</span><span class="n">Li</span><span class="p">][</span><span class="n">Lj</span><span class="o">.</span><span class="n">adjoint</span><span class="p">()]</span>
-                <span class="n">cji</span> <span class="o">=</span> <span class="n">collapse_form</span><span class="p">[</span><span class="n">Lj</span><span class="p">][</span><span class="n">Li</span><span class="o">.</span><span class="n">adjoint</span><span class="p">()]</span>
-                <span class="k">if</span> <span class="n">cij</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">cji</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="n">diff</span> <span class="o">=</span> <span class="n">cij</span><span class="o">.</span><span class="n">conjugate</span><span class="p">()</span> <span class="o">-</span> <span class="n">cji</span>
-                    <span class="k">try</span><span class="p">:</span>
-                        <span class="n">diff</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
-                        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">1e-6</span><span class="p">:</span>
-                            <span class="nb">print</span><span class="p">(</span>
-                                <span class="n">warn_msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                                    <span class="n">Li</span><span class="p">,</span> <span class="n">Lj</span><span class="o">.</span><span class="n">adjoint</span><span class="p">(),</span> <span class="n">Lj</span><span class="p">,</span> <span class="n">Li</span><span class="o">.</span><span class="n">adjoint</span><span class="p">()</span>
-                                <span class="p">)</span>
-                            <span class="p">)</span>
-                    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-                        <span class="n">symbolic</span> <span class="o">=</span> <span class="kc">True</span>
-                        <span class="k">if</span> <span class="n">diff</span><span class="o">.</span><span class="n">simplify</span><span class="p">():</span>
-                            <span class="nb">print</span><span class="p">(</span>
-                                <span class="s2">&quot;Warning: the Liouvillian my be malformed, &quot;</span>
-                                <span class="s2">&quot;convert to numerical representation&quot;</span>
-                            <span class="p">)</span>
-        <span class="n">final_Lis</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">if</span> <span class="n">symbolic</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">basis</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="n">l1</span> <span class="o">=</span> <span class="n">basis</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-                <span class="n">kappa1</span> <span class="o">=</span> <span class="n">collapse_form</span><span class="p">[</span><span class="n">l1</span><span class="p">][</span><span class="n">l1</span><span class="o">.</span><span class="n">adjoint</span><span class="p">()]</span>
-                <span class="n">final_Lis</span> <span class="o">=</span> <span class="p">[</span><span class="n">sqrt</span><span class="p">(</span><span class="n">kappa1</span><span class="p">)</span> <span class="o">*</span> <span class="n">l1</span><span class="p">]</span>
-                <span class="n">sdiff</span> <span class="o">=</span> <span class="n">l1</span><span class="o">.</span><span class="n">adjoint</span><span class="p">()</span> <span class="o">*</span> <span class="n">l1</span> <span class="o">*</span> <span class="n">kappa1</span> <span class="o">/</span> <span class="mi">2</span>
-                <span class="n">spres</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sdiff</span><span class="p">)</span>
-                <span class="n">sposts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sdiff</span><span class="p">)</span>
-            <span class="c1">#            elif len(basis) == 2:</span>
-            <span class="c1">#                l1, l2 = basis</span>
-            <span class="c1">#                kappa_1 = collapse_form[l1][l1.adjoint()]</span>
-            <span class="c1">#                kappa_2 = collapse_form[l2][l2.adjoint()]</span>
-            <span class="c1">#                kappa_12 = collapse_form[l1][l2.adjoint()]</span>
-            <span class="c1">#                kappa_21 = collapse_form[l2][l1.adjoint()]</span>
-            <span class="c1">##                assert (kappa_12.conjugate() - kappa_21) == 0</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">M</span> <span class="o">=</span> <span class="n">SympyMatrix</span><span class="p">(</span>
-                    <span class="nb">len</span><span class="p">(</span><span class="n">basis</span><span class="p">),</span>
-                    <span class="nb">len</span><span class="p">(</span><span class="n">basis</span><span class="p">),</span>
-                    <span class="k">lambda</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> <span class="n">collapse_form</span><span class="p">[</span><span class="n">basis</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="n">basis</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">adjoint</span><span class="p">()],</span>
-                <span class="p">)</span>
-
-                <span class="c1"># First check if M is already diagonal (sympy does not handle</span>
-                <span class="c1"># this well, for some reason)</span>
-                <span class="n">diag</span> <span class="o">=</span> <span class="kc">True</span>
-                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">basis</span><span class="p">)):</span>
-                    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
-                        <span class="k">if</span> <span class="p">(</span>
-                            <span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">apply_rules</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span>
-                            <span class="ow">or</span> <span class="n">M</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">apply_rules</span> <span class="o">!=</span> <span class="mi">0</span>
-                        <span class="p">):</span>
-                            <span class="n">diag</span> <span class="o">=</span> <span class="kc">False</span>
-                            <span class="k">break</span>
-                    <span class="k">if</span> <span class="ow">not</span> <span class="n">diag</span><span class="p">:</span>
-                        <span class="k">break</span>
-                <span class="k">if</span> <span class="n">diag</span><span class="p">:</span>
-                    <span class="k">for</span> <span class="n">bj</span> <span class="ow">in</span> <span class="n">basis</span><span class="p">:</span>
-                        <span class="n">final_Lis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                            <span class="n">bj</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">collapse_form</span><span class="p">[</span><span class="n">bj</span><span class="p">][</span><span class="n">bj</span><span class="o">.</span><span class="n">adjoint</span><span class="p">()])</span>
-                        <span class="p">)</span>
-                        <span class="n">sdiff</span> <span class="o">=</span> <span class="p">(</span>
-                            <span class="n">bj</span><span class="o">.</span><span class="n">adjoint</span><span class="p">()</span>
-                            <span class="o">*</span> <span class="n">bj</span>
-                            <span class="o">*</span> <span class="n">collapse_form</span><span class="p">[</span><span class="n">bj</span><span class="p">][</span><span class="n">bj</span><span class="o">.</span><span class="n">adjoint</span><span class="p">()]</span>
-                            <span class="o">/</span> <span class="mi">2</span>
-                        <span class="p">)</span>
-                        <span class="n">spres</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sdiff</span><span class="p">)</span>
-                        <span class="n">sposts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sdiff</span><span class="p">)</span>
-
-                <span class="c1"># Try sympy algo</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="k">try</span><span class="p">:</span>
-                        <span class="n">data</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">eigenvects</span><span class="p">()</span>
-
-                        <span class="k">for</span> <span class="n">evalue</span><span class="p">,</span> <span class="n">multiplicity</span><span class="p">,</span> <span class="n">ebasis</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-                            <span class="k">if</span> <span class="ow">not</span> <span class="n">evalue</span><span class="p">:</span>
-                                <span class="k">continue</span>
-                            <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">ebasis</span><span class="p">:</span>
-                                <span class="n">new_L</span> <span class="o">=</span> <span class="p">(</span>
-                                    <span class="n">sqrt</span><span class="p">(</span><span class="n">evalue</span><span class="p">)</span>
-                                    <span class="o">*</span> <span class="nb">sum</span><span class="p">(</span>
-                                        <span class="n">cj</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">Lj</span>
-                                        <span class="k">for</span> <span class="p">(</span><span class="n">cj</span><span class="p">,</span> <span class="n">Lj</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">basis</span><span class="p">)</span>
-                                    <span class="p">)</span>
-                                <span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span>
-                                <span class="n">final_Lis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_L</span><span class="p">)</span>
-                                <span class="n">sdiff</span> <span class="o">=</span> <span class="p">(</span><span class="n">new_L</span><span class="o">.</span><span class="n">adjoint</span><span class="p">()</span> <span class="o">*</span> <span class="n">new_L</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span>
-                                <span class="n">spres</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sdiff</span><span class="p">)</span>
-                                <span class="n">sposts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sdiff</span><span class="p">)</span>
-
-                    <span class="k">except</span> <span class="ne">NotImplementedError</span><span class="p">:</span>
-                        <span class="k">raise</span> <span class="n">CannotSymbolicallyDiagonalize</span><span class="p">(</span>
-                            <span class="p">(</span>
-                                <span class="s2">&quot;The matrix </span><span class="si">{}</span><span class="s2"> is too hard to diagonalize &quot;</span>
-                                <span class="s2">&quot;symbolically. Please try converting to fully &quot;</span>
-                                <span class="s2">&quot;numerical representation.&quot;</span>
-                            <span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
-                        <span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">M</span> <span class="o">=</span> <span class="n">np_array</span><span class="p">(</span>
-                <span class="p">[</span>
-                    <span class="p">[</span><span class="nb">complex</span><span class="p">(</span><span class="n">collapse_form</span><span class="p">[</span><span class="n">Li</span><span class="p">][</span><span class="n">Lj</span><span class="o">.</span><span class="n">adjoint</span><span class="p">()])</span> <span class="k">for</span> <span class="n">Lj</span> <span class="ow">in</span> <span class="n">basis</span><span class="p">]</span>
-                    <span class="k">for</span> <span class="n">Li</span> <span class="ow">in</span> <span class="n">basis</span>
-                <span class="p">]</span>
-            <span class="p">)</span>
-
-            <span class="n">vals</span><span class="p">,</span> <span class="n">vecs</span> <span class="o">=</span> <span class="n">eigh</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">sv</span><span class="p">,</span> <span class="n">vec</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">np_sqrt</span><span class="p">(</span><span class="n">vals</span><span class="p">),</span> <span class="n">vecs</span><span class="o">.</span><span class="n">transpose</span><span class="p">()):</span>
-                <span class="n">new_L</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">sv</span> <span class="o">*</span> <span class="n">ci</span><span class="p">)</span> <span class="o">*</span> <span class="n">Li</span> <span class="k">for</span> <span class="p">(</span><span class="n">ci</span><span class="p">,</span> <span class="n">Li</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span> <span class="n">basis</span><span class="p">))</span>
-                <span class="n">final_Lis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_L</span><span class="p">)</span>
-                <span class="n">sdiff</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">new_L</span><span class="o">.</span><span class="n">adjoint</span><span class="p">()</span> <span class="o">*</span> <span class="n">new_L</span><span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span>
-                <span class="n">spres</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sdiff</span><span class="p">)</span>
-                <span class="n">sposts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sdiff</span><span class="p">)</span>
-
-        <span class="n">miHspre</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">spres</span><span class="p">)</span>
-        <span class="n">iHspost</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">sposts</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="p">(</span><span class="n">miHspre</span> <span class="o">+</span> <span class="n">iHspost</span><span class="p">)</span> <span class="ow">is</span> <span class="n">ZeroOperator</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="p">(</span>
-            <span class="n">miHspre</span><span class="o">.</span><span class="n">adjoint</span><span class="p">()</span> <span class="o">+</span> <span class="n">miHspre</span>
-        <span class="p">)</span> <span class="ow">is</span> <span class="n">ZeroOperator</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Warning, potentially malformed Liouvillian </span><span class="si">{!s}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">L</span><span class="p">))</span>
-
-        <span class="n">final_H</span> <span class="o">=</span> <span class="p">(</span><span class="n">I</span> <span class="o">*</span> <span class="n">miHspre</span><span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">final_H</span><span class="p">,</span> <span class="n">final_Lis</span>
-
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">L</span> <span class="ow">is</span> <span class="n">ZeroSuperOperator</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">ZeroOperator</span><span class="p">,</span> <span class="p">[]</span>
-
-        <span class="k">raise</span> <span class="n">BadLiouvillianError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">L</span><span class="p">))</span></div>
 
 
 <span class="n">SuperOperator</span><span class="o">.</span><span class="n">_zero</span> <span class="o">=</span> <span class="n">ZeroSuperOperator</span>
@@ -918,7 +678,7 @@
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Jun 30, 2020.
+        Last updated on Jul 06, 2020.
       </span>
 
     </p>

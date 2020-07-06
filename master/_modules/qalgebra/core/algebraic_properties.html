@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.algebraic_properties &mdash; QAlgebra 2.0.0-dev (191a4de) documentation</title>
+  <title>qalgebra.core.algebraic_properties &mdash; QAlgebra 2.0.0-dev (9c7cf0a) documentation</title>
   
 
   
@@ -205,7 +205,6 @@
     <span class="s1">&#39;idem&#39;</span><span class="p">,</span>
     <span class="s1">&#39;orderby&#39;</span><span class="p">,</span>
     <span class="s1">&#39;filter_neutral&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;filter_cid&#39;</span><span class="p">,</span>
     <span class="s1">&#39;match_replace&#39;</span><span class="p">,</span>
     <span class="s1">&#39;match_replace_binary&#39;</span><span class="p">,</span>
     <span class="s1">&#39;check_cdims&#39;</span><span class="p">,</span>
@@ -392,9 +391,9 @@
 
 
 <div class="viewcode-block" id="collect_scalar_summands"><a class="viewcode-back" href="../../../API/qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.collect_scalar_summands">[docs]</a><span class="k">def</span> <span class="nf">collect_scalar_summands</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ops</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Collect :class:`ValueScalar` and :class:`ScalarExpression` summands</span>
+    <span class="sd">&quot;&quot;&quot;Collect :class:`.ScalarValue` and :class:`.ScalarExpression` summands.</span>
 
-<span class="sd">    Example:</span>
+<span class="sd">    Example::</span>
 <span class="sd">        &gt;&gt;&gt; srepr(collect_scalar_summands(Scalar, (1, 2, 3), {}))</span>
 <span class="sd">        &#39;ScalarValue(6)&#39;</span>
 <span class="sd">        &gt;&gt;&gt; collect_scalar_summands(Scalar, (1, 1, -1), {})</span>
@@ -417,11 +416,11 @@
     <span class="c1"># &quot;ScalarTimesQuantumExpression&quot; for scalars: we have to extract</span>
     <span class="c1"># coefficiencts from ScalarTimes instead</span>
     <span class="kn">from</span> <span class="nn">qalgebra.core.scalar_algebra</span> <span class="kn">import</span> <span class="p">(</span>
-        <span class="n">Zero</span><span class="p">,</span>
         <span class="n">One</span><span class="p">,</span>
         <span class="n">Scalar</span><span class="p">,</span>
         <span class="n">ScalarTimes</span><span class="p">,</span>
         <span class="n">ScalarValue</span><span class="p">,</span>
+        <span class="n">Zero</span><span class="p">,</span>
     <span class="p">)</span>
 
     <span class="n">a_0</span> <span class="o">=</span> <span class="n">Zero</span>
@@ -671,28 +670,11 @@
     <span class="k">return</span> <span class="n">ops</span><span class="p">,</span> <span class="n">kwargs</span></div>
 
 
-<div class="viewcode-block" id="filter_cid"><a class="viewcode-back" href="../../../API/qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.filter_cid">[docs]</a><span class="k">def</span> <span class="nf">filter_cid</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ops</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Remove occurrences of the :func:`.circuit_identity` ``cid(n)`` for any</span>
-<span class="sd">    ``n``. Cf. :func:`filter_neutral`</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">qalgebra.core.circuit_algebra</span> <span class="kn">import</span> <span class="n">CircuitZero</span><span class="p">,</span> <span class="n">circuit_identity</span>
-
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ops</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">CircuitZero</span>
-    <span class="n">fops</span> <span class="o">=</span> <span class="p">[</span><span class="n">op</span> <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">ops</span> <span class="k">if</span> <span class="n">op</span> <span class="o">!=</span> <span class="n">circuit_identity</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">cdim</span><span class="p">)]</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">fops</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">fops</span><span class="p">,</span> <span class="n">kwargs</span>
-    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">fops</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="c1"># the remaining operand is the single non-trivial one</span>
-        <span class="k">return</span> <span class="n">fops</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="c1"># the original list of operands consists only of neutral elements</span>
-        <span class="k">return</span> <span class="n">ops</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
-
-
 <div class="viewcode-block" id="convert_to_spaces"><a class="viewcode-back" href="../../../API/qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.convert_to_spaces">[docs]</a><span class="k">def</span> <span class="nf">convert_to_spaces</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ops</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;For all operands that are merely of type str or int, substitute</span>
-<span class="sd">    LocalSpace objects with corresponding labels:</span>
+    <span class="sd">&quot;&quot;&quot;Allow for :class:`str`, :class:`int` as :class:`.LocalSpace` shorthand.</span>
+
+<span class="sd">    For all operands that are merely of type str or int, substitute</span>
+<span class="sd">    :class:`.LocalSpace` objects with corresponding labels:</span>
 <span class="sd">    For a string, just itself, for an int, a string version of that int.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">from</span> <span class="nn">qalgebra.core.hilbert_space_algebra</span> <span class="kn">import</span> <span class="n">HilbertSpace</span><span class="p">,</span> <span class="n">LocalSpace</span>
@@ -702,7 +684,7 @@
 
 
 <div class="viewcode-block" id="empty_trivial"><a class="viewcode-back" href="../../../API/qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.empty_trivial">[docs]</a><span class="k">def</span> <span class="nf">empty_trivial</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ops</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;A ProductSpace of zero Hilbert spaces should yield the TrivialSpace&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;A ProductSpace of zero Hilbert spaces should yield the TrivialSpace.&quot;&quot;&quot;</span>
     <span class="kn">from</span> <span class="nn">qalgebra.core.hilbert_space_algebra</span> <span class="kn">import</span> <span class="n">TrivialSpace</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ops</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -717,12 +699,12 @@
 <span class="sd">    as any keyword argument with one of the given keys.</span>
 
 <span class="sd">    The exact type of the resulting Hilbert space is determined by</span>
-<span class="sd">    the `default_hs_cls` argument of :func:`init_algebra`.</span>
+<span class="sd">    the `default_hs_cls` argument of :func:`.init_algebra`.</span>
 
 <span class="sd">    In many cases, we have :func:`implied_local_space` (in ``create``) in</span>
 <span class="sd">    addition to a conversion in ``__init__``, so</span>
 <span class="sd">    that :func:`match_replace` etc can rely on the relevant arguments being a</span>
-<span class="sd">    :class:`HilbertSpace` instance.</span>
+<span class="sd">    :class:`.HilbertSpace` instance.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">from</span> <span class="nn">qalgebra.core.hilbert_space_algebra</span> <span class="kn">import</span> <span class="n">HilbertSpace</span><span class="p">,</span> <span class="n">LocalSpace</span>
 
@@ -869,7 +851,7 @@
 
 <div class="viewcode-block" id="basis_ket_zero_outside_hs"><a class="viewcode-back" href="../../../API/qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.basis_ket_zero_outside_hs">[docs]</a><span class="k">def</span> <span class="nf">basis_ket_zero_outside_hs</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ops</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;For ``BasisKet.create(ind, hs)`` with an integer label `ind`, return a</span>
-<span class="sd">    :class:`ZeroKet` if `ind` is outside of the range of the underlying Hilbert</span>
+<span class="sd">    :obj:`.ZeroKet` if `ind` is outside of the range of the underlying Hilbert</span>
 <span class="sd">    space</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">from</span> <span class="nn">qalgebra.core.state_algebra</span> <span class="kn">import</span> <span class="n">ZeroKet</span>
@@ -1004,10 +986,10 @@
 
 <span class="sd">    Auxiliary routine for :func:`_expand_delta`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">qalgebra.core.scalar_algebra</span> <span class="kn">import</span> <span class="n">ScalarValue</span>
     <span class="kn">from</span> <span class="nn">qalgebra.core.abstract_quantum_algebra</span> <span class="kn">import</span> <span class="p">(</span>
         <span class="n">ScalarTimesQuantumExpression</span><span class="p">,</span>
     <span class="p">)</span>
+    <span class="kn">from</span> <span class="nn">qalgebra.core.scalar_algebra</span> <span class="kn">import</span> <span class="n">ScalarValue</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">ScalarTimesQuantumExpression</span><span class="p">):</span>
         <span class="k">yield from</span> <span class="n">_factors_for_expand_delta</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">coeff</span><span class="p">)</span>
@@ -1070,7 +1052,7 @@
         <span class="n">QuantumExpression</span><span class="p">,</span>
         <span class="n">ScalarTimesQuantumExpression</span><span class="p">,</span>
     <span class="p">)</span>
-    <span class="kn">from</span> <span class="nn">qalgebra.core.scalar_algebra</span> <span class="kn">import</span> <span class="n">ScalarValue</span><span class="p">,</span> <span class="n">ScalarTimes</span><span class="p">,</span> <span class="n">One</span>
+    <span class="kn">from</span> <span class="nn">qalgebra.core.scalar_algebra</span> <span class="kn">import</span> <span class="n">One</span><span class="p">,</span> <span class="n">ScalarTimes</span><span class="p">,</span> <span class="n">ScalarValue</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">ScalarTimesQuantumExpression</span><span class="p">):</span>
         <span class="n">sympy_factor</span><span class="p">,</span> <span class="n">quantum_factor</span> <span class="o">=</span> <span class="n">_split_sympy_quantum_factor</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">coeff</span><span class="p">)</span>
@@ -1216,13 +1198,11 @@
 
 
 <div class="viewcode-block" id="derivative_via_diff"><a class="viewcode-back" href="../../../API/qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.derivative_via_diff">[docs]</a><span class="k">def</span> <span class="nf">derivative_via_diff</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ops</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Implementation of the :meth:`QuantumDerivative.create` interface via the</span>
-<span class="sd">    use of :meth:`QuantumExpression._diff`.</span>
+    <span class="sd">&quot;&quot;&quot;Delegate :meth:`.QuantumDerivative.create` to the ``_diff`` method.</span>
 
 <span class="sd">    Thus, by having :meth:`.QuantumExpression.diff` delegate to</span>
-<span class="sd">    :meth:`.QuantumDerivative.create`, instead of</span>
-<span class="sd">    :meth:`.QuantumExpression._diff` directly, we get automatic caching of</span>
-<span class="sd">    derivatives</span>
+<span class="sd">    :meth:`.QuantumDerivative.create`, instead of the ``_diff`` method</span>
+<span class="sd">    directly, we get automatic caching of derivatives</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">ops</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
     <span class="n">op</span> <span class="o">=</span> <span class="n">ops</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -1232,7 +1212,7 @@
     <span class="c1"># that&#39;s happening in `QuantumDerivative.create`</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">sym</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="ow">in</span> <span class="n">derivs</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">sym</span><span class="o">.</span><span class="n">free_symbols</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">free_symbols</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
                 <span class="n">op</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">_diff</span><span class="p">(</span><span class="n">sym</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">op</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_zero</span>
@@ -1260,7 +1240,7 @@
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Jun 30, 2020.
+        Last updated on Jul 06, 2020.
       </span>
 
     </p>

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.utils.containers &mdash; QAlgebra 2.0.0-dev (191a4de) documentation</title>
+  <title>qalgebra.utils.containers &mdash; QAlgebra 2.0.0-dev (9c7cf0a) documentation</title>
   
 
   
@@ -204,17 +204,14 @@
 
 <span class="sd">    See `sorted` for details on optional arguments to customize the sorting.</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    iterable : Iterable</span>
-<span class="sd">        Iterable returning a finite number of elements to sort.</span>
-<span class="sd">    kwargs</span>
+<span class="sd">    Args:</span>
+<span class="sd">        Iterable of a finite number of elements to sort.</span>
+<span class="sd">    kwargs:</span>
 <span class="sd">        Keyword arguments are passed on to `sorted`.</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    list</span>
-<span class="sd">        List of elements, sorted if orderable, otherwise kept in the order of iteration.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        List of elements in `iterable`, sorted if orderable, otherwise kept in</span>
+<span class="sd">        the order of iteration.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
@@ -226,31 +223,25 @@
 <div class="viewcode-block" id="nested_tuple"><a class="viewcode-back" href="../../../API/qalgebra.utils.containers.html#qalgebra.utils.containers.nested_tuple">[docs]</a><span class="k">def</span> <span class="nf">nested_tuple</span><span class="p">(</span><span class="n">container</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Recursively transform a container structure to a nested tuple.</span>
 
-<span class="sd">    The function understands container types inheriting from the selected abstract base</span>
-<span class="sd">    classes in `collections.abc`, and performs the following replacements:</span>
-<span class="sd">    `Mapping`</span>
-<span class="sd">        `tuple` of key-value pair `tuple`s. The order is preserved in the case of an</span>
-<span class="sd">        `OrderedDict`, otherwise the key-value pairs are sorted if orderable and</span>
-<span class="sd">        otherwise kept in the order of iteration.</span>
-<span class="sd">    `Sequence`</span>
-<span class="sd">        `tuple` containing the same elements in unchanged order.</span>
-<span class="sd">    `Container and Iterable and Sized` (equivalent to `Collection` in python &gt;= 3.6)</span>
-<span class="sd">        `tuple` containing the same elements in sorted order if orderable and otherwise</span>
-<span class="sd">        kept in the order of iteration.</span>
-<span class="sd">    The function recurses into these container types to perform the same replacement,</span>
-<span class="sd">    and leaves objects of other types untouched.</span>
+<span class="sd">    The function understands container types inheriting from the selected</span>
+<span class="sd">    abstract base classes in `collections.abc`, and performs the following</span>
+<span class="sd">    replacements:</span>
 
-<span class="sd">    The returned container is hashable if and only if all the values contained in the</span>
-<span class="sd">    original data structure are hashable.</span>
+<span class="sd">    * `Mapping` to tuple of key-value pair tuples.</span>
+<span class="sd">    * `Sequence` to tuple containing the same elements in unchanged order.</span>
+<span class="sd">    * `Collection` to tuple containing the same elements in sorted order if</span>
+<span class="sd">        orderable and otherwise in the order of iteration.</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    container</span>
-<span class="sd">        Data structure to transform into a nested tuple.</span>
+<span class="sd">    The function recurses into these container types to perform the same</span>
+<span class="sd">    replacement, and leaves objects of other types untouched.</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    tuple</span>
+<span class="sd">    The returned container is hashable if and only if all the values contained</span>
+<span class="sd">    in the original data structure are hashable.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        container: Data structure to transform into a nested tuple.</span>
+
+<span class="sd">    Returns:</span>
 <span class="sd">        Nested tuple containing the same data as `container`.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -283,7 +274,7 @@
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Jun 30, 2020.
+        Last updated on Jul 06, 2020.
       </span>
 
     </p>

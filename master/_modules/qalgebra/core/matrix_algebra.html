@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.matrix_algebra &mdash; QAlgebra 2.0.0-dev (191a4de) documentation</title>
+  <title>qalgebra.core.matrix_algebra &mdash; QAlgebra 2.0.0-dev (9c7cf0a) documentation</title>
   
 
   
@@ -218,11 +218,7 @@
 
 
 <div class="viewcode-block" id="Matrix"><a class="viewcode-back" href="../../../API/qalgebra.core.matrix_algebra.html#qalgebra.core.matrix_algebra.Matrix">[docs]</a><span class="k">class</span> <span class="nc">Matrix</span><span class="p">(</span><span class="n">Expression</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Matrix of Expressions</span>
-
-<span class="sd">    Matrices of :class:`Operator` expressions are required for the SLH</span>
-<span class="sd">    formalism.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Matrix of Expressions.&quot;&quot;&quot;</span>
 
     <span class="n">matrix</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">_hash</span> <span class="o">=</span> <span class="kc">None</span>
@@ -373,7 +369,7 @@
 <span class="sd">        This is defined only if all the entries in the matrix have a defined</span>
 <span class="sd">        conjugate (i.e., they have a `conjugate` method). This is *not* the</span>
 <span class="sd">        case for a matrix of operators. In such a case, only an</span>
-<span class="sd">        :meth:`elementwise` :func:`adjoint` would be applicable, but this is</span>
+<span class="sd">        elementwise :func:`adjoint` would be applicable, but this is</span>
 <span class="sd">        mathematically different from a complex conjugate.</span>
 
 <span class="sd">        Raises:</span>
@@ -493,7 +489,7 @@
 <span class="sd">        new operator matrix of the same shape.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            func (FunctionType): A function to be applied to each element. It</span>
+<span class="sd">            func (callable): A function to be applied to each element. It</span>
 <span class="sd">                must take the element as its first argument.</span>
 <span class="sd">            args: Additional positional arguments to be passed to `func`</span>
 <span class="sd">            kwargs: Additional keyword arguments to be passed to `func`</span>
@@ -579,12 +575,12 @@
 
 
 <div class="viewcode-block" id="hstackm"><a class="viewcode-back" href="../../../API/qalgebra.core.matrix_algebra.html#qalgebra.core.matrix_algebra.hstackm">[docs]</a><span class="k">def</span> <span class="nf">hstackm</span><span class="p">(</span><span class="n">matrices</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Generalizes `numpy.hstack` to :class:`Matrix` objects.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Generalizes `numpy.hstack` to :class:`.Matrix` objects.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">Matrix</span><span class="p">(</span><span class="n">np_hstack</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">matrix</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">matrices</span><span class="p">)))</span></div>
 
 
 <div class="viewcode-block" id="vstackm"><a class="viewcode-back" href="../../../API/qalgebra.core.matrix_algebra.html#qalgebra.core.matrix_algebra.vstackm">[docs]</a><span class="k">def</span> <span class="nf">vstackm</span><span class="p">(</span><span class="n">matrices</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Generalizes `numpy.vstack` to :class:`Matrix` objects.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Generalizes `numpy.vstack` to :class:`.Matrix` objects.&quot;&quot;&quot;</span>
     <span class="n">arr</span> <span class="o">=</span> <span class="n">np_vstack</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">matrix</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">matrices</span><span class="p">))</span>
     <span class="c1">#    print(tuple(m.matrix.dtype for m in matrices))</span>
     <span class="c1">#    print(arr.dtype)</span>
@@ -593,7 +589,7 @@
 
 <div class="viewcode-block" id="diagm"><a class="viewcode-back" href="../../../API/qalgebra.core.matrix_algebra.html#qalgebra.core.matrix_algebra.diagm">[docs]</a><span class="k">def</span> <span class="nf">diagm</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Generalizes the diagonal matrix creation capabilities of `numpy.diag` to</span>
-<span class="sd">    :class:`Matrix` objects.&quot;&quot;&quot;</span>
+<span class="sd">    :class:`.Matrix` objects.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">Matrix</span><span class="p">(</span><span class="n">np_diag</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span></div>
 
 
@@ -630,7 +626,7 @@
 
 
 <div class="viewcode-block" id="zerosm"><a class="viewcode-back" href="../../../API/qalgebra.core.matrix_algebra.html#qalgebra.core.matrix_algebra.zerosm">[docs]</a><span class="k">def</span> <span class="nf">zerosm</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Generalizes ``numpy.zeros`` to :py:class:`Matrix` objects.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Generalizes ``numpy.zeros`` to :class:`.Matrix` objects.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">Matrix</span><span class="p">(</span><span class="n">np_zeros</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span></div>
 </pre></div>
 
@@ -647,7 +643,7 @@
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Jun 30, 2020.
+        Last updated on Jul 06, 2020.
       </span>
 
     </p>

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.algebraic_properties module &mdash; QAlgebra 2.0.0-dev (191a4de) documentation</title>
+  <title>qalgebra.core.algebraic_properties module &mdash; QAlgebra 2.0.0-dev (9c7cf0a) documentation</title>
   
 
   
@@ -266,13 +266,13 @@
 <td><p>Flatten nested indexed structures while pulling out possible prefactors</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.basis_ket_zero_outside_hs" title="qalgebra.core.algebraic_properties.basis_ket_zero_outside_hs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">basis_ket_zero_outside_hs</span></code></a></p></td>
-<td><p>For <code class="docutils literal notranslate"><span class="pre">BasisKet.create(ind,</span> <span class="pre">hs)</span></code> with an integer label <cite>ind</cite>, return a <code class="xref py py-class docutils literal notranslate"><span class="pre">ZeroKet</span></code> if <cite>ind</cite> is outside of the range of the underlying Hilbert space</p></td>
+<td><p>For <code class="docutils literal notranslate"><span class="pre">BasisKet.create(ind,</span> <span class="pre">hs)</span></code> with an integer label <cite>ind</cite>, return a <a class="reference internal" href="qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.ZeroKet" title="qalgebra.core.state_algebra.ZeroKet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ZeroKet</span></code></a> if <cite>ind</cite> is outside of the range of the underlying Hilbert space</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.check_cdims" title="qalgebra.core.algebraic_properties.check_cdims"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_cdims</span></code></a></p></td>
 <td><p>Check that all operands (<cite>ops</cite>) have equal channel dimension.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.collect_scalar_summands" title="qalgebra.core.algebraic_properties.collect_scalar_summands"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collect_scalar_summands</span></code></a></p></td>
-<td><p>Collect <code class="xref py py-class docutils literal notranslate"><span class="pre">ValueScalar</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarExpression</span></code> summands</p></td>
+<td><p>Collect <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.ScalarValue" title="qalgebra.core.scalar_algebra.ScalarValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarValue</span></code></a> and <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.ScalarExpression" title="qalgebra.core.scalar_algebra.ScalarExpression"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarExpression</span></code></a> summands.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.collect_summands" title="qalgebra.core.algebraic_properties.collect_summands"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collect_summands</span></code></a></p></td>
 <td><p>Collect summands that occur multiple times into a single summand</p></td>
@@ -284,48 +284,45 @@
 <td><p>Convert any entry in <cite>ops</cite> that is not a <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code></a> instance into a <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.ScalarValue" title="qalgebra.core.scalar_algebra.ScalarValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarValue</span></code></a> instance</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.convert_to_spaces" title="qalgebra.core.algebraic_properties.convert_to_spaces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_to_spaces</span></code></a></p></td>
-<td><p>For all operands that are merely of type str or int, substitute LocalSpace objects with corresponding labels: For a string, just itself, for an int, a string version of that int.</p></td>
+<td><p>Allow for <a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> as <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a> shorthand.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.delegate_to_method" title="qalgebra.core.algebraic_properties.delegate_to_method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delegate_to_method</span></code></a></p></td>
 <td><p>Create a simplification rule that delegates the instantiation to the method <cite>mtd</cite> of the operand (if defined)</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.derivative_via_diff" title="qalgebra.core.algebraic_properties.derivative_via_diff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">derivative_via_diff</span></code></a></p></td>
-<td><p>Implementation of the <code class="xref py py-meth docutils literal notranslate"><span class="pre">QuantumDerivative.create()</span></code> interface via the use of <code class="xref py py-meth docutils literal notranslate"><span class="pre">QuantumExpression._diff()</span></code>.</p></td>
+<td><p>Delegate <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumDerivative.create" title="qalgebra.core.abstract_quantum_algebra.QuantumDerivative.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">QuantumDerivative.create()</span></code></a> to the <code class="docutils literal notranslate"><span class="pre">_diff</span></code> method.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.disjunct_hs_zero" title="qalgebra.core.algebraic_properties.disjunct_hs_zero"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disjunct_hs_zero</span></code></a></p></td>
 <td><p>Return ZeroOperator if all the operators in <cite>ops</cite> have a disjunct Hilbert space, or an unchanged <cite>ops</cite>, <cite>kwargs</cite> otherwise</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.empty_trivial" title="qalgebra.core.algebraic_properties.empty_trivial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">empty_trivial</span></code></a></p></td>
-<td><p>A ProductSpace of zero Hilbert spaces should yield the TrivialSpace</p></td>
+<td><p>A ProductSpace of zero Hilbert spaces should yield the TrivialSpace.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.filter_cid" title="qalgebra.core.algebraic_properties.filter_cid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter_cid</span></code></a></p></td>
-<td><p>Remove occurrences of the <code class="xref py py-func docutils literal notranslate"><span class="pre">circuit_identity()</span></code> <code class="docutils literal notranslate"><span class="pre">cid(n)</span></code> for any <code class="docutils literal notranslate"><span class="pre">n</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.filter_neutral" title="qalgebra.core.algebraic_properties.filter_neutral"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter_neutral</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.filter_neutral" title="qalgebra.core.algebraic_properties.filter_neutral"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter_neutral</span></code></a></p></td>
 <td><p>Remove occurrences of a neutral element from the argument/operand list, if that list has at least two elements.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.idem" title="qalgebra.core.algebraic_properties.idem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">idem</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.idem" title="qalgebra.core.algebraic_properties.idem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">idem</span></code></a></p></td>
 <td><p>Remove duplicate arguments and order them via the cls’s order_key key object/function.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.implied_local_space" title="qalgebra.core.algebraic_properties.implied_local_space"><code class="xref py py-obj docutils literal notranslate"><span class="pre">implied_local_space</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.implied_local_space" title="qalgebra.core.algebraic_properties.implied_local_space"><code class="xref py py-obj docutils literal notranslate"><span class="pre">implied_local_space</span></code></a></p></td>
 <td><p>Return a simplification that converts the positional argument <cite>arg_index</cite> from (str, int) to a subclass of <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a>, as well as any keyword argument with one of the given keys.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.indexed_sum_over_const" title="qalgebra.core.algebraic_properties.indexed_sum_over_const"><code class="xref py py-obj docutils literal notranslate"><span class="pre">indexed_sum_over_const</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.indexed_sum_over_const" title="qalgebra.core.algebraic_properties.indexed_sum_over_const"><code class="xref py py-obj docutils literal notranslate"><span class="pre">indexed_sum_over_const</span></code></a></p></td>
 <td><p>Execute an indexed sum over a term that does not depend on the summation indices</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.indexed_sum_over_kronecker" title="qalgebra.core.algebraic_properties.indexed_sum_over_kronecker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">indexed_sum_over_kronecker</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.indexed_sum_over_kronecker" title="qalgebra.core.algebraic_properties.indexed_sum_over_kronecker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">indexed_sum_over_kronecker</span></code></a></p></td>
 <td><p>Execute sums over KroneckerDelta prefactors</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.match_replace" title="qalgebra.core.algebraic_properties.match_replace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">match_replace</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.match_replace" title="qalgebra.core.algebraic_properties.match_replace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">match_replace</span></code></a></p></td>
 <td><p>Match and replace a full operand specification to a function that provides a replacement for the whole expression or raises a <a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.CannotSimplify" title="qalgebra.core.exceptions.CannotSimplify"><code class="xref py py-exc docutils literal notranslate"><span class="pre">CannotSimplify</span></code></a> exception.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.match_replace_binary" title="qalgebra.core.algebraic_properties.match_replace_binary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">match_replace_binary</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.match_replace_binary" title="qalgebra.core.algebraic_properties.match_replace_binary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">match_replace_binary</span></code></a></p></td>
 <td><p>Similar to func:<cite>match_replace</cite>, but for arbitrary length operations, such that each two pairs of subsequent operands are matched pairwise.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.orderby" title="qalgebra.core.algebraic_properties.orderby"><code class="xref py py-obj docutils literal notranslate"><span class="pre">orderby</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.orderby" title="qalgebra.core.algebraic_properties.orderby"><code class="xref py py-obj docutils literal notranslate"><span class="pre">orderby</span></code></a></p></td>
 <td><p>Re-order arguments via the class’s <code class="docutils literal notranslate"><span class="pre">order_key</span></code> key object/function.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.scalars_to_op" title="qalgebra.core.algebraic_properties.scalars_to_op"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scalars_to_op</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.scalars_to_op" title="qalgebra.core.algebraic_properties.scalars_to_op"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scalars_to_op</span></code></a></p></td>
 <td><p>Convert any scalar <span class="math notranslate nohighlight">\(\alpha\)</span> in <cite>ops</cite> into an operator $alpha identity$</p></td>
 </tr>
 </tbody>
@@ -422,9 +419,9 @@ with each argument.  E.g.:</p>
 <dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.collect_scalar_summands">
 <code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">collect_scalar_summands</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#collect_scalar_summands"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.collect_scalar_summands" title="Permalink to this definition">¶</a></dt>
-<dd><p>Collect <code class="xref py py-class docutils literal notranslate"><span class="pre">ValueScalar</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarExpression</span></code> summands</p>
-<p class="rubric">Example</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">srepr</span><span class="p">(</span><span class="n">collect_scalar_summands</span><span class="p">(</span><span class="n">Scalar</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">{}))</span>
+<dd><p>Collect <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.ScalarValue" title="qalgebra.core.scalar_algebra.ScalarValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarValue</span></code></a> and <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.ScalarExpression" title="qalgebra.core.scalar_algebra.ScalarExpression"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarExpression</span></code></a> summands.</p>
+<dl>
+<dt>Example::</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">srepr</span><span class="p">(</span><span class="n">collect_scalar_summands</span><span class="p">(</span><span class="n">Scalar</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">{}))</span>
 <span class="go">&#39;ScalarValue(6)&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">collect_scalar_summands</span><span class="p">(</span><span class="n">Scalar</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">{})</span>
 <span class="go">One</span>
@@ -445,6 +442,8 @@ with each argument.  E.g.:</p>
 <span class="go">Zero</span>
 </pre></div>
 </div>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -528,24 +527,18 @@ operands.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="qalgebra.core.algebraic_properties.filter_cid">
-<code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">filter_cid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#filter_cid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.filter_cid" title="Permalink to this definition">¶</a></dt>
-<dd><p>Remove occurrences of the <code class="xref py py-func docutils literal notranslate"><span class="pre">circuit_identity()</span></code> <code class="docutils literal notranslate"><span class="pre">cid(n)</span></code> for any
-<code class="docutils literal notranslate"><span class="pre">n</span></code>. Cf. <a class="reference internal" href="#qalgebra.core.algebraic_properties.filter_neutral" title="qalgebra.core.algebraic_properties.filter_neutral"><code class="xref py py-func docutils literal notranslate"><span class="pre">filter_neutral()</span></code></a></p>
-</dd></dl>
-
-<dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.convert_to_spaces">
 <code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">convert_to_spaces</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#convert_to_spaces"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.convert_to_spaces" title="Permalink to this definition">¶</a></dt>
-<dd><p>For all operands that are merely of type str or int, substitute
-LocalSpace objects with corresponding labels:
+<dd><p>Allow for <a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> as <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a> shorthand.</p>
+<p>For all operands that are merely of type str or int, substitute
+<a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a> objects with corresponding labels:
 For a string, just itself, for an int, a string version of that int.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.empty_trivial">
 <code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">empty_trivial</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#empty_trivial"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.empty_trivial" title="Permalink to this definition">¶</a></dt>
-<dd><p>A ProductSpace of zero Hilbert spaces should yield the TrivialSpace</p>
+<dd><p>A ProductSpace of zero Hilbert spaces should yield the TrivialSpace.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -555,11 +548,11 @@ For a string, just itself, for an int, a string version of that int.</p>
 <cite>arg_index</cite> from (str, int) to a subclass of <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a>, as well
 as any keyword argument with one of the given keys.</p>
 <p>The exact type of the resulting Hilbert space is determined by
-the <cite>default_hs_cls</cite> argument of <code class="xref py py-func docutils literal notranslate"><span class="pre">init_algebra()</span></code>.</p>
+the <cite>default_hs_cls</cite> argument of <a class="reference internal" href="qalgebra.html#qalgebra.init_algebra" title="qalgebra.init_algebra"><code class="xref py py-func docutils literal notranslate"><span class="pre">init_algebra()</span></code></a>.</p>
 <p>In many cases, we have <a class="reference internal" href="#qalgebra.core.algebraic_properties.implied_local_space" title="qalgebra.core.algebraic_properties.implied_local_space"><code class="xref py py-func docutils literal notranslate"><span class="pre">implied_local_space()</span></code></a> (in <code class="docutils literal notranslate"><span class="pre">create</span></code>) in
 addition to a conversion in <code class="docutils literal notranslate"><span class="pre">__init__</span></code>, so
 that <a class="reference internal" href="#qalgebra.core.algebraic_properties.match_replace" title="qalgebra.core.algebraic_properties.match_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace()</span></code></a> etc can rely on the relevant arguments being a
-<code class="xref py py-class docutils literal notranslate"><span class="pre">HilbertSpace</span></code> instance.</p>
+<a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.HilbertSpace" title="qalgebra.core.hilbert_space_algebra.HilbertSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">HilbertSpace</span></code></a> instance.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -608,7 +601,7 @@ operation applied to all corresponding kets</p>
 <dt id="qalgebra.core.algebraic_properties.basis_ket_zero_outside_hs">
 <code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">basis_ket_zero_outside_hs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#basis_ket_zero_outside_hs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.basis_ket_zero_outside_hs" title="Permalink to this definition">¶</a></dt>
 <dd><p>For <code class="docutils literal notranslate"><span class="pre">BasisKet.create(ind,</span> <span class="pre">hs)</span></code> with an integer label <cite>ind</cite>, return a
-<code class="xref py py-class docutils literal notranslate"><span class="pre">ZeroKet</span></code> if <cite>ind</cite> is outside of the range of the underlying Hilbert
+<a class="reference internal" href="qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.ZeroKet" title="qalgebra.core.state_algebra.ZeroKet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ZeroKet</span></code></a> if <cite>ind</cite> is outside of the range of the underlying Hilbert
 space</p>
 </dd></dl>
 
@@ -638,12 +631,10 @@ summation indices</p>
 <dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.derivative_via_diff">
 <code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">derivative_via_diff</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#derivative_via_diff"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.derivative_via_diff" title="Permalink to this definition">¶</a></dt>
-<dd><p>Implementation of the <code class="xref py py-meth docutils literal notranslate"><span class="pre">QuantumDerivative.create()</span></code> interface via the
-use of <code class="xref py py-meth docutils literal notranslate"><span class="pre">QuantumExpression._diff()</span></code>.</p>
+<dd><p>Delegate <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumDerivative.create" title="qalgebra.core.abstract_quantum_algebra.QuantumDerivative.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">QuantumDerivative.create()</span></code></a> to the <code class="docutils literal notranslate"><span class="pre">_diff</span></code> method.</p>
 <p>Thus, by having <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumExpression.diff" title="qalgebra.core.abstract_quantum_algebra.QuantumExpression.diff"><code class="xref py py-meth docutils literal notranslate"><span class="pre">QuantumExpression.diff()</span></code></a> delegate to
-<a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumDerivative.create" title="qalgebra.core.abstract_quantum_algebra.QuantumDerivative.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">QuantumDerivative.create()</span></code></a>, instead of
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">QuantumExpression._diff()</span></code> directly, we get automatic caching of
-derivatives</p>
+<a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumDerivative.create" title="qalgebra.core.abstract_quantum_algebra.QuantumDerivative.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">QuantumDerivative.create()</span></code></a>, instead of the <code class="docutils literal notranslate"><span class="pre">_diff</span></code> method
+directly, we get automatic caching of derivatives</p>
 </dd></dl>
 
 </div>
@@ -672,7 +663,7 @@ derivatives</p>
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Jun 30, 2020.
+        Last updated on Jul 06, 2020.
       </span>
 
     </p>

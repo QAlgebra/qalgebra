@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.convert.to_sympy_matrix module &mdash; QAlgebra 2.0.0-dev (191a4de) documentation</title>
+  <title>qalgebra.convert.to_sympy_matrix module &mdash; QAlgebra 2.0.0-dev (9c7cf0a) documentation</title>
   
 
   
@@ -275,7 +275,7 @@ of the matrix may contain symbols.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>expr</strong> – a QAlgebra expression</p></li>
-<li><p><strong>full_space</strong> (<em>qalgebra.hilbert_space_algebra.HilbertSpace</em>) – The
+<li><p><strong>full_space</strong> (<a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.HilbertSpace" title="qalgebra.core.hilbert_space_algebra.HilbertSpace"><em>HilbertSpace</em></a>) – The
 Hilbert space in which <cite>expr</cite> is defined. If not given,
 <code class="docutils literal notranslate"><span class="pre">expr.space</span></code> is used. The Hilbert space must have a well-defined
 basis.</p></li>
@@ -283,8 +283,7 @@ basis.</p></li>
 </dd>
 <dt class="field-even">Raises</dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>qalgebra.hilbert_space_algebra.BasisNotSetError</strong> – if <cite>full_space</cite>
-    does not have a defined basis</p></li>
+<li><p><a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.BasisNotSetError" title="qalgebra.core.exceptions.BasisNotSetError"><strong>BasisNotSetError</strong></a> – if <cite>full_space</cite> does not have a defined basis</p></li>
 <li><p><a class="reference external" href="https://docs.python.org/3.8/library/exceptions.html#ValueError" title="(in Python v3.8)"><strong>ValueError</strong></a> – if <cite>expr</cite> is not in <cite>full_space</cite>, or if <cite>expr</cite> cannot be
     converted.</p></li>
 </ul>
@@ -332,7 +331,7 @@ of <cite>sympy.Matrix</cite></p>
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Jun 30, 2020.
+        Last updated on Jul 06, 2020.
       </span>
 
     </p>

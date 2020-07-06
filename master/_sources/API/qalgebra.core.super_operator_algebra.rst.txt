@@ -7,7 +7,7 @@ qalgebra.core.super_operator_algebra module
 .. currentmodule:: qalgebra.core.super_operator_algebra
 
 .. automodule:: qalgebra.core.super_operator_algebra
-    :members: IdentitySuperOperator, SPost, SPre, ScalarTimesSuperOperator, SuperAdjoint, SuperCommutativeHSOrder, SuperOperator, SuperOperatorDerivative, SuperOperatorPlus, SuperOperatorSymbol, SuperOperatorTimes, SuperOperatorTimesOperator, ZeroSuperOperator, anti_commutator, commutator, lindblad, liouvillian, liouvillian_normal_form, np_sqrt
+    :members: IdentitySuperOperator, SPost, SPre, ScalarTimesSuperOperator, SuperAdjoint, SuperCommutativeHSOrder, SuperOperator, SuperOperatorDerivative, SuperOperatorPlus, SuperOperatorSymbol, SuperOperatorTimes, SuperOperatorTimesOperator, ZeroSuperOperator, anti_commutator, commutator, lindblad, liouvillian, np_sqrt
     :undoc-members:
     :show-inheritance:
     :member-order: bysource
@@ -41,7 +41,6 @@ qalgebra.core.super_operator_algebra module
         commutator
         lindblad
         liouvillian
-        liouvillian_normal_form
 
 
 
@@ -55,7 +54,7 @@ qalgebra.core.super_operator_algebra module
 
 
 
-    ``__all__``: :obj:`IdentitySuperOperator <qalgebra.core.super_operator_algebra.IdentitySuperOperator>`, :class:`SPost <qalgebra.core.super_operator_algebra.SPost>`, :class:`SPre <qalgebra.core.super_operator_algebra.SPre>`, :class:`ScalarTimesSuperOperator <qalgebra.core.super_operator_algebra.ScalarTimesSuperOperator>`, :class:`SuperAdjoint <qalgebra.core.super_operator_algebra.SuperAdjoint>`, :class:`SuperOperator <qalgebra.core.super_operator_algebra.SuperOperator>`, :class:`SuperOperatorDerivative <qalgebra.core.super_operator_algebra.SuperOperatorDerivative>`, :class:`SuperOperatorPlus <qalgebra.core.super_operator_algebra.SuperOperatorPlus>`, :class:`SuperOperatorSymbol <qalgebra.core.super_operator_algebra.SuperOperatorSymbol>`, :class:`SuperOperatorTimes <qalgebra.core.super_operator_algebra.SuperOperatorTimes>`, :class:`SuperOperatorTimesOperator <qalgebra.core.super_operator_algebra.SuperOperatorTimesOperator>`, :obj:`ZeroSuperOperator <qalgebra.core.super_operator_algebra.ZeroSuperOperator>`, :func:`anti_commutator <qalgebra.core.super_operator_algebra.anti_commutator>`, :func:`commutator <qalgebra.core.super_operator_algebra.commutator>`, :func:`lindblad <qalgebra.core.super_operator_algebra.lindblad>`, :func:`liouvillian <qalgebra.core.super_operator_algebra.liouvillian>`, :func:`liouvillian_normal_form <qalgebra.core.super_operator_algebra.liouvillian_normal_form>`
+    ``__all__``: :obj:`IdentitySuperOperator <qalgebra.core.super_operator_algebra.IdentitySuperOperator>`, :class:`SPost <qalgebra.core.super_operator_algebra.SPost>`, :class:`SPre <qalgebra.core.super_operator_algebra.SPre>`, :class:`ScalarTimesSuperOperator <qalgebra.core.super_operator_algebra.ScalarTimesSuperOperator>`, :class:`SuperAdjoint <qalgebra.core.super_operator_algebra.SuperAdjoint>`, :class:`SuperOperator <qalgebra.core.super_operator_algebra.SuperOperator>`, :class:`SuperOperatorDerivative <qalgebra.core.super_operator_algebra.SuperOperatorDerivative>`, :class:`SuperOperatorPlus <qalgebra.core.super_operator_algebra.SuperOperatorPlus>`, :class:`SuperOperatorSymbol <qalgebra.core.super_operator_algebra.SuperOperatorSymbol>`, :class:`SuperOperatorTimes <qalgebra.core.super_operator_algebra.SuperOperatorTimes>`, :class:`SuperOperatorTimesOperator <qalgebra.core.super_operator_algebra.SuperOperatorTimesOperator>`, :obj:`ZeroSuperOperator <qalgebra.core.super_operator_algebra.ZeroSuperOperator>`, :func:`anti_commutator <qalgebra.core.super_operator_algebra.anti_commutator>`, :func:`commutator <qalgebra.core.super_operator_algebra.commutator>`, :func:`lindblad <qalgebra.core.super_operator_algebra.lindblad>`, :func:`liouvillian <qalgebra.core.super_operator_algebra.liouvillian>`
 
 
 

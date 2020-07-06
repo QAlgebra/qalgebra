@@ -37,7 +37,7 @@ qalgebra.utils package
        * - :class:`FockLabel <qalgebra.utils.indices.FockLabel>`
          - Symbolic label that evaluates to the label of a basis state
        * - :class:`IdxSym <qalgebra.utils.indices.IdxSym>`
-         - Index symbol in an indexed sum or product
+         - Index symbol in an indexed sum or product.
        * - :class:`IndexOverFockSpace <qalgebra.utils.indices.IndexOverFockSpace>`
          - Index range over the integer indices of a :class:`.LocalSpace` basis
        * - :class:`IndexOverList <qalgebra.utils.indices.IndexOverList>`
@@ -45,9 +45,9 @@ qalgebra.utils package
        * - :class:`IndexOverRange <qalgebra.utils.indices.IndexOverRange>`
          - Index over the inclusive range between two integers
        * - :class:`IntIndex <qalgebra.utils.indices.IntIndex>`
-         - A symbolic label that evaluates to an integer
+         - A symbolic label that evaluates to an integer.
        * - :class:`Singleton <qalgebra.utils.singleton.Singleton>`
-         - Metaclass for singletons
+         - Metaclass for singletons.
        * - :class:`SpinIndex <qalgebra.utils.indices.SpinIndex>`
          - Symbolic label for a spin degree of freedom
        * - :class:`StrLabel <qalgebra.utils.indices.StrLabel>`
@@ -69,7 +69,7 @@ qalgebra.utils package
     .. list-table::
     
        * - :obj:`SingletonType <qalgebra.utils.singleton.SingletonType>`
-         - A dummy type that may be used to check whether an object is a Singleton::
+         - A dummy type that for checking whether an object is a Singleton.
     
 
 

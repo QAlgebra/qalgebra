@@ -40,39 +40,27 @@ qalgebra package
     .. list-table::
     
        * - :exc:`AlgebraError <qalgebra.core.exceptions.AlgebraError>`
-         - Base class for all algebraic errors
+         - Base class for all algebraic errors.
        * - :exc:`AlgebraException <qalgebra.core.exceptions.AlgebraException>`
-         - Base class for all algebraic exceptions
-       * - :exc:`BadLiouvillianError <qalgebra.core.exceptions.BadLiouvillianError>`
-         - Raised when a Liouvillian is not of standard Lindblad form.
+         - Base class for all algebraic exceptions.
        * - :exc:`BasisNotSetError <qalgebra.core.exceptions.BasisNotSetError>`
-         - Raised if the basis or a Hilbert space dimension is unavailable
-       * - :exc:`CannotConvertToSLH <qalgebra.core.exceptions.CannotConvertToSLH>`
-         - Raised when a circuit algebra object cannot be converted to SLH
-       * - :exc:`CannotEliminateAutomatically <qalgebra.core.exceptions.CannotEliminateAutomatically>`
-         - Raised when attempted automatic adiabatic elimination fails.
+         - Raised if the basis or a Hilbert space dimension is unavailable.
        * - :exc:`CannotSimplify <qalgebra.core.exceptions.CannotSimplify>`
-         - Raised when a rule cannot further simplify an expression
+         - Raised when a rule cannot further simplify an expression.
        * - :exc:`CannotSymbolicallyDiagonalize <qalgebra.core.exceptions.CannotSymbolicallyDiagonalize>`
          - Matrix cannot be diagonalized analytically.
-       * - :exc:`CannotVisualize <qalgebra.core.exceptions.CannotVisualize>`
-         - Raised when a circuit cannot be visually represented.
-       * - :exc:`IncompatibleBlockStructures <qalgebra.core.exceptions.IncompatibleBlockStructures>`
-         - Raised for invalid block-decomposition
        * - :exc:`InfiniteSumError <qalgebra.core.exceptions.InfiniteSumError>`
-         - Raised when expanding a sum into an infinite number of terms
+         - Raised when expanding a sum into an infinite number of terms.
        * - :exc:`NoConjugateMatrix <qalgebra.core.exceptions.NoConjugateMatrix>`
-         - Raised when entries of :class:`.Matrix` have no defined conjugate
+         - Raised when entries of :class:`.Matrix` have no defined conjugate.
        * - :exc:`NonSquareMatrix <qalgebra.core.exceptions.NonSquareMatrix>`
-         - Raised when a :class:`.Matrix` fails to be square
+         - Raised when a :class:`.Matrix` fails to be square.
        * - :exc:`OverlappingSpaces <qalgebra.core.exceptions.OverlappingSpaces>`
          - Raised when objects fail to be in separate Hilbert spaces.
        * - :exc:`SpaceTooLargeError <qalgebra.core.exceptions.SpaceTooLargeError>`
          - Raised when objects fail to be have overlapping Hilbert spaces.
        * - :exc:`UnequalSpaces <qalgebra.core.exceptions.UnequalSpaces>`
          - Raised when objects fail to be in the same Hilbert space.
-       * - :exc:`WrongCDimError <qalgebra.core.exceptions.WrongCDimError>`
-         - Raised for mismatched channel number in circuit series
     
 
     ``__all__`` Classes:
@@ -89,7 +77,7 @@ qalgebra package
        * - :class:`BraKet <qalgebra.core.state_algebra.BraKet>`
          - The symbolic inner product between two states
        * - :class:`CoherentStateKet <qalgebra.core.state_algebra.CoherentStateKet>`
-         - Local coherent state, labeled by a complex amplitude
+         - Local coherent state, labeled by a complex amplitude.
        * - :class:`Commutator <qalgebra.core.operator_algebra.Commutator>`
          - Commutator of two operators
        * - :class:`Create <qalgebra.library.fock_operators.Create>`
@@ -99,7 +87,7 @@ qalgebra package
        * - :class:`Displace <qalgebra.library.fock_operators.Displace>`
          - Unitary coherent displacement operator
        * - :class:`Expression <qalgebra.core.abstract_algebra.Expression>`
-         - Base class for all QAlgebra Expressions
+         - Base class for all QAlgebra Expressions.
        * - :class:`FockIndex <qalgebra.utils.indices.FockIndex>`
          - Symbolic index labeling a basis state in a :class:`.LocalSpace`
        * - :class:`FockLabel <qalgebra.utils.indices.FockLabel>`
@@ -107,7 +95,7 @@ qalgebra package
        * - :class:`HilbertSpace <qalgebra.core.hilbert_space_algebra.HilbertSpace>`
          - Base class for Hilbert spaces
        * - :class:`IdxSym <qalgebra.utils.indices.IdxSym>`
-         - Index symbol in an indexed sum or product
+         - Index symbol in an indexed sum or product.
        * - :class:`IndexOverFockSpace <qalgebra.utils.indices.IndexOverFockSpace>`
          - Index range over the integer indices of a :class:`.LocalSpace` basis
        * - :class:`IndexOverList <qalgebra.utils.indices.IndexOverList>`
@@ -117,7 +105,7 @@ qalgebra package
        * - :class:`IndexedSum <qalgebra.core.indexed_operations.IndexedSum>`
          - Base class for indexed sums
        * - :class:`IntIndex <qalgebra.utils.indices.IntIndex>`
-         - A symbolic label that evaluates to an integer
+         - A symbolic label that evaluates to an integer.
        * - :class:`Jminus <qalgebra.library.spin_algebra.Jminus>`
          - Lowering operator on a spin space
        * - :class:`Jplus <qalgebra.library.spin_algebra.Jplus>`
@@ -129,23 +117,23 @@ qalgebra package
        * - :class:`KetIndexedSum <qalgebra.core.state_algebra.KetIndexedSum>`
          - Indexed sum over Kets
        * - :class:`KetPlus <qalgebra.core.state_algebra.KetPlus>`
-         - Sum of states
+         - Sum of states.
        * - :class:`KetSymbol <qalgebra.core.state_algebra.KetSymbol>`
-         - Symbolic state
+         - Symbolic state.
        * - :class:`LocalKet <qalgebra.core.state_algebra.LocalKet>`
-         - A state on a :class:`LocalSpace`
+         - A state on a :class:`.LocalSpace`.
        * - :class:`LocalOperator <qalgebra.core.operator_algebra.LocalOperator>`
-         - Base class for "known" operators on a :class:`LocalSpace`
+         - Base class for "known" operators on a :class:`.LocalSpace`.
        * - :class:`LocalSigma <qalgebra.core.operator_algebra.LocalSigma>`
-         - Level flip operator between two levels of a :class:`.LocalSpace`
+         - Level flip operator between two levels of a :class:`.LocalSpace`.
        * - :class:`LocalSpace <qalgebra.core.hilbert_space_algebra.LocalSpace>`
          - Hilbert space for a single degree of freedom.
        * - :class:`MatchDict <qalgebra.pattern_matching.MatchDict>`
-         - Result of a :meth:`Pattern.match`
+         - Result of a :meth:`.Pattern.match`.
        * - :class:`Matrix <qalgebra.core.matrix_algebra.Matrix>`
-         - Matrix of Expressions
+         - Matrix of Expressions.
        * - :class:`NullSpaceProjector <qalgebra.core.operator_algebra.NullSpaceProjector>`
-         - Projection operator onto the nullspace of its operand
+         - Projection operator onto the nullspace of its operand.
        * - :class:`Operation <qalgebra.core.abstract_algebra.Operation>`
          - Base class for "operations"
        * - :class:`Operator <qalgebra.core.operator_algebra.Operator>`
@@ -157,7 +145,7 @@ qalgebra package
        * - :class:`OperatorPlus <qalgebra.core.operator_algebra.OperatorPlus>`
          - Sum of Operators
        * - :class:`OperatorPlusMinusCC <qalgebra.core.operator_algebra.OperatorPlusMinusCC>`
-         - An operator plus or minus its complex conjugate
+         - An operator plus or minus its complex conjugate.
        * - :class:`OperatorSymbol <qalgebra.core.operator_algebra.OperatorSymbol>`
          - Symbolic operator
        * - :class:`OperatorTimes <qalgebra.core.operator_algebra.OperatorTimes>`
@@ -173,11 +161,11 @@ qalgebra package
        * - :class:`ProductSpace <qalgebra.core.hilbert_space_algebra.ProductSpace>`
          - Tensor product of local Hilbert spaces
        * - :class:`PseudoInverse <qalgebra.core.operator_algebra.PseudoInverse>`
-         - Unevaluated pseudo-inverse $\Op{X}^+$ of an operator $\Op{X}$
+         - Unevaluated pseudo-inverse $\Op{X}^+$ of an operator $\Op{X}$.
        * - :class:`QuantumAdjoint <qalgebra.core.abstract_quantum_algebra.QuantumAdjoint>`
          - Base class for adjoints of quantum expressions
        * - :class:`QuantumDerivative <qalgebra.core.abstract_quantum_algebra.QuantumDerivative>`
-         - Symbolic partial derivative
+         - Symbolic partial derivative.
        * - :class:`QuantumExpression <qalgebra.core.abstract_quantum_algebra.QuantumExpression>`
          - Base class for expressions associated with a Hilbert space
        * - :class:`QuantumIndexedSum <qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum>`
@@ -211,23 +199,23 @@ qalgebra package
        * - :class:`ScalarTimesKet <qalgebra.core.state_algebra.ScalarTimesKet>`
          - Product of a :class:`.Scalar` coefficient and a ket
        * - :class:`ScalarTimesOperator <qalgebra.core.operator_algebra.ScalarTimesOperator>`
-         - Product of a :class:`.Scalar` coefficient and an :class:`Operator`
+         - Product of a :class:`.Scalar` coefficient and an :class:`.Operator`.
        * - :class:`ScalarTimesQuantumExpression <qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression>`
-         - Product of a :class:`.Scalar` and a :class:`QuantumExpression`
+         - Product of a :class:`.Scalar` and a :class:`.QuantumExpression`
        * - :class:`ScalarTimesSuperOperator <qalgebra.core.super_operator_algebra.ScalarTimesSuperOperator>`
-         - Product of a :class:`.Scalar` coefficient and a :class:`SuperOperator`
+         - Product of a :class:`.Scalar` coefficient and a :class:`.SuperOperator`.
        * - :class:`ScalarValue <qalgebra.core.scalar_algebra.ScalarValue>`
          - Wrapper around a numeric or symbolic value
        * - :class:`SingleQuantumOperation <qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation>`
          - Base class for operations on a single quantum expression
        * - :class:`Singleton <qalgebra.utils.singleton.Singleton>`
-         - Metaclass for singletons
+         - Metaclass for singletons.
        * - :class:`SpinIndex <qalgebra.utils.indices.SpinIndex>`
          - Symbolic label for a spin degree of freedom
        * - :class:`SpinOperator <qalgebra.library.spin_algebra.SpinOperator>`
          - Base class for operators in a spin space
        * - :class:`SpinSpace <qalgebra.library.spin_algebra.SpinSpace>`
-         - A Hilbert space for an integer or half-integer spin system
+         - A Hilbert space for an integer or half-integer spin system.
        * - :class:`Squeeze <qalgebra.library.fock_operators.Squeeze>`
          - Unitary squeezing operator
        * - :class:`State <qalgebra.core.state_algebra.State>`
@@ -237,7 +225,7 @@ qalgebra package
        * - :class:`StrLabel <qalgebra.utils.indices.StrLabel>`
          - Symbolic label that evaluates to a string
        * - :class:`SuperAdjoint <qalgebra.core.super_operator_algebra.SuperAdjoint>`
-         - Adjoint of a super-operator
+         - Adjoint of a super-operator.
        * - :class:`SuperOperator <qalgebra.core.super_operator_algebra.SuperOperator>`
          - Base class for super-operators
        * - :class:`SuperOperatorDerivative <qalgebra.core.super_operator_algebra.SuperOperatorDerivative>`
@@ -249,9 +237,9 @@ qalgebra package
        * - :class:`SuperOperatorTimes <qalgebra.core.super_operator_algebra.SuperOperatorTimes>`
          - Product of super-operators
        * - :class:`SuperOperatorTimesOperator <qalgebra.core.super_operator_algebra.SuperOperatorTimesOperator>`
-         - Application of a super-operator to an operator
+         - Application of a super-operator to an operator.
        * - :class:`TensorKet <qalgebra.core.state_algebra.TensorKet>`
-         - A tensor product of kets
+         - A tensor product of kets.
     
 
     ``__all__`` Functions:
@@ -260,17 +248,17 @@ qalgebra package
     .. list-table::
     
        * - :func:`KroneckerDelta <qalgebra.core.scalar_algebra.KroneckerDelta>`
-         - Kronecker delta symbol
+         - Kronecker delta symbol.
        * - :func:`LocalProjector <qalgebra.core.operator_algebra.LocalProjector>`
          - A projector onto a specific level of a :class:`.LocalSpace`
        * - :func:`PauliX <qalgebra.library.pauli_matrices.PauliX>`
-         - Pauli-type X-operator
+         - Pauli-type X-operator.
        * - :func:`PauliY <qalgebra.library.pauli_matrices.PauliY>`
          - Pauli-type Y-operator
        * - :func:`PauliZ <qalgebra.library.pauli_matrices.PauliZ>`
          - Pauli-type Z-operator
        * - :func:`SpinBasisKet <qalgebra.library.spin_algebra.SpinBasisKet>`
-         - Constructor for a :class:`BasisKet` for a :class:`SpinSpace`
+         - Constructor for a :class:`.BasisKet` for a :class:`.SpinSpace`.
        * - :func:`Sum <qalgebra.core.abstract_quantum_algebra.Sum>`
          - Instantiator for an arbitrary indexed sum.
        * - :func:`adjoint <qalgebra.core.operator_algebra.adjoint>`
@@ -292,19 +280,19 @@ qalgebra package
        * - :func:`decompose_space <qalgebra.core.operator_algebra.decompose_space>`
          - Simplifies OperatorTrace expressions over tensor-product spaces by turning it into iterated partial traces.
        * - :func:`diagm <qalgebra.core.matrix_algebra.diagm>`
-         - Generalizes the diagonal matrix creation capabilities of `numpy.diag` to :class:`Matrix` objects.
+         - Generalizes the diagonal matrix creation capabilities of `numpy.diag` to :class:`.Matrix` objects.
        * - :func:`dotprint <qalgebra.printing.dot.dotprint>`
-         - Return the `DOT`_ (graph) description of an Expression tree as a string
+         - Return the DOT (graph) description of an Expression tree as a string.
        * - :func:`expand_commutators_leibniz <qalgebra.toolbox.commutator_manipulation.expand_commutators_leibniz>`
          - Recursively expand commutators in `expr` according to the Leibniz rule.
        * - :func:`factor_coeff <qalgebra.core.operator_algebra.factor_coeff>`
          - Factor out coefficients of all factors.
        * - :func:`factor_for_trace <qalgebra.core.operator_algebra.factor_for_trace>`
-         - Given a :class:`.LocalSpace` `ls` to take the partial trace over and an operator `op`, factor the trace such that operators acting on disjoint degrees of freedom are pulled out of the trace.If the operator acts trivially on ls the trace yields only a pre-factor equal to the dimension of ls.If there are :class:`LocalSigma` operators among a product, the trace's cyclical property is used to move to sandwich the full product by :class:`LocalSigma` operators:.
+         - Factor `ls` out of `op` for easy tracing.
        * - :func:`get_coeffs <qalgebra.core.operator_algebra.get_coeffs>`
          - Create a dictionary with all Operator terms of the expression (understood as a sum) as keys and their coefficients as values.
        * - :func:`hstackm <qalgebra.core.matrix_algebra.hstackm>`
-         - Generalizes `numpy.hstack` to :class:`Matrix` objects.
+         - Generalizes `numpy.hstack` to :class:`.Matrix` objects.
        * - :func:`identity_matrix <qalgebra.core.matrix_algebra.identity_matrix>`
          - Generate the N-dimensional identity matrix.
        * - :func:`init_printing <qalgebra.printing.init_printing>`
@@ -315,24 +303,22 @@ qalgebra package
          - Return the super-operator Lindblad term of the Lindblad operator `C`
        * - :func:`liouvillian <qalgebra.core.super_operator_algebra.liouvillian>`
          - Return the Liouvillian super-operator associated with `H` and `Ls`
-       * - :func:`liouvillian_normal_form <qalgebra.core.super_operator_algebra.liouvillian_normal_form>`
-         - Return a Hamilton operator ``H`` and a minimal list of collapse operators ``Ls`` that generate the liouvillian ``L``.
        * - :func:`match_pattern <qalgebra.pattern_matching.match_pattern>`
          - Recursively match `expr` with the given `expr_or_pattern`.
        * - :func:`no_instance_caching <qalgebra.toolbox.core.no_instance_caching>`
          - Temporarily disable instance caching in :meth:`~.Expression.create`
        * - :func:`pattern <qalgebra.pattern_matching.pattern>`
-         - 'Flat' constructor for the Pattern class
+         - 'Flat' constructor for :class:`.Pattern`.
        * - :func:`pattern_head <qalgebra.pattern_matching.pattern_head>`
-         - Constructor for a :class:`Pattern` matching a :class:`ProtoExpr`.
+         - Constructor for a :class:`.Pattern` matching a :class:`.ProtoExpr`.
        * - :func:`print_tree <qalgebra.printing.treeprinting.print_tree>`
          - Print a tree representation of the structure of `expr`
        * - :func:`rewrite_with_operator_pm_cc <qalgebra.core.operator_algebra.rewrite_with_operator_pm_cc>`
-         - Try to rewrite expr using :class:`OperatorPlusMinusCC`
+         - Try to rewrite expr using :class:`.OperatorPlusMinusCC`.
        * - :func:`singleton_object <qalgebra.utils.singleton.singleton_object>`
          - Class decorator that transforms (and replaces) a class definition (which must have a Singleton metaclass) with the actual singleton object.
        * - :func:`sqrt <qalgebra.core.scalar_algebra.sqrt>`
-         - Square root of a :class:`Scalar` or scalar value
+         - Square root of a :class:`.Scalar` or scalar value.
        * - :func:`srepr <qalgebra.printing.srepr>`
          - Render the given expression into a string that can be evaluated in an appropriate context to re-instantiate an identical expression.
        * - :func:`substitute <qalgebra.core.abstract_algebra.substitute>`
@@ -344,7 +330,7 @@ qalgebra package
        * - :func:`temporary_rules <qalgebra.toolbox.core.temporary_rules>`
          - Allow temporary modification of rules for :meth:`~.Expression.create`
        * - :func:`tex <qalgebra.printing.tex>`
-         - Alias for :func:`latex`
+         - Alias for :func:`.latex`.
        * - :func:`tr <qalgebra.core.abstract_algebra.Expression.create>`
          - Instantiate while applying automatic simplifications
        * - :func:`tree <qalgebra.printing.treeprinting.tree>`
@@ -352,11 +338,11 @@ qalgebra package
        * - :func:`unicode <qalgebra.printing.unicode>`
          - Return a unicode representation of the given object / expression
        * - :func:`vstackm <qalgebra.core.matrix_algebra.vstackm>`
-         - Generalizes `numpy.vstack` to :class:`Matrix` objects.
+         - Generalizes `numpy.vstack` to :class:`.Matrix` objects.
        * - :func:`wc <qalgebra.pattern_matching.wc>`
-         - Constructor for a wildcard-:class:`Pattern`.
+         - Constructor for a wildcard-:class:`.Pattern`.
        * - :func:`zerosm <qalgebra.core.matrix_algebra.zerosm>`
-         - Generalizes ``numpy.zeros`` to :py:class:`Matrix` objects.
+         - Generalizes ``numpy.zeros`` to :class:`.Matrix` objects.
     
 
     ``__all__`` Data:
@@ -375,7 +361,7 @@ qalgebra package
        * - :obj:`One <qalgebra.core.scalar_algebra.One>`
          - The neutral element with respect to scalar multiplication
        * - :obj:`SingletonType <qalgebra.utils.singleton.SingletonType>`
-         - A dummy type that may be used to check whether an object is a Singleton::
+         - A dummy type that for checking whether an object is a Singleton.
        * - :obj:`TrivialKet <qalgebra.core.state_algebra.TrivialKet>`
          - TrivialKet constant (singleton) object.
        * - :obj:`TrivialSpace <qalgebra.core.hilbert_space_algebra.TrivialSpace>`

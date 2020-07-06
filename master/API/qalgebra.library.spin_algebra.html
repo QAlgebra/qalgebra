@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.library.spin_algebra module &mdash; QAlgebra 2.0.0-dev (191a4de) documentation</title>
+  <title>qalgebra.library.spin_algebra module &mdash; QAlgebra 2.0.0-dev (9c7cf0a) documentation</title>
   
 
   
@@ -263,7 +263,7 @@ for integer and half-integer spin</p>
 <td><p>Base class for operators in a spin space</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.library.spin_algebra.SpinSpace" title="qalgebra.library.spin_algebra.SpinSpace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpinSpace</span></code></a></p></td>
-<td><p>A Hilbert space for an integer or half-integer spin system</p></td>
+<td><p>A Hilbert space for an integer or half-integer spin system.</p></td>
 </tr>
 </tbody>
 </table>
@@ -284,7 +284,7 @@ for integer and half-integer spin</p>
 <td><p>Eigenvalue of the <span class="math notranslate nohighlight">\(\Op{J}_z\)</span> (<a class="reference internal" href="#qalgebra.library.spin_algebra.Jz" title="qalgebra.library.spin_algebra.Jz"><code class="xref py py-class docutils literal notranslate"><span class="pre">Jz</span></code></a>) operator</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.library.spin_algebra.SpinBasisKet" title="qalgebra.library.spin_algebra.SpinBasisKet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpinBasisKet</span></code></a></p></td>
-<td><p>Constructor for a <code class="xref py py-class docutils literal notranslate"><span class="pre">BasisKet</span></code> for a <a class="reference internal" href="#qalgebra.library.spin_algebra.SpinSpace" title="qalgebra.library.spin_algebra.SpinSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpinSpace</span></code></a></p></td>
+<td><p>Constructor for a <a class="reference internal" href="qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.BasisKet" title="qalgebra.core.state_algebra.BasisKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasisKet</span></code></a> for a <a class="reference internal" href="#qalgebra.library.spin_algebra.SpinSpace" title="qalgebra.library.spin_algebra.SpinSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpinSpace</span></code></a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -296,7 +296,7 @@ for integer and half-integer spin</p>
 <dt id="qalgebra.library.spin_algebra.SpinSpace">
 <em class="property">class </em><code class="sig-prename descclassname">qalgebra.library.spin_algebra.</code><code class="sig-name descname">SpinSpace</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">label</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">spin</span></em>, <em class="sig-param"><span class="n">basis</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">local_identifiers</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">order_index</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/library/spin_algebra.html#SpinSpace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.library.spin_algebra.SpinSpace" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.hilbert_space_algebra.LocalSpace</span></code></a></p>
-<p>A Hilbert space for an integer or half-integer spin system</p>
+<p>A Hilbert space for an integer or half-integer spin system.</p>
 <p>For a given spin <span class="math notranslate nohighlight">\(N\)</span>, the resulting Hilbert space has dimension <span class="math notranslate nohighlight">\(2 N + 1\)</span>
 with levels labeled from <span class="math notranslate nohighlight">\(-N\)</span> to <span class="math notranslate nohighlight">\(+N\)</span> (as strings)</p>
 <p>For an integer spin:</p>
@@ -353,8 +353,8 @@ the next basis state.</p>
 <p>More generally, if <cite>n</cite> is given, return the <cite>n</cite>’th next basis state
 label/index; <cite>n</cite> may also be negative to obtain previous basis state
 labels. Returns a <a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> label if <cite>label_or_index</cite> is a
-<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> or <a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, or a <code class="xref py py-class docutils literal notranslate"><span class="pre">SpinIndex</span></code> if
-<cite>label_or_index</cite> is a <code class="xref py py-class docutils literal notranslate"><span class="pre">SpinIndex</span></code>.</p>
+<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> or <a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, or a <a class="reference internal" href="qalgebra.utils.indices.html#qalgebra.utils.indices.SpinIndex" title="qalgebra.utils.indices.SpinIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpinIndex</span></code></a> if
+<cite>label_or_index</cite> is a <a class="reference internal" href="qalgebra.utils.indices.html#qalgebra.utils.indices.SpinIndex" title="qalgebra.utils.indices.SpinIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpinIndex</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -371,7 +371,7 @@ basis state</p></li>
     Hilbert space</p></li>
 <li><p><a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.BasisNotSetError" title="qalgebra.core.exceptions.BasisNotSetError"><strong>BasisNotSetError</strong></a> – If the Hilbert space has no defined basis</p></li>
 <li><p><a class="reference external" href="https://docs.python.org/3.8/library/exceptions.html#TypeError" title="(in Python v3.8)"><strong>TypeError</strong></a> – if <cite>label_or_index</cite> is neither a <a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> nor an
-    <a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, nor a <code class="xref py py-class docutils literal notranslate"><span class="pre">SpinIndex</span></code></p></li>
+    <a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, nor a <a class="reference internal" href="qalgebra.utils.indices.html#qalgebra.utils.indices.SpinIndex" title="qalgebra.utils.indices.SpinIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpinIndex</span></code></a></p></li>
 </ul>
 </dd>
 </dl>
@@ -379,7 +379,7 @@ basis state</p></li>
 <p class="admonition-title">Note</p>
 <p>This differs from its super-method only by never returning an
 integer index (which is not accepted when instantiating a
-<code class="xref py py-class docutils literal notranslate"><span class="pre">BasisKet</span></code> for a <a class="reference internal" href="#qalgebra.library.spin_algebra.SpinSpace" title="qalgebra.library.spin_algebra.SpinSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpinSpace</span></code></a>)</p>
+<a class="reference internal" href="qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.BasisKet" title="qalgebra.core.state_algebra.BasisKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasisKet</span></code></a> for a <a class="reference internal" href="#qalgebra.library.spin_algebra.SpinSpace" title="qalgebra.library.spin_algebra.SpinSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpinSpace</span></code></a>)</p>
 </div>
 </dd></dl>
 
@@ -390,7 +390,7 @@ integer index (which is not accepted when instantiating a
 <p>This can be a SymPy integer or a half-integer.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.numbers.Rational" title="(in SymPy v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Rational</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.numbers.Rational" title="(in SymPy v1.6.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Rational</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -417,7 +417,7 @@ integer index (which is not accepted when instantiating a
 <dl class="py function">
 <dt id="qalgebra.library.spin_algebra.SpinBasisKet">
 <code class="sig-prename descclassname">qalgebra.library.spin_algebra.</code><code class="sig-name descname">SpinBasisKet</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">numer_denom</span></em>, <em class="sig-param"><span class="n">hs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/library/spin_algebra.html#SpinBasisKet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.library.spin_algebra.SpinBasisKet" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constructor for a <code class="xref py py-class docutils literal notranslate"><span class="pre">BasisKet</span></code> for a <a class="reference internal" href="#qalgebra.library.spin_algebra.SpinSpace" title="qalgebra.library.spin_algebra.SpinSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpinSpace</span></code></a></p>
+<dd><p>Constructor for a <a class="reference internal" href="qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.BasisKet" title="qalgebra.core.state_algebra.BasisKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasisKet</span></code></a> for a <a class="reference internal" href="#qalgebra.library.spin_algebra.SpinSpace" title="qalgebra.library.spin_algebra.SpinSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpinSpace</span></code></a>.</p>
 <p>For a half-integer spin system:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hs</span> <span class="o">=</span> <span class="n">SpinSpace</span><span class="p">(</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">spin</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="n">SpinBasisKet</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span> <span class="o">==</span> <span class="n">BasisKet</span><span class="p">(</span><span class="s2">&quot;+1/2&quot;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span>
@@ -556,7 +556,7 @@ argument.</p>
 <p>See also <a class="reference internal" href="#qalgebra.library.spin_algebra.Jpjmcoeff" title="qalgebra.library.spin_algebra.Jpjmcoeff"><code class="xref py py-func docutils literal notranslate"><span class="pre">Jpjmcoeff()</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Expr</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.6.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Expr</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -584,7 +584,7 @@ obtain the quantum number $m$)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Expr</span></code></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.6.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Expr</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -598,7 +598,7 @@ obtain the quantum number $m$)</p></li>
 <p>See also <a class="reference internal" href="#qalgebra.library.spin_algebra.Jpjmcoeff" title="qalgebra.library.spin_algebra.Jpjmcoeff"><code class="xref py py-func docutils literal notranslate"><span class="pre">Jpjmcoeff()</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Expr</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.expr.Expr" title="(in SymPy v1.6.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Expr</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -629,7 +629,7 @@ obtain the quantum number $m$)</p></li>
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Jun 30, 2020.
+        Last updated on Jul 06, 2020.
       </span>
 
     </p>

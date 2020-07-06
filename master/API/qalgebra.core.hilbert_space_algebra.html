@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.hilbert_space_algebra module &mdash; QAlgebra 2.0.0-dev (191a4de) documentation</title>
+  <title>qalgebra.core.hilbert_space_algebra module &mdash; QAlgebra 2.0.0-dev (9c7cf0a) documentation</title>
   
 
   
@@ -597,7 +597,7 @@ index of a basis state; if <cite>str</cite>, the label of a basis state</p></li>
     Hilbert space</p></li>
 <li><p><a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.BasisNotSetError" title="qalgebra.core.exceptions.BasisNotSetError"><strong>BasisNotSetError</strong></a> – If the Hilbert space has no defined basis</p></li>
 <li><p><a class="reference external" href="https://docs.python.org/3.8/library/exceptions.html#TypeError" title="(in Python v3.8)"><strong>TypeError</strong></a> – if <cite>label_or_index</cite> is neither a <a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> nor an
-    <a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, nor a <code class="xref py py-class docutils literal notranslate"><span class="pre">SymbolicLabelBase</span></code></p></li>
+    <a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, nor a <a class="reference internal" href="qalgebra.utils.indices.html#qalgebra.utils.indices.SymbolicLabelBase" title="qalgebra.utils.indices.SymbolicLabelBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">SymbolicLabelBase</span></code></a></p></li>
 </ul>
 </dd>
 </dl>
@@ -628,7 +628,7 @@ index of a basis state; if <cite>str</cite>, the label of a basis state</p></li>
 <dd><p>Instantiate while applying automatic simplifications</p>
 <p>Instead of directly instantiating <cite>cls</cite>, it is recommended to use
 <a class="reference internal" href="#qalgebra.core.hilbert_space_algebra.ProductSpace.create" title="qalgebra.core.hilbert_space_algebra.ProductSpace.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a>, which applies simplifications to the args and keyword
-arguments according to the <a class="reference internal" href="#qalgebra.core.hilbert_space_algebra.ProductSpace.simplifications" title="qalgebra.core.hilbert_space_algebra.ProductSpace.simplifications"><code class="xref py py-attr docutils literal notranslate"><span class="pre">simplifications</span></code></a> class attribute, and
+arguments according to the <cite>simplifications</cite> class attribute, and
 returns an appropriate object (which may or may not be an instance of
 the original <cite>cls</cite>).</p>
 <p>Two simplifications of particular importance are <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace" title="qalgebra.core.algebraic_properties.match_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace()</span></code></a>
@@ -638,9 +638,9 @@ simplifications.</p>
 temporary modification of the automatic simplifications that
 <a class="reference internal" href="#qalgebra.core.hilbert_space_algebra.ProductSpace.create" title="qalgebra.core.hilbert_space_algebra.ProductSpace.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a> uses, in particular the rules for
 <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace" title="qalgebra.core.algebraic_properties.match_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace()</span></code></a> and <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace_binary" title="qalgebra.core.algebraic_properties.match_replace_binary"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace_binary()</span></code></a>. Inside the
-managed context, the <a class="reference internal" href="#qalgebra.core.hilbert_space_algebra.ProductSpace.simplifications" title="qalgebra.core.hilbert_space_algebra.ProductSpace.simplifications"><code class="xref py py-attr docutils literal notranslate"><span class="pre">simplifications</span></code></a> class attribute may be
-modified and rules can be managed with <code class="xref py py-meth docutils literal notranslate"><span class="pre">add_rule()</span></code> and
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">del_rules()</span></code>.</p>
+managed context, the <cite>simplifications</cite> class attribute may be
+modified and rules can be managed with <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.add_rule" title="qalgebra.core.abstract_algebra.Expression.add_rule"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_rule()</span></code></a>
+and <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.del_rules" title="qalgebra.core.abstract_algebra.Expression.del_rules"><code class="xref py py-meth docutils literal notranslate"><span class="pre">del_rules()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -777,7 +777,7 @@ space of every other Hilbert space.</p>
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Jun 30, 2020.
+        Last updated on Jul 06, 2020.
       </span>
 
     </p>

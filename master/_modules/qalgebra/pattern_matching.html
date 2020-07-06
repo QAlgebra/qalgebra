@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.pattern_matching &mdash; QAlgebra 2.0.0-dev (191a4de) documentation</title>
+  <title>qalgebra.pattern_matching &mdash; QAlgebra 2.0.0-dev (9c7cf0a) documentation</title>
   
 
   
@@ -215,7 +215,7 @@
 
 
 <div class="viewcode-block" id="MatchDict"><a class="viewcode-back" href="../../API/qalgebra.pattern_matching.html#qalgebra.pattern_matching.MatchDict">[docs]</a><span class="k">class</span> <span class="nc">MatchDict</span><span class="p">(</span><span class="n">OrderedDict</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Result of a :meth:`Pattern.match`</span>
+    <span class="sd">&quot;&quot;&quot;Result of a :meth:`.Pattern.match`.</span>
 
 <span class="sd">    Dictionary of wildcard names to expressions. Once the value for a key is</span>
 <span class="sd">    set, attempting to set it again with a different value raises a</span>
@@ -311,7 +311,7 @@
 <span class="sd">        wc_name (str or None): If pattern matches an expression, key in the</span>
 <span class="sd">            resulting :class:`MatchDict` for the expression. If None, the match</span>
 <span class="sd">            will not be recorded in the result</span>
-<span class="sd">        conditions (list of callables, or None): If not None, a list of</span>
+<span class="sd">        conditions (List[callable], or None): If not None, a list of</span>
 <span class="sd">            callables that take `expr` and return a boolean value. If the</span>
 <span class="sd">            return value is False, the pattern is determined not to match</span>
 <span class="sd">            `expr`.</span>
@@ -402,8 +402,8 @@
 <div class="viewcode-block" id="Pattern.extended_arg_patterns"><a class="viewcode-back" href="../../API/qalgebra.pattern_matching.html#qalgebra.pattern_matching.Pattern.extended_arg_patterns">[docs]</a>    <span class="k">def</span> <span class="nf">extended_arg_patterns</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Iterator over patterns for positional arguments to be matched.</span>
 
-<span class="sd">        This yields the elements of :attr:`args`, extended by their `mode`</span>
-<span class="sd">        value.</span>
+<span class="sd">        This yields the elements of :attr:`~.Expression.args`, extended by</span>
+<span class="sd">        their `mode` value.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_arg_iterator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">):</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">Pattern</span><span class="p">):</span>
@@ -642,7 +642,7 @@
 <div class="viewcode-block" id="pattern"><a class="viewcode-back" href="../../API/qalgebra.pattern_matching.html#qalgebra.pattern_matching.pattern">[docs]</a><span class="k">def</span> <span class="nf">pattern</span><span class="p">(</span>
     <span class="n">head</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">wc_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">conditions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pattern</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;&#39;Flat&#39; constructor for the Pattern class</span>
+    <span class="sd">&quot;&quot;&quot;&#39;Flat&#39; constructor for :class:`.Pattern`.</span>
 
 <span class="sd">    Positional and keyword arguments are mapped into `args` and `kwargs`,</span>
 <span class="sd">    respectively. Useful for defining rules that match an instantiated</span>
@@ -658,11 +658,11 @@
 
 
 <div class="viewcode-block" id="pattern_head"><a class="viewcode-back" href="../../API/qalgebra.pattern_matching.html#qalgebra.pattern_matching.pattern_head">[docs]</a><span class="k">def</span> <span class="nf">pattern_head</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">conditions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">wc_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pattern</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Constructor for a :class:`Pattern` matching a :class:`ProtoExpr`.</span>
+    <span class="sd">&quot;&quot;&quot;Constructor for a :class:`.Pattern` matching a :class:`.ProtoExpr`.</span>
 
-<span class="sd">    The patterns associated with :attr:`_rules` and :attr:`_binary_rules`</span>
-<span class="sd">    of an :class:`Expression` subclass, or those passed to</span>
-<span class="sd">    :meth:`Expression.add_rule`, must be instantiated through this</span>
+<span class="sd">    The patterns associated with ``_rules`` and `_binary_rules``</span>
+<span class="sd">    of an :class:`.Expression` subclass, or those passed to</span>
+<span class="sd">    :meth:`.Expression.add_rule`, must be instantiated through this</span>
 <span class="sd">    routine. The function does not allow to set a wildcard name</span>
 <span class="sd">    (`wc_name` must not be given / be None)&quot;&quot;&quot;</span>
     <span class="c1"># This routine is indented for the _rules and _binary_rules class</span>
@@ -690,7 +690,7 @@
 <div class="viewcode-block" id="wc"><a class="viewcode-back" href="../../API/qalgebra.pattern_matching.html#qalgebra.pattern_matching.wc">[docs]</a><span class="k">def</span> <span class="nf">wc</span><span class="p">(</span>
     <span class="n">name_mode</span><span class="o">=</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="n">head</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">conditions</span><span class="o">=</span><span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pattern</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Constructor for a wildcard-:class:`Pattern`.</span>
+    <span class="sd">&quot;&quot;&quot;Constructor for a wildcard-:class:`.Pattern`.</span>
 
 <span class="sd">    Helper function to create a Pattern object with an emphasis on wildcard</span>
 <span class="sd">    patterns, if we don&#39;t care about the arguments of the matched expressions</span>
@@ -728,9 +728,9 @@
 <span class="c1"># Proto-Expressions the provide just the &#39;args&#39; and &#39;kwargs&#39; properties,</span>
 <span class="c1"># allowing `match_pattern` to match them via duck typing</span>
 <div class="viewcode-block" id="ProtoExpr"><a class="viewcode-back" href="../../API/qalgebra.pattern_matching.html#qalgebra.pattern_matching.ProtoExpr">[docs]</a><span class="k">class</span> <span class="nc">ProtoExpr</span><span class="p">(</span><span class="n">Sequence</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Object representing an un-instantiated :class:`Expression`.</span>
+    <span class="sd">&quot;&quot;&quot;Object representing an un-instantiated :class:`.Expression`.</span>
 
-<span class="sd">    A :class:`ProtoExpr` may be matched by a :class:`Pattern` created via</span>
+<span class="sd">    A :class:`.ProtoExpr` may be matched by a :class:`.Pattern` created via</span>
 <span class="sd">    :func:`pattern_head`. This is used in :meth:`.Expression.create`: before an</span>
 <span class="sd">    expression is instantiated, a :class:`ProtoExpr` is constructed with the</span>
 <span class="sd">    positional and keyword arguments passed to :meth:`~.Expression.create`.</span>
@@ -742,8 +742,8 @@
 <span class="sd">            instantiation of the Expression</span>
 <span class="sd">        kwargs (dict):  keyword arguments. Will we converted to an</span>
 <span class="sd">            :class:`~.collections.OrderedDict`</span>
-<span class="sd">        cls (class or None): The class of the Expression that will ultimately</span>
-<span class="sd">            be instantiated.</span>
+<span class="sd">        cls: The class of the Expression that will ultimately</span>
+<span class="sd">            be instantiated, or None if the class is unknown.</span>
 
 <span class="sd">    The combined values of `args` and `kwargs` are accessible as a (mutable)</span>
 <span class="sd">    sequence.</span>
@@ -797,12 +797,13 @@
         <span class="p">)</span>
 
 <div class="viewcode-block" id="ProtoExpr.instantiate"><a class="viewcode-back" href="../../API/qalgebra.pattern_matching.html#qalgebra.pattern_matching.ProtoExpr.instantiate">[docs]</a>    <span class="k">def</span> <span class="nf">instantiate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return an instantiated Expression as</span>
-<span class="sd">        ``cls.create(*self.args, **self.kwargs)``</span>
+        <span class="sd">&quot;&quot;&quot;Return an instantiated Expression.</span>
+
+<span class="sd">        Equivalent to ``cls.create(*self.args, **self.kwargs)``.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            cls (class): The class of the instantiated expression. If not</span>
-<span class="sd">            given, ``self.cls`` will be used.</span>
+<span class="sd">            cls: The class of the instantiated expression. If not</span>
+<span class="sd">                given, ``self.cls`` will be used.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">cls</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cls</span>
@@ -812,7 +813,7 @@
 
 <div class="viewcode-block" id="ProtoExpr.from_expr"><a class="viewcode-back" href="../../API/qalgebra.pattern_matching.html#qalgebra.pattern_matching.ProtoExpr.from_expr">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_expr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Instantiate proto-expression from the given Expression&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Instantiate proto-expression from the given Expression.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="n">expr</span><span class="o">.</span><span class="n">kwargs</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">expr</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -859,7 +860,7 @@
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Jun 30, 2020.
+        Last updated on Jul 06, 2020.
       </span>
 
     </p>

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Symbolic Algebra &mdash; QAlgebra 2.0.0-dev (191a4de) documentation</title>
+  <title>Symbolic Algebra &mdash; QAlgebra 2.0.0-dev (9c7cf0a) documentation</title>
   
 
   
@@ -253,15 +253,14 @@ arguments, and possible additional arguments as keyword arguments.</p>
 <p>Expressions should generally not be instantiated directly, but through their
 <a class="reference internal" href="API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a> method allowing for simplifications. This is true
 both for operations and atomic expressions. For example, instantiating
-<a class="reference internal" href="API/qalgebra.library.fock_operators.html#qalgebra.library.fock_operators.Displace" title="qalgebra.library.fock_operators.Displace"><code class="xref py py-class docutils literal notranslate"><span class="pre">Displace</span></code></a> with <code class="docutils literal notranslate"><span class="pre">alpha=0</span></code> results in an <a class="reference internal" href="API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.IdentityOperator" title="qalgebra.core.operator_algebra.IdentityOperator"><code class="xref py py-data docutils literal notranslate"><span class="pre">IdentityOperator</span></code></a>
+<a class="reference internal" href="API/qalgebra.library.fock_operators.html#qalgebra.library.fock_operators.Displace" title="qalgebra.library.fock_operators.Displace"><code class="xref py py-class docutils literal notranslate"><span class="pre">Displace</span></code></a> with <code class="docutils literal notranslate"><span class="pre">alpha=0</span></code> results in an <a class="reference internal" href="API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.IdentityOperator" title="qalgebra.core.operator_algebra.IdentityOperator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IdentityOperator</span></code></a>
 (unlike direct instantiation, the create method of any class may or may not
 return an instance of the same class). For operations, the <cite>create</cite> method
 handles the application of algebraic rules such as associativity (translating
 e.g. <code class="docutils literal notranslate"><span class="pre">KetPlus(psi1,</span> <span class="pre">KetPlus(psi2,</span> <span class="pre">psi3))</span></code> into <code class="docutils literal notranslate"><span class="pre">KetPlus(psi1,</span> <span class="pre">psi2,</span> <span class="pre">psi3)</span></code>)</p>
-<p>Many operations are associated with infix operators, e.g.
-a <a class="reference internal" href="API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.KetPlus" title="qalgebra.core.state_algebra.KetPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">KetPlus</span></code></a> instance is automatically
-created if two instances of <a class="reference internal" href="API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.KetSymbol" title="qalgebra.core.state_algebra.KetSymbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">KetSymbol</span></code></a>
-are added with <code class="docutils literal notranslate"><span class="pre">+</span></code>. In this case, the <a class="reference internal" href="API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a> method is used
+<p>Many operations are associated with infix operators, e.g.  a <a class="reference internal" href="API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.KetPlus" title="qalgebra.core.state_algebra.KetPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">KetPlus</span></code></a>
+instance is automatically created if two instances of <a class="reference internal" href="API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.KetSymbol" title="qalgebra.core.state_algebra.KetSymbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">KetSymbol</span></code></a> are
+added with <code class="docutils literal notranslate"><span class="pre">+</span></code>. In this case, the <a class="reference internal" href="API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a> method is used
 automatically.</p>
 <p>Expressions and Operations are considered immutable: any change to the
 expression tree (e.g. an algebraic simplification) generates a new expression.</p>
@@ -278,17 +277,15 @@ a dictionary <code class="docutils literal notranslate"><span class="pre">kwargs
 <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> (which are then handed to the next callable), or an
 <a class="reference internal" href="API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression" title="qalgebra.core.abstract_algebra.Expression"><code class="xref py py-class docutils literal notranslate"><span class="pre">Expression</span></code></a> (which is directly returned as the result of the call to
 <a class="reference internal" href="API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Expression.create()</span></code></a>).</p>
-<p>Callables such as as <code class="xref py py-func docutils literal notranslate"><span class="pre">assoc()</span></code>, <code class="xref py py-func docutils literal notranslate"><span class="pre">idem()</span></code>, <code class="xref py py-func docutils literal notranslate"><span class="pre">orderby()</span></code>, and
-<code class="xref py py-func docutils literal notranslate"><span class="pre">filter_neutral()</span></code> handle common algebraic properties such as associativity
-or commutativity. The <code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace()</span></code> and <code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace_binary()</span></code>
+<p>Callables such as as <a class="reference internal" href="API/qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.assoc" title="qalgebra.core.algebraic_properties.assoc"><code class="xref py py-func docutils literal notranslate"><span class="pre">assoc()</span></code></a>, <a class="reference internal" href="API/qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.idem" title="qalgebra.core.algebraic_properties.idem"><code class="xref py py-func docutils literal notranslate"><span class="pre">idem()</span></code></a>, <a class="reference internal" href="API/qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.orderby" title="qalgebra.core.algebraic_properties.orderby"><code class="xref py py-func docutils literal notranslate"><span class="pre">orderby()</span></code></a>, and
+<a class="reference internal" href="API/qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.filter_neutral" title="qalgebra.core.algebraic_properties.filter_neutral"><code class="xref py py-func docutils literal notranslate"><span class="pre">filter_neutral()</span></code></a> handle common algebraic properties such as associativity
+or commutativity. The <a class="reference internal" href="API/qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace" title="qalgebra.core.algebraic_properties.match_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace()</span></code></a> and <a class="reference internal" href="API/qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace_binary" title="qalgebra.core.algebraic_properties.match_replace_binary"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace_binary()</span></code></a>
 callables are central to any more advanced simplification through pattern
 matching. They delegate to a list of <a class="reference internal" href="API/qalgebra.pattern_matching.html#qalgebra.pattern_matching.Pattern" title="qalgebra.pattern_matching.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Patterns</span></code></a> and replacements that are defined
 in the <code class="docutils literal notranslate"><span class="pre">_rules</span></code>, respectively <code class="docutils literal notranslate"><span class="pre">_binary_rules</span></code> class attributes of the
 <a class="reference internal" href="API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression" title="qalgebra.core.abstract_algebra.Expression"><code class="xref py py-class docutils literal notranslate"><span class="pre">Expression</span></code></a> subclass.</p>
 <p>The pattern matching rules may temporarily extended or modified using the
-<code class="xref py py-func docutils literal notranslate"><span class="pre">qalgebra.toolbox.core.extra_rules()</span></code>,
-<code class="xref py py-func docutils literal notranslate"><span class="pre">qalgebra.toolbox.core.extra_binary_rules()</span></code>,  and
-<code class="xref py py-func docutils literal notranslate"><span class="pre">qalgebra.toolbox.core.no_rules()</span></code> context managers.</p>
+<a class="reference internal" href="API/qalgebra.toolbox.core.html#qalgebra.toolbox.core.temporary_rules" title="qalgebra.toolbox.core.temporary_rules"><code class="xref py py-func docutils literal notranslate"><span class="pre">qalgebra.toolbox.core.temporary_rules()</span></code></a> context manager.</p>
 </div>
 <div class="section" id="pattern-matching">
 <h3>Pattern matching<a class="headerlink" href="#pattern-matching" title="Permalink to this headline">¶</a></h3>
@@ -297,25 +294,24 @@ defined and applied using the classed and helper routines in the
 <a class="reference internal" href="API/qalgebra.pattern_matching.html#module-qalgebra.pattern_matching" title="qalgebra.pattern_matching"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pattern_matching</span></code></a> module.</p>
 <p>There are two main places where pattern matching comes up:</p>
 <ul class="simple">
-<li><p>automatically, through <code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace()</span></code> and <code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace_binary()</span></code>
+<li><p>automatically, through <a class="reference internal" href="API/qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace" title="qalgebra.core.algebraic_properties.match_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace()</span></code></a> and <a class="reference internal" href="API/qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace_binary" title="qalgebra.core.algebraic_properties.match_replace_binary"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace_binary()</span></code></a>
 simplifications applied inside of <a class="reference internal" href="API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Expression.create()</span></code></a>.</p></li>
-<li><p>manually, through the <code class="xref py py-func docutils literal notranslate"><span class="pre">simplify()</span></code> function (or the
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">Expression.simplify()</span></code> method)</p></li>
+<li><p>manually, e.g. with <a class="reference internal" href="API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.rebuild" title="qalgebra.core.abstract_algebra.Expression.rebuild"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Expression.rebuild()</span></code></a></p></li>
 </ul>
-<p>Since inside <code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace()</span></code> and
-<code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace_binary()</span></code>, patterns
+<p>Since inside <a class="reference internal" href="API/qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace" title="qalgebra.core.algebraic_properties.match_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace()</span></code></a> and
+<a class="reference internal" href="API/qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace_binary" title="qalgebra.core.algebraic_properties.match_replace_binary"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace_binary()</span></code></a>, patterns
 are matched against expressions that are not yet instantiated (we call these
 <a class="reference internal" href="API/qalgebra.pattern_matching.html#qalgebra.pattern_matching.ProtoExpr" title="qalgebra.pattern_matching.ProtoExpr"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProtoExpressions</span></code></a>), the patterns in the <code class="docutils literal notranslate"><span class="pre">_rules</span></code>
 and <code class="docutils literal notranslate"><span class="pre">_binary_rules</span></code> class attributes are always constructed using the
 <a class="reference internal" href="API/qalgebra.pattern_matching.html#qalgebra.pattern_matching.pattern_head" title="qalgebra.pattern_matching.pattern_head"><code class="xref py py-func docutils literal notranslate"><span class="pre">pattern_head()</span></code></a> helper function. In contrast, patterns for
-<code class="xref py py-func docutils literal notranslate"><span class="pre">simplify()</span></code> are usually created through the
+<a class="reference internal" href="API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.apply_rules" title="qalgebra.core.abstract_algebra.Expression.apply_rules"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Expression.apply_rules()</span></code></a> are usually created through the
 <a class="reference internal" href="API/qalgebra.pattern_matching.html#qalgebra.pattern_matching.pattern" title="qalgebra.pattern_matching.pattern"><code class="xref py py-func docutils literal notranslate"><span class="pre">pattern()</span></code></a> helper function. The <a class="reference internal" href="API/qalgebra.pattern_matching.html#qalgebra.pattern_matching.wc" title="qalgebra.pattern_matching.wc"><code class="xref py py-func docutils literal notranslate"><span class="pre">wc()</span></code></a> function is used to associate
 Expression arguments with wildcard names.</p>
 </div>
 <div class="section" id="algebraic-manipulations">
 <span id="hilbert-space-algebra"></span><h3>Algebraic Manipulations<a class="headerlink" href="#algebraic-manipulations" title="Permalink to this headline">¶</a></h3>
 <p>While QAlgebra automatically applies a large number of rules and simplifications if
-expressions are instantiated through the <code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code> method,
+expressions are instantiated through the <a class="reference internal" href="API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a> method,
 significant value is placed on manually manipulating algebraic expressions. In
 fact, this is one of the design considerations that separates it from the
 <a class="reference external" href="http://www.sympy.org/en/index.html">Sympy</a> package: The rule-based transformations are both explicit and
@@ -331,9 +327,9 @@ would normally write that derivation out by hand.</p>
 </div>
 <div class="section" id="id2">
 <h2>Hilbert Space Algebra<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="xref py py-mod docutils literal notranslate"><span class="pre">hilbert_space_algebra</span></code> module defines a simple algebra
+<p>The <a class="reference internal" href="API/qalgebra.core.hilbert_space_algebra.html#module-qalgebra.core.hilbert_space_algebra" title="qalgebra.core.hilbert_space_algebra"><code class="xref py py-mod docutils literal notranslate"><span class="pre">hilbert_space_algebra</span></code></a> module defines a simple algebra
 of finite dimensional or countably infinite dimensional Hilbert spaces.</p>
-<div class="graphviz"><p><a href="_images/inheritance-13d1bf627fb70bc566d3b040b6e8f181da7b36be.svg"><i class="fa fa-external-link" aria-hidden="true"></i> SVG</a></p><object data="_images/inheritance-13d1bf627fb70bc566d3b040b6e8f181da7b36be.svg" type="image/svg+xml" class="inheritance">
+<div class="graphviz"><p><a href="_images/inheritance-29ef3f6ce5a6de7ff5c497b0a574fb2d56e842b6.svg"><i class="fa fa-external-link" aria-hidden="true"></i> SVG</a></p><object data="_images/inheritance-29ef3f6ce5a6de7ff5c497b0a574fb2d56e842b6.svg" type="image/svg+xml" class="inheritance">
 <p class="warning">Inheritance diagram of qalgebra.core.hilbert_space_algebra</p></object></div>
 <p>Local/primitive degrees of freedom (e.g. a single multi-level atom or a cavity
 mode) are described by a <a class="reference internal" href="API/qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a>; it requires a label, and may
@@ -371,22 +367,22 @@ have a known dimension.  Since all expressions are immutable, it is important
 to either define the all the <a class="reference internal" href="API/qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a> instances they depend on with
 <cite>basis</cite> or <cite>dimension</cite> arguments first, or to later generate new expression
 with updated Hilbert spaces through the
-<code class="xref py py-func docutils literal notranslate"><span class="pre">substitute()</span></code> routine.</p>
+<a class="reference internal" href="API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.substitute" title="qalgebra.core.abstract_algebra.substitute"><code class="xref py py-func docutils literal notranslate"><span class="pre">substitute()</span></code></a> routine.</p>
 </div>
 <div class="section" id="operator-algebra">
 <span id="id4"></span><h2>Operator Algebra<a class="headerlink" href="#operator-algebra" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="xref py py-mod docutils literal notranslate"><span class="pre">operator_algebra</span></code> module implements and algebra of Hilbert space operators</p>
-<div class="graphviz"><p><a href="_images/inheritance-324cdf694a724cfbd0f30c99754390a3438cc30f.svg"><i class="fa fa-external-link" aria-hidden="true"></i> SVG</a></p><object data="_images/inheritance-324cdf694a724cfbd0f30c99754390a3438cc30f.svg" type="image/svg+xml" class="inheritance">
+<p>The <a class="reference internal" href="API/qalgebra.core.operator_algebra.html#module-qalgebra.core.operator_algebra" title="qalgebra.core.operator_algebra"><code class="xref py py-mod docutils literal notranslate"><span class="pre">operator_algebra</span></code></a> module implements and algebra of Hilbert space operators</p>
+<div class="graphviz"><p><a href="_images/inheritance-d10eb4dc272eec1886f09fc2380bba3067c578eb.svg"><i class="fa fa-external-link" aria-hidden="true"></i> SVG</a></p><object data="_images/inheritance-d10eb4dc272eec1886f09fc2380bba3067c578eb.svg" type="image/svg+xml" class="inheritance">
 <p class="warning">Inheritance diagram of qalgebra.core.operator_algebra</p></object></div>
 <p>Operator expressions are constructed from sums (<a class="reference internal" href="API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.OperatorPlus" title="qalgebra.core.operator_algebra.OperatorPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorPlus</span></code></a>) and
 products (<a class="reference internal" href="API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.OperatorTimes" title="qalgebra.core.operator_algebra.OperatorTimes"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorTimes</span></code></a>) of some basic elements, most importantly <em>local</em>
 operators (subclasses of <a class="reference internal" href="API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.LocalOperator" title="qalgebra.core.operator_algebra.LocalOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalOperator</span></code></a>). This include some very common symbolic operator such as</p>
 <ul class="simple">
-<li><p>Harmonic oscillator mode operators <span class="math notranslate nohighlight">\(a_s, a_s^\dagger\)</span>: <code class="xref py py-class docutils literal notranslate"><span class="pre">Destroy</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Create</span></code></p></li>
+<li><p>Harmonic oscillator mode operators <span class="math notranslate nohighlight">\(a_s, a_s^\dagger\)</span>: <a class="reference internal" href="API/qalgebra.library.fock_operators.html#qalgebra.library.fock_operators.Destroy" title="qalgebra.library.fock_operators.Destroy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Destroy</span></code></a>, <a class="reference internal" href="API/qalgebra.library.fock_operators.html#qalgebra.library.fock_operators.Create" title="qalgebra.library.fock_operators.Create"><code class="xref py py-class docutils literal notranslate"><span class="pre">Create</span></code></a></p></li>
 <li><p><span class="math notranslate nohighlight">\(\sigma\)</span>-switching operators  <span class="math notranslate nohighlight">\(\sigma_{jk}^s := \left| j \right\rangle_s \left \langle k \right|_s\)</span>: <a class="reference internal" href="API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.LocalSigma" title="qalgebra.core.operator_algebra.LocalSigma"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSigma</span></code></a></p></li>
-<li><p>coherent displacement operators <span class="math notranslate nohighlight">\(D_s(\alpha) := \exp{\left(\alpha a_s^\dagger - \alpha^* a_s\right)}\)</span>: <code class="xref py py-class docutils literal notranslate"><span class="pre">Displace</span></code></p></li>
-<li><p>phase operators <span class="math notranslate nohighlight">\(P_s(\phi) := \exp {\left(i\phi a_s^\dagger a_s\right)}\)</span>: <code class="xref py py-class docutils literal notranslate"><span class="pre">Phase</span></code></p></li>
-<li><p>squeezing operators <span class="math notranslate nohighlight">\(S_s(\eta) := \exp {\left[{1\over 2}\left({\eta {a_s^\dagger}^2 - \eta^* a_s^2}\right)\right]}\)</span>: <code class="xref py py-class docutils literal notranslate"><span class="pre">Squeeze</span></code></p></li>
+<li><p>coherent displacement operators <span class="math notranslate nohighlight">\(D_s(\alpha) := \exp{\left(\alpha a_s^\dagger - \alpha^* a_s\right)}\)</span>: <a class="reference internal" href="API/qalgebra.library.fock_operators.html#qalgebra.library.fock_operators.Displace" title="qalgebra.library.fock_operators.Displace"><code class="xref py py-class docutils literal notranslate"><span class="pre">Displace</span></code></a></p></li>
+<li><p>phase operators <span class="math notranslate nohighlight">\(P_s(\phi) := \exp {\left(i\phi a_s^\dagger a_s\right)}\)</span>: <a class="reference internal" href="API/qalgebra.library.fock_operators.html#qalgebra.library.fock_operators.Phase" title="qalgebra.library.fock_operators.Phase"><code class="xref py py-class docutils literal notranslate"><span class="pre">Phase</span></code></a></p></li>
+<li><p>squeezing operators <span class="math notranslate nohighlight">\(S_s(\eta) := \exp {\left[{1\over 2}\left({\eta {a_s^\dagger}^2 - \eta^* a_s^2}\right)\right]}\)</span>: <a class="reference internal" href="API/qalgebra.library.fock_operators.html#qalgebra.library.fock_operators.Squeeze" title="qalgebra.library.fock_operators.Squeeze"><code class="xref py py-class docutils literal notranslate"><span class="pre">Squeeze</span></code></a></p></li>
 </ul>
 <p>Furthermore, there exist symbolic representations for constants and symbols:</p>
 <ul class="simple">
@@ -427,7 +423,7 @@ operators (subclasses of <a class="reference internal" href="API/qalgebra.core.o
 </pre></div>
 </div>
 <p>Here we have allowed for a variable namespace which would come in handy if we wanted to construct an overall model that features multiple Jaynes-Cummings-type subsystems.</p>
-<p>By using the support for symbolic <a class="reference external" href="https://docs.sympy.org/latest/modules/matrices/immutablematrices.html#module-sympy" title="(in SymPy v1.6)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sympy</span></code></a> expressions as scalar pre-factors to operators, one can instantiate a Jaynes-Cummings Hamiltonian with symbolic parameters:</p>
+<p>By using the support for symbolic <a class="reference external" href="https://docs.sympy.org/latest/modules/matrices/immutablematrices.html#module-sympy" title="(in SymPy v1.6.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sympy</span></code></a> expressions as scalar pre-factors to operators, one can instantiate a Jaynes-Cummings Hamiltonian with symbolic parameters:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Delta</span><span class="p">,</span> <span class="n">Theta</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">g</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;Delta, Theta, epsilon, g&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">H</span> <span class="o">=</span> <span class="n">H_JC</span><span class="p">(</span><span class="n">Delta</span><span class="p">,</span> <span class="n">Theta</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">H</span>
@@ -456,11 +452,11 @@ operators (subclasses of <a class="reference internal" href="API/qalgebra.core.o
 </div>
 <div class="section" id="state-ket-algebra">
 <span id="state-algebra"></span><h2>State (Ket-) Algebra<a class="headerlink" href="#state-ket-algebra" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="xref py py-mod docutils literal notranslate"><span class="pre">state_algebra</span></code> module implements an algebra of Hilbert space states.</p>
-<div class="graphviz"><p><a href="_images/inheritance-10cb5beaca6800b34dba012869db427d7692c80e.svg"><i class="fa fa-external-link" aria-hidden="true"></i> SVG</a></p><object data="_images/inheritance-10cb5beaca6800b34dba012869db427d7692c80e.svg" type="image/svg+xml" class="inheritance">
+<p>The <a class="reference internal" href="API/qalgebra.core.state_algebra.html#module-qalgebra.core.state_algebra" title="qalgebra.core.state_algebra"><code class="xref py py-mod docutils literal notranslate"><span class="pre">state_algebra</span></code></a> module implements an algebra of Hilbert space states.</p>
+<div class="graphviz"><p><a href="_images/inheritance-6cd8d2b2654f055f5f5118831ea92ca265f16db5.svg"><i class="fa fa-external-link" aria-hidden="true"></i> SVG</a></p><object data="_images/inheritance-6cd8d2b2654f055f5f5118831ea92ca265f16db5.svg" type="image/svg+xml" class="inheritance">
 <p class="warning">Inheritance diagram of qalgebra.core.state_algebra</p></object></div>
-<p>By default we represent states <span class="math notranslate nohighlight">\(\psi\)</span> as <code class="xref py py-class docutils literal notranslate"><span class="pre">Ket</span></code> vectors <span class="math notranslate nohighlight">\(\psi \to | \psi \rangle\)</span>.
-However, any state can also be represented in its adjoint <a class="reference internal" href="API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.Bra" title="qalgebra.core.state_algebra.Bra"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bra</span></code></a> form, since those representations are dual:</p>
+<p>By default we represent states <span class="math notranslate nohighlight">\(\psi\)</span> as ket vectors <span class="math notranslate nohighlight">\(\psi \to | \psi \rangle\)</span>.
+However, any state can also be represented in its adjoint bra form, since those representations are dual:</p>
 <div class="math notranslate nohighlight">
 \[\psi \leftrightarrow | \psi \rangle \leftrightarrow \langle \psi |\]</div>
 <p>States can be added to states of the same Hilbert space. They can be multiplied by:</p>
@@ -471,12 +467,12 @@ However, any state can also be represented in its adjoint <a class="reference in
 </ul>
 <p>Furthermore,</p>
 <ul class="simple">
-<li><p>a <code class="xref py py-class docutils literal notranslate"><span class="pre">Ket</span></code> object can multiply a <a class="reference internal" href="API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.Bra" title="qalgebra.core.state_algebra.Bra"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bra</span></code></a> of the same space from the left to yield a <a class="reference internal" href="API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.KetBra" title="qalgebra.core.state_algebra.KetBra"><code class="xref py py-class docutils literal notranslate"><span class="pre">KetBra</span></code></a> operator.</p></li>
+<li><p>a ket object can multiply a <a class="reference internal" href="API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.Bra" title="qalgebra.core.state_algebra.Bra"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bra</span></code></a> of the same space from the left to yield a <a class="reference internal" href="API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.KetBra" title="qalgebra.core.state_algebra.KetBra"><code class="xref py py-class docutils literal notranslate"><span class="pre">KetBra</span></code></a> operator.</p></li>
 </ul>
 <p>And conversely,</p>
 <ul class="simple">
-<li><p>a <a class="reference internal" href="API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.Bra" title="qalgebra.core.state_algebra.Bra"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bra</span></code></a> can multiply a <code class="xref py py-class docutils literal notranslate"><span class="pre">Ket</span></code> from the left to create a (partial) inner product object <a class="reference internal" href="API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.BraKet" title="qalgebra.core.state_algebra.BraKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">BraKet</span></code></a>.
-Currently, only full inner products are supported, i.e. the <code class="xref py py-class docutils literal notranslate"><span class="pre">Ket</span></code> and <a class="reference internal" href="API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.Bra" title="qalgebra.core.state_algebra.Bra"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bra</span></code></a> operands need to have the same space.</p></li>
+<li><p>a <a class="reference internal" href="API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.Bra" title="qalgebra.core.state_algebra.Bra"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bra</span></code></a> can multiply a ket from the left to create a (partial) inner product object <a class="reference internal" href="API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.BraKet" title="qalgebra.core.state_algebra.BraKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">BraKet</span></code></a>.
+Currently, only full inner products are supported, i.e. the ket and <a class="reference internal" href="API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.Bra" title="qalgebra.core.state_algebra.Bra"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bra</span></code></a> operands need to have the same space.</p></li>
 </ul>
 <p>There are also the following symbolic states:</p>
 <ul class="simple">
@@ -487,10 +483,10 @@ Currently, only full inner products are supported, i.e. the <code class="xref py
 </div>
 <div class="section" id="super-operator-algebra">
 <span id="id5"></span><h2>Super-Operator Algebra<a class="headerlink" href="#super-operator-algebra" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="xref py py-mod docutils literal notranslate"><span class="pre">super_operator_algebra</span></code> contains an implementation of a
+<p>The <a class="reference internal" href="API/qalgebra.core.super_operator_algebra.html#module-qalgebra.core.super_operator_algebra" title="qalgebra.core.super_operator_algebra"><code class="xref py py-mod docutils literal notranslate"><span class="pre">super_operator_algebra</span></code></a> contains an implementation of a
 superoperator algebra, i.e., operators acting on Hilbert space operator or
 elements of Liouville space (density matrices).</p>
-<div class="graphviz"><p><a href="_images/inheritance-789f3b96eedbb14284bfc8612d586db783059e96.svg"><i class="fa fa-external-link" aria-hidden="true"></i> SVG</a></p><object data="_images/inheritance-789f3b96eedbb14284bfc8612d586db783059e96.svg" type="image/svg+xml" class="inheritance">
+<div class="graphviz"><p><a href="_images/inheritance-205463d9ef23a24c6e2bf22e4a92a037745f1aae.svg"><i class="fa fa-external-link" aria-hidden="true"></i> SVG</a></p><object data="_images/inheritance-205463d9ef23a24c6e2bf22e4a92a037745f1aae.svg" type="image/svg+xml" class="inheritance">
 <p class="warning">Inheritance diagram of qalgebra.core.super_operator_algebra</p></object></div>
 <p>Each super-operator has an associated <cite>space</cite> property which gives the Hilbert space
 on which the operators the super-operator acts non-trivially are themselves acting non-trivially.</p>
@@ -506,10 +502,10 @@ on which the operators the super-operator acts non-trivially are themselves acti
 <span class="go">Â⁽ᵗᵒᵗᵃˡ⁾ B̂⁽ᵗᵒᵗᵃˡ⁾ - B̂⁽ᵗᵒᵗᵃˡ⁾ Â⁽ᵗᵒᵗᵃˡ⁾</span>
 </pre></div>
 </div>
-<p>The neutral elements of super-operator addition and multiplication are <code class="xref py py-obj docutils literal notranslate"><span class="pre">ZeroSuperOperator</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">IdentitySuperOperator</span></code>, respectively.</p>
+<p>The neutral elements of super-operator addition and multiplication are <a class="reference internal" href="API/qalgebra.core.super_operator_algebra.html#qalgebra.core.super_operator_algebra.ZeroSuperOperator" title="qalgebra.core.super_operator_algebra.ZeroSuperOperator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ZeroSuperOperator</span></code></a> and <a class="reference internal" href="API/qalgebra.core.super_operator_algebra.html#qalgebra.core.super_operator_algebra.IdentitySuperOperator" title="qalgebra.core.super_operator_algebra.IdentitySuperOperator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IdentitySuperOperator</span></code></a>, respectively.</p>
 <p>Super operator objects can be added together in code via the infix ‘+’ operator and multiplied with the infix ‘*’ operator.
 They can also be added to or multiplied by scalar objects.
-In the first case, the scalar object is multiplied by the <code class="xref py py-obj docutils literal notranslate"><span class="pre">IdentitySuperOperator</span></code> constant.</p>
+In the first case, the scalar object is multiplied by the <a class="reference internal" href="API/qalgebra.core.super_operator_algebra.html#qalgebra.core.super_operator_algebra.IdentitySuperOperator" title="qalgebra.core.super_operator_algebra.IdentitySuperOperator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IdentitySuperOperator</span></code></a> constant.</p>
 <p>Super operators are applied to operators by multiplying an operator with superoperator from the left:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">S</span> <span class="o">=</span> <span class="n">SuperOperatorSymbol</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">FullSpace</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">OperatorSymbol</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">FullSpace</span><span class="p">)</span>
@@ -546,7 +542,7 @@ In the first case, the scalar object is multiplied by the <code class="xref py p
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Jun 30, 2020.
+        Last updated on Jul 06, 2020.
       </span>
 
     </p>

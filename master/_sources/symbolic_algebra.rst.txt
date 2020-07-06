@@ -44,16 +44,15 @@ arguments, and possible additional arguments as keyword arguments.
 Expressions should generally not be instantiated directly, but through their
 :meth:`~.Expression.create` method allowing for simplifications. This is true
 both for operations and atomic expressions. For example, instantiating
-:class:`~.Displace` with ``alpha=0`` results in an :data:`~.IdentityOperator`
+:class:`~.Displace` with ``alpha=0`` results in an :obj:`~.IdentityOperator`
 (unlike direct instantiation, the create method of any class may or may not
 return an instance of the same class). For operations, the `create` method
 handles the application of algebraic rules such as associativity (translating
 e.g. ``KetPlus(psi1, KetPlus(psi2, psi3))`` into ``KetPlus(psi1, psi2, psi3)``)
 
-Many operations are associated with infix operators, e.g.
-a :class:`~.KetPlus` instance is automatically
-created if two instances of :class:`~.KetSymbol`
-are added with ``+``. In this case, the :meth:`.create` method is used
+Many operations are associated with infix operators, e.g.  a :class:`~.KetPlus`
+instance is automatically created if two instances of :class:`~.KetSymbol` are
+added with ``+``. In this case, the :meth:`~.Expression.create` method is used
 automatically.
 
 Expressions and Operations are considered immutable: any change to the
@@ -75,9 +74,9 @@ a dictionary ``kwargs`` of keyword arguments given to
 :class:`~.Expression` (which is directly returned as the result of the call to
 :meth:`.Expression.create`).
 
-Callables such as as :func:`assoc`, :func:`idem`, :func:`orderby`, and
-:func:`filter_neutral` handle common algebraic properties such as associativity
-or commutativity. The :func:`match_replace` and :func:`match_replace_binary`
+Callables such as as :func:`.assoc`, :func:`.idem`, :func:`.orderby`, and
+:func:`.filter_neutral` handle common algebraic properties such as associativity
+or commutativity. The :func:`.match_replace` and :func:`.match_replace_binary`
 callables are central to any more advanced simplification through pattern
 matching. They delegate to a list of :class:`Patterns
 <qalgebra.pattern_matching.Pattern>` and replacements that are defined
@@ -85,9 +84,7 @@ in the ``_rules``, respectively ``_binary_rules`` class attributes of the
 :class:`.Expression` subclass.
 
 The pattern matching rules may temporarily extended or modified using the
-:func:`qalgebra.toolbox.core.extra_rules`,
-:func:`qalgebra.toolbox.core.extra_binary_rules`,  and
-:func:`qalgebra.toolbox.core.no_rules` context managers.
+:func:`qalgebra.toolbox.core.temporary_rules` context manager.
 
 
 Pattern matching
@@ -99,21 +96,20 @@ defined and applied using the classed and helper routines in the
 
 There are two main places where pattern matching comes up:
 
-* automatically, through :func:`match_replace` and :func:`match_replace_binary`
+* automatically, through :func:`.match_replace` and :func:`.match_replace_binary`
   simplifications applied inside of :meth:`Expression.create`.
 
-* manually, through the :func:`simplify` function (or the
-  :meth:`Expression.simplify` method)
+* manually, e.g. with :meth:`.Expression.rebuild`
 
 .. currentmodule:: qalgebra.pattern_matching
 
-Since inside :func:`~qalgebra.abstract_algebra.match_replace` and
-:func:`~qalgebra.abstract_algebra.match_replace_binary`, patterns
+Since inside :func:`.match_replace` and
+:func:`.match_replace_binary`, patterns
 are matched against expressions that are not yet instantiated (we call these
 :class:`ProtoExpressions <ProtoExpr>`), the patterns in the ``_rules``
 and ``_binary_rules`` class attributes are always constructed using the
 :func:`.pattern_head` helper function. In contrast, patterns for
-:func:`~qalgebra.core.abstract_algebra.simplify` are usually created through the
+:meth:`.Expression.apply_rules` are usually created through the
 :func:`.pattern` helper function. The :func:`.wc` function is used to associate
 Expression arguments with wildcard names.
 
@@ -124,7 +120,7 @@ Algebraic Manipulations
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 While QAlgebra automatically applies a large number of rules and simplifications if
-expressions are instantiated through the :meth:`~Expression.create` method,
+expressions are instantiated through the :meth:`~.Expression.create` method,
 significant value is placed on manually manipulating algebraic expressions. In
 fact, this is one of the design considerations that separates it from the
 `Sympy`_ package: The rule-based transformations are both explicit and
@@ -147,7 +143,7 @@ Hilbert Space Algebra
 
 .. currentmodule:: qalgebra.core.hilbert_space_algebra
 
-The :mod:`~qalgebra.hilbert_space_algebra` module defines a simple algebra
+The :mod:`~qalgebra.core.hilbert_space_algebra` module defines a simple algebra
 of finite dimensional or countably infinite dimensional Hilbert spaces.
 
 .. inheritance-diagram:: qalgebra.core.hilbert_space_algebra
@@ -172,10 +168,10 @@ composite tensor product spaces are given by instances of the :class:`ProductSpa
 
 Furthermore,
 
-* the :obj:`~qalgebra.core.hilbert_space_algebra.TrivialSpace` represents a
+* the :obj:`.TrivialSpace` represents a
   *trivial* [#f1]_ Hilbert space :math:`\mathcal{H}_0 \simeq \mathbb{C}`
 
-* the :obj:`~qalgebra.core.hilbert_space_algebra.FullSpace` represents a
+* the :obj:`.FullSpace` represents a
   Hilbert space that includes all possible degrees of freedom.
 
 .. [#f1] *trivial* in the sense that :math:`\mathcal{H}_0 \simeq \mathbb{C}`,
@@ -188,7 +184,7 @@ have a known dimension.  Since all expressions are immutable, it is important
 to either define the all the :class:`LocalSpace` instances they depend on with
 `basis` or `dimension` arguments first, or to later generate new expression
 with updated Hilbert spaces through the
-:func:`~qalgebra.abstract_algebra.substitute` routine.
+:func:`.substitute` routine.
 
 .. _operator_algebra:
 
@@ -197,7 +193,7 @@ Operator Algebra
 
 .. currentmodule:: qalgebra.core.operator_algebra
 
-The :mod:`~qalgebra.operator_algebra` module implements and algebra of Hilbert space operators
+The :mod:`~qalgebra.core.operator_algebra` module implements and algebra of Hilbert space operators
 
 .. inheritance-diagram:: qalgebra.core.operator_algebra
    :parts: 1
@@ -206,15 +202,15 @@ Operator expressions are constructed from sums (:class:`OperatorPlus`) and
 products (:class:`OperatorTimes`) of some basic elements, most importantly *local*
 operators (subclasses of :class:`LocalOperator`). This include some very common symbolic operator such as
 
-* Harmonic oscillator mode operators :math:`a_s, a_s^\dagger`: :class:`Destroy`, :class:`Create`
+* Harmonic oscillator mode operators :math:`a_s, a_s^\dagger`: :class:`.Destroy`, :class:`.Create`
 
 * :math:`\sigma`-switching operators  :math:`\sigma_{jk}^s := \left| j \right\rangle_s \left \langle k \right|_s`: :class:`LocalSigma`
 
-* coherent displacement operators :math:`D_s(\alpha) := \exp{\left(\alpha a_s^\dagger - \alpha^* a_s\right)}`: :class:`Displace`
+* coherent displacement operators :math:`D_s(\alpha) := \exp{\left(\alpha a_s^\dagger - \alpha^* a_s\right)}`: :class:`.Displace`
 
-* phase operators :math:`P_s(\phi) := \exp {\left(i\phi a_s^\dagger a_s\right)}`: :class:`Phase`
+* phase operators :math:`P_s(\phi) := \exp {\left(i\phi a_s^\dagger a_s\right)}`: :class:`.Phase`
 
-* squeezing operators :math:`S_s(\eta) := \exp {\left[{1\over 2}\left({\eta {a_s^\dagger}^2 - \eta^* a_s^2}\right)\right]}`: :class:`Squeeze`
+* squeezing operators :math:`S_s(\eta) := \exp {\left[{1\over 2}\left({\eta {a_s^\dagger}^2 - \eta^* a_s^2}\right)\right]}`: :class:`.Squeeze`
 
 Furthermore, there exist symbolic representations for constants and symbols:
 
@@ -298,39 +294,39 @@ State (Ket-) Algebra
 
 .. currentmodule:: qalgebra.core.state_algebra
 
-The :mod:`~qalgebra.state_algebra` module implements an algebra of Hilbert space states.
+The :mod:`~qalgebra.core.state_algebra` module implements an algebra of Hilbert space states.
 
 .. inheritance-diagram:: qalgebra.core.state_algebra
    :parts: 1
 
-By default we represent states :math:`\psi` as :class:`Ket` vectors :math:`\psi \to | \psi \rangle`.
-However, any state can also be represented in its adjoint :class:`Bra` form, since those representations are dual:
+By default we represent states :math:`\psi` as ket vectors :math:`\psi \to | \psi \rangle`.
+However, any state can also be represented in its adjoint bra form, since those representations are dual:
 
 .. math::
     \psi \leftrightarrow | \psi \rangle \leftrightarrow \langle \psi |
 
 States can be added to states of the same Hilbert space. They can be multiplied by:
 
-* scalars, to just yield a rescaled state within the original space, resulting in :class:`ScalarTimesKet`
+* scalars, to just yield a rescaled state within the original space, resulting in :class:`.ScalarTimesKet`
 
 * operators that act on some of the states degrees of freedom (but none that aren't part of the state's Hilbert space), resulting in a :class:`OperatorTimesKet`
 
-* other states that have a Hilbert space corresponding to a disjoint set of degrees of freedom, resulting in a :class:`TensorKet`
+* other states that have a Hilbert space corresponding to a disjoint set of degrees of freedom, resulting in a :class:`.TensorKet`
 
 Furthermore,
 
-* a :class:`Ket` object can multiply a :class:`Bra` of the same space from the left to yield a :class:`KetBra` operator.
+* a ket object can multiply a :class:`.Bra` of the same space from the left to yield a :class:`.KetBra` operator.
 
 And conversely,
 
-* a :class:`Bra` can multiply a :class:`Ket` from the left to create a (partial) inner product object :class:`BraKet`.
-  Currently, only full inner products are supported, i.e. the :class:`Ket` and :class:`Bra` operands need to have the same space.
+* a :class:`.Bra` can multiply a ket from the left to create a (partial) inner product object :class:`.BraKet`.
+  Currently, only full inner products are supported, i.e. the ket and :class:`.Bra` operands need to have the same space.
 
 There are also the following symbolic states:
 
-* arbitrary :class:`KetSymbols <KetSymbol>`
-* the :obj:`TrivialKet` acting as the identity, and
-* the :obj:`ZeroKet`.
+* arbitrary :class:`KetSymbols <.KetSymbol>`
+* the :obj:`.TrivialKet` acting as the identity, and
+* the :obj:`.ZeroKet`.
 
 
 .. _super_operator_algebra:
@@ -340,7 +336,7 @@ Super-Operator Algebra
 
 .. currentmodule:: qalgebra.super_operator_algebra
 
-The :mod:`~qalgebra.super_operator_algebra` contains an implementation of a
+The :mod:`~qalgebra.core.super_operator_algebra` contains an implementation of a
 superoperator algebra, i.e., operators acting on Hilbert space operator or
 elements of Liouville space (density matrices).
 
@@ -363,11 +359,11 @@ The most basic way to construct super-operators is by lifting 'normal' operators
     Â⁽ᵗᵒᵗᵃˡ⁾ B̂⁽ᵗᵒᵗᵃˡ⁾ - B̂⁽ᵗᵒᵗᵃˡ⁾ Â⁽ᵗᵒᵗᵃˡ⁾
 
 
-The neutral elements of super-operator addition and multiplication are :obj:`ZeroSuperOperator` and :obj:`IdentitySuperOperator`, respectively.
+The neutral elements of super-operator addition and multiplication are :obj:`.ZeroSuperOperator` and :obj:`.IdentitySuperOperator`, respectively.
 
 Super operator objects can be added together in code via the infix '+' operator and multiplied with the infix '*' operator.
 They can also be added to or multiplied by scalar objects.
-In the first case, the scalar object is multiplied by the :obj:`IdentitySuperOperator` constant.
+In the first case, the scalar object is multiplied by the :obj:`.IdentitySuperOperator` constant.
 
 Super operators are applied to operators by multiplying an operator with superoperator from the left::
 

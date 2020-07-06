@@ -44,7 +44,7 @@ qalgebra.library package
        * - :class:`SpinOperator <qalgebra.library.spin_algebra.SpinOperator>`
          - Base class for operators in a spin space
        * - :class:`SpinSpace <qalgebra.library.spin_algebra.SpinSpace>`
-         - A Hilbert space for an integer or half-integer spin system
+         - A Hilbert space for an integer or half-integer spin system.
        * - :class:`Squeeze <qalgebra.library.fock_operators.Squeeze>`
          - Unitary squeezing operator
     
@@ -55,13 +55,13 @@ qalgebra.library package
     .. list-table::
     
        * - :func:`PauliX <qalgebra.library.pauli_matrices.PauliX>`
-         - Pauli-type X-operator
+         - Pauli-type X-operator.
        * - :func:`PauliY <qalgebra.library.pauli_matrices.PauliY>`
          - Pauli-type Y-operator
        * - :func:`PauliZ <qalgebra.library.pauli_matrices.PauliZ>`
          - Pauli-type Z-operator
        * - :func:`SpinBasisKet <qalgebra.library.spin_algebra.SpinBasisKet>`
-         - Constructor for a :class:`BasisKet` for a :class:`SpinSpace`
+         - Constructor for a :class:`.BasisKet` for a :class:`.SpinSpace`.
     
 
 

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.abstract_quantum_algebra &mdash; QAlgebra 2.0.0-dev (191a4de) documentation</title>
+  <title>qalgebra.core.abstract_quantum_algebra &mdash; QAlgebra 2.0.0-dev (9c7cf0a) documentation</title>
   
 
   
@@ -362,10 +362,6 @@
                 <span class="n">deriv</span> <span class="o">=</span> <span class="n">deriv</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span><span class="o">.</span><span class="n">simplify_scalar</span><span class="p">()</span>
             <span class="k">return</span> <span class="n">deriv</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="c1"># the &quot;issubset&quot; of free symbols is a sufficient, but not a</span>
-            <span class="c1"># necessary condition; if `sym` is non-atomic, determining whether</span>
-            <span class="c1"># `self` depends on `sym` is not completely trivial (you&#39;d have to</span>
-            <span class="c1"># substitute with a Dummy)</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_zero</span></div>
 
     <span class="nd">@abstractmethod</span>
@@ -444,7 +440,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__add__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">qalgebra.core.scalar_algebra</span> <span class="kn">import</span> <span class="n">is_scalar</span><span class="p">,</span> <span class="n">ScalarValue</span>
+        <span class="kn">from</span> <span class="nn">qalgebra.core.scalar_algebra</span> <span class="kn">import</span> <span class="n">ScalarValue</span><span class="p">,</span> <span class="n">is_scalar</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base_cls</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">is_scalar</span><span class="p">(</span><span class="n">other</span><span class="p">):</span>
@@ -521,9 +517,9 @@
 <span class="sd">            becomes a function.</span>
 <span class="sd">        hs (HilbertSpace, str, int, tuple): the Hilbert space associated with</span>
 <span class="sd">            the symbol. If a `str` or an `int`, an implicit (sub-)instance of</span>
-<span class="sd">            :class:`LocalSpace` with a corresponding label will be created, or,</span>
-<span class="sd">            for a tuple of `str` or `int`, a :class:`ProducSpace. The type of</span>
-<span class="sd">            the implicit Hilbert space is set by :func:`.init_algebra`.</span>
+<span class="sd">            :class:`.LocalSpace` with a corresponding label will be created,</span>
+<span class="sd">            or, for a tuple of `str` or `int`, a :class:`.ProductSpace`. The</span>
+<span class="sd">            type of the implicit Hilbert space is set by :func:`.init_algebra`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">_rx_label</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;^[A-Za-z][A-Za-z0-9]*(_[A-Za-z0-9().+-=]+)?$&#39;</span><span class="p">)</span>
@@ -791,7 +787,7 @@
 <div class="viewcode-block" id="ScalarTimesQuantumExpression"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression">[docs]</a><span class="k">class</span> <span class="nc">ScalarTimesQuantumExpression</span><span class="p">(</span>
     <span class="n">QuantumExpression</span><span class="p">,</span> <span class="n">Operation</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Product of a :class:`.Scalar` and a :class:`QuantumExpression`&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Product of a :class:`.Scalar` and a :class:`.QuantumExpression`&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="ScalarTimesQuantumExpression.create"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression.create">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">coeff</span><span class="p">,</span> <span class="n">term</span><span class="p">):</span>
@@ -891,7 +887,7 @@
 
 
 <div class="viewcode-block" id="QuantumDerivative"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumDerivative">[docs]</a><span class="k">class</span> <span class="nc">QuantumDerivative</span><span class="p">(</span><span class="n">SingleQuantumOperation</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Symbolic partial derivative</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Symbolic partial derivative.</span>
 
 <span class="sd">    .. math::</span>
 
@@ -917,10 +913,11 @@
 
 <span class="sd">    Note:</span>
 <span class="sd">        :class:`QuantumDerivative` is intended to be instantiated only inside</span>
-<span class="sd">        the :meth:`_diff` method of a :class:`QuantumExpression`, for</span>
-<span class="sd">        expressions that depend on scalar arguments in an unspecified way.</span>
-<span class="sd">        Generally, if a derivative can be calculated explicitly, the explicit</span>
-<span class="sd">        form is preferred over the abstract :class:`QuantumDerivative`.</span>
+<span class="sd">        the ``_diff`` method to which :meth:`.QuantumExpression.diff`</span>
+<span class="sd">        delegates, for expressions that depend on scalar arguments in an</span>
+<span class="sd">        implicit way.  Generally, if a derivative can be calculated</span>
+<span class="sd">        explicitly, the explicit form is preferred over the abstract</span>
+<span class="sd">        :class:`.QuantumDerivative`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span>
         <span class="n">derivative_via_diff</span><span class="p">,</span>
@@ -930,9 +927,11 @@
 
 <div class="viewcode-block" id="QuantumDerivative.create"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumDerivative.create">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">derivs</span><span class="p">,</span> <span class="n">vals</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Instantiate the derivative by repeatedly calling</span>
-<span class="sd">        the :meth:`~QuantumExpression._diff` method of `op` and evaluating the</span>
-<span class="sd">        result at the given `vals`.</span>
+        <span class="sd">&quot;&quot;&quot;Instantiate the derivative.</span>
+
+<span class="sd">        This is done by repeatedly calling the ``_diff`` method of a</span>
+<span class="sd">        :class:`.QuantumExpression` `op` and evaluating the result at the given</span>
+<span class="sd">        `vals`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># To ensure stable ordering in Expression._get_instance_key, we</span>
         <span class="c1"># explicitly convert `derivs` and `vals` to a tuple structure with a</span>
@@ -1285,7 +1284,7 @@
 
 
 <div class="viewcode-block" id="ensure_local_space"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.ensure_local_space">[docs]</a><span class="k">def</span> <span class="nf">ensure_local_space</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">LocalSpace</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Ensure that the given `hs` is an instance of :class:`LocalSpace`.</span>
+    <span class="sd">&quot;&quot;&quot;Ensure that the given `hs` is an instance of :class:`.LocalSpace`.</span>
 
 <span class="sd">    If `hs` an instance of :class:`str` or :class:`int`, it will be converted</span>
 <span class="sd">    to a `cls` (if possible). If it already is an instace of `cls`, `hs`</span>
@@ -1295,7 +1294,7 @@
 <span class="sd">        hs (HilbertSpace or str or int): The Hilbert space (or label) to</span>
 <span class="sd">            convert/check</span>
 <span class="sd">        cls (type): The class to which an int/str label for a Hilbert space</span>
-<span class="sd">            should be converted. Must be a subclass of :class:`LocalSpace`.</span>
+<span class="sd">            should be converted. Must be a subclass of :class:`.LocalSpace`.</span>
 
 <span class="sd">    Raises:</span>
 <span class="sd">        TypeError: If `hs` is not a :class:`.LocalSpace`, :class:`str`, or</span>
@@ -1404,7 +1403,7 @@
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Jun 30, 2020.
+        Last updated on Jul 06, 2020.
       </span>
 
     </p>

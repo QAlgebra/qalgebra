@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.abstract_algebra &mdash; QAlgebra 2.0.0-dev (191a4de) documentation</title>
+  <title>qalgebra.core.abstract_algebra &mdash; QAlgebra 2.0.0-dev (9c7cf0a) documentation</title>
   
 
   
@@ -225,7 +225,7 @@
 
 
 <div class="viewcode-block" id="Expression"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression">[docs]</a><span class="k">class</span> <span class="nc">Expression</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Base class for all QAlgebra Expressions</span>
+    <span class="sd">&quot;&quot;&quot;Base class for all QAlgebra Expressions.</span>
 
 <span class="sd">    Expressions should generally be instantiated using the :meth:`create` class</span>
 <span class="sd">    method, which takes into account the algebraic properties of the Expression</span>
@@ -262,7 +262,7 @@
 <span class="sd">            :mod:`~qalgebra.core.algebraic_properties`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c1"># Note: all subclasses of Exression that override `__init__` or `create`</span>
+    <span class="c1"># Note: all subclasses of Expression that override `__init__` or `create`</span>
     <span class="c1"># *must* call the corresponding superclass method *at the end*. Otherwise,</span>
     <span class="c1"># caching will not work correctly</span>
 
@@ -291,7 +291,7 @@
 
 <span class="sd">        Instead of directly instantiating `cls`, it is recommended to use</span>
 <span class="sd">        :meth:`create`, which applies simplifications to the args and keyword</span>
-<span class="sd">        arguments according to the :attr:`simplifications` class attribute, and</span>
+<span class="sd">        arguments according to the `simplifications` class attribute, and</span>
 <span class="sd">        returns an appropriate object (which may or may not be an instance of</span>
 <span class="sd">        the original `cls`).</span>
 
@@ -303,9 +303,9 @@
 <span class="sd">        temporary modification of the automatic simplifications that</span>
 <span class="sd">        :meth:`create` uses, in particular the rules for</span>
 <span class="sd">        :func:`.match_replace` and :func:`.match_replace_binary`. Inside the</span>
-<span class="sd">        managed context, the :attr:`simplifications` class attribute may be</span>
-<span class="sd">        modified and rules can be managed with :meth:`add_rule` and</span>
-<span class="sd">        :meth:`del_rules`.</span>
+<span class="sd">        managed context, the `simplifications` class attribute may be</span>
+<span class="sd">        modified and rules can be managed with :meth:`~.Expression.add_rule`</span>
+<span class="sd">        and :meth:`~.Expression.del_rules`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">global</span> <span class="n">LEVEL</span>
         <span class="k">if</span> <span class="n">LOG</span><span class="p">:</span>
@@ -412,7 +412,7 @@
 
 <div class="viewcode-block" id="Expression.add_rule"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.add_rule">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">add_rule</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">replacement</span><span class="p">,</span> <span class="n">attr</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add an algebraic rule for :meth:`create` to the class</span>
+        <span class="sd">&quot;&quot;&quot;Add an algebraic rule for :meth:`create` to the class.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            name (str): Name of the rule. This is used for debug logging to</span>
@@ -459,7 +459,7 @@
 
 <div class="viewcode-block" id="Expression.show_rules"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.show_rules">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">show_rules</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">names</span><span class="p">,</span> <span class="n">attr</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Print algebraic rules used by :class:`create`</span>
+        <span class="sd">&quot;&quot;&quot;Print algebraic rules used by :class:`create`.</span>
 
 <span class="sd">        Print a summary of the algebraic rules with the given names, or all</span>
 <span class="sd">        rules if not names a given.</span>
@@ -467,7 +467,7 @@
 <span class="sd">        Args:</span>
 <span class="sd">            names (str): Names of rules to show</span>
 <span class="sd">            attr (None or str): Name of the class attribute from which to get</span>
-<span class="sd">                the rules. Cf. :meth:`add_rule`.</span>
+<span class="sd">                the rules. Cf. :meth:`~.Expression.add_rule`.</span>
 
 <span class="sd">        Raises:</span>
 <span class="sd">            AttributeError: If invalid `attr`</span>
@@ -744,7 +744,7 @@
         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Expression.apply_rules"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.apply_rules">[docs]</a>    <span class="k">def</span> <span class="nf">apply_rules</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rules</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Rebuild the expression while applying a list of rules</span>
+        <span class="sd">&quot;&quot;&quot;Rebuild the expression while applying a list of rules.</span>
 
 <span class="sd">        The rules are applied against the instantiated expression, and any</span>
 <span class="sd">        sub-expressions if `recursive` is True. Rule application is best though</span>
@@ -755,7 +755,7 @@
 <span class="sd">        Args:</span>
 <span class="sd">            rules (list or ~collections.OrderedDict): List of rules or</span>
 <span class="sd">                dictionary mapping names to rules, where each rule is a tuple</span>
-<span class="sd">                (:class:`Pattern`, replacement callable), cf.</span>
+<span class="sd">                (:class:`.Pattern`, replacement callable), cf.</span>
 <span class="sd">                :meth:`apply_rule`</span>
 <span class="sd">            recursive (bool): If true (default), apply rules to all arguments</span>
 <span class="sd">                and keyword arguments of the expression. Otherwise, only the</span>
@@ -784,7 +784,7 @@
 <span class="sd">        ``rules=[(pattern, replacement)]``</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            pattern (.Pattern): A pattern containing one or more wildcards</span>
+<span class="sd">            pattern (Pattern): A pattern containing one or more wildcards</span>
 <span class="sd">            replacement (callable): A callable that takes the wildcard names in</span>
 <span class="sd">                `pattern` as keyword arguments, and returns a replacement for</span>
 <span class="sd">                any expression that `pattern` matches.</span>
@@ -815,17 +815,17 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_rules</span><span class="p">([(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">replacement</span><span class="p">)],</span> <span class="n">recursive</span><span class="o">=</span><span class="n">recursive</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Expression.rebuild"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.rebuild">[docs]</a>    <span class="k">def</span> <span class="nf">rebuild</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Recursively re-instantiate the expression</span>
+        <span class="sd">&quot;&quot;&quot;Recursively re-instantiate the expression.</span>
 
 <span class="sd">        This is generally used within a managed context such as</span>
-<span class="sd">        :func:`.extra_rules`, :func:`.extra_binary_rules`, or</span>
-<span class="sd">        :func:`.no_rules`.</span>
+<span class="sd">        :func:`.temporary_rules`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_rules</span><span class="p">(</span><span class="n">rules</span><span class="o">=</span><span class="p">{})</span></div>
 
     <span class="k">def</span> <span class="nf">_repr_latex_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;For compatibility with the IPython notebook, generate TeX expression</span>
-<span class="sd">        and surround it with $&#39;s.</span>
+        <span class="sd">&quot;&quot;&quot;TeX representation for IPython notebook.</span>
+
+<span class="sd">        Generates the TeX representation and surround it with dollar signs.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># This method will be replaced by init_printing()</span>
         <span class="kn">from</span> <span class="nn">qalgebra.printing</span> <span class="kn">import</span> <span class="n">init_printing</span>
@@ -858,7 +858,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">bound_symbols</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set of bound SymPy symbols in the expression&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Set of bound SymPy symbols in the expression.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bound_symbols</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">res</span> <span class="o">=</span> <span class="nb">set</span><span class="o">.</span><span class="n">union</span><span class="p">(</span>
                 <span class="nb">set</span><span class="p">([]),</span>  <span class="c1"># dummy arg (union fails without arguments)</span>
@@ -873,7 +873,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">all_symbols</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Combination of :attr:`free_symbols` and :attr:`bound_symbols`&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Combination of :attr:`free_symbols` and :attr:`bound_symbols`.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_all_symbols</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_all_symbols</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">free_symbols</span> <span class="o">|</span> <span class="bp">self</span><span class="o">.</span><span class="n">bound_symbols</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_all_symbols</span>
@@ -1075,7 +1075,7 @@
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Jun 30, 2020.
+        Last updated on Jul 06, 2020.
       </span>
 
     </p>

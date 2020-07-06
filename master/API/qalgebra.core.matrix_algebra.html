@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.matrix_algebra module &mdash; QAlgebra 2.0.0-dev (191a4de) documentation</title>
+  <title>qalgebra.core.matrix_algebra module &mdash; QAlgebra 2.0.0-dev (9c7cf0a) documentation</title>
   
 
   
@@ -258,7 +258,7 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.matrix_algebra.Matrix" title="qalgebra.core.matrix_algebra.Matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Matrix</span></code></a></p></td>
-<td><p>Matrix of Expressions</p></td>
+<td><p>Matrix of Expressions.</p></td>
 </tr>
 </tbody>
 </table>
@@ -297,9 +297,7 @@
 <dt id="qalgebra.core.matrix_algebra.Matrix">
 <em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.matrix_algebra.</code><code class="sig-name descname">Matrix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">m</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/matrix_algebra.html#Matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.matrix_algebra.Matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression" title="qalgebra.core.abstract_algebra.Expression"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_algebra.Expression</span></code></a></p>
-<p>Matrix of Expressions</p>
-<p>Matrices of <code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code> expressions are required for the SLH
-formalism.</p>
+<p>Matrix of Expressions.</p>
 <dl class="py attribute">
 <dt id="qalgebra.core.matrix_algebra.Matrix.matrix">
 <code class="sig-name descname">matrix</code><em class="property"> = None</em><a class="headerlink" href="#qalgebra.core.matrix_algebra.Matrix.matrix" title="Permalink to this definition">¶</a></dt>
@@ -349,7 +347,7 @@ Expression</p>
 <p>This is defined only if all the entries in the matrix have a defined
 conjugate (i.e., they have a <cite>conjugate</cite> method). This is <em>not</em> the
 case for a matrix of operators. In such a case, only an
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">elementwise()</span></code> <a class="reference internal" href="#qalgebra.core.matrix_algebra.Matrix.adjoint" title="qalgebra.core.matrix_algebra.Matrix.adjoint"><code class="xref py py-func docutils literal notranslate"><span class="pre">adjoint()</span></code></a> would be applicable, but this is
+elementwise <a class="reference internal" href="#qalgebra.core.matrix_algebra.Matrix.adjoint" title="qalgebra.core.matrix_algebra.Matrix.adjoint"><code class="xref py py-func docutils literal notranslate"><span class="pre">adjoint()</span></code></a> would be applicable, but this is
 mathematically different from a complex conjugate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
@@ -441,7 +439,7 @@ new operator matrix of the same shape.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>func</strong> (<em>FunctionType</em>) – A function to be applied to each element. It
+<li><p><strong>func</strong> (<em>callable</em>) – A function to be applied to each element. It
 must take the element as its first argument.</p></li>
 <li><p><strong>args</strong> – Additional positional arguments to be passed to <cite>func</cite></p></li>
 <li><p><strong>kwargs</strong> – Additional keyword arguments to be passed to <cite>func</cite></p></li>
@@ -464,7 +462,7 @@ parameter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>param</strong> (<a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.symbol.Symbol" title="(in SymPy v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Symbol</span></code></a>) – Expansion parameter.</p></li>
+<li><p><strong>param</strong> (<a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.symbol.Symbol" title="(in SymPy v1.6.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Symbol</span></code></a>) – Expansion parameter.</p></li>
 <li><p><strong>about</strong> (<a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><em>Scalar</em></a>) – Point about which to expand.</p></li>
 <li><p><strong>order</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – Maximum order of expansion &gt;= 0</p></li>
 </ul>
@@ -602,7 +600,7 @@ coefficients.</p>
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Jun 30, 2020.
+        Last updated on Jul 06, 2020.
       </span>
 
     </p>

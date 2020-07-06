@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.printing.base module &mdash; QAlgebra 2.0.0-dev (191a4de) documentation</title>
+  <title>qalgebra.printing.base module &mdash; QAlgebra 2.0.0-dev (9c7cf0a) documentation</title>
   
 
   
@@ -266,7 +266,7 @@
 <dl class="py class">
 <dt id="qalgebra.printing.base.QalgebraBasePrinter">
 <em class="property">class </em><code class="sig-prename descclassname">qalgebra.printing.base.</code><code class="sig-name descname">QalgebraBasePrinter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cache</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">settings</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing/base.html#QalgebraBasePrinter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.base.QalgebraBasePrinter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.sympy.org/latest/modules/printing.html#sympy.printing.printer.Printer" title="(in SymPy v1.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.printing.printer.Printer</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.sympy.org/latest/modules/printing.html#sympy.printing.printer.Printer" title="(in SymPy v1.6.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.printing.printer.Printer</span></code></a></p>
 <p>Base class for all QAlgebra expression printers</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -334,10 +334,11 @@ method</p>
 <dd><p>Returns printer’s representation for expr (as a string)</p>
 <p>The representation is obtained by the following methods:</p>
 <ol class="arabic simple">
-<li><p>from the <code class="xref py py-attr docutils literal notranslate"><span class="pre">cache</span></code></p></li>
+<li><p>from the Printer cache</p></li>
 <li><p>If <cite>expr</cite> is a Sympy object, delegate to the
-<a class="reference external" href="https://docs.sympy.org/latest/modules/printing.html#sympy.printing.printer.Printer.doprint" title="(in SymPy v1.6)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">doprint()</span></code></a> method of
-<code class="xref py py-attr docutils literal notranslate"><span class="pre">_sympy_printer</span></code></p></li>
+<a class="reference external" href="https://docs.sympy.org/latest/modules/printing.html#sympy.printing.printer.Printer.doprint" title="(in SymPy v1.6.1)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">doprint()</span></code></a> method of
+the SymPy printer referenced by the QAlgebra printer’s
+<code class="docutils literal notranslate"><span class="pre">_sympy_printer</span></code> class attribute.</p></li>
 <li><p>Let the <cite>expr</cite> print itself if has the <a class="reference internal" href="#qalgebra.printing.base.QalgebraBasePrinter.printmethod" title="qalgebra.printing.base.QalgebraBasePrinter.printmethod"><code class="xref py py-attr docutils literal notranslate"><span class="pre">printmethod</span></code></a></p></li>
 <li><p>Take the best fitting <code class="docutils literal notranslate"><span class="pre">_print_*</span></code> method of the printer</p></li>
 <li><p>As fallback, delegate to <a class="reference internal" href="#qalgebra.printing.base.QalgebraBasePrinter.emptyPrinter" title="qalgebra.printing.base.QalgebraBasePrinter.emptyPrinter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">emptyPrinter()</span></code></a></p></li>
@@ -374,7 +375,7 @@ method.</p>
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Jun 30, 2020.
+        Last updated on Jul 06, 2020.
       </span>
 
     </p>

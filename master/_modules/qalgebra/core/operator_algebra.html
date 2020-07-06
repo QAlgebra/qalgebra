@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.operator_algebra &mdash; QAlgebra 2.0.0-dev (191a4de) documentation</title>
+  <title>qalgebra.core.operator_algebra &mdash; QAlgebra 2.0.0-dev (9c7cf0a) documentation</title>
   
 
   
@@ -340,9 +340,10 @@
 <span class="sd">            &gt;&gt;&gt; print(ascii(op.expand_in_basis(hermitian=True)))</span>
 <span class="sd">            |g&gt;&lt;e|^(1) + c.c.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">qalgebra.core.state_algebra</span> <span class="kn">import</span> <span class="n">KetBra</span>
-
+        <span class="c1"># fmt: off</span>
+        <span class="kn">from</span> <span class="nn">qalgebra.core.state_algebra</span> <span class="kn">import</span> <span class="n">KetBra</span>  <span class="c1"># isort:skip</span>
         <span class="c1"># KetBra is imported locally to avoid circular imports</span>
+        <span class="c1"># fmt: on</span>
         <span class="k">if</span> <span class="n">basis_states</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">basis_states</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">basis_states</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
@@ -373,7 +374,7 @@
 
 
 <div class="viewcode-block" id="LocalOperator"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.LocalOperator">[docs]</a><span class="k">class</span> <span class="nc">LocalOperator</span><span class="p">(</span><span class="n">Operator</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Base class for &quot;known&quot; operators on a :class:`LocalSpace`</span>
+    <span class="sd">&quot;&quot;&quot;Base class for &quot;known&quot; operators on a :class:`.LocalSpace`.</span>
 
 <span class="sd">    All :class:`LocalOperator` instances have known algebraic properties and a</span>
 <span class="sd">    fixed associated identifier (symbol) that is used when printing that</span>
@@ -388,7 +389,7 @@
 <span class="sd">    Note:</span>
 <span class="sd">        It is recommended that subclasses use the :func:`.properties_for_args`</span>
 <span class="sd">        class decorator if they define any position arguments (via the</span>
-<span class="sd">        :attr:`_arg_names` class attribute)</span>
+<span class="sd">        ``_arg_names`` class attribute)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span>
@@ -396,10 +397,10 @@
     <span class="p">]</span>
 
     <span class="n">_identifier</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># must be overridden by subclasses!</span>
-    <span class="n">_dagger</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># do representations include a dagger?</span>
-    <span class="n">_arg_names</span> <span class="o">=</span> <span class="p">()</span>  <span class="c1"># names of args that can be passed to __init__</span>
-    <span class="n">_scalar_args</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># convert args to Scalar?</span>
-    <span class="n">_hs_cls</span> <span class="o">=</span> <span class="n">LocalSpace</span>  <span class="c1"># allowed type of `hs`</span>
+    <span class="n">_dagger</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1">#: do representations include a dagger?</span>
+    <span class="n">_arg_names</span> <span class="o">=</span> <span class="p">()</span>  <span class="c1">#: names of args that can be passed to __init__</span>
+    <span class="n">_scalar_args</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1">#: convert args to Scalar?</span>
+    <span class="n">_hs_cls</span> <span class="o">=</span> <span class="n">LocalSpace</span>  <span class="c1">#: allowed type of `hs`</span>
     <span class="n">_rx_identifier</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;^[A-Za-z][A-Za-z0-9]*(_[A-Za-z0-9().+-]+)?$&#39;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">hs</span><span class="p">):</span>
@@ -424,7 +425,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">space</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Hilbert space of the operator (:class:`.LocalSpace` instance)&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Hilbert space of the operator (:class:`.LocalSpace` instance).&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hs</span>
 
     <span class="nd">@property</span>
@@ -546,7 +547,7 @@
 
 <div class="viewcode-block" id="LocalSigma"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.LocalSigma">[docs]</a><span class="nd">@properties_for_args</span>
 <span class="k">class</span> <span class="nc">LocalSigma</span><span class="p">(</span><span class="n">LocalOperator</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&#39;&#39;&#39;Level flip operator between two levels of a :class:`.LocalSpace`</span>
+    <span class="sa">r</span><span class="sd">&#39;&#39;&#39;Level flip operator between two levels of a :class:`.LocalSpace`.</span>
 
 <span class="sd">    .. math::</span>
 
@@ -554,7 +555,7 @@
 <span class="sd">        \left| j\right\rangle_{\rm hs} \left \langle k \right |_{\rm hs}</span>
 
 <span class="sd">    For $j=k$ this becomes a projector $\Op{P}_k$ onto the eigenstate</span>
-<span class="sd">    $\ket{k}$; see :class:`LocalProjector`.</span>
+<span class="sd">    $\ket{k}$.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        j (int or str): The label or index identifying $\ket{j}$</span>
@@ -562,7 +563,7 @@
 <span class="sd">        hs (LocalSpace or int or str): The Hilbert space on which the</span>
 <span class="sd">            operator acts. If an :class:`int` or a :class:`str`, an implicit</span>
 <span class="sd">            Hilbert space will be constructed as a subclass of</span>
-<span class="sd">            :class:`LocalSpace`, as configured by :func:`init_algebra`.</span>
+<span class="sd">            :class:`.LocalSpace`, as configured by :func:`.init_algebra`.</span>
 
 <span class="sd">    Note:</span>
 <span class="sd">        The parameters `j` or `k` may be an integer or a string. A string</span>
@@ -734,7 +735,7 @@
 
 
 <div class="viewcode-block" id="ScalarTimesOperator"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.ScalarTimesOperator">[docs]</a><span class="k">class</span> <span class="nc">ScalarTimesOperator</span><span class="p">(</span><span class="n">Operator</span><span class="p">,</span> <span class="n">ScalarTimesQuantumExpression</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Product of a :class:`.Scalar` coefficient and an :class:`Operator`&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Product of a :class:`.Scalar` coefficient and an :class:`.Operator`.&quot;&quot;&quot;</span>
 
     <span class="n">_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
     <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span>
@@ -950,7 +951,7 @@
 
 
 <div class="viewcode-block" id="OperatorPlusMinusCC"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.OperatorPlusMinusCC">[docs]</a><span class="k">class</span> <span class="nc">OperatorPlusMinusCC</span><span class="p">(</span><span class="n">SingleQuantumOperation</span><span class="p">,</span> <span class="n">Operator</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;An operator plus or minus its complex conjugate&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;An operator plus or minus its complex conjugate.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">sign</span><span class="o">=+</span><span class="mi">1</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sign</span> <span class="o">=</span> <span class="n">sign</span>
@@ -1001,7 +1002,7 @@
 
 
 <div class="viewcode-block" id="PseudoInverse"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.PseudoInverse">[docs]</a><span class="k">class</span> <span class="nc">PseudoInverse</span><span class="p">(</span><span class="n">SingleQuantumOperation</span><span class="p">,</span> <span class="n">Operator</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Unevaluated pseudo-inverse $\Op{X}^+$ of an operator $\Op{X}$</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Unevaluated pseudo-inverse $\Op{X}^+$ of an operator $\Op{X}$.</span>
 
 <span class="sd">    It is defined via the relationship</span>
 
@@ -1027,7 +1028,7 @@
 
 
 <div class="viewcode-block" id="NullSpaceProjector"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.NullSpaceProjector">[docs]</a><span class="k">class</span> <span class="nc">NullSpaceProjector</span><span class="p">(</span><span class="n">SingleQuantumOperation</span><span class="p">,</span> <span class="n">Operator</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Projection operator onto the nullspace of its operand</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Projection operator onto the nullspace of its operand.</span>
 
 <span class="sd">    Returns the operator :math:`\mathcal{P}_{{\rm Ker} X}` with</span>
 
@@ -1089,11 +1090,13 @@
 
 
 <div class="viewcode-block" id="factor_for_trace"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.factor_for_trace">[docs]</a><span class="k">def</span> <span class="nf">factor_for_trace</span><span class="p">(</span><span class="n">ls</span><span class="p">:</span> <span class="n">HilbertSpace</span><span class="p">,</span> <span class="n">op</span><span class="p">:</span> <span class="n">Operator</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Operator</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&#39;&#39;&#39;Given a :class:`.LocalSpace` `ls` to take the partial trace over and an</span>
+    <span class="sa">r</span><span class="sd">&#39;&#39;&#39;Factor `ls` out of `op` for easy tracing.</span>
+
+<span class="sd">    Given a :class:`.LocalSpace` `ls` to take the partial trace over and an</span>
 <span class="sd">    operator `op`, factor the trace such that operators acting on disjoint</span>
 <span class="sd">    degrees of freedom are pulled out of the trace. If the operator acts</span>
 <span class="sd">    trivially on ls the trace yields only a pre-factor equal to the dimension</span>
-<span class="sd">    of ls. If there are :class:`LocalSigma` operators among a product, the</span>
+<span class="sd">    of ls. If there are :class:`.LocalSigma` operators among a product, the</span>
 <span class="sd">    trace&#39;s cyclical property is used to move to sandwich the full product by</span>
 <span class="sd">    :class:`LocalSigma` operators:</span>
 
@@ -1102,7 +1105,7 @@
 <span class="sd">        {\rm Tr} A \sigma_{jk} B = {\rm Tr} \sigma_{jk} B A \sigma_{jj}</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        ls: Degree of Freedom to trace over</span>
+<span class="sd">        ls: Degree of freedom to trace over</span>
 <span class="sd">        op: Operator to take the trace of</span>
 
 <span class="sd">    Returns:</span>
@@ -1229,9 +1232,9 @@
 
 
 <div class="viewcode-block" id="rewrite_with_operator_pm_cc"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.rewrite_with_operator_pm_cc">[docs]</a><span class="k">def</span> <span class="nf">rewrite_with_operator_pm_cc</span><span class="p">(</span><span class="n">expr</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Try to rewrite expr using :class:`OperatorPlusMinusCC`</span>
+    <span class="sd">&quot;&quot;&quot;Try to rewrite expr using :class:`.OperatorPlusMinusCC`.</span>
 
-<span class="sd">    Example:</span>
+<span class="sd">    Example::</span>
 
 <span class="sd">        &gt;&gt;&gt; A = OperatorSymbol(&#39;A&#39;, hs=1)</span>
 <span class="sd">        &gt;&gt;&gt; sum = A + A.dag()</span>
@@ -1311,7 +1314,7 @@
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Jun 30, 2020.
+        Last updated on Jul 06, 2020.
       </span>
 
     </p>

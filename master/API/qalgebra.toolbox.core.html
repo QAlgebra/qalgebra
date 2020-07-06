@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.toolbox.core module &mdash; QAlgebra 2.0.0-dev (191a4de) documentation</title>
+  <title>qalgebra.toolbox.core module &mdash; QAlgebra 2.0.0-dev (9c7cf0a) documentation</title>
   
 
   
@@ -251,7 +251,7 @@
 <td><p>Temporarily disable instance caching in <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.toolbox.core.symbols" title="qalgebra.toolbox.core.symbols"><code class="xref py py-obj docutils literal notranslate"><span class="pre">symbols</span></code></a></p></td>
-<td><p>The <a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.symbol.symbols" title="(in SymPy v1.6)"><code class="xref py py-func docutils literal notranslate"><span class="pre">symbols()</span></code></a> function from SymPy.</p></td>
+<td><p>The <a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.symbol.symbols" title="(in SymPy v1.6.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">symbols()</span></code></a> function from SymPy.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.toolbox.core.temporary_instance_cache" title="qalgebra.toolbox.core.temporary_instance_cache"><code class="xref py py-obj docutils literal notranslate"><span class="pre">temporary_instance_cache</span></code></a></p></td>
 <td><p>Use a temporary cache for instances in <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a></p></td>
@@ -307,7 +307,7 @@ complete control over the creation of expressions.</p>
 <dl class="py function">
 <dt id="qalgebra.toolbox.core.symbols">
 <code class="sig-prename descclassname">qalgebra.toolbox.core.</code><code class="sig-name descname">symbols</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">names</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">args</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/toolbox/core.html#symbols"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.toolbox.core.symbols" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.symbol.symbols" title="(in SymPy v1.6)"><code class="xref py py-func docutils literal notranslate"><span class="pre">symbols()</span></code></a> function from SymPy.</p>
+<dd><p>The <a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.symbol.symbols" title="(in SymPy v1.6.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">symbols()</span></code></a> function from SymPy.</p>
 <p>This can be used to generate QNET symbols as well:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;A B C&#39;</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">OperatorSymbol</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">srepr</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
@@ -317,11 +317,11 @@ complete control over the creation of expressions.</p>
 <p>Basically, the <cite>cls</cite> keyword argument can be any instantiator, i.e. a class
 or callable that receives a symbol name as the single positional argument.
 Any keyword arguments not handled by <a class="reference internal" href="#qalgebra.toolbox.core.symbols" title="qalgebra.toolbox.core.symbols"><code class="xref py py-func docutils literal notranslate"><span class="pre">symbols()</span></code></a> directly (see
-<a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.symbol.symbols" title="(in SymPy v1.6)"><code class="xref py py-func docutils literal notranslate"><span class="pre">sympy.core.symbol.symbols()</span></code></a> documentation) is passed on to the
+<a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.symbol.symbols" title="(in SymPy v1.6.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">sympy.core.symbol.symbols()</span></code></a> documentation) is passed on to the
 instantiator. Obviously, this is extremely flexible.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="xref py py-func docutils literal notranslate"><span class="pre">symbol()</span></code> does not pass <em>positional</em> arguments to the
+<p><a class="reference internal" href="#qalgebra.toolbox.core.symbols" title="qalgebra.toolbox.core.symbols"><code class="xref py py-func docutils literal notranslate"><span class="pre">symbols()</span></code></a> does not pass <em>positional</em> arguments to the
 instantiator. Two possible workarounds to create symbols with e.g. a
 scalar argument are:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -363,7 +363,7 @@ scalar argument are:</p>
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Jun 30, 2020.
+        Last updated on Jul 06, 2020.
       </span>
 
     </p>

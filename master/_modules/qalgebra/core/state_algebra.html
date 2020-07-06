@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.state_algebra &mdash; QAlgebra 2.0.0-dev (191a4de) documentation</title>
+  <title>qalgebra.core.state_algebra &mdash; QAlgebra 2.0.0-dev (9c7cf0a) documentation</title>
   
 
   
@@ -389,7 +389,7 @@
 
 
 <div class="viewcode-block" id="KetSymbol"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.KetSymbol">[docs]</a><span class="k">class</span> <span class="nc">KetSymbol</span><span class="p">(</span><span class="n">QuantumSymbol</span><span class="p">,</span> <span class="n">State</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Symbolic state</span>
+    <span class="sd">&quot;&quot;&quot;Symbolic state.</span>
 
 <span class="sd">    See :class:`.QuantumSymbol`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -400,10 +400,11 @@
 
 
 <div class="viewcode-block" id="LocalKet"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.LocalKet">[docs]</a><span class="k">class</span> <span class="nc">LocalKet</span><span class="p">(</span><span class="n">State</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;A state on a :class:`LocalSpace`</span>
+    <span class="sd">&quot;&quot;&quot;A state on a :class:`.LocalSpace`.</span>
 
 <span class="sd">    This does not include operations, even if these operations only involve</span>
-<span class="sd">    states acting on the same local space&quot;&quot;&quot;</span>
+<span class="sd">    states acting on the same local space</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">hs</span><span class="p">):</span>
         <span class="n">hs</span> <span class="o">=</span> <span class="n">ensure_local_space</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_default_hs_cls</span><span class="p">)</span>
@@ -472,7 +473,7 @@
 <span class="sd">            index of the basis state. This works if `hs` has an unknown</span>
 <span class="sd">            dimension. For a symbolic index, `label_or_index` can be an</span>
 <span class="sd">            instance of an appropriate subclass of</span>
-<span class="sd">            :class:`~qalgebra.indices.SymbolicLabelBase`</span>
+<span class="sd">            :class:`.SymbolicLabelBase`</span>
 <span class="sd">        hs (LocalSpace): The Hilbert space in which the basis is defined</span>
 
 <span class="sd">    Raises:</span>
@@ -492,9 +493,8 @@
 <span class="sd">            |g&gt;^(tls)</span>
 
 <span class="sd">        When instantiating the :class:`BasisKet` via</span>
-<span class="sd">        :meth:`~qalgebra.abstract_algebra.Expression.create`, an integer</span>
-<span class="sd">        label outside the range of the underlying Hilbert space results in a</span>
-<span class="sd">        :class:`ZeroKet`::</span>
+<span class="sd">        :meth:`~.Expression.create`, an integer label outside the range of the</span>
+<span class="sd">        underlying Hilbert space results in a :class:`ZeroKet`::</span>
 
 <span class="sd">            &gt;&gt;&gt; BasisKet.create(-1, hs=0)</span>
 <span class="sd">            ZeroKet</span>
@@ -520,30 +520,34 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;The index of the state in the Hilbert space basis</span>
+        <span class="sd">&quot;&quot;&quot;The index of the state in the Hilbert space basis.</span>
 
-<span class="sd">        &gt;&gt;&gt; hs = LocalSpace(&#39;tls&#39;, basis=(&#39;g&#39;, &#39;e&#39;))</span>
-<span class="sd">        &gt;&gt;&gt; BasisKet(&#39;g&#39;, hs=hs).index</span>
-<span class="sd">        0</span>
-<span class="sd">        &gt;&gt;&gt; BasisKet(&#39;e&#39;, hs=hs).index</span>
-<span class="sd">        1</span>
-<span class="sd">        &gt;&gt;&gt; BasisKet(1, hs=hs).index</span>
-<span class="sd">        1</span>
+<span class="sd">        ::</span>
+
+<span class="sd">            &gt;&gt;&gt; hs = LocalSpace(&#39;tls&#39;, basis=(&#39;g&#39;, &#39;e&#39;))</span>
+<span class="sd">            &gt;&gt;&gt; BasisKet(&#39;g&#39;, hs=hs).index</span>
+<span class="sd">            0</span>
+<span class="sd">            &gt;&gt;&gt; BasisKet(&#39;e&#39;, hs=hs).index</span>
+<span class="sd">            1</span>
+<span class="sd">            &gt;&gt;&gt; BasisKet(1, hs=hs).index</span>
+<span class="sd">            1</span>
 
 <span class="sd">        For a :class:`BasisKet` with an indexed label, this may return a sympy</span>
 <span class="sd">        expression::</span>
 
-<span class="sd">        &gt;&gt;&gt; hs = SpinSpace(&#39;s&#39;, spin=&#39;3/2&#39;)</span>
-<span class="sd">        &gt;&gt;&gt; i = symbols(&#39;i&#39;, cls=IdxSym)</span>
-<span class="sd">        &gt;&gt;&gt; lbl = SpinIndex(i/2, hs)</span>
-<span class="sd">        &gt;&gt;&gt; ket = BasisKet(lbl, hs=hs)</span>
-<span class="sd">        &gt;&gt;&gt; ket.index</span>
-<span class="sd">        i/2 + 3/2</span>
+<span class="sd">            &gt;&gt;&gt; hs = SpinSpace(&#39;s&#39;, spin=&#39;3/2&#39;)</span>
+<span class="sd">            &gt;&gt;&gt; i = symbols(&#39;i&#39;, cls=IdxSym)</span>
+<span class="sd">            &gt;&gt;&gt; lbl = SpinIndex(i/2, hs)</span>
+<span class="sd">            &gt;&gt;&gt; ket = BasisKet(lbl, hs=hs)</span>
+<span class="sd">            &gt;&gt;&gt; ket.index</span>
+<span class="sd">            i/2 + 3/2</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_index</span>
 
 <div class="viewcode-block" id="BasisKet.next"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.BasisKet.next">[docs]</a>    <span class="k">def</span> <span class="nf">next</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Move up by `n` steps in the Hilbert space::</span>
+        <span class="sd">&quot;&quot;&quot;Move up by `n` steps in the Hilbert space.</span>
+
+<span class="sd">        ::</span>
 
 <span class="sd">            &gt;&gt;&gt; hs =  LocalSpace(&#39;tls&#39;, basis=(&#39;g&#39;, &#39;e&#39;))</span>
 <span class="sd">            &gt;&gt;&gt; ascii(BasisKet(&#39;g&#39;, hs=hs).next())</span>
@@ -551,7 +555,7 @@
 <span class="sd">            &gt;&gt;&gt; ascii(BasisKet(0, hs=hs).next())</span>
 <span class="sd">            &#39;|e&gt;^(tls)&#39;</span>
 
-<span class="sd">        We can also go multiple steps:</span>
+<span class="sd">        We can also go multiple steps::</span>
 
 <span class="sd">            &gt;&gt;&gt; hs =  LocalSpace(&#39;ten&#39;, dimension=10)</span>
 <span class="sd">            &gt;&gt;&gt; ascii(BasisKet(0, hs=hs).next(2))</span>
@@ -578,17 +582,19 @@
 <div class="viewcode-block" id="BasisKet.prev"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.BasisKet.prev">[docs]</a>    <span class="k">def</span> <span class="nf">prev</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Move down by `n` steps in the Hilbert space, cf. :meth:`next`.</span>
 
-<span class="sd">        &gt;&gt;&gt; hs =  LocalSpace(&#39;3l&#39;, basis=(&#39;g&#39;, &#39;e&#39;, &#39;r&#39;))</span>
-<span class="sd">        &gt;&gt;&gt; ascii(BasisKet(&#39;r&#39;, hs=hs).prev(2))</span>
-<span class="sd">        &#39;|g&gt;^(3l)&#39;</span>
-<span class="sd">        &gt;&gt;&gt; BasisKet(&#39;r&#39;, hs=hs).prev(3)</span>
-<span class="sd">        ZeroKet</span>
+<span class="sd">        ::</span>
+
+<span class="sd">            &gt;&gt;&gt; hs =  LocalSpace(&#39;3l&#39;, basis=(&#39;g&#39;, &#39;e&#39;, &#39;r&#39;))</span>
+<span class="sd">            &gt;&gt;&gt; ascii(BasisKet(&#39;r&#39;, hs=hs).prev(2))</span>
+<span class="sd">            &#39;|g&gt;^(3l)&#39;</span>
+<span class="sd">            &gt;&gt;&gt; BasisKet(&#39;r&#39;, hs=hs).prev(3)</span>
+<span class="sd">            ZeroKet</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">next</span><span class="p">(</span><span class="n">n</span><span class="o">=-</span><span class="n">n</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="CoherentStateKet"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.CoherentStateKet">[docs]</a><span class="k">class</span> <span class="nc">CoherentStateKet</span><span class="p">(</span><span class="n">LocalKet</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Local coherent state, labeled by a complex amplitude</span>
+    <span class="sd">&quot;&quot;&quot;Local coherent state, labeled by a complex amplitude.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        hs (LocalSpace): The local Hilbert space degree of freedom.</span>
@@ -610,7 +616,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ampl</span>
 
     <span class="k">def</span> <span class="nf">_diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sym</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">qalgebra.library.fock_operators</span> <span class="kn">import</span> <span class="n">Destroy</span><span class="p">,</span> <span class="n">Create</span>
+        <span class="kn">from</span> <span class="nn">qalgebra.library.fock_operators</span> <span class="kn">import</span> <span class="n">Create</span><span class="p">,</span> <span class="n">Destroy</span>
 
         <span class="n">hs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span>
         <span class="k">return</span> <span class="p">(</span>
@@ -643,7 +649,7 @@
 
 
 <div class="viewcode-block" id="KetPlus"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.KetPlus">[docs]</a><span class="k">class</span> <span class="nc">KetPlus</span><span class="p">(</span><span class="n">State</span><span class="p">,</span> <span class="n">QuantumPlus</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Sum of states&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Sum of states.&quot;&quot;&quot;</span>
 
     <span class="n">_neutral_element</span> <span class="o">=</span> <span class="n">ZeroKet</span>
     <span class="n">_binary_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
@@ -663,7 +669,7 @@
 
 
 <div class="viewcode-block" id="TensorKet"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.TensorKet">[docs]</a><span class="k">class</span> <span class="nc">TensorKet</span><span class="p">(</span><span class="n">State</span><span class="p">,</span> <span class="n">QuantumTimes</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;A tensor product of kets</span>
+    <span class="sd">&quot;&quot;&quot;A tensor product of kets.</span>
 
 <span class="sd">    Each ket must belong to different degree of freedom (:class:`.LocalSpace`).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1020,7 +1026,7 @@
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Jun 30, 2020.
+        Last updated on Jul 06, 2020.
       </span>
 
     </p>

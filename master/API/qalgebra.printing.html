@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.printing package &mdash; QAlgebra 2.0.0-dev (191a4de) documentation</title>
+  <title>qalgebra.printing package &mdash; QAlgebra 2.0.0-dev (9c7cf0a) documentation</title>
   
 
   
@@ -269,7 +269,7 @@
 <td><p>Context manager for temporarily changing the printing system.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.printing.dot.html#qalgebra.printing.dot.dotprint" title="qalgebra.printing.dot.dotprint"><code class="xref py py-func docutils literal notranslate"><span class="pre">dotprint</span></code></a></p></td>
-<td><p>Return the <a href="#id1"><span class="problematic" id="id2">`DOT`_</span></a> (graph) description of an Expression tree as a string</p></td>
+<td><p>Return the DOT (graph) description of an Expression tree as a string.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.printing.init_printing" title="qalgebra.printing.init_printing"><code class="xref py py-func docutils literal notranslate"><span class="pre">init_printing</span></code></a></p></td>
 <td><p>Initialize the printing system.</p></td>
@@ -284,7 +284,7 @@
 <td><p>Render the given expression into a string that can be evaluated in an appropriate context to re-instantiate an identical expression.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.printing.tex" title="qalgebra.printing.tex"><code class="xref py py-func docutils literal notranslate"><span class="pre">tex</span></code></a></p></td>
-<td><p>Alias for <a class="reference internal" href="#qalgebra.printing.latex" title="qalgebra.printing.latex"><code class="xref py py-func docutils literal notranslate"><span class="pre">latex()</span></code></a></p></td>
+<td><p>Alias for <a class="reference internal" href="#qalgebra.printing.latex" title="qalgebra.printing.latex"><code class="xref py py-func docutils literal notranslate"><span class="pre">latex()</span></code></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.printing.treeprinting.html#qalgebra.printing.treeprinting.tree" title="qalgebra.printing.treeprinting.tree"><code class="xref py py-func docutils literal notranslate"><span class="pre">tree</span></code></a></p></td>
 <td><p>Give the output of <cite>tree</cite> as a multiline string, using line drawings to visualize the hierarchy of expressions (similar to the <code class="docutils literal notranslate"><span class="pre">tree</span></code> unix command line program for showing directory trees)</p></td>
@@ -404,8 +404,8 @@ settings accumulate. To avoid this and to reset the printing system to the
 defaults, you may pass <code class="docutils literal notranslate"><span class="pre">reset=True</span></code>.  In a Jupyter notebook, expressions
 are rendered graphically via LaTeX, using the settings as they affect the
 <a class="reference internal" href="#qalgebra.printing.latex" title="qalgebra.printing.latex"><code class="xref py py-func docutils literal notranslate"><span class="pre">latex()</span></code></a> printer.</p>
-<p>The <code class="xref py py-func docutils literal notranslate"><span class="pre">sympy.init_printing()</span></code> routine is called automatically, unless
-<cite>init_sympy</cite> is given as <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>The SymPy <a class="reference external" href="https://docs.sympy.org/latest/modules/interactive.html#sympy.interactive.printing.init_printing" title="(in SymPy v1.6.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">sympy.interactive.printing.init_printing()</span></code></a> routine is
+called automatically, unless <cite>init_sympy</cite> is given as <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#qalgebra.printing.configure_printing" title="qalgebra.printing.configure_printing"><code class="xref py py-func docutils literal notranslate"><span class="pre">configure_printing()</span></code></a> allows to temporarily change the printing
@@ -506,11 +506,11 @@ through <a class="reference internal" href="#qalgebra.printing.init_printing" ti
 appropriate context to re-instantiate an identical expression. If
 <cite>indented</cite> is False (default), the resulting string is a single line.
 Otherwise, the result is a multiline string, and each positional and
-keyword argument of each <cite>Expression</cite> is on a separate line, recursively
-indented to produce a tree-like output. The <cite>cache</cite> may be used to generate
-more readable expressions.</p>
-<p class="rubric">Example</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hs</span> <span class="o">=</span> <span class="n">LocalSpace</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
+keyword argument of each <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression" title="qalgebra.core.abstract_algebra.Expression"><code class="xref py py-class docutils literal notranslate"><span class="pre">Expression</span></code></a> is on a separate line,
+recursively indented to produce a tree-like output. The <cite>cache</cite> may be used
+to generate more readable expressions.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hs</span> <span class="o">=</span> <span class="n">LocalSpace</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">OperatorSymbol</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">);</span> <span class="n">B</span> <span class="o">=</span> <span class="n">OperatorSymbol</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">expr</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">B</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">srepr</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
@@ -537,9 +537,8 @@ more readable expressions.</p>
 </div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><code class="xref py py-func docutils literal notranslate"><span class="pre">print_tree()</span></code>, respectively
-<code class="xref py py-func docutils literal notranslate"><span class="pre">qalgebra.printing.tree.tree()</span></code>, produces an output similar to
-the indented <a class="reference internal" href="#qalgebra.printing.srepr" title="qalgebra.printing.srepr"><code class="xref py py-func docutils literal notranslate"><span class="pre">srepr()</span></code></a>, for interactive use. Their result
+<p><a class="reference internal" href="qalgebra.printing.treeprinting.html#qalgebra.printing.treeprinting.print_tree" title="qalgebra.printing.treeprinting.print_tree"><code class="xref py py-func docutils literal notranslate"><span class="pre">print_tree()</span></code></a>, respectively <a class="reference internal" href="qalgebra.printing.treeprinting.html#qalgebra.printing.treeprinting.tree" title="qalgebra.printing.treeprinting.tree"><code class="xref py py-func docutils literal notranslate"><span class="pre">tree()</span></code></a>, produces an output
+similar to the indented <a class="reference internal" href="#qalgebra.printing.srepr" title="qalgebra.printing.srepr"><code class="xref py py-func docutils literal notranslate"><span class="pre">srepr()</span></code></a>, for interactive use. Their result
 cannot be evaluated and the exact output depends on
 <a class="reference internal" href="#qalgebra.printing.init_printing" title="qalgebra.printing.init_printing"><code class="xref py py-func docutils literal notranslate"><span class="pre">init_printing()</span></code></a>.</p>
 <p><a class="reference internal" href="qalgebra.printing.dot.html#qalgebra.printing.dot.dotprint" title="qalgebra.printing.dot.dotprint"><code class="xref py py-func docutils literal notranslate"><span class="pre">dotprint()</span></code></a> provides a way to graphically
@@ -550,7 +549,7 @@ explore the tree structure of an expression.</p>
 <dl class="py function">
 <dt id="qalgebra.printing.tex">
 <code class="sig-prename descclassname">qalgebra.printing.</code><code class="sig-name descname">tex</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">cache</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">settings</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing.html#tex"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.tex" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alias for <a class="reference internal" href="#qalgebra.printing.latex" title="qalgebra.printing.latex"><code class="xref py py-func docutils literal notranslate"><span class="pre">latex()</span></code></a></p>
+<dd><p>Alias for <a class="reference internal" href="#qalgebra.printing.latex" title="qalgebra.printing.latex"><code class="xref py py-func docutils literal notranslate"><span class="pre">latex()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -627,7 +626,7 @@ through <a class="reference internal" href="#qalgebra.printing.init_printing" ti
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Jun 30, 2020.
+        Last updated on Jul 06, 2020.
       </span>
 
     </p>

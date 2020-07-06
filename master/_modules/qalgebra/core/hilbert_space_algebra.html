@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.hilbert_space_algebra &mdash; QAlgebra 2.0.0-dev (191a4de) documentation</title>
+  <title>qalgebra.core.hilbert_space_algebra &mdash; QAlgebra 2.0.0-dev (9c7cf0a) documentation</title>
   
 
   
@@ -610,7 +610,7 @@
 <span class="sd">        that form the canonical basis of the Hilbert space</span>
 
 <span class="sd">        Raises:</span>
-<span class="sd">            .BasisNotSetError: if the Hilbert space has no defined basis</span>
+<span class="sd">            BasisNotSetError: if the Hilbert space has no defined basis</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="kn">from</span> <span class="nn">qalgebra.core.state_algebra</span> <span class="kn">import</span> <span class="n">BasisKet</span>  <span class="c1"># avoid circ. import</span>
 
@@ -621,7 +621,7 @@
         <span class="sd">&quot;&quot;&quot;Return the basis state with the given index or label.</span>
 
 <span class="sd">        Raises:</span>
-<span class="sd">            .BasisNotSetError: if the Hilbert space has no defined basis</span>
+<span class="sd">            BasisNotSetError: if the Hilbert space has no defined basis</span>
 <span class="sd">            IndexError: if there is no basis state with the given index</span>
 <span class="sd">            KeyError: if there is not basis state with the given label</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -629,6 +629,8 @@
 
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">BasisKet</span><span class="p">(</span><span class="n">index_or_label</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">BasisNotSetError</span><span class="p">:</span>
+            <span class="k">raise</span>
         <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">exc_info</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">index_or_label</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
                 <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">exc_info</span><span class="p">))</span>
@@ -713,7 +715,7 @@
 <span class="sd">                Hilbert space</span>
 <span class="sd">            .BasisNotSetError: If the Hilbert space has no defined basis</span>
 <span class="sd">            TypeError: if `label_or_index` is neither a :class:`str` nor an</span>
-<span class="sd">                :class:`int`, nor a :class:`SymbolicLabelBase`</span>
+<span class="sd">                :class:`int`, nor a :class:`.SymbolicLabelBase`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">label_or_index</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
             <span class="n">new_index</span> <span class="o">=</span> <span class="n">label_or_index</span> <span class="o">+</span> <span class="n">n</span>
@@ -947,9 +949,10 @@
 <span class="sd">        Raises:</span>
 <span class="sd">            .BasisNotSetError: if the Hilbert space has no defined basis</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">qalgebra.core.state_algebra</span> <span class="kn">import</span> <span class="n">BasisKet</span><span class="p">,</span> <span class="n">TensorKet</span>
-
+        <span class="c1"># fmt: off</span>
+        <span class="kn">from</span> <span class="nn">qalgebra.core.state_algebra</span> <span class="kn">import</span> <span class="n">BasisKet</span><span class="p">,</span> <span class="n">TensorKet</span>   <span class="c1"># isort:skip</span>
         <span class="c1"># importing locally avoids circular import</span>
+        <span class="c1"># fmt: on</span>
         <span class="n">ls_bases</span> <span class="o">=</span> <span class="p">[</span><span class="n">ls</span><span class="o">.</span><span class="n">basis_labels</span> <span class="k">for</span> <span class="n">ls</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_factors</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">label_tuple</span> <span class="ow">in</span> <span class="n">cartesian_product</span><span class="p">(</span><span class="o">*</span><span class="n">ls_bases</span><span class="p">):</span>
             <span class="k">yield</span> <span class="n">TensorKet</span><span class="p">(</span>
@@ -1091,7 +1094,7 @@
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Jun 30, 2020.
+        Last updated on Jul 06, 2020.
       </span>
 
     </p>

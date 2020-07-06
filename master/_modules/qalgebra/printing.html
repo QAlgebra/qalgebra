@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.printing &mdash; QAlgebra 2.0.0-dev (191a4de) documentation</title>
+  <title>qalgebra.printing &mdash; QAlgebra 2.0.0-dev (9c7cf0a) documentation</title>
   
 
   
@@ -299,8 +299,8 @@
 <span class="sd">    are rendered graphically via LaTeX, using the settings as they affect the</span>
 <span class="sd">    :func:`latex` printer.</span>
 
-<span class="sd">    The :func:`sympy.init_printing()` routine is called automatically, unless</span>
-<span class="sd">    `init_sympy` is given as ``False``.</span>
+<span class="sd">    The SymPy :func:`sympy.interactive.printing.init_printing` routine is</span>
+<span class="sd">    called automatically, unless `init_sympy` is given as ``False``.</span>
 
 <span class="sd">    See also:</span>
 <span class="sd">        :func:`configure_printing` allows to temporarily change the printing</span>
@@ -710,7 +710,7 @@
 
 
 <div class="viewcode-block" id="tex"><a class="viewcode-back" href="../../API/qalgebra.printing.html#qalgebra.printing.tex">[docs]</a><span class="k">def</span> <span class="nf">tex</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Alias for :func:`latex`&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Alias for :func:`.latex`.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">latex</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">cache</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">)</span></div>
 
 
@@ -719,11 +719,11 @@
 <span class="sd">    appropriate context to re-instantiate an identical expression. If</span>
 <span class="sd">    `indented` is False (default), the resulting string is a single line.</span>
 <span class="sd">    Otherwise, the result is a multiline string, and each positional and</span>
-<span class="sd">    keyword argument of each `Expression` is on a separate line, recursively</span>
-<span class="sd">    indented to produce a tree-like output. The `cache` may be used to generate</span>
-<span class="sd">    more readable expressions.</span>
+<span class="sd">    keyword argument of each :class:`.Expression` is on a separate line,</span>
+<span class="sd">    recursively indented to produce a tree-like output. The `cache` may be used</span>
+<span class="sd">    to generate more readable expressions.</span>
 
-<span class="sd">    Example:</span>
+<span class="sd">    Example::</span>
 
 <span class="sd">        &gt;&gt;&gt; hs = LocalSpace(&#39;1&#39;)</span>
 <span class="sd">        &gt;&gt;&gt; A = OperatorSymbol(&#39;A&#39;, hs=hs); B = OperatorSymbol(&#39;B&#39;, hs=hs)</span>
@@ -750,13 +750,12 @@
 <span class="sd">        True</span>
 
 <span class="sd">    See also:</span>
-<span class="sd">        :func:`~qalgebra.printing.tree.print_tree`, respectively</span>
-<span class="sd">        :func:`qalgebra.printing.tree.tree`, produces an output similar to</span>
-<span class="sd">        the indented :func:`srepr`, for interactive use. Their result</span>
+<span class="sd">        :func:`.print_tree`, respectively :func:`.tree`, produces an output</span>
+<span class="sd">        similar to the indented :func:`srepr`, for interactive use. Their result</span>
 <span class="sd">        cannot be evaluated and the exact output depends on</span>
 <span class="sd">        :func:`init_printing`.</span>
 
-<span class="sd">        :func:`~qalgebra.printing.dot.dotprint` provides a way to graphically</span>
+<span class="sd">        :func:`.dotprint` provides a way to graphically</span>
 <span class="sd">        explore the tree structure of an expression.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">indented</span><span class="p">:</span>
@@ -792,7 +791,7 @@
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Jun 30, 2020.
+        Last updated on Jul 06, 2020.
       </span>
 
     </p>

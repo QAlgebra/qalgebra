@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.utils.singleton module &mdash; QAlgebra 2.0.0-dev (191a4de) documentation</title>
+  <title>qalgebra.utils.singleton module &mdash; QAlgebra 2.0.0-dev (9c7cf0a) documentation</title>
   
 
   
@@ -288,7 +288,7 @@ singletons, a custom documenter will have to be registered. The Sphinx
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.utils.singleton.Singleton" title="qalgebra.utils.singleton.Singleton"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Singleton</span></code></a></p></td>
-<td><p>Metaclass for singletons</p></td>
+<td><p>Metaclass for singletons.</p></td>
 </tr>
 </tbody>
 </table>
@@ -312,7 +312,7 @@ singletons, a custom documenter will have to be registered. The Sphinx
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.utils.singleton.SingletonType" title="qalgebra.utils.singleton.SingletonType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SingletonType</span></code></a></p></td>
-<td><p>A dummy type that may be used to check whether an object is a Singleton.</p></td>
+<td><p>A dummy type that for checking whether an object is a Singleton.</p></td>
 </tr>
 </tbody>
 </table>
@@ -339,7 +339,7 @@ compare equal only to itself.</p>
 <dt id="qalgebra.utils.singleton.Singleton">
 <em class="property">class </em><code class="sig-prename descclassname">qalgebra.utils.singleton.</code><code class="sig-name descname">Singleton</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">bases</span></em>, <em class="sig-param"><span class="n">namespace</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/singleton.html#Singleton"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.singleton.Singleton" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.8/library/abc.html#abc.ABCMeta" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABCMeta</span></code></a></p>
-<p>Metaclass for singletons</p>
+<p>Metaclass for singletons.</p>
 <p>Any instantiation of a singleton class yields the exact same object, e.g.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">Singleton</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="k">pass</span>
@@ -359,8 +359,7 @@ compare equal only to itself.</p>
 <dl class="py data">
 <dt id="qalgebra.utils.singleton.SingletonType">
 <code class="sig-prename descclassname">qalgebra.utils.singleton.</code><code class="sig-name descname">SingletonType</code><em class="property"> = &lt;class 'qalgebra.utils.singleton.SingletonType'&gt;</em><a class="reference internal" href="../_modules/qalgebra/utils/singleton.html#SingletonType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.singleton.SingletonType" title="Permalink to this definition">¶</a></dt>
-<dd><p>A dummy type that may be used to check whether an object is a
-Singleton:</p>
+<dd><p>A dummy type that for checking whether an object is a Singleton.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">SingletonType</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -392,7 +391,7 @@ Singleton:</p>
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Jun 30, 2020.
+        Last updated on Jul 06, 2020.
       </span>
 
     </p>

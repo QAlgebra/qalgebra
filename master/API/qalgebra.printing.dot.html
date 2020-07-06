@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.printing.dot module &mdash; QAlgebra 2.0.0-dev (191a4de) documentation</title>
+  <title>qalgebra.printing.dot module &mdash; QAlgebra 2.0.0-dev (9c7cf0a) documentation</title>
   
 
   
@@ -284,7 +284,7 @@ diagram for a given expression. For example:</p>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">dot</span></code> commandline program renders the code into an image:</p>
 <div class="figure align-default">
-<img alt="API/../_static/dotprint.svg" src="API/../_static/dotprint.svg" /></div>
+<img alt="../_images/dotprint.svg" src="../_images/dotprint.svg" /></div>
 <p>The various options of <a class="reference internal" href="#qalgebra.printing.dot.dotprint" title="qalgebra.printing.dot.dotprint"><code class="xref py py-func docutils literal notranslate"><span class="pre">dotprint()</span></code></a> allow for arbitrary customization of
 the graph’s structural and visual properties.</p>
 <div class="section" id="summary">
@@ -297,7 +297,7 @@ the graph’s structural and visual properties.</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.printing.dot.dotprint" title="qalgebra.printing.dot.dotprint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dotprint</span></code></a></p></td>
-<td><p>Return the <a class="reference external" href="http://www.graphviz.org">DOT</a> (graph) description of an Expression tree as a string</p></td>
+<td><p>Return the DOT (graph) description of an Expression tree as a string.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.printing.dot.expr_labelfunc" title="qalgebra.printing.dot.expr_labelfunc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">expr_labelfunc</span></code></a></p></td>
 <td><p>Factory for function <code class="docutils literal notranslate"><span class="pre">labelfunc(expr,</span> <span class="pre">is_leaf)</span></code></p></td>
@@ -327,12 +327,12 @@ the graph’s structural and visual properties.</p>
 <dl class="py function">
 <dt id="qalgebra.printing.dot.dotprint">
 <code class="sig-prename descclassname">qalgebra.printing.dot.</code><code class="sig-name descname">dotprint</code><span class="sig-paren">(</span><em class="sig-param">expr</em>, <em class="sig-param">styles=None</em>, <em class="sig-param">maxdepth=None</em>, <em class="sig-param">repeat=True</em>, <em class="sig-param">labelfunc=&lt;function expr_labelfunc.&lt;locals&gt;._labelfunc&gt;</em>, <em class="sig-param">idfunc=None</em>, <em class="sig-param">get_children=&lt;function _op_children&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing/dot.html#dotprint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.printing.dot.dotprint" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the <a class="reference external" href="http://www.graphviz.org">DOT</a> (graph) description of an Expression tree as a string</p>
+<dd><p>Return the DOT (graph) description of an Expression tree as a string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>expr</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#object" title="(in Python v3.8)"><em>object</em></a>) – The expression to render into a graph. Typically an
-instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">Expression</span></code>, but
+instance of <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression" title="qalgebra.core.abstract_algebra.Expression"><code class="xref py py-class docutils literal notranslate"><span class="pre">Expression</span></code></a>, but
 with appropriate <cite>get_children</cite>, <cite>labelfunc</cite>, and <cite>id_func</cite>, this
 could be any tree-like object</p></li>
 <li><p><strong>styles</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a>) – A list of tuples <code class="docutils literal notranslate"><span class="pre">(expr_filter,</span> <span class="pre">style_dict)</span></code>
@@ -358,8 +358,8 @@ to a single standalone DOT file. If this is insufficient, something
 like <code class="docutils literal notranslate"><span class="pre">hash</span></code> or <code class="docutils literal notranslate"><span class="pre">str</span></code> would make a good <cite>idfunc</cite>.</p></li>
 <li><p><strong>get_children</strong> (<em>callable</em>) – A function that return a list of
 sub-expressions (the children of <cite>expr</cite>). Defaults to the operands
-of an <code class="xref py py-class docutils literal notranslate"><span class="pre">Operation</span></code> (thus,
-anything that is not an Operation is a leaf)</p></li>
+of an <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Operation" title="qalgebra.core.abstract_algebra.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operation</span></code></a> (thus, anything that is not an operation
+is a leaf)</p></li>
 <li><p><strong>kwargs</strong> – All further keyword arguments set custom <a class="reference external" href="http://www.graphviz.org">DOT</a> graph
 attributes</p></li>
 </ul>
@@ -390,7 +390,7 @@ example, in order to produce a horizontal instead of vertical graph,
 use <code class="docutils literal notranslate"><span class="pre">dotprint(...,</span> <span class="pre">rankdir='LR')</span></code>.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="reference external" href="https://docs.sympy.org/latest/modules/printing.html#sympy.printing.dot.dotprint" title="(in SymPy v1.6)"><code class="xref py py-func docutils literal notranslate"><span class="pre">sympy.printing.dot.dotprint()</span></code></a> provides an equivalent function for
+<p><a class="reference external" href="https://docs.sympy.org/latest/modules/printing.html#sympy.printing.dot.dotprint" title="(in SymPy v1.6.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">sympy.printing.dot.dotprint()</span></code></a> provides an equivalent function for
 SymPy expressions.</p>
 </div>
 </dd></dl>
@@ -421,7 +421,7 @@ SymPy expressions.</p>
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Jun 30, 2020.
+        Last updated on Jul 06, 2020.
       </span>
 
     </p>

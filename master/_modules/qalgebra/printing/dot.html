@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.printing.dot &mdash; QAlgebra 2.0.0-dev (191a4de) documentation</title>
+  <title>qalgebra.printing.dot &mdash; QAlgebra 2.0.0-dev (9c7cf0a) documentation</title>
   
 
   
@@ -337,11 +337,11 @@
     <span class="n">get_children</span><span class="o">=</span><span class="n">_op_children</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return the `DOT`_ (graph) description of an Expression tree as a string</span>
+    <span class="sd">&quot;&quot;&quot;Return the DOT (graph) description of an Expression tree as a string.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        expr (object): The expression to render into a graph. Typically an</span>
-<span class="sd">            instance of :class:`~qalgebra.abstract_algebra.Expression`, but</span>
+<span class="sd">            instance of :class:`.Expression`, but</span>
 <span class="sd">            with appropriate `get_children`, `labelfunc`, and `id_func`, this</span>
 <span class="sd">            could be any tree-like object</span>
 <span class="sd">        styles (list or None): A list of tuples ``(expr_filter, style_dict)``</span>
@@ -367,8 +367,8 @@
 <span class="sd">            like ``hash`` or ``str`` would make a good `idfunc`.</span>
 <span class="sd">        get_children (callable): A function that return a list of</span>
 <span class="sd">            sub-expressions (the children of `expr`). Defaults to the operands</span>
-<span class="sd">            of an :class:`~qalgebra.abstract_algebra.Operation` (thus,</span>
-<span class="sd">            anything that is not an Operation is a leaf)</span>
+<span class="sd">            of an :class:`.Operation` (thus, anything that is not an operation</span>
+<span class="sd">            is a leaf)</span>
 <span class="sd">        kwargs: All further keyword arguments set custom `DOT`_ graph</span>
 <span class="sd">            attributes</span>
 
@@ -458,7 +458,7 @@
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Jun 30, 2020.
+        Last updated on Jul 06, 2020.
       </span>
 
     </p>

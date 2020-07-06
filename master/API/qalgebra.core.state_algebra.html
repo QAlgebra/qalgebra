@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.state_algebra module &mdash; QAlgebra 2.0.0-dev (191a4de) documentation</title>
+  <title>qalgebra.core.state_algebra module &mdash; QAlgebra 2.0.0-dev (9c7cf0a) documentation</title>
   
 
   
@@ -268,7 +268,7 @@
 <td><p>The symbolic inner product between two states</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.state_algebra.CoherentStateKet" title="qalgebra.core.state_algebra.CoherentStateKet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CoherentStateKet</span></code></a></p></td>
-<td><p>Local coherent state, labeled by a complex amplitude</p></td>
+<td><p>Local coherent state, labeled by a complex amplitude.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.state_algebra.KetBra" title="qalgebra.core.state_algebra.KetBra"><code class="xref py py-obj docutils literal notranslate"><span class="pre">KetBra</span></code></a></p></td>
 <td><p>Outer product of two states</p></td>
@@ -277,13 +277,13 @@
 <td><p>Indexed sum over Kets</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.state_algebra.KetPlus" title="qalgebra.core.state_algebra.KetPlus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">KetPlus</span></code></a></p></td>
-<td><p>Sum of states</p></td>
+<td><p>Sum of states.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.state_algebra.KetSymbol" title="qalgebra.core.state_algebra.KetSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">KetSymbol</span></code></a></p></td>
-<td><p>Symbolic state</p></td>
+<td><p>Symbolic state.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.state_algebra.LocalKet" title="qalgebra.core.state_algebra.LocalKet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LocalKet</span></code></a></p></td>
-<td><p>A state on a <code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></p></td>
+<td><p>A state on a <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.state_algebra.OperatorTimesKet" title="qalgebra.core.state_algebra.OperatorTimesKet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OperatorTimesKet</span></code></a></p></td>
 <td><p>Product of an operator and a state.</p></td>
@@ -298,7 +298,7 @@
 <td><p>Symbolic partial derivative of a state</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.state_algebra.TensorKet" title="qalgebra.core.state_algebra.TensorKet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TensorKet</span></code></a></p></td>
-<td><p>A tensor product of kets</p></td>
+<td><p>A tensor product of kets.</p></td>
 </tr>
 </tbody>
 </table>
@@ -336,7 +336,7 @@ element of <cite>hs.basis_labels</cite>). If <cite>int</cite>, the (zero-based)
 index of the basis state. This works if <cite>hs</cite> has an unknown
 dimension. For a symbolic index, <cite>label_or_index</cite> can be an
 instance of an appropriate subclass of
-<code class="xref py py-class docutils literal notranslate"><span class="pre">SymbolicLabelBase</span></code></p></li>
+<a class="reference internal" href="qalgebra.utils.indices.html#qalgebra.utils.indices.SymbolicLabelBase" title="qalgebra.utils.indices.SymbolicLabelBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">SymbolicLabelBase</span></code></a></p></li>
 <li><p><strong>hs</strong> (<a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><em>LocalSpace</em></a>) – The Hilbert space in which the basis is defined</p></li>
 </ul>
 </dd>
@@ -361,9 +361,8 @@ equivalent:</p>
 </pre></div>
 </div>
 <p>When instantiating the <a class="reference internal" href="#qalgebra.core.state_algebra.BasisKet" title="qalgebra.core.state_algebra.BasisKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasisKet</span></code></a> via
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code>, an integer
-label outside the range of the underlying Hilbert space results in a
-<a class="reference internal" href="#qalgebra.core.state_algebra.ZeroKet" title="qalgebra.core.state_algebra.ZeroKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">ZeroKet</span></code></a>:</p>
+<a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a>, an integer label outside the range of the
+underlying Hilbert space results in a <a class="reference internal" href="#qalgebra.core.state_algebra.ZeroKet" title="qalgebra.core.state_algebra.ZeroKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">ZeroKet</span></code></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">BasisKet</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="go">ZeroKet</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">BasisKet</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">LocalSpace</span><span class="p">(</span><span class="s1">&#39;tls&#39;</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
@@ -385,8 +384,8 @@ label outside the range of the underlying Hilbert space results in a
 <dl class="py method">
 <dt id="qalgebra.core.state_algebra.BasisKet.index">
 <em class="property">property </em><code class="sig-name descname">index</code><a class="headerlink" href="#qalgebra.core.state_algebra.BasisKet.index" title="Permalink to this definition">¶</a></dt>
-<dd><p>The index of the state in the Hilbert space basis</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hs</span> <span class="o">=</span> <span class="n">LocalSpace</span><span class="p">(</span><span class="s1">&#39;tls&#39;</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">))</span>
+<dd><p>The index of the state in the Hilbert space basis.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hs</span> <span class="o">=</span> <span class="n">LocalSpace</span><span class="p">(</span><span class="s1">&#39;tls&#39;</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">BasisKet</span><span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span><span class="o">.</span><span class="n">index</span>
 <span class="go">0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">BasisKet</span><span class="p">(</span><span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span><span class="o">.</span><span class="n">index</span>
@@ -402,15 +401,15 @@ expression:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lbl</span> <span class="o">=</span> <span class="n">SpinIndex</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">hs</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ket</span> <span class="o">=</span> <span class="n">BasisKet</span><span class="p">(</span><span class="n">lbl</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ket</span><span class="o">.</span><span class="n">index</span>
+<span class="go">i/2 + 3/2</span>
 </pre></div>
 </div>
-<p>i/2 + 3/2</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.state_algebra.BasisKet.next">
 <code class="sig-name descname">next</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#BasisKet.next"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.state_algebra.BasisKet.next" title="Permalink to this definition">¶</a></dt>
-<dd><p>Move up by <cite>n</cite> steps in the Hilbert space:</p>
+<dd><p>Move up by <cite>n</cite> steps in the Hilbert space.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hs</span> <span class="o">=</span>  <span class="n">LocalSpace</span><span class="p">(</span><span class="s1">&#39;tls&#39;</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ascii</span><span class="p">(</span><span class="n">BasisKet</span><span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span><span class="o">.</span><span class="n">next</span><span class="p">())</span>
 <span class="go">&#39;|e&gt;^(tls)&#39;</span>
@@ -419,7 +418,7 @@ expression:</p>
 </pre></div>
 </div>
 <p>We can also go multiple steps:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hs</span> <span class="o">=</span>  <span class="n">LocalSpace</span><span class="p">(</span><span class="s1">&#39;ten&#39;</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hs</span> <span class="o">=</span>  <span class="n">LocalSpace</span><span class="p">(</span><span class="s1">&#39;ten&#39;</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ascii</span><span class="p">(</span><span class="n">BasisKet</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span><span class="o">.</span><span class="n">next</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
 <span class="go">&#39;|2&gt;^(ten)&#39;</span>
 </pre></div>
@@ -435,7 +434,7 @@ expression:</p>
 <dt id="qalgebra.core.state_algebra.BasisKet.prev">
 <code class="sig-name descname">prev</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#BasisKet.prev"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.state_algebra.BasisKet.prev" title="Permalink to this definition">¶</a></dt>
 <dd><p>Move down by <cite>n</cite> steps in the Hilbert space, cf. <a class="reference internal" href="#qalgebra.core.state_algebra.BasisKet.next" title="qalgebra.core.state_algebra.BasisKet.next"><code class="xref py py-meth docutils literal notranslate"><span class="pre">next()</span></code></a>.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hs</span> <span class="o">=</span>  <span class="n">LocalSpace</span><span class="p">(</span><span class="s1">&#39;3l&#39;</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hs</span> <span class="o">=</span>  <span class="n">LocalSpace</span><span class="p">(</span><span class="s1">&#39;3l&#39;</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ascii</span><span class="p">(</span><span class="n">BasisKet</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span><span class="o">.</span><span class="n">prev</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
 <span class="go">&#39;|g&gt;^(3l)&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">BasisKet</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span><span class="o">.</span><span class="n">prev</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -530,7 +529,7 @@ expression:</p>
 <dt id="qalgebra.core.state_algebra.CoherentStateKet">
 <em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.state_algebra.</code><code class="sig-name descname">CoherentStateKet</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ampl</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">hs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#CoherentStateKet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.state_algebra.CoherentStateKet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qalgebra.core.state_algebra.LocalKet" title="qalgebra.core.state_algebra.LocalKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.state_algebra.LocalKet</span></code></a></p>
-<p>Local coherent state, labeled by a complex amplitude</p>
+<p>Local coherent state, labeled by a complex amplitude.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -636,7 +635,7 @@ constructor</p>
 <dt id="qalgebra.core.state_algebra.KetPlus">
 <em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.state_algebra.</code><code class="sig-name descname">KetPlus</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">operands</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#KetPlus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.state_algebra.KetPlus" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qalgebra.core.state_algebra.State" title="qalgebra.core.state_algebra.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.state_algebra.State</span></code></a>, <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumPlus" title="qalgebra.core.abstract_quantum_algebra.QuantumPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumPlus</span></code></a></p>
-<p>Sum of states</p>
+<p>Sum of states.</p>
 <dl class="py attribute">
 <dt id="qalgebra.core.state_algebra.KetPlus.simplifications">
 <code class="sig-name descname">simplifications</code><em class="property"> = [&lt;function accept_bras&gt;, &lt;function assoc&gt;, &lt;function orderby&gt;, &lt;function collect_summands&gt;, &lt;function match_replace_binary&gt;]</em><a class="headerlink" href="#qalgebra.core.state_algebra.KetPlus.simplifications" title="Permalink to this definition">¶</a></dt>
@@ -654,7 +653,7 @@ constructor</p>
 <dt id="qalgebra.core.state_algebra.KetSymbol">
 <em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.state_algebra.</code><code class="sig-name descname">KetSymbol</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">label</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">sym_args</span></em>, <em class="sig-param"><span class="n">hs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#KetSymbol"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.state_algebra.KetSymbol" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumSymbol" title="qalgebra.core.abstract_quantum_algebra.QuantumSymbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumSymbol</span></code></a>, <a class="reference internal" href="#qalgebra.core.state_algebra.State" title="qalgebra.core.state_algebra.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.state_algebra.State</span></code></a></p>
-<p>Symbolic state</p>
+<p>Symbolic state.</p>
 <p>See <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumSymbol" title="qalgebra.core.abstract_quantum_algebra.QuantumSymbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumSymbol</span></code></a>.</p>
 </dd></dl>
 
@@ -662,7 +661,7 @@ constructor</p>
 <dt id="qalgebra.core.state_algebra.LocalKet">
 <em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.state_algebra.</code><code class="sig-name descname">LocalKet</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">hs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#LocalKet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.state_algebra.LocalKet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qalgebra.core.state_algebra.State" title="qalgebra.core.state_algebra.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.state_algebra.State</span></code></a></p>
-<p>A state on a <code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></p>
+<p>A state on a <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a>.</p>
 <p>This does not include operations, even if these operations only involve
 states acting on the same local space</p>
 <dl class="py method">
@@ -735,7 +734,7 @@ non-trivially</p>
 <dd><p>Instantiate while applying automatic simplifications</p>
 <p>Instead of directly instantiating <cite>cls</cite>, it is recommended to use
 <a class="reference internal" href="#qalgebra.core.state_algebra.ScalarTimesKet.create" title="qalgebra.core.state_algebra.ScalarTimesKet.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a>, which applies simplifications to the args and keyword
-arguments according to the <a class="reference internal" href="#qalgebra.core.state_algebra.ScalarTimesKet.simplifications" title="qalgebra.core.state_algebra.ScalarTimesKet.simplifications"><code class="xref py py-attr docutils literal notranslate"><span class="pre">simplifications</span></code></a> class attribute, and
+arguments according to the <cite>simplifications</cite> class attribute, and
 returns an appropriate object (which may or may not be an instance of
 the original <cite>cls</cite>).</p>
 <p>Two simplifications of particular importance are <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace" title="qalgebra.core.algebraic_properties.match_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace()</span></code></a>
@@ -745,9 +744,9 @@ simplifications.</p>
 temporary modification of the automatic simplifications that
 <a class="reference internal" href="#qalgebra.core.state_algebra.ScalarTimesKet.create" title="qalgebra.core.state_algebra.ScalarTimesKet.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a> uses, in particular the rules for
 <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace" title="qalgebra.core.algebraic_properties.match_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace()</span></code></a> and <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace_binary" title="qalgebra.core.algebraic_properties.match_replace_binary"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace_binary()</span></code></a>. Inside the
-managed context, the <a class="reference internal" href="#qalgebra.core.state_algebra.ScalarTimesKet.simplifications" title="qalgebra.core.state_algebra.ScalarTimesKet.simplifications"><code class="xref py py-attr docutils literal notranslate"><span class="pre">simplifications</span></code></a> class attribute may be
-modified and rules can be managed with <code class="xref py py-meth docutils literal notranslate"><span class="pre">add_rule()</span></code> and
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">del_rules()</span></code>.</p>
+managed context, the <cite>simplifications</cite> class attribute may be
+modified and rules can be managed with <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.add_rule" title="qalgebra.core.abstract_algebra.Expression.add_rule"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_rule()</span></code></a>
+and <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.del_rules" title="qalgebra.core.abstract_algebra.Expression.del_rules"><code class="xref py py-meth docutils literal notranslate"><span class="pre">del_rules()</span></code></a>.</p>
 </dd></dl>
 
 </dd></dl>
@@ -756,7 +755,7 @@ modified and rules can be managed with <code class="xref py py-meth docutils lit
 <dt id="qalgebra.core.state_algebra.TensorKet">
 <em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.state_algebra.</code><code class="sig-name descname">TensorKet</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">operands</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#TensorKet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.state_algebra.TensorKet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qalgebra.core.state_algebra.State" title="qalgebra.core.state_algebra.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.state_algebra.State</span></code></a>, <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumTimes" title="qalgebra.core.abstract_quantum_algebra.QuantumTimes"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumTimes</span></code></a></p>
-<p>A tensor product of kets</p>
+<p>A tensor product of kets.</p>
 <p>Each ket must belong to different degree of freedom (<a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a>).</p>
 <dl class="py attribute">
 <dt id="qalgebra.core.state_algebra.TensorKet.simplifications">
@@ -775,7 +774,7 @@ modified and rules can be managed with <code class="xref py py-meth docutils lit
 <dd><p>Instantiate while applying automatic simplifications</p>
 <p>Instead of directly instantiating <cite>cls</cite>, it is recommended to use
 <a class="reference internal" href="#qalgebra.core.state_algebra.TensorKet.create" title="qalgebra.core.state_algebra.TensorKet.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a>, which applies simplifications to the args and keyword
-arguments according to the <a class="reference internal" href="#qalgebra.core.state_algebra.TensorKet.simplifications" title="qalgebra.core.state_algebra.TensorKet.simplifications"><code class="xref py py-attr docutils literal notranslate"><span class="pre">simplifications</span></code></a> class attribute, and
+arguments according to the <cite>simplifications</cite> class attribute, and
 returns an appropriate object (which may or may not be an instance of
 the original <cite>cls</cite>).</p>
 <p>Two simplifications of particular importance are <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace" title="qalgebra.core.algebraic_properties.match_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace()</span></code></a>
@@ -785,9 +784,9 @@ simplifications.</p>
 temporary modification of the automatic simplifications that
 <a class="reference internal" href="#qalgebra.core.state_algebra.TensorKet.create" title="qalgebra.core.state_algebra.TensorKet.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a> uses, in particular the rules for
 <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace" title="qalgebra.core.algebraic_properties.match_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace()</span></code></a> and <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace_binary" title="qalgebra.core.algebraic_properties.match_replace_binary"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace_binary()</span></code></a>. Inside the
-managed context, the <a class="reference internal" href="#qalgebra.core.state_algebra.TensorKet.simplifications" title="qalgebra.core.state_algebra.TensorKet.simplifications"><code class="xref py py-attr docutils literal notranslate"><span class="pre">simplifications</span></code></a> class attribute may be
-modified and rules can be managed with <code class="xref py py-meth docutils literal notranslate"><span class="pre">add_rule()</span></code> and
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">del_rules()</span></code>.</p>
+managed context, the <cite>simplifications</cite> class attribute may be
+modified and rules can be managed with <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.add_rule" title="qalgebra.core.abstract_algebra.Expression.add_rule"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_rule()</span></code></a>
+and <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.del_rules" title="qalgebra.core.abstract_algebra.Expression.del_rules"><code class="xref py py-meth docutils literal notranslate"><span class="pre">del_rules()</span></code></a>.</p>
 </dd></dl>
 
 </dd></dl>
@@ -821,7 +820,7 @@ This is the neutral element under the state tensor-product.</p>
 <dd><p>Instantiate while applying automatic simplifications</p>
 <p>Instead of directly instantiating <cite>cls</cite>, it is recommended to use
 <a class="reference internal" href="#qalgebra.core.state_algebra.KetIndexedSum.create" title="qalgebra.core.state_algebra.KetIndexedSum.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a>, which applies simplifications to the args and keyword
-arguments according to the <a class="reference internal" href="#qalgebra.core.state_algebra.KetIndexedSum.simplifications" title="qalgebra.core.state_algebra.KetIndexedSum.simplifications"><code class="xref py py-attr docutils literal notranslate"><span class="pre">simplifications</span></code></a> class attribute, and
+arguments according to the <cite>simplifications</cite> class attribute, and
 returns an appropriate object (which may or may not be an instance of
 the original <cite>cls</cite>).</p>
 <p>Two simplifications of particular importance are <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace" title="qalgebra.core.algebraic_properties.match_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace()</span></code></a>
@@ -831,9 +830,9 @@ simplifications.</p>
 temporary modification of the automatic simplifications that
 <a class="reference internal" href="#qalgebra.core.state_algebra.KetIndexedSum.create" title="qalgebra.core.state_algebra.KetIndexedSum.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a> uses, in particular the rules for
 <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace" title="qalgebra.core.algebraic_properties.match_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace()</span></code></a> and <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace_binary" title="qalgebra.core.algebraic_properties.match_replace_binary"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace_binary()</span></code></a>. Inside the
-managed context, the <a class="reference internal" href="#qalgebra.core.state_algebra.KetIndexedSum.simplifications" title="qalgebra.core.state_algebra.KetIndexedSum.simplifications"><code class="xref py py-attr docutils literal notranslate"><span class="pre">simplifications</span></code></a> class attribute may be
-modified and rules can be managed with <code class="xref py py-meth docutils literal notranslate"><span class="pre">add_rule()</span></code> and
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">del_rules()</span></code>.</p>
+managed context, the <cite>simplifications</cite> class attribute may be
+modified and rules can be managed with <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.add_rule" title="qalgebra.core.abstract_algebra.Expression.add_rule"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_rule()</span></code></a>
+and <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.del_rules" title="qalgebra.core.abstract_algebra.Expression.del_rules"><code class="xref py py-meth docutils literal notranslate"><span class="pre">del_rules()</span></code></a>.</p>
 </dd></dl>
 
 </dd></dl>
@@ -872,7 +871,7 @@ modified and rules can be managed with <code class="xref py py-meth docutils lit
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Jun 30, 2020.
+        Last updated on Jul 06, 2020.
       </span>
 
     </p>
