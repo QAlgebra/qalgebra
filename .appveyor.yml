@@ -3,8 +3,10 @@ environment:
   matrix:
     - PYTHON: C:\\Miniconda3-x64\\envs\\qalgebra_testenv\\python.exe
       PATH: C:\Miniconda3-x64\envs\qalgebra_testenv\Scripts;%PATH%
+      PYTHONIOENCODING: utf-8
 
 install:
+  - chcp 65001
   - C:\\Miniconda3-x64\\Scripts\\activate
   - conda.exe update -n base -c defaults -y conda
   - conda.exe create -n qalgebra_testenv -y python=3.8
