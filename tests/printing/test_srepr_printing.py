@@ -243,47 +243,46 @@ def test_foreign_srepr(matrix_expr, bell1_expr):
 
     res = srepr(matrix_expr)
     expected = (
-        "Matrix(array([[ScalarTimesOperator(ScalarValue(exp(Mul(Integer(-1), "
+        "Matrix([[ScalarTimesOperator(ScalarValue(exp(Mul(Integer(-1), "
         "Rational(1, 2), I, Symbol('gamma')))), OperatorSymbol('A', "
         "hs=LocalSpace('1'))), OperatorSymbol('B', hs=LocalSpace('1'))], "
         "[OperatorSymbol('C', hs=LocalSpace('1')), "
         "ScalarTimesOperator(ScalarValue(exp(Mul(Rational(1, 2), I, "
         "conjugate(Symbol('gamma'))))), OperatorSymbol('D', "
-        "hs=LocalSpace('1')))]], dtype=object))"
+        "hs=LocalSpace('1')))]])"
     )
     assert res == expected
 
     res = srepr(matrix_expr, indented=True)
     expected = dedent(
         r'''
-    Matrix(
-        array([
-            [
-                ScalarTimesOperator(
-                    ScalarValue(
-                        exp(Mul(Integer(-1), Rational(1, 2), I, Symbol('gamma')))),
-                    OperatorSymbol(
-                        'A',
-                        hs=LocalSpace(
-                            '1'))),
+    Matrix([
+        [
+            ScalarTimesOperator(
+                ScalarValue(
+                    exp(Mul(Integer(-1), Rational(1, 2), I, Symbol('gamma')))),
                 OperatorSymbol(
-                    'B',
+                    'A',
                     hs=LocalSpace(
-                        '1'))
-            ],
-            [
+                        '1'))),
+            OperatorSymbol(
+                'B',
+                hs=LocalSpace(
+                    '1'))
+        ],
+        [
+            OperatorSymbol(
+                'C',
+                hs=LocalSpace(
+                    '1')),
+            ScalarTimesOperator(
+                ScalarValue(
+                    exp(Mul(Rational(1, 2), I, conjugate(Symbol('gamma'))))),
                 OperatorSymbol(
-                    'C',
+                    'D',
                     hs=LocalSpace(
-                        '1')),
-                ScalarTimesOperator(
-                    ScalarValue(
-                        exp(Mul(Rational(1, 2), I, conjugate(Symbol('gamma'))))),
-                    OperatorSymbol(
-                        'D',
-                        hs=LocalSpace(
-                            '1')))
-            ]], dtype=object))'''
+                        '1')))
+        ]])'''
     ).strip()
     assert res == expected
 

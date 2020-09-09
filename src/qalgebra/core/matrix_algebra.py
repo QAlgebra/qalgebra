@@ -1,14 +1,6 @@
-"""Matrices of Operators"""
-
+"""Matrices of Expressions."""
+import numpy as np
 import sympy
-from numpy import array as np_array
-from numpy import conjugate as np_conjugate
-from numpy import diag as np_diag
-from numpy import hstack as np_hstack
-from numpy import ndarray
-from numpy import ones as np_ones
-from numpy import vstack as np_vstack
-from numpy import zeros as np_zeros
 from sympy import I, Symbol, sympify
 
 from .abstract_algebra import Expression, substitute
@@ -32,28 +24,27 @@ __all__ = [
 __private__ = []  # anything not in __all__ must be in __private__
 
 
-class Matrix(Expression):
+class Matrix:
     """Matrix of Expressions."""
 
     matrix = None
     _hash = None
 
     def __init__(self, m):
-        if isinstance(m, ndarray):
+        if isinstance(m, np.ndarray):
             self.matrix = m
         elif isinstance(m, Matrix):
-            self.matrix = np_array(m.matrix)
+            self.matrix = np.array(m.matrix)
         else:
-            self.matrix = np_array(m)
+            self.matrix = np.array(m)
         if len(self.matrix.shape) < 2:
             self.matrix = self.matrix.reshape((self.matrix.shape[0], 1))
         if len(self.matrix.shape) > 2:
-            raise ValueError()
-        super().__init__(self.matrix)
+            raise ValueError("Must have a shape of length 2")
 
     @property
     def shape(self):
-        """The shape of the matrix ``(nrows, ncols)``"""
+        """The shape of the matrix ``(nrows, ncols)``."""
         return self.matrix.shape
 
     @property
@@ -66,7 +57,7 @@ class Matrix(Expression):
         n, m = self.shape
         if n != m:
             raise AttributeError(
-                "block_structure only defined for square " "matrices"
+                "block_structure only defined for square matrices"
             )
         for k in range(1, n):
             if (self.matrix[:k, k:] == 0).all() and (
@@ -103,10 +94,6 @@ class Matrix(Expression):
             raise ValueError()
 
     @property
-    def args(self):
-        return (self.matrix,)
-
-    @property
     def is_zero(self):
         """Are all elements of the matrix zero?"""
         for o in self.matrix.ravel():
@@ -118,11 +105,6 @@ class Matrix(Expression):
                     return False
         return True
 
-    @classmethod
-    def _get_instance_key(cls, args, kwargs):
-        matrix = args[0]
-        return (cls, tuple(matrix.ravel()), tuple(matrix.shape))
-
     def __hash__(self):
         if not self._hash:
             self._hash = hash(
@@ -131,11 +113,10 @@ class Matrix(Expression):
         return self._hash
 
     def __eq__(self, other):
-        return (
-            isinstance(other, Matrix)
-            and self.shape == other.shape
-            and (self.matrix == other.matrix).all()
-        )
+        if isinstance(other, Matrix):
+            return np.all(self.matrix == other.matrix)
+        else:
+            return np.all(self.matrix == other)
 
     def __add__(self, other):
         if isinstance(other, Matrix):
@@ -171,15 +152,12 @@ class Matrix(Expression):
             "Can't divide matrix %s by %s" % (self, other)
         )
 
-    #    def __pow__(self, power):
-    #        return OperatorMatrix(self.matrix.__pow__(power))
-
     def transpose(self):
         """The transpose matrix"""
         return Matrix(self.matrix.T)
 
     def conjugate(self):
-        """The element-wise conjugate matrix
+        """The element-wise conjugate matrix.
 
         This is defined only if all the entries in the matrix have a defined
         conjugate (i.e., they have a `conjugate` method). This is *not* the
@@ -191,7 +169,7 @@ class Matrix(Expression):
             NoConjugateMatrix: if any entries have no `conjugate` method
         """
         try:
-            return Matrix(np_conjugate(self.matrix))
+            return Matrix(np.conjugate(self.matrix))
         except (AttributeError, TypeError):
             raise NoConjugateMatrix(
                 "Matrix %s contains entries that have no defined "
@@ -200,7 +178,7 @@ class Matrix(Expression):
 
     @property
     def real(self):
-        """Element-wise real part
+        """Element-wise real part.
 
         Raises:
             NoConjugateMatrix: if entries have no `conjugate` method and no
@@ -237,7 +215,7 @@ class Matrix(Expression):
 
     @property
     def imag(self):
-        """Element-wise imaginary part
+        """Element-wise imaginary part.
 
         Raises:
             NoConjugateMatrix: if entries have no `conjugate` method and no
@@ -272,11 +250,11 @@ class Matrix(Expression):
 
     @property
     def T(self):
-        """Alias for :meth:`transpose`"""
+        """Alias for :meth:`transpose`."""
         return self.transpose()
 
     def adjoint(self):
-        """Adjoint of the matrix
+        """Adjoint of the matrix.
 
         This is the transpose and the Hermitian adjoint of all elements."""
         return self.T.element_wise(adjoint)
@@ -290,12 +268,12 @@ class Matrix(Expression):
 
     @property
     def H(self):
-        """Alias for :meth:`adjoint`"""
+        """Alias for :meth:`adjoint`."""
         return self.adjoint()
 
     def __getitem__(self, item_id):
         item = self.matrix.__getitem__(item_id)
-        if isinstance(item, ndarray):
+        if isinstance(item, np.ndarray):
             return Matrix(item)
         return item
 
@@ -314,7 +292,7 @@ class Matrix(Expression):
         """
         s = self.shape
         emat = [func(o, *args, **kwargs) for o in self.matrix.ravel()]
-        return Matrix(np_array(emat).reshape(s))
+        return Matrix(np.array(emat).reshape(s))
 
     def series_expand(self, param: Symbol, about, order: int):
         """Expand the matrix expression as a truncated power series in a scalar
@@ -336,7 +314,7 @@ class Matrix(Expression):
                 for o in self.matrix.ravel()
             ]
         )
-        return tuple((Matrix(np_array(em).reshape(s)) for em in emats))
+        return tuple((Matrix(np.array(em).reshape(s)) for em in emats))
 
     def expand(self):
         """Expand each matrix element distributively.
@@ -348,14 +326,22 @@ class Matrix(Expression):
             lambda o: o.expand() if isinstance(o, QuantumExpression) else o
         )
 
-    def _substitute(self, var_map):
+    def substitute(self, var_map):
+        """Perform a substitution in all element of the matrix.
+
+        Equivalent to applying :func:`.substitute` element-wise.
+
+        Returns:
+            Matrix: Matrix with substitutions
+        """
         if self in var_map:
             return var_map[self]
         else:
-            return self.element_wise(lambda o: substitute(o, var_map))
+            return self.element_wise(substitute, var_map=var_map)
 
     @property
     def free_symbols(self):
+        """Free symbols, across all elements."""
         ret = set()
         for o in self.matrix.ravel():
             try:
@@ -366,7 +352,11 @@ class Matrix(Expression):
 
     @property
     def space(self):
-        """Combined Hilbert space of all matrix elements."""
+        """Combined Hilbert space of all matrix elements.
+
+        If none of the elements have an associated hilbert space,
+        :obj:`.TrivialSpace`.
+        """
         arg_spaces = [
             o.space for o in self.matrix.ravel() if hasattr(o, 'space')
         ]
@@ -391,12 +381,12 @@ class Matrix(Expression):
 
 def hstackm(matrices):
     """Generalizes `numpy.hstack` to :class:`.Matrix` objects."""
-    return Matrix(np_hstack(tuple(m.matrix for m in matrices)))
+    return Matrix(np.hstack(tuple(m.matrix for m in matrices)))
 
 
 def vstackm(matrices):
     """Generalizes `numpy.vstack` to :class:`.Matrix` objects."""
-    arr = np_vstack(tuple(m.matrix for m in matrices))
+    arr = np.vstack(tuple(m.matrix for m in matrices))
     #    print(tuple(m.matrix.dtype for m in matrices))
     #    print(arr.dtype)
     return Matrix(arr)
@@ -405,7 +395,7 @@ def vstackm(matrices):
 def diagm(v, k=0):
     """Generalizes the diagonal matrix creation capabilities of `numpy.diag` to
     :class:`.Matrix` objects."""
-    return Matrix(np_diag(v, k))
+    return Matrix(np.diag(v, k))
 
 
 def block_matrix(A, B, C, D):
@@ -437,9 +427,9 @@ def identity_matrix(N):
         Matrix: Identity matrix in N dimensions
 
     """
-    return diagm(np_ones(N, dtype=int))
+    return diagm(np.ones(N, dtype=int))
 
 
 def zerosm(shape, *args, **kwargs):
     """Generalizes ``numpy.zeros`` to :class:`.Matrix` objects."""
-    return Matrix(np_zeros(shape, *args, **kwargs))
+    return Matrix(np.zeros(shape, *args, **kwargs))

@@ -60,7 +60,8 @@ _RESOLVE_KRONECKER_WITH_PIECEWISE = False
 
 def assoc(cls, ops, kwargs):
     """Associatively expand out nested arguments of the flat class.
-    E.g.::
+
+    For example::
 
         >>> class Plus(Operation):
         ...     simplifications = [assoc, ]
@@ -72,7 +73,7 @@ def assoc(cls, ops, kwargs):
 
 
 def assoc_indexed(cls, ops, kwargs):
-    r"""Flatten nested indexed structures while pulling out possible prefactors
+    r"""Flatten nested indexed structures while pulling out prefactors.
 
     For example, for an :class:`.IndexedSum`:
 
@@ -112,6 +113,7 @@ def assoc_indexed(cls, ops, kwargs):
 def idem(cls, ops, kwargs):
     """Remove duplicate arguments and order them via the cls's order_key key
     object/function.
+
     E.g.::
 
         >>> class Set(Operation):

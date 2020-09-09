@@ -155,12 +155,15 @@ def test_substitute_matrix(H_JC):
             [IdentityOperator, IdentityOperator],
         ]
     )
-    assert M.substitute({H_JC: IdentityOperator}) == M.substitute({M: IM})
-    assert substitute(M, {H_JC: IdentityOperator}) == substitute(M, {M: IM})
+    var_map = {H_JC: IdentityOperator}
+    assert M.element_wise(substitute, var_map) == IM
+    assert M.element_wise(substitute, var_map) == M.substitute(var_map)
+    assert M.substitute(var_map) == M.substitute({M: IM})
+    assert substitute(M, var_map) == substitute(M, {M: IM})
 
 
 def test_substitute_sympy():
-    """Test that the sustitute function can directly modify sympy
+    """Test that the substitute function can directly modify sympy
     expressions"""
     g, kappa = symbols('g, kappa')
     assert substitute(g ** 2 / 2, {g ** 2: kappa}) == kappa / 2

@@ -905,7 +905,7 @@ class QuantumDerivative(SingleQuantumOperation):
 
 
 class QuantumIndexedSum(IndexedSum, SingleQuantumOperation, metaclass=ABCMeta):
-    """Base class for indexed sums"""
+    """Base class for indexed sums."""
 
     @property
     def space(self):
@@ -935,7 +935,7 @@ class QuantumIndexedSum(IndexedSum, SingleQuantumOperation, metaclass=ABCMeta):
         elif is_scalar(other):
             return self.__class__._scalar_times_expr_cls(other, self)
         elif isinstance(other, ScalarTimesQuantumExpression):
-            return self._class__._scalar_times_expr_cls(
+            return self.__class__._scalar_times_expr_cls(
                 other.coeff, self * other.term
             )
         else:

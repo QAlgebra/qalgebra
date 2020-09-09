@@ -31,22 +31,28 @@ class QalgebraSReprPrinter(QalgebraBasePrinter):
         """Fallback printer"""
         return render_head_repr(expr, sub_render=self.doprint)
 
-    def _print_ndarray(self, expr):
-        if len(expr.shape) == 2:
+    def _render_matrix(self, data, prefix='', postfix=''):
+        if len(data.shape) == 2:
             rows = []
-            for row in expr:
+            for row in data:
                 rows.append(
                     '[' + ", ".join([self.doprint(val) for val in row]) + ']'
                 )
-            return (
-                "array([" + ", ".join(rows) + "], dtype=%s)" % str(expr.dtype)
-            )
+            return prefix + "[" + ", ".join(rows) + "]" + postfix
         else:
-            raise ValueError("Cannot render %s" % expr)
+            raise ValueError("Cannot render %r" % data)
+
+    def _print_Matrix(self, expr):
+        return self._render_matrix(expr.matrix, prefix='Matrix(', postfix=')')
+
+    def _print_ndarray(self, expr):
+        return self._render_matrix(
+            expr, prefix='array(', postfix=(', dtype=%s)' % expr.dtype)
+        )
 
 
 class IndentedSympyReprPrinter(SympyReprPrinter):
-    """Indented repr printer for Sympy objects"""
+    """Indented repr printer for Sympy objects."""
 
     def doprint(self, expr):
         res = super().doprint(expr)
@@ -121,21 +127,29 @@ class IndentedSReprPrinter(QalgebraBasePrinter):
             lines.append(indent_str + SympyReprPrinter().doprint(expr))
         return "\n".join(lines)
 
-    def _print_ndarray(self, expr):
+    def _render_matrix(self, data, prefix='', postfix=''):
         indent_str = "    " * (self._print_level - 1)
-        if len(expr.shape) == 2:
+        if len(data.shape) == 2:
             lines = [
-                indent_str + "array([",
+                indent_str + prefix + "[",
             ]
             self._print_level += 1
-            for row in expr:
+            for row in data:
                 indent_str = "    " * (self._print_level - 1)
                 lines.append(indent_str + '[')
                 for val in row:
                     lines.append(self.doprint(val) + ",")
                 lines[-1] = lines[-1][:-1]
                 lines.append(indent_str + '],')
-            lines[-1] = lines[-1][:-1] + "], dtype=%s)" % str(expr.dtype)
+            lines[-1] = lines[-1][:-1] + "]" + postfix
             return "\n".join(lines)
         else:
-            raise ValueError("Cannot render %s" % expr)
+            raise ValueError("Cannot render %r" % data)
+
+    def _print_Matrix(self, expr):
+        return self._render_matrix(expr.matrix, prefix='Matrix(', postfix=')')
+
+    def _print_ndarray(self, expr):
+        return self._render_matrix(
+            expr, prefix='array(', postfix=(', dtype=%s)' % expr.dtype)
+        )
