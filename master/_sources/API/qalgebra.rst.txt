@@ -169,7 +169,7 @@ qalgebra package
        * - :class:`QuantumExpression <qalgebra.core.abstract_quantum_algebra.QuantumExpression>`
          - Base class for expressions associated with a Hilbert space
        * - :class:`QuantumIndexedSum <qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum>`
-         - Base class for indexed sums
+         - Base class for indexed sums.
        * - :class:`QuantumOperation <qalgebra.core.abstract_quantum_algebra.QuantumOperation>`
          - Base class for operations on quantum expression
        * - :class:`QuantumPlus <qalgebra.core.abstract_quantum_algebra.QuantumPlus>`

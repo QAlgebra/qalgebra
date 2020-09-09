@@ -295,7 +295,7 @@
 </g>
 <!-- QuantumIndexedSum -->
 <g id="node17" class="node"><title>QuantumIndexedSum</title>
-<g id="a_node17"><a xlink:href="../API/qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum" xlink:title="Base class for indexed sums" target="_top">
+<g id="a_node17"><a xlink:href="../API/qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum" xlink:title="Base class for indexed sums." target="_top">
 <polygon fill="none" stroke="black" stroke-width="0.5" points="757,-578 635,-578 635,-559 757,-559 757,-578"/>
 <text text-anchor="middle" x="696" y="-566" font-family="Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans" font-size="10.00">QuantumIndexedSum</text>
 </a>

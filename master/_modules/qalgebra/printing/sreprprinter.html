@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.printing.sreprprinter &mdash; QAlgebra 2.0.0-dev (fd05270) documentation</title>
+  <title>qalgebra.printing.sreprprinter &mdash; QAlgebra 2.0.0-dev (8a2ff01) documentation</title>
   
 
   
@@ -218,22 +218,28 @@
         <span class="sd">&quot;&quot;&quot;Fallback printer&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">render_head_repr</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">sub_render</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_print_ndarray</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_render_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
             <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">expr</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
                 <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
                     <span class="s1">&#39;[&#39;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">row</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39;]&#39;</span>
                 <span class="p">)</span>
-            <span class="k">return</span> <span class="p">(</span>
-                <span class="s2">&quot;array([&quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;], dtype=</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
-            <span class="p">)</span>
+            <span class="k">return</span> <span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;[&quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;]&quot;</span> <span class="o">+</span> <span class="n">postfix</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot render </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">expr</span><span class="p">)</span></div>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot render </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_Matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_matrix</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">matrix</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;Matrix(&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_ndarray</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_matrix</span><span class="p">(</span>
+            <span class="n">expr</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;array(&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;, dtype=</span><span class="si">%s</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="n">expr</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="IndentedSympyReprPrinter"><a class="viewcode-back" href="../../../API/qalgebra.printing.sreprprinter.html#qalgebra.printing.sreprprinter.IndentedSympyReprPrinter">[docs]</a><span class="k">class</span> <span class="nc">IndentedSympyReprPrinter</span><span class="p">(</span><span class="n">SympyReprPrinter</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Indented repr printer for Sympy objects&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Indented repr printer for Sympy objects.&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="IndentedSympyReprPrinter.doprint"><a class="viewcode-back" href="../../../API/qalgebra.printing.sreprprinter.html#qalgebra.printing.sreprprinter.IndentedSympyReprPrinter.doprint">[docs]</a>    <span class="k">def</span> <span class="nf">doprint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
         <span class="n">res</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
@@ -308,24 +314,32 @@
             <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">indent_str</span> <span class="o">+</span> <span class="n">SympyReprPrinter</span><span class="p">()</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="p">))</span>
         <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_print_ndarray</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_render_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
         <span class="n">indent_str</span> <span class="o">=</span> <span class="s2">&quot;    &quot;</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_print_level</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
             <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span>
-                <span class="n">indent_str</span> <span class="o">+</span> <span class="s2">&quot;array([&quot;</span><span class="p">,</span>
+                <span class="n">indent_str</span> <span class="o">+</span> <span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;[&quot;</span><span class="p">,</span>
             <span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_print_level</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">expr</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
                 <span class="n">indent_str</span> <span class="o">=</span> <span class="s2">&quot;    &quot;</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_print_level</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
                 <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">indent_str</span> <span class="o">+</span> <span class="s1">&#39;[&#39;</span><span class="p">)</span>
                 <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
                     <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span><span class="p">)</span>
                 <span class="n">lines</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
                 <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">indent_str</span> <span class="o">+</span> <span class="s1">&#39;],&#39;</span><span class="p">)</span>
-            <span class="n">lines</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;], dtype=</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+            <span class="n">lines</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;]&quot;</span> <span class="o">+</span> <span class="n">postfix</span>
             <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot render </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">expr</span><span class="p">)</span></div>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot render </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_Matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_matrix</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">matrix</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;Matrix(&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_ndarray</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_matrix</span><span class="p">(</span>
+            <span class="n">expr</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;array(&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;, dtype=</span><span class="si">%s</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="n">expr</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="p">)</span></div>
 </pre></div>
 
            </div>
@@ -341,7 +355,7 @@
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Aug 05, 2020.
+        Last updated on Sep 09, 2020.
       </span>
 
     </p>

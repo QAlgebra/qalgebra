@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.abstract_quantum_algebra module &mdash; QAlgebra 2.0.0-dev (fd05270) documentation</title>
+  <title>qalgebra.core.abstract_quantum_algebra module &mdash; QAlgebra 2.0.0-dev (8a2ff01) documentation</title>
   
 
   
@@ -272,7 +272,7 @@ and superoperators.</p>
 <td><p>Base class for expressions associated with a Hilbert space</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum" title="qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">QuantumIndexedSum</span></code></a></p></td>
-<td><p>Base class for indexed sums</p></td>
+<td><p>Base class for indexed sums.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.abstract_quantum_algebra.QuantumOperation" title="qalgebra.core.abstract_quantum_algebra.QuantumOperation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">QuantumOperation</span></code></a></p></td>
 <td><p>Base class for operations on quantum expression</p></td>
@@ -428,7 +428,7 @@ to them</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>sym</strong> (<a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.symbol.Symbol" title="(in SymPy v1.6.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Symbol</span></code></a>) – What to differentiate by.</p></li>
+<li><p><strong>sym</strong> (<a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.symbol.Symbol" title="(in SymPy v1.6.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Symbol</span></code></a>) – What to differentiate by.</p></li>
 <li><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – How often to differentiate</p></li>
 <li><p><strong>expand_simplify</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – Whether to simplify the result.</p></li>
 </ul>
@@ -451,7 +451,7 @@ order <span class="math notranslate nohighlight">\(N\)</span>, the resulting coe
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>param</strong> (<a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.symbol.Symbol" title="(in SymPy v1.6.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Symbol</span></code></a>) – Expansion parameter <span class="math notranslate nohighlight">\(x\)</span></p></li>
+<li><p><strong>param</strong> (<a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.symbol.Symbol" title="(in SymPy v1.6.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Symbol</span></code></a>) – Expansion parameter <span class="math notranslate nohighlight">\(x\)</span></p></li>
 <li><p><strong>about</strong> (<a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><em>Scalar</em></a>) – Point <span class="math notranslate nohighlight">\(x_0\)</span> about which to expand</p></li>
 <li><p><strong>order</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – Maximum order <span class="math notranslate nohighlight">\(N\)</span> of expansion (&gt;= 0)</p></li>
 </ul>
@@ -612,7 +612,7 @@ non-trivially</p>
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum">
 <em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.abstract_quantum_algebra.</code><code class="sig-name descname">QuantumIndexedSum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">term</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">ranges</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumIndexedSum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="qalgebra.core.indexed_operations.html#qalgebra.core.indexed_operations.IndexedSum" title="qalgebra.core.indexed_operations.IndexedSum"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.indexed_operations.IndexedSum</span></code></a>, <a class="reference internal" href="#qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation" title="qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation</span></code></a></p>
-<p>Base class for indexed sums</p>
+<p>Base class for indexed sums.</p>
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum.space">
 <em class="property">property </em><code class="sig-name descname">space</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum.space" title="Permalink to this definition">¶</a></dt>
@@ -882,7 +882,7 @@ should be converted. Must be a subclass of <a class="reference internal" href="q
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Aug 05, 2020.
+        Last updated on Sep 09, 2020.
       </span>
 
     </p>

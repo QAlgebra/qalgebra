@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.algebraic_properties &mdash; QAlgebra 2.0.0-dev (fd05270) documentation</title>
+  <title>qalgebra.core.algebraic_properties &mdash; QAlgebra 2.0.0-dev (8a2ff01) documentation</title>
   
 
   
@@ -245,7 +245,8 @@
 
 <div class="viewcode-block" id="assoc"><a class="viewcode-back" href="../../../API/qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.assoc">[docs]</a><span class="k">def</span> <span class="nf">assoc</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ops</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Associatively expand out nested arguments of the flat class.</span>
-<span class="sd">    E.g.::</span>
+
+<span class="sd">    For example::</span>
 
 <span class="sd">        &gt;&gt;&gt; class Plus(Operation):</span>
 <span class="sd">        ...     simplifications = [assoc, ]</span>
@@ -257,7 +258,7 @@
 
 
 <div class="viewcode-block" id="assoc_indexed"><a class="viewcode-back" href="../../../API/qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.assoc_indexed">[docs]</a><span class="k">def</span> <span class="nf">assoc_indexed</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ops</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Flatten nested indexed structures while pulling out possible prefactors</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Flatten nested indexed structures while pulling out prefactors.</span>
 
 <span class="sd">    For example, for an :class:`.IndexedSum`:</span>
 
@@ -297,6 +298,7 @@
 <div class="viewcode-block" id="idem"><a class="viewcode-back" href="../../../API/qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.idem">[docs]</a><span class="k">def</span> <span class="nf">idem</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ops</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Remove duplicate arguments and order them via the cls&#39;s order_key key</span>
 <span class="sd">    object/function.</span>
+
 <span class="sd">    E.g.::</span>
 
 <span class="sd">        &gt;&gt;&gt; class Set(Operation):</span>
@@ -1240,7 +1242,7 @@
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Aug 05, 2020.
+        Last updated on Sep 09, 2020.
       </span>
 
     </p>

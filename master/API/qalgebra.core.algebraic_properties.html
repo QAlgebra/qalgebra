@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.algebraic_properties module &mdash; QAlgebra 2.0.0-dev (fd05270) documentation</title>
+  <title>qalgebra.core.algebraic_properties module &mdash; QAlgebra 2.0.0-dev (8a2ff01) documentation</title>
   
 
   
@@ -263,7 +263,7 @@
 <td><p>Associatively expand out nested arguments of the flat class.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.assoc_indexed" title="qalgebra.core.algebraic_properties.assoc_indexed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assoc_indexed</span></code></a></p></td>
-<td><p>Flatten nested indexed structures while pulling out possible prefactors</p></td>
+<td><p>Flatten nested indexed structures while pulling out prefactors.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.basis_ket_zero_outside_hs" title="qalgebra.core.algebraic_properties.basis_ket_zero_outside_hs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">basis_ket_zero_outside_hs</span></code></a></p></td>
 <td><p>For <code class="docutils literal notranslate"><span class="pre">BasisKet.create(ind,</span> <span class="pre">hs)</span></code> with an integer label <cite>ind</cite>, return a <a class="reference internal" href="qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.ZeroKet" title="qalgebra.core.state_algebra.ZeroKet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ZeroKet</span></code></a> if <cite>ind</cite> is outside of the range of the underlying Hilbert space</p></td>
@@ -299,7 +299,7 @@
 <td><p>A ProductSpace of zero Hilbert spaces should yield the TrivialSpace.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.filter_neutral" title="qalgebra.core.algebraic_properties.filter_neutral"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter_neutral</span></code></a></p></td>
-<td><p>Remove occurrences of a neutral element from the argument/operand list, if that list has at least two elements.</p></td>
+<td><p>Remove occurrences of a neutral element from the argument/operand list, if that list has at least two elements. To use this, one must also specify a neutral element, which can be anything that allows for an equality check with each argument. E.g.::.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.idem" title="qalgebra.core.algebraic_properties.idem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">idem</span></code></a></p></td>
 <td><p>Remove duplicate arguments and order them via the cls’s order_key key object/function.</p></td>
@@ -320,7 +320,7 @@
 <td><p>Similar to func:<cite>match_replace</cite>, but for arbitrary length operations, such that each two pairs of subsequent operands are matched pairwise.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.orderby" title="qalgebra.core.algebraic_properties.orderby"><code class="xref py py-obj docutils literal notranslate"><span class="pre">orderby</span></code></a></p></td>
-<td><p>Re-order arguments via the class’s <code class="docutils literal notranslate"><span class="pre">order_key</span></code> key object/function.</p></td>
+<td><p>Re-order arguments via the class’s <code class="docutils literal notranslate"><span class="pre">order_key</span></code> key object/function. Use this for commutative operations: E.g.::.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.scalars_to_op" title="qalgebra.core.algebraic_properties.scalars_to_op"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scalars_to_op</span></code></a></p></td>
 <td><p>Convert any scalar <span class="math notranslate nohighlight">\(\alpha\)</span> in <cite>ops</cite> into an operator $alpha identity$</p></td>
@@ -333,8 +333,8 @@
 <dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.assoc">
 <code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">assoc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#assoc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.assoc" title="Permalink to this definition">¶</a></dt>
-<dd><p>Associatively expand out nested arguments of the flat class.
-E.g.:</p>
+<dd><p>Associatively expand out nested arguments of the flat class.</p>
+<p>For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Plus</span><span class="p">(</span><span class="n">Operation</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span><span class="n">assoc</span><span class="p">,</span> <span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Plus</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">Plus</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
@@ -346,7 +346,7 @@ E.g.:</p>
 <dl class="py function">
 <dt id="qalgebra.core.algebraic_properties.assoc_indexed">
 <code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">assoc_indexed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#assoc_indexed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.assoc_indexed" title="Permalink to this definition">¶</a></dt>
-<dd><p>Flatten nested indexed structures while pulling out possible prefactors</p>
+<dd><p>Flatten nested indexed structures while pulling out prefactors.</p>
 <p>For example, for an <a class="reference internal" href="qalgebra.core.indexed_operations.html#qalgebra.core.indexed_operations.IndexedSum" title="qalgebra.core.indexed_operations.IndexedSum"><code class="xref py py-class docutils literal notranslate"><span class="pre">IndexedSum</span></code></a>:</p>
 <div class="math notranslate nohighlight">
 \[\sum_j \left( a \sum_i \dots \right) = a \sum_{j, i} \dots\]</div>
@@ -356,8 +356,8 @@ E.g.:</p>
 <dt id="qalgebra.core.algebraic_properties.idem">
 <code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">idem</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#idem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.idem" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove duplicate arguments and order them via the cls’s order_key key
-object/function.
-E.g.:</p>
+object/function.</p>
+<p>E.g.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Set</span><span class="p">(</span><span class="n">Operation</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="n">order_key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">val</span><span class="p">:</span> <span class="n">val</span>
 <span class="gp">... </span>    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span><span class="n">idem</span><span class="p">,</span> <span class="p">]</span>
@@ -663,7 +663,7 @@ directly, we get automatic caching of derivatives</p>
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Aug 05, 2020.
+        Last updated on Sep 09, 2020.
       </span>
 
     </p>

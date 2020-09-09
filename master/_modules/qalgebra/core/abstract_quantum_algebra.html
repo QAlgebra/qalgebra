@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.abstract_quantum_algebra &mdash; QAlgebra 2.0.0-dev (fd05270) documentation</title>
+  <title>qalgebra.core.abstract_quantum_algebra &mdash; QAlgebra 2.0.0-dev (8a2ff01) documentation</title>
   
 
   
@@ -1090,7 +1090,7 @@
 
 
 <div class="viewcode-block" id="QuantumIndexedSum"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum">[docs]</a><span class="k">class</span> <span class="nc">QuantumIndexedSum</span><span class="p">(</span><span class="n">IndexedSum</span><span class="p">,</span> <span class="n">SingleQuantumOperation</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Base class for indexed sums&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Base class for indexed sums.&quot;&quot;&quot;</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">space</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1120,7 +1120,7 @@
         <span class="k">elif</span> <span class="n">is_scalar</span><span class="p">(</span><span class="n">other</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_scalar_times_expr_cls</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">ScalarTimesQuantumExpression</span><span class="p">):</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_class__</span><span class="o">.</span><span class="n">_scalar_times_expr_cls</span><span class="p">(</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_scalar_times_expr_cls</span><span class="p">(</span>
                 <span class="n">other</span><span class="o">.</span><span class="n">coeff</span><span class="p">,</span> <span class="bp">self</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">term</span>
             <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
@@ -1403,7 +1403,7 @@
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Aug 05, 2020.
+        Last updated on Sep 09, 2020.
       </span>
 
     </p>

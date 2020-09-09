@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Symbolic Algebra &mdash; QAlgebra 2.0.0-dev (fd05270) documentation</title>
+  <title>Symbolic Algebra &mdash; QAlgebra 2.0.0-dev (8a2ff01) documentation</title>
   
 
   
@@ -372,7 +372,7 @@ with updated Hilbert spaces through the
 <div class="section" id="operator-algebra">
 <span id="id4"></span><h2>Operator Algebra<a class="headerlink" href="#operator-algebra" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="API/qalgebra.core.operator_algebra.html#module-qalgebra.core.operator_algebra" title="qalgebra.core.operator_algebra"><code class="xref py py-mod docutils literal notranslate"><span class="pre">operator_algebra</span></code></a> module implements and algebra of Hilbert space operators</p>
-<div class="graphviz"><p><a href="_images/inheritance-d10eb4dc272eec1886f09fc2380bba3067c578eb.svg"><i class="fa fa-external-link" aria-hidden="true"></i> SVG</a></p><object data="_images/inheritance-d10eb4dc272eec1886f09fc2380bba3067c578eb.svg" type="image/svg+xml" class="inheritance">
+<div class="graphviz"><p><a href="_images/inheritance-4af9c3e6aa320af308cded95416a8fef65e41c36.svg"><i class="fa fa-external-link" aria-hidden="true"></i> SVG</a></p><object data="_images/inheritance-4af9c3e6aa320af308cded95416a8fef65e41c36.svg" type="image/svg+xml" class="inheritance">
 <p class="warning">Inheritance diagram of qalgebra.core.operator_algebra</p></object></div>
 <p>Operator expressions are constructed from sums (<a class="reference internal" href="API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.OperatorPlus" title="qalgebra.core.operator_algebra.OperatorPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorPlus</span></code></a>) and
 products (<a class="reference internal" href="API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.OperatorTimes" title="qalgebra.core.operator_algebra.OperatorTimes"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorTimes</span></code></a>) of some basic elements, most importantly <em>local</em>
@@ -423,7 +423,7 @@ operators (subclasses of <a class="reference internal" href="API/qalgebra.core.o
 </pre></div>
 </div>
 <p>Here we have allowed for a variable namespace which would come in handy if we wanted to construct an overall model that features multiple Jaynes-Cummings-type subsystems.</p>
-<p>By using the support for symbolic <a class="reference external" href="https://docs.sympy.org/latest/modules/matrices/immutablematrices.html#module-sympy" title="(in SymPy v1.6.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sympy</span></code></a> expressions as scalar pre-factors to operators, one can instantiate a Jaynes-Cummings Hamiltonian with symbolic parameters:</p>
+<p>By using the support for symbolic <a class="reference external" href="https://docs.sympy.org/latest/modules/index.html#module-sympy" title="(in SymPy v1.6.2)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sympy</span></code></a> expressions as scalar pre-factors to operators, one can instantiate a Jaynes-Cummings Hamiltonian with symbolic parameters:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Delta</span><span class="p">,</span> <span class="n">Theta</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">g</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;Delta, Theta, epsilon, g&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">H</span> <span class="o">=</span> <span class="n">H_JC</span><span class="p">(</span><span class="n">Delta</span><span class="p">,</span> <span class="n">Theta</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">H</span>
@@ -453,7 +453,7 @@ operators (subclasses of <a class="reference internal" href="API/qalgebra.core.o
 <div class="section" id="state-ket-algebra">
 <span id="state-algebra"></span><h2>State (Ket-) Algebra<a class="headerlink" href="#state-ket-algebra" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="API/qalgebra.core.state_algebra.html#module-qalgebra.core.state_algebra" title="qalgebra.core.state_algebra"><code class="xref py py-mod docutils literal notranslate"><span class="pre">state_algebra</span></code></a> module implements an algebra of Hilbert space states.</p>
-<div class="graphviz"><p><a href="_images/inheritance-6cd8d2b2654f055f5f5118831ea92ca265f16db5.svg"><i class="fa fa-external-link" aria-hidden="true"></i> SVG</a></p><object data="_images/inheritance-6cd8d2b2654f055f5f5118831ea92ca265f16db5.svg" type="image/svg+xml" class="inheritance">
+<div class="graphviz"><p><a href="_images/inheritance-84a8e15026613b3dfebfc44f9659147af8d84362.svg"><i class="fa fa-external-link" aria-hidden="true"></i> SVG</a></p><object data="_images/inheritance-84a8e15026613b3dfebfc44f9659147af8d84362.svg" type="image/svg+xml" class="inheritance">
 <p class="warning">Inheritance diagram of qalgebra.core.state_algebra</p></object></div>
 <p>By default we represent states <span class="math notranslate nohighlight">\(\psi\)</span> as ket vectors <span class="math notranslate nohighlight">\(\psi \to | \psi \rangle\)</span>.
 However, any state can also be represented in its adjoint bra form, since those representations are dual:</p>
@@ -542,7 +542,7 @@ In the first case, the scalar object is multiplied by the <a class="reference in
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Aug 05, 2020.
+        Last updated on Sep 09, 2020.
       </span>
 
     </p>
