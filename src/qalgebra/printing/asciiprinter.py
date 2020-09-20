@@ -754,7 +754,7 @@ class QalgebraAsciiPrinter(QalgebraBasePrinter):
         ct = self.doprint(op)
         return "%s[%s]" % (cs, ct)
 
-    def _print_QuantumDerivative(self, expr):
+    def _print_QuantumDerivative(self, expr, adjoint=False):
         res = ""
         for sym, n in expr.derivs.items():
             sym_str = self.doprint(sym)
@@ -772,6 +772,8 @@ class QalgebraAsciiPrinter(QalgebraBasePrinter):
                     "%s=%s" % (self.doprint(sym), self.doprint(val))
                 )
             res += " |_(%s)" % ", ".join(evaluation_strs)
+        if adjoint:
+            res = r"(%s)^%s" % (res, self._dagger_sym)
         return res
 
     def _print_Matrix(self, expr):

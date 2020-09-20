@@ -207,7 +207,7 @@ class QalgebraUnicodePrinter(QalgebraAsciiPrinter):
     def _print_IdentitySuperOperator(self, expr, superop=True):
         return "𝟙"
 
-    def _print_QuantumDerivative(self, expr):
+    def _print_QuantumDerivative(self, expr, adjoint=False):
         res = ""
         for sym, n in expr.derivs.items():
             sym_str = self.doprint(sym)
@@ -252,4 +252,6 @@ class QalgebraUnicodePrinter(QalgebraAsciiPrinter):
                 unicode_sub_super=self._settings['unicode_sub_super'],
                 subscript_max_len=3,
             )
+        if adjoint:
+            res = r"(%s)^%s" % (res, self._dagger_sym)
         return res

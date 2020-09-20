@@ -37,6 +37,7 @@ class QalgebraLatexPrinter(QalgebraAsciiPrinter):
         'tex_identity_sym': r'\mathbb{1}',
         'tex_use_braket': False,  # use the braket package?
         'tex_frac_for_spin_labels': False,
+        'imaginary_unit_latex': 'i',
     }
 
     _parenth_left = r'\left('
@@ -273,7 +274,7 @@ class QalgebraLatexPrinter(QalgebraAsciiPrinter):
         ct = self.doprint(op)
         return r'%s\left[%s\right]' % (cs, ct)
 
-    def _print_QuantumDerivative(self, expr):
+    def _print_QuantumDerivative(self, expr, adjoint=False):
         res = ""
         numerator = r'\partial'
         if expr.n > 1:
@@ -300,6 +301,8 @@ class QalgebraLatexPrinter(QalgebraAsciiPrinter):
                 )
             evaluation_str = ", ".join(evaluation_strs)
             res += r' \right\vert_{%s}' % evaluation_str
+        if adjoint:
+            res = r"\left(%s\right)^{%s}" % (res, self._dagger_sym)
         return res
 
     def _print_Matrix(self, expr):
