@@ -178,14 +178,16 @@ def test_pattern():
         (
             pattern(OperatorSymbol, 'O', hs=FullSpace),
             Pattern(
-                head=OperatorSymbol, args=['O',], kwargs={'hs': FullSpace}
+                head=OperatorSymbol,
+                args=['O'],
+                kwargs={'hs': FullSpace},
             ),
         ),
         (
             pattern(OperatorSymbol, 'O', a=1, b=2, hs=FullSpace),
             Pattern(
                 head=OperatorSymbol,
-                args=['O',],
+                args=['O'],
                 kwargs={'a': 1, 'b': 2, 'hs': FullSpace},
             ),
         ),
@@ -196,13 +198,13 @@ def test_pattern():
                 a=1,
                 b=2,
                 hs=FullSpace,
-                conditions=[true_cond,],
+                conditions=[true_cond],
             ),
             Pattern(
                 head=OperatorSymbol,
-                args=['O',],
+                args=['O'],
                 kwargs={'a': 1, 'b': 2, 'hs': FullSpace},
-                conditions=[true_cond,],
+                conditions=[true_cond],
             ),
         ),
     ]
@@ -248,11 +250,11 @@ def test_pattern_head():
             Pattern(args=['O', FullSpace], kwargs={'a': 1, 'b': 2}),
         ),
         (
-            pattern_head('O', FullSpace, a=1, b=2, conditions=[true_cond,]),
+            pattern_head('O', FullSpace, a=1, b=2, conditions=[true_cond]),
             Pattern(
                 args=['O', FullSpace],
                 kwargs={'a': 1, 'b': 2},
-                conditions=[true_cond,],
+                conditions=[true_cond],
             ),
         ),
     ]
@@ -273,8 +275,8 @@ proto_ints4 = ProtoExpr([1, 2, 3, 4], {})
 proto_ints5 = ProtoExpr([1, 2, 3, 4, 5], {})
 
 # test patterns and wildcards
-wc_a_int_2 = wc('a', head=(ScalarValue, int), conditions=[lambda i: i == 2,])
-wc_a_int_3 = wc('a', head=(ScalarValue, int), conditions=[lambda i: i == 3,])
+wc_a_int_2 = wc('a', head=(ScalarValue, int), conditions=[lambda i: i == 2])
+wc_a_int_3 = wc('a', head=(ScalarValue, int), conditions=[lambda i: i == 3])
 wc_a_int = wc('a', head=int)
 wc_label_str = wc('label', head=str)
 wc_hs = wc('space', head=HilbertSpace)
@@ -338,7 +340,7 @@ PATTERNS = [
 @pytest.mark.parametrize('ind, pat, expr, matched, wc_dict', PATTERNS)
 def test_match(ind, pat, expr, matched, wc_dict):
     """Test that patterns match expected expressions and produce the correct
-    match dict """
+    match dict"""
     # `ind` is just so that we can track *which* rule fails, is there is a
     # failure
     print("%s.match(%s)" % (repr(pat), repr(expr)))
@@ -362,7 +364,7 @@ def test_no_match():
     assert 'does not meet condition 2' in match.reason
 
     pat = pattern_head(pattern(int), pattern(int), wc('i___', head=int))
-    match = pat.match(ProtoExpr([1,], {}))
+    match = pat.match(ProtoExpr([1], {}))
     assert not match
     assert 'insufficient number of arguments' in match.reason
 
@@ -372,7 +374,7 @@ def test_no_match():
     assert 'insufficient number of arguments' in match.reason
 
     pat = pattern_head(pattern(int), wc('i__', head=int))
-    match = pat.match(ProtoExpr([1,], {}))
+    match = pat.match(ProtoExpr([1], {}))
     assert not match
     assert 'insufficient number of arguments' in match.reason
 

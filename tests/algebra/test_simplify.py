@@ -55,7 +55,7 @@ def test_simplify():
         OperatorTimes.add_rule(
             'extra', pattern_head(B_, C_), b_times_c_equal_d
         )
-        new_expr = _apply_rules(expr, [commutator_rule,])
+        new_expr = _apply_rules(expr, [commutator_rule])
     assert (
         srepr(new_expr)
         == "ScalarTimesOperator(ScalarValue(2), OperatorSymbol('CommutAD', "

@@ -500,7 +500,7 @@ def _translate_symbols(string):
 def render_latex_sub_super(
     name, subs=None, supers=None, translate_symbols=True, sep=','
 ):
-    r'''Assemble a string from the primary name and the given sub- and
+    r"""Assemble a string from the primary name and the given sub- and
     superscripts::
 
         >>> render_latex_sub_super(name='alpha', subs=['mu', 'nu'], supers=[2])
@@ -518,7 +518,7 @@ def render_latex_sub_super(
             `name, `subs`, and `supers` to unicode
         sep (str): Separator to use if there are multiple
             subscripts/superscripts
-    '''
+    """
     if subs is None:
         subs = []
     if supers is None:

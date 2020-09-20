@@ -202,7 +202,7 @@ class LocalOperator(Operator, metaclass=ABCMeta):
     """
 
     simplifications = [
-        implied_local_space(keys=['hs',]),
+        implied_local_space(keys=['hs']),
     ]
 
     _identifier = None  # must be overridden by subclasses!
@@ -356,7 +356,7 @@ class ZeroOperator(Operator, metaclass=Singleton):
 
 @properties_for_args
 class LocalSigma(LocalOperator):
-    r'''Level flip operator between two levels of a :class:`.LocalSpace`.
+    r"""Level flip operator between two levels of a :class:`.LocalSpace`.
 
     .. math::
 
@@ -399,7 +399,7 @@ class LocalSigma(LocalOperator):
 
         >>> LocalSigma(0, 0, hs=0)._identifier_projector
         'Pi'
-    '''
+    """
 
     _identifier = "sigma"
     _identifier_projector = "Pi"
@@ -407,7 +407,10 @@ class LocalSigma(LocalOperator):
     _arg_names = ('j', 'k')
     _scalar_args = False  # args are labels, not scalar coefficients
     _rules = OrderedDict()
-    simplifications = [implied_local_space(keys=['hs',]), match_replace]
+    simplifications = [
+        implied_local_space(keys=['hs']),
+        match_replace,
+    ]
 
     def __init__(self, j, k, *, hs):
         if isinstance(hs, (str, int)):
@@ -456,7 +459,7 @@ class LocalSigma(LocalOperator):
                 )
 
     def raise_jk(self, j_incr=0, k_incr=0):
-        r'''Return a new :class:`LocalSigma` instance with incremented `j`,
+        r"""Return a new :class:`LocalSigma` instance with incremented `j`,
         `k`, on the same Hilbert space:
 
         .. math::
@@ -473,7 +476,7 @@ class LocalSigma(LocalOperator):
             j_incr (int): The increment between labels $j$ and $j'$
             k_incr (int): The increment between labels $k$ and $k'$. Both
                 increments may be negative.
-        '''
+        """
         try:
             if isinstance(self.j, int):
                 new_j = self.j + j_incr
@@ -589,13 +592,13 @@ class OperatorDerivative(QuantumDerivative, Operator):
 
 
 class Commutator(QuantumOperation, Operator):
-    r'''Commutator of two operators
+    r"""Commutator of two operators
 
     .. math::
 
         [\Op{A}, \Op{B}] = \Op{A}\Op{B} - \Op{A}\Op{B}
 
-    '''
+    """
 
     _rules = OrderedDict()
     simplifications = [
@@ -677,7 +680,7 @@ class Commutator(QuantumOperation, Operator):
 
 
 class OperatorTrace(SingleQuantumOperation, Operator):
-    r'''(Partial) trace of an operator
+    r"""(Partial) trace of an operator
 
     Trace of an operator `op` ($\Op{O}) over the degrees
     of freedom of a Hilbert space `over_space` ($\mathcal{H}$):
@@ -689,11 +692,11 @@ class OperatorTrace(SingleQuantumOperation, Operator):
     Args:
         over_space (.HilbertSpace): The degrees of freedom to trace over
         op (Operator): The operator to take the trace of.
-    '''
+    """
     _rules = OrderedDict()
     simplifications = [
         scalars_to_op,
-        implied_local_space(keys=['over_space',]),
+        implied_local_space(keys=['over_space']),
         match_replace,
     ]
 
@@ -899,7 +902,7 @@ tr = OperatorTrace.create
 
 
 def factor_for_trace(ls: HilbertSpace, op: Operator) -> Operator:
-    r'''Factor `ls` out of `op` for easy tracing.
+    r"""Factor `ls` out of `op` for easy tracing.
 
     Given a :class:`.LocalSpace` `ls` to take the partial trace over and an
     operator `op`, factor the trace such that operators acting on disjoint
@@ -919,7 +922,7 @@ def factor_for_trace(ls: HilbertSpace, op: Operator) -> Operator:
 
     Returns:
         The (partial) trace over the operator's spc-degrees of freedom
-    '''
+    """
     if op.space == ls:
         if isinstance(op, OperatorTimes):
             pull_out = [o for o in op.operands if o.space is TrivialSpace]
@@ -942,7 +945,7 @@ def factor_for_trace(ls: HilbertSpace, op: Operator) -> Operator:
                 if isinstance(r, LocalSigma):
                     m = r.j
                     rest = (
-                        rest[j:] + rest[:j] + [LocalSigma.create(m, m, hs=ls),]
+                        rest[j:] + rest[:j] + [LocalSigma.create(m, m, hs=ls)]
                     )
                     break
         if not rest:

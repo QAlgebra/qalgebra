@@ -592,8 +592,8 @@ def delegate_to_method(mtd):
 
 
 def scalars_to_op(cls, ops, kwargs):
-    r'''Convert any scalar $\alpha$ in `ops` into an operator $\alpha
-    \identity$'''
+    r"""Convert any scalar $\alpha$ in `ops` into an operator $\alpha
+    \identity$"""
     from qalgebra.core.scalar_algebra import is_scalar
 
     op_ops = []
@@ -682,7 +682,7 @@ def basis_ket_zero_outside_hs(cls, ops, kwargs):
 
 
 def indexed_sum_over_const(cls, ops, kwargs):
-    r'''Execute an indexed sum over a term that does not depend on the
+    r"""Execute an indexed sum over a term that does not depend on the
     summation indices
 
     .. math::
@@ -695,7 +695,7 @@ def indexed_sum_over_const(cls, ops, kwargs):
     '2 a'
     >>> unicode(Sum(j, 1, 2)(Sum(i, 1, 2)(a * i)))
     '∑_{i=1}^{2} 2 i a'
-    '''
+    """
     term, *ranges = ops
     new_ranges = []
     new_term = term

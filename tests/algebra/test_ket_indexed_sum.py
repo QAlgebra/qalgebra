@@ -183,7 +183,7 @@ def test_coherent_state():
         assert n_val in psi_focksum_inf.term.ranges[0]
 
     assert psi_focksum_inf.term.term.free_symbols == set([n, symbols('alpha')])
-    assert psi_focksum_inf.free_symbols == set([symbols('alpha'),])
+    assert psi_focksum_inf.free_symbols == set([symbols('alpha')])
     assert psi_focksum_inf.term.variables == [n]
 
     assert psi_focksum_inf.substitute({n: i}).term.variables == [i]
@@ -302,17 +302,17 @@ def test_partial_expansion():
 
     expr = KetIndexedSum(psi_ijk, r(i), r(j), r(k))
 
-    expr_expanded = expr.doit(indices=[i,])
+    expr_expanded = expr.doit(indices=[i])
     assert expr_expanded == KetIndexedSum(
         psi(0, j, k) + psi(1, j, k), r(j), r(k)
     )
 
-    expr_expanded = expr.doit(indices=[j,])
+    expr_expanded = expr.doit(indices=[j])
     assert expr_expanded == KetIndexedSum(
         psi(i, 0, k) + psi(i, 1, k), r(i), r(k)
     )
 
-    assert expr.doit(indices=[j,]) == expr.doit(indices=['j',])
+    assert expr.doit(indices=[j]) == expr.doit(indices=['j'])
 
     expr_expanded = expr.doit(indices=[i, j])
     assert expr_expanded == KetIndexedSum(

@@ -317,7 +317,7 @@ class ScalarValue(Scalar):
             res.extend([0] * (order + 1 - next_order))
             return tuple([ScalarValue.create(c) for c in res])
         else:
-            return tuple([self,] + [Zero] * order)
+            return tuple([self] + [Zero] * order)
 
     @property
     def real(self):
@@ -558,7 +558,7 @@ class Zero(Scalar, metaclass=Singleton):
                 self._order_index,
                 self._order_name or self.__class__.__name__,
                 self._order_coeff,
-                KeyTuple([self.val,]),
+                KeyTuple([self.val]),
                 self._order_kwargs,
             ]
         )
@@ -732,7 +732,7 @@ class One(Scalar, metaclass=Singleton):
                 self._order_index,
                 self._order_name or self.__class__.__name__,
                 self._order_coeff,
-                KeyTuple([self.val,]),
+                KeyTuple([self.val]),
                 self._order_kwargs,
             ]
         )

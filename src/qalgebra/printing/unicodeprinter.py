@@ -245,7 +245,7 @@ class QalgebraUnicodePrinter(QalgebraAsciiPrinter):
                 evaluation_str = "(%s)" % evaluation_str
             res += render_unicode_sub_super(
                 ' |',
-                subs=[evaluation_str,],
+                subs=[evaluation_str],
                 supers=[],
                 sub_first=True,
                 translate_symbols=True,

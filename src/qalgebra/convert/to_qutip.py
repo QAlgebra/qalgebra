@@ -156,7 +156,7 @@ def _convert_local_operator_to_qutip(expr, full_space, mapping):
         return qutip.tensor(
             *(
                 [qutip.qeye(s.dimension) for s in all_spaces[:own_space_index]]
-                + [convert_to_qutip(expr, expr.space, mapping=mapping),]
+                + [convert_to_qutip(expr, expr.space, mapping=mapping)]
                 + [
                     qutip.qeye(s.dimension)
                     for s in all_spaces[own_space_index + 1 :]
@@ -327,7 +327,7 @@ def _convert_ket_to_qutip(expr, full_space, mapping):
         own_space_index = all_spaces.index(expr.space)
         factors = (
             [qutip.qeye(s.dimension) for s in all_spaces[:own_space_index]]
-            + [convert_to_qutip(expr, expr.space, mapping=mapping),]
+            + [convert_to_qutip(expr, expr.space, mapping=mapping)]
             + [
                 qutip.qeye(s.dimension)
                 for s in all_spaces[own_space_index + 1 :]
@@ -467,7 +467,7 @@ def _time_dependent_to_qutip(
         ):
             if convert_as == 'pyfunc':
                 func_no_args = lambdify(time_symbol, op.coeff.val)
-                if {time_symbol,} == op.coeff.free_symbols:
+                if {time_symbol} == op.coeff.free_symbols:
 
                     def func(t, args):
                         # args are ignored for increased efficiency, since we

@@ -194,7 +194,7 @@ def test_quantum_derivative_evaluated(MyScalarFunc):
     assert isinstance(fdot.vals, OrderedDict)
     assert fdot.free_symbols == set([s, t0])
     assert len(fdot.bound_symbols) == 1
-    assert fdot.bound_symbols == set([t,])
+    assert fdot.bound_symbols == set([t])
     assert fdot.all_symbols == set([s, t, t0])
     assert fdot.n == 3
     assert fdot.adjoint() == fdot

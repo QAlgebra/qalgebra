@@ -192,8 +192,7 @@ class SuperOperatorTimes(QuantumTimes, SuperOperator):
 
 
 class ScalarTimesSuperOperator(SuperOperator, ScalarTimesQuantumExpression):
-    """Product of a :class:`.Scalar` coefficient and a :class:`.SuperOperator`.
-    """
+    """Product of a :class:`.Scalar` coefficient and a :class:`.SuperOperator`."""
 
     def _adjoint(self):
         pass
@@ -265,10 +264,10 @@ class SPre(SuperOperator, Operation):
 
 
 class SPost(SuperOperator, Operation):
-    """Linear post-multiplication operator
+    """Linear post-multiplication operator.
 
-        Acting ``SPost(A)`` on an operator ``B`` just yields the reversed
-        product ``B * A``.
+    Acting ``SPost(A)`` on an operator ``B`` just yields the reversed
+    product ``B * A``.
     """
 
     _order_index = -1

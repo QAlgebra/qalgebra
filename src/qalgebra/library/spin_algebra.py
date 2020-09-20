@@ -426,7 +426,7 @@ class Jminus(SpinOperator):
 
 
 def Jpjmcoeff(ls, m, shift=False) -> sympy.Expr:
-    r'''Eigenvalue of the $\Op{J}_{+}$ (:class:`Jplus`) operator
+    r"""Eigenvalue of the $\Op{J}_{+}$ (:class:`Jplus`) operator
 
     .. math::
 
@@ -445,7 +445,7 @@ def Jpjmcoeff(ls, m, shift=False) -> sympy.Expr:
         shift (bool): If True for a integer value of `m`, treat `m` as the
             zero-based index of the basis state (i.e., shift `m` down by $s$ to
             obtain the quantum number $m$)
-    '''
+    """
     assert isinstance(ls, SpinSpace)
     n = ls.dimension
     s = sympify(n - 1) / 2
@@ -460,14 +460,14 @@ def Jpjmcoeff(ls, m, shift=False) -> sympy.Expr:
 
 
 def Jzjmcoeff(ls, m, shift) -> sympy.Expr:
-    r'''Eigenvalue of the $\Op{J}_z$ (:class:`Jz`) operator
+    r"""Eigenvalue of the $\Op{J}_z$ (:class:`Jz`) operator
 
     .. math::
 
         \Op{J}_{z} \ket{s, m} = m \ket{s, m}
 
     See also :func:`Jpjmcoeff`.
-    '''
+    """
     assert isinstance(ls, SpinSpace)
     n = ls.dimension
     s = sympify(n - 1) / 2
@@ -483,14 +483,14 @@ def Jzjmcoeff(ls, m, shift) -> sympy.Expr:
 
 
 def Jmjmcoeff(ls, m, shift) -> sympy.Expr:
-    r'''Eigenvalue of the $\Op{J}_{-}$ (:class:`Jminus`) operator
+    r"""Eigenvalue of the $\Op{J}_{-}$ (:class:`Jminus`) operator
 
     .. math::
 
         \Op{J}_{-} \ket{s, m} = \sqrt{s (s+1) - m (m-1)} \ket{s, m}
 
     See also :func:`Jpjmcoeff`.
-    '''
+    """
     assert isinstance(ls, SpinSpace)
     n = ls.dimension
     s = sympify(n - 1) / 2

@@ -623,27 +623,32 @@ class TrivialSpace(HilbertSpace, Expression, metaclass=Singleton):
 
     @property
     def basis_labels(self):
-        """The one-element tuple containing the label '0'"""
-        return tuple(["0",])
+        """The one-element tuple containing the label '0'."""
+        return ("0",)
 
     def remove(self, other):
-        """Removing any Hilbert space from the trivial space yields the trivial
-        space again"""
+        """Return :obj:`TrivialSpace` again.
+
+        Removing any Hilbert space from the trivial space yields the trivial
+        space again.
+        """
         return self
 
     def intersect(self, other):
-        """The intersection of the trivial space with any other space is only
-        the trivial space"""
+        """Return :obj:`TrivialSpace` again.
+
+        The intersection of the trivial space with any other space is only
+        the trivial space
+        """
         return self
 
     @property
     def local_factors(self):
-        """Empty list (the trivial space has no factors)"""
+        """Empty list (the trivial space has no factors)."""
         return ()
 
     def is_strict_subfactor_of(self, other):
-        """The trivial space is a subfactor of any other space (except
-        itself)"""
+        """The trivial space is a subfactor of any other space."""
         if other is TrivialSpace:
             return False
         return True
