@@ -397,7 +397,7 @@
 </g>
 <!-- QuantumSymbol -->
 <g id="node22" class="node"><title>QuantumSymbol</title>
-<g id="a_node22"><a xlink:href="../API/qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumSymbol" xlink:title="Symbolic element of an algebra" target="_top">
+<g id="a_node22"><a xlink:href="../API/qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumSymbol" xlink:title="Symbolic element of an algebra." target="_top">
 <polygon fill="none" stroke="black" stroke-width="0.5" points="388,-113 290,-113 290,-94 388,-94 388,-113"/>
 <text text-anchor="middle" x="339" y="-101" font-family="Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans" font-size="10.00">QuantumSymbol</text>
 </a>

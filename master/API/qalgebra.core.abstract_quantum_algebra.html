@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.abstract_quantum_algebra module &mdash; QAlgebra 2.0.0-dev (8a2ff01) documentation</title>
+  <title>qalgebra.core.abstract_quantum_algebra module &mdash; QAlgebra 2.0.0-dev (05e74a8) documentation</title>
   
 
   
@@ -247,9 +247,9 @@
 </style>
 <div class="section" id="module-qalgebra.core.abstract_quantum_algebra">
 <span id="qalgebra-core-abstract-quantum-algebra-module"></span><h1>qalgebra.core.abstract_quantum_algebra module<a class="headerlink" href="#module-qalgebra.core.abstract_quantum_algebra" title="Permalink to this headline">¶</a></h1>
-<p>Common algebra of “quantum” objects</p>
-<p>Quantum objects have an associated Hilbert space, and they (at least partially)
-summation, products, multiplication with a scalar, and adjoints.</p>
+<p>Common algebra of “quantum” objects.</p>
+<p>Quantum objects have an associated Hilbert space, and they support (at least
+partially) summation, products, multiplication with a scalar, and adjoints.</p>
 <p>The algebra defined in this module is the superset of the Hilbert space algebra
 of states (augmented by the tensor product), and the C* algebras of operators
 and superoperators.</p>
@@ -281,7 +281,7 @@ and superoperators.</p>
 <td><p>General implementation of addition of quantum expressions</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.abstract_quantum_algebra.QuantumSymbol" title="qalgebra.core.abstract_quantum_algebra.QuantumSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">QuantumSymbol</span></code></a></p></td>
-<td><p>Symbolic element of an algebra</p></td>
+<td><p>Symbolic element of an algebra.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.abstract_quantum_algebra.QuantumTimes" title="qalgebra.core.abstract_quantum_algebra.QuantumTimes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">QuantumTimes</span></code></a></p></td>
 <td><p>General implementation of product of quantum expressions</p></td>
@@ -425,6 +425,8 @@ to them</p>
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumExpression.diff">
 <code class="sig-name descname">diff</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sym</span></em>, <em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">expand_simplify</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumExpression.diff"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumExpression.diff" title="Permalink to this definition">¶</a></dt>
 <dd><p>Differentiate by scalar parameter <cite>sym</cite>.</p>
+<p>The derivative is trivially zero if <cite>sym</cite> is not in
+<a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.free_symbols" title="qalgebra.core.abstract_algebra.Expression.free_symbols"><code class="xref py py-attr docutils literal notranslate"><span class="pre">free_symbols</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -552,7 +554,7 @@ given Hilbert space, and the second product is disjunct from it.</p>
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumSymbol">
 <em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.abstract_quantum_algebra.</code><code class="sig-name descname">QuantumSymbol</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">label</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">sym_args</span></em>, <em class="sig-param"><span class="n">hs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumSymbol"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumSymbol" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qalgebra.core.abstract_quantum_algebra.QuantumExpression" title="qalgebra.core.abstract_quantum_algebra.QuantumExpression"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumExpression</span></code></a></p>
-<p>Symbolic element of an algebra</p>
+<p>Symbolic element of an algebra.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -571,39 +573,40 @@ type of the implicit Hilbert space is set by <a class="reference internal" href=
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumSymbol.label">
 <em class="property">property </em><code class="sig-name descname">label</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumSymbol.label" title="Permalink to this definition">¶</a></dt>
-<dd><p>Label of the symbol</p>
+<dd><p>Label of the symbol.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumSymbol.args">
 <em class="property">property </em><code class="sig-name descname">args</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumSymbol.args" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tuple of positional arguments, consisting of the label and possible
-<cite>sym_args</cite></p>
+<cite>sym_args</cite>.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumSymbol.kwargs">
 <em class="property">property </em><code class="sig-name descname">kwargs</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumSymbol.kwargs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dict of keyword arguments, containing only <cite>hs</cite></p>
+<dd><p>Dict of keyword arguments, containing only <cite>hs</cite>.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumSymbol.sym_args">
 <em class="property">property </em><code class="sig-name descname">sym_args</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumSymbol.sym_args" title="Permalink to this definition">¶</a></dt>
-<dd><p>Tuple of scalar arguments of the symbol</p>
+<dd><p>Tuple of <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code></a> arguments of the symbol.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumSymbol.space">
 <em class="property">property </em><code class="sig-name descname">space</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumSymbol.space" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.HilbertSpace" title="qalgebra.core.hilbert_space_algebra.HilbertSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">HilbertSpace</span></code></a> on which the operator acts
-non-trivially</p>
+<dd><p>The Hilbert space associated with the symbol.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumSymbol.free_symbols">
 <em class="property">property </em><code class="sig-name descname">free_symbols</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumSymbol.free_symbols" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set of free SymPy symbols contained within the expression.</p>
+<p>These are all the symbol with respect to which the symbol has a
+non-zero derivative, see <a class="reference internal" href="#qalgebra.core.abstract_quantum_algebra.QuantumExpression.diff" title="qalgebra.core.abstract_quantum_algebra.QuantumExpression.diff"><code class="xref py py-meth docutils literal notranslate"><span class="pre">diff()</span></code></a>.</p>
 </dd></dl>
 
 </dd></dl>
@@ -882,7 +885,7 @@ should be converted. Must be a subclass of <a class="reference internal" href="q
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Sep 09, 2020.
+        Last updated on Sep 20, 2020.
       </span>
 
     </p>

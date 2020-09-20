@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.state_algebra module &mdash; QAlgebra 2.0.0-dev (8a2ff01) documentation</title>
+  <title>qalgebra.core.state_algebra module &mdash; QAlgebra 2.0.0-dev (05e74a8) documentation</title>
   
 
   
@@ -268,7 +268,7 @@
 <td><p>The symbolic inner product between two states</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.state_algebra.CoherentStateKet" title="qalgebra.core.state_algebra.CoherentStateKet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CoherentStateKet</span></code></a></p></td>
-<td><p>Local coherent state, labeled by a complex amplitude.</p></td>
+<td><p>Local coherent state, labeled by a complex amplitude <span class="math notranslate nohighlight">\(\alpha\)</span>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.state_algebra.KetBra" title="qalgebra.core.state_algebra.KetBra"><code class="xref py py-obj docutils literal notranslate"><span class="pre">KetBra</span></code></a></p></td>
 <td><p>Outer product of two states</p></td>
@@ -529,12 +529,17 @@ expression:</p>
 <dt id="qalgebra.core.state_algebra.CoherentStateKet">
 <em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.state_algebra.</code><code class="sig-name descname">CoherentStateKet</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ampl</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">hs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#CoherentStateKet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.state_algebra.CoherentStateKet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qalgebra.core.state_algebra.LocalKet" title="qalgebra.core.state_algebra.LocalKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.state_algebra.LocalKet</span></code></a></p>
-<p>Local coherent state, labeled by a complex amplitude.</p>
+<p>Local coherent state, labeled by a complex amplitude <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\ket{\alpha}
+= \exp\left[ \alpha \Op{a}^\dagger - \alpha^* \Op{a} \right] \ket{0}
+= \Op{D}(\alpha) \ket{0}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Op{D}\)</span> is the displacement operator, see <a class="reference internal" href="qalgebra.library.fock_operators.html#qalgebra.library.fock_operators.Displace" title="qalgebra.library.fock_operators.Displace"><code class="xref py py-class docutils literal notranslate"><span class="pre">Displace</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>hs</strong> (<a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><em>LocalSpace</em></a>) – The local Hilbert space degree of freedom.</p></li>
-<li><p><strong>ampl</strong> (<a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><em>Scalar</em></a>) – The coherent displacement amplitude.</p></li>
+<li><p><strong>ampl</strong> (<a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><em>Scalar</em></a>) – The coherent displacement amplitude <span class="math notranslate nohighlight">\(\alpha\)</span>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -871,7 +876,7 @@ and <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalg
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Sep 09, 2020.
+        Last updated on Sep 20, 2020.
       </span>
 
     </p>

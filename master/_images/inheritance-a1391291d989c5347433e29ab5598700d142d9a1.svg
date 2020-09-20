@@ -58,7 +58,7 @@
 </g>
 <!-- ProductSpace -->
 <g id="node5" class="node"><title>ProductSpace</title>
-<g id="a_node5"><a xlink:href="../API/qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.ProductSpace" xlink:title="Tensor product of local Hilbert spaces" target="_top">
+<g id="a_node5"><a xlink:href="../API/qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.ProductSpace" xlink:title="Tensor product of local Hilbert spaces." target="_top">
 <polygon fill="none" stroke="black" stroke-width="0.5" points="304,-37 221,-37 221,-18 304,-18 304,-37"/>
 <text text-anchor="middle" x="262.5" y="-25" font-family="Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans" font-size="10.00">ProductSpace</text>
 </a>

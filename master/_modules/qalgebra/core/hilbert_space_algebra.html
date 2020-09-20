@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.hilbert_space_algebra &mdash; QAlgebra 2.0.0-dev (8a2ff01) documentation</title>
+  <title>qalgebra.core.hilbert_space_algebra &mdash; QAlgebra 2.0.0-dev (05e74a8) documentation</title>
   
 
   
@@ -596,12 +596,12 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">label</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Label of the Hilbert space&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Label of the Hilbert space.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_label</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">has_basis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;True if the Hilbert space has a basis&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;True if the Hilbert space has a basis.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_basis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
 
     <span class="nd">@property</span>
@@ -889,13 +889,15 @@
 
 
 <div class="viewcode-block" id="ProductSpace"><a class="viewcode-back" href="../../../API/qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.ProductSpace">[docs]</a><span class="k">class</span> <span class="nc">ProductSpace</span><span class="p">(</span><span class="n">HilbertSpace</span><span class="p">,</span> <span class="n">Operation</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Tensor product of local Hilbert spaces</span>
+    <span class="sd">&quot;&quot;&quot;Tensor product of local Hilbert spaces.</span>
 
-<span class="sd">    &gt;&gt;&gt; hs1 = LocalSpace(&#39;1&#39;, basis=(0,1))</span>
-<span class="sd">    &gt;&gt;&gt; hs2 = LocalSpace(&#39;2&#39;, basis=(0,1))</span>
-<span class="sd">    &gt;&gt;&gt; hs = hs1 * hs2</span>
-<span class="sd">    &gt;&gt;&gt; hs.basis_labels</span>
-<span class="sd">    (&#39;0,0&#39;, &#39;0,1&#39;, &#39;1,0&#39;, &#39;1,1&#39;)</span>
+<span class="sd">    For example::</span>
+
+<span class="sd">        &gt;&gt;&gt; hs1 = LocalSpace(&#39;1&#39;, basis=(0,1))</span>
+<span class="sd">        &gt;&gt;&gt; hs2 = LocalSpace(&#39;2&#39;, basis=(0,1))</span>
+<span class="sd">        &gt;&gt;&gt; hs = hs1 * hs2</span>
+<span class="sd">        &gt;&gt;&gt; hs.basis_labels</span>
+<span class="sd">        (&#39;0,0&#39;, &#39;0,1&#39;, &#39;1,0&#39;, &#39;1,1&#39;)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">_neutral_element</span> <span class="o">=</span> <span class="n">TrivialSpace</span>
@@ -1073,7 +1075,9 @@
 
 <div class="viewcode-block" id="ProductSpace.is_strict_subfactor_of"><a class="viewcode-back" href="../../../API/qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.ProductSpace.is_strict_subfactor_of">[docs]</a>    <span class="k">def</span> <span class="nf">is_strict_subfactor_of</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Test if a space is included within a larger tensor product space.</span>
-<span class="sd">        Not ``True`` if ``self == other``.&quot;&quot;&quot;</span>
+
+<span class="sd">        Not ``True`` if ``self == other``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">ProductSpace</span><span class="p">):</span>
             <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">operands</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">set</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">operands</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">other</span> <span class="ow">is</span> <span class="n">FullSpace</span><span class="p">:</span>
@@ -1094,7 +1098,7 @@
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Sep 09, 2020.
+        Last updated on Sep 20, 2020.
       </span>
 
     </p>

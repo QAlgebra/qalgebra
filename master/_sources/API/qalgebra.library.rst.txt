@@ -32,7 +32,7 @@ qalgebra.library package
        * - :class:`Destroy <qalgebra.library.fock_operators.Destroy>`
          - Bosonic annihilation operator
        * - :class:`Displace <qalgebra.library.fock_operators.Displace>`
-         - Unitary coherent displacement operator
+         - Unitary coherent displacement operator.
        * - :class:`Jminus <qalgebra.library.spin_algebra.Jminus>`
          - Lowering operator on a spin space
        * - :class:`Jplus <qalgebra.library.spin_algebra.Jplus>`

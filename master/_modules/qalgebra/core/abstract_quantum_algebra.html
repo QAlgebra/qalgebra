@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.abstract_quantum_algebra &mdash; QAlgebra 2.0.0-dev (8a2ff01) documentation</title>
+  <title>qalgebra.core.abstract_quantum_algebra &mdash; QAlgebra 2.0.0-dev (05e74a8) documentation</title>
   
 
   
@@ -183,10 +183,10 @@
            <div itemprop="articleBody">
             
   <h1>Source code for qalgebra.core.abstract_quantum_algebra</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;Common algebra of &quot;quantum&quot; objects</span>
+<span></span><span class="sd">&quot;&quot;&quot;Common algebra of &quot;quantum&quot; objects.</span>
 
-<span class="sd">Quantum objects have an associated Hilbert space, and they (at least partially)</span>
-<span class="sd">summation, products, multiplication with a scalar, and adjoints.</span>
+<span class="sd">Quantum objects have an associated Hilbert space, and they support (at least</span>
+<span class="sd">partially) summation, products, multiplication with a scalar, and adjoints.</span>
 
 <span class="sd">The algebra defined in this module is the superset of the Hilbert space algebra</span>
 <span class="sd">of states (augmented by the tensor product), and the C* algebras of operators</span>
@@ -343,6 +343,9 @@
 <div class="viewcode-block" id="QuantumExpression.diff"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumExpression.diff">[docs]</a>    <span class="k">def</span> <span class="nf">diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sym</span><span class="p">:</span> <span class="n">Symbol</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">expand_simplify</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Differentiate by scalar parameter `sym`.</span>
 
+<span class="sd">        The derivative is trivially zero if `sym` is not in</span>
+<span class="sd">        :attr:`~.Expression.free_symbols`.</span>
+
 <span class="sd">        Args:</span>
 <span class="sd">            sym: What to differentiate by.</span>
 <span class="sd">            n: How often to differentiate</span>
@@ -351,9 +354,10 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            The n-th derivative.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Note: subclasses must not override the diff method, only _diff</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sym</span><span class="p">,</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Basic</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> needs to be a Sympy symbol&quot;</span> <span class="o">%</span> <span class="n">sym</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">sym</span><span class="o">.</span><span class="n">free_symbols</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">free_symbols</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">sym</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">free_symbols</span><span class="p">:</span>
             <span class="c1"># QuantumDerivative.create delegates internally to _diff (the</span>
             <span class="c1"># explicit non-trivial derivative). Using `create` gives us free</span>
             <span class="c1"># caching</span>
@@ -366,6 +370,9 @@
 
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">_diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sym</span><span class="p">):</span>
+        <span class="c1"># Note: the &quot;trivial&quot; derivative (sym is not in free_symbols) is</span>
+        <span class="c1"># handled in the main diff method. Any implementation of _diff can</span>
+        <span class="c1"># assume a non-trivial derivative.</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
 <div class="viewcode-block" id="QuantumExpression.series_expand"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumExpression.series_expand">[docs]</a>    <span class="k">def</span> <span class="nf">series_expand</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="p">:</span> <span class="n">Symbol</span><span class="p">,</span> <span class="n">about</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
@@ -508,7 +515,7 @@
 
 
 <div class="viewcode-block" id="QuantumSymbol"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumSymbol">[docs]</a><span class="k">class</span> <span class="nc">QuantumSymbol</span><span class="p">(</span><span class="n">QuantumExpression</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Symbolic element of an algebra</span>
+    <span class="sd">&quot;&quot;&quot;Symbolic element of an algebra.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        label (str or SymbolicLabelBase): Label for the symbol</span>
@@ -552,43 +559,33 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">label</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Label of the symbol&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Label of the symbol.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_label</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">args</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Tuple of positional arguments, consisting of the label and possible</span>
-<span class="sd">        `sym_args`&quot;&quot;&quot;</span>
+<span class="sd">        `sym_args`.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">,)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sym_args</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Dict of keyword arguments, containing only `hs`&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Dict of keyword arguments, containing only `hs`.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;hs&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hs</span><span class="p">}</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">sym_args</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Tuple of scalar arguments of the symbol&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Tuple of :class:`.Scalar` arguments of the symbol.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sym_args</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">space</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The Hilbert space associated with the symbol.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hs</span>
 
     <span class="k">def</span> <span class="nf">_diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sym</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">all</span><span class="p">([</span><span class="n">arg</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">sym</span><span class="p">)</span><span class="o">.</span><span class="n">is_zero</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_args</span><span class="p">]):</span>
-            <span class="c1"># This includes the case where sym_args is empty</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_zero</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_derivative_cls</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">derivs</span><span class="o">=</span><span class="p">{</span><span class="n">sym</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
-
-    <span class="k">def</span> <span class="nf">_series_expand</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">about</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sym_args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="p">,)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">0</span><span class="p">,)</span> <span class="o">*</span> <span class="n">order</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="c1"># QuantumExpression._series_expand will return the abstract Taylor</span>
-            <span class="c1"># series</span>
-            <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_series_expand</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">about</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
+        <span class="c1"># assume derivative is not zero (checked in QuantumExpression.diff)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_derivative_cls</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">derivs</span><span class="o">=</span><span class="p">{</span><span class="n">sym</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
 
     <span class="k">def</span> <span class="nf">_simplify_scalar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
         <span class="n">simplified_sym_args</span> <span class="o">=</span> <span class="p">[</span><span class="n">func</span><span class="p">(</span><span class="n">sym</span><span class="p">)</span> <span class="k">for</span> <span class="n">sym</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sym_args</span><span class="p">]</span>
@@ -599,14 +596,22 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">free_symbols</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">free_symbols</span>
-            <span class="c1"># TODO: anywhere else there are symbolic labels, symbols from the</span>
-            <span class="c1"># labels should be included in the free_symbols, too</span>
-        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-            <span class="n">res</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-        <span class="n">res</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_hs</span><span class="o">.</span><span class="n">free_symbols</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">sym</span><span class="o">.</span><span class="n">free_symbols</span> <span class="k">for</span> <span class="n">sym</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_args</span><span class="p">])</span>
+        <span class="sd">&quot;&quot;&quot;Set of free SymPy symbols contained within the expression.</span>
+
+<span class="sd">        These are all the symbol with respect to which the symbol has a</span>
+<span class="sd">        non-zero derivative, see :meth:`~.QuantumExpression.diff`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_free_symbols</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">free_symbols</span>
+                <span class="c1"># TODO: anywhere else there are symbolic labels, symbols from</span>
+                <span class="c1"># the labels should be included in the free_symbols, too</span>
+            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_hs</span><span class="o">.</span><span class="n">free_symbols</span><span class="p">)</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">sym</span><span class="o">.</span><span class="n">free_symbols</span> <span class="k">for</span> <span class="n">sym</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sym_args</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_free_symbols</span> <span class="o">=</span> <span class="n">res</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_free_symbols</span>
 
     <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_adjoint_cls</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
@@ -686,9 +691,6 @@
             <span class="n">summands</span> <span class="o">=</span> <span class="p">[</span><span class="n">eoo</span><span class="o">.</span><span class="n">adjoin</span><span class="p">()</span> <span class="k">for</span> <span class="n">eoo</span> <span class="ow">in</span> <span class="n">eo</span><span class="o">.</span><span class="n">operands</span><span class="p">]</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_plus_cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">*</span><span class="n">summands</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">eo</span><span class="o">.</span><span class="n">adjoint</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">_diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sym</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">sym</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">operand</span></div>
@@ -1403,7 +1405,7 @@
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Sep 09, 2020.
+        Last updated on Sep 20, 2020.
       </span>
 
     </p>

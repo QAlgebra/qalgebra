@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.printing.unicodeprinter &mdash; QAlgebra 2.0.0-dev (8a2ff01) documentation</title>
+  <title>qalgebra.printing.unicodeprinter &mdash; QAlgebra 2.0.0-dev (05e74a8) documentation</title>
   
 
   
@@ -394,7 +394,7 @@
     <span class="k">def</span> <span class="nf">_print_IdentitySuperOperator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">superop</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;𝟙&quot;</span>
 
-    <span class="k">def</span> <span class="nf">_print_QuantumDerivative</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_print_QuantumDerivative</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="n">res</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="k">for</span> <span class="n">sym</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">derivs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">sym_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">sym</span><span class="p">)</span>
@@ -439,6 +439,8 @@
                 <span class="n">unicode_sub_super</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">[</span><span class="s1">&#39;unicode_sub_super&#39;</span><span class="p">],</span>
                 <span class="n">subscript_max_len</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
             <span class="p">)</span>
+        <span class="k">if</span> <span class="n">adjoint</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(</span><span class="si">%s</span><span class="s2">)^</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dagger_sym</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">res</span></div>
 </pre></div>
 
@@ -455,7 +457,7 @@
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Sep 09, 2020.
+        Last updated on Sep 20, 2020.
       </span>
 
     </p>

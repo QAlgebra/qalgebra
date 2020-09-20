@@ -500,7 +500,7 @@
 </g>
 <!-- CoherentStateKet -->
 <g id="node18" class="node"><title>CoherentStateKet</title>
-<g id="a_node18"><a xlink:href="../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.CoherentStateKet" xlink:title="Local coherent state, labeled by a complex amplitude." target="_top">
+<g id="a_node18"><a xlink:href="../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.CoherentStateKet" xlink:title="Local coherent state, labeled by a complex amplitude $\alpha$." target="_top">
 <polygon fill="none" stroke="black" stroke-width="0.5" points="1427,-710.5 1325,-710.5 1325,-691.5 1427,-691.5 1427,-710.5"/>
 <text text-anchor="middle" x="1376" y="-698.5" font-family="Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans" font-size="10.00">CoherentStateKet</text>
 </a>
@@ -697,7 +697,7 @@
 </g>
 <!-- ProductSpace -->
 <g id="node73" class="node"><title>ProductSpace</title>
-<g id="a_node73"><a xlink:href="../API/qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.ProductSpace" xlink:title="Tensor product of local Hilbert spaces" target="_top">
+<g id="a_node73"><a xlink:href="../API/qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.ProductSpace" xlink:title="Tensor product of local Hilbert spaces." target="_top">
 <polygon fill="none" stroke="black" stroke-width="0.5" points="508.5,-170.5 425.5,-170.5 425.5,-151.5 508.5,-151.5 508.5,-170.5"/>
 <text text-anchor="middle" x="467" y="-158.5" font-family="Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans" font-size="10.00">ProductSpace</text>
 </a>
@@ -837,7 +837,7 @@
 </g>
 <!-- Displace -->
 <g id="node24" class="node"><title>Displace</title>
-<g id="a_node24"><a xlink:href="../API/qalgebra.library.fock_operators.html#qalgebra.library.fock_operators.Displace" xlink:title="Unitary coherent displacement operator" target="_top">
+<g id="a_node24"><a xlink:href="../API/qalgebra.library.fock_operators.html#qalgebra.library.fock_operators.Displace" xlink:title="Unitary coherent displacement operator." target="_top">
 <polygon fill="none" stroke="black" stroke-width="0.5" points="1243,-956.5 1186,-956.5 1186,-937.5 1243,-937.5 1243,-956.5"/>
 <text text-anchor="middle" x="1214.5" y="-944.5" font-family="Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans" font-size="10.00">Displace</text>
 </a>
@@ -1211,7 +1211,7 @@
 </g>
 <!-- QuantumSymbol -->
 <g id="node49" class="node"><title>QuantumSymbol</title>
-<g id="a_node49"><a xlink:href="../API/qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumSymbol" xlink:title="Symbolic element of an algebra" target="_top">
+<g id="a_node49"><a xlink:href="../API/qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumSymbol" xlink:title="Symbolic element of an algebra." target="_top">
 <polygon fill="none" stroke="black" stroke-width="0.5" points="516,-941.5 418,-941.5 418,-922.5 516,-922.5 516,-941.5"/>
 <text text-anchor="middle" x="467" y="-929.5" font-family="Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans" font-size="10.00">QuantumSymbol</text>
 </a>

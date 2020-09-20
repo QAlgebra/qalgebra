@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.state_algebra &mdash; QAlgebra 2.0.0-dev (8a2ff01) documentation</title>
+  <title>qalgebra.core.state_algebra &mdash; QAlgebra 2.0.0-dev (05e74a8) documentation</title>
   
 
   
@@ -594,11 +594,19 @@
 
 
 <div class="viewcode-block" id="CoherentStateKet"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.CoherentStateKet">[docs]</a><span class="k">class</span> <span class="nc">CoherentStateKet</span><span class="p">(</span><span class="n">LocalKet</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Local coherent state, labeled by a complex amplitude.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Local coherent state, labeled by a complex amplitude $\alpha$.</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \ket{\alpha}</span>
+<span class="sd">        = \exp\left[ \alpha \Op{a}^\dagger - \alpha^* \Op{a} \right] \ket{0}</span>
+<span class="sd">        = \Op{D}(\alpha) \ket{0}</span>
+
+<span class="sd">    where $\Op{D}$ is the displacement operator, see :class:`.Displace`.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        hs (LocalSpace): The local Hilbert space degree of freedom.</span>
-<span class="sd">        ampl (Scalar): The coherent displacement amplitude.</span>
+<span class="sd">        ampl (Scalar): The coherent displacement amplitude $\alpha$.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">_rx_label</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;^.*$&#39;</span><span class="p">)</span>
@@ -619,10 +627,13 @@
         <span class="kn">from</span> <span class="nn">qalgebra.library.fock_operators</span> <span class="kn">import</span> <span class="n">Create</span><span class="p">,</span> <span class="n">Destroy</span>
 
         <span class="n">hs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span>
-        <span class="k">return</span> <span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_ampl</span> <span class="o">*</span> <span class="n">Create</span><span class="p">(</span><span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span>
-            <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ampl</span><span class="o">.</span><span class="n">conjugate</span><span class="p">()</span> <span class="o">*</span> <span class="n">Destroy</span><span class="p">(</span><span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span>
-        <span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">sym</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span>
+        <span class="k">if</span> <span class="n">sym</span> <span class="ow">in</span> <span class="n">hs</span><span class="o">.</span><span class="n">free_symbols</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">StateDerivative</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">derivs</span><span class="o">=</span><span class="p">{</span><span class="n">sym</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_ampl</span> <span class="o">*</span> <span class="n">Create</span><span class="p">(</span><span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span>
+                <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ampl</span><span class="o">.</span><span class="n">conjugate</span><span class="p">()</span> <span class="o">*</span> <span class="n">Destroy</span><span class="p">(</span><span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">sym</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span>
 
 <div class="viewcode-block" id="CoherentStateKet.to_fock_representation"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.CoherentStateKet.to_fock_representation">[docs]</a>    <span class="k">def</span> <span class="nf">to_fock_representation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index_symbol</span><span class="o">=</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="n">max_terms</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the coherent state written out as an indexed sum over Fock</span>
@@ -765,9 +776,9 @@
         <span class="k">return</span> <span class="n">ct</span> <span class="o">*</span> <span class="n">et</span>
 
     <span class="k">def</span> <span class="nf">_diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sym</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">operator</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span>
-            <span class="n">sym</span>
-        <span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ket</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">operator</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">sym</span><span class="p">)</span>
+        <span class="n">t1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">operator</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">sym</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ket</span>
+        <span class="n">t2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">operator</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">sym</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">t1</span> <span class="o">+</span> <span class="n">t2</span>
 
     <span class="k">def</span> <span class="nf">_series_expand</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">about</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
         <span class="n">ce</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">operator</span><span class="o">.</span><span class="n">series_expand</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">about</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
@@ -875,9 +886,9 @@
 
     <span class="k">def</span> <span class="nf">_diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sym</span><span class="p">):</span>
         <span class="n">bra</span><span class="p">,</span> <span class="n">ket</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">operands</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-            <span class="n">bra</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">sym</span><span class="p">),</span> <span class="n">ket</span>
-        <span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">bra</span><span class="p">,</span> <span class="n">ket</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">sym</span><span class="p">))</span>
+        <span class="n">t1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">bra</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">sym</span><span class="p">),</span> <span class="n">ket</span><span class="p">)</span>
+        <span class="n">t2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">bra</span><span class="p">,</span> <span class="n">ket</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">sym</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">t1</span> <span class="o">+</span> <span class="n">t2</span>
 
     <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">BraKet</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">*</span><span class="nb">reversed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">operands</span><span class="p">))</span>
@@ -940,9 +951,9 @@
 
     <span class="k">def</span> <span class="nf">_diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sym</span><span class="p">):</span>
         <span class="n">ket</span><span class="p">,</span> <span class="n">bra</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">operands</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-            <span class="n">ket</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">sym</span><span class="p">),</span> <span class="n">bra</span>
-        <span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">ket</span><span class="p">,</span> <span class="n">bra</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">sym</span><span class="p">))</span>
+        <span class="n">t1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">ket</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">sym</span><span class="p">),</span> <span class="n">bra</span><span class="p">)</span>
+        <span class="n">t2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">ket</span><span class="p">,</span> <span class="n">bra</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">sym</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">t1</span> <span class="o">+</span> <span class="n">t2</span>
 
     <span class="k">def</span> <span class="nf">_expand</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">k</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ket</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bra</span><span class="o">.</span><span class="n">ket</span>
@@ -1026,7 +1037,7 @@
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Sep 09, 2020.
+        Last updated on Sep 20, 2020.
       </span>
 
     </p>

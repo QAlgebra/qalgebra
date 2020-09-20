@@ -77,7 +77,7 @@ qalgebra package
        * - :class:`BraKet <qalgebra.core.state_algebra.BraKet>`
          - The symbolic inner product between two states
        * - :class:`CoherentStateKet <qalgebra.core.state_algebra.CoherentStateKet>`
-         - Local coherent state, labeled by a complex amplitude.
+         - Local coherent state, labeled by a complex amplitude $\alpha$.
        * - :class:`Commutator <qalgebra.core.operator_algebra.Commutator>`
          - Commutator of two operators
        * - :class:`Create <qalgebra.library.fock_operators.Create>`
@@ -85,7 +85,7 @@ qalgebra package
        * - :class:`Destroy <qalgebra.library.fock_operators.Destroy>`
          - Bosonic annihilation operator
        * - :class:`Displace <qalgebra.library.fock_operators.Displace>`
-         - Unitary coherent displacement operator
+         - Unitary coherent displacement operator.
        * - :class:`Expression <qalgebra.core.abstract_algebra.Expression>`
          - Base class for all QAlgebra Expressions.
        * - :class:`FockIndex <qalgebra.utils.indices.FockIndex>`
@@ -159,7 +159,7 @@ qalgebra package
        * - :class:`Phase <qalgebra.library.fock_operators.Phase>`
          - Unitary "phase" operator
        * - :class:`ProductSpace <qalgebra.core.hilbert_space_algebra.ProductSpace>`
-         - Tensor product of local Hilbert spaces
+         - Tensor product of local Hilbert spaces.
        * - :class:`PseudoInverse <qalgebra.core.operator_algebra.PseudoInverse>`
          - Unevaluated pseudo-inverse $\Op{X}^+$ of an operator $\Op{X}$.
        * - :class:`QuantumAdjoint <qalgebra.core.abstract_quantum_algebra.QuantumAdjoint>`
@@ -175,7 +175,7 @@ qalgebra package
        * - :class:`QuantumPlus <qalgebra.core.abstract_quantum_algebra.QuantumPlus>`
          - General implementation of addition of quantum expressions
        * - :class:`QuantumSymbol <qalgebra.core.abstract_quantum_algebra.QuantumSymbol>`
-         - Symbolic element of an algebra
+         - Symbolic element of an algebra.
        * - :class:`QuantumTimes <qalgebra.core.abstract_quantum_algebra.QuantumTimes>`
          - General implementation of product of quantum expressions
        * - :class:`SPost <qalgebra.core.super_operator_algebra.SPost>`
