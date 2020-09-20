@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.operator_algebra &mdash; QAlgebra 2.0.0-dev (05e74a8) documentation</title>
+  <title>qalgebra.core.operator_algebra &mdash; QAlgebra 2.0.0-dev (c26129e) documentation</title>
   
 
   
@@ -387,7 +387,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="n">implied_local_space</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;hs&#39;</span><span class="p">,]),</span>
+        <span class="n">implied_local_space</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;hs&#39;</span><span class="p">]),</span>
     <span class="p">]</span>
 
     <span class="n">_identifier</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># must be overridden by subclasses!</span>
@@ -541,7 +541,7 @@
 
 <div class="viewcode-block" id="LocalSigma"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.LocalSigma">[docs]</a><span class="nd">@properties_for_args</span>
 <span class="k">class</span> <span class="nc">LocalSigma</span><span class="p">(</span><span class="n">LocalOperator</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&#39;&#39;&#39;Level flip operator between two levels of a :class:`.LocalSpace`.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Level flip operator between two levels of a :class:`.LocalSpace`.</span>
 
 <span class="sd">    .. math::</span>
 
@@ -584,7 +584,7 @@
 
 <span class="sd">        &gt;&gt;&gt; LocalSigma(0, 0, hs=0)._identifier_projector</span>
 <span class="sd">        &#39;Pi&#39;</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">_identifier</span> <span class="o">=</span> <span class="s2">&quot;sigma&quot;</span>
     <span class="n">_identifier_projector</span> <span class="o">=</span> <span class="s2">&quot;Pi&quot;</span>
@@ -592,7 +592,10 @@
     <span class="n">_arg_names</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;j&#39;</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
     <span class="n">_scalar_args</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># args are labels, not scalar coefficients</span>
     <span class="n">_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
-    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span><span class="n">implied_local_space</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;hs&#39;</span><span class="p">,]),</span> <span class="n">match_replace</span><span class="p">]</span>
+    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">implied_local_space</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;hs&#39;</span><span class="p">]),</span>
+        <span class="n">match_replace</span><span class="p">,</span>
+    <span class="p">]</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">hs</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">hs</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">)):</span>
@@ -641,7 +644,7 @@
                 <span class="p">)</span>
 
 <div class="viewcode-block" id="LocalSigma.raise_jk"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.LocalSigma.raise_jk">[docs]</a>    <span class="k">def</span> <span class="nf">raise_jk</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">j_incr</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">k_incr</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&#39;&#39;&#39;Return a new :class:`LocalSigma` instance with incremented `j`,</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return a new :class:`LocalSigma` instance with incremented `j`,</span>
 <span class="sd">        `k`, on the same Hilbert space:</span>
 
 <span class="sd">        .. math::</span>
@@ -658,7 +661,7 @@
 <span class="sd">            j_incr (int): The increment between labels $j$ and $j&#39;$</span>
 <span class="sd">            k_incr (int): The increment between labels $k$ and $k&#39;$. Both</span>
 <span class="sd">                increments may be negative.</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">j</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
                 <span class="n">new_j</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">j</span> <span class="o">+</span> <span class="n">j_incr</span>
@@ -774,13 +777,13 @@
 
 
 <div class="viewcode-block" id="Commutator"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.Commutator">[docs]</a><span class="k">class</span> <span class="nc">Commutator</span><span class="p">(</span><span class="n">QuantumOperation</span><span class="p">,</span> <span class="n">Operator</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&#39;&#39;&#39;Commutator of two operators</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Commutator of two operators</span>
 
 <span class="sd">    .. math::</span>
 
 <span class="sd">        [\Op{A}, \Op{B}] = \Op{A}\Op{B} - \Op{A}\Op{B}</span>
 
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
     <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span>
@@ -862,7 +865,7 @@
 
 
 <div class="viewcode-block" id="OperatorTrace"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.OperatorTrace">[docs]</a><span class="k">class</span> <span class="nc">OperatorTrace</span><span class="p">(</span><span class="n">SingleQuantumOperation</span><span class="p">,</span> <span class="n">Operator</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&#39;&#39;&#39;(Partial) trace of an operator</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;(Partial) trace of an operator</span>
 
 <span class="sd">    Trace of an operator `op` ($\Op{O}) over the degrees</span>
 <span class="sd">    of freedom of a Hilbert space `over_space` ($\mathcal{H}$):</span>
@@ -874,11 +877,11 @@
 <span class="sd">    Args:</span>
 <span class="sd">        over_space (.HilbertSpace): The degrees of freedom to trace over</span>
 <span class="sd">        op (Operator): The operator to take the trace of.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
     <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span>
         <span class="n">scalars_to_op</span><span class="p">,</span>
-        <span class="n">implied_local_space</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;over_space&#39;</span><span class="p">,]),</span>
+        <span class="n">implied_local_space</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;over_space&#39;</span><span class="p">]),</span>
         <span class="n">match_replace</span><span class="p">,</span>
     <span class="p">]</span>
 
@@ -1084,7 +1087,7 @@
 
 
 <div class="viewcode-block" id="factor_for_trace"><a class="viewcode-back" href="../../../API/qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.factor_for_trace">[docs]</a><span class="k">def</span> <span class="nf">factor_for_trace</span><span class="p">(</span><span class="n">ls</span><span class="p">:</span> <span class="n">HilbertSpace</span><span class="p">,</span> <span class="n">op</span><span class="p">:</span> <span class="n">Operator</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Operator</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&#39;&#39;&#39;Factor `ls` out of `op` for easy tracing.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Factor `ls` out of `op` for easy tracing.</span>
 
 <span class="sd">    Given a :class:`.LocalSpace` `ls` to take the partial trace over and an</span>
 <span class="sd">    operator `op`, factor the trace such that operators acting on disjoint</span>
@@ -1104,7 +1107,7 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        The (partial) trace over the operator&#39;s spc-degrees of freedom</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">op</span><span class="o">.</span><span class="n">space</span> <span class="o">==</span> <span class="n">ls</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">OperatorTimes</span><span class="p">):</span>
             <span class="n">pull_out</span> <span class="o">=</span> <span class="p">[</span><span class="n">o</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">op</span><span class="o">.</span><span class="n">operands</span> <span class="k">if</span> <span class="n">o</span><span class="o">.</span><span class="n">space</span> <span class="ow">is</span> <span class="n">TrivialSpace</span><span class="p">]</span>
@@ -1127,7 +1130,7 @@
                 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">LocalSigma</span><span class="p">):</span>
                     <span class="n">m</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">j</span>
                     <span class="n">rest</span> <span class="o">=</span> <span class="p">(</span>
-                        <span class="n">rest</span><span class="p">[</span><span class="n">j</span><span class="p">:]</span> <span class="o">+</span> <span class="n">rest</span><span class="p">[:</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">LocalSigma</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">ls</span><span class="p">),]</span>
+                        <span class="n">rest</span><span class="p">[</span><span class="n">j</span><span class="p">:]</span> <span class="o">+</span> <span class="n">rest</span><span class="p">[:</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">LocalSigma</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">ls</span><span class="p">)]</span>
                     <span class="p">)</span>
                     <span class="k">break</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">rest</span><span class="p">:</span>

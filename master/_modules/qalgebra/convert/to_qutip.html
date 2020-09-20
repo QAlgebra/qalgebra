@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.convert.to_qutip &mdash; QAlgebra 2.0.0-dev (05e74a8) documentation</title>
+  <title>qalgebra.convert.to_qutip &mdash; QAlgebra 2.0.0-dev (c26129e) documentation</title>
   
 
   
@@ -341,7 +341,7 @@
         <span class="k">return</span> <span class="n">qutip</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span>
             <span class="o">*</span><span class="p">(</span>
                 <span class="p">[</span><span class="n">qutip</span><span class="o">.</span><span class="n">qeye</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dimension</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">all_spaces</span><span class="p">[:</span><span class="n">own_space_index</span><span class="p">]]</span>
-                <span class="o">+</span> <span class="p">[</span><span class="n">convert_to_qutip</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">expr</span><span class="o">.</span><span class="n">space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span><span class="p">),]</span>
+                <span class="o">+</span> <span class="p">[</span><span class="n">convert_to_qutip</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">expr</span><span class="o">.</span><span class="n">space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span><span class="p">)]</span>
                 <span class="o">+</span> <span class="p">[</span>
                     <span class="n">qutip</span><span class="o">.</span><span class="n">qeye</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dimension</span><span class="p">)</span>
                     <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">all_spaces</span><span class="p">[</span><span class="n">own_space_index</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:]</span>
@@ -512,7 +512,7 @@
         <span class="n">own_space_index</span> <span class="o">=</span> <span class="n">all_spaces</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
         <span class="n">factors</span> <span class="o">=</span> <span class="p">(</span>
             <span class="p">[</span><span class="n">qutip</span><span class="o">.</span><span class="n">qeye</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dimension</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">all_spaces</span><span class="p">[:</span><span class="n">own_space_index</span><span class="p">]]</span>
-            <span class="o">+</span> <span class="p">[</span><span class="n">convert_to_qutip</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">expr</span><span class="o">.</span><span class="n">space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span><span class="p">),]</span>
+            <span class="o">+</span> <span class="p">[</span><span class="n">convert_to_qutip</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">expr</span><span class="o">.</span><span class="n">space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span><span class="p">)]</span>
             <span class="o">+</span> <span class="p">[</span>
                 <span class="n">qutip</span><span class="o">.</span><span class="n">qeye</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dimension</span><span class="p">)</span>
                 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">all_spaces</span><span class="p">[</span><span class="n">own_space_index</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:]</span>
@@ -652,7 +652,7 @@
         <span class="p">):</span>
             <span class="k">if</span> <span class="n">convert_as</span> <span class="o">==</span> <span class="s1">&#39;pyfunc&#39;</span><span class="p">:</span>
                 <span class="n">func_no_args</span> <span class="o">=</span> <span class="n">lambdify</span><span class="p">(</span><span class="n">time_symbol</span><span class="p">,</span> <span class="n">op</span><span class="o">.</span><span class="n">coeff</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
-                <span class="k">if</span> <span class="p">{</span><span class="n">time_symbol</span><span class="p">,}</span> <span class="o">==</span> <span class="n">op</span><span class="o">.</span><span class="n">coeff</span><span class="o">.</span><span class="n">free_symbols</span><span class="p">:</span>
+                <span class="k">if</span> <span class="p">{</span><span class="n">time_symbol</span><span class="p">}</span> <span class="o">==</span> <span class="n">op</span><span class="o">.</span><span class="n">coeff</span><span class="o">.</span><span class="n">free_symbols</span><span class="p">:</span>
 
                     <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
                         <span class="c1"># args are ignored for increased efficiency, since we</span>

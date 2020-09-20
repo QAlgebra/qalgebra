@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.utils.testing &mdash; QAlgebra 2.0.0-dev (05e74a8) documentation</title>
+  <title>qalgebra.utils.testing &mdash; QAlgebra 2.0.0-dev (c26129e) documentation</title>
   
 
   
@@ -213,7 +213,7 @@
 
 
 <div class="viewcode-block" id="datadir"><a class="viewcode-back" href="../../../API/qalgebra.utils.testing.html#qalgebra.utils.testing.datadir">[docs]</a><span class="k">def</span> <span class="nf">datadir</span><span class="p">(</span><span class="n">tmpdir</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;Proto-fixture responsible for searching a folder with the same name of</span>
+    <span class="sd">&quot;&quot;&quot;Proto-fixture responsible for searching a folder with the same name of</span>
 <span class="sd">    test module and, if available, moving all contents to a temporary directory</span>
 <span class="sd">    so tests can use them freely.</span>
 
@@ -222,7 +222,7 @@
 <span class="sd">        &gt;&gt;&gt; import pytest</span>
 <span class="sd">        &gt;&gt;&gt; import qalgebra.utils.testing</span>
 <span class="sd">        &gt;&gt;&gt; datadir = pytest.fixture(qalgebra.utils.testing.datadir)</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># http://stackoverflow.com/questions/29627341/pytest-where-to-store-expected-data</span>
     <span class="n">filename</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="vm">__file__</span>
     <span class="n">test_dir</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>

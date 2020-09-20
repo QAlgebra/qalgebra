@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.library.fock_operators &mdash; QAlgebra 2.0.0-dev (05e74a8) documentation</title>
+  <title>qalgebra.library.fock_operators &mdash; QAlgebra 2.0.0-dev (c26129e) documentation</title>
   
 
   
@@ -310,7 +310,10 @@
     <span class="n">_identifier</span> <span class="o">=</span> <span class="s1">&#39;Phase&#39;</span>
     <span class="n">_arg_names</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;phase&#39;</span><span class="p">,)</span>
     <span class="n">_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
-    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span><span class="n">implied_local_space</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;hs&#39;</span><span class="p">,]),</span> <span class="n">match_replace</span><span class="p">]</span>
+    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">implied_local_space</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;hs&#39;</span><span class="p">]),</span>
+        <span class="n">match_replace</span><span class="p">,</span>
+    <span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">Phase</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">phase</span><span class="o">.</span><span class="n">conjugate</span><span class="p">(),</span> <span class="n">hs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
@@ -349,7 +352,10 @@
     <span class="n">_nargs</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">_arg_names</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;displacement&#39;</span><span class="p">,)</span>
     <span class="n">_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
-    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span><span class="n">implied_local_space</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;hs&#39;</span><span class="p">,]),</span> <span class="n">match_replace</span><span class="p">]</span>
+    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">implied_local_space</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;hs&#39;</span><span class="p">]),</span>
+        <span class="n">match_replace</span><span class="p">,</span>
+    <span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">Displace</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
@@ -386,7 +392,10 @@
     <span class="n">_identifier</span> <span class="o">=</span> <span class="s2">&quot;Squeeze&quot;</span>
     <span class="n">_arg_names</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;squeezing_factor&#39;</span><span class="p">,)</span>
     <span class="n">_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
-    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span><span class="n">implied_local_space</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;hs&#39;</span><span class="p">,]),</span> <span class="n">match_replace</span><span class="p">]</span>
+    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">implied_local_space</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;hs&#39;</span><span class="p">]),</span>
+        <span class="n">match_replace</span><span class="p">,</span>
+    <span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">Squeeze</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">squeezing_factor</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>

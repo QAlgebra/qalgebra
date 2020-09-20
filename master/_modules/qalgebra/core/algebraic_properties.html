@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.algebraic_properties &mdash; QAlgebra 2.0.0-dev (05e74a8) documentation</title>
+  <title>qalgebra.core.algebraic_properties &mdash; QAlgebra 2.0.0-dev (c26129e) documentation</title>
   
 
   
@@ -777,8 +777,8 @@
 
 
 <div class="viewcode-block" id="scalars_to_op"><a class="viewcode-back" href="../../../API/qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.scalars_to_op">[docs]</a><span class="k">def</span> <span class="nf">scalars_to_op</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ops</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&#39;&#39;&#39;Convert any scalar $\alpha$ in `ops` into an operator $\alpha</span>
-<span class="sd">    \identity$&#39;&#39;&#39;</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Convert any scalar $\alpha$ in `ops` into an operator $\alpha</span>
+<span class="sd">    \identity$&quot;&quot;&quot;</span>
     <span class="kn">from</span> <span class="nn">qalgebra.core.scalar_algebra</span> <span class="kn">import</span> <span class="n">is_scalar</span>
 
     <span class="n">op_ops</span> <span class="o">=</span> <span class="p">[]</span>
@@ -867,7 +867,7 @@
 
 
 <div class="viewcode-block" id="indexed_sum_over_const"><a class="viewcode-back" href="../../../API/qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.indexed_sum_over_const">[docs]</a><span class="k">def</span> <span class="nf">indexed_sum_over_const</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ops</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&#39;&#39;&#39;Execute an indexed sum over a term that does not depend on the</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Execute an indexed sum over a term that does not depend on the</span>
 <span class="sd">    summation indices</span>
 
 <span class="sd">    .. math::</span>
@@ -880,7 +880,7 @@
 <span class="sd">    &#39;2 a&#39;</span>
 <span class="sd">    &gt;&gt;&gt; unicode(Sum(j, 1, 2)(Sum(i, 1, 2)(a * i)))</span>
 <span class="sd">    &#39;∑_{i=1}^{2} 2 i a&#39;</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">term</span><span class="p">,</span> <span class="o">*</span><span class="n">ranges</span> <span class="o">=</span> <span class="n">ops</span>
     <span class="n">new_ranges</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">new_term</span> <span class="o">=</span> <span class="n">term</span>

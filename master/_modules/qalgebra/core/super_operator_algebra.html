@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.super_operator_algebra &mdash; QAlgebra 2.0.0-dev (05e74a8) documentation</title>
+  <title>qalgebra.core.super_operator_algebra &mdash; QAlgebra 2.0.0-dev (c26129e) documentation</title>
   
 
   
@@ -377,8 +377,7 @@
 
 
 <div class="viewcode-block" id="ScalarTimesSuperOperator"><a class="viewcode-back" href="../../../API/qalgebra.core.super_operator_algebra.html#qalgebra.core.super_operator_algebra.ScalarTimesSuperOperator">[docs]</a><span class="k">class</span> <span class="nc">ScalarTimesSuperOperator</span><span class="p">(</span><span class="n">SuperOperator</span><span class="p">,</span> <span class="n">ScalarTimesQuantumExpression</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Product of a :class:`.Scalar` coefficient and a :class:`.SuperOperator`.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Product of a :class:`.Scalar` coefficient and a :class:`.SuperOperator`.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span>
@@ -450,10 +449,10 @@
 
 
 <div class="viewcode-block" id="SPost"><a class="viewcode-back" href="../../../API/qalgebra.core.super_operator_algebra.html#qalgebra.core.super_operator_algebra.SPost">[docs]</a><span class="k">class</span> <span class="nc">SPost</span><span class="p">(</span><span class="n">SuperOperator</span><span class="p">,</span> <span class="n">Operation</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Linear post-multiplication operator</span>
+    <span class="sd">&quot;&quot;&quot;Linear post-multiplication operator.</span>
 
-<span class="sd">        Acting ``SPost(A)`` on an operator ``B`` just yields the reversed</span>
-<span class="sd">        product ``B * A``.</span>
+<span class="sd">    Acting ``SPost(A)`` on an operator ``B`` just yields the reversed</span>
+<span class="sd">    product ``B * A``.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">_order_index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>

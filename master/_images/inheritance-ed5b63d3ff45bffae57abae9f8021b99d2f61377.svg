@@ -710,7 +710,7 @@
 </g>
 <!-- SPost -->
 <g id="node75" class="node"><title>SPost</title>
-<g id="a_node75"><a xlink:href="../API/qalgebra.core.super_operator_algebra.html#qalgebra.core.super_operator_algebra.SPost" xlink:title="Linear post&#45;multiplication operator" target="_top">
+<g id="a_node75"><a xlink:href="../API/qalgebra.core.super_operator_algebra.html#qalgebra.core.super_operator_algebra.SPost" xlink:title="Linear post&#45;multiplication operator." target="_top">
 <polygon fill="none" stroke="black" stroke-width="0.5" points="1058,-279.5 1004,-279.5 1004,-260.5 1058,-260.5 1058,-279.5"/>
 <text text-anchor="middle" x="1031" y="-267.5" font-family="Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans" font-size="10.00">SPost</text>
 </a>

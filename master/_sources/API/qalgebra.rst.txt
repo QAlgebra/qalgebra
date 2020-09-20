@@ -179,7 +179,7 @@ qalgebra package
        * - :class:`QuantumTimes <qalgebra.core.abstract_quantum_algebra.QuantumTimes>`
          - General implementation of product of quantum expressions
        * - :class:`SPost <qalgebra.core.super_operator_algebra.SPost>`
-         - Linear post-multiplication operator
+         - Linear post-multiplication operator.
        * - :class:`SPre <qalgebra.core.super_operator_algebra.SPre>`
          - Linear pre-multiplication operator
        * - :class:`Scalar <qalgebra.core.scalar_algebra.Scalar>`
