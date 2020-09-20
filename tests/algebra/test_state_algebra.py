@@ -1,7 +1,7 @@
 import unittest
 
 import pytest
-from sympy import I, IndexedBase, exp, factorial, pi, sqrt, symbols
+from sympy import Function, I, IndexedBase, exp, factorial, pi, sqrt, symbols
 
 from qalgebra.core.abstract_algebra import _apply_rules
 from qalgebra.core.exceptions import UnequalSpaces
@@ -502,6 +502,14 @@ def test_coherent_state_to_fock_representation():
         assert sum.term.term == BasisKet(
             FockIndex(IdxSym('n')), hs=LocalSpace('1')
         )
+
+
+def test_coherent_state_deriv():
+    """Test the derivative of a coherent state."""
+    t = symbols('t', is_positive=True)
+    alpha = Function('alpha')
+    expr = CoherentStateKet(alpha(t), hs=1)
+    assert not expr.diff(t).is_zero
 
 
 def test_scalar_times_bra():

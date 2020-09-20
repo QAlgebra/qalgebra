@@ -411,12 +411,12 @@ class LocalSpace(HilbertSpace, Expression):
 
     @property
     def label(self):
-        """Label of the Hilbert space"""
+        """Label of the Hilbert space."""
         return self._label
 
     @property
     def has_basis(self):
-        """True if the Hilbert space has a basis"""
+        """True if the Hilbert space has a basis."""
         return self._basis is not None
 
     @property
@@ -704,13 +704,15 @@ class FullSpace(HilbertSpace, Expression, metaclass=Singleton):
 
 
 class ProductSpace(HilbertSpace, Operation):
-    """Tensor product of local Hilbert spaces
+    """Tensor product of local Hilbert spaces.
 
-    >>> hs1 = LocalSpace('1', basis=(0,1))
-    >>> hs2 = LocalSpace('2', basis=(0,1))
-    >>> hs = hs1 * hs2
-    >>> hs.basis_labels
-    ('0,0', '0,1', '1,0', '1,1')
+    For example::
+
+        >>> hs1 = LocalSpace('1', basis=(0,1))
+        >>> hs2 = LocalSpace('2', basis=(0,1))
+        >>> hs = hs1 * hs2
+        >>> hs.basis_labels
+        ('0,0', '0,1', '1,0', '1,1')
     """
 
     _neutral_element = TrivialSpace
@@ -888,7 +890,9 @@ class ProductSpace(HilbertSpace, Operation):
 
     def is_strict_subfactor_of(self, other):
         """Test if a space is included within a larger tensor product space.
-        Not ``True`` if ``self == other``."""
+
+        Not ``True`` if ``self == other``.
+        """
         if isinstance(other, ProductSpace):
             return set(self.operands) < set(other.operands)
         if other is FullSpace:

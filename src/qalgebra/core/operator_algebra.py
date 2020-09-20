@@ -1,6 +1,5 @@
-r"""
-This module features classes and functions to define and manipulate symbolic
-Operator expressions.  For more details see :ref:`operator_algebra`.
+r"""Classes and functions to define and manipulate symbolic Operator
+expressions. For more details see :ref:`operator_algebra`.
 
 For a list of all properties and methods of an operator object, see the
 documentation for the basic :class:`Operator` class.
@@ -13,12 +12,7 @@ from itertools import product as cartesian_product
 from sympy import sympify
 
 from ..pattern_matching import pattern, pattern_head, wc
-from ..utils.indices import (
-    FockIndex,
-    IdxSym,
-    IndexOverFockSpace,
-    SymbolicLabelBase,
-)
+from ..utils.indices import FockIndex, IdxSym, SymbolicLabelBase
 from ..utils.ordering import FullCommutativeHSOrder
 from ..utils.properties_for_args import properties_for_args
 from ..utils.singleton import Singleton, singleton_object

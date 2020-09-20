@@ -309,7 +309,7 @@ def test_quantum_symbols_with_symargs():
 
 
 def test_quantum_symbols_with_indexedhs():
-    """Test the fee_symbols method for objects that have a Hilbert space with a
+    """Test the free_symbols method for objects that have a Hilbert space with a
     sybmolic label, for the example of an OperatorSymbol"""
     i, j = symbols('i, j', cls=IdxSym)
     hs_i = LocalSpace(StrLabel(i))

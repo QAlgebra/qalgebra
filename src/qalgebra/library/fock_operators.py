@@ -136,7 +136,7 @@ class Phase(LocalOperator):
 
 @properties_for_args
 class Displace(LocalOperator):
-    r"""Unitary coherent displacement operator
+    r"""Unitary coherent displacement operator.
 
     .. math::
 

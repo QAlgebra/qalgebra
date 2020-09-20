@@ -1,7 +1,7 @@
-"""Common algebra of "quantum" objects
+"""Common algebra of "quantum" objects.
 
-Quantum objects have an associated Hilbert space, and they (at least partially)
-summation, products, multiplication with a scalar, and adjoints.
+Quantum objects have an associated Hilbert space, and they support (at least
+partially) summation, products, multiplication with a scalar, and adjoints.
 
 The algebra defined in this module is the superset of the Hilbert space algebra
 of states (augmented by the tensor product), and the C* algebras of operators
@@ -158,6 +158,9 @@ class QuantumExpression(Expression, metaclass=ABCMeta):
     def diff(self, sym: Symbol, n: int = 1, expand_simplify: bool = True):
         """Differentiate by scalar parameter `sym`.
 
+        The derivative is trivially zero if `sym` is not in
+        :attr:`~.Expression.free_symbols`.
+
         Args:
             sym: What to differentiate by.
             n: How often to differentiate
@@ -166,9 +169,10 @@ class QuantumExpression(Expression, metaclass=ABCMeta):
         Returns:
             The n-th derivative.
         """
+        # Note: subclasses must not override the diff method, only _diff
         if not isinstance(sym, sympy.Basic):
             raise TypeError("%s needs to be a Sympy symbol" % sym)
-        if sym.free_symbols.issubset(self.free_symbols):
+        if sym in self.free_symbols:
             # QuantumDerivative.create delegates internally to _diff (the
             # explicit non-trivial derivative). Using `create` gives us free
             # caching
@@ -181,6 +185,9 @@ class QuantumExpression(Expression, metaclass=ABCMeta):
 
     @abstractmethod
     def _diff(self, sym):
+        # Note: the "trivial" derivative (sym is not in free_symbols) is
+        # handled in the main diff method. Any implementation of _diff can
+        # assume a non-trivial derivative.
         raise NotImplementedError()
 
     def series_expand(self, param: Symbol, about, order: int) -> tuple:
@@ -323,7 +330,7 @@ class QuantumExpression(Expression, metaclass=ABCMeta):
 
 
 class QuantumSymbol(QuantumExpression, metaclass=ABCMeta):
-    """Symbolic element of an algebra
+    """Symbolic element of an algebra.
 
     Args:
         label (str or SymbolicLabelBase): Label for the symbol
@@ -367,43 +374,33 @@ class QuantumSymbol(QuantumExpression, metaclass=ABCMeta):
 
     @property
     def label(self):
-        """Label of the symbol"""
+        """Label of the symbol."""
         return self._label
 
     @property
     def args(self):
         """Tuple of positional arguments, consisting of the label and possible
-        `sym_args`"""
+        `sym_args`."""
         return (self.label,) + self._sym_args
 
     @property
     def kwargs(self):
-        """Dict of keyword arguments, containing only `hs`"""
+        """Dict of keyword arguments, containing only `hs`."""
         return {'hs': self._hs}
 
     @property
     def sym_args(self):
-        """Tuple of scalar arguments of the symbol"""
+        """Tuple of :class:`.Scalar` arguments of the symbol."""
         return self._sym_args
 
     @property
     def space(self):
+        """The Hilbert space associated with the symbol."""
         return self._hs
 
     def _diff(self, sym):
-        if all([arg.diff(sym).is_zero for arg in self.sym_args]):
-            # This includes the case where sym_args is empty
-            return self.__class__._zero
-        else:
-            return self.__class__._derivative_cls(self, derivs={sym: 1})
-
-    def _series_expand(self, param, about, order):
-        if len(self._sym_args) == 0:
-            return (self,) + (0,) * order
-        else:
-            # QuantumExpression._series_expand will return the abstract Taylor
-            # series
-            return super()._series_expand(param, about, order)
+        # assume derivative is not zero (checked in QuantumExpression.diff)
+        return self.__class__._derivative_cls(self, derivs={sym: 1})
 
     def _simplify_scalar(self, func):
         simplified_sym_args = [func(sym) for sym in self._sym_args]
@@ -414,14 +411,22 @@ class QuantumSymbol(QuantumExpression, metaclass=ABCMeta):
 
     @property
     def free_symbols(self):
-        try:
-            res = self.label.free_symbols
-            # TODO: anywhere else there are symbolic labels, symbols from the
-            # labels should be included in the free_symbols, too
-        except AttributeError:
-            res = set()
-        res.update(self._hs.free_symbols)
-        return res.union(*[sym.free_symbols for sym in self.sym_args])
+        """Set of free SymPy symbols contained within the expression.
+
+        These are all the symbol with respect to which the symbol has a
+        non-zero derivative, see :meth:`~.QuantumExpression.diff`.
+        """
+        if self._free_symbols is None:
+            try:
+                res = self.label.free_symbols
+                # TODO: anywhere else there are symbolic labels, symbols from
+                # the labels should be included in the free_symbols, too
+            except AttributeError:
+                res = set()
+            res.update(self._hs.free_symbols)
+            res = res.union(*[sym.free_symbols for sym in self.sym_args])
+            self._free_symbols = res
+        return self._free_symbols
 
     def _adjoint(self):
         return self.__class__._adjoint_cls(self)
@@ -501,9 +506,6 @@ class QuantumAdjoint(SingleQuantumOperation, metaclass=ABCMeta):
             summands = [eoo.adjoin() for eoo in eo.operands]
             return self.__class__._plus_cls.create(*summands)
         return eo.adjoint()
-
-    def _diff(self, sym):
-        return self.__class__.create(self.operands[0].diff(sym))
 
     def _adjoint(self):
         return self.operand

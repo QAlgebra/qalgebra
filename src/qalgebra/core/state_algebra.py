@@ -409,11 +409,19 @@ class BasisKet(LocalKet, KetSymbol):
 
 
 class CoherentStateKet(LocalKet):
-    """Local coherent state, labeled by a complex amplitude.
+    r"""Local coherent state, labeled by a complex amplitude $\alpha$.
+
+    .. math::
+
+        \ket{\alpha}
+        = \exp\left[ \alpha \Op{a}^\dagger - \alpha^* \Op{a} \right] \ket{0}
+        = \Op{D}(\alpha) \ket{0}
+
+    where $\Op{D}$ is the displacement operator, see :class:`.Displace`.
 
     Args:
         hs (LocalSpace): The local Hilbert space degree of freedom.
-        ampl (Scalar): The coherent displacement amplitude.
+        ampl (Scalar): The coherent displacement amplitude $\alpha$.
     """
 
     _rx_label = re.compile('^.*$')
@@ -434,10 +442,13 @@ class CoherentStateKet(LocalKet):
         from qalgebra.library.fock_operators import Create, Destroy
 
         hs = self.space
-        return (
-            self._ampl * Create(hs=hs)
-            - self._ampl.conjugate() * Destroy(hs=hs)
-        ).diff(sym) * self
+        if sym in hs.free_symbols:
+            return StateDerivative(self, derivs={sym: 1})
+        else:
+            return (
+                self._ampl * Create(hs=hs)
+                - self._ampl.conjugate() * Destroy(hs=hs)
+            ).diff(sym) * self
 
     def to_fock_representation(self, index_symbol='n', max_terms=None):
         """Return the coherent state written out as an indexed sum over Fock
@@ -580,9 +591,9 @@ class OperatorTimesKet(State, Operation):
         return ct * et
 
     def _diff(self, sym):
-        return self.operator.diff(
-            sym
-        ) * self.ket + self.operator * self.ket.diff(sym)
+        t1 = self.operator.diff(sym) * self.ket
+        t2 = self.operator * self.ket.diff(sym)
+        return t1 + t2
 
     def _series_expand(self, param, about, order):
         ce = self.operator.series_expand(param, about, order)
@@ -690,9 +701,9 @@ class BraKet(ScalarExpression, Operation):
 
     def _diff(self, sym):
         bra, ket = self.operands
-        return self.__class__.create(
-            bra.diff(sym), ket
-        ) + self.__class__.create(bra, ket.diff(sym))
+        t1 = self.__class__.create(bra.diff(sym), ket)
+        t2 = self.__class__.create(bra, ket.diff(sym))
+        return t1 + t2
 
     def _adjoint(self):
         return BraKet.create(*reversed(self.operands))
@@ -755,9 +766,9 @@ class KetBra(Operator, Operation):
 
     def _diff(self, sym):
         ket, bra = self.operands
-        return self.__class__.create(
-            ket.diff(sym), bra
-        ) + self.__class__.create(ket, bra.diff(sym))
+        t1 = self.__class__.create(ket.diff(sym), bra)
+        t2 = self.__class__.create(ket, bra.diff(sym))
+        return t1 + t2
 
     def _expand(self):
         k, b = self.ket, self.bra.ket
