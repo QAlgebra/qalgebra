@@ -102,7 +102,7 @@ class Expression(metaclass=ABCMeta):
 
     @classmethod
     def create(cls, *args, **kwargs):
-        """Instantiate while applying automatic simplifications
+        """Instantiate while applying automatic simplifications.
 
         Instead of directly instantiating `cls`, it is recommended to use
         :meth:`create`, which applies simplifications to the args and keyword
@@ -705,8 +705,7 @@ class Expression(metaclass=ABCMeta):
 
 
 def substitute(expr, var_map):
-    """Substitute symbols or (sub-)expressions with the given replacements and
-    re-evalute the result
+    """Substitute symbols or (sub-)expressions with the given replacements.
 
     Args:
         expr: The expression in which to perform the substitution
@@ -723,11 +722,18 @@ def substitute(expr, var_map):
     except AttributeError:
         if expr in var_map:
             return var_map[expr]
-        return expr
+        if isinstance(expr, tuple):
+            return tuple([substitute(a, var_map) for a in expr])
+        elif isinstance(expr, list):
+            return [substitute(a, var_map) for a in expr]
+        elif isinstance(expr, dict):
+            return {k: substitute(v, var_map) for (k, v) in expr.items()}
+        else:
+            return expr
 
 
 def _apply_rules_no_recurse(expr, rules):
-    """Non-recursively match expr again all rules"""
+    """Non-recursively match expr again all rules."""
     try:
         # `rules` is an OrderedDict key => (pattern, replacement)
         items = rules.items()

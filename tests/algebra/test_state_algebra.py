@@ -582,8 +582,12 @@ def test_disallow_inner_bra():
     Psi = IndexedBase('Psi')
     psi_i = KetSymbol(StrLabel(Psi[i]), hs=0)
     with pytest.raises(TypeError) as exc_info:
-        KetIndexedSum(Bra(psi_i), IndexOverFockSpace(i, hs=0))
+        KetIndexedSum(Bra(psi_i), ranges=(IndexOverFockSpace(i, hs=0),))
     assert "must be Kets" in str(exc_info.value)
+    expr = KetIndexedSum.create(
+        Bra(psi_i), ranges=(IndexOverFockSpace(i, hs=0),)
+    )
     assert isinstance(
-        KetIndexedSum.create(Bra(psi_i), IndexOverFockSpace(i, hs=0)), Bra
+        expr,
+        Bra,
     )

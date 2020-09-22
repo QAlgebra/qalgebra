@@ -907,21 +907,21 @@ class QuantumDerivative(SingleQuantumOperation):
 
 
 class QuantumIndexedSum(IndexedSum, SingleQuantumOperation, metaclass=ABCMeta):
-    """Base class for indexed sums."""
+    """Base class for indexed sums of quantum expressions."""
 
     @property
     def space(self):
-        """The Hilbert space of the sum's term"""
+        """The Hilbert space of the sum's term."""
         return self.term.space
 
     def _expand(self):
-        return self.__class__.create(self.term.expand(), *self.ranges)
+        return self.__class__.create(self.term.expand(), ranges=self.ranges)
 
     def _adjoint(self):
-        return self.__class__.create(self.term.adjoint(), *self.ranges)
+        return self.__class__.create(self.term.adjoint(), ranges=self.ranges)
 
     def _diff(self, sym):
-        return self.__class__.create(self.term.diff(sym), *self.ranges)
+        return self.__class__.create(self.term.diff(sym), ranges=self.ranges)
 
     def __mul__(self, other):
         from qalgebra.core.scalar_algebra import is_scalar
@@ -932,7 +932,7 @@ class QuantumIndexedSum(IndexedSum, SingleQuantumOperation, metaclass=ABCMeta):
             new_term = self.term * other.term
             # note that class may change, depending on type of new_term
             return new_term.__class__._indexed_sum_cls.create(
-                new_term, *new_ranges
+                new_term, ranges=new_ranges
             )
         elif is_scalar(other):
             return self.__class__._scalar_times_expr_cls(other, self)
@@ -944,7 +944,7 @@ class QuantumIndexedSum(IndexedSum, SingleQuantumOperation, metaclass=ABCMeta):
             sum = self.make_disjunct_indices(*other.bound_symbols)
             new_term = sum.term * other
             return new_term.__class__._indexed_sum_cls.create(
-                new_term, *sum.ranges
+                new_term, ranges=sum.ranges
             )
 
     def __rmul__(self, other):
@@ -956,7 +956,7 @@ class QuantumIndexedSum(IndexedSum, SingleQuantumOperation, metaclass=ABCMeta):
             new_term = other.term * self_new.term
             # note that class may change, depending on type of new_term
             return new_term.__class__._indexed_sum_cls.create(
-                new_term, *new_ranges
+                new_term, ranges=new_ranges
             )
         elif is_scalar(other):
             return self.__class__._scalar_times_expr_cls.create(other, self)
@@ -968,7 +968,7 @@ class QuantumIndexedSum(IndexedSum, SingleQuantumOperation, metaclass=ABCMeta):
             sum = self.make_disjunct_indices(*other.bound_symbols)
             new_term = other * sum.term
             return new_term.__class__._indexed_sum_cls.create(
-                new_term, *sum.ranges
+                new_term, ranges=sum.ranges
             )
 
     def __add__(self, other):
@@ -1043,7 +1043,8 @@ def Sum(idx, *args, **kwargs):
     Note that using :func:`Sum` is vastly more readable than the equivalent
     "manual" instantiation::
 
-        >>> s == KetIndexedSum.create(ket_i, IndexOverFockSpace(i, hs=hs0))
+        >>> s == KetIndexedSum.create(
+        ...     ket_i, ranges=(IndexOverFockSpace(i, hs=hs0),))
         True
 
     By nesting calls to `Sum`, you can instantiate sums running over multiple
@@ -1068,7 +1069,7 @@ def Sum(idx, *args, **kwargs):
     Lastly, by passing a tuple or list of values, the index will run over all
     the elements in that tuple or list::
 
-        >>> unicode( Sum(i, (1, 2, 3))(ket_i))
+        >>> unicode( Sum(i, (1, 2, 3))(ket_i) )
         '∑_{i ∈ {1,2,3}} |i⟩⁽⁰⁾'
     """
     from qalgebra.core.hilbert_space_algebra import LocalSpace
@@ -1095,7 +1096,7 @@ def Sum(idx, *args, **kwargs):
         if isinstance(term, ScalarValue._val_types):
             term = ScalarValue.create(term)
         idx_range = idx_range_func(term, idx, *args, **kwargs)
-        return term._indexed_sum_cls.create(term, idx_range)
+        return term._indexed_sum_cls.create(term, ranges=(idx_range,))
 
     return sum
 

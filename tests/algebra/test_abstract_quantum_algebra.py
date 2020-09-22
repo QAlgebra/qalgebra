@@ -80,7 +80,7 @@ def test_neutral_elements():
 
 
 def test_sum_instantiator():
-    """Test use of Sum instantiator"""
+    """Test use of Sum instantiator."""
     i = IdxSym('i')
     j = IdxSym('j')
     ket_i = BasisKet(FockIndex(i), hs=0)
@@ -89,28 +89,27 @@ def test_sum_instantiator():
     hs0 = LocalSpace('0')
 
     sum = Sum(i)(ket_i)
-    ful = KetIndexedSum(ket_i, IndexOverFockSpace(i, hs=hs0))
+    ful = KetIndexedSum(ket_i, ranges=IndexOverFockSpace(i, hs=hs0))
     assert sum == ful
     assert sum == Sum(i, hs0)(ket_i)
     assert sum == Sum(i, hs=hs0)(ket_i)
 
     sum = Sum(i, 1, 10)(ket_i)
-    ful = KetIndexedSum(ket_i, IndexOverRange(i, 1, 10))
+    ful = KetIndexedSum(ket_i, ranges=IndexOverRange(i, 1, 10))
     assert sum == ful
     assert sum == Sum(i, 1, 10, 1)(ket_i)
     assert sum == Sum(i, 1, to=10, step=1)(ket_i)
     assert sum == Sum(i, 1, 10, step=1)(ket_i)
 
     sum = Sum(i, (1, 2, 3))(ket_i)
-    ful = KetIndexedSum(ket_i, IndexOverList(i, (1, 2, 3)))
-    assert sum == KetIndexedSum(ket_i, IndexOverList(i, (1, 2, 3)))
+    ful = KetIndexedSum(ket_i, ranges=IndexOverList(i, (1, 2, 3)))
+    assert sum == KetIndexedSum(ket_i, ranges=IndexOverList(i, (1, 2, 3)))
     assert sum == Sum(i, [1, 2, 3])(ket_i)
 
     sum = Sum(i)(Sum(j)(ket_i * ket_j.dag()))
     ful = OperatorIndexedSum(
         ket_i * ket_j.dag(),
-        IndexOverFockSpace(i, hs0),
-        IndexOverFockSpace(j, hs0),
+        ranges=(IndexOverFockSpace(i, hs0), IndexOverFockSpace(j, hs0)),
     )
     assert sum == ful
 

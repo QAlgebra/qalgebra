@@ -1,6 +1,6 @@
 import pytest
 import sympy
-from sympy import Indexed, IndexedBase, symbols
+from sympy import I, Indexed, IndexedBase, symbols
 
 from qalgebra import (
     BasisKet,
@@ -43,22 +43,21 @@ def test_qubit_state():
 
     term = alpha_i * BasisKet(FockIndex(i), hs=hs_tls)
 
-    expr1 = KetIndexedSum.create(term, IndexOverFockSpace(i, hs=hs_tls))
+    expr1 = KetIndexedSum.create(term, ranges=IndexOverFockSpace(i, hs=hs_tls))
 
-    expr2 = KetIndexedSum.create(term, IndexOverList(i, [0, 1]))
+    expr2 = KetIndexedSum.create(term, ranges=IndexOverList(i, [0, 1]))
 
-    expr3 = KetIndexedSum.create(term, IndexOverRange(i, start_from=0, to=1))
+    expr3 = KetIndexedSum.create(
+        term, ranges=IndexOverRange(i, start_from=0, to=1)
+    )
 
-    assert IndexOverFockSpace(i, hs=hs_tls) in expr1.args
+    assert IndexOverFockSpace(i, hs=hs_tls) in expr1.kwargs['ranges']
 
     assert ascii(expr1) == "Sum_{i in H_tls} alpha_i * |i>^(tls)"
     assert unicode(expr1) == "∑_{i ∈ ℌ_tls} α_i |i⟩⁽ᵗˡˢ⁾"
     assert (
-        srepr(expr1) == "KetIndexedSum(ScalarTimesKet(ScalarValue("
-        "Indexed(IndexedBase(Symbol('alpha')), IdxSym('i', integer=True))), "
-        "BasisKet(FockIndex(IdxSym('i', integer=True)), hs=LocalSpace('tls', "
-        "basis=('g', 'e')))), IndexOverFockSpace(IdxSym('i', integer=True), "
-        "LocalSpace('tls', basis=('g', 'e'))))"
+        srepr(expr1)
+        == "KetIndexedSum(ScalarTimesKet(ScalarValue(Indexed(IndexedBase(Symbol('alpha')), IdxSym('i', integer=True))), BasisKet(FockIndex(IdxSym('i', integer=True)), hs=LocalSpace('tls', basis=('g', 'e')))), ranges=(IndexOverFockSpace(IdxSym('i', integer=True), LocalSpace('tls', basis=('g', 'e'))),))"
     )
     with configure_printing(tex_use_braket=True):
         assert (
@@ -70,11 +69,7 @@ def test_qubit_state():
     assert unicode(expr2) == '∑_{i ∈ {0,1}} α_i |i⟩⁽ᵗˡˢ⁾'
     assert (
         srepr(expr2)
-        == "KetIndexedSum(ScalarTimesKet(ScalarValue(Indexed(IndexedBase("
-        "Symbol('alpha')), IdxSym('i', integer=True))), "
-        "BasisKet(FockIndex(IdxSym('i', integer=True)), hs=LocalSpace('tls', "
-        "basis=('g', 'e')))), IndexOverList(IdxSym('i', integer=True), "
-        "(0, 1)))"
+        == "KetIndexedSum(ScalarTimesKet(ScalarValue(Indexed(IndexedBase(Symbol('alpha')), IdxSym('i', integer=True))), BasisKet(FockIndex(IdxSym('i', integer=True)), hs=LocalSpace('tls', basis=('g', 'e')))), ranges=(IndexOverList(IdxSym('i', integer=True), (0, 1)),))"
     )
     with configure_printing(tex_use_braket=True):
         assert (
@@ -85,11 +80,7 @@ def test_qubit_state():
     assert unicode(expr3) == '∑_{i=0}^{1} α_i |i⟩⁽ᵗˡˢ⁾'
     assert (
         srepr(expr3)
-        == "KetIndexedSum(ScalarTimesKet(ScalarValue(Indexed(IndexedBase("
-        "Symbol('alpha')), IdxSym('i', integer=True))), "
-        "BasisKet(FockIndex(IdxSym('i', integer=True)), hs=LocalSpace('tls', "
-        "basis=('g', 'e')))), IndexOverRange(IdxSym('i', integer=True), "
-        "0, 1))"
+        == "KetIndexedSum(ScalarTimesKet(ScalarValue(Indexed(IndexedBase(Symbol('alpha')), IdxSym('i', integer=True))), BasisKet(FockIndex(IdxSym('i', integer=True)), hs=LocalSpace('tls', basis=('g', 'e')))), ranges=(IndexOverRange(IdxSym('i', integer=True), 0, 1),))"
     )
     with configure_printing(tex_use_braket=True):
         assert latex(expr3) == r'\sum_{i=0}^{1} \alpha_{i} \Ket{i}^{(tls)}'
@@ -104,11 +95,11 @@ def test_qubit_state():
         assert 0 in expr.ranges[0]
         assert 1 in expr.ranges[0]
         assert expr.space == hs_tls
-        assert len(expr.args) == 2
+        assert len(expr.args) == 1
+        assert len(expr.kwargs) == 1
         assert len(expr.operands) == 1
         assert expr.args[0] == term
         assert expr.term == term
-        assert len(expr.kwargs) == 0
         expr_expand = expr.doit().substitute(
             {alpha[0]: alpha['g'], alpha[1]: alpha['e']}
         )
@@ -136,9 +127,9 @@ def test_qubit_state_bra():
 
     term = alpha_i * BasisKet(FockIndex(i), hs=hs_tls).dag()
 
-    expr = KetIndexedSum.create(term, IndexOverFockSpace(i, hs=hs_tls))
+    expr = KetIndexedSum.create(term, ranges=IndexOverFockSpace(i, hs=hs_tls))
 
-    assert IndexOverFockSpace(i, hs=hs_tls) in expr.ket.args
+    assert IndexOverFockSpace(i, hs=hs_tls) in expr.ket.kwargs['ranges']
 
     assert ascii(expr) == "Sum_{i in H_tls} alpha_i * <i|^(tls)"
 
@@ -146,8 +137,9 @@ def test_qubit_state_bra():
     assert expr.free_symbols == set([symbols('alpha'), alpha_i])
     assert expr.ket.variables == [i]
     assert expr.space == hs_tls
-    assert len(expr.ket.args) == 2
+    assert len(expr.ket.args) == 1
     assert len(expr.ket.operands) == 1
+    assert len(expr.ket.kwargs) == 1
     assert expr.ket.args[0] == term.ket
     assert expr.ket.term == term.ket
     assert len(expr.kwargs) == 0
@@ -237,11 +229,12 @@ def test_two_hs_symbol_sum():
     term = a_ij * KetPsi_ij
 
     expr1 = KetIndexedSum(
-        term, IndexOverFockSpace(i, hs=hs1), IndexOverFockSpace(j, hs=hs2)
+        term,
+        ranges=(IndexOverFockSpace(i, hs=hs1), IndexOverFockSpace(j, hs=hs2)),
     )
 
     expr2 = KetIndexedSum(
-        term, IndexOverRange(i, 0, 2), IndexOverRange(j, 0, 2)
+        term, ranges=(IndexOverRange(i, 0, 2), IndexOverRange(j, 0, 2))
     )
 
     assert expr1.term.free_symbols == set(
@@ -300,23 +293,23 @@ def test_partial_expansion():
     def psi(i_val, j_val, k_val):
         return psi_ijk.substitute({i: i_val, j: j_val, k: k_val})
 
-    expr = KetIndexedSum(psi_ijk, r(i), r(j), r(k))
+    expr = KetIndexedSum(psi_ijk, ranges=(r(i), r(j), r(k)))
 
     expr_expanded = expr.doit(indices=[i])
     assert expr_expanded == KetIndexedSum(
-        psi(0, j, k) + psi(1, j, k), r(j), r(k)
+        psi(0, j, k) + psi(1, j, k), ranges=(r(j), r(k))
     )
 
     expr_expanded = expr.doit(indices=[j])
     assert expr_expanded == KetIndexedSum(
-        psi(i, 0, k) + psi(i, 1, k), r(i), r(k)
+        psi(i, 0, k) + psi(i, 1, k), ranges=(r(i), r(k))
     )
 
     assert expr.doit(indices=[j]) == expr.doit(indices=['j'])
 
     expr_expanded = expr.doit(indices=[i, j])
     assert expr_expanded == KetIndexedSum(
-        psi(0, 0, k) + psi(1, 0, k) + psi(0, 1, k) + psi(1, 1, k), r(k)
+        psi(0, 0, k) + psi(1, 0, k) + psi(0, 1, k) + psi(1, 1, k), ranges=r(k)
     )
 
     assert expr.doit(indices=[i, j]) == expr.doit(indices=[j, i])
@@ -337,19 +330,17 @@ def test_make_disjunct_indices():
 
     def sum(term, *index_symbols):
         return KetIndexedSum(
-            term, *[IndexOverRange(i, 0, 2) for i in index_symbols]
+            term, ranges=[IndexOverRange(i, 0, 2) for i in index_symbols]
         )
 
     with pytest.raises(ValueError):
         sum(Psi(i, j, j), i, j, j)
 
     expr = sum(Psi(i, j, k), i, j, k)
-    others = [
-        expr,
-    ]
-    assert expr.make_disjunct_indices(*others) == expr.substitute(
-        {i: i.prime, j: j.prime, k: k.prime}
-    )
+    others = [expr]
+    expected = expr.substitute({i: i.prime, j: j.prime, k: k.prime})
+    expr_primed = expr.make_disjunct_indices(*others)
+    assert expr_primed == expected
 
     others = [sum(Psi(i), i), sum(Psi(j), j)]
     assert expr.make_disjunct_indices(*others) == expr.substitute(
@@ -369,12 +360,13 @@ def test_create_on_fock_expansion():
     hs = LocalSpace('0', dimension=3)
 
     expr = Create(hs=hs) * KetIndexedSum(
-        alpha[i] * BasisKet(FockIndex(i), hs=hs), IndexOverFockSpace(i, hs)
+        alpha[i] * BasisKet(FockIndex(i), hs=hs),
+        ranges=IndexOverFockSpace(i, hs),
     )
 
     assert expr == KetIndexedSum(
         sympy.sqrt(i + 1) * alpha[i] * BasisKet(FockIndex(i + 1), hs=hs),
-        IndexOverFockSpace(i, hs),
+        ranges=IndexOverFockSpace(i, hs),
     )
 
     assert expr.doit() == (
@@ -392,12 +384,12 @@ def test_tensor_indexed_sum():
 
     psi1 = KetIndexedSum(
         alpha[1, i] * BasisKet(FockIndex(i), hs=hs1),
-        IndexOverFockSpace(i, hs1),
+        ranges=IndexOverFockSpace(i, hs1),
     )
 
     psi2 = KetIndexedSum(
         alpha[2, i] * BasisKet(FockIndex(i), hs=hs2),
-        IndexOverFockSpace(i, hs2),
+        ranges=IndexOverFockSpace(i, hs2),
     )
 
     expr = psi1 * psi2
@@ -409,8 +401,7 @@ def test_tensor_indexed_sum():
             BasisKet(FockIndex(i), hs=hs1)
             * BasisKet(FockIndex(i.prime), hs=hs2)
         ),
-        IndexOverFockSpace(i, hs1),
-        IndexOverFockSpace(i.prime, hs2),
+        ranges=(IndexOverFockSpace(i, hs1), IndexOverFockSpace(i.prime, hs2)),
     )
     assert expr == rhs
     psi0 = KetSymbol('Psi', hs=0)
@@ -425,8 +416,7 @@ def test_tensor_indexed_sum():
             * BasisKet(FockIndex(i.prime), hs=hs2)
             * psi3
         ),
-        IndexOverFockSpace(i, hs1),
-        IndexOverFockSpace(i.prime, hs2),
+        ranges=(IndexOverFockSpace(i, hs1), IndexOverFockSpace(i.prime, hs2)),
     )
     assert expr2 == rhs
     assert TensorKet.create(psi0, psi1, psi2, psi3) == expr2
@@ -441,7 +431,9 @@ def test_tls_norm():
     nrm = BraKet.create(ket_i, ket_i)
     assert nrm == 1
 
-    psi = KetIndexedSum((1 / sympy.sqrt(2)) * ket_i, IndexOverFockSpace(i, hs))
+    psi = KetIndexedSum(
+        (1 / sympy.sqrt(2)) * ket_i, ranges=IndexOverFockSpace(i, hs)
+    )
     nrm = BraKet.create(psi, psi)
     assert nrm == 1
 
@@ -455,31 +447,34 @@ def test_braket_indexed_sum():
     psi = KetSymbol('Psi', hs=hs)
 
     psi1 = KetIndexedSum(
-        alpha[1, i] * BasisKet(FockIndex(i), hs=hs), IndexOverFockSpace(i, hs)
+        alpha[1, i] * BasisKet(FockIndex(i), hs=hs),
+        ranges=IndexOverFockSpace(i, hs),
     )
 
     psi2 = KetIndexedSum(
-        alpha[2, i] * BasisKet(FockIndex(i), hs=hs), IndexOverFockSpace(i, hs)
+        alpha[2, i] * BasisKet(FockIndex(i), hs=hs),
+        ranges=IndexOverFockSpace(i, hs),
     )
 
     expr = Bra.create(psi1) * psi2
     assert expr.space == TrivialSpace
     assert expr == ScalarIndexedSum.create(
-        alpha[1, i].conjugate() * alpha[2, i], IndexOverFockSpace(i, hs)
+        alpha[1, i].conjugate() * alpha[2, i],
+        ranges=(IndexOverFockSpace(i, hs),),
     )
     assert BraKet.create(psi1, psi2) == expr
 
     expr = psi.dag() * psi2
     assert expr == ScalarIndexedSum(
         alpha[2, i] * BraKet(psi, BasisKet(FockIndex(i), hs=hs)),
-        IndexOverFockSpace(i, hs),
+        ranges=IndexOverFockSpace(i, hs),
     )
     assert BraKet.create(psi, psi2) == expr
 
     expr = psi1.dag() * psi
     assert expr == ScalarIndexedSum(
         alpha[1, i].conjugate() * BraKet(BasisKet(FockIndex(i), hs=hs), psi),
-        IndexOverFockSpace(i, hs),
+        ranges=IndexOverFockSpace(i, hs),
     )
     assert BraKet.create(psi1, psi) == expr
 
@@ -493,11 +488,13 @@ def test_ketbra_indexed_sum():
     psi = KetSymbol('Psi', hs=hs)
 
     psi1 = KetIndexedSum(
-        alpha[1, i] * BasisKet(FockIndex(i), hs=hs), IndexOverFockSpace(i, hs)
+        alpha[1, i] * BasisKet(FockIndex(i), hs=hs),
+        ranges=IndexOverFockSpace(i, hs),
     )
 
     psi2 = KetIndexedSum(
-        alpha[2, i] * BasisKet(FockIndex(i), hs=hs), IndexOverFockSpace(i, hs)
+        alpha[2, i] * BasisKet(FockIndex(i), hs=hs),
+        ranges=IndexOverFockSpace(i, hs),
     )
 
     expr = psi1 * psi2.dag()
@@ -508,8 +505,7 @@ def test_ketbra_indexed_sum():
         * KetBra.create(
             BasisKet(FockIndex(i), hs=hs), BasisKet(FockIndex(i.prime), hs=hs)
         ),
-        IndexOverFockSpace(i, hs),
-        IndexOverFockSpace(i.prime, hs),
+        ranges=(IndexOverFockSpace(i, hs), IndexOverFockSpace(i.prime, hs)),
     )
     assert expr == expected
     assert KetBra.create(psi1, psi2) == expr
@@ -519,7 +515,7 @@ def test_ketbra_indexed_sum():
     expected = OperatorIndexedSum(
         alpha[2, i].conjugate()
         * KetBra.create(psi, BasisKet(FockIndex(i), hs=hs)),
-        IndexOverFockSpace(i, hs),
+        ranges=IndexOverFockSpace(i, hs),
     )
     assert expr == expected
     assert KetBra.create(psi, psi2) == expr
@@ -528,10 +524,31 @@ def test_ketbra_indexed_sum():
     assert expr.space == hs
     expected = OperatorIndexedSum(
         alpha[1, i] * KetBra.create(BasisKet(FockIndex(i), hs=hs), psi),
-        IndexOverFockSpace(i, hs),
+        ranges=IndexOverFockSpace(i, hs),
     )
     assert expr == expected
     assert KetBra.create(psi1, psi) == expr
+
+
+def test_ket_indexed_sum_simplify_scalar():
+    """Test calling the simplify_scalar method of an KetIndexedSum."""
+    # This tests originates from some broken behavior when IndexedSum received
+    # `ranges` as a positional argument instead of a keyword argument.
+    a, b, ϕ = symbols('a, b, phi')
+    factor = (a + b) * sympy.exp(I * ϕ)
+    factor_expand = factor.expand()
+    hs = LocalSpace(0)
+    n = symbols('n', cls=IdxSym)
+    psi_n = hs.basis_state(FockIndex(n))
+    expr = KetIndexedSum(
+        factor * psi_n, ranges=(IndexOverFockSpace(n, hs=hs),)
+    )
+    expr_expand = expr.simplify_scalar(sympy.expand)
+    expected = factor_expand * KetIndexedSum(
+        psi_n, ranges=(IndexOverFockSpace(n, hs=hs),)
+    )
+    assert expr_expand != expected.term  # happened when ranges was an argument
+    assert expr_expand == expected
 
 
 # TODO: ketplus

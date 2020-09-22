@@ -29,7 +29,9 @@ def test_indexed_sum_over_kronecker_scalarvalue():
     i_range = IndexOverFockSpace(i, hs)
     ip_range = IndexOverFockSpace(ip, hs)
     sum = indexed_sum_over_kronecker(
-        ScalarIndexedSum, (term, i_range, ip_range), {}
+        ScalarIndexedSum,
+        ops=(term,),
+        kwargs=dict(ranges=(i_range, ip_range)),
     )
     assert sum == 1
 
@@ -44,5 +46,5 @@ def test_indexed_sum_over_scalartimes():
     assert isinstance(term, ScalarTimes)
     i_range = IndexOverFockSpace(i, hs)
     j_range = IndexOverFockSpace(j, hs)
-    sum = ScalarIndexedSum.create(term, i_range, j_range)
+    sum = ScalarIndexedSum.create(term, ranges=(i_range, j_range))
     assert sum == hs.dimension

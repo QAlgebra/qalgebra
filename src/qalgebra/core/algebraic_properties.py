@@ -85,7 +85,10 @@ def assoc_indexed(cls, ops, kwargs):
         ScalarTimesQuantumExpression,
     )
 
-    term, *ranges = ops
+    assert len(ops) == 1  # only 'term'
+    assert len(kwargs) == 1  # only 'ranges'
+    term = ops[0]
+    ranges = kwargs['ranges']
 
     if isinstance(term, cls):
         coeff = 1
@@ -101,13 +104,13 @@ def assoc_indexed(cls, ops, kwargs):
     combined_ranges = tuple(ranges) + term.ranges
 
     if coeff == 1:
-        return cls.create(term.term, *combined_ranges)
+        return cls.create(term.term, ranges=combined_ranges)
     else:
         bound_symbols = set([r.index_symbol for r in combined_ranges])
         if len(coeff.free_symbols.intersection(bound_symbols)) == 0:
-            return coeff * cls.create(term.term, *combined_ranges)
+            return coeff * cls.create(term.term, ranges=combined_ranges)
         else:
-            return cls.create(coeff * term.term, *combined_ranges)
+            return cls.create(coeff * term.term, ranges=combined_ranges)
 
 
 def idem(cls, ops, kwargs):
@@ -683,7 +686,7 @@ def basis_ket_zero_outside_hs(cls, ops, kwargs):
 
 def indexed_sum_over_const(cls, ops, kwargs):
     r"""Execute an indexed sum over a term that does not depend on the
-    summation indices
+    summation indices.
 
     .. math::
 
@@ -696,7 +699,10 @@ def indexed_sum_over_const(cls, ops, kwargs):
     >>> unicode(Sum(j, 1, 2)(Sum(i, 1, 2)(a * i)))
     '∑_{i=1}^{2} 2 i a'
     """
-    term, *ranges = ops
+    assert len(ops) == 1  # only 'term'
+    assert len(kwargs) == 1  # only 'ranges'
+    term = ops[0]
+    ranges = kwargs['ranges']
     new_ranges = []
     new_term = term
     for r in ranges:
@@ -710,7 +716,7 @@ def indexed_sum_over_const(cls, ops, kwargs):
     if len(new_ranges) == 0:
         return new_term
     else:
-        return (new_term,) + tuple(new_ranges), kwargs
+        return (new_term,), dict(ranges=tuple(new_ranges))
 
 
 def _ranges_key(r, delta_indices):
@@ -733,7 +739,10 @@ def indexed_sum_over_kronecker(cls, ops, kwargs):
     """Execute sums over KroneckerDelta prefactors"""
     from qalgebra.core.abstract_quantum_algebra import QuantumExpression
 
-    term, *ranges = ops
+    assert len(ops) == 1  # only 'term'
+    assert len(kwargs) == 1  # only 'ranges'
+    term = ops[0]
+    ranges = kwargs['ranges']
     assert isinstance(term, QuantumExpression)
     deltas = set(Pattern(head=sympy.KroneckerDelta).findall(term))
     if len(deltas) == 0:
@@ -751,10 +760,12 @@ def indexed_sum_over_kronecker(cls, ops, kwargs):
                 for delta in deltas
             ]
         )
-        ranges = sorted(  # sort in the order we'd prefer to eliminate
-            ranges,
-            key=partial(_ranges_key, delta_indices=delta_indices),
-            reverse=True,
+        ranges = tuple(
+            sorted(  # sort in the order we'd prefer to eliminate
+                ranges,
+                key=partial(_ranges_key, delta_indices=delta_indices),
+                reverse=True,
+            )
         )
         buffer = [(term, ranges)]
         i = 0  # position in buffer that we're currently handling
@@ -769,7 +780,7 @@ def indexed_sum_over_kronecker(cls, ops, kwargs):
                 if flag == 2:
                     i_range += 1
                     # * for flag == 1, leaving i_range unchanged will
-                    # effectively to to the next range (as the current range
+                    # effectively go to the next range (as the current range
                     # was removed)
                     # * for flag == 3, buffer[i] has changed, and we'll want to
                     # call it again with the same i_range
@@ -790,10 +801,10 @@ def indexed_sum_over_kronecker(cls, ops, kwargs):
             (t, rs) = buffer[0]
             res = t
             if len(rs) > 0:
-                res = cls.create(t, *rs, **kwargs)
+                res = cls.create(t, ranges=rs)
             for (t, rs) in buffer[1:]:
                 if len(rs) > 0:
-                    t = cls.create(t, *rs, **kwargs)
+                    t = cls.create(t, ranges=rs)
                 res += t
             return res
 

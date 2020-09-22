@@ -765,7 +765,8 @@ def test_scalar_indexed_sum(braket):
     a = symbols('a')
     hs = LocalSpace(0)
     ket_sum = KetIndexedSum(
-        alpha[1, i] * BasisKet(FockIndex(i), hs=hs), IndexOverRange(i, 1, 2)
+        alpha[1, i] * BasisKet(FockIndex(i), hs=hs),
+        ranges=(IndexOverRange(i, 1, 2),),
     )
     bra = KetSymbol('Psi', hs=hs).dag()
     expr = bra * ket_sum
@@ -779,8 +780,8 @@ def test_scalar_indexed_sum(braket):
         + alpha[1, 2] * bra * BasisKet(2, hs=hs)
     )
 
-    expr = ScalarIndexedSum.create(i, IndexOverRange(i, 1, 2))
-    assert expr == ScalarIndexedSum(i, IndexOverRange(i, 1, 2))
+    expr = ScalarIndexedSum.create(i, ranges=(IndexOverRange(i, 1, 2),))
+    assert expr == ScalarIndexedSum(i, ranges=(IndexOverRange(i, 1, 2),))
     assert isinstance(expr.doit(), ScalarValue)
     assert expr.doit() == 3
 
@@ -796,15 +797,18 @@ def test_scalar_indexed_sum(braket):
     assert (2 * i) * expr == Sum(i, 1, 2)(2 * i * i.prime)
 
     assert expr * expr == ScalarIndexedSum(
-        ScalarValue(i * ip), IndexOverRange(i, 1, 2), IndexOverRange(ip, 1, 2)
+        ScalarValue(i * ip),
+        ranges=(IndexOverRange(i, 1, 2), IndexOverRange(ip, 1, 2)),
     )
 
     sum3 = expr ** 3
     assert sum3 == ScalarIndexedSum(
         ScalarValue(i * ip * ipp),
-        IndexOverRange(i, 1, 2),
-        IndexOverRange(ip, 1, 2),
-        IndexOverRange(ipp, 1, 2),
+        ranges=(
+            IndexOverRange(i, 1, 2),
+            IndexOverRange(ip, 1, 2),
+            IndexOverRange(ipp, 1, 2),
+        ),
     )
 
     assert expr ** 0 is One
@@ -817,9 +821,11 @@ def test_scalar_indexed_sum(braket):
     sqrt_sum = sqrt(expr)
     assert sqrt_sum == ScalarPower(expr, ScalarValue(half))
 
-    expr = ScalarIndexedSum.create(I * i, IndexOverRange(i, 1, 2))
+    expr = ScalarIndexedSum.create(I * i, ranges=(IndexOverRange(i, 1, 2),))
     assert expr.real == Zero
-    assert expr.imag == ScalarIndexedSum.create(i, IndexOverRange(i, 1, 2))
+    assert expr.imag == ScalarIndexedSum.create(
+        i, ranges=(IndexOverRange(i, 1, 2),)
+    )
     assert expr.conjugate() == -expr
 
 

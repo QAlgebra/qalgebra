@@ -146,14 +146,14 @@ class State(QuantumExpression, metaclass=ABCMeta):
                     new_term = self.term * Bra(other_ket.term)
                     new_ranges = self.ranges + other_ket.ranges
                     return new_term.__class__._indexed_sum_cls.create(
-                        new_term, *new_ranges
+                        new_term, ranges=new_ranges
                     )
                 elif is_sum == [True, False]:
                     return QuantumIndexedSum.__mul__(self, other)
                 elif is_sum == [False, True]:
                     new_term = self * Bra(other.ket.term)
                     return new_term.__class__._indexed_sum_cls.create(
-                        new_term, *other.ket.ranges
+                        new_term, ranges=other.ket.ranges
                     )
                 elif is_sum == [False, False]:
                     return KetBra.create(self, other.ket)
@@ -165,12 +165,12 @@ class State(QuantumExpression, metaclass=ABCMeta):
                     new_term = Bra(self.ket.term) * other.term
                     new_ranges = self.ket.ranges + other.ranges
                     return new_term.__class__._indexed_sum_cls.create(
-                        new_term, *new_ranges
+                        new_term, ranges=new_ranges
                     )
                 elif is_sum == [True, False]:
                     new_term = Bra(self.ket.term) * other
                     return new_term.__class__._indexed_sum_cls.create(
-                        new_term, *self.ket.ranges
+                        new_term, ranges=self.ket.ranges
                     )
                 elif is_sum == [False, True]:
                     return QuantumIndexedSum.__rmul__(other, self)
@@ -466,7 +466,7 @@ class CoherentStateKet(LocalKet):
         term = (self.ampl ** n / sympy.sqrt(sympy.factorial(n))) * BasisKet(
             FockIndex(n), hs=self._hs
         )
-        return phase_factor * KetIndexedSum(term, index_range)
+        return phase_factor * KetIndexedSum(term, ranges=[index_range])
 
 
 ###############################################################################
@@ -789,7 +789,7 @@ class KetBra(Operator, Operation):
 
 
 class KetIndexedSum(State, QuantumIndexedSum):
-    """Indexed sum over Kets"""
+    """Indexed sum over Kets."""
 
     # Must inherit from State first, so that proper __mul__ is used
 
@@ -802,15 +802,15 @@ class KetIndexedSum(State, QuantumIndexedSum):
     ]
 
     @classmethod
-    def create(cls, term, *ranges):
+    def create(cls, term, *, ranges):
         if term.isbra:
-            return Bra.create(KetIndexedSum.create(term.ket, *ranges))
+            return Bra.create(KetIndexedSum.create(term.ket, ranges=ranges))
         else:
-            return super().create(term, *ranges)
+            return super().create(term, ranges=ranges)
 
-    def __init__(self, term, *ranges):
+    def __init__(self, term, *, ranges):
         _check_kets(term)
-        super().__init__(term, *ranges)
+        super().__init__(term, ranges=ranges)
 
 
 def _check_kets(*ops, same_space=False, disjunct_space=False):

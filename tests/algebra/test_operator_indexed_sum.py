@@ -1,4 +1,5 @@
 """Test indexed sums over operators"""
+import pytest
 from sympy import IndexedBase, symbols
 
 from qalgebra import (
@@ -11,8 +12,25 @@ from qalgebra import (
     LocalSpace,
     OperatorIndexedSum,
     OperatorSymbol,
+    ScalarTimesOperator,
     StrLabel,
 )
+
+
+def test_pull_constfactor_from_operator_sum():
+    """Test that a constant in pulled from a sum of operators."""
+    i = IdxSym('i')
+    alpha = symbols('alpha')
+
+    def A(i, j):
+        return OperatorSymbol(StrLabel(IndexedBase('A')[i, j]), hs=0)
+
+    term = alpha * A(i, i)
+    range_i = IndexOverList(i, (1, 2))
+    expr = OperatorIndexedSum.create(term, ranges=(range_i,))
+    assert isinstance(expr, ScalarTimesOperator)
+    assert expr.coeff == alpha
+    assert isinstance(expr.term, OperatorIndexedSum)
 
 
 def test_operator_kronecker_sum():
@@ -32,20 +50,24 @@ def test_operator_kronecker_sum():
 
     term = delta_ij * A(i, j)
     sum = OperatorIndexedSum.create(
-        term, IndexOverList(i, (1, 2)), IndexOverList(j, (1, 2))
+        term, ranges=(IndexOverList(i, (1, 2)), IndexOverList(j, (1, 2)))
     )
-    assert sum == OperatorIndexedSum.create(A(i, i), IndexOverList(i, (1, 2)))
+    assert sum == OperatorIndexedSum.create(
+        A(i, i), ranges=(IndexOverList(i, (1, 2)),)
+    )
     assert sum.doit() == (
         OperatorSymbol("A_11", hs=0) + OperatorSymbol("A_22", hs=0)
     )
 
     term = alpha * delta_ij * A(i, j)
-    sum = OperatorIndexedSum.create(
-        term, IndexOverList(i, (1, 2)), IndexOverList(j, (1, 2))
+    range_i = IndexOverList(i, (1, 2))
+    range_j = IndexOverList(j, (1, 2))
+    sum = OperatorIndexedSum.create(term, ranges=(range_i, range_j))
+    assert isinstance(sum, ScalarTimesOperator)
+    expected = alpha * OperatorIndexedSum.create(
+        A(i, i), ranges=(IndexOverList(i, (1, 2)),)
     )
-    assert sum == (
-        alpha * OperatorIndexedSum.create(A(i, i), IndexOverList(i, (1, 2)))
-    )
+    assert sum == expected
 
     hs = LocalSpace('0', basis=('g', 'e'))
     i_range = IndexOverFockSpace(i, hs)
@@ -56,15 +78,15 @@ def test_operator_kronecker_sum():
 
     term = delta_0i * delta_1j * sig_ij
 
-    sum = OperatorIndexedSum.create(term, i_range)
+    sum = OperatorIndexedSum.create(term, ranges=(i_range,))
     expected = delta_1j * sig_0j
     assert sum == expected
 
-    sum = OperatorIndexedSum.create(term, j_range)
+    sum = OperatorIndexedSum.create(term, ranges=(j_range,))
     expected = delta_0i * sig_i1
     assert sum == expected
 
     term = (delta_0i * delta_1j + delta_0j * delta_1i) * sig_ij
-    sum = OperatorIndexedSum.create(term, i_range, j_range)
+    sum = OperatorIndexedSum.create(term, ranges=(i_range, j_range))
     expected = LocalSigma('g', 'e', hs=hs) + LocalSigma('e', 'g', hs=hs)
     assert sum == expected

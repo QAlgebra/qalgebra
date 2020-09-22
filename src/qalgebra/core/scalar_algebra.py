@@ -987,7 +987,7 @@ class ScalarTimes(QuantumTimes, Scalar):
 
 
 class ScalarIndexedSum(QuantumIndexedSum, Scalar):
-    """Indexed sum over scalars"""
+    """Indexed sum over scalars."""
 
     _rules = OrderedDict()
     simplifications = [
@@ -998,30 +998,34 @@ class ScalarIndexedSum(QuantumIndexedSum, Scalar):
     ]
 
     @classmethod
-    def create(cls, term, *ranges):
-        """Instantiate the indexed sum while applying simplification rules"""
-        if not isinstance(term, Scalar):
-            term = ScalarValue.create(term)
-        return super().create(term, *ranges)
+    def create(cls, term, *, ranges):
+        """Instantiate the indexed sum while applying simplification rules.
 
-    def __init__(self, term, *ranges):
+        This internally converts `term` to a :class:`Scalar` and `ranges` to a
+        tuple before applying any rules.
+        """
         if not isinstance(term, Scalar):
             term = ScalarValue.create(term)
-        super().__init__(term, *ranges)
+        return super().create(term, ranges=ranges)
+
+    def __init__(self, term, *, ranges):
+        if not isinstance(term, Scalar):
+            term = ScalarValue.create(term)
+        super().__init__(term, ranges=ranges)
 
     def conjugate(self):
-        """Complex conjugate of of the indexed sum"""
-        return self.__class__.create(self.term.conjugate(), *self.ranges)
+        """Complex conjugate of of the indexed sum."""
+        return self.__class__.create(self.term.conjugate(), ranges=self.ranges)
 
     @property
     def real(self):
-        """Real part"""
-        return self.__class__.create(self.term.real, *self.ranges)
+        """Real part."""
+        return self.__class__.create(self.term.real, ranges=self.ranges)
 
     @property
     def imag(self):
-        """Imaginary part"""
-        return self.__class__.create(self.term.imag, *self.ranges)
+        """Imaginary part."""
+        return self.__class__.create(self.term.imag, ranges=self.ranges)
 
     def _check_val_type(self, other):
         return isinstance(other, ScalarValue) or isinstance(
@@ -1041,7 +1045,7 @@ class ScalarIndexedSum(QuantumIndexedSum, Scalar):
                     sum = self.make_disjunct_indices(*idx_syms)
             except AttributeError:
                 pass
-            return self.__class__.create(sum.term * other, *self.ranges)
+            return self.__class__.create(sum.term * other, ranges=self.ranges)
         else:
             return super().__mul__(other)
 
@@ -1056,7 +1060,7 @@ class ScalarIndexedSum(QuantumIndexedSum, Scalar):
                     sum = self.make_disjunct_indices(*idx_syms)
             except AttributeError:
                 pass
-            return self.__class__.create(other * sum.term, *self.ranges)
+            return self.__class__.create(other * sum.term, ranges=self.ranges)
         else:
             return super().__rmul__(other)
 
@@ -1084,7 +1088,7 @@ class ScalarIndexedSum(QuantumIndexedSum, Scalar):
 
 
 class ScalarPower(QuantumOperation, Scalar):
-    """A scalar raised to a power
+    """A scalar raised to a power.
 
     Generally, :class:`ScalarValue` instances are exponentiated directly::
 

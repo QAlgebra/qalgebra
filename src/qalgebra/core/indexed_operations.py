@@ -17,13 +17,35 @@ __all__ = ["IndexedSum"]
 
 
 class IndexedSum(Operation, metaclass=ABCMeta):
-    """Base class for indexed sums"""
+    """Base class for indexed sums."""
 
     _expanded_cls = None  # must be set by subclasses
     _expand_limit = 1000
 
-    def __init__(self, term, *ranges):
+    @classmethod
+    def create(cls, term, *, ranges):
+        """Instantiate the indexed sum while applying simplification rules.
+
+        The `ranges` parameter *should* be a tuple, but for convenience, we
+        also accept a single :class:`.IndexRangeBase` object, which will be
+        converted to a single-element tuple. Note that when applying rules for
+        the creation of an :class:`IndexedSum` object, `ranges` can be assumed
+        to be a tuple.
+        """
+        # Note that `ranges` *must* be a keyword argument to match the
+        # requirement that the positional arguments of an Operation are the
+        # operands only. Moreover, the more specific QuantumIndexedSum is
+        # also a QuantumOperation subclasses which requires that the operands
+        # are in the same "fundmental set"
+        if isinstance(ranges, IndexRangeBase):
+            ranges = (ranges,)
+        return super().create(term, ranges=tuple(ranges))
+
+    def __init__(self, term, *, ranges):
+        # `ranges` must be a keyword argument, see above.
         self._term = term
+        if isinstance(ranges, IndexRangeBase):
+            ranges = (ranges,)
         self.ranges = tuple(ranges)
         for r in self.ranges:
             if not isinstance(r, IndexRangeBase):
@@ -41,19 +63,27 @@ class IndexedSum(Operation, metaclass=ABCMeta):
 
     @property
     def term(self):
+        """The term of the sum."""
         return self._term
 
     @property
     def operands(self):
+        """Alias for :attr:`args`."""
         return (self._term,)
 
     @property
     def args(self):
-        return tuple([self._term, *self.ranges])
+        """Single-element tuple containing :attr:`term`."""
+        return tuple([self._term])
+
+    @property
+    def kwargs(self):
+        """Dictionary of keyword arguments (`ranges`)."""
+        return dict(ranges=self.ranges)
 
     @property
     def variables(self):
-        """List of the dummy (index) variable symbols
+        """List of the dummy (index) variable symbols.
 
         See also :attr:`bound_symbols` for a set of the same symbols
         """
@@ -61,7 +91,7 @@ class IndexedSum(Operation, metaclass=ABCMeta):
 
     @property
     def bound_symbols(self):
-        """Set of bound variables, i.e. the index variable symbols
+        """Set of bound variables, i.e. the index variable symbols.
 
         See also :attr:`variables` for an ordered list of the same symbols
         """
@@ -69,7 +99,7 @@ class IndexedSum(Operation, metaclass=ABCMeta):
 
     @property
     def free_symbols(self):
-        """Set of all free symbols"""
+        """Set of all free symbols."""
         return set(
             [
                 sym
@@ -79,12 +109,8 @@ class IndexedSum(Operation, metaclass=ABCMeta):
         )
 
     @property
-    def kwargs(self):
-        return {}
-
-    @property
     def terms(self):
-        """Iterator over the terms of the sum
+        """Iterator over the terms of the sum.
 
         Yield from the (possibly) infinite list of terms of the indexed sum, if
         the sum was written out explicitly. Each yielded term in an instance of
@@ -118,7 +144,7 @@ class IndexedSum(Operation, metaclass=ABCMeta):
         max_terms=None,
         **kwargs
     ):
-        """Write out the indexed sum explicitly
+        """Write out the indexed sum explicitly.
 
         If `classes` is None or :class:`IndexedSum` is in `classes`,
         (partially) write out the indexed sum in to an explicit sum of terms.
@@ -210,7 +236,7 @@ class IndexedSum(Operation, metaclass=ABCMeta):
         if len(other_ranges) == 0:
             res = res_term
         else:
-            res = self.__class__.create(res_term, *other_ranges)
+            res = self.__class__.create(res_term, ranges=other_ranges)
             res = res._doit_over_indices(indices=indices)
         return res
 
@@ -262,7 +288,9 @@ class IndexedSum(Operation, metaclass=ABCMeta):
         if isinstance(other, IndexedSum):
             other = other.make_disjunct_indices(self)
             new_ranges = self.ranges + other.ranges
-            return self.__class__.create(self.term * other.term, *new_ranges)
+            return self.__class__.create(
+                self.term * other.term, ranges=new_ranges
+            )
         try:
             return super().__mul__(other)
         except AttributeError:
@@ -272,7 +300,9 @@ class IndexedSum(Operation, metaclass=ABCMeta):
         if isinstance(other, IndexedSum):
             self = self.make_disjunct_indices(other)
             new_ranges = other.ranges + self.ranges
-            return self.__class__.create(other.term * self.term, *new_ranges)
+            return self.__class__.create(
+                other.term * self.term, ranges=new_ranges
+            )
         try:
             return super().__rmul__(other)
         except AttributeError:

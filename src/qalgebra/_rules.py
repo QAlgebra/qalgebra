@@ -95,82 +95,73 @@ def _algebraic_rules_scalar():
     y = wc("y", head=SCALAR_TYPES)
     z = wc("z", head=SCALAR_TYPES)
 
-    indranges__ = wc("indranges__", head=IndexRangeBase)
+    indranges = wc("indranges", head=tuple)
 
-    ScalarTimes._binary_rules.update(
-        check_rules_dict(
-            [
-                ('R001', (pattern_head(a, b), lambda a, b: a * b)),
-                ('R002', (pattern_head(x, x), lambda x: x ** 2)),
-                ('R003', (pattern_head(Zero, x), lambda x: Zero)),
-                ('R004', (pattern_head(x, Zero), lambda x: Zero)),
-                (
-                    'R005',
-                    (
-                        pattern_head(
-                            pattern(ScalarPower, x, y),
-                            pattern(ScalarPower, x, z),
-                        ),
-                        lambda x, y, z: x ** (y + z),
-                    ),
+    _rules = [
+        ('R001', (pattern_head(a, b), lambda a, b: a * b)),
+        ('R002', (pattern_head(x, x), lambda x: x ** 2)),
+        ('R003', (pattern_head(Zero, x), lambda x: Zero)),
+        ('R004', (pattern_head(x, Zero), lambda x: Zero)),
+        (
+            'R005',
+            (
+                pattern_head(
+                    pattern(ScalarPower, x, y),
+                    pattern(ScalarPower, x, z),
                 ),
-                (
-                    'R006',
-                    (
-                        pattern_head(x, pattern(ScalarPower, x, -1)),
-                        lambda x: One,
-                    ),
-                ),
-            ]
-        )
-    )
+                lambda x, y, z: x ** (y + z),
+            ),
+        ),
+        (
+            'R006',
+            (
+                pattern_head(x, pattern(ScalarPower, x, -1)),
+                lambda x: One,
+            ),
+        ),
+    ]
+    ScalarTimes._binary_rules.update(check_rules_dict(_rules))
 
-    ScalarPower._rules.update(
-        check_rules_dict(
-            [
-                ('R001', (pattern_head(a, b), lambda a, b: a ** b)),
-                ('R002', (pattern_head(x, 0), lambda x: One)),
-                ('R003', (pattern_head(x, 1), lambda x: x)),
-                (
-                    'R004',
-                    (
-                        pattern_head(pattern(ScalarPower, x, y), z),
-                        lambda x, y, z: x ** (y * z),
-                    ),
-                ),
-            ]
-        )
-    )
+    _rules = [
+        ('R001', (pattern_head(a, b), lambda a, b: a ** b)),
+        ('R002', (pattern_head(x, 0), lambda x: One)),
+        ('R003', (pattern_head(x, 1), lambda x: x)),
+        (
+            'R004',
+            (
+                pattern_head(pattern(ScalarPower, x, y), z),
+                lambda x, y, z: x ** (y * z),
+            ),
+        ),
+    ]
+    ScalarPower._rules.update(check_rules_dict(_rules))
 
     def pull_constfactor_from_sum(x, y, indranges):
         bound_symbols = set([r.index_symbol for r in indranges])
         if len(x.free_symbols.intersection(bound_symbols)) == 0:
-            return x * ScalarIndexedSum.create(y, *indranges)
+            return x * ScalarIndexedSum.create(y, ranges=indranges)
         else:
             raise CannotSimplify()
 
-    ScalarIndexedSum._rules.update(
-        check_rules_dict(
-            [
-                (
-                    'R001',
-                    (  # sum over zero -> zero
-                        pattern_head(Zero, indranges__),
-                        lambda indranges: Zero,
-                    ),
+    _rules = [
+        (
+            'R001',
+            (  # sum over zero -> zero
+                pattern_head(Zero, ranges=indranges),
+                lambda indranges: Zero,
+            ),
+        ),
+        (
+            'R002',
+            (  # pull constant prefactor out of sum
+                pattern_head(pattern(ScalarTimes, x, y), indranges),
+                lambda x, y, indranges: pull_constfactor_from_sum(
+                    x, y, indranges
                 ),
-                (
-                    'R002',
-                    (  # pull constant prefactor out of sum
-                        pattern_head(pattern(ScalarTimes, x, y), indranges__),
-                        lambda x, y, indranges: pull_constfactor_from_sum(
-                            x, y, indranges
-                        ),
-                    ),
-                ),
-            ]
-        )
-    )
+            ),
+        ),
+    ]
+    ScalarIndexedSum._rules.update(check_rules_dict(_rules))
 
 
 # Operator rules
@@ -202,307 +193,282 @@ def _algebraic_rules_operator():
     rc = wc("rc", head=(int, str, SymbolicLabelBase))
     rd = wc("rd", head=(int, str, SymbolicLabelBase))
 
-    indranges__ = wc("indranges__", head=IndexRangeBase)
+    indranges = wc("indranges", head=tuple)
 
-    ScalarTimesOperator._rules.update(
-        check_rules_dict(
-            [
-                ('R001', (pattern_head(1, A), lambda A: A)),
-                ('R002', (pattern_head(0, A), lambda A: ZeroOperator)),
-                (
-                    'R003',
-                    (pattern_head(u, ZeroOperator), lambda u: ZeroOperator),
-                ),
-                (
-                    'R004',
-                    (
-                        pattern_head(u, pattern(ScalarTimesOperator, v, A)),
-                        lambda u, v, A: (u * v) * A,
-                    ),
-                ),
-                (
-                    'R005',
-                    (
-                        pattern_head(-1, A_plus),
-                        lambda A: OperatorPlus.create(
-                            *[-1 * op for op in A.args]
-                        ),
-                    ),
-                ),
-            ]
-        )
-    )
+    _rules = [
+        ('R001', (pattern_head(1, A), lambda A: A)),
+        ('R002', (pattern_head(0, A), lambda A: ZeroOperator)),
+        (
+            'R003',
+            (pattern_head(u, ZeroOperator), lambda u: ZeroOperator),
+        ),
+        (
+            'R004',
+            (
+                pattern_head(u, pattern(ScalarTimesOperator, v, A)),
+                lambda u, v, A: (u * v) * A,
+            ),
+        ),
+        (
+            'R005',
+            (
+                pattern_head(-1, A_plus),
+                lambda A: OperatorPlus.create(*[-1 * op for op in A.args]),
+            ),
+        ),
+    ]
+    ScalarTimesOperator._rules.update(check_rules_dict(_rules))
 
-    OperatorTimes._binary_rules.update(
-        check_rules_dict(
-            [
-                (
-                    'R001',
+    _rules = [
+        (
+            'R001',
+            (
+                pattern_head(pattern(ScalarTimesOperator, u, A), B),
+                lambda u, A, B: u * (A * B),
+            ),
+        ),
+        (
+            'R002',
+            (pattern_head(ZeroOperator, B), lambda B: ZeroOperator),
+        ),
+        (
+            'R003',
+            (pattern_head(A, ZeroOperator), lambda A: ZeroOperator),
+        ),
+        (
+            'R004',
+            (
+                pattern_head(A, pattern(ScalarTimesOperator, u, B)),
+                lambda A, u, B: u * (A * B),
+            ),
+        ),
+        (
+            'R005',
+            (
+                pattern_head(
+                    pattern(LocalSigma, ra, rb, hs=ls),
+                    pattern(LocalSigma, rc, rd, hs=ls),
+                ),
+                lambda ls, ra, rb, rc, rd: (
+                    KroneckerDelta(
+                        BasisKet(rb, hs=ls).index,
+                        BasisKet(rc, hs=ls).index,
+                    )
+                    * LocalSigma.create(ra, rd, hs=ls)
+                ),
+            ),
+        ),
+        # Harmonic oscillator rules
+        (
+            'R009',
+            (
+                pattern_head(pattern(Create, hs=ls), localsigma),
+                lambda ls, localsigma: sqrt(localsigma.index_j + 1)
+                * localsigma.raise_jk(j_incr=1),
+            ),
+        ),
+        (
+            'R010',
+            (
+                pattern_head(pattern(Destroy, hs=ls), localsigma),
+                lambda ls, localsigma: sqrt(localsigma.index_j)
+                * localsigma.raise_jk(j_incr=-1),
+            ),
+        ),
+        (
+            'R011',
+            (
+                pattern_head(localsigma, pattern(Destroy, hs=ls)),
+                lambda ls, localsigma: sqrt(localsigma.index_k + 1)
+                * localsigma.raise_jk(k_incr=1),
+            ),
+        ),
+        (
+            'R012',
+            (
+                pattern_head(localsigma, pattern(Create, hs=ls)),
+                lambda ls, localsigma: sqrt(localsigma.index_k)
+                * localsigma.raise_jk(k_incr=-1),
+            ),
+        ),
+        # Normal ordering for harmonic oscillator <=> all a^* to the left, a to
+        # the right.
+        (
+            'R013',
+            (
+                pattern_head(pattern(Destroy, hs=ls), pattern(Create, hs=ls)),
+                lambda ls: IdentityOperator + Create(hs=ls) * Destroy(hs=ls),
+            ),
+        ),
+        # Oscillator unitary group rules
+        (
+            'R014',
+            (
+                pattern_head(
+                    pattern(Phase, u, hs=ls), pattern(Phase, v, hs=ls)
+                ),
+                lambda ls, u, v: Phase.create(u + v, hs=ls),
+            ),
+        ),
+        (
+            'R015',
+            (
+                pattern_head(
+                    pattern(Displace, u, hs=ls),
+                    pattern(Displace, v, hs=ls),
+                ),
+                lambda ls, u, v: (
+                    exp((u * v.conjugate() - u.conjugate() * v) / 2)
+                    * Displace.create(u + v, hs=ls)
+                ),
+            ),
+        ),
+        (
+            'R016',
+            (
+                pattern_head(
+                    pattern(Destroy, hs=ls), pattern(Phase, u, hs=ls)
+                ),
+                lambda ls, u: exp(I * u)
+                * Phase.create(u, hs=ls)
+                * Destroy(hs=ls),
+            ),
+        ),
+        (
+            'R017',
+            (
+                pattern_head(
+                    pattern(Destroy, hs=ls),
+                    pattern(Displace, u, hs=ls),
+                ),
+                lambda ls, u: Displace.create(u, hs=ls) * (Destroy(hs=ls) + u),
+            ),
+        ),
+        (
+            'R018',
+            (
+                pattern_head(pattern(Phase, u, hs=ls), pattern(Create, hs=ls)),
+                lambda ls, u: exp(I * u)
+                * Create(hs=ls)
+                * Phase.create(u, hs=ls),
+            ),
+        ),
+        (
+            'R019',
+            (
+                pattern_head(
+                    pattern(Displace, u, hs=ls), pattern(Create, hs=ls)
+                ),
+                lambda ls, u: (
                     (
-                        pattern_head(pattern(ScalarTimesOperator, u, A), B),
-                        lambda u, A, B: u * (A * B),
-                    ),
+                        (Create(hs=ls) - u.conjugate())
+                        * Displace.create(u, hs=ls)
+                    )
                 ),
-                (
-                    'R002',
-                    (pattern_head(ZeroOperator, B), lambda B: ZeroOperator),
-                ),
-                (
-                    'R003',
-                    (pattern_head(A, ZeroOperator), lambda A: ZeroOperator),
-                ),
-                (
-                    'R004',
-                    (
-                        pattern_head(A, pattern(ScalarTimesOperator, u, B)),
-                        lambda A, u, B: u * (A * B),
-                    ),
-                ),
-                (
-                    'R005',
-                    (
-                        pattern_head(
-                            pattern(LocalSigma, ra, rb, hs=ls),
-                            pattern(LocalSigma, rc, rd, hs=ls),
-                        ),
-                        lambda ls, ra, rb, rc, rd: (
-                            KroneckerDelta(
-                                BasisKet(rb, hs=ls).index,
-                                BasisKet(rc, hs=ls).index,
-                            )
-                            * LocalSigma.create(ra, rd, hs=ls)
-                        ),
-                    ),
-                ),
-                # Harmonic oscillator rules
-                (
-                    'R009',
-                    (
-                        pattern_head(pattern(Create, hs=ls), localsigma),
-                        lambda ls, localsigma: sqrt(localsigma.index_j + 1)
-                        * localsigma.raise_jk(j_incr=1),
-                    ),
-                ),
-                (
-                    'R010',
-                    (
-                        pattern_head(pattern(Destroy, hs=ls), localsigma),
-                        lambda ls, localsigma: sqrt(localsigma.index_j)
-                        * localsigma.raise_jk(j_incr=-1),
-                    ),
-                ),
-                (
-                    'R011',
-                    (
-                        pattern_head(localsigma, pattern(Destroy, hs=ls)),
-                        lambda ls, localsigma: sqrt(localsigma.index_k + 1)
-                        * localsigma.raise_jk(k_incr=1),
-                    ),
-                ),
-                (
-                    'R012',
-                    (
-                        pattern_head(localsigma, pattern(Create, hs=ls)),
-                        lambda ls, localsigma: sqrt(localsigma.index_k)
-                        * localsigma.raise_jk(k_incr=-1),
-                    ),
-                ),
-                # Normal ordering for harmonic oscillator <=> all a^* to the left, a to
-                # the right.
-                (
-                    'R013',
-                    (
-                        pattern_head(
-                            pattern(Destroy, hs=ls), pattern(Create, hs=ls)
-                        ),
-                        lambda ls: IdentityOperator
-                        + Create(hs=ls) * Destroy(hs=ls),
-                    ),
-                ),
-                # Oscillator unitary group rules
-                (
-                    'R014',
-                    (
-                        pattern_head(
-                            pattern(Phase, u, hs=ls), pattern(Phase, v, hs=ls)
-                        ),
-                        lambda ls, u, v: Phase.create(u + v, hs=ls),
-                    ),
-                ),
-                (
-                    'R015',
-                    (
-                        pattern_head(
-                            pattern(Displace, u, hs=ls),
-                            pattern(Displace, v, hs=ls),
-                        ),
-                        lambda ls, u, v: (
-                            exp((u * v.conjugate() - u.conjugate() * v) / 2)
-                            * Displace.create(u + v, hs=ls)
-                        ),
-                    ),
-                ),
-                (
-                    'R016',
-                    (
-                        pattern_head(
-                            pattern(Destroy, hs=ls), pattern(Phase, u, hs=ls)
-                        ),
-                        lambda ls, u: exp(I * u)
-                        * Phase.create(u, hs=ls)
-                        * Destroy(hs=ls),
-                    ),
-                ),
-                (
-                    'R017',
-                    (
-                        pattern_head(
-                            pattern(Destroy, hs=ls),
-                            pattern(Displace, u, hs=ls),
-                        ),
-                        lambda ls, u: Displace.create(u, hs=ls)
-                        * (Destroy(hs=ls) + u),
-                    ),
-                ),
-                (
-                    'R018',
-                    (
-                        pattern_head(
-                            pattern(Phase, u, hs=ls), pattern(Create, hs=ls)
-                        ),
-                        lambda ls, u: exp(I * u)
-                        * Create(hs=ls)
-                        * Phase.create(u, hs=ls),
-                    ),
-                ),
-                (
-                    'R019',
-                    (
-                        pattern_head(
-                            pattern(Displace, u, hs=ls), pattern(Create, hs=ls)
-                        ),
-                        lambda ls, u: (
-                            (
-                                (Create(hs=ls) - u.conjugate())
-                                * Displace.create(u, hs=ls)
-                            )
-                        ),
-                    ),
-                ),
-                (
-                    'R020',
-                    (
-                        pattern_head(pattern(Phase, u, hs=ls), localsigma),
-                        lambda ls, u, localsigma: exp(
-                            I * u * localsigma.index_j
-                        )
-                        * localsigma,
-                    ),
-                ),
-                (
-                    'R021',
-                    (
-                        pattern_head(localsigma, pattern(Phase, u, hs=ls)),
-                        lambda ls, u, localsigma: exp(
-                            I * u * localsigma.index_k
-                        )
-                        * localsigma,
-                    ),
-                ),
-                # Spin rules
-                (
-                    'R022',
-                    (
-                        pattern_head(pattern(Jplus, hs=ls), localsigma),
-                        lambda ls, localsigma: Jpjmcoeff(
-                            ls, localsigma.index_j, shift=True
-                        )
-                        * localsigma.raise_jk(j_incr=1),
-                    ),
-                ),
-                (
-                    'R023',
-                    (
-                        pattern_head(pattern(Jminus, hs=ls), localsigma),
-                        lambda ls, localsigma: Jmjmcoeff(
-                            ls, localsigma.index_j, shift=True
-                        )
-                        * localsigma.raise_jk(j_incr=-1),
-                    ),
-                ),
-                (
-                    'R024',
-                    (
-                        pattern_head(pattern(Jz, hs=ls), localsigma),
-                        lambda ls, localsigma: Jzjmcoeff(
-                            ls, localsigma.index_j, shift=True
-                        )
-                        * localsigma,
-                    ),
-                ),
-                (
-                    'R025',
-                    (
-                        pattern_head(localsigma, pattern(Jplus, hs=ls)),
-                        lambda ls, localsigma: Jmjmcoeff(
-                            ls, localsigma.index_k, shift=True
-                        )
-                        * localsigma.raise_jk(k_incr=-1),
-                    ),
-                ),
-                (
-                    'R026',
-                    (
-                        pattern_head(localsigma, pattern(Jminus, hs=ls)),
-                        lambda ls, localsigma: Jpjmcoeff(
-                            ls, localsigma.index_k, shift=True
-                        )
-                        * localsigma.raise_jk(k_incr=+1),
-                    ),
-                ),
-                (
-                    'R027',
-                    (
-                        pattern_head(localsigma, pattern(Jz, hs=ls)),
-                        lambda ls, localsigma: Jzjmcoeff(
-                            ls, localsigma.index_k, shift=True
-                        )
-                        * localsigma,
-                    ),
-                ),
-                # Normal ordering for angular momentum <=> all J_+ to the left, J_z to
-                # center and J_- to the right
-                (
-                    'R028',
-                    (
-                        pattern_head(
-                            pattern(Jminus, hs=ls), pattern(Jplus, hs=ls)
-                        ),
-                        lambda ls: -2 * Jz(hs=ls)
-                        + Jplus(hs=ls) * Jminus(hs=ls),
-                    ),
-                ),
-                (
-                    'R029',
-                    (
-                        pattern_head(
-                            pattern(Jminus, hs=ls), pattern(Jz, hs=ls)
-                        ),
-                        lambda ls: Jz(hs=ls) * Jminus(hs=ls) + Jminus(hs=ls),
-                    ),
-                ),
-                (
-                    'R030',
-                    (
-                        pattern_head(
-                            pattern(Jz, hs=ls), pattern(Jplus, hs=ls)
-                        ),
-                        lambda ls: Jplus(hs=ls) * Jz(hs=ls) + Jplus(hs=ls),
-                    ),
-                ),
-            ]
-        )
-    )
+            ),
+        ),
+        (
+            'R020',
+            (
+                pattern_head(pattern(Phase, u, hs=ls), localsigma),
+                lambda ls, u, localsigma: exp(I * u * localsigma.index_j)
+                * localsigma,
+            ),
+        ),
+        (
+            'R021',
+            (
+                pattern_head(localsigma, pattern(Phase, u, hs=ls)),
+                lambda ls, u, localsigma: exp(I * u * localsigma.index_k)
+                * localsigma,
+            ),
+        ),
+        # Spin rules
+        (
+            'R022',
+            (
+                pattern_head(pattern(Jplus, hs=ls), localsigma),
+                lambda ls, localsigma: Jpjmcoeff(
+                    ls, localsigma.index_j, shift=True
+                )
+                * localsigma.raise_jk(j_incr=1),
+            ),
+        ),
+        (
+            'R023',
+            (
+                pattern_head(pattern(Jminus, hs=ls), localsigma),
+                lambda ls, localsigma: Jmjmcoeff(
+                    ls, localsigma.index_j, shift=True
+                )
+                * localsigma.raise_jk(j_incr=-1),
+            ),
+        ),
+        (
+            'R024',
+            (
+                pattern_head(pattern(Jz, hs=ls), localsigma),
+                lambda ls, localsigma: Jzjmcoeff(
+                    ls, localsigma.index_j, shift=True
+                )
+                * localsigma,
+            ),
+        ),
+        (
+            'R025',
+            (
+                pattern_head(localsigma, pattern(Jplus, hs=ls)),
+                lambda ls, localsigma: Jmjmcoeff(
+                    ls, localsigma.index_k, shift=True
+                )
+                * localsigma.raise_jk(k_incr=-1),
+            ),
+        ),
+        (
+            'R026',
+            (
+                pattern_head(localsigma, pattern(Jminus, hs=ls)),
+                lambda ls, localsigma: Jpjmcoeff(
+                    ls, localsigma.index_k, shift=True
+                )
+                * localsigma.raise_jk(k_incr=+1),
+            ),
+        ),
+        (
+            'R027',
+            (
+                pattern_head(localsigma, pattern(Jz, hs=ls)),
+                lambda ls, localsigma: Jzjmcoeff(
+                    ls, localsigma.index_k, shift=True
+                )
+                * localsigma,
+            ),
+        ),
+        # Normal ordering for angular momentum <=> all J_+ to the left, J_z to
+        # center and J_- to the right
+        (
+            'R028',
+            (
+                pattern_head(pattern(Jminus, hs=ls), pattern(Jplus, hs=ls)),
+                lambda ls: -2 * Jz(hs=ls) + Jplus(hs=ls) * Jminus(hs=ls),
+            ),
+        ),
+        (
+            'R029',
+            (
+                pattern_head(pattern(Jminus, hs=ls), pattern(Jz, hs=ls)),
+                lambda ls: Jz(hs=ls) * Jminus(hs=ls) + Jminus(hs=ls),
+            ),
+        ),
+        (
+            'R030',
+            (
+                pattern_head(pattern(Jz, hs=ls), pattern(Jplus, hs=ls)),
+                lambda ls: Jplus(hs=ls) * Jz(hs=ls) + Jplus(hs=ls),
+            ),
+        ),
+    ]
+    OperatorTimes._binary_rules.update(check_rules_dict(_rules))
 
     Displace._rules.update(
         check_rules_dict(
@@ -520,215 +486,202 @@ def _algebraic_rules_operator():
         )
     )
 
-    OperatorTrace._rules.update(
-        check_rules_dict(
-            [
-                (
-                    'R001',
-                    (pattern_head(A, over_space=TrivialSpace), lambda A: A),
+    _rules = [
+        (
+            'R001',
+            (pattern_head(A, over_space=TrivialSpace), lambda A: A),
+        ),
+        (
+            'R002',
+            (
+                pattern_head(ZeroOperator, over_space=h1),
+                lambda h1: ZeroOperator,
+            ),
+        ),
+        (
+            'R003',
+            (
+                pattern_head(IdentityOperator, over_space=h1),
+                lambda h1: h1.dimension * IdentityOperator,
+            ),
+        ),
+        (
+            'R004',
+            (
+                pattern_head(A_plus, over_space=h1),
+                lambda h1, A: OperatorPlus.create(
+                    *[
+                        OperatorTrace.create(o, over_space=h1)
+                        for o in A.operands
+                    ]
                 ),
-                (
-                    'R002',
-                    (
-                        pattern_head(ZeroOperator, over_space=h1),
-                        lambda h1: ZeroOperator,
-                    ),
+            ),
+        ),
+        (
+            'R005',
+            (
+                pattern_head(pattern(Adjoint, A), over_space=h1),
+                lambda h1, A: Adjoint.create(
+                    OperatorTrace.create(A, over_space=h1)
                 ),
-                (
-                    'R003',
-                    (
-                        pattern_head(IdentityOperator, over_space=h1),
-                        lambda h1: h1.dimension * IdentityOperator,
-                    ),
+            ),
+        ),
+        (
+            'R006',
+            (
+                pattern_head(
+                    pattern(ScalarTimesOperator, u, A), over_space=h1
                 ),
-                (
-                    'R004',
-                    (
-                        pattern_head(A_plus, over_space=h1),
-                        lambda h1, A: OperatorPlus.create(
-                            *[
-                                OperatorTrace.create(o, over_space=h1)
-                                for o in A.operands
-                            ]
-                        ),
-                    ),
-                ),
-                (
-                    'R005',
-                    (
-                        pattern_head(pattern(Adjoint, A), over_space=h1),
-                        lambda h1, A: Adjoint.create(
-                            OperatorTrace.create(A, over_space=h1)
-                        ),
-                    ),
-                ),
-                (
-                    'R006',
-                    (
-                        pattern_head(
-                            pattern(ScalarTimesOperator, u, A), over_space=h1
-                        ),
-                        lambda h1, u, A: u
-                        * OperatorTrace.create(A, over_space=h1),
-                    ),
-                ),
-                (
-                    'R007',
-                    (
-                        pattern_head(A, over_space=H_ProductSpace),
-                        lambda H, A: decompose_space(H, A),
-                    ),
-                ),
-                (
-                    'R008',
-                    (
-                        pattern_head(pattern(Create, hs=ls), over_space=ls),
-                        lambda ls: ZeroOperator,
-                    ),
-                ),
-                (
-                    'R009',
-                    (
-                        pattern_head(pattern(Destroy, hs=ls), over_space=ls),
-                        lambda ls: ZeroOperator,
-                    ),
-                ),
-                (
-                    'R010',
-                    (
-                        pattern_head(
-                            pattern(LocalSigma, n, m, hs=ls), over_space=ls
-                        ),
-                        lambda ls, n, m: KroneckerDelta(
-                            BasisKet(n, hs=ls).index, BasisKet(m, hs=ls).index
-                        )
-                        * IdentityOperator,
-                    ),
-                ),
-                (
-                    'R011',
-                    (
-                        pattern_head(A, over_space=ls),
-                        lambda ls, A: factor_for_trace(ls, A),
-                    ),
-                ),
-            ]
-        )
-    )
+                lambda h1, u, A: u * OperatorTrace.create(A, over_space=h1),
+            ),
+        ),
+        (
+            'R007',
+            (
+                pattern_head(A, over_space=H_ProductSpace),
+                lambda H, A: decompose_space(H, A),
+            ),
+        ),
+        (
+            'R008',
+            (
+                pattern_head(pattern(Create, hs=ls), over_space=ls),
+                lambda ls: ZeroOperator,
+            ),
+        ),
+        (
+            'R009',
+            (
+                pattern_head(pattern(Destroy, hs=ls), over_space=ls),
+                lambda ls: ZeroOperator,
+            ),
+        ),
+        (
+            'R010',
+            (
+                pattern_head(pattern(LocalSigma, n, m, hs=ls), over_space=ls),
+                lambda ls, n, m: KroneckerDelta(
+                    BasisKet(n, hs=ls).index, BasisKet(m, hs=ls).index
+                )
+                * IdentityOperator,
+            ),
+        ),
+        (
+            'R011',
+            (
+                pattern_head(A, over_space=ls),
+                lambda ls, A: factor_for_trace(ls, A),
+            ),
+        ),
+    ]
+    OperatorTrace._rules.update(check_rules_dict(_rules))
 
-    Commutator._rules.update(
-        check_rules_dict(
-            [
-                ('R001', (pattern_head(A, A), lambda A: ZeroOperator)),
-                (
-                    'R002',
-                    (
-                        pattern_head(
-                            pattern(ScalarTimesOperator, u, A),
-                            pattern(ScalarTimesOperator, v, B),
+    _rules = [
+        ('R001', (pattern_head(A, A), lambda A: ZeroOperator)),
+        (
+            'R002',
+            (
+                pattern_head(
+                    pattern(ScalarTimesOperator, u, A),
+                    pattern(ScalarTimesOperator, v, B),
+                ),
+                lambda u, v, A, B: u * v * Commutator.create(A, B),
+            ),
+        ),
+        (
+            'R003',
+            (
+                pattern_head(pattern(ScalarTimesOperator, v, A), B),
+                lambda v, A, B: v * Commutator.create(A, B),
+            ),
+        ),
+        (
+            'R004',
+            (
+                pattern_head(A, pattern(ScalarTimesOperator, v, B)),
+                lambda v, A, B: v * Commutator.create(A, B),
+            ),
+        ),
+        # special known commutators
+        (
+            'R005',
+            (
+                pattern_head(pattern(Create, hs=ls), pattern(Destroy, hs=ls)),
+                lambda ls: ScalarTimesOperator(-1, IdentityOperator),
+            ),
+        ),
+        # the remaining  rules basically defer to OperatorTimes; just writing
+        # out the commutator will generate something simple
+        (
+            'R006',
+            (
+                pattern_head(
+                    wc(
+                        'A',
+                        head=(
+                            Create,
+                            Destroy,
+                            LocalSigma,
+                            Phase,
+                            Displace,
                         ),
-                        lambda u, v, A, B: u * v * Commutator.create(A, B),
                     ),
-                ),
-                (
-                    'R003',
-                    (
-                        pattern_head(pattern(ScalarTimesOperator, v, A), B),
-                        lambda v, A, B: v * Commutator.create(A, B),
-                    ),
-                ),
-                (
-                    'R004',
-                    (
-                        pattern_head(A, pattern(ScalarTimesOperator, v, B)),
-                        lambda v, A, B: v * Commutator.create(A, B),
-                    ),
-                ),
-                # special known commutators
-                (
-                    'R005',
-                    (
-                        pattern_head(
-                            pattern(Create, hs=ls), pattern(Destroy, hs=ls)
+                    wc(
+                        'B',
+                        head=(
+                            Create,
+                            Destroy,
+                            LocalSigma,
+                            Phase,
+                            Displace,
                         ),
-                        lambda ls: ScalarTimesOperator(-1, IdentityOperator),
                     ),
                 ),
-                # the remaining  rules basically defer to OperatorTimes; just writing
-                # out the commutator will generate something simple
-                (
-                    'R006',
-                    (
-                        pattern_head(
-                            wc(
-                                'A',
-                                head=(
-                                    Create,
-                                    Destroy,
-                                    LocalSigma,
-                                    Phase,
-                                    Displace,
-                                ),
-                            ),
-                            wc(
-                                'B',
-                                head=(
-                                    Create,
-                                    Destroy,
-                                    LocalSigma,
-                                    Phase,
-                                    Displace,
-                                ),
-                            ),
-                        ),
-                        lambda A, B: A * B - B * A,
-                    ),
+                lambda A, B: A * B - B * A,
+            ),
+        ),
+        (
+            'R007',
+            (
+                pattern_head(
+                    wc('A', head=(LocalSigma, Jplus, Jminus, Jz)),
+                    wc('B', head=(LocalSigma, Jplus, Jminus, Jz)),
                 ),
-                (
-                    'R007',
-                    (
-                        pattern_head(
-                            wc('A', head=(LocalSigma, Jplus, Jminus, Jz)),
-                            wc('B', head=(LocalSigma, Jplus, Jminus, Jz)),
-                        ),
-                        lambda A, B: A * B - B * A,
-                    ),
-                ),
-            ]
-        )
-    )
+                lambda A, B: A * B - B * A,
+            ),
+        ),
+    ]
+    Commutator._rules.update(check_rules_dict(_rules))
 
     def pull_constfactor_from_sum(u, A, indranges):
         bound_symbols = set([r.index_symbol for r in indranges])
         if len(u.free_symbols.intersection(bound_symbols)) == 0:
-            return u * OperatorIndexedSum.create(A, *indranges)
+            return u * OperatorIndexedSum.create(A, ranges=indranges)
         else:
             raise CannotSimplify()
 
-    OperatorIndexedSum._rules.update(
-        check_rules_dict(
-            [
-                (
-                    'R001',
-                    (  # sum over zero -> zero
-                        pattern_head(ZeroOperator, indranges__),
-                        lambda indranges: ZeroOperator,
-                    ),
+    _rules = [
+        (
+            'R001',
+            (  # sum over zero -> zero
+                pattern_head(ZeroOperator, ranges=indranges),
+                lambda indranges: ZeroOperator,
+            ),
+        ),
+        (
+            'R002',
+            (  # pull constant prefactor out of sum
+                pattern_head(
+                    pattern(ScalarTimesOperator, u, A),
+                    ranges=indranges,
                 ),
-                (
-                    'R002',
-                    (  # pull constant prefactor out of sum
-                        pattern_head(
-                            pattern(ScalarTimesOperator, u, A), indranges__
-                        ),
-                        lambda u, A, indranges: pull_constfactor_from_sum(
-                            u, A, indranges
-                        ),
-                    ),
+                lambda u, A, indranges: pull_constfactor_from_sum(
+                    u, A, indranges
                 ),
-            ]
-        )
-    )
+            ),
+        ),
+    ]
+    OperatorIndexedSum._rules.update(check_rules_dict(_rules))
 
 
 # Super-Operator rules
@@ -749,195 +702,168 @@ def _algebraic_rules_superop():
     sA_plus = wc("sA", head=SuperOperatorPlus)
     sA_times = wc("sA", head=SuperOperatorTimes)
 
-    ScalarTimesSuperOperator._rules.update(
-        check_rules_dict(
-            [
-                ('R001', (pattern_head(1, sA), lambda sA: sA)),
-                ('R002', (pattern_head(0, sA), lambda sA: ZeroSuperOperator)),
-                (
-                    'R003',
-                    (
-                        pattern_head(u, ZeroSuperOperator),
-                        lambda u: ZeroSuperOperator,
-                    ),
-                ),
-                (
-                    'R004',
-                    (
-                        pattern_head(
-                            u, pattern(ScalarTimesSuperOperator, v, sA)
-                        ),
-                        lambda u, v, sA: (u * v) * sA,
-                    ),
-                ),
-            ]
-        )
-    )
+    _rules = [
+        ('R001', (pattern_head(1, sA), lambda sA: sA)),
+        ('R002', (pattern_head(0, sA), lambda sA: ZeroSuperOperator)),
+        (
+            'R003',
+            (
+                pattern_head(u, ZeroSuperOperator),
+                lambda u: ZeroSuperOperator,
+            ),
+        ),
+        (
+            'R004',
+            (
+                pattern_head(u, pattern(ScalarTimesSuperOperator, v, sA)),
+                lambda u, v, sA: (u * v) * sA,
+            ),
+        ),
+    ]
+    ScalarTimesSuperOperator._rules.update(check_rules_dict(_rules))
 
-    SuperOperatorTimes._binary_rules.update(
-        check_rules_dict(
-            [
-                (
-                    'R001',
-                    (
-                        pattern_head(
-                            pattern(ScalarTimesSuperOperator, u, sA), sB
-                        ),
-                        lambda u, sA, sB: u * (sA * sB),
-                    ),
-                ),
-                (
-                    'R002',
-                    (
-                        pattern_head(
-                            sA, pattern(ScalarTimesSuperOperator, u, sB)
-                        ),
-                        lambda sA, u, sB: u * (sA * sB),
-                    ),
-                ),
-                (
-                    'R003',
-                    (
-                        pattern_head(pattern(SPre, A), pattern(SPre, B)),
-                        lambda A, B: SPre.create(A * B),
-                    ),
-                ),
-                (
-                    'R004',
-                    (
-                        pattern_head(pattern(SPost, A), pattern(SPost, B)),
-                        lambda A, B: SPost.create(B * A),
-                    ),
-                ),
-            ]
-        )
-    )
+    _rules = [
+        (
+            'R001',
+            (
+                pattern_head(pattern(ScalarTimesSuperOperator, u, sA), sB),
+                lambda u, sA, sB: u * (sA * sB),
+            ),
+        ),
+        (
+            'R002',
+            (
+                pattern_head(sA, pattern(ScalarTimesSuperOperator, u, sB)),
+                lambda sA, u, sB: u * (sA * sB),
+            ),
+        ),
+        (
+            'R003',
+            (
+                pattern_head(pattern(SPre, A), pattern(SPre, B)),
+                lambda A, B: SPre.create(A * B),
+            ),
+        ),
+        (
+            'R004',
+            (
+                pattern_head(pattern(SPost, A), pattern(SPost, B)),
+                lambda A, B: SPost.create(B * A),
+            ),
+        ),
+    ]
+    SuperOperatorTimes._binary_rules.update(check_rules_dict(_rules))
 
-    SPre._rules.update(
-        check_rules_dict(
-            [
-                (
-                    'R001',
-                    (
-                        pattern_head(pattern(ScalarTimesOperator, u, A)),
-                        lambda u, A: u * SPre.create(A),
-                    ),
-                ),
-                (
-                    'R002',
-                    (
-                        pattern_head(IdentityOperator),
-                        lambda: IdentitySuperOperator,
-                    ),
-                ),
-                (
-                    'R003',
-                    (pattern_head(ZeroOperator), lambda: ZeroSuperOperator),
-                ),
-            ]
-        )
-    )
+    _rules = [
+        (
+            'R001',
+            (
+                pattern_head(pattern(ScalarTimesOperator, u, A)),
+                lambda u, A: u * SPre.create(A),
+            ),
+        ),
+        (
+            'R002',
+            (
+                pattern_head(IdentityOperator),
+                lambda: IdentitySuperOperator,
+            ),
+        ),
+        (
+            'R003',
+            (pattern_head(ZeroOperator), lambda: ZeroSuperOperator),
+        ),
+    ]
+    SPre._rules.update(check_rules_dict(_rules))
 
-    SPost._rules.update(
-        check_rules_dict(
-            [
-                (
-                    'R001',
-                    (
-                        pattern_head(pattern(ScalarTimesOperator, u, A)),
-                        lambda u, A: u * SPost.create(A),
-                    ),
-                ),
-                (
-                    'R002',
-                    (
-                        pattern_head(IdentityOperator),
-                        lambda: IdentitySuperOperator,
-                    ),
-                ),
-                (
-                    'R003',
-                    (pattern_head(ZeroOperator), lambda: ZeroSuperOperator),
-                ),
-            ]
-        )
-    )
+    _rules = [
+        (
+            'R001',
+            (
+                pattern_head(pattern(ScalarTimesOperator, u, A)),
+                lambda u, A: u * SPost.create(A),
+            ),
+        ),
+        (
+            'R002',
+            (
+                pattern_head(IdentityOperator),
+                lambda: IdentitySuperOperator,
+            ),
+        ),
+        (
+            'R003',
+            (pattern_head(ZeroOperator), lambda: ZeroSuperOperator),
+        ),
+    ]
+    SPost._rules.update(check_rules_dict(_rules))
 
-    SuperOperatorTimesOperator._rules.update(
-        check_rules_dict(
-            [
-                (
-                    'R001',
-                    (
-                        pattern_head(sA_plus, B),
-                        lambda sA, B: OperatorPlus.create(
-                            *[o * B for o in sA.operands]
-                        ),
+    _rules = [
+        (
+            'R001',
+            (
+                pattern_head(sA_plus, B),
+                lambda sA, B: OperatorPlus.create(
+                    *[o * B for o in sA.operands]
+                ),
+            ),
+        ),
+        (
+            'R002',
+            (pattern_head(IdentitySuperOperator, B), lambda B: B),
+        ),
+        (
+            'R003',
+            (
+                pattern_head(ZeroSuperOperator, B),
+                lambda B: ZeroOperator,
+            ),
+        ),
+        (
+            'R004',
+            (
+                pattern_head(pattern(ScalarTimesSuperOperator, u, sA), B),
+                lambda u, sA, B: u * (sA * B),
+            ),
+        ),
+        (
+            'R005',
+            (
+                pattern_head(sA, pattern(ScalarTimesOperator, u, B)),
+                lambda u, sA, B: u * (sA * B),
+            ),
+        ),
+        (
+            'R006',
+            (
+                pattern_head(sA, pattern(SuperOperatorTimesOperator, sB, C)),
+                lambda sA, sB, C: (sA * sB) * C,
+            ),
+        ),
+        (
+            'R007',
+            (pattern_head(pattern(SPre, A), B), lambda A, B: A * B),
+        ),
+        (
+            'R008',
+            (
+                pattern_head(
+                    pattern(
+                        SuperOperatorTimes,
+                        sA__,
+                        wc('sB', head=(SPost, SPre)),
                     ),
+                    C,
                 ),
-                (
-                    'R002',
-                    (pattern_head(IdentitySuperOperator, B), lambda B: B),
-                ),
-                (
-                    'R003',
-                    (
-                        pattern_head(ZeroSuperOperator, B),
-                        lambda B: ZeroOperator,
-                    ),
-                ),
-                (
-                    'R004',
-                    (
-                        pattern_head(
-                            pattern(ScalarTimesSuperOperator, u, sA), B
-                        ),
-                        lambda u, sA, B: u * (sA * B),
-                    ),
-                ),
-                (
-                    'R005',
-                    (
-                        pattern_head(sA, pattern(ScalarTimesOperator, u, B)),
-                        lambda u, sA, B: u * (sA * B),
-                    ),
-                ),
-                (
-                    'R006',
-                    (
-                        pattern_head(
-                            sA, pattern(SuperOperatorTimesOperator, sB, C)
-                        ),
-                        lambda sA, sB, C: (sA * sB) * C,
-                    ),
-                ),
-                (
-                    'R007',
-                    (pattern_head(pattern(SPre, A), B), lambda A, B: A * B),
-                ),
-                (
-                    'R008',
-                    (
-                        pattern_head(
-                            pattern(
-                                SuperOperatorTimes,
-                                sA__,
-                                wc('sB', head=(SPost, SPre)),
-                            ),
-                            C,
-                        ),
-                        lambda sA, sB, C: (
-                            SuperOperatorTimes.create(*sA) * (sB * C)
-                        ),
-                    ),
-                ),
-                (
-                    'R009',
-                    (pattern_head(pattern(SPost, A), B), lambda A, B: B * A),
-                ),
-            ]
-        )
-    )
+                lambda sA, sB, C: (SuperOperatorTimes.create(*sA) * (sB * C)),
+            ),
+        ),
+        (
+            'R009',
+            (pattern_head(pattern(SPost, A), B), lambda A, B: B * A),
+        ),
+    ]
+    SuperOperatorTimesOperator._rules.update(check_rules_dict(_rules))
 
 
 # State rules
@@ -1017,471 +943,443 @@ def _algebraic_rules_state():
     ket_a = wc('a', BasisKet)
     ket_b = wc('b', BasisKet)
 
-    indranges__ = wc("indranges__", head=IndexRangeBase)
+    indranges = wc("indranges", head=tuple)
     sum = wc('sum', head=KetIndexedSum)
     sum2 = wc('sum2', head=KetIndexedSum)
 
-    ScalarTimesKet._rules.update(
-        check_rules_dict(
-            [
-                ('R001', (pattern_head(1, Psi), lambda Psi: Psi)),
-                ('R002', (pattern_head(0, Psi), lambda Psi: ZeroKet)),
-                ('R003', (pattern_head(u, ZeroKet), lambda u: ZeroKet)),
-                (
-                    'R004',
-                    (
-                        pattern_head(u, pattern(ScalarTimesKet, v, Psi)),
-                        lambda u, v, Psi: (u * v) * Psi,
-                    ),
-                ),
-            ]
-        )
-    )
+    _rules = [
+        ('R001', (pattern_head(1, Psi), lambda Psi: Psi)),
+        ('R002', (pattern_head(0, Psi), lambda Psi: ZeroKet)),
+        ('R003', (pattern_head(u, ZeroKet), lambda u: ZeroKet)),
+        (
+            'R004',
+            (
+                pattern_head(u, pattern(ScalarTimesKet, v, Psi)),
+                lambda u, v, Psi: (u * v) * Psi,
+            ),
+        ),
+    ]
+    ScalarTimesKet._rules.update(check_rules_dict(_rules))
 
     def local_rule(A, B, Psi):
         return OperatorTimes.create(*A) * (B * Psi)
 
-    OperatorTimesKet._rules.update(
-        check_rules_dict(
-            [
-                (
-                    'R001',
-                    (  # Id * Psi = Psi
-                        pattern_head(IdentityOperator, Psi),
-                        lambda Psi: Psi,
-                    ),
+    _rules = [
+        (
+            'R001',
+            (  # Id * Psi = Psi
+                pattern_head(IdentityOperator, Psi),
+                lambda Psi: Psi,
+            ),
+        ),
+        (
+            'R002',
+            (  # 0 * Psi = 0
+                pattern_head(ZeroOperator, Psi),
+                lambda Psi: ZeroKet,
+            ),
+        ),
+        (
+            'R003',
+            (pattern_head(A, ZeroKet), lambda A: ZeroKet),  # A * 0 = 0
+        ),
+        (
+            'R004',
+            (  # A * v * Psi = v * A * Psi (pull out scalar)
+                pattern_head(A, pattern(ScalarTimesKet, v, Psi)),
+                lambda A, v, Psi: v * (A * Psi),
+            ),
+        ),
+        (
+            'R005',
+            (  # |n><m| * |k> = delta_mk * |n>
+                pattern_head(
+                    pattern(LocalSigma, n, m, hs=ls),
+                    pattern(BasisKet, k, hs=ls),
                 ),
-                (
-                    'R002',
-                    (  # 0 * Psi = 0
-                        pattern_head(ZeroOperator, Psi),
-                        lambda Psi: ZeroKet,
-                    ),
+                lambda ls, n, m, k: KroneckerDelta(
+                    BasisKet(m, hs=ls).index, BasisKet(k, hs=ls).index
+                )
+                * BasisKet(n, hs=ls),
+            ),
+        ),
+        # harmonic oscillator
+        (
+            'R006',
+            (  # a^+ |n> = sqrt(n+1) * |n+1>
+                pattern_head(pattern(Create, hs=ls), basisket),
+                lambda basisket, ls: sqrt(basisket.index + 1)
+                * basisket.next(),
+            ),
+        ),
+        (
+            'R007',
+            (  # a |n> = sqrt(n) * |n-1>
+                pattern_head(pattern(Destroy, hs=ls), basisket),
+                lambda basisket, ls: sqrt(basisket.index) * basisket.prev(),
+            ),
+        ),
+        (
+            'R008',
+            (  # a |alpha> = alpha * |alpha> (eigenstate of annihilator)
+                pattern_head(
+                    pattern(Destroy, hs=ls),
+                    pattern(CoherentStateKet, u, hs=ls),
                 ),
-                (
-                    'R003',
-                    (pattern_head(A, ZeroKet), lambda A: ZeroKet),  # A * 0 = 0
+                lambda ls, u: u * CoherentStateKet(u, hs=ls),
+            ),
+        ),
+        # spin
+        (
+            'R009',
+            (
+                pattern_head(pattern(Jplus, hs=ls), basisket),
+                lambda basisket, ls: Jpjmcoeff(
+                    basisket.space, basisket.index, shift=True
+                )
+                * basisket.next(),
+            ),
+        ),
+        (
+            'R010',
+            (
+                pattern_head(pattern(Jminus, hs=ls), basisket),
+                lambda basisket, ls: Jmjmcoeff(
+                    basisket.space, basisket.index, shift=True
+                )
+                * basisket.prev(),
+            ),
+        ),
+        (
+            'R011',
+            (
+                pattern_head(pattern(Jz, hs=ls), basisket),
+                lambda basisket, ls: Jzjmcoeff(
+                    basisket.space, basisket.index, shift=True
+                )
+                * basisket,
+            ),
+        ),
+        (
+            'R012',
+            (
+                pattern_head(A_local, Psi_tensor),
+                lambda A, Psi: act_locally(A, Psi),
+            ),
+        ),
+        (
+            'R013',
+            (
+                pattern_head(A_times, Psi_tensor),
+                lambda A, Psi: act_locally_times_tensor(A, Psi),
+            ),
+        ),
+        (
+            'R014',
+            (
+                pattern_head(A, pattern(OperatorTimesKet, B, Psi)),
+                lambda A, B, Psi: (
+                    (A * B) * Psi
+                    if (B * Psi) == OperatorTimesKet(B, Psi)
+                    else A * (B * Psi)
                 ),
-                (
-                    'R004',
-                    (  # A * v * Psi = v * A * Psi (pull out scalar)
-                        pattern_head(A, pattern(ScalarTimesKet, v, Psi)),
-                        lambda A, v, Psi: v * (A * Psi),
-                    ),
+            ),
+        ),
+        (
+            'R015',
+            (
+                pattern_head(pattern(OperatorTimes, A__, B_local), Psi_local),
+                local_rule,
+            ),
+        ),
+        (
+            'R016',
+            (
+                pattern_head(pattern(ScalarTimesOperator, u, A), Psi),
+                lambda u, A, Psi: u * (A * Psi),
+            ),
+        ),
+        (
+            'R017',
+            (
+                pattern_head(
+                    pattern(Displace, u, hs=ls),
+                    pattern(BasisKet, 0, hs=ls),
                 ),
-                (
-                    'R005',
-                    (  # |n><m| * |k> = delta_mk * |n>
-                        pattern_head(
-                            pattern(LocalSigma, n, m, hs=ls),
-                            pattern(BasisKet, k, hs=ls),
-                        ),
-                        lambda ls, n, m, k: KroneckerDelta(
-                            BasisKet(m, hs=ls).index, BasisKet(k, hs=ls).index
-                        )
-                        * BasisKet(n, hs=ls),
-                    ),
+                lambda ls, u: CoherentStateKet(u, hs=ls),
+            ),
+        ),
+        (
+            'R018',
+            (
+                pattern_head(
+                    pattern(Displace, u, hs=ls),
+                    pattern(CoherentStateKet, v, hs=ls),
                 ),
-                # harmonic oscillator
-                (
-                    'R006',
-                    (  # a^+ |n> = sqrt(n+1) * |n+1>
-                        pattern_head(pattern(Create, hs=ls), basisket),
-                        lambda basisket, ls: sqrt(basisket.index + 1)
-                        * basisket.next(),
-                    ),
+                lambda ls, u, v: (
+                    (Displace(u, hs=ls) * Displace(v, hs=ls))
+                    * BasisKet(0, hs=ls)
                 ),
-                (
-                    'R007',
-                    (  # a |n> = sqrt(n) * |n-1>
-                        pattern_head(pattern(Destroy, hs=ls), basisket),
-                        lambda basisket, ls: sqrt(basisket.index)
-                        * basisket.prev(),
-                    ),
+            ),
+        ),
+        (
+            'R019',
+            (
+                pattern_head(
+                    pattern(Phase, u, hs=ls),
+                    pattern(BasisKet, m, hs=ls),
                 ),
-                (
-                    'R008',
-                    (  # a |alpha> = alpha * |alpha> (eigenstate of annihilator)
-                        pattern_head(
-                            pattern(Destroy, hs=ls),
-                            pattern(CoherentStateKet, u, hs=ls),
-                        ),
-                        lambda ls, u: u * CoherentStateKet(u, hs=ls),
-                    ),
+                lambda ls, u, m: exp(I * u * m) * BasisKet(m, hs=ls),
+            ),
+        ),
+        (
+            'R020',
+            (
+                pattern_head(
+                    pattern(Phase, u, hs=ls),
+                    pattern(CoherentStateKet, v, hs=ls),
                 ),
-                # spin
-                (
-                    'R009',
-                    (
-                        pattern_head(pattern(Jplus, hs=ls), basisket),
-                        lambda basisket, ls: Jpjmcoeff(
-                            basisket.space, basisket.index, shift=True
-                        )
-                        * basisket.next(),
-                    ),
+                lambda ls, u, v: CoherentStateKet(v * exp(I * u), hs=ls),
+            ),
+        ),
+        (
+            'R021',
+            (
+                pattern_head(A, sum),
+                lambda A, sum: KetIndexedSum.create(
+                    A * sum.term, ranges=sum.ranges
                 ),
-                (
-                    'R010',
-                    (
-                        pattern_head(pattern(Jminus, hs=ls), basisket),
-                        lambda basisket, ls: Jmjmcoeff(
-                            basisket.space, basisket.index, shift=True
-                        )
-                        * basisket.prev(),
-                    ),
-                ),
-                (
-                    'R011',
-                    (
-                        pattern_head(pattern(Jz, hs=ls), basisket),
-                        lambda basisket, ls: Jzjmcoeff(
-                            basisket.space, basisket.index, shift=True
-                        )
-                        * basisket,
-                    ),
-                ),
-                (
-                    'R012',
-                    (
-                        pattern_head(A_local, Psi_tensor),
-                        lambda A, Psi: act_locally(A, Psi),
-                    ),
-                ),
-                (
-                    'R013',
-                    (
-                        pattern_head(A_times, Psi_tensor),
-                        lambda A, Psi: act_locally_times_tensor(A, Psi),
-                    ),
-                ),
-                (
-                    'R014',
-                    (
-                        pattern_head(A, pattern(OperatorTimesKet, B, Psi)),
-                        lambda A, B, Psi: (
-                            (A * B) * Psi
-                            if (B * Psi) == OperatorTimesKet(B, Psi)
-                            else A * (B * Psi)
-                        ),
-                    ),
-                ),
-                (
-                    'R015',
-                    (
-                        pattern_head(
-                            pattern(OperatorTimes, A__, B_local), Psi_local
-                        ),
-                        local_rule,
-                    ),
-                ),
-                (
-                    'R016',
-                    (
-                        pattern_head(pattern(ScalarTimesOperator, u, A), Psi),
-                        lambda u, A, Psi: u * (A * Psi),
-                    ),
-                ),
-                (
-                    'R017',
-                    (
-                        pattern_head(
-                            pattern(Displace, u, hs=ls),
-                            pattern(BasisKet, 0, hs=ls),
-                        ),
-                        lambda ls, u: CoherentStateKet(u, hs=ls),
-                    ),
-                ),
-                (
-                    'R018',
-                    (
-                        pattern_head(
-                            pattern(Displace, u, hs=ls),
-                            pattern(CoherentStateKet, v, hs=ls),
-                        ),
-                        lambda ls, u, v: (
-                            (Displace(u, hs=ls) * Displace(v, hs=ls))
-                            * BasisKet(0, hs=ls)
-                        ),
-                    ),
-                ),
-                (
-                    'R019',
-                    (
-                        pattern_head(
-                            pattern(Phase, u, hs=ls),
-                            pattern(BasisKet, m, hs=ls),
-                        ),
-                        lambda ls, u, m: exp(I * u * m) * BasisKet(m, hs=ls),
-                    ),
-                ),
-                (
-                    'R020',
-                    (
-                        pattern_head(
-                            pattern(Phase, u, hs=ls),
-                            pattern(CoherentStateKet, v, hs=ls),
-                        ),
-                        lambda ls, u, v: CoherentStateKet(
-                            v * exp(I * u), hs=ls
-                        ),
-                    ),
-                ),
-                (
-                    'R021',
-                    (
-                        pattern_head(A, sum),
-                        lambda A, sum: KetIndexedSum.create(
-                            A * sum.term, *sum.ranges
-                        ),
-                    ),
-                ),
-            ]
-        )
-    )
+            ),
+        ),
+    ]
+    OperatorTimesKet._rules.update(check_rules_dict(_rules))
 
-    TensorKet._binary_rules.update(
-        check_rules_dict(
-            [
-                (
-                    'R001',
-                    (
-                        pattern_head(pattern(ScalarTimesKet, u, Psi), Phi),
-                        lambda u, Psi, Phi: u * (Psi * Phi),
-                    ),
-                ),
-                (
-                    'R002',
-                    (
-                        pattern_head(Psi, pattern(ScalarTimesKet, u, Phi)),
-                        lambda Psi, u, Phi: u * (Psi * Phi),
-                    ),
-                ),
-                (
-                    'R003',
-                    (  # delegate to __mul__
-                        pattern_head(sum, sum2),
-                        lambda sum, sum2: sum * sum2,
-                    ),
-                ),
-                (
-                    'R004',
-                    (  # delegate to __mul__
-                        pattern_head(Psi, sum),
-                        lambda Psi, sum: Psi * sum,
-                    ),
-                ),
-                (
-                    'R005',
-                    (  # delegate to __mul__
-                        pattern_head(sum, Psi),
-                        lambda sum, Psi: sum * Psi,
-                    ),
-                ),
-            ]
-        )
-    )
+    _rules = [
+        (
+            'R001',
+            (
+                pattern_head(pattern(ScalarTimesKet, u, Psi), Phi),
+                lambda u, Psi, Phi: u * (Psi * Phi),
+            ),
+        ),
+        (
+            'R002',
+            (
+                pattern_head(Psi, pattern(ScalarTimesKet, u, Phi)),
+                lambda Psi, u, Phi: u * (Psi * Phi),
+            ),
+        ),
+        (
+            'R003',
+            (  # delegate to __mul__
+                pattern_head(sum, sum2),
+                lambda sum, sum2: sum * sum2,
+            ),
+        ),
+        (
+            'R004',
+            (  # delegate to __mul__
+                pattern_head(Psi, sum),
+                lambda Psi, sum: Psi * sum,
+            ),
+        ),
+        (
+            'R005',
+            (  # delegate to __mul__
+                pattern_head(sum, Psi),
+                lambda sum, Psi: sum * Psi,
+            ),
+        ),
+    ]
+    TensorKet._binary_rules.update(check_rules_dict(_rules))
 
-    BraKet._rules.update(
-        check_rules_dict(
-            [
-                # All rules must result in scalars or objects in the TrivialSpace
-                ('R001', (pattern_head(Phi, ZeroKet), lambda Phi: Zero)),
-                ('R002', (pattern_head(ZeroKet, Phi), lambda Phi: Zero)),
-                (
-                    'R003',
-                    (
-                        pattern_head(ket_a, ket_b),
-                        lambda a, b: KroneckerDelta(a.index, b.index),
-                    ),
+    _rules = [
+        # All rules must result in scalars or objects in the TrivialSpace
+        ('R001', (pattern_head(Phi, ZeroKet), lambda Phi: Zero)),
+        ('R002', (pattern_head(ZeroKet, Phi), lambda Phi: Zero)),
+        (
+            'R003',
+            (
+                pattern_head(ket_a, ket_b),
+                lambda a, b: KroneckerDelta(a.index, b.index),
+            ),
+        ),
+        ('R004', (pattern_head(Psi_sym, Psi_sym), lambda Psi: One)),
+        # we're assuming every KetSymbol is normalized. If we ever want
+        # to allow non-normalized states, the best thing to dou would be to
+        # add a `norm` attribute
+        (
+            'R005',
+            (
+                pattern_head(Psi_tensor, Phi_tensor),
+                lambda Psi, Phi: tensor_decompose_kets(
+                    Psi, Phi, BraKet.create
                 ),
-                ('R004', (pattern_head(Psi_sym, Psi_sym), lambda Psi: One)),
-                # we're assuming every KetSymbol is normalized. If we ever want
-                # to allow non-normalized states, the best thing to dou would be to
-                # add a `norm` attribute
-                (
-                    'R005',
-                    (
-                        pattern_head(Psi_tensor, Phi_tensor),
-                        lambda Psi, Phi: tensor_decompose_kets(
-                            Psi, Phi, BraKet.create
-                        ),
-                    ),
-                ),
-                (
-                    'R006',
-                    (
-                        pattern_head(pattern(ScalarTimesKet, u, Psi), Phi),
-                        lambda u, Psi, Phi: u.conjugate()
-                        * (Psi.adjoint() * Phi),
-                    ),
-                ),
-                (
-                    'R007',
-                    (
-                        pattern_head(pattern(OperatorTimesKet, A, Psi), Phi),
-                        lambda A, Psi, Phi: (Psi.adjoint() * (A.dag() * Phi)),
-                    ),
-                ),
-                (
-                    'R008',
-                    (
-                        pattern_head(Psi, pattern(ScalarTimesKet, u, Phi)),
-                        lambda Psi, u, Phi: u * (Psi.adjoint() * Phi),
-                    ),
-                ),
-                (
-                    'R009',
-                    (  # delegate to __mul__
-                        pattern_head(sum, sum2),
-                        lambda sum, sum2: Bra.create(sum) * sum2,
-                    ),
-                ),
-                (
-                    'R010',
-                    (  # delegate to __mul__
-                        pattern_head(Psi, sum),
-                        lambda Psi, sum: Bra.create(Psi) * sum,
-                    ),
-                ),
-                (
-                    'R011',
-                    (  # delegate to __mul__
-                        pattern_head(sum, Psi),
-                        lambda sum, Psi: Bra.create(sum) * Psi,
-                    ),
-                ),
-            ]
-        )
-    )
+            ),
+        ),
+        (
+            'R006',
+            (
+                pattern_head(pattern(ScalarTimesKet, u, Psi), Phi),
+                lambda u, Psi, Phi: u.conjugate() * (Psi.adjoint() * Phi),
+            ),
+        ),
+        (
+            'R007',
+            (
+                pattern_head(pattern(OperatorTimesKet, A, Psi), Phi),
+                lambda A, Psi, Phi: (Psi.adjoint() * (A.dag() * Phi)),
+            ),
+        ),
+        (
+            'R008',
+            (
+                pattern_head(Psi, pattern(ScalarTimesKet, u, Phi)),
+                lambda Psi, u, Phi: u * (Psi.adjoint() * Phi),
+            ),
+        ),
+        (
+            'R009',
+            (  # delegate to __mul__
+                pattern_head(sum, sum2),
+                lambda sum, sum2: Bra.create(sum) * sum2,
+            ),
+        ),
+        (
+            'R010',
+            (  # delegate to __mul__
+                pattern_head(Psi, sum),
+                lambda Psi, sum: Bra.create(Psi) * sum,
+            ),
+        ),
+        (
+            'R011',
+            (  # delegate to __mul__
+                pattern_head(sum, Psi),
+                lambda sum, Psi: Bra.create(sum) * Psi,
+            ),
+        ),
+    ]
+    BraKet._rules.update(check_rules_dict(_rules))
 
-    KetBra._rules.update(
-        check_rules_dict(
-            [
-                (
-                    'R001',
-                    (
-                        pattern_head(
-                            pattern(BasisKet, m, hs=ls),
-                            pattern(BasisKet, n, hs=ls),
-                        ),
-                        lambda ls, m, n: LocalSigma(m, n, hs=ls),
-                    ),
+    _rules = [
+        (
+            'R001',
+            (
+                pattern_head(
+                    pattern(BasisKet, m, hs=ls),
+                    pattern(BasisKet, n, hs=ls),
                 ),
-                (
-                    'R002',
-                    (
-                        pattern_head(pattern(CoherentStateKet, u, hs=ls), Phi),
-                        lambda ls, u, Phi: (
-                            Displace(u, hs=ls)
-                            * (BasisKet(0, hs=ls) * Phi.adjoint())
-                        ),
-                    ),
+                lambda ls, m, n: LocalSigma(m, n, hs=ls),
+            ),
+        ),
+        (
+            'R002',
+            (
+                pattern_head(pattern(CoherentStateKet, u, hs=ls), Phi),
+                lambda ls, u, Phi: (
+                    Displace(u, hs=ls) * (BasisKet(0, hs=ls) * Phi.adjoint())
                 ),
-                (
-                    'R003',
-                    (
-                        pattern_head(Phi, pattern(CoherentStateKet, u, hs=ls)),
-                        lambda ls, u, Phi: (
-                            (Phi * BasisKet(0, hs=ls).adjoint())
-                            * Displace(-u, hs=ls)
-                        ),
-                    ),
+            ),
+        ),
+        (
+            'R003',
+            (
+                pattern_head(Phi, pattern(CoherentStateKet, u, hs=ls)),
+                lambda ls, u, Phi: (
+                    (Phi * BasisKet(0, hs=ls).adjoint()) * Displace(-u, hs=ls)
                 ),
-                (
-                    'R004',
-                    (
-                        pattern_head(Psi_tensor, Phi_tensor),
-                        lambda Psi, Phi: tensor_decompose_kets(
-                            Psi, Phi, KetBra.create
-                        ),
-                    ),
+            ),
+        ),
+        (
+            'R004',
+            (
+                pattern_head(Psi_tensor, Phi_tensor),
+                lambda Psi, Phi: tensor_decompose_kets(
+                    Psi, Phi, KetBra.create
                 ),
-                (
-                    'R005',
-                    (
-                        pattern_head(pattern(OperatorTimesKet, A, Psi), Phi),
-                        lambda A, Psi, Phi: A * (Psi * Phi.adjoint()),
-                    ),
-                ),
-                (
-                    'R006',
-                    (
-                        pattern_head(Psi, pattern(OperatorTimesKet, A, Phi)),
-                        lambda Psi, A, Phi: (Psi * Phi.adjoint())
-                        * A.adjoint(),
-                    ),
-                ),
-                (
-                    'R007',
-                    (
-                        pattern_head(pattern(ScalarTimesKet, u, Psi), Phi),
-                        lambda u, Psi, Phi: u * (Psi * Phi.adjoint()),
-                    ),
-                ),
-                (
-                    'R008',
-                    (
-                        pattern_head(Psi, pattern(ScalarTimesKet, u, Phi)),
-                        lambda Psi, u, Phi: u.conjugate()
-                        * (Psi * Phi.adjoint()),
-                    ),
-                ),
-                (
-                    'R009',
-                    (  # delegate to __mul__
-                        pattern_head(sum, sum2),
-                        lambda sum, sum2: sum * Bra.create(sum2),
-                    ),
-                ),
-                (
-                    'R010',
-                    (  # delegate to __mul__
-                        pattern_head(Psi, sum),
-                        lambda Psi, sum: Psi * Bra.create(sum),
-                    ),
-                ),
-                (
-                    'R011',
-                    (  # delegate to __mul__
-                        pattern_head(sum, Psi),
-                        lambda sum, Psi: sum * Bra.create(Psi),
-                    ),
-                ),
-            ]
-        )
-    )
+            ),
+        ),
+        (
+            'R005',
+            (
+                pattern_head(pattern(OperatorTimesKet, A, Psi), Phi),
+                lambda A, Psi, Phi: A * (Psi * Phi.adjoint()),
+            ),
+        ),
+        (
+            'R006',
+            (
+                pattern_head(Psi, pattern(OperatorTimesKet, A, Phi)),
+                lambda Psi, A, Phi: (Psi * Phi.adjoint()) * A.adjoint(),
+            ),
+        ),
+        (
+            'R007',
+            (
+                pattern_head(pattern(ScalarTimesKet, u, Psi), Phi),
+                lambda u, Psi, Phi: u * (Psi * Phi.adjoint()),
+            ),
+        ),
+        (
+            'R008',
+            (
+                pattern_head(Psi, pattern(ScalarTimesKet, u, Phi)),
+                lambda Psi, u, Phi: u.conjugate() * (Psi * Phi.adjoint()),
+            ),
+        ),
+        (
+            'R009',
+            (  # delegate to __mul__
+                pattern_head(sum, sum2),
+                lambda sum, sum2: sum * Bra.create(sum2),
+            ),
+        ),
+        (
+            'R010',
+            (  # delegate to __mul__
+                pattern_head(Psi, sum),
+                lambda Psi, sum: Psi * Bra.create(sum),
+            ),
+        ),
+        (
+            'R011',
+            (  # delegate to __mul__
+                pattern_head(sum, Psi),
+                lambda sum, Psi: sum * Bra.create(Psi),
+            ),
+        ),
+    ]
+    KetBra._rules.update(check_rules_dict(_rules))
 
     def pull_constfactor_from_sum(u, Psi, indranges):
         bound_symbols = set([r.index_symbol for r in indranges])
         if len(u.free_symbols.intersection(bound_symbols)) == 0:
-            return u * KetIndexedSum.create(Psi, *indranges)
+            return u * KetIndexedSum.create(Psi, ranges=indranges)
         else:
             raise CannotSimplify()
 
-    KetIndexedSum._rules.update(
-        check_rules_dict(
-            [
-                (
-                    'R001',
-                    (  # sum over zero -> zero
-                        pattern_head(ZeroKet, indranges__),
-                        lambda indranges: ZeroKet,
-                    ),
+    _rules = [
+        (
+            'R001',
+            (  # sum over zero -> zero
+                pattern_head(ZeroKet, ranges=indranges),
+                lambda indranges: ZeroKet,
+            ),
+        ),
+        (
+            'R002',
+            (  # pull constant prefactor out of sum
+                pattern_head(
+                    pattern(ScalarTimesKet, u, Psi), ranges=indranges
                 ),
-                (
-                    'R002',
-                    (  # pull constant prefactor out of sum
-                        pattern_head(
-                            pattern(ScalarTimesKet, u, Psi), indranges__
-                        ),
-                        lambda u, Psi, indranges: pull_constfactor_from_sum(
-                            u, Psi, indranges
-                        ),
-                    ),
+                lambda u, Psi, indranges: pull_constfactor_from_sum(
+                    u, Psi, indranges
                 ),
-            ]
-        )
-    )
+            ),
+        ),
+    ]
+    KetIndexedSum._rules.update(check_rules_dict(_rules))
 
 
 def _algebraic_rules():

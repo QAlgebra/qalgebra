@@ -97,20 +97,19 @@ TESTS = [
     (
         KetIndexedSum,
         'R001',
-        (
-            KetSymbol(StrLabel(i), hs=0) - KetSymbol(StrLabel(i), hs=0),
-            IndexOverFockSpace(i, hs=LocalSpace(0)),
-        ),
-        {},
+        (KetSymbol(StrLabel(i), hs=0) - KetSymbol(StrLabel(i), hs=0),),
+        dict(ranges=(IndexOverFockSpace(i, hs=LocalSpace(0)),)),
         ZeroKet,
     ),
     (
         KetIndexedSum,
         'R002',
-        (symbols('a') * BasisKet(FockIndex(i), hs=0), IndexOverRange(i, 0, 1)),
-        {},
+        (symbols('a') * BasisKet(FockIndex(i), hs=0),),
+        dict(ranges=(IndexOverRange(i, 0, 1),)),
         symbols('a')
-        * KetIndexedSum(BasisKet(FockIndex(i), hs=0), IndexOverRange(i, 0, 1)),
+        * KetIndexedSum(
+            BasisKet(FockIndex(i), hs=0), ranges=(IndexOverRange(i, 0, 1),)
+        ),
     ),
 ]
 

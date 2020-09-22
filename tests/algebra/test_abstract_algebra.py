@@ -181,20 +181,32 @@ def test_nested_doit():
 
     i, j = symbols('i, j', cls=IdxSym)
 
-    expr = Sum(i, 1, 3)(Sum(j, 1, 2)(Commutator(A(i), A(j))))
-    assert expr.doit(max_terms=2, recursive=False) == Commutator(A(1), A(2))
+    term = Commutator(A(i), A(j))
+    expr0 = Sum(j, 1, 2)(term)
+    assert isinstance(expr0, OperatorIndexedSum)
+    assert len(expr0.ranges) == 1
+    expr = Sum(i, 1, 3)(expr0)
+    assert isinstance(expr, OperatorIndexedSum)
+    assert len(expr.ranges) == 2
+    expr_doit = expr.doit(max_terms=2, recursive=False)
+    expected = Commutator(A(1), A(2))
+    assert expr_doit == expected
 
     # testing the "tail" of the recursion
-    assert expr.doit(
-        max_terms=2, classes=([OperatorIndexedSum])
-    ) == Commutator(A(1), A(2))
-    assert expr.doit(max_terms=2) == A(1) * A(2) - A(2) * A(1)
+    expr_doit = expr.doit(max_terms=2, classes=([OperatorIndexedSum]))
+    expected = Commutator(A(1), A(2))
+    assert expr_doit == expected
+    expr_doit = expr.doit(max_terms=2)
+    expected = A(1) * A(2) - A(2) * A(1)
+    assert expr_doit == expected
 
     expr = Sum(i, 1, 3)(Sum(j, 1, 3)(Commutator(A(i), A(j))))
-    assert expr.doit() == ZeroOperator
+    expr_doit = expr.doit()
+    assert expr_doit == ZeroOperator
     # testing that `indices=(i, )` does not throw an error in the recursion,
     # when i no longer occurs in the sum
-    assert expr.doit(indices=(i,)) == Sum(j, 1, 3)(
+    expr_doit = expr.doit(indices=(i,))
+    expected = Sum(j, 1, 3)(
         OperatorPlus(
             A(1) * A(j),
             A(2) * A(j),
@@ -204,6 +216,7 @@ def test_nested_doit():
             -A(j) * A(3),
         )
     )
+    assert expr_doit == expected
 
 
 def test_create_with_mutable_args():
