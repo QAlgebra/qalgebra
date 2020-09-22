@@ -89,7 +89,7 @@
 </g>
 <!-- KetIndexedSum -->
 <g id="node15" class="node"><title>KetIndexedSum</title>
-<g id="a_node15"><a xlink:href="../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.KetIndexedSum" xlink:title="Indexed sum over Kets" target="_top">
+<g id="a_node15"><a xlink:href="../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.KetIndexedSum" xlink:title="Indexed sum over Kets." target="_top">
 <polygon fill="none" stroke="black" stroke-width="0.5" points="890,-318 798,-318 798,-299 890,-299 890,-318"/>
 <text text-anchor="middle" x="844" y="-306" font-family="Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans" font-size="10.00">KetIndexedSum</text>
 </a>
@@ -214,7 +214,7 @@
 </g>
 <!-- IndexedSum -->
 <g id="node12" class="node"><title>IndexedSum</title>
-<g id="a_node12"><a xlink:href="../API/qalgebra.core.indexed_operations.html#qalgebra.core.indexed_operations.IndexedSum" xlink:title="Base class for indexed sums" target="_top">
+<g id="a_node12"><a xlink:href="../API/qalgebra.core.indexed_operations.html#qalgebra.core.indexed_operations.IndexedSum" xlink:title="Base class for indexed sums." target="_top">
 <polygon fill="none" stroke="black" stroke-width="0.5" points="377.5,-448 300.5,-448 300.5,-429 377.5,-429 377.5,-448"/>
 <text text-anchor="middle" x="339" y="-436" font-family="Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans" font-size="10.00">IndexedSum</text>
 </a>
@@ -297,7 +297,7 @@
 </g>
 <!-- QuantumIndexedSum -->
 <g id="node16" class="node"><title>QuantumIndexedSum</title>
-<g id="a_node16"><a xlink:href="../API/qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum" xlink:title="Base class for indexed sums." target="_top">
+<g id="a_node16"><a xlink:href="../API/qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum" xlink:title="Base class for indexed sums of quantum expressions." target="_top">
 <polygon fill="none" stroke="black" stroke-width="0.5" points="757,-467 635,-467 635,-448 757,-448 757,-467"/>
 <text text-anchor="middle" x="696" y="-455" font-family="Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans" font-size="10.00">QuantumIndexedSum</text>
 </a>

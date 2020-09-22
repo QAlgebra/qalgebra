@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.indexed_operations &mdash; QAlgebra 2.0.0-dev (c26129e) documentation</title>
+  <title>qalgebra.core.indexed_operations &mdash; QAlgebra 2.0.0-dev (5aa56f8) documentation</title>
   
 
   
@@ -202,13 +202,35 @@
 
 
 <div class="viewcode-block" id="IndexedSum"><a class="viewcode-back" href="../../../API/qalgebra.core.indexed_operations.html#qalgebra.core.indexed_operations.IndexedSum">[docs]</a><span class="k">class</span> <span class="nc">IndexedSum</span><span class="p">(</span><span class="n">Operation</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Base class for indexed sums&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Base class for indexed sums.&quot;&quot;&quot;</span>
 
     <span class="n">_expanded_cls</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># must be set by subclasses</span>
     <span class="n">_expand_limit</span> <span class="o">=</span> <span class="mi">1000</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">term</span><span class="p">,</span> <span class="o">*</span><span class="n">ranges</span><span class="p">):</span>
+<div class="viewcode-block" id="IndexedSum.create"><a class="viewcode-back" href="../../../API/qalgebra.core.indexed_operations.html#qalgebra.core.indexed_operations.IndexedSum.create">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">term</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">ranges</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Instantiate the indexed sum while applying simplification rules.</span>
+
+<span class="sd">        The `ranges` parameter *should* be a tuple, but for convenience, we</span>
+<span class="sd">        also accept a single :class:`.IndexRangeBase` object, which will be</span>
+<span class="sd">        converted to a single-element tuple. Note that when applying rules for</span>
+<span class="sd">        the creation of an :class:`IndexedSum` object, `ranges` can be assumed</span>
+<span class="sd">        to be a tuple.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Note that `ranges` *must* be a keyword argument to match the</span>
+        <span class="c1"># requirement that the positional arguments of an Operation are the</span>
+        <span class="c1"># operands only. Moreover, the more specific QuantumIndexedSum is</span>
+        <span class="c1"># also a QuantumOperation subclasses which requires that the operands</span>
+        <span class="c1"># are in the same &quot;fundmental set&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ranges</span><span class="p">,</span> <span class="n">IndexRangeBase</span><span class="p">):</span>
+            <span class="n">ranges</span> <span class="o">=</span> <span class="p">(</span><span class="n">ranges</span><span class="p">,)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="n">ranges</span><span class="p">))</span></div>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">term</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">ranges</span><span class="p">):</span>
+        <span class="c1"># `ranges` must be a keyword argument, see above.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_term</span> <span class="o">=</span> <span class="n">term</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ranges</span><span class="p">,</span> <span class="n">IndexRangeBase</span><span class="p">):</span>
+            <span class="n">ranges</span> <span class="o">=</span> <span class="p">(</span><span class="n">ranges</span><span class="p">,)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ranges</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">ranges</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">IndexRangeBase</span><span class="p">):</span>
@@ -226,19 +248,27 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">term</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The term of the sum.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_term</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">operands</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Alias for :attr:`args`.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_term</span><span class="p">,)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">args</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">tuple</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_term</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">])</span>
+        <span class="sd">&quot;&quot;&quot;Single-element tuple containing :attr:`term`.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_term</span><span class="p">])</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Dictionary of keyword arguments (`ranges`).&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">ranges</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;List of the dummy (index) variable symbols</span>
+        <span class="sd">&quot;&quot;&quot;List of the dummy (index) variable symbols.</span>
 
 <span class="sd">        See also :attr:`bound_symbols` for a set of the same symbols</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -246,7 +276,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">bound_symbols</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set of bound variables, i.e. the index variable symbols</span>
+        <span class="sd">&quot;&quot;&quot;Set of bound variables, i.e. the index variable symbols.</span>
 
 <span class="sd">        See also :attr:`variables` for an ordered list of the same symbols</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -254,7 +284,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">free_symbols</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set of all free symbols&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Set of all free symbols.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">set</span><span class="p">(</span>
             <span class="p">[</span>
                 <span class="n">sym</span>
@@ -264,12 +294,8 @@
         <span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">{}</span>
-
-    <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">terms</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Iterator over the terms of the sum</span>
+        <span class="sd">&quot;&quot;&quot;Iterator over the terms of the sum.</span>
 
 <span class="sd">        Yield from the (possibly) infinite list of terms of the indexed sum, if</span>
 <span class="sd">        the sum was written out explicitly. Each yielded term in an instance of</span>
@@ -303,7 +329,7 @@
         <span class="n">max_terms</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Write out the indexed sum explicitly</span>
+        <span class="sd">&quot;&quot;&quot;Write out the indexed sum explicitly.</span>
 
 <span class="sd">        If `classes` is None or :class:`IndexedSum` is in `classes`,</span>
 <span class="sd">        (partially) write out the indexed sum in to an explicit sum of terms.</span>
@@ -395,7 +421,7 @@
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">other_ranges</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">res</span> <span class="o">=</span> <span class="n">res_term</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">res_term</span><span class="p">,</span> <span class="o">*</span><span class="n">other_ranges</span><span class="p">)</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">res_term</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="n">other_ranges</span><span class="p">)</span>
             <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">_doit_over_indices</span><span class="p">(</span><span class="n">indices</span><span class="o">=</span><span class="n">indices</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">res</span>
 
@@ -447,7 +473,9 @@
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">IndexedSum</span><span class="p">):</span>
             <span class="n">other</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">make_disjunct_indices</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
             <span class="n">new_ranges</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranges</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">ranges</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">term</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">term</span><span class="p">,</span> <span class="o">*</span><span class="n">new_ranges</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">term</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">term</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="n">new_ranges</span>
+            <span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__mul__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
@@ -457,7 +485,9 @@
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">IndexedSum</span><span class="p">):</span>
             <span class="bp">self</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_disjunct_indices</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
             <span class="n">new_ranges</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">ranges</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranges</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">term</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">term</span><span class="p">,</span> <span class="o">*</span><span class="n">new_ranges</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="n">other</span><span class="o">.</span><span class="n">term</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">term</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="n">new_ranges</span>
+            <span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__rmul__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
@@ -477,7 +507,7 @@
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Sep 20, 2020.
+        Last updated on Sep 22, 2020.
       </span>
 
     </p>

@@ -81,11 +81,11 @@ qalgebra.core package
        * - :class:`HilbertSpace <qalgebra.core.hilbert_space_algebra.HilbertSpace>`
          - Base class for Hilbert spaces
        * - :class:`IndexedSum <qalgebra.core.indexed_operations.IndexedSum>`
-         - Base class for indexed sums
+         - Base class for indexed sums.
        * - :class:`KetBra <qalgebra.core.state_algebra.KetBra>`
          - Outer product of two states
        * - :class:`KetIndexedSum <qalgebra.core.state_algebra.KetIndexedSum>`
-         - Indexed sum over Kets
+         - Indexed sum over Kets.
        * - :class:`KetPlus <qalgebra.core.state_algebra.KetPlus>`
          - Sum of states.
        * - :class:`KetSymbol <qalgebra.core.state_algebra.KetSymbol>`
@@ -133,7 +133,7 @@ qalgebra.core package
        * - :class:`QuantumExpression <qalgebra.core.abstract_quantum_algebra.QuantumExpression>`
          - Base class for expressions associated with a Hilbert space
        * - :class:`QuantumIndexedSum <qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum>`
-         - Base class for indexed sums.
+         - Base class for indexed sums of quantum expressions.
        * - :class:`QuantumOperation <qalgebra.core.abstract_quantum_algebra.QuantumOperation>`
          - Base class for operations on quantum expression
        * - :class:`QuantumPlus <qalgebra.core.abstract_quantum_algebra.QuantumPlus>`
@@ -153,11 +153,11 @@ qalgebra.core package
        * - :class:`ScalarExpression <qalgebra.core.scalar_algebra.ScalarExpression>`
          - Base class for scalars with non-scalar arguments
        * - :class:`ScalarIndexedSum <qalgebra.core.scalar_algebra.ScalarIndexedSum>`
-         - Indexed sum over scalars
+         - Indexed sum over scalars.
        * - :class:`ScalarPlus <qalgebra.core.scalar_algebra.ScalarPlus>`
          - Sum of scalars
        * - :class:`ScalarPower <qalgebra.core.scalar_algebra.ScalarPower>`
-         - A scalar raised to a power
+         - A scalar raised to a power.
        * - :class:`ScalarTimes <qalgebra.core.scalar_algebra.ScalarTimes>`
          - Product of scalars
        * - :class:`ScalarTimesKet <qalgebra.core.state_algebra.ScalarTimesKet>`
@@ -236,9 +236,9 @@ qalgebra.core package
        * - :func:`sqrt <qalgebra.core.scalar_algebra.sqrt>`
          - Square root of a :class:`.Scalar` or scalar value.
        * - :func:`substitute <qalgebra.core.abstract_algebra.substitute>`
-         - Substitute symbols or (sub-)expressions with the given replacements and re-evalute the result
+         - Substitute symbols or (sub-)expressions with the given replacements.
        * - :func:`tr <qalgebra.core.abstract_algebra.Expression.create>`
-         - Instantiate while applying automatic simplifications
+         - Instantiate while applying automatic simplifications.
        * - :func:`vstackm <qalgebra.core.matrix_algebra.vstackm>`
          - Generalizes `numpy.vstack` to :class:`.Matrix` objects.
        * - :func:`zerosm <qalgebra.core.matrix_algebra.zerosm>`

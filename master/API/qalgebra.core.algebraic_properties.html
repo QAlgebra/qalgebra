@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.algebraic_properties module &mdash; QAlgebra 2.0.0-dev (c26129e) documentation</title>
+  <title>qalgebra.core.algebraic_properties module &mdash; QAlgebra 2.0.0-dev (5aa56f8) documentation</title>
   
 
   
@@ -308,7 +308,7 @@
 <td><p>Return a simplification that converts the positional argument <cite>arg_index</cite> from (str, int) to a subclass of <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a>, as well as any keyword argument with one of the given keys.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.indexed_sum_over_const" title="qalgebra.core.algebraic_properties.indexed_sum_over_const"><code class="xref py py-obj docutils literal notranslate"><span class="pre">indexed_sum_over_const</span></code></a></p></td>
-<td><p>Execute an indexed sum over a term that does not depend on the summation indices</p></td>
+<td><p>Execute an indexed sum over a term that does not depend on the summation indices.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.algebraic_properties.indexed_sum_over_kronecker" title="qalgebra.core.algebraic_properties.indexed_sum_over_kronecker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">indexed_sum_over_kronecker</span></code></a></p></td>
 <td><p>Execute sums over KroneckerDelta prefactors</p></td>
@@ -609,7 +609,7 @@ space</p>
 <dt id="qalgebra.core.algebraic_properties.indexed_sum_over_const">
 <code class="sig-prename descclassname">qalgebra.core.algebraic_properties.</code><code class="sig-name descname">indexed_sum_over_const</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em>, <em class="sig-param"><span class="n">ops</span></em>, <em class="sig-param"><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/algebraic_properties.html#indexed_sum_over_const"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.algebraic_properties.indexed_sum_over_const" title="Permalink to this definition">¶</a></dt>
 <dd><p>Execute an indexed sum over a term that does not depend on the
-summation indices</p>
+summation indices.</p>
 <div class="math notranslate nohighlight">
 \[\sum_{j=1}^{N} a = N a\]</div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
@@ -663,7 +663,7 @@ directly, we get automatic caching of derivatives</p>
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Sep 20, 2020.
+        Last updated on Sep 22, 2020.
       </span>
 
     </p>

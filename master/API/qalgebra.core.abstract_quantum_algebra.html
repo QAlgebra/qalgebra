@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.abstract_quantum_algebra module &mdash; QAlgebra 2.0.0-dev (c26129e) documentation</title>
+  <title>qalgebra.core.abstract_quantum_algebra module &mdash; QAlgebra 2.0.0-dev (5aa56f8) documentation</title>
   
 
   
@@ -272,7 +272,7 @@ and superoperators.</p>
 <td><p>Base class for expressions associated with a Hilbert space</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum" title="qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">QuantumIndexedSum</span></code></a></p></td>
-<td><p>Base class for indexed sums.</p></td>
+<td><p>Base class for indexed sums of quantum expressions.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.abstract_quantum_algebra.QuantumOperation" title="qalgebra.core.abstract_quantum_algebra.QuantumOperation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">QuantumOperation</span></code></a></p></td>
 <td><p>Base class for operations on quantum expression</p></td>
@@ -321,7 +321,7 @@ and superoperators.</p>
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression.create">
 <em class="property">classmethod </em><code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">coeff</span></em>, <em class="sig-param"><span class="n">term</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#ScalarTimesQuantumExpression.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression.create" title="Permalink to this definition">¶</a></dt>
-<dd><p>Instantiate while applying automatic simplifications</p>
+<dd><p>Instantiate while applying automatic simplifications.</p>
 <p>Instead of directly instantiating <cite>cls</cite>, it is recommended to use
 <a class="reference internal" href="#qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression.create" title="qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a>, which applies simplifications to the args and keyword
 arguments according to the <cite>simplifications</cite> class attribute, and
@@ -613,13 +613,13 @@ non-zero derivative, see <a class="reference internal" href="#qalgebra.core.abst
 
 <dl class="py class">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum">
-<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.abstract_quantum_algebra.</code><code class="sig-name descname">QuantumIndexedSum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">term</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">ranges</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumIndexedSum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.abstract_quantum_algebra.</code><code class="sig-name descname">QuantumIndexedSum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">term</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">ranges</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumIndexedSum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="qalgebra.core.indexed_operations.html#qalgebra.core.indexed_operations.IndexedSum" title="qalgebra.core.indexed_operations.IndexedSum"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.indexed_operations.IndexedSum</span></code></a>, <a class="reference internal" href="#qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation" title="qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation</span></code></a></p>
-<p>Base class for indexed sums.</p>
+<p>Base class for indexed sums of quantum expressions.</p>
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum.space">
 <em class="property">property </em><code class="sig-name descname">space</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum.space" title="Permalink to this definition">¶</a></dt>
-<dd><p>The Hilbert space of the sum’s term</p>
+<dd><p>The Hilbert space of the sum’s term.</p>
 </dd></dl>
 
 </dd></dl>
@@ -782,7 +782,8 @@ states of the Hilbert space of <cite>term</cite>:</p>
 </div>
 <p>Note that using <a class="reference internal" href="#qalgebra.core.abstract_quantum_algebra.Sum" title="qalgebra.core.abstract_quantum_algebra.Sum"><code class="xref py py-func docutils literal notranslate"><span class="pre">Sum()</span></code></a> is vastly more readable than the equivalent
 “manual” instantiation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">==</span> <span class="n">KetIndexedSum</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">ket_i</span><span class="p">,</span> <span class="n">IndexOverFockSpace</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs0</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">==</span> <span class="n">KetIndexedSum</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">ket_i</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="p">(</span><span class="n">IndexOverFockSpace</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs0</span><span class="p">),))</span>
 <span class="go">True</span>
 </pre></div>
 </div>
@@ -807,7 +808,7 @@ using the <cite>step</cite> keyword argument.</p>
 </div>
 <p>Lastly, by passing a tuple or list of values, the index will run over all
 the elements in that tuple or list:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unicode</span><span class="p">(</span> <span class="n">Sum</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))(</span><span class="n">ket_i</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unicode</span><span class="p">(</span> <span class="n">Sum</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))(</span><span class="n">ket_i</span><span class="p">)</span> <span class="p">)</span>
 <span class="go">&#39;∑_{i ∈ {1,2,3}} |i⟩⁽⁰⁾&#39;</span>
 </pre></div>
 </div>
@@ -885,7 +886,7 @@ should be converted. Must be a subclass of <a class="reference internal" href="q
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Sep 20, 2020.
+        Last updated on Sep 22, 2020.
       </span>
 
     </p>

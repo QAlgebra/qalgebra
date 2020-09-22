@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.algebraic_properties &mdash; QAlgebra 2.0.0-dev (c26129e) documentation</title>
+  <title>qalgebra.core.algebraic_properties &mdash; QAlgebra 2.0.0-dev (5aa56f8) documentation</title>
   
 
   
@@ -270,7 +270,10 @@
         <span class="n">ScalarTimesQuantumExpression</span><span class="p">,</span>
     <span class="p">)</span>
 
-    <span class="n">term</span><span class="p">,</span> <span class="o">*</span><span class="n">ranges</span> <span class="o">=</span> <span class="n">ops</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">ops</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>  <span class="c1"># only &#39;term&#39;</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>  <span class="c1"># only &#39;ranges&#39;</span>
+    <span class="n">term</span> <span class="o">=</span> <span class="n">ops</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ranges</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;ranges&#39;</span><span class="p">]</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
         <span class="n">coeff</span> <span class="o">=</span> <span class="mi">1</span>
@@ -286,13 +289,13 @@
     <span class="n">combined_ranges</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">ranges</span><span class="p">)</span> <span class="o">+</span> <span class="n">term</span><span class="o">.</span><span class="n">ranges</span>
 
     <span class="k">if</span> <span class="n">coeff</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">term</span><span class="o">.</span><span class="n">term</span><span class="p">,</span> <span class="o">*</span><span class="n">combined_ranges</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">term</span><span class="o">.</span><span class="n">term</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="n">combined_ranges</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">bound_symbols</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">r</span><span class="o">.</span><span class="n">index_symbol</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">combined_ranges</span><span class="p">])</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">coeff</span><span class="o">.</span><span class="n">free_symbols</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">bound_symbols</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">coeff</span> <span class="o">*</span> <span class="bp">cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">term</span><span class="o">.</span><span class="n">term</span><span class="p">,</span> <span class="o">*</span><span class="n">combined_ranges</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">coeff</span> <span class="o">*</span> <span class="bp">cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">term</span><span class="o">.</span><span class="n">term</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="n">combined_ranges</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">coeff</span> <span class="o">*</span> <span class="n">term</span><span class="o">.</span><span class="n">term</span><span class="p">,</span> <span class="o">*</span><span class="n">combined_ranges</span><span class="p">)</span></div>
+            <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">coeff</span> <span class="o">*</span> <span class="n">term</span><span class="o">.</span><span class="n">term</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="n">combined_ranges</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="idem"><a class="viewcode-back" href="../../../API/qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.idem">[docs]</a><span class="k">def</span> <span class="nf">idem</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ops</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
@@ -868,7 +871,7 @@
 
 <div class="viewcode-block" id="indexed_sum_over_const"><a class="viewcode-back" href="../../../API/qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.indexed_sum_over_const">[docs]</a><span class="k">def</span> <span class="nf">indexed_sum_over_const</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ops</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Execute an indexed sum over a term that does not depend on the</span>
-<span class="sd">    summation indices</span>
+<span class="sd">    summation indices.</span>
 
 <span class="sd">    .. math::</span>
 
@@ -881,7 +884,10 @@
 <span class="sd">    &gt;&gt;&gt; unicode(Sum(j, 1, 2)(Sum(i, 1, 2)(a * i)))</span>
 <span class="sd">    &#39;∑_{i=1}^{2} 2 i a&#39;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">term</span><span class="p">,</span> <span class="o">*</span><span class="n">ranges</span> <span class="o">=</span> <span class="n">ops</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">ops</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>  <span class="c1"># only &#39;term&#39;</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>  <span class="c1"># only &#39;ranges&#39;</span>
+    <span class="n">term</span> <span class="o">=</span> <span class="n">ops</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ranges</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;ranges&#39;</span><span class="p">]</span>
     <span class="n">new_ranges</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">new_term</span> <span class="o">=</span> <span class="n">term</span>
     <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">ranges</span><span class="p">:</span>
@@ -895,7 +901,7 @@
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">new_ranges</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">new_term</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">new_term</span><span class="p">,)</span> <span class="o">+</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">new_ranges</span><span class="p">),</span> <span class="n">kwargs</span></div>
+        <span class="k">return</span> <span class="p">(</span><span class="n">new_term</span><span class="p">,),</span> <span class="nb">dict</span><span class="p">(</span><span class="n">ranges</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="n">new_ranges</span><span class="p">))</span></div>
 
 
 <span class="k">def</span> <span class="nf">_ranges_key</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">delta_indices</span><span class="p">):</span>
@@ -918,7 +924,10 @@
     <span class="sd">&quot;&quot;&quot;Execute sums over KroneckerDelta prefactors&quot;&quot;&quot;</span>
     <span class="kn">from</span> <span class="nn">qalgebra.core.abstract_quantum_algebra</span> <span class="kn">import</span> <span class="n">QuantumExpression</span>
 
-    <span class="n">term</span><span class="p">,</span> <span class="o">*</span><span class="n">ranges</span> <span class="o">=</span> <span class="n">ops</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">ops</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>  <span class="c1"># only &#39;term&#39;</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>  <span class="c1"># only &#39;ranges&#39;</span>
+    <span class="n">term</span> <span class="o">=</span> <span class="n">ops</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ranges</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;ranges&#39;</span><span class="p">]</span>
     <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="n">QuantumExpression</span><span class="p">)</span>
     <span class="n">deltas</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">Pattern</span><span class="p">(</span><span class="n">head</span><span class="o">=</span><span class="n">sympy</span><span class="o">.</span><span class="n">KroneckerDelta</span><span class="p">)</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">term</span><span class="p">))</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">deltas</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -936,10 +945,12 @@
                 <span class="k">for</span> <span class="n">delta</span> <span class="ow">in</span> <span class="n">deltas</span>
             <span class="p">]</span>
         <span class="p">)</span>
-        <span class="n">ranges</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>  <span class="c1"># sort in the order we&#39;d prefer to eliminate</span>
-            <span class="n">ranges</span><span class="p">,</span>
-            <span class="n">key</span><span class="o">=</span><span class="n">partial</span><span class="p">(</span><span class="n">_ranges_key</span><span class="p">,</span> <span class="n">delta_indices</span><span class="o">=</span><span class="n">delta_indices</span><span class="p">),</span>
-            <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">ranges</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
+            <span class="nb">sorted</span><span class="p">(</span>  <span class="c1"># sort in the order we&#39;d prefer to eliminate</span>
+                <span class="n">ranges</span><span class="p">,</span>
+                <span class="n">key</span><span class="o">=</span><span class="n">partial</span><span class="p">(</span><span class="n">_ranges_key</span><span class="p">,</span> <span class="n">delta_indices</span><span class="o">=</span><span class="n">delta_indices</span><span class="p">),</span>
+                <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">)</span>
         <span class="p">)</span>
         <span class="n">buffer</span> <span class="o">=</span> <span class="p">[(</span><span class="n">term</span><span class="p">,</span> <span class="n">ranges</span><span class="p">)]</span>
         <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># position in buffer that we&#39;re currently handling</span>
@@ -954,7 +965,7 @@
                 <span class="k">if</span> <span class="n">flag</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
                     <span class="n">i_range</span> <span class="o">+=</span> <span class="mi">1</span>
                     <span class="c1"># * for flag == 1, leaving i_range unchanged will</span>
-                    <span class="c1"># effectively to to the next range (as the current range</span>
+                    <span class="c1"># effectively go to the next range (as the current range</span>
                     <span class="c1"># was removed)</span>
                     <span class="c1"># * for flag == 3, buffer[i] has changed, and we&#39;ll want to</span>
                     <span class="c1"># call it again with the same i_range</span>
@@ -975,10 +986,10 @@
             <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">rs</span><span class="p">)</span> <span class="o">=</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="n">res</span> <span class="o">=</span> <span class="n">t</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">rs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">res</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">*</span><span class="n">rs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="n">rs</span><span class="p">)</span>
             <span class="k">for</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">rs</span><span class="p">)</span> <span class="ow">in</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">rs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="n">t</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">*</span><span class="n">rs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                    <span class="n">t</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="n">rs</span><span class="p">)</span>
                 <span class="n">res</span> <span class="o">+=</span> <span class="n">t</span>
             <span class="k">return</span> <span class="n">res</span></div>
 
@@ -1242,7 +1253,7 @@
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Sep 20, 2020.
+        Last updated on Sep 22, 2020.
       </span>
 
     </p>

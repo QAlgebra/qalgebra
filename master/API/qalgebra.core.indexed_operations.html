@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.indexed_operations module &mdash; QAlgebra 2.0.0-dev (c26129e) documentation</title>
+  <title>qalgebra.core.indexed_operations module &mdash; QAlgebra 2.0.0-dev (5aa56f8) documentation</title>
   
 
   
@@ -258,7 +258,7 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.indexed_operations.IndexedSum" title="qalgebra.core.indexed_operations.IndexedSum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IndexedSum</span></code></a></p></td>
-<td><p>Base class for indexed sums</p></td>
+<td><p>Base class for indexed sums.</p></td>
 </tr>
 </tbody>
 </table>
@@ -268,57 +268,68 @@
 <h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="qalgebra.core.indexed_operations.IndexedSum">
-<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.indexed_operations.</code><code class="sig-name descname">IndexedSum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">term</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">ranges</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/indexed_operations.html#IndexedSum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.indexed_operations.IndexedSum" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.indexed_operations.</code><code class="sig-name descname">IndexedSum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">term</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">ranges</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/indexed_operations.html#IndexedSum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.indexed_operations.IndexedSum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Operation" title="qalgebra.core.abstract_algebra.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_algebra.Operation</span></code></a></p>
-<p>Base class for indexed sums</p>
+<p>Base class for indexed sums.</p>
+<dl class="py method">
+<dt id="qalgebra.core.indexed_operations.IndexedSum.create">
+<em class="property">classmethod </em><code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">term</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">ranges</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/indexed_operations.html#IndexedSum.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.indexed_operations.IndexedSum.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate the indexed sum while applying simplification rules.</p>
+<p>The <cite>ranges</cite> parameter <em>should</em> be a tuple, but for convenience, we
+also accept a single <a class="reference internal" href="qalgebra.utils.indices.html#qalgebra.utils.indices.IndexRangeBase" title="qalgebra.utils.indices.IndexRangeBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">IndexRangeBase</span></code></a> object, which will be
+converted to a single-element tuple. Note that when applying rules for
+the creation of an <a class="reference internal" href="#qalgebra.core.indexed_operations.IndexedSum" title="qalgebra.core.indexed_operations.IndexedSum"><code class="xref py py-class docutils literal notranslate"><span class="pre">IndexedSum</span></code></a> object, <cite>ranges</cite> can be assumed
+to be a tuple.</p>
+</dd></dl>
+
 <dl class="py method">
 <dt id="qalgebra.core.indexed_operations.IndexedSum.term">
 <em class="property">property </em><code class="sig-name descname">term</code><a class="headerlink" href="#qalgebra.core.indexed_operations.IndexedSum.term" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The term of the sum.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.indexed_operations.IndexedSum.operands">
 <em class="property">property </em><code class="sig-name descname">operands</code><a class="headerlink" href="#qalgebra.core.indexed_operations.IndexedSum.operands" title="Permalink to this definition">¶</a></dt>
-<dd><p>Tuple of operands of the operation</p>
+<dd><p>Alias for <a class="reference internal" href="#qalgebra.core.indexed_operations.IndexedSum.args" title="qalgebra.core.indexed_operations.IndexedSum.args"><code class="xref py py-attr docutils literal notranslate"><span class="pre">args</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.indexed_operations.IndexedSum.args">
 <em class="property">property </em><code class="sig-name descname">args</code><a class="headerlink" href="#qalgebra.core.indexed_operations.IndexedSum.args" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alias for operands</p>
+<dd><p>Single-element tuple containing <a class="reference internal" href="#qalgebra.core.indexed_operations.IndexedSum.term" title="qalgebra.core.indexed_operations.IndexedSum.term"><code class="xref py py-attr docutils literal notranslate"><span class="pre">term</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.indexed_operations.IndexedSum.kwargs">
+<em class="property">property </em><code class="sig-name descname">kwargs</code><a class="headerlink" href="#qalgebra.core.indexed_operations.IndexedSum.kwargs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dictionary of keyword arguments (<cite>ranges</cite>).</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.indexed_operations.IndexedSum.variables">
 <em class="property">property </em><code class="sig-name descname">variables</code><a class="headerlink" href="#qalgebra.core.indexed_operations.IndexedSum.variables" title="Permalink to this definition">¶</a></dt>
-<dd><p>List of the dummy (index) variable symbols</p>
+<dd><p>List of the dummy (index) variable symbols.</p>
 <p>See also <a class="reference internal" href="#qalgebra.core.indexed_operations.IndexedSum.bound_symbols" title="qalgebra.core.indexed_operations.IndexedSum.bound_symbols"><code class="xref py py-attr docutils literal notranslate"><span class="pre">bound_symbols</span></code></a> for a set of the same symbols</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.indexed_operations.IndexedSum.bound_symbols">
 <em class="property">property </em><code class="sig-name descname">bound_symbols</code><a class="headerlink" href="#qalgebra.core.indexed_operations.IndexedSum.bound_symbols" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set of bound variables, i.e. the index variable symbols</p>
+<dd><p>Set of bound variables, i.e. the index variable symbols.</p>
 <p>See also <a class="reference internal" href="#qalgebra.core.indexed_operations.IndexedSum.variables" title="qalgebra.core.indexed_operations.IndexedSum.variables"><code class="xref py py-attr docutils literal notranslate"><span class="pre">variables</span></code></a> for an ordered list of the same symbols</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.indexed_operations.IndexedSum.free_symbols">
 <em class="property">property </em><code class="sig-name descname">free_symbols</code><a class="headerlink" href="#qalgebra.core.indexed_operations.IndexedSum.free_symbols" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set of all free symbols</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="qalgebra.core.indexed_operations.IndexedSum.kwargs">
-<em class="property">property </em><code class="sig-name descname">kwargs</code><a class="headerlink" href="#qalgebra.core.indexed_operations.IndexedSum.kwargs" title="Permalink to this definition">¶</a></dt>
-<dd><p>The dictionary of keyword-only arguments for the instantiation of
-the Expression</p>
+<dd><p>Set of all free symbols.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.indexed_operations.IndexedSum.terms">
 <em class="property">property </em><code class="sig-name descname">terms</code><a class="headerlink" href="#qalgebra.core.indexed_operations.IndexedSum.terms" title="Permalink to this definition">¶</a></dt>
-<dd><p>Iterator over the terms of the sum</p>
+<dd><p>Iterator over the terms of the sum.</p>
 <p>Yield from the (possibly) infinite list of terms of the indexed sum, if
 the sum was written out explicitly. Each yielded term in an instance of
 <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression" title="qalgebra.core.abstract_algebra.Expression"><code class="xref py py-class docutils literal notranslate"><span class="pre">Expression</span></code></a></p>
@@ -327,7 +338,7 @@ the sum was written out explicitly. Each yielded term in an instance of
 <dl class="py method">
 <dt id="qalgebra.core.indexed_operations.IndexedSum.doit">
 <code class="sig-name descname">doit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">classes</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">recursive</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">indices</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">max_terms</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/indexed_operations.html#IndexedSum.doit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.indexed_operations.IndexedSum.doit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Write out the indexed sum explicitly</p>
+<dd><p>Write out the indexed sum explicitly.</p>
 <p>If <cite>classes</cite> is None or <a class="reference internal" href="#qalgebra.core.indexed_operations.IndexedSum" title="qalgebra.core.indexed_operations.IndexedSum"><code class="xref py py-class docutils literal notranslate"><span class="pre">IndexedSum</span></code></a> is in <cite>classes</cite>,
 (partially) write out the indexed sum in to an explicit sum of terms.
 If <cite>recursive</cite> is True, write out each of the new sum’s summands by
@@ -391,7 +402,7 @@ objects, or an indexed operation (something with a <code class="docutils literal
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Sep 20, 2020.
+        Last updated on Sep 22, 2020.
       </span>
 
     </p>

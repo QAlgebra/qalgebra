@@ -549,7 +549,7 @@
 </g>
 <!-- KetIndexedSum -->
 <g id="node45" class="node"><title>KetIndexedSum</title>
-<g id="a_node45"><a xlink:href="../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.KetIndexedSum" xlink:title="Indexed sum over Kets" target="_top">
+<g id="a_node45"><a xlink:href="../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.KetIndexedSum" xlink:title="Indexed sum over Kets." target="_top">
 <polygon fill="none" stroke="black" stroke-width="0.5" points="1260.5,-747.5 1168.5,-747.5 1168.5,-728.5 1260.5,-728.5 1260.5,-747.5"/>
 <text text-anchor="middle" x="1214.5" y="-735.5" font-family="Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans" font-size="10.00">KetIndexedSum</text>
 </a>
@@ -674,7 +674,7 @@
 </g>
 <!-- IndexedSum -->
 <g id="node37" class="node"><title>IndexedSum</title>
-<g id="a_node37"><a xlink:href="../API/qalgebra.core.indexed_operations.html#qalgebra.core.indexed_operations.IndexedSum" xlink:title="Base class for indexed sums" target="_top">
+<g id="a_node37"><a xlink:href="../API/qalgebra.core.indexed_operations.html#qalgebra.core.indexed_operations.IndexedSum" xlink:title="Base class for indexed sums." target="_top">
 <polygon fill="none" stroke="black" stroke-width="0.5" points="505.5,-783.5 428.5,-783.5 428.5,-764.5 505.5,-764.5 505.5,-783.5"/>
 <text text-anchor="middle" x="467" y="-771.5" font-family="Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans" font-size="10.00">IndexedSum</text>
 </a>
@@ -798,7 +798,7 @@
 </g>
 <!-- ScalarPower -->
 <g id="node82" class="node"><title>ScalarPower</title>
-<g id="a_node82"><a xlink:href="../API/qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.ScalarPower" xlink:title="A scalar raised to a power" target="_top">
+<g id="a_node82"><a xlink:href="../API/qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.ScalarPower" xlink:title="A scalar raised to a power." target="_top">
 <polygon fill="none" stroke="black" stroke-width="0.5" points="1068.5,-1885.5 993.5,-1885.5 993.5,-1866.5 1068.5,-1866.5 1068.5,-1885.5"/>
 <text text-anchor="middle" x="1031" y="-1873.5" font-family="Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans" font-size="10.00">ScalarPower</text>
 </a>
@@ -1082,7 +1082,7 @@
 </g>
 <!-- QuantumIndexedSum -->
 <g id="node46" class="node"><title>QuantumIndexedSum</title>
-<g id="a_node46"><a xlink:href="../API/qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum" xlink:title="Base class for indexed sums." target="_top">
+<g id="a_node46"><a xlink:href="../API/qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum" xlink:title="Base class for indexed sums of quantum expressions." target="_top">
 <polygon fill="none" stroke="black" stroke-width="0.5" points="903.5,-941.5 781.5,-941.5 781.5,-922.5 903.5,-922.5 903.5,-941.5"/>
 <text text-anchor="middle" x="842.5" y="-929.5" font-family="Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans" font-size="10.00">QuantumIndexedSum</text>
 </a>
@@ -1162,7 +1162,7 @@
 </g>
 <!-- ScalarIndexedSum -->
 <g id="node80" class="node"><title>ScalarIndexedSum</title>
-<g id="a_node80"><a xlink:href="../API/qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.ScalarIndexedSum" xlink:title="Indexed sum over scalars" target="_top">
+<g id="a_node80"><a xlink:href="../API/qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.ScalarIndexedSum" xlink:title="Indexed sum over scalars." target="_top">
 <polygon fill="none" stroke="black" stroke-width="0.5" points="1084.5,-1737.5 977.5,-1737.5 977.5,-1718.5 1084.5,-1718.5 1084.5,-1737.5"/>
 <text text-anchor="middle" x="1031" y="-1725.5" font-family="Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans" font-size="10.00">ScalarIndexedSum</text>
 </a>

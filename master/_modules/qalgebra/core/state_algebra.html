@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.state_algebra &mdash; QAlgebra 2.0.0-dev (c26129e) documentation</title>
+  <title>qalgebra.core.state_algebra &mdash; QAlgebra 2.0.0-dev (5aa56f8) documentation</title>
   
 
   
@@ -331,14 +331,14 @@
                     <span class="n">new_term</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">term</span> <span class="o">*</span> <span class="n">Bra</span><span class="p">(</span><span class="n">other_ket</span><span class="o">.</span><span class="n">term</span><span class="p">)</span>
                     <span class="n">new_ranges</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranges</span> <span class="o">+</span> <span class="n">other_ket</span><span class="o">.</span><span class="n">ranges</span>
                     <span class="k">return</span> <span class="n">new_term</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_indexed_sum_cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-                        <span class="n">new_term</span><span class="p">,</span> <span class="o">*</span><span class="n">new_ranges</span>
+                        <span class="n">new_term</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="n">new_ranges</span>
                     <span class="p">)</span>
                 <span class="k">elif</span> <span class="n">is_sum</span> <span class="o">==</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]:</span>
                     <span class="k">return</span> <span class="n">QuantumIndexedSum</span><span class="o">.</span><span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
                 <span class="k">elif</span> <span class="n">is_sum</span> <span class="o">==</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]:</span>
                     <span class="n">new_term</span> <span class="o">=</span> <span class="bp">self</span> <span class="o">*</span> <span class="n">Bra</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">term</span><span class="p">)</span>
                     <span class="k">return</span> <span class="n">new_term</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_indexed_sum_cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-                        <span class="n">new_term</span><span class="p">,</span> <span class="o">*</span><span class="n">other</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">ranges</span>
+                        <span class="n">new_term</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="n">other</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">ranges</span>
                     <span class="p">)</span>
                 <span class="k">elif</span> <span class="n">is_sum</span> <span class="o">==</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">]:</span>
                     <span class="k">return</span> <span class="n">KetBra</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">ket</span><span class="p">)</span>
@@ -350,12 +350,12 @@
                     <span class="n">new_term</span> <span class="o">=</span> <span class="n">Bra</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">term</span><span class="p">)</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">term</span>
                     <span class="n">new_ranges</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">ranges</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">ranges</span>
                     <span class="k">return</span> <span class="n">new_term</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_indexed_sum_cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-                        <span class="n">new_term</span><span class="p">,</span> <span class="o">*</span><span class="n">new_ranges</span>
+                        <span class="n">new_term</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="n">new_ranges</span>
                     <span class="p">)</span>
                 <span class="k">elif</span> <span class="n">is_sum</span> <span class="o">==</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]:</span>
                     <span class="n">new_term</span> <span class="o">=</span> <span class="n">Bra</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">term</span><span class="p">)</span> <span class="o">*</span> <span class="n">other</span>
                     <span class="k">return</span> <span class="n">new_term</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_indexed_sum_cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-                        <span class="n">new_term</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">ranges</span>
+                        <span class="n">new_term</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">ranges</span>
                     <span class="p">)</span>
                 <span class="k">elif</span> <span class="n">is_sum</span> <span class="o">==</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]:</span>
                     <span class="k">return</span> <span class="n">QuantumIndexedSum</span><span class="o">.</span><span class="fm">__rmul__</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
@@ -651,7 +651,7 @@
         <span class="n">term</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ampl</span> <span class="o">**</span> <span class="n">n</span> <span class="o">/</span> <span class="n">sympy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">)))</span> <span class="o">*</span> <span class="n">BasisKet</span><span class="p">(</span>
             <span class="n">FockIndex</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">hs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_hs</span>
         <span class="p">)</span>
-        <span class="k">return</span> <span class="n">phase_factor</span> <span class="o">*</span> <span class="n">KetIndexedSum</span><span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="n">index_range</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="n">phase_factor</span> <span class="o">*</span> <span class="n">KetIndexedSum</span><span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="p">[</span><span class="n">index_range</span><span class="p">])</span></div></div>
 
 
 <span class="c1">###############################################################################</span>
@@ -974,7 +974,7 @@
 
 
 <div class="viewcode-block" id="KetIndexedSum"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.KetIndexedSum">[docs]</a><span class="k">class</span> <span class="nc">KetIndexedSum</span><span class="p">(</span><span class="n">State</span><span class="p">,</span> <span class="n">QuantumIndexedSum</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Indexed sum over Kets&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Indexed sum over Kets.&quot;&quot;&quot;</span>
 
     <span class="c1"># Must inherit from State first, so that proper __mul__ is used</span>
 
@@ -987,15 +987,15 @@
     <span class="p">]</span>
 
 <div class="viewcode-block" id="KetIndexedSum.create"><a class="viewcode-back" href="../../../API/qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.KetIndexedSum.create">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">term</span><span class="p">,</span> <span class="o">*</span><span class="n">ranges</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">term</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">ranges</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">term</span><span class="o">.</span><span class="n">isbra</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">Bra</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">KetIndexedSum</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">term</span><span class="o">.</span><span class="n">ket</span><span class="p">,</span> <span class="o">*</span><span class="n">ranges</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">Bra</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">KetIndexedSum</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">term</span><span class="o">.</span><span class="n">ket</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="n">ranges</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="o">*</span><span class="n">ranges</span><span class="p">)</span></div>
+            <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="n">ranges</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">term</span><span class="p">,</span> <span class="o">*</span><span class="n">ranges</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">term</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">ranges</span><span class="p">):</span>
         <span class="n">_check_kets</span><span class="p">(</span><span class="n">term</span><span class="p">)</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="o">*</span><span class="n">ranges</span><span class="p">)</span></div>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="n">ranges</span><span class="p">)</span></div>
 
 
 <span class="k">def</span> <span class="nf">_check_kets</span><span class="p">(</span><span class="o">*</span><span class="n">ops</span><span class="p">,</span> <span class="n">same_space</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">disjunct_space</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -1037,7 +1037,7 @@
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Sep 20, 2020.
+        Last updated on Sep 22, 2020.
       </span>
 
     </p>

@@ -103,7 +103,7 @@ qalgebra package
        * - :class:`IndexOverRange <qalgebra.utils.indices.IndexOverRange>`
          - Index over the inclusive range between two integers
        * - :class:`IndexedSum <qalgebra.core.indexed_operations.IndexedSum>`
-         - Base class for indexed sums
+         - Base class for indexed sums.
        * - :class:`IntIndex <qalgebra.utils.indices.IntIndex>`
          - A symbolic label that evaluates to an integer.
        * - :class:`Jminus <qalgebra.library.spin_algebra.Jminus>`
@@ -115,7 +115,7 @@ qalgebra package
        * - :class:`KetBra <qalgebra.core.state_algebra.KetBra>`
          - Outer product of two states
        * - :class:`KetIndexedSum <qalgebra.core.state_algebra.KetIndexedSum>`
-         - Indexed sum over Kets
+         - Indexed sum over Kets.
        * - :class:`KetPlus <qalgebra.core.state_algebra.KetPlus>`
          - Sum of states.
        * - :class:`KetSymbol <qalgebra.core.state_algebra.KetSymbol>`
@@ -169,7 +169,7 @@ qalgebra package
        * - :class:`QuantumExpression <qalgebra.core.abstract_quantum_algebra.QuantumExpression>`
          - Base class for expressions associated with a Hilbert space
        * - :class:`QuantumIndexedSum <qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum>`
-         - Base class for indexed sums.
+         - Base class for indexed sums of quantum expressions.
        * - :class:`QuantumOperation <qalgebra.core.abstract_quantum_algebra.QuantumOperation>`
          - Base class for operations on quantum expression
        * - :class:`QuantumPlus <qalgebra.core.abstract_quantum_algebra.QuantumPlus>`
@@ -189,11 +189,11 @@ qalgebra package
        * - :class:`ScalarExpression <qalgebra.core.scalar_algebra.ScalarExpression>`
          - Base class for scalars with non-scalar arguments
        * - :class:`ScalarIndexedSum <qalgebra.core.scalar_algebra.ScalarIndexedSum>`
-         - Indexed sum over scalars
+         - Indexed sum over scalars.
        * - :class:`ScalarPlus <qalgebra.core.scalar_algebra.ScalarPlus>`
          - Sum of scalars
        * - :class:`ScalarPower <qalgebra.core.scalar_algebra.ScalarPower>`
-         - A scalar raised to a power
+         - A scalar raised to a power.
        * - :class:`ScalarTimes <qalgebra.core.scalar_algebra.ScalarTimes>`
          - Product of scalars
        * - :class:`ScalarTimesKet <qalgebra.core.state_algebra.ScalarTimesKet>`
@@ -322,7 +322,7 @@ qalgebra package
        * - :func:`srepr <qalgebra.printing.srepr>`
          - Render the given expression into a string that can be evaluated in an appropriate context to re-instantiate an identical expression.
        * - :func:`substitute <qalgebra.core.abstract_algebra.substitute>`
-         - Substitute symbols or (sub-)expressions with the given replacements and re-evalute the result
+         - Substitute symbols or (sub-)expressions with the given replacements.
        * - :func:`symbols <qalgebra.toolbox.core.symbols>`
          - The :func:`~sympy.core.symbol.symbols` function from SymPy.
        * - :func:`temporary_instance_cache <qalgebra.toolbox.core.temporary_instance_cache>`
@@ -332,7 +332,7 @@ qalgebra package
        * - :func:`tex <qalgebra.printing.tex>`
          - Alias for :func:`.latex`.
        * - :func:`tr <qalgebra.core.abstract_algebra.Expression.create>`
-         - Instantiate while applying automatic simplifications
+         - Instantiate while applying automatic simplifications.
        * - :func:`tree <qalgebra.printing.treeprinting.tree>`
          - Give the output of `tree` as a multiline string, using line drawings to visualize the hierarchy of expressions (similar to the ``tree`` unix command line program for showing directory trees)
        * - :func:`unicode <qalgebra.printing.unicode>`

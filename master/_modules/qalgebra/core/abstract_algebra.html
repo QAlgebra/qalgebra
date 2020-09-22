@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.abstract_algebra &mdash; QAlgebra 2.0.0-dev (c26129e) documentation</title>
+  <title>qalgebra.core.abstract_algebra &mdash; QAlgebra 2.0.0-dev (5aa56f8) documentation</title>
   
 
   
@@ -287,7 +287,7 @@
 
 <div class="viewcode-block" id="Expression.create"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.create">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Instantiate while applying automatic simplifications</span>
+        <span class="sd">&quot;&quot;&quot;Instantiate while applying automatic simplifications.</span>
 
 <span class="sd">        Instead of directly instantiating `cls`, it is recommended to use</span>
 <span class="sd">        :meth:`create`, which applies simplifications to the args and keyword</span>
@@ -890,8 +890,7 @@
 
 
 <div class="viewcode-block" id="substitute"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.substitute">[docs]</a><span class="k">def</span> <span class="nf">substitute</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">var_map</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Substitute symbols or (sub-)expressions with the given replacements and</span>
-<span class="sd">    re-evalute the result</span>
+    <span class="sd">&quot;&quot;&quot;Substitute symbols or (sub-)expressions with the given replacements.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        expr: The expression in which to perform the substitution</span>
@@ -908,11 +907,18 @@
     <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">expr</span> <span class="ow">in</span> <span class="n">var_map</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">var_map</span><span class="p">[</span><span class="n">expr</span><span class="p">]</span>
-        <span class="k">return</span> <span class="n">expr</span></div>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">substitute</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">var_map</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">expr</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">substitute</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">var_map</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">expr</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">substitute</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">var_map</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">expr</span></div>
 
 
 <span class="k">def</span> <span class="nf">_apply_rules_no_recurse</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">rules</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Non-recursively match expr again all rules&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Non-recursively match expr again all rules.&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># `rules` is an OrderedDict key =&gt; (pattern, replacement)</span>
         <span class="n">items</span> <span class="o">=</span> <span class="n">rules</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
@@ -1075,7 +1081,7 @@
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Sep 20, 2020.
+        Last updated on Sep 22, 2020.
       </span>
 
     </p>

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.abstract_quantum_algebra &mdash; QAlgebra 2.0.0-dev (c26129e) documentation</title>
+  <title>qalgebra.core.abstract_quantum_algebra &mdash; QAlgebra 2.0.0-dev (5aa56f8) documentation</title>
   
 
   
@@ -1092,21 +1092,21 @@
 
 
 <div class="viewcode-block" id="QuantumIndexedSum"><a class="viewcode-back" href="../../../API/qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum">[docs]</a><span class="k">class</span> <span class="nc">QuantumIndexedSum</span><span class="p">(</span><span class="n">IndexedSum</span><span class="p">,</span> <span class="n">SingleQuantumOperation</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Base class for indexed sums.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Base class for indexed sums of quantum expressions.&quot;&quot;&quot;</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">space</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;The Hilbert space of the sum&#39;s term&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;The Hilbert space of the sum&#39;s term.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">term</span><span class="o">.</span><span class="n">space</span>
 
     <span class="k">def</span> <span class="nf">_expand</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">term</span><span class="o">.</span><span class="n">expand</span><span class="p">(),</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">term</span><span class="o">.</span><span class="n">expand</span><span class="p">(),</span> <span class="n">ranges</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">term</span><span class="o">.</span><span class="n">adjoint</span><span class="p">(),</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">term</span><span class="o">.</span><span class="n">adjoint</span><span class="p">(),</span> <span class="n">ranges</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sym</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">term</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">sym</span><span class="p">),</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">term</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">sym</span><span class="p">),</span> <span class="n">ranges</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="kn">from</span> <span class="nn">qalgebra.core.scalar_algebra</span> <span class="kn">import</span> <span class="n">is_scalar</span>
@@ -1117,7 +1117,7 @@
             <span class="n">new_term</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">term</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">term</span>
             <span class="c1"># note that class may change, depending on type of new_term</span>
             <span class="k">return</span> <span class="n">new_term</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_indexed_sum_cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-                <span class="n">new_term</span><span class="p">,</span> <span class="o">*</span><span class="n">new_ranges</span>
+                <span class="n">new_term</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="n">new_ranges</span>
             <span class="p">)</span>
         <span class="k">elif</span> <span class="n">is_scalar</span><span class="p">(</span><span class="n">other</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_scalar_times_expr_cls</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
@@ -1129,7 +1129,7 @@
             <span class="nb">sum</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_disjunct_indices</span><span class="p">(</span><span class="o">*</span><span class="n">other</span><span class="o">.</span><span class="n">bound_symbols</span><span class="p">)</span>
             <span class="n">new_term</span> <span class="o">=</span> <span class="nb">sum</span><span class="o">.</span><span class="n">term</span> <span class="o">*</span> <span class="n">other</span>
             <span class="k">return</span> <span class="n">new_term</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_indexed_sum_cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-                <span class="n">new_term</span><span class="p">,</span> <span class="o">*</span><span class="nb">sum</span><span class="o">.</span><span class="n">ranges</span>
+                <span class="n">new_term</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="nb">sum</span><span class="o">.</span><span class="n">ranges</span>
             <span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__rmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
@@ -1141,7 +1141,7 @@
             <span class="n">new_term</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">term</span> <span class="o">*</span> <span class="n">self_new</span><span class="o">.</span><span class="n">term</span>
             <span class="c1"># note that class may change, depending on type of new_term</span>
             <span class="k">return</span> <span class="n">new_term</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_indexed_sum_cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-                <span class="n">new_term</span><span class="p">,</span> <span class="o">*</span><span class="n">new_ranges</span>
+                <span class="n">new_term</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="n">new_ranges</span>
             <span class="p">)</span>
         <span class="k">elif</span> <span class="n">is_scalar</span><span class="p">(</span><span class="n">other</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_scalar_times_expr_cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
@@ -1153,7 +1153,7 @@
             <span class="nb">sum</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_disjunct_indices</span><span class="p">(</span><span class="o">*</span><span class="n">other</span><span class="o">.</span><span class="n">bound_symbols</span><span class="p">)</span>
             <span class="n">new_term</span> <span class="o">=</span> <span class="n">other</span> <span class="o">*</span> <span class="nb">sum</span><span class="o">.</span><span class="n">term</span>
             <span class="k">return</span> <span class="n">new_term</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_indexed_sum_cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-                <span class="n">new_term</span><span class="p">,</span> <span class="o">*</span><span class="nb">sum</span><span class="o">.</span><span class="n">ranges</span>
+                <span class="n">new_term</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="nb">sum</span><span class="o">.</span><span class="n">ranges</span>
             <span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
@@ -1228,7 +1228,8 @@
 <span class="sd">    Note that using :func:`Sum` is vastly more readable than the equivalent</span>
 <span class="sd">    &quot;manual&quot; instantiation::</span>
 
-<span class="sd">        &gt;&gt;&gt; s == KetIndexedSum.create(ket_i, IndexOverFockSpace(i, hs=hs0))</span>
+<span class="sd">        &gt;&gt;&gt; s == KetIndexedSum.create(</span>
+<span class="sd">        ...     ket_i, ranges=(IndexOverFockSpace(i, hs=hs0),))</span>
 <span class="sd">        True</span>
 
 <span class="sd">    By nesting calls to `Sum`, you can instantiate sums running over multiple</span>
@@ -1253,7 +1254,7 @@
 <span class="sd">    Lastly, by passing a tuple or list of values, the index will run over all</span>
 <span class="sd">    the elements in that tuple or list::</span>
 
-<span class="sd">        &gt;&gt;&gt; unicode( Sum(i, (1, 2, 3))(ket_i))</span>
+<span class="sd">        &gt;&gt;&gt; unicode( Sum(i, (1, 2, 3))(ket_i) )</span>
 <span class="sd">        &#39;∑_{i ∈ {1,2,3}} |i⟩⁽⁰⁾&#39;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">from</span> <span class="nn">qalgebra.core.hilbert_space_algebra</span> <span class="kn">import</span> <span class="n">LocalSpace</span>
@@ -1280,7 +1281,7 @@
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="n">ScalarValue</span><span class="o">.</span><span class="n">_val_types</span><span class="p">):</span>
             <span class="n">term</span> <span class="o">=</span> <span class="n">ScalarValue</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">term</span><span class="p">)</span>
         <span class="n">idx_range</span> <span class="o">=</span> <span class="n">idx_range_func</span><span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">term</span><span class="o">.</span><span class="n">_indexed_sum_cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="n">idx_range</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">term</span><span class="o">.</span><span class="n">_indexed_sum_cls</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="p">(</span><span class="n">idx_range</span><span class="p">,))</span>
 
     <span class="k">return</span> <span class="nb">sum</span></div>
 
@@ -1405,7 +1406,7 @@
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Sep 20, 2020.
+        Last updated on Sep 22, 2020.
       </span>
 
     </p>
