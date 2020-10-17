@@ -1193,3 +1193,11 @@ def test_kronecker_delta():
     assert isinstance(delta_1i.val, SympyKroneckerDelta)
     assert delta_i1.substitute({i: 1}) == One
     assert delta_i1.substitute({i: 0}) == Zero
+
+
+def test_divide_state_by_sqrt_2():
+    """Test that we can instantiate a state divided by √2."""
+    ket0 = LocalSpace(0).basis_state(0)
+    expr1 = ket0 / sqrt(2)
+    expr2 = ket0 / sympy_sqrt(2)
+    assert expr1 == expr2

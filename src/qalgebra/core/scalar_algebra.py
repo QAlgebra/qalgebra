@@ -51,6 +51,8 @@ __all__ = [
 
 __private__ = ['is_scalar']
 
+_sympyOne = sympy.sympify(1)
+
 
 class Scalar(QuantumExpression, metaclass=ABCMeta):
     """Base class for Scalars"""
@@ -120,7 +122,7 @@ class Scalar(QuantumExpression, metaclass=ABCMeta):
         if isinstance(other, (float, complex, complex128, float64)):
             return (ScalarValue(1 / other)) * self
         elif isinstance(other, (int, sympy.Basic, int64)):
-            return (ScalarValue(sympy.sympify(1) / other)) * self
+            return (ScalarValue(_sympyOne / other)) * self
         return super().__truediv__(other)
 
     def __mod__(self, other):
@@ -476,9 +478,9 @@ class ScalarValue(Scalar):
 
     def __rtruediv__(self, other):
         if other == 1:
-            return self.create(sympy.Rational(1, self.val))
+            return self.create(_sympyOne / sympy.sympify(self.val))
         elif isinstance(other, self._val_types):
-            return self.create(sympy.Rational(other, self.val))
+            return self.create(sympy.sympify(other) / sympy.sympify(self.val))
         else:
             return super().__rtruediv__(other)  # other == 0, 1/x -> x^(-1)
 
@@ -861,7 +863,7 @@ class One(Scalar, metaclass=Singleton):
         return 1.0
 
     def _sympy_(self):
-        return sympy.sympify(1)
+        return _sympyOne
 
 
 class ScalarPlus(QuantumPlus, Scalar):
@@ -1264,7 +1266,7 @@ def sqrt(scalar):
     elif isinstance(scalar, (int, sympy.Basic, int64)):
         return ScalarValue.create(sympy.sqrt(scalar))
     elif isinstance(scalar, Scalar):
-        return scalar ** (sympy.sympify(1) / 2)
+        return scalar ** (_sympyOne / 2)
     else:
         raise TypeError("Unknown type of scalar: %r" % type(scalar))
 
