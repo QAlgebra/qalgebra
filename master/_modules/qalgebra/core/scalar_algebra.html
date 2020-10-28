@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.core.scalar_algebra &mdash; QAlgebra 2.0.0-dev (5aa56f8) documentation</title>
+  <title>qalgebra.core.scalar_algebra &mdash; QAlgebra 2.0.0-dev (b6146d5) documentation</title>
   
 
   
@@ -236,6 +236,8 @@
 
 <span class="n">__private__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;is_scalar&#39;</span><span class="p">]</span>
 
+<span class="n">_sympyOne</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">sympify</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
 
 <div class="viewcode-block" id="Scalar"><a class="viewcode-back" href="../../../API/qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar">[docs]</a><span class="k">class</span> <span class="nc">Scalar</span><span class="p">(</span><span class="n">QuantumExpression</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Base class for Scalars&quot;&quot;&quot;</span>
@@ -305,7 +307,7 @@
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">complex</span><span class="p">,</span> <span class="n">complex128</span><span class="p">,</span> <span class="n">float64</span><span class="p">)):</span>
             <span class="k">return</span> <span class="p">(</span><span class="n">ScalarValue</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">other</span><span class="p">))</span> <span class="o">*</span> <span class="bp">self</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Basic</span><span class="p">,</span> <span class="n">int64</span><span class="p">)):</span>
-            <span class="k">return</span> <span class="p">(</span><span class="n">ScalarValue</span><span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">sympify</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">other</span><span class="p">))</span> <span class="o">*</span> <span class="bp">self</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">ScalarValue</span><span class="p">(</span><span class="n">_sympyOne</span> <span class="o">/</span> <span class="n">other</span><span class="p">))</span> <span class="o">*</span> <span class="bp">self</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__truediv__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__mod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
@@ -661,9 +663,9 @@
 
     <span class="k">def</span> <span class="fm">__rtruediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">other</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">val</span><span class="p">))</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">_sympyOne</span> <span class="o">/</span> <span class="n">sympy</span><span class="o">.</span><span class="n">sympify</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">val</span><span class="p">))</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_val_types</span><span class="p">):</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">val</span><span class="p">))</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">sympify</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="o">/</span> <span class="n">sympy</span><span class="o">.</span><span class="n">sympify</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">val</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__rtruediv__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>  <span class="c1"># other == 0, 1/x -&gt; x^(-1)</span>
 
@@ -1046,7 +1048,7 @@
         <span class="k">return</span> <span class="mf">1.0</span>
 
     <span class="k">def</span> <span class="nf">_sympy_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">sympy</span><span class="o">.</span><span class="n">sympify</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">_sympyOne</span></div>
 
 
 <div class="viewcode-block" id="ScalarPlus"><a class="viewcode-back" href="../../../API/qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.ScalarPlus">[docs]</a><span class="k">class</span> <span class="nc">ScalarPlus</span><span class="p">(</span><span class="n">QuantumPlus</span><span class="p">,</span> <span class="n">Scalar</span><span class="p">):</span>
@@ -1449,7 +1451,7 @@
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scalar</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Basic</span><span class="p">,</span> <span class="n">int64</span><span class="p">)):</span>
         <span class="k">return</span> <span class="n">ScalarValue</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">scalar</span><span class="p">))</span>
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scalar</span><span class="p">,</span> <span class="n">Scalar</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">scalar</span> <span class="o">**</span> <span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">sympify</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">scalar</span> <span class="o">**</span> <span class="p">(</span><span class="n">_sympyOne</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Unknown type of scalar: </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">scalar</span><span class="p">))</span></div>
 
@@ -1491,7 +1493,7 @@
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Sep 22, 2020.
+        Last updated on Oct 28, 2020.
       </span>
 
     </p>
