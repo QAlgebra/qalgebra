@@ -339,10 +339,15 @@ class QalgebraLatexPrinter(QalgebraAsciiPrinter):
             has_history = len(expr._prev_rhs) > 0
         except AttributeError:
             has_history = False
+        try:
+            eq_sym = expr.eq_sym_tex
+        except AttributeError:
+            eq_sym = "="
         if has_history:
             res = r'\begin{align}' + "\n"
-            res += "  %s &= %s" % (
+            res += "  %s &%s %s" % (
                 self.doprint(expr._prev_lhs[0]),
+                eq_sym,
                 self.doprint(expr._prev_rhs[0]),
             )
             if expr._prev_tags[0] is not None:
@@ -351,10 +356,11 @@ class QalgebraLatexPrinter(QalgebraAsciiPrinter):
             for i, rhs in enumerate(expr._prev_rhs[1:]):
                 lhs = expr._prev_lhs[i + 1]
                 if lhs is None:
-                    res += "   &= %s" % self.doprint(rhs)
+                    res += "   &%s %s" % (eq_sym, self.doprint(rhs))
                 else:
-                    res += "  %s &= %s" % (
+                    res += "  %s &%s %s" % (
                         self.doprint(lhs),
+                        eq_sym,
                         self.doprint(rhs),
                     )
                 if expr._prev_tags[i + 1] is not None:
@@ -364,8 +370,9 @@ class QalgebraLatexPrinter(QalgebraAsciiPrinter):
             if lhs is None:
                 res += "   &= %s\n" % self.doprint(expr.rhs)
             else:
-                res += "  %s &= %s\n" % (
+                res += "  %s &%s %s\n" % (
                     self.doprint(lhs),
+                    eq_sym,
                     self.doprint(expr.rhs),
                 )
             if expr._tag is not None:
@@ -373,8 +380,9 @@ class QalgebraLatexPrinter(QalgebraAsciiPrinter):
             res += r'\end{align}' + "\n"
         else:
             res = r'\begin{equation}' + "\n"
-            res += "  %s = %s\n" % (
+            res += "  %s %s %s\n" % (
                 self.doprint(expr.lhs),
+                eq_sym,
                 self.doprint(expr.rhs),
             )
             try:

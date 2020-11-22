@@ -159,6 +159,9 @@ def test_unicode_equation():
     for i, line in enumerate(unicode_lines):
         assert line == expected[i]
 
+    eq = Eq(OperatorSymbol('H', hs=0), 0, eq_sym_str='→')
+    assert unicode(eq, show_hs_label=False) == 'Ĥ → 0'
+
 
 def test_unicode_operator_elements():
     """Test the unicode representation of "atomic" operator algebra elements"""
