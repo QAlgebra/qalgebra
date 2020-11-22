@@ -378,6 +378,11 @@ class Matrix:
 
         return self.element_wise(element_simplify)
 
+    def _repr_latex_(self):
+        from qalgebra import latex
+
+        return "$" + latex(self) + "$"
+
 
 def hstackm(matrices):
     """Generalizes `numpy.hstack` to :class:`.Matrix` objects."""
