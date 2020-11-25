@@ -109,9 +109,14 @@ dist-check: bootstrap ## Check all dist files for correctness
 
 notebooks: docs/tutorial.ipynb.log
 
-jupyter-notebook: bootstrap ## run a notebook server for editing the examples
-	$(TOX) -e run-cmd -- jupyter notebook --config=/dev/null
+install-kernel: bootstrap  ## Install Jupyter 'qalgebra' kernel into user environment
+	$(TOX) -e run-cmd -- python -m ipykernel install --user --name qalgebra --display-name "QAlgebra"
 
-jupyter-lab: bootstrap ## run a jupyterlab server for editing the examples
-	$(TOX) -e run-cmd -- pip install jupyterlab
-	$(TOX) -e run-cmd -- jupyter lab --config=/dev/null
+uninstall-kernel: bootstrap   ## Remove Jupyter 'qalgebra' kernel from user environment
+	$(TOX) -e run-cmd -- jupyter kernelspec remove -f afioct || true
+
+jupyter-notebook: install-kernel ## run a notebook server (inside the user environment) for editing the examples
+	jupyter notebook
+
+jupyter-lab: install-kernel ## run a jupyterlab server (inside the user environment) for editing the examples
+	jupyter lab

@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+python -m jupyter nbextension enable execute_time/ExecuteTime
+python -m jupyter nbextension enable toc2/main
+python -m jupyter nbextension enable --py widgetsnbextension
+python -m ipykernel install --user --name qalgebra --display-name "QAlgebra"
+python binder/disable_brackets.py
