@@ -13,14 +13,6 @@ Welcome to QAlgebra's documentation!
    :alt: QAlgebra on the Python Package Index
    :target: https://pypi.python.org/pypi/qalgebra
 
-.. image:: https://img.shields.io/travis/qalgebra/qalgebra.svg
-   :alt: Travis Continuous Integration
-   :target: https://travis-ci.org/qalgebra/qalgebra
-
-.. image:: https://ci.appveyor.com/api/projects/status/ryq6xbm702ogosqk/branch/master?svg=true
-   :alt: AppVeyor Continuous Integration
-   :target: https://ci.appveyor.com/project/goerz/qalgebra
-
 .. image:: https://img.shields.io/coveralls/github/QAlgebra/qalgebra/master.svg
    :alt: Coveralls
    :target: https://coveralls.io/github/QAlgebra/qalgebra

@@ -1,0 +1,139 @@
+name: Docs
+
+on: [push, ]
+
+jobs:
+
+  build_docs:
+    name: Build Sphinx docs
+    runs-on: ubuntu-18.04
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-python@v2
+        name: Install Python 3.8
+        with:
+          python-version: 3.8
+
+      - name: Install Graphviz
+        run: sudo apt-get install graphviz
+
+      - name: Install Tox and other build requirements
+        run: pip install tox zip-files
+
+      - name: Run Tox
+        run: tox -e docs
+
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::$(python -c 'print([line.split("=")[-1].strip()[1:-1] for line in open("./src/qalgebra/__init__.py", encoding="utf8").readlines() if line.startswith("__version__")][0], end="")')
+
+      - name: Get branch name
+        shell: bash
+        run: |
+          echo ${{ github.ref }}
+          echo "BRANCH_NAME=$(echo ${GITHUB_REF##*/} | tr / -)" >> $GITHUB_ENV
+          cat $GITHUB_ENV
+
+      - name: Zip the HTML documentation
+        run: zip-folder --debug --auto-root --outfile "qalgebra-docs-${{ steps.get_version.outputs.VERSION }}.zip" docs/_build/html
+
+      - uses: actions/upload-artifact@v2
+        name: Upload documentation artifacts
+        with:
+          name: qalgebra-docs
+          # We must have multiple files in the artifact so we don't end up with a confusing double-zip file
+          # Hence, we add the README as a "filler"
+          path: |
+            ./qalgebra-*.zip
+            README.rst
+
+  deploy_gh_pages:
+    name: Deploy documentation to gh-pages
+    if: github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-18.04
+    needs: build_docs
+    steps:
+
+      - uses: actions/setup-python@v2
+        name: Install Python 3.8
+        with:
+          python-version: 3.8
+
+      - name: Install deploy requirements
+        run: pip install git+https://github.com/goerz/doctr_versions_menu.git@master#egg=doctr_versions_menu
+
+      - name: Get branch name
+        shell: bash
+        run: |
+          echo ${{ github.ref }}
+          echo "BRANCH_NAME=$(echo ${GITHUB_REF##*/} | tr / -)" >> $GITHUB_ENV
+          cat $GITHUB_ENV
+
+      - uses: actions/checkout@v2
+        name: Check out gh-pages branch (full history)
+        with:
+          ref: gh-pages
+          fetch-depth: 0
+
+      - uses: actions/download-artifact@v2
+        name: Download qalgebra-docs artifact
+        with:
+          name: qalgebra-docs
+          path: _qalgebra_docs
+
+      - name: Unzip html documentation
+        working-directory: _qalgebra_docs
+        shell: bash
+        run: |
+          unzip *.zip -d _unzip
+          mv _unzip/* _unzip/${{ env.BRANCH_NAME }}
+
+      - name: Rsync html documentation into place
+        run: rsync -av --delete _qalgebra_docs/_unzip/${{ env.BRANCH_NAME }}/ ./${{ env.BRANCH_NAME }}/
+
+      - name: Remove artifact files
+        shell: bash
+        run: rm -rf _qalgebra_docs
+
+      - name: Run doctr-versions-menu
+        run: doctr-versions-menu
+
+      - name: Get the previous commit message
+        id: get_previous_commit
+        run: |
+          git log --format=%B -n 1 | tee .git/_github_actions_commit_msg
+          echo ::set-output name=LOG::$(cat .git/_github_actions_commit_msg)
+          echo ::set-output name=AUTHOR::$(git log --format=%an -n 1)
+
+      - name: Set git configuration
+        shell: bash
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+
+      - name: Commit changes
+        shell: bash
+        run: |
+          echo "Committing to gh-pages"
+          echo "[previous commit msg: ${{ steps.get_previous_commit.outputs.LOG }}]"
+          echo "[previous commit author: ${{ steps.get_previous_commit.outputs.AUTHOR }}]"
+          echo "# GIT ADD"
+          git add -A --verbose
+          echo "# GIT STATUS"
+          git status
+          echo "# GIT COMMIT"
+          if [[ "${{ steps.get_previous_commit.outputs.AUTHOR }}" == "github-actions"* ]];
+          then
+            echo "Amending previous commit"
+            echo "Deployed from commit ${GITHUB_SHA} (${GITHUB_REF})" >> .git/_github_actions_commit_msg
+            git commit --verbose --amend -F .git/_github_actions_commit_msg
+          else
+            echo "Making new commit"
+            git commit --verbose -m "Auto-update from Github Actions Workflow" -m "Deployed from commit ${GITHUB_SHA} (${GITHUB_REF})"
+          fi
+          git log -n 1
+
+      - name: Push changes
+        run: git push --verbose --force
