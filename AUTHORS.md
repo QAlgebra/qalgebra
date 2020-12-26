@@ -1,11 +1,10 @@
-=======
 Credits
 =======
 
 Development Lead
 ----------------
 
-* Michael Goerz <mail@michaelgoerz.net>
+-   Michael Goerz <mail@michaelgoerz.net>
 
 Contributors
 ------------

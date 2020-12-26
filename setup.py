@@ -15,11 +15,11 @@ def get_version(filename):
     raise ValueError("Cannot extract version from %s" % filename)
 
 
-with open('README.rst', encoding='utf8') as readme_file:
+with open('README.md', encoding='utf8') as readme_file:
     readme = readme_file.read()
 
 try:
-    with open('HISTORY.rst', encoding='utf8') as history_file:
+    with open('HISTORY.md', encoding='utf8') as history_file:
         history = history_file.read()
 except OSError:
     history = ''
@@ -46,6 +46,7 @@ dev_requirements = [
     'ipython',
     'isort',
     'jupyter',
+    'm2r',
     'matplotlib',
     'nbsphinx',
     'nbval',
@@ -56,6 +57,7 @@ dev_requirements = [
     'pytest-cov',
     'pytest-xdist',
     'qutip',
+    'recommonmark',
     'sphinx',
     'sphinx-autobuild',
     'sphinx-autodoc-typehints',
@@ -91,7 +93,7 @@ setup(
     extras_require={'dev': dev_requirements},
     license="MIT license",
     long_description=readme + '\n\n' + history,
-    long_description_content_type='text/x-rst',
+    long_description_content_type='text/markdown',
     include_package_data=True,
     keywords=[
         'qnet',
