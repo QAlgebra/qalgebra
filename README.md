@@ -1,15 +1,13 @@
 QAlgebra
 ========
 
-[![Source code on Github](https://img.shields.io/badge/github-qalgebra/qalgebra-blue.svg)](https://github.com/qalgebra/qalgebra)
-
-[![Documentation](https://img.shields.io/badge/docs-doctr-blue.svg)](https://qalgebra.github.io/qalgebra/)
-
+[![Source code on Github](https://img.shields.io/badge/qalgebra-qalgebra-blue.svg?logo=github)](https://github.com/qalgebra/qalgebra)
 [![QAlgebra on the Python Package Index](https://img.shields.io/pypi/v/qalgebra.svg)](https://pypi.python.org/pypi/qalgebra)
-
+[![Documentation](https://github.com/QAlgebra/qalgebra/workflows/Docs/badge.svg?branch=master)](https://qalgebra.github.io/qalgebra/)
+[![Tests](https://github.com/QAlgebra/qalgebra/workflows/Tests/badge.svg?branch=master)](https://github.com/QAlgebra/qalgebra/actions?query=master%3ATests)
 [![Coveralls](https://img.shields.io/coveralls/github/QAlgebra/qalgebra/master.svg)](https://coveralls.io/github/QAlgebra/qalgebra)
-
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+
 
 Python package for symbolic quantum algebra.
 
