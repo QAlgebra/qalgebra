@@ -378,6 +378,13 @@ latex_show_urls = 'no'
 
 # -----------------------------------------------------------------------------
 
+# -- Options for Epub output --------------------------------------------------
+
+epub_show_urls = 'no'
+epub_use_index = False
+
+# -----------------------------------------------------------------------------
+
 
 def setup(app):
     app.add_autodocumenter(SingletonDocumenter)
