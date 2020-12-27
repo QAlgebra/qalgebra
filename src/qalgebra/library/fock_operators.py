@@ -180,12 +180,12 @@ class Displace(LocalOperator):
 
 @properties_for_args
 class Squeeze(LocalOperator):
-    r"""Unitary squeezing operator
+    r"""Unitary squeezing operator.
 
     .. math::
 
         \Op{S}_{\rm hs}(\eta) =
-        \exp {\left( \frac{\eta}{2} {\Op{a}_{\rm hs}^\dagger}^2 -
+        \exp {\left( \frac{\eta}{2} \left(\Op{a}_{\rm hs}^\dagger\right)^2 -
                      \frac{\eta^*}{2} {\Op{a}_{\rm hs}}^2 \right)}
 
     where :math:`\Op{a}_{\rm hs}` is the annihilation operator acting on the

@@ -1,4 +1,4 @@
-.PHONY: help clean clean-build clean-pyc clean-test clean-venv flake8-check pylint-check test test38 test39 docs docs-pdf clean-docs black-check black isort-check isort coverage test-upload upload release dist dist-check notebooks jupyter-notebook jupyter-lab
+.PHONY: help clean clean-build clean-pyc clean-test clean-venv flake8-check pylint-check test test38 test39 docs docs-pdf docs-epub clean-docs black-check black isort-check isort coverage test-upload upload release dist dist-check notebooks jupyter-notebook jupyter-lab
 
 .DEFAULT_GOAL := help
 
@@ -64,6 +64,9 @@ docs: bootstrap ## generate Sphinx HTML documentation, including API docs
 docs-pdf: bootstrap ## generate Sphinx PDF documentation, via latex
 	$(TOX) -e docs -- -b latex docs/_build/latex
 	$(TOX) -e run-cmd -- python docs/sources/build_pdf.py docs/_build/latex/qalgebra.tex
+
+docs-epub: bootstrap ## generate Sphinx EPUB documentation
+	SPHINX_MATH_RENDERER=imgmath $(TOX) -e docs -- -b epub docs/_build/epub
 
 black-check: bootstrap ## Check all src and test files for complience to "black" code style
 	$(TOX) -e run-blackcheck

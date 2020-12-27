@@ -77,6 +77,10 @@ extensions = [
     'dollarmath',
 ]
 
+if os.environ.get('SPHINX_MATH_RENDERER', 'mathjax') == 'imgmath':
+    extensions.remove('sphinx.ext.mathjax')
+    extensions.append('sphinx.ext.imgmath')
+
 
 if os.getenv('SPELLCHECK'):
     extensions.append('sphinxcontrib.spelling')
@@ -374,6 +378,8 @@ latex_preamble = r'''
 \setlength{\cftsecindent}{\cftchapnumwidth}
 \setlength{\cftsecnumwidth}{1.25cm}
 \usepackage{emptypage}
+'''
+imgmath_latex_preamble = r'''
 \usepackage{braket}
 \newcommand{\tr}[0]{\operatorname{tr}}
 \newcommand{\diag}[0]{\operatorname{diag}}
@@ -404,7 +410,7 @@ latex_preamble = r'''
 '''
 latex_elements = {
     "fontpkg": latex_fontpkg,
-    'preamble': latex_preamble,
+    'preamble': latex_preamble + imgmath_latex_preamble,
     'fncychap': r'\usepackage[Bjornstrup]{fncychap}',
     'printindex': r'',
     'babel': '',

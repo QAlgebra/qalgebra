@@ -83,10 +83,6 @@ def patch_tex(texfile):
         r'\end{align}\end{split}' + "\n" + r'\end{equation*}', r'\end{align*}'
     )
     tex = tex.replace(
-        r'{\Op{a}_{\rm hs}^\dagger}^2',
-        r'\left(\Op{a}_{\rm hs}^\dagger\right)^2',
-    )
-    tex = tex.replace(
         _multiline_str(
             r'\chapter{Indices and tables}',
             r'\label{\detokenize{index:indices-and-tables}}\begin{itemize}',
