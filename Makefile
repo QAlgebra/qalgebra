@@ -62,8 +62,8 @@ docs: bootstrap ## generate Sphinx HTML documentation, including API docs
 	@echo "open docs/_build/html/index.html"
 
 docs-pdf: bootstrap ## generate Sphinx PDF documentation, via latex
-	$(TOX) -e docs -- -b latex _build/latex
-	$(TOX) -e run-cmd -- python docs/build_pdf.py docs/_build/latex/*.tex
+	$(TOX) -e docs -- -b latex docs/_build/latex
+	$(TOX) -e run-cmd -- python docs/sources/build_pdf.py docs/_build/latex/qalgebra.tex
 
 black-check: bootstrap ## Check all src and test files for complience to "black" code style
 	$(TOX) -e run-blackcheck

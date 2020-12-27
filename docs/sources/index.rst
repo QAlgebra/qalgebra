@@ -1,30 +1,33 @@
 Welcome to QAlgebra's documentation!
 ====================================
 
-.. image:: https://img.shields.io/badge/qalgebra-qalgebra-blue.svg?logo=github
-   :alt: Source code on Github
-   :target: https://github.com/qalgebra/qalgebra
 
-.. image:: https://img.shields.io/pypi/v/qalgebra.svg
-   :alt: QAlgebra on the Python Package Index
-   :target: https://pypi.python.org/pypi/qalgebra
+.. only:: html
 
-.. image:: https://github.com/QAlgebra/qalgebra/workflows/Docs/badge.svg?branch=master
-   :alt: Documentation
-   :target: https://github.com/QAlgebra/qalgebra/actions?query=master%3ADocs
-
-.. image:: https://github.com/QAlgebra/qalgebra/workflows/Docs/badge.svg?branch=master
-   :alt: Tests
-   :target: https://github.com/QAlgebra/qalgebra/actions?query=master%3ATests
-
-.. image:: https://img.shields.io/coveralls/github/QAlgebra/qalgebra/master.svg
-   :alt: Coveralls
-   :target: https://coveralls.io/github/QAlgebra/qalgebra
-
-.. image:: https://img.shields.io/badge/License-MIT-green.svg
-   :alt: MIT License
-   :target: https://opensource.org/licenses/MIT
-
+   .. image:: https://img.shields.io/badge/qalgebra-qalgebra-blue.svg?logo=github
+      :alt: Source code on Github
+      :target: https://github.com/qalgebra/qalgebra
+   
+   .. image:: https://img.shields.io/pypi/v/qalgebra.svg
+      :alt: QAlgebra on the Python Package Index
+      :target: https://pypi.python.org/pypi/qalgebra
+   
+   .. image:: https://github.com/QAlgebra/qalgebra/workflows/Docs/badge.svg?branch=master
+      :alt: Documentation
+      :target: https://github.com/QAlgebra/qalgebra/actions?query=master%3ADocs
+   
+   .. image:: https://github.com/QAlgebra/qalgebra/workflows/Tests/badge.svg?branch=master
+      :alt: Tests
+      :target: https://github.com/QAlgebra/qalgebra/actions?query=master%3ATests
+   
+   .. image:: https://img.shields.io/coveralls/github/QAlgebra/qalgebra/master.svg
+      :alt: Coveralls
+      :target: https://coveralls.io/github/QAlgebra/qalgebra
+   
+   .. image:: https://img.shields.io/badge/License-MIT-green.svg
+      :alt: MIT License
+      :target: https://opensource.org/licenses/MIT
+   
 
 .. Tutorials (learning oriented):
 

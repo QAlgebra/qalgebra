@@ -33,15 +33,21 @@ def get_version(filename):
 def _patch_line(line):
     if line.startswith(r'\sphinxhref{') and line.endswith(".svg}}\n"):
         return None
+    if line.startswith(r'\sphinxhref{') and line.endswith(
+        ".svg?logo=github}}\n"
+    ):
+        return None
     if line == r'\chapter{References}' + "\n":
         return None
+    line = line.replace(r'\sphinxhyphen{}', '-')
     if line.startswith(r'\(\newcommand'):
         return None
     if line.startswith(r'\section{'):
         # don't put section numbers in the HISTORY, in front of version numbers
+        line = line.replace(r'\sphinxhyphen{}', '-')
         match = re.match(
-            r'\\section\{(\d+\.\d+\.\d+\s+'
-            r'\(([\d-]+|\\sphinxhyphen\{\})+\)|[\s(]*next version[)\s]*)\}',
+            r'\\section\{(\d+\.\d+\.\d+(-rc\d+)?\s+'
+            r'\([\d-]+\)|[\s(]*next version[)\s]*)\}',
             line.strip(),
         )
         if match:
@@ -77,6 +83,10 @@ def patch_tex(texfile):
         r'\end{align}\end{split}' + "\n" + r'\end{equation*}', r'\end{align*}'
     )
     tex = tex.replace(
+        r'{\Op{a}_{\rm hs}^\dagger}^2',
+        r'\left(\Op{a}_{\rm hs}^\dagger\right)^2',
+    )
+    tex = tex.replace(
         _multiline_str(
             r'\chapter{Indices and tables}',
             r'\label{\detokenize{index:indices-and-tables}}\begin{itemize}',
@@ -93,37 +103,17 @@ def patch_tex(texfile):
     texfile.write_text(tex, encoding='utf8')
 
 
-def latex(texfile, executable='pdflatex', texliveonfly=None):
-    """Run lualatex to compile the given texfile.
-
-    Args:
-        texfile: path-like object pointing to tex file to compile
-        exectuable (str): one of pdflatex, lualatex
-        texliveonfly (bool or None): whether to use texliveonfly. If not given,
-            defaults to True when running on Travis, False otherwise
-    """
-    if texliveonfly is None:
-        if any(key.startswith('TRAVIS') for key in os.environ):
-            print("Running on Travis: using texliveonfly (%s)" % executable)
-            texliveonfly = True
-        else:
-            print("Not running on Travis: using %s" % executable)
-            texliveonfly = False
-    cmd = [
-        executable,
-        '--interaction=nonstopmode',
-        '--halt-on-error',
-        texfile.name,
-    ]
-    if texliveonfly:
-        cmd = [
-            'texliveonfly',
-            '--compiler=%s' % executable,
-            texfile.name,
-        ]
-    print(" ".join(cmd))
+def lualatex(texfile):
+    """Run lualatex to compile the given texfile."""
     subprocess.run(
-        cmd, cwd=texfile.parent, check=True,
+        [
+            'lualatex',
+            '--interaction=nonstopmode',
+            '--halt-on-error',
+            texfile.name,
+        ],
+        cwd=texfile.parent,
+        check=True,
     )
 
 
@@ -142,10 +132,13 @@ def main(argv=None):
     print("Patching %s..." % texfile)
     patch_tex_lines(texfile)
     patch_tex(texfile)
-    print("Compiling %s..." % texfile)
-    latex(texfile)
-    latex(texfile)
-    print("Done compiling %s" % texfile)
+    if '--patch-only' in argv:
+        print("Skipping compilation")
+    else:
+        print("Compiling %s..." % texfile)
+        lualatex(texfile)
+        lualatex(texfile)
+        print("Done compiling %s" % texfile)
     sys.exit(0)
 
 

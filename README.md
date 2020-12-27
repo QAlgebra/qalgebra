@@ -25,12 +25,7 @@ pip install qalgebra
 
 This is the preferred method to install QAlgebra, as it will always install the most recent stable release.
 
-If you don\'t have [pip](https://pip.pypa.io) installed, the [Python
-installation
-guide](http://docs.python-guide.org/en/latest/starting/installation/),
-respectively the [Python Packaging User
-Guide](https://packaging.python.org/tutorials/installing-packages/) can
-guide you through the process.
+If you don't have [pip](https://pip.pypa.io) installed, the [Python installation guide](http://docs.python-guide.org/en/latest/starting/installation/), respectively the [Python Packaging User Guide](https://packaging.python.org/tutorials/installing-packages/) can guide you through the process.
 
 To install the latest development version of QAlgebra from [Github](https://github.com/qalgebra/qalgebra).
 

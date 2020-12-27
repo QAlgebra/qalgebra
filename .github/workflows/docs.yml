@@ -16,14 +16,35 @@ jobs:
         with:
           python-version: 3.8
 
-      - name: Install Graphviz
-        run: sudo apt-get install graphviz
+      - name: Install Graphviz and ImageMagick
+        run: sudo apt-get install graphviz imagemagick
 
       - name: Install Tox and other build requirements
         run: pip install tox zip-files
 
-      - name: Run Tox
+      - name: Generate HTML Documentation
         run: tox -e docs
+
+      - name: Generate LaTeX Documentation
+        run: |
+          tox -e docs -- -b latex docs/_build/latex
+          tox -e run-cmd -- python docs/sources/build_pdf.py --patch-only docs/_build/latex/*.tex
+
+      - uses: xu-cheng/latex-action@v2
+        name: Compile LaTex (first pass)
+        with:
+          compiler: lualatex
+          args: --interaction=nonstopmode --halt-on-error
+          working_directory: docs/_build/latex
+          root_file: qalgebra.tex
+
+      - uses: xu-cheng/latex-action@v2
+        name: Compile LaTex (second pass)
+        with:
+          compiler: lualatex
+          args: --interaction=nonstopmode --halt-on-error
+          working_directory: docs/_build/latex
+          root_file: qalgebra.tex
 
       - name: Get the version
         id: get_version
@@ -39,15 +60,16 @@ jobs:
       - name: Zip the HTML documentation
         run: zip-folder --debug --auto-root --outfile "qalgebra-docs-${{ steps.get_version.outputs.VERSION }}.zip" docs/_build/html
 
+      - name: Rename the PDF documentation
+        run: mv docs/_build/latex/qalgebra.pdf "qalgebra-docs-${{ steps.get_version.outputs.VERSION }}.pdf"
+
       - uses: actions/upload-artifact@v2
         name: Upload documentation artifacts
         with:
           name: qalgebra-docs
-          # We must have multiple files in the artifact so we don't end up with a confusing double-zip file
-          # Hence, we add the README as a "filler"
           path: |
-            ./qalgebra-*.zip
-            README.rst
+            ./qalgebra-docs-${{ steps.get_version.outputs.VERSION }}.zip
+            ./qalgebra-docs-${{ steps.get_version.outputs.VERSION }}.pdf
 
   deploy_gh_pages:
     name: Deploy documentation to gh-pages
