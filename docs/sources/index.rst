@@ -12,13 +12,17 @@ Welcome to QAlgebra's documentation!
       :alt: QAlgebra on the Python Package Index
       :target: https://pypi.python.org/pypi/qalgebra
    
-   .. image:: https://github.com/QAlgebra/qalgebra/workflows/Docs/badge.svg?branch=master
+   .. image:: https://img.shields.io/badge/Docs-gh--pages-blue.svg 
       :alt: Documentation
-      :target: https://github.com/QAlgebra/qalgebra/actions?query=master%3ADocs
+      :target: https://qalgebra.github.io/qalgebra/
+
+   .. image:: https://github.com/QAlgebra/qalgebra/workflows/Docs/badge.svg?branch=master
+      :alt: Docs
+      :target: https://github.com/QAlgebra/qalgebra/actions?query=workflow%3ADocs
    
    .. image:: https://github.com/QAlgebra/qalgebra/workflows/Tests/badge.svg?branch=master
       :alt: Tests
-      :target: https://github.com/QAlgebra/qalgebra/actions?query=master%3ATests
+      :target: https://github.com/QAlgebra/qalgebra/actions?query=workflow%3ATests
    
    .. image:: https://img.shields.io/coveralls/github/QAlgebra/qalgebra/master.svg
       :alt: Coveralls
