@@ -1,1 +1,2 @@
-.. include:: ../../README.rst
+.. mdinclude:: ../../README.md
+   :start-line: 16

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Welcome to QAlgebra’s documentation! &mdash; QAlgebra 2.0.0-dev (9e582ed) documentation</title>
+  <title>Welcome to QAlgebra’s documentation! &mdash; QAlgebra 0.2.0-rc1 documentation</title>
   
 
   
@@ -31,7 +31,6 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
         <script src="_static/doctr-versions-menu.js"></script>
@@ -44,7 +43,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="QAlgebra" href="readme.html" /> 
+    <link rel="next" title="Installation" href="readme.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -68,7 +67,7 @@
             
             
               <div class="version">
-                2.0.0-dev
+                0.2.0-rc1
               </div>
             
           
@@ -95,7 +94,8 @@
             
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="readme.html">Installation &amp; Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readme.html#usage">Usage</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Quantum Algebra</span></p>
 <ul>
@@ -207,21 +207,18 @@
 </style>
 <div class="section" id="welcome-to-qalgebra-s-documentation">
 <h1>Welcome to QAlgebra’s documentation!<a class="headerlink" href="#welcome-to-qalgebra-s-documentation" title="Permalink to this headline">¶</a></h1>
-<a class="reference external image-reference" href="https://github.com/qalgebra/qalgebra"><img alt="Source code on Github" src="https://img.shields.io/badge/github-qalgebra/qalgebra-blue.svg" /></a>
-<a class="reference external image-reference" href="https://qalgebra.github.io/qalgebra/"><img alt="Documentation" src="https://img.shields.io/badge/docs-doctr-blue.svg" /></a>
+<a class="reference external image-reference" href="https://github.com/qalgebra/qalgebra"><img alt="Source code on Github" src="https://img.shields.io/badge/qalgebra-qalgebra-blue.svg?logo=github" /></a>
 <a class="reference external image-reference" href="https://pypi.python.org/pypi/qalgebra"><img alt="QAlgebra on the Python Package Index" src="https://img.shields.io/pypi/v/qalgebra.svg" /></a>
-<a class="reference external image-reference" href="https://travis-ci.org/qalgebra/qalgebra"><img alt="Travis Continuous Integration" src="https://img.shields.io/travis/qalgebra/qalgebra.svg" /></a>
-<a class="reference external image-reference" href="https://ci.appveyor.com/project/goerz/qalgebra"><img alt="AppVeyor Continuous Integration" src="https://ci.appveyor.com/api/projects/status/ryq6xbm702ogosqk/branch/master?svg=true" /></a>
+<a class="reference external image-reference" href="https://qalgebra.github.io/qalgebra/"><img alt="Documentation" src="https://img.shields.io/badge/Docs-gh--pages-blue.svg" /></a>
+<a class="reference external image-reference" href="https://github.com/QAlgebra/qalgebra/actions?query=workflow%3ADocs"><img alt="Docs" src="https://github.com/QAlgebra/qalgebra/workflows/Docs/badge.svg?branch=master" /></a>
+<a class="reference external image-reference" href="https://github.com/QAlgebra/qalgebra/actions?query=workflow%3ATests"><img alt="Tests" src="https://github.com/QAlgebra/qalgebra/workflows/Tests/badge.svg?branch=master" /></a>
 <a class="reference external image-reference" href="https://coveralls.io/github/QAlgebra/qalgebra"><img alt="Coveralls" src="https://img.shields.io/coveralls/github/QAlgebra/qalgebra/master.svg" /></a>
 <a class="reference external image-reference" href="https://opensource.org/licenses/MIT"><img alt="MIT License" src="https://img.shields.io/badge/License-MIT-green.svg" /></a>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="readme.html">Installation &amp; Usage</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="readme.html#installation">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="readme.html#usage">Usage</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readme.html#usage">Usage</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
@@ -272,7 +269,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="history.html">History</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="history.html#dev-2020-02-06">0.2.0-dev (2020-02-06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html#id1">0.2.0 (2020-12-30)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html#id2">0.1.0 (2018-12-06)</a></li>
 </ul>
 </li>
 </ul>
@@ -297,7 +295,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="readme.html" class="btn btn-neutral float-right" title="QAlgebra" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="readme.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>
@@ -310,7 +308,7 @@
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Nov 25, 2020.
+        Last updated on Dec 30, 2020.
       </span>
 
     </p>

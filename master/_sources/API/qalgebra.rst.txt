@@ -217,7 +217,7 @@ qalgebra package
        * - :class:`SpinSpace <qalgebra.library.spin_algebra.SpinSpace>`
          - A Hilbert space for an integer or half-integer spin system.
        * - :class:`Squeeze <qalgebra.library.fock_operators.Squeeze>`
-         - Unitary squeezing operator
+         - Unitary squeezing operator.
        * - :class:`State <qalgebra.core.state_algebra.State>`
          - Base class for states in a Hilbert space
        * - :class:`StateDerivative <qalgebra.core.state_algebra.StateDerivative>`

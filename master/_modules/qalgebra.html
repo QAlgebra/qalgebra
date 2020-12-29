@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra &mdash; QAlgebra 2.0.0-dev (9e582ed) documentation</title>
+  <title>qalgebra &mdash; QAlgebra 0.2.0-rc1 documentation</title>
   
 
   
@@ -31,7 +31,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
         <script src="../_static/clipboard.min.js"></script>
         <script src="../_static/copybutton.js"></script>
         <script src="../_static/doctr-versions-menu.js"></script>
@@ -67,7 +66,7 @@
             
             
               <div class="version">
-                2.0.0-dev
+                0.2.0-rc1
               </div>
             
           
@@ -94,7 +93,8 @@
             
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../readme.html">Installation &amp; Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#usage">Usage</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Quantum Algebra</span></p>
 <ul>
@@ -197,21 +197,22 @@
 <span class="kn">import</span> <span class="nn">qalgebra._flat_api_tools</span>
 <span class="kn">import</span> <span class="nn">qalgebra._rules</span>
 
+
 <span class="vm">__doc__</span> <span class="o">+=</span> <span class="n">qalgebra</span><span class="o">.</span><span class="n">_flat_api_tools</span><span class="o">.</span><span class="vm">__doc__</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># will be extended by _import_submodules</span>
 
 <span class="n">__known_refs__</span> <span class="o">=</span> <span class="p">{}</span>
 
-<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;2.0.0-dev&quot;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;0.2.0-rc1&#39;</span>
 
 
 <span class="k">def</span> <span class="nf">_git_version</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;If installed with &#39;pip installe -e .&#39; from inside a git repo, the</span>
 <span class="sd">    current git revision as a string&quot;&quot;&quot;</span>
 
-    <span class="kn">import</span> <span class="nn">subprocess</span>
     <span class="kn">import</span> <span class="nn">os</span>
+    <span class="kn">import</span> <span class="nn">subprocess</span>
 
     <span class="k">def</span> <span class="nf">_minimal_ext_cmd</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>
         <span class="c1"># construct minimal environment</span>
@@ -251,8 +252,8 @@
 <span class="sd">            in :class:`.OperatorSymbol`</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">qalgebra.core.hilbert_space_algebra</span> <span class="kn">import</span> <span class="n">LocalSpace</span>
     <span class="kn">from</span> <span class="nn">qalgebra.core.abstract_quantum_algebra</span> <span class="kn">import</span> <span class="n">QuantumExpression</span>
+    <span class="kn">from</span> <span class="nn">qalgebra.core.hilbert_space_algebra</span> <span class="kn">import</span> <span class="n">LocalSpace</span>
 
     <span class="n">default_hs_cls</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span>
         <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="s1">&#39;qalgebra&#39;</span><span class="p">),</span> <span class="n">default_hs_cls</span>
@@ -285,7 +286,7 @@
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Nov 25, 2020.
+        Last updated on Dec 30, 2020.
       </span>
 
     </p>

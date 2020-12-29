@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qalgebra.library.fock_operators module &mdash; QAlgebra 2.0.0-dev (9e582ed) documentation</title>
+  <title>qalgebra.library.fock_operators module &mdash; QAlgebra 0.2.0-rc1 documentation</title>
   
 
   
@@ -31,7 +31,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
         <script src="../_static/clipboard.min.js"></script>
         <script src="../_static/copybutton.js"></script>
         <script src="../_static/doctr-versions-menu.js"></script>
@@ -69,7 +68,7 @@
             
             
               <div class="version">
-                2.0.0-dev
+                0.2.0-rc1
               </div>
             
           
@@ -96,7 +95,8 @@
             
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../readme.html">Installation &amp; Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#usage">Usage</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Quantum Algebra</span></p>
 <ul>
@@ -262,7 +262,7 @@
 <td><p>Unitary “phase” operator</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.library.fock_operators.Squeeze" title="qalgebra.library.fock_operators.Squeeze"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Squeeze</span></code></a></p></td>
-<td><p>Unitary squeezing operator</p></td>
+<td><p>Unitary squeezing operator.</p></td>
 </tr>
 </tbody>
 </table>
@@ -399,10 +399,10 @@ argument.</p>
 <dt id="qalgebra.library.fock_operators.Squeeze">
 <em class="property">class </em><code class="sig-prename descclassname">qalgebra.library.fock_operators.</code><code class="sig-name descname">Squeeze</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">hs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/library/fock_operators.html#Squeeze"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.library.fock_operators.Squeeze" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.LocalOperator" title="qalgebra.core.operator_algebra.LocalOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.operator_algebra.LocalOperator</span></code></a></p>
-<p>Unitary squeezing operator</p>
+<p>Unitary squeezing operator.</p>
 <div class="math notranslate nohighlight">
 \[\Op{S}_{\rm hs}(\eta) =
-\exp {\left( \frac{\eta}{2} {\Op{a}_{\rm hs}^\dagger}^2 -
+\exp {\left( \frac{\eta}{2} \left(\Op{a}_{\rm hs}^\dagger\right)^2 -
              \frac{\eta^*}{2} {\Op{a}_{\rm hs}}^2 \right)}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\Op{a}_{\rm hs}\)</span> is the annihilation operator acting on the
 <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a> <cite>hs</cite>.</p>
@@ -461,7 +461,7 @@ argument.</p>
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Nov 25, 2020.
+        Last updated on Dec 30, 2020.
       </span>
 
     </p>

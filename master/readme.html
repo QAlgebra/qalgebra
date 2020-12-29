@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>QAlgebra &mdash; QAlgebra 2.0.0-dev (9e582ed) documentation</title>
+  <title>Installation &mdash; QAlgebra 0.2.0-rc1 documentation</title>
   
 
   
@@ -31,7 +31,6 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
         <script src="_static/doctr-versions-menu.js"></script>
@@ -69,7 +68,7 @@
             
             
               <div class="version">
-                2.0.0-dev
+                0.2.0-rc1
               </div>
             
           
@@ -96,11 +95,8 @@
             
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation &amp; Usage</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#usage">Usage</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Quantum Algebra</span></p>
 <ul>
@@ -169,7 +165,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>QAlgebra</li>
+      <li>Installation</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -210,38 +206,24 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="qalgebra">
-<h1>QAlgebra<a class="headerlink" href="#qalgebra" title="Permalink to this headline">¶</a></h1>
-<a class="reference external image-reference" href="https://github.com/qalgebra/qalgebra"><img alt="Source code on Github" src="https://img.shields.io/badge/github-qalgebra/qalgebra-blue.svg" /></a>
-<a class="reference external image-reference" href="https://qalgebra.github.io/qalgebra/"><img alt="Documentation" src="https://img.shields.io/badge/docs-doctr-blue.svg" /></a>
-<a class="reference external image-reference" href="https://pypi.python.org/pypi/qalgebra"><img alt="QAlgebra on the Python Package Index" src="https://img.shields.io/pypi/v/qalgebra.svg" /></a>
-<a class="reference external image-reference" href="https://travis-ci.org/qalgebra/qalgebra"><img alt="Travis Continuous Integration" src="https://img.shields.io/travis/qalgebra/qalgebra.svg" /></a>
-<a class="reference external image-reference" href="https://ci.appveyor.com/project/goerz/qalgebra"><img alt="AppVeyor Continuous Integration" src="https://ci.appveyor.com/api/projects/status/ryq6xbm702ogosqk/branch/master?svg=true" /></a>
-<a class="reference external image-reference" href="https://coveralls.io/github/QAlgebra/qalgebra"><img alt="Coveralls" src="https://img.shields.io/coveralls/github/QAlgebra/qalgebra/master.svg" /></a>
-<a class="reference external image-reference" href="https://opensource.org/licenses/MIT"><img alt="MIT License" src="https://img.shields.io/badge/License-MIT-green.svg" /></a>
-<p>Python package for symbolic quantum algebra</p>
-<p>Development of QAlgebra happens on <a class="reference external" href="https://github.com/qalgebra/qalgebra">Github</a>.
-You can read the full documentation <a class="reference external" href="https://qalgebra.github.io/qalgebra/">online</a>.</p>
 <div class="section" id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
 <p>To install the latest released version of QAlgebra, run this command in your terminal:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install qalgebra
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">qalgebra</span>
 </pre></div>
 </div>
 <p>This is the preferred method to install QAlgebra, as it will always install the most recent stable release.</p>
-<p>If you don’t have <a class="reference external" href="https://pip.pypa.io">pip</a> installed, the <a class="reference external" href="http://docs.python-guide.org/en/latest/starting/installation/">Python installation guide</a>, respectively the <a class="reference external" href="https://packaging.python.org/tutorials/installing-packages/">Python Packaging User Guide</a>  can guide
-you through the process.</p>
+<p>If you don’t have <a class="reference external" href="https://pip.pypa.io">pip</a> installed, the <a class="reference external" href="http://docs.python-guide.org/en/latest/starting/installation/">Python installation guide</a>, respectively the <a class="reference external" href="https://packaging.python.org/tutorials/installing-packages/">Python Packaging User Guide</a> can guide you through the process.</p>
 <p>To install the latest development version of QAlgebra from <a class="reference external" href="https://github.com/qalgebra/qalgebra">Github</a>.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install git+https://github.com/qalgebra/qalgebra.git@master#egg<span class="o">=</span>qalgebra
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">qalgebra</span><span class="o">/</span><span class="n">qalgebra</span><span class="o">.</span><span class="n">git</span><span class="nd">@master</span><span class="c1">#egg=qalgebra</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
 <p>To use QAlgebra in a project:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">qalgebra</span>
 </pre></div>
-</div>
 </div>
 </div>
 
@@ -268,7 +250,7 @@ you through the process.</p>
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Nov 25, 2020.
+        Last updated on Dec 30, 2020.
       </span>
 
     </p>

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>The Printing System &mdash; QAlgebra 2.0.0-dev (9e582ed) documentation</title>
+  <title>The Printing System &mdash; QAlgebra 0.2.0-rc1 documentation</title>
   
 
   
@@ -31,7 +31,6 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
         <script src="_static/doctr-versions-menu.js"></script>
@@ -69,7 +68,7 @@
             
             
               <div class="version">
-                2.0.0-dev
+                0.2.0-rc1
               </div>
             
           
@@ -96,7 +95,8 @@
             
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="readme.html">Installation &amp; Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readme.html#usage">Usage</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Quantum Algebra</span></p>
 <ul class="current">
@@ -318,7 +318,7 @@ delegate to an internal printer object that subclasses
 the printer class is referenced at an attribute <code class="docutils literal notranslate"><span class="pre">printer</span></code> of <a class="reference internal" href="API/qalgebra.printing.html#qalgebra.printing.ascii" title="qalgebra.printing.ascii"><code class="xref py py-func docutils literal notranslate"><span class="pre">ascii()</span></code></a>.</p>
 <p>For the ultimate control in customizing the printing system, you can implement your
 own subclasses of <a class="reference internal" href="API/qalgebra.printing.base.html#qalgebra.printing.base.QalgebraBasePrinter" title="qalgebra.printing.base.QalgebraBasePrinter"><code class="xref py py-class docutils literal notranslate"><span class="pre">QalgebraBasePrinter</span></code></a>, which is in
-turn a subclass of <a class="reference external" href="https://docs.sympy.org/latest/modules/printing.html#sympy.printing.printer.Printer" title="(in SymPy v1.6.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.printing.printer.Printer</span></code></a>. Thus, the
+turn a subclass of <a class="reference external" href="https://docs.sympy.org/latest/modules/printing.html#sympy.printing.printer.Printer" title="(in SymPy v1.7.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.printing.printer.Printer</span></code></a>. Thus, the
 overview of <a class="reference external" href="http://docs.sympy.org/latest/modules/printing.html#module-sympy.printing.printer">SymPy’s printing system</a> applies.</p>
 <p>The QAlgebra printers conceptually extend SymPy printers in the following ways:</p>
 <ul class="simple">
@@ -439,7 +439,7 @@ particular printer.</p>
         
         &copy; Copyright 2020, Michael Goerz
       <span class="lastupdated">
-        Last updated on Nov 25, 2020.
+        Last updated on Dec 30, 2020.
       </span>
 
     </p>
