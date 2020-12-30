@@ -14,21 +14,22 @@ import importlib
 import qalgebra._flat_api_tools
 import qalgebra._rules
 
+
 __doc__ += qalgebra._flat_api_tools.__doc__
 
 __all__ = []  # will be extended by _import_submodules
 
 __known_refs__ = {}
 
-__version__ = "2.0.0-dev"
+__version__ = "0.1.0+dev"
 
 
 def _git_version():
     """If installed with 'pip installe -e .' from inside a git repo, the
     current git revision as a string"""
 
-    import subprocess
     import os
+    import subprocess
 
     def _minimal_ext_cmd(cmd):
         # construct minimal environment
@@ -68,8 +69,8 @@ def init_algebra(*, default_hs_cls='LocalSpace'):
             in :class:`.OperatorSymbol`
 
     """
-    from qalgebra.core.hilbert_space_algebra import LocalSpace
     from qalgebra.core.abstract_quantum_algebra import QuantumExpression
+    from qalgebra.core.hilbert_space_algebra import LocalSpace
 
     default_hs_cls = getattr(
         importlib.import_module('qalgebra'), default_hs_cls
