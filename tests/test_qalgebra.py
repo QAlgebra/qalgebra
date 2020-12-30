@@ -9,5 +9,5 @@ import qalgebra
 def test_valid_version():
     """Check that the package defines a valid ``__version__``."""
     v_curr = parse_version(qalgebra.__version__)
-    v_orig = parse_version("0.2.0-dev")
+    v_orig = parse_version("0.1.0")
     assert v_curr >= v_orig
