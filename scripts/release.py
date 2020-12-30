@@ -279,12 +279,12 @@ def set_version(filename, version):
 
 
 def edit_history(version):
-    """Interactively edit HISTORY.rst"""
+    """Interactively edit HISTORY.md"""
     click.echo(
-        "Edit HISTORY.rst to add changelog and release date for %s" % version
+        "Edit HISTORY.md to add changelog and release date for %s" % version
     )
-    edit('HISTORY.rst')
-    click.confirm("Is HISTORY.rst up to date?", default=True, abort=True)
+    edit('HISTORY.md')
+    click.confirm("Is HISTORY.md up to date?", default=True, abort=True)
 
 
 def check_dist():
