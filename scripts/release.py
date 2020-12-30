@@ -41,9 +41,9 @@ def make_release(package_name):
     check_docs()
     run_tests()
     push_release_commit()
-    make_upload(test=True)
-    make_upload(test=False)
+    # make_upload(test=True)  # Done by Github Actions
     make_and_push_tag(new_version)
+    # make_upload(test=False)  # Done by Github Actions
     next_dev_version = new_version + '+dev'
     set_version(
         join('.', 'src', package_name, '__init__.py'), next_dev_version
@@ -318,7 +318,14 @@ def make_release_commit(version):
     """Commit Release"""
     click.confirm("Make release commit?", default=True, abort=True)
     run(
-        ['git', 'commit', '-a', '-m', "Release %s" % version,], check=True,
+        [
+            'git',
+            'commit',
+            '-a',
+            '-m',
+            "Release %s" % version,
+        ],
+        check=True,
     )
 
 
@@ -367,10 +374,41 @@ def push_release_commit():
 def make_and_push_tag(version):
     """Tag the current commit and push that tag to origin"""
     click.confirm(
-        "Push tag '%s' to origin?" % version, default=True, abort=True
+        "Create signed tag v'%s' and push to origin?" % version,
+        default=True,
+        abort=True,
     )
-    run(['git', 'tag', "-s", "v%s" % version], check=True)
-    run(['git', 'push', '--tags', 'origin'], check=True)
+    click.confirm(
+        (
+            "Please use 'Release %s' as the message title, and the full "
+            "release notes in markdown format as the message body."
+        )
+        % version,
+        default=True,
+        abort=False,
+    )
+    try:
+        run(['git', 'tag', "-s", "v%s" % version], check=True)
+    except CalledProcessError as exc_info:
+        click.echo(
+            "Failed to create signed tag 'v%s': %s" % (version, str(exc_info))
+        )
+        click.echo(
+            "Please create signed tag manually (git tag -s v%s)" % version
+        )
+        click.confirm("Continue with pushing tag to origin?", default=True)
+    try:
+        run(['git', 'push', '--tags', 'origin'], check=True)
+    except CalledProcessError as exc_info:
+        click.confirm(
+            (
+                "Failed to push tags: %s. "
+                "Please push manually (git push --tags origin). "
+                "Continue?"
+            )
+            % str(exc_info),
+            default=True,
+        )
 
 
 def make_next_dev_version_commit(version):
