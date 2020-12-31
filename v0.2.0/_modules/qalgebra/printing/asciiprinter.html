@@ -1,0 +1,1063 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>qalgebra.printing.asciiprinter &mdash; QAlgebra 0.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/mycss.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/doctr-versions-menu.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html#usage">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Quantum Algebra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../symbolic_algebra.html">Symbolic Algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../printing.html">The Printing System</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../history.html">History</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../library_structure.html">Library Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../API/qalgebra.html">API of the QAlgebra package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../qalgebra.html">qalgebra</a> &raquo;</li>
+        
+          <li><a href="../printing.html">qalgebra.printing</a> &raquo;</li>
+        
+      <li>qalgebra.printing.asciiprinter</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for qalgebra.printing.asciiprinter</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;ASCII Printer&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">..core.exceptions</span> <span class="kn">import</span> <span class="n">BasisNotSetError</span>
+<span class="kn">from</span> <span class="nn">..utils.singleton</span> <span class="kn">import</span> <span class="n">Singleton</span>
+<span class="kn">from</span> <span class="nn">._precedence</span> <span class="kn">import</span> <span class="n">PRECEDENCE</span><span class="p">,</span> <span class="n">precedence</span>
+<span class="kn">from</span> <span class="nn">.base</span> <span class="kn">import</span> <span class="n">QalgebraBasePrinter</span>
+<span class="kn">from</span> <span class="nn">.sympy</span> <span class="kn">import</span> <span class="n">SympyStrPrinter</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">__private__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;QalgebraAsciiPrinter&#39;</span><span class="p">,</span> <span class="s1">&#39;QalgebraAsciiDefaultPrinter&#39;</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="QalgebraAsciiPrinter"><a class="viewcode-back" href="../../../API/qalgebra.printing.asciiprinter.html#qalgebra.printing.asciiprinter.QalgebraAsciiPrinter">[docs]</a><span class="k">class</span> <span class="nc">QalgebraAsciiPrinter</span><span class="p">(</span><span class="n">QalgebraBasePrinter</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Printer for a string (ASCII) representation.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        _parenth_left (str): String to use for a left parenthesis</span>
+<span class="sd">            (e.g. &#39;\left(&#39; in LaTeX).</span>
+<span class="sd">        _parenth_left (str): String to use for a right parenthesis</span>
+<span class="sd">        _dagger_sym (str): Symbol that indicates the complex conjugate of an</span>
+<span class="sd">            operator.</span>
+<span class="sd">        _tensor_sym (str): Symbol to use for tensor products.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">sympy_printer_cls</span> <span class="o">=</span> <span class="n">SympyStrPrinter</span>
+    <span class="n">printmethod</span> <span class="o">=</span> <span class="s1">&#39;_ascii&#39;</span>
+
+    <span class="n">_default_settings</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;show_hs_label&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># alternatively: False, &#39;subscript&#39;</span>
+        <span class="s1">&#39;sig_as_ketbra&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">_parenth_left</span> <span class="o">=</span> <span class="s1">&#39;(&#39;</span>
+    <span class="n">_parenth_right</span> <span class="o">=</span> <span class="s1">&#39;)&#39;</span>
+    <span class="n">_bracket_left</span> <span class="o">=</span> <span class="s1">&#39;[&#39;</span>
+    <span class="n">_bracket_right</span> <span class="o">=</span> <span class="s1">&#39;]&#39;</span>
+    <span class="n">_dagger_sym</span> <span class="o">=</span> <span class="s1">&#39;H&#39;</span>
+    <span class="n">_tensor_sym</span> <span class="o">=</span> <span class="s1">&#39;*&#39;</span>  <span class="c1"># used by _render_hs_label</span>
+    <span class="n">_product_sym</span> <span class="o">=</span> <span class="s1">&#39;*&#39;</span>
+    <span class="n">_cid</span> <span class="o">=</span> <span class="s1">&#39;cid(</span><span class="si">%d</span><span class="s1">)&#39;</span>
+    <span class="n">_sum_sym</span> <span class="o">=</span> <span class="s1">&#39;Sum&#39;</span>
+    <span class="n">_element_sym</span> <span class="o">=</span> <span class="s1">&#39;in&#39;</span>
+    <span class="n">_ellipsis</span> <span class="o">=</span> <span class="s1">&#39;...&#39;</span>
+    <span class="n">_set_delim_left</span> <span class="o">=</span> <span class="s1">&#39;{&#39;</span>
+    <span class="n">_set_delim_right</span> <span class="o">=</span> <span class="s1">&#39;}&#39;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_spaced_product_sym</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_product_sym</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_product_sym</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot; </span><span class="si">%s</span><span class="s2"> &quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_product_sym</span>
+
+    <span class="k">def</span> <span class="nf">_split_identifier</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">identifier</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Split the given identifier at the first underscore into (rendered)</span>
+<span class="sd">        name and subscript. Both `name` and `subscript` are rendered as</span>
+<span class="sd">        strings&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">name</span><span class="p">,</span> <span class="n">subscript</span> <span class="o">=</span> <span class="n">identifier</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">AttributeError</span><span class="p">):</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">identifier</span>
+            <span class="n">subscript</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_str</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_str</span><span class="p">(</span><span class="n">subscript</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_split_op</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">identifier</span><span class="p">,</span> <span class="n">hs_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dagger</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return `name`, total `subscript`, total `superscript` and</span>
+<span class="sd">        `arguments` str. All of the returned strings are fully rendered.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            identifier (str or SymbolicLabelBase): A (non-rendered/ascii)</span>
+<span class="sd">                identifier that may include a subscript. The output `name` will</span>
+<span class="sd">                be the `identifier` without any subscript</span>
+<span class="sd">            hs_label (str): The rendered label for the Hilbert space of the</span>
+<span class="sd">                operator, or None. Returned unchanged.</span>
+<span class="sd">            dagger (bool): Flag to indicate whether the operator is daggered.</span>
+<span class="sd">                If True, :attr:`dagger_sym` will be included in the</span>
+<span class="sd">                `superscript` (or  `subscript`, depending on the settings)</span>
+<span class="sd">            args (list or None): List of arguments (expressions). Each element</span>
+<span class="sd">                will be rendered with :meth:`doprint`. The total list of args</span>
+<span class="sd">                will then be joined with commas, enclosed</span>
+<span class="sd">                with :attr:`_parenth_left` and :attr:`parenth_right`, and</span>
+<span class="sd">                returnd as the `arguments` string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_isinstance</span><span class="p">(</span><span class="n">identifier</span><span class="p">,</span> <span class="s1">&#39;SymbolicLabelBase&#39;</span><span class="p">):</span>
+            <span class="n">identifier</span> <span class="o">=</span> <span class="n">QalgebraAsciiDefaultPrinter</span><span class="p">()</span><span class="o">.</span><span class="n">_print_SCALAR_TYPES</span><span class="p">(</span>
+                <span class="n">identifier</span><span class="o">.</span><span class="n">expr</span>
+            <span class="p">)</span>
+        <span class="n">name</span><span class="p">,</span> <span class="n">total_subscript</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_split_identifier</span><span class="p">(</span><span class="n">identifier</span><span class="p">)</span>
+        <span class="n">total_superscript</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">if</span> <span class="n">hs_label</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">[</span><span class="s1">&#39;show_hs_label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;subscript&#39;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">total_subscript</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">total_subscript</span> <span class="o">=</span> <span class="s1">&#39;(&#39;</span> <span class="o">+</span> <span class="n">hs_label</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">total_subscript</span> <span class="o">+=</span> <span class="s1">&#39;,(&#39;</span> <span class="o">+</span> <span class="n">hs_label</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">total_superscript</span> <span class="o">+=</span> <span class="s1">&#39;(&#39;</span> <span class="o">+</span> <span class="n">hs_label</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
+        <span class="k">if</span> <span class="n">dagger</span><span class="p">:</span>
+            <span class="n">total_superscript</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dagger_sym</span>
+        <span class="n">args_str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">args</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="n">args_str</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_left</span>
+                <span class="o">+</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">])</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_right</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">name</span><span class="p">,</span> <span class="n">total_subscript</span><span class="p">,</span> <span class="n">total_superscript</span><span class="p">,</span> <span class="n">args_str</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_is_single_letter</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">label</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">_render_hs_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the label of the given Hilbert space as a string&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">hs</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="n">Singleton</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_str</span><span class="p">(</span><span class="n">hs</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tensor_sym</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_render_str</span><span class="p">(</span><span class="n">ls</span><span class="o">.</span><span class="n">label</span><span class="p">)</span> <span class="k">for</span> <span class="n">ls</span> <span class="ow">in</span> <span class="n">hs</span><span class="o">.</span><span class="n">local_factors</span><span class="p">]</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_render_state_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_isinstance</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="s1">&#39;SymbolicLabelBase&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_print_SCALAR_TYPES</span><span class="p">(</span><span class="n">label</span><span class="o">.</span><span class="n">expr</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_str</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_braket_fmt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr_type</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a format string for printing an `expr_type`</span>
+<span class="sd">        ket/bra/ketbra/braket&quot;&quot;&quot;</span>
+        <span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;bra&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="kc">True</span><span class="p">:</span> <span class="s1">&#39;&lt;</span><span class="si">{label}</span><span class="s1">|^(</span><span class="si">{space}</span><span class="s1">)&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;subscript&#39;</span><span class="p">:</span> <span class="s1">&#39;&lt;</span><span class="si">{label}</span><span class="s1">|_(</span><span class="si">{space}</span><span class="s1">)&#39;</span><span class="p">,</span>
+                <span class="kc">False</span><span class="p">:</span> <span class="s1">&#39;&lt;</span><span class="si">{label}</span><span class="s1">|&#39;</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="s1">&#39;ket&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="kc">True</span><span class="p">:</span> <span class="s1">&#39;|</span><span class="si">{label}</span><span class="s1">&gt;^(</span><span class="si">{space}</span><span class="s1">)&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;subscript&#39;</span><span class="p">:</span> <span class="s1">&#39;|</span><span class="si">{label}</span><span class="s1">&gt;_(</span><span class="si">{space}</span><span class="s1">)&#39;</span><span class="p">,</span>
+                <span class="kc">False</span><span class="p">:</span> <span class="s1">&#39;|</span><span class="si">{label}</span><span class="s1">&gt;&#39;</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="s1">&#39;ketbra&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="kc">True</span><span class="p">:</span> <span class="s1">&#39;|</span><span class="si">{label_i}</span><span class="s1">&gt;&lt;</span><span class="si">{label_j}</span><span class="s1">|^(</span><span class="si">{space}</span><span class="s1">)&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;subscript&#39;</span><span class="p">:</span> <span class="s1">&#39;|</span><span class="si">{label_i}</span><span class="s1">&gt;&lt;</span><span class="si">{label_j}</span><span class="s1">|_(</span><span class="si">{space}</span><span class="s1">)&#39;</span><span class="p">,</span>
+                <span class="kc">False</span><span class="p">:</span> <span class="s1">&#39;|</span><span class="si">{label_i}</span><span class="s1">&gt;&lt;</span><span class="si">{label_j}</span><span class="s1">|&#39;</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="s1">&#39;braket&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="kc">True</span><span class="p">:</span> <span class="s1">&#39;&lt;</span><span class="si">{label_i}</span><span class="s1">|</span><span class="si">{label_j}</span><span class="s1">&gt;^(</span><span class="si">{space}</span><span class="s1">)&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;subscript&#39;</span><span class="p">:</span> <span class="s1">&#39;&lt;</span><span class="si">{label_i}</span><span class="s1">|</span><span class="si">{label_j}</span><span class="s1">&gt;_(</span><span class="si">{space}</span><span class="s1">)&#39;</span><span class="p">,</span>
+                <span class="kc">False</span><span class="p">:</span> <span class="s1">&#39;&lt;</span><span class="si">{label_i}</span><span class="s1">|</span><span class="si">{label_j}</span><span class="s1">&gt;&#39;</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">}</span>
+        <span class="n">hs_setting</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">[</span><span class="s1">&#39;show_hs_label&#39;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">[</span><span class="s1">&#39;show_hs_label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;subscript&#39;</span><span class="p">:</span>
+            <span class="n">hs_setting</span> <span class="o">=</span> <span class="s1">&#39;subscript&#39;</span>
+        <span class="k">return</span> <span class="n">mapping</span><span class="p">[</span><span class="n">expr_type</span><span class="p">][</span><span class="n">hs_setting</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_render_op</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">identifier</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dagger</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">superop</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Render an operator</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            identifier (str or SymbolicLabelBase): The identifier (name/symbol)</span>
+<span class="sd">                of the operator. May include a subscript, denoted by &#39;_&#39;.</span>
+<span class="sd">            hs (qalgebra.hilbert_space_algebra.HilbertSpace): The Hilbert</span>
+<span class="sd">                space in which the operator is defined</span>
+<span class="sd">            dagger (bool): Whether the operator should be daggered</span>
+<span class="sd">            args (list): A list of expressions that will be rendered with</span>
+<span class="sd">                :meth:`doprint`, joined with commas, enclosed in parenthesis</span>
+<span class="sd">            superop (bool): Whether the operator is a super-operator</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">hs_label</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">hs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">[</span><span class="s1">&#39;show_hs_label&#39;</span><span class="p">]:</span>
+            <span class="n">hs_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_hs_label</span><span class="p">(</span><span class="n">hs</span><span class="p">)</span>
+        <span class="n">name</span><span class="p">,</span> <span class="n">total_subscript</span><span class="p">,</span> <span class="n">total_superscript</span><span class="p">,</span> <span class="n">args_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_split_op</span><span class="p">(</span>
+            <span class="n">identifier</span><span class="p">,</span> <span class="n">hs_label</span><span class="p">,</span> <span class="n">dagger</span><span class="p">,</span> <span class="n">args</span>
+        <span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">total_subscript</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">total_subscript</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">total_superscript</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="s2">&quot;^&quot;</span> <span class="o">+</span> <span class="n">total_superscript</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args_str</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="n">args_str</span>
+        <span class="k">return</span> <span class="n">res</span>
+
+<div class="viewcode-block" id="QalgebraAsciiPrinter.parenthesize"><a class="viewcode-back" href="../../../API/qalgebra.printing.asciiprinter.html#qalgebra.printing.asciiprinter.QalgebraAsciiPrinter.parenthesize">[docs]</a>    <span class="k">def</span> <span class="nf">parenthesize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Render `expr` and wrap the result in parentheses if the precedence</span>
+<span class="sd">        of `expr` is below the given `level` (or at the given `level` if</span>
+<span class="sd">        `strict` is True. Extra `args` and `kwargs` are passed to the internal</span>
+<span class="sd">        `doit` renderer&quot;&quot;&quot;</span>
+        <span class="n">needs_parenths</span> <span class="o">=</span> <span class="p">(</span><span class="n">precedence</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">level</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span>
+            <span class="n">strict</span> <span class="ow">and</span> <span class="n">precedence</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span> <span class="o">==</span> <span class="n">level</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">needs_parenths</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_left</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_right</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_print_tuple</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_left</span>
+            <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">expr</span><span class="p">])</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_right</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_bracket_left</span>
+            <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">expr</span><span class="p">])</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bracket_right</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_HilbertSpace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">r</span><span class="s1">&#39;H_</span><span class="si">{label}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_render_hs_label</span><span class="p">(</span><span class="n">expr</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_print_ProductSpace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="n">tensor_sym</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tensor_sym</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span>
+        <span class="k">return</span> <span class="n">tensor_sym</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">op</span><span class="p">)</span> <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">operands</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">_print_OperatorSymbol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_op</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">expr</span><span class="o">.</span><span class="n">_hs</span><span class="p">,</span> <span class="n">dagger</span><span class="o">=</span><span class="n">adjoint</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">sym_args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_left</span>
+                <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">sym_args</span><span class="p">])</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_right</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">res</span>
+
+    <span class="k">def</span> <span class="nf">_print_LocalOperator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">adjoint</span><span class="p">:</span>
+            <span class="n">dagger</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">expr</span><span class="o">.</span><span class="n">_dagger</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">dagger</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">_dagger</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_op</span><span class="p">(</span>
+            <span class="n">expr</span><span class="o">.</span><span class="n">identifier</span><span class="p">,</span> <span class="n">expr</span><span class="o">.</span><span class="n">_hs</span><span class="p">,</span> <span class="n">dagger</span><span class="o">=</span><span class="n">dagger</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">expr</span><span class="o">.</span><span class="n">args</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_LocalSigma</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_settings</span><span class="p">[</span><span class="s1">&#39;sig_as_ketbra&#39;</span><span class="p">]:</span>
+            <span class="n">fmt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_braket_fmt</span><span class="p">(</span><span class="s1">&#39;ketbra&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">adjoint</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">label_i</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_render_state_label</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">k</span><span class="p">),</span>
+                    <span class="n">label_j</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_render_state_label</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">j</span><span class="p">),</span>
+                    <span class="n">space</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_render_hs_label</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">space</span><span class="p">),</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">label_i</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_render_state_label</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">j</span><span class="p">),</span>
+                    <span class="n">label_j</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_render_state_label</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">k</span><span class="p">),</span>
+                    <span class="n">space</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_render_hs_label</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">space</span><span class="p">),</span>
+                <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">expr</span><span class="o">.</span><span class="n">j</span> <span class="o">==</span> <span class="n">expr</span><span class="o">.</span><span class="n">k</span><span class="p">:</span>
+                <span class="n">identifier</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">_identifier_projector</span><span class="p">,</span> <span class="n">expr</span><span class="o">.</span><span class="n">j</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">adjoint</span><span class="p">:</span>
+                    <span class="n">identifier</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_</span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">identifier</span><span class="p">,</span> <span class="n">expr</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="n">expr</span><span class="o">.</span><span class="n">j</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">identifier</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_</span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">identifier</span><span class="p">,</span> <span class="n">expr</span><span class="o">.</span><span class="n">j</span><span class="p">,</span> <span class="n">expr</span><span class="o">.</span><span class="n">k</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_op</span><span class="p">(</span><span class="n">identifier</span><span class="p">,</span> <span class="n">expr</span><span class="o">.</span><span class="n">_hs</span><span class="p">,</span> <span class="n">dagger</span><span class="o">=</span><span class="n">adjoint</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_IdentityOperator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;1&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_print_ZeroOperator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;0&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_print_ScalarValue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">val</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_Zero</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;0&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_print_One</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;1&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_print_ScalarTimesQuantumExpression</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">prec</span> <span class="o">=</span> <span class="n">PRECEDENCE</span><span class="p">[</span><span class="s1">&#39;Mul&#39;</span><span class="p">]</span>
+        <span class="n">coeff</span><span class="p">,</span> <span class="n">term</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">coeff</span><span class="p">,</span> <span class="n">expr</span><span class="o">.</span><span class="n">term</span>
+        <span class="n">term_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">precedence</span><span class="p">(</span><span class="n">term</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">prec</span><span class="p">:</span>
+            <span class="n">term_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_left</span> <span class="o">+</span> <span class="n">term_str</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_right</span>
+
+        <span class="k">if</span> <span class="n">coeff</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">term_str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_parenth_left</span><span class="p">):</span>
+                <span class="k">return</span> <span class="s2">&quot;- &quot;</span> <span class="o">+</span> <span class="n">term_str</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">term_str</span>
+        <span class="k">if</span> <span class="s1">&#39;adjoint&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">coeff_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">coeff</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;adjoint&#39;</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">coeff_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">coeff</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">term_str</span> <span class="ow">in</span> <span class="p">[</span>
+            <span class="s1">&#39;1&#39;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_print_IdentityOperator</span><span class="p">(</span><span class="n">expr</span><span class="p">),</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_print_IdentitySuperOperator</span><span class="p">,</span>
+        <span class="p">]:</span>
+            <span class="k">return</span> <span class="n">coeff_str</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">coeff_str</span> <span class="o">=</span> <span class="n">coeff_str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">precedence</span><span class="p">(</span><span class="n">coeff</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">prec</span> <span class="ow">and</span> <span class="n">precedence</span><span class="p">(</span><span class="o">-</span><span class="n">coeff</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">prec</span><span class="p">:</span>
+                <span class="c1"># the above precedence check catches on only for true sums</span>
+                <span class="n">coeff_str</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_left</span> <span class="o">+</span> <span class="n">coeff_str</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_right</span>
+                <span class="p">)</span>
+            <span class="k">return</span> <span class="n">coeff_str</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_spaced_product_sym</span> <span class="o">+</span> <span class="n">term_str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_print_QuantumPlus</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">superop</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">prec</span> <span class="o">=</span> <span class="n">precedence</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">adjoint</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;adjoint&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">adjoint</span>
+        <span class="k">if</span> <span class="n">superop</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;superop&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">superop</span>
+        <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">args</span><span class="p">:</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">):</span>
+                <span class="n">sign</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span>
+                <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">sign</span> <span class="o">=</span> <span class="s2">&quot;+&quot;</span>
+            <span class="k">if</span> <span class="n">precedence</span><span class="p">(</span><span class="n">term</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">prec</span><span class="p">:</span>
+                <span class="n">l</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">sign</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_left</span> <span class="o">+</span> <span class="n">t</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_right</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">l</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">sign</span><span class="p">,</span> <span class="n">t</span><span class="p">])</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">sign</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">sign</span> <span class="o">==</span> <span class="s1">&#39;+&#39;</span><span class="p">:</span>
+                <span class="n">sign</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+            <span class="n">sign</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">sign</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_QuantumTimes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">prec</span> <span class="o">=</span> <span class="n">precedence</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_spaced_product_sym</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">parenthesize</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">prec</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">operands</span><span class="p">]</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_Commutator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="s2">&quot;[&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">A</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">B</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;]&quot;</span>
+        <span class="k">if</span> <span class="n">adjoint</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="s2">&quot;^&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dagger_sym</span>
+        <span class="k">return</span> <span class="n">res</span>
+
+    <span class="k">def</span> <span class="nf">_print_OperatorTrace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_hs_label</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">_over_space</span><span class="p">)</span>
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">adjoint</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;adjoint&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">adjoint</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">operand</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="sa">r</span><span class="s1">&#39;tr_(</span><span class="si">{space}</span><span class="s1">)[</span><span class="si">{operand}</span><span class="s1">]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">space</span><span class="o">=</span><span class="n">s</span><span class="p">,</span> <span class="n">operand</span><span class="o">=</span><span class="n">o</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_Adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">operand</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="s1">&#39;LocalOperator&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">adjoint</span><span class="p">:</span>
+                <span class="n">dagger</span> <span class="o">=</span> <span class="n">o</span><span class="o">.</span><span class="n">_dagger</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">dagger</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">o</span><span class="o">.</span><span class="n">_dagger</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_op</span><span class="p">(</span>
+                <span class="n">o</span><span class="o">.</span><span class="n">identifier</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">o</span><span class="o">.</span><span class="n">space</span><span class="p">,</span> <span class="n">dagger</span><span class="o">=</span><span class="n">dagger</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">o</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="s1">&#39;OperatorSymbol&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_op</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">o</span><span class="o">.</span><span class="n">space</span><span class="p">,</span> <span class="n">dagger</span><span class="o">=</span><span class="p">(</span><span class="ow">not</span> <span class="n">adjoint</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">adjoint</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_left</span>
+                    <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+                    <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_right</span>
+                    <span class="o">+</span> <span class="s2">&quot;^&quot;</span>
+                    <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dagger_sym</span>
+                <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_OperatorPlusMinusCC</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="n">prec</span> <span class="o">=</span> <span class="n">precedence</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">operand</span>
+        <span class="n">sign_str</span> <span class="o">=</span> <span class="s1">&#39; + &#39;</span>
+        <span class="k">if</span> <span class="n">expr</span><span class="o">.</span><span class="n">_sign</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">sign_str</span> <span class="o">=</span> <span class="s1">&#39; - &#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parenthesize</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">prec</span><span class="p">)</span> <span class="o">+</span> <span class="n">sign_str</span> <span class="o">+</span> <span class="s2">&quot;c.c.&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_print_PseudoInverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="n">prec</span> <span class="o">=</span> <span class="n">precedence</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parenthesize</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">operand</span><span class="p">,</span> <span class="n">prec</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;^+&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_print_NullSpaceProjector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">null_space_proj_sym</span> <span class="o">=</span> <span class="s1">&#39;P_Ker&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_op</span><span class="p">(</span>
+            <span class="n">null_space_proj_sym</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">expr</span><span class="o">.</span><span class="n">operands</span><span class="p">,</span> <span class="n">dagger</span><span class="o">=</span><span class="n">adjoint</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_KetSymbol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">adjoint</span><span class="p">:</span>
+            <span class="n">fmt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_braket_fmt</span><span class="p">(</span><span class="s1">&#39;bra&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">fmt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_braket_fmt</span><span class="p">(</span><span class="s1">&#39;ket&#39;</span><span class="p">)</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_state_label</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">sym_args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">label</span> <span class="o">+=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_left</span>
+                <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">sym_args</span><span class="p">])</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_right</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">space</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_render_hs_label</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">space</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_print_ZeroKet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;0&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_print_TrivialKet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;1&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_print_CoherentStateKet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">adjoint</span><span class="p">:</span>
+            <span class="n">fmt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_braket_fmt</span><span class="p">(</span><span class="s1">&#39;bra&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">fmt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_braket_fmt</span><span class="p">(</span><span class="s1">&#39;ket&#39;</span><span class="p">)</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_state_label</span><span class="p">(</span><span class="s1">&#39;alpha=&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">_ampl</span><span class="p">)</span>
+        <span class="n">space</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_hs_label</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">space</span><span class="o">=</span><span class="n">space</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_TensorKet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="s1">&#39;BasisKet&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">operands</span><span class="p">):</span>
+            <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_render_state_label</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">label</span><span class="p">)</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">operands</span><span class="p">]</span>
+            <span class="n">single_letters</span> <span class="o">=</span> <span class="nb">all</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_is_single_letter</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">])</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">small_hs</span> <span class="o">=</span> <span class="nb">all</span><span class="p">(</span>
+                    <span class="p">[(</span><span class="n">o</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">dimension</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">operands</span><span class="p">]</span>
+                <span class="p">)</span>
+            <span class="k">except</span> <span class="n">BasisNotSetError</span><span class="p">:</span>
+                <span class="n">small_hs</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">if</span> <span class="n">small_hs</span> <span class="ow">and</span> <span class="n">single_letters</span><span class="p">:</span>
+                <span class="n">joiner</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">joiner</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span>
+            <span class="n">label</span> <span class="o">=</span> <span class="n">joiner</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+            <span class="n">fmt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_braket_fmt</span><span class="p">(</span><span class="s1">&#39;ket&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">adjoint</span><span class="p">:</span>
+                <span class="n">fmt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_braket_fmt</span><span class="p">(</span><span class="s1">&#39;bra&#39;</span><span class="p">)</span>
+            <span class="n">space</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_hs_label</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">space</span><span class="o">=</span><span class="n">space</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">prec</span> <span class="o">=</span> <span class="n">precedence</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+            <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">if</span> <span class="n">adjoint</span><span class="p">:</span>
+                <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;adjoint&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">adjoint</span>
+            <span class="n">tensor_sym</span> <span class="o">=</span> <span class="s2">&quot; </span><span class="si">%s</span><span class="s2"> &quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tensor_sym</span>
+            <span class="k">return</span> <span class="n">tensor_sym</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">parenthesize</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">prec</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">operands</span><span class="p">]</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_OperatorTimesKet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">prec</span> <span class="o">=</span> <span class="n">precedence</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+        <span class="n">op</span><span class="p">,</span> <span class="n">ket</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">operator</span><span class="p">,</span> <span class="n">expr</span><span class="o">.</span><span class="n">ket</span>
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">adjoint</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;adjoint&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">adjoint</span>
+        <span class="n">rendered_op</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parenthesize</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">prec</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">rendered_ket</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parenthesize</span><span class="p">(</span><span class="n">ket</span><span class="p">,</span> <span class="n">prec</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">adjoint</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">rendered_ket</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">rendered_op</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">rendered_op</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">rendered_ket</span>
+
+    <span class="k">def</span> <span class="nf">_print_IndexedSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">prec</span> <span class="o">=</span> <span class="n">precedence</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">adjoint</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;adjoint&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">adjoint</span>
+        <span class="n">indices</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">bottom_rhs</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">top</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="c1"># ranges with the same limits are grouped into the same sum symbol</span>
+        <span class="k">for</span> <span class="n">index_range</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">ranges</span><span class="p">:</span>
+            <span class="n">current_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">index_range</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;bottom_index&#39;</span><span class="p">)</span>
+            <span class="n">current_bottom_rhs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">index_range</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;bottom_rhs&#39;</span><span class="p">)</span>
+            <span class="n">current_top</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">index_range</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">top</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># index_ranges after the first one</span>
+                <span class="k">if</span> <span class="n">current_top</span> <span class="o">!=</span> <span class="n">top</span> <span class="ow">or</span> <span class="n">current_bottom_rhs</span> <span class="o">!=</span> <span class="n">bottom_rhs</span><span class="p">:</span>
+                    <span class="n">res</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sum_sym</span>
+                    <span class="n">bottom</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span> <span class="o">+</span> <span class="n">bottom_rhs</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">bottom</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">res</span> <span class="o">+=</span> <span class="s1">&#39;_{</span><span class="si">%s</span><span class="s1">}&#39;</span> <span class="o">%</span> <span class="n">bottom</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">top</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">res</span> <span class="o">+=</span> <span class="s1">&#39;^{</span><span class="si">%s</span><span class="s1">}&#39;</span> <span class="o">%</span> <span class="n">top</span>
+                    <span class="n">res</span> <span class="o">+=</span> <span class="s2">&quot; &quot;</span>
+                    <span class="n">indices</span> <span class="o">=</span> <span class="p">[</span>
+                        <span class="n">current_index</span><span class="p">,</span>
+                    <span class="p">]</span>
+                    <span class="n">top</span> <span class="o">=</span> <span class="n">current_top</span>
+                    <span class="n">bottom_rhs</span> <span class="o">=</span> <span class="n">current_bottom_rhs</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">indices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_index</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>  <span class="c1"># first range</span>
+                <span class="n">indices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_index</span><span class="p">)</span>
+                <span class="n">top</span> <span class="o">=</span> <span class="n">current_top</span>
+                <span class="n">bottom_rhs</span> <span class="o">=</span> <span class="n">current_bottom_rhs</span>
+        <span class="c1"># add the final accumulated sum symbol</span>
+        <span class="n">res</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sum_sym</span>
+        <span class="n">bottom</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span> <span class="o">+</span> <span class="n">bottom_rhs</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">bottom</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="s1">&#39;_{</span><span class="si">%s</span><span class="s1">}&#39;</span> <span class="o">%</span> <span class="n">bottom</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">top</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="s1">&#39;^{</span><span class="si">%s</span><span class="s1">}&#39;</span> <span class="o">%</span> <span class="n">top</span>
+        <span class="n">res</span> <span class="o">+=</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">parenthesize</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">term</span><span class="p">,</span> <span class="n">prec</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">res</span>
+
+    <span class="k">def</span> <span class="nf">_print_IndexRangeBase</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">which</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom_index&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom_rhs&#39;</span><span class="p">,</span> <span class="s1">&#39;top&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">which</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom_index&#39;</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">index_symbol</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">_print_IndexOverFockSpace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">which</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom_index&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom_rhs&#39;</span><span class="p">,</span> <span class="s1">&#39;top&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;bottom&#39;</span> <span class="ow">in</span> <span class="n">which</span><span class="p">:</span>
+            <span class="n">bottom_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">index_symbol</span><span class="p">)</span>
+            <span class="n">bottom_rhs</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_element_sym</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">hs</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">which</span> <span class="o">==</span> <span class="s1">&#39;bottom_index&#39;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">bottom_index</span>
+            <span class="k">elif</span> <span class="n">which</span> <span class="o">==</span> <span class="s1">&#39;bottom_rhs&#39;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">bottom_rhs</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">bottom_index</span> <span class="o">+</span> <span class="n">bottom_rhs</span>
+        <span class="k">elif</span> <span class="n">which</span> <span class="o">==</span> <span class="s1">&#39;top&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;invalid `which`: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">which</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_IndexOverList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">which</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom_index&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom_rhs&#39;</span><span class="p">,</span> <span class="s1">&#39;top&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;bottom&#39;</span> <span class="ow">in</span> <span class="n">which</span><span class="p">:</span>
+            <span class="n">bottom_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">index_symbol</span><span class="p">)</span>
+            <span class="n">bottom_rhs</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="s2">&quot; &quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_element_sym</span>
+                <span class="o">+</span> <span class="s2">&quot; &quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_delim_left</span>
+                <span class="o">+</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">values</span><span class="p">])</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_delim_right</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">which</span> <span class="o">==</span> <span class="s1">&#39;bottom_index&#39;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">bottom_index</span>
+            <span class="k">elif</span> <span class="n">which</span> <span class="o">==</span> <span class="s1">&#39;bottom_rhs&#39;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">bottom_rhs</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">bottom_index</span> <span class="o">+</span> <span class="n">bottom_rhs</span>
+        <span class="k">elif</span> <span class="n">which</span> <span class="o">==</span> <span class="s1">&#39;top&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;invalid `which`: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">which</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_IndexOverRange</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">which</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom_index&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom_rhs&#39;</span><span class="p">,</span> <span class="s1">&#39;top&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;bottom&#39;</span> <span class="ow">in</span> <span class="n">which</span><span class="p">:</span>
+            <span class="n">bottom_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">index_symbol</span><span class="p">)</span>
+            <span class="n">bottom_rhs</span> <span class="o">=</span> <span class="s2">&quot;=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">expr</span><span class="o">.</span><span class="n">start_from</span>
+            <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">step</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">bottom_rhs</span> <span class="o">+=</span> <span class="s2">&quot;, </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">expr</span><span class="o">.</span><span class="n">start_from</span> <span class="o">+</span> <span class="n">expr</span><span class="o">.</span><span class="n">step</span>
+                <span class="n">bottom_rhs</span> <span class="o">+=</span> <span class="s2">&quot;, &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ellipsis</span>
+            <span class="k">if</span> <span class="n">which</span> <span class="o">==</span> <span class="s1">&#39;bottom_index&#39;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">bottom_index</span>
+            <span class="k">elif</span> <span class="n">which</span> <span class="o">==</span> <span class="s1">&#39;bottom_rhs&#39;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">bottom_rhs</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">bottom_index</span> <span class="o">+</span> <span class="n">bottom_rhs</span>
+        <span class="k">elif</span> <span class="n">which</span> <span class="o">==</span> <span class="s1">&#39;top&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">to</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;invalid `which`: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">which</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_BaseLabel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">expr</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_Bra</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">ket</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="p">(</span><span class="ow">not</span> <span class="n">adjoint</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_print_BraKet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">trivial</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">bra_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_state_label</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">bra</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+            <span class="n">bra</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">bra</span><span class="o">.</span><span class="n">ket</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">bra</span><span class="p">,</span> <span class="s1">&#39;sym_args&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">bra</span><span class="o">.</span><span class="n">sym_args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">bra_label</span> <span class="o">+=</span> <span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_left</span>
+                    <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">bra</span><span class="o">.</span><span class="n">sym_args</span><span class="p">])</span>
+                    <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_right</span>
+                <span class="p">)</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="n">trivial</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">ket_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_state_label</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">ket</span><span class="p">,</span> <span class="s1">&#39;sym_args&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">sym_args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">ket_label</span> <span class="o">+=</span> <span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_left</span>
+                    <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                        <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">sym_args</span><span class="p">]</span>
+                    <span class="p">)</span>
+                    <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_right</span>
+                <span class="p">)</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="n">trivial</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">trivial</span><span class="p">:</span>
+            <span class="n">fmt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_braket_fmt</span><span class="p">(</span><span class="s1">&#39;braket&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">adjoint</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">label_i</span><span class="o">=</span><span class="n">ket_label</span><span class="p">,</span>
+                    <span class="n">label_j</span><span class="o">=</span><span class="n">bra_label</span><span class="p">,</span>
+                    <span class="n">space</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_render_hs_label</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">space</span><span class="p">),</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">label_i</span><span class="o">=</span><span class="n">bra_label</span><span class="p">,</span>
+                    <span class="n">label_j</span><span class="o">=</span><span class="n">ket_label</span><span class="p">,</span>
+                    <span class="n">space</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_render_hs_label</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">space</span><span class="p">),</span>
+                <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">prec</span> <span class="o">=</span> <span class="n">precedence</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+            <span class="n">rendered_bra</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parenthesize</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">bra</span><span class="p">,</span> <span class="n">prec</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="n">adjoint</span><span class="p">)</span>
+            <span class="n">rendered_ket</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parenthesize</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">ket</span><span class="p">,</span> <span class="n">prec</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="n">adjoint</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">adjoint</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">rendered_ket</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_spaced_product_sym</span> <span class="o">+</span> <span class="n">rendered_bra</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">rendered_bra</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_spaced_product_sym</span> <span class="o">+</span> <span class="n">rendered_ket</span>
+
+    <span class="k">def</span> <span class="nf">_print_KetBra</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">trivial</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">bra_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_state_label</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">bra</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+            <span class="n">bra</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">bra</span><span class="o">.</span><span class="n">ket</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">bra</span><span class="p">,</span> <span class="s1">&#39;sym_args&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">bra</span><span class="o">.</span><span class="n">sym_args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">bra_label</span> <span class="o">+=</span> <span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_left</span>
+                    <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">bra</span><span class="o">.</span><span class="n">sym_args</span><span class="p">])</span>
+                    <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_right</span>
+                <span class="p">)</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="n">trivial</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">ket_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_state_label</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">ket</span><span class="p">,</span> <span class="s1">&#39;sym_args&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">sym_args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">ket_label</span> <span class="o">+=</span> <span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_left</span>
+                    <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                        <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">sym_args</span><span class="p">]</span>
+                    <span class="p">)</span>
+                    <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_right</span>
+                <span class="p">)</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="n">trivial</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">trivial</span><span class="p">:</span>
+            <span class="n">fmt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_braket_fmt</span><span class="p">(</span><span class="s1">&#39;ketbra&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">adjoint</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">label_i</span><span class="o">=</span><span class="n">bra_label</span><span class="p">,</span>
+                    <span class="n">label_j</span><span class="o">=</span><span class="n">ket_label</span><span class="p">,</span>
+                    <span class="n">space</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_render_hs_label</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">space</span><span class="p">),</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">label_i</span><span class="o">=</span><span class="n">ket_label</span><span class="p">,</span>
+                    <span class="n">label_j</span><span class="o">=</span><span class="n">bra_label</span><span class="p">,</span>
+                    <span class="n">space</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_render_hs_label</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">ket</span><span class="o">.</span><span class="n">space</span><span class="p">),</span>
+                <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">prec</span> <span class="o">=</span> <span class="n">precedence</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+            <span class="n">rendered_bra</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parenthesize</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">bra</span><span class="p">,</span> <span class="n">prec</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="n">adjoint</span><span class="p">)</span>
+            <span class="n">rendered_ket</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parenthesize</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">ket</span><span class="p">,</span> <span class="n">prec</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="n">adjoint</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">adjoint</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">rendered_bra</span> <span class="o">+</span> <span class="n">rendered_ket</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">rendered_ket</span> <span class="o">+</span> <span class="n">rendered_bra</span>
+
+    <span class="k">def</span> <span class="nf">_print_SuperOperatorSymbol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">superop</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_op</span><span class="p">(</span>
+            <span class="n">expr</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">expr</span><span class="o">.</span><span class="n">_hs</span><span class="p">,</span> <span class="n">dagger</span><span class="o">=</span><span class="n">adjoint</span><span class="p">,</span> <span class="n">superop</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">sym_args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_left</span>
+                <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">sym_args</span><span class="p">])</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_right</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">res</span>
+
+    <span class="k">def</span> <span class="nf">_print_IdentitySuperOperator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">superop</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;1&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_print_ZeroSuperOperator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">superop</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;0&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_print_SuperOperatorPlus</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">superop</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_print_QuantumPlus</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="n">adjoint</span><span class="p">,</span> <span class="n">superop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_SuperOperatorTimes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">superop</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">adjoint</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;adjoint&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_print_QuantumTimes</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">superop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_SuperAdjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">superop</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">operand</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="s1">&#39;SuperOperatorSymbol&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_op</span><span class="p">(</span>
+                <span class="n">o</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">o</span><span class="o">.</span><span class="n">space</span><span class="p">,</span> <span class="n">dagger</span><span class="o">=</span><span class="p">(</span><span class="ow">not</span> <span class="n">adjoint</span><span class="p">),</span> <span class="n">superop</span><span class="o">=</span><span class="kc">True</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">adjoint</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_left</span>
+                    <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+                    <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_right</span>
+                    <span class="o">+</span> <span class="s2">&quot;^&quot;</span>
+                    <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dagger_sym</span>
+                <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_SPre</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">superop</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="s2">&quot;SPre&quot;</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_left</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_right</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_SPost</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">superop</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="s2">&quot;SPost&quot;</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_left</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parenth_right</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_SuperOperatorTimesOperator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="n">prec</span> <span class="o">=</span> <span class="n">precedence</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+        <span class="n">sop</span><span class="p">,</span> <span class="n">op</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">sop</span><span class="p">,</span> <span class="n">expr</span><span class="o">.</span><span class="n">op</span>
+        <span class="n">cs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parenthesize</span><span class="p">(</span><span class="n">sop</span><span class="p">,</span> <span class="n">prec</span><span class="p">)</span>
+        <span class="n">ct</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">op</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">[</span><span class="si">%s</span><span class="s2">]&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">ct</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_QuantumDerivative</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">sym</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">derivs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">sym_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">sym</span><span class="p">)</span>
+            <span class="k">if</span> <span class="s2">&quot; &quot;</span> <span class="ow">in</span> <span class="n">sym_str</span><span class="p">:</span>
+                <span class="n">sym_str</span> <span class="o">=</span> <span class="s2">&quot;(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">sym_str</span>
+            <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">+=</span> <span class="s2">&quot;D_</span><span class="si">%s</span><span class="s2"> &quot;</span> <span class="o">%</span> <span class="n">sym_str</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">+=</span> <span class="s2">&quot;D_</span><span class="si">%s</span><span class="s2">^</span><span class="si">%s</span><span class="s2"> &quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">sym_str</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+        <span class="n">res</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parenthesize</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">operand</span><span class="p">,</span> <span class="n">PRECEDENCE</span><span class="p">[</span><span class="s1">&#39;Mul&#39;</span><span class="p">],</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">expr</span><span class="o">.</span><span class="n">vals</span><span class="p">:</span>
+            <span class="n">evaluation_strs</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">sym</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">vals</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">evaluation_strs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">sym</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
+                <span class="p">)</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="s2">&quot; |_(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">evaluation_strs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">adjoint</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(</span><span class="si">%s</span><span class="s2">)^</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dagger_sym</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">res</span>
+
+    <span class="k">def</span> <span class="nf">_print_Matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="n">matrix_left_sym</span> <span class="o">=</span> <span class="s1">&#39;[&#39;</span>
+        <span class="n">matrix_right_sym</span> <span class="o">=</span> <span class="s1">&#39;]&#39;</span>
+        <span class="n">matrix_row_left_sym</span> <span class="o">=</span> <span class="s1">&#39;[&#39;</span>
+        <span class="n">matrix_row_right_sym</span> <span class="o">=</span> <span class="s1">&#39;]&#39;</span>
+        <span class="n">matrix_col_sep_sym</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span>
+        <span class="n">matrix_row_sep_sym</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span>
+        <span class="n">row_strs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">matrix</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">row_strs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">matrix_row_left_sym</span> <span class="o">+</span> <span class="n">matrix_row_right_sym</span><span class="p">)</span>
+            <span class="n">row_strs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">matrix_row_left_sym</span> <span class="o">+</span> <span class="n">matrix_row_right_sym</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">matrix</span><span class="p">:</span>
+                <span class="n">row_strs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">matrix_row_left_sym</span>
+                    <span class="o">+</span> <span class="n">matrix_col_sep_sym</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                        <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">row</span><span class="p">]</span>
+                    <span class="p">)</span>
+                    <span class="o">+</span> <span class="n">matrix_row_right_sym</span>
+                <span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">matrix_left_sym</span>
+            <span class="o">+</span> <span class="n">matrix_row_sep_sym</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">row_strs</span><span class="p">)</span>
+            <span class="o">+</span> <span class="n">matrix_right_sym</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_Eq</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="c1"># print for symbolic_equation.Eq, but also works for any</span>
+        <span class="c1"># Eq class that has the minimum requirement to have an `lhs` and `rhs`</span>
+        <span class="c1"># attribute</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">expr</span><span class="o">.</span><span class="n">_render_str</span><span class="p">(</span><span class="n">renderer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">lhs</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; = &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">rhs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QalgebraAsciiDefaultPrinter"><a class="viewcode-back" href="../../../API/qalgebra.printing.asciiprinter.html#qalgebra.printing.asciiprinter.QalgebraAsciiDefaultPrinter">[docs]</a><span class="k">class</span> <span class="nc">QalgebraAsciiDefaultPrinter</span><span class="p">(</span><span class="n">QalgebraAsciiPrinter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Printer for an ASCII representation that accepts no settings. This can</span>
+<span class="sd">    be used internally when a well-defined, static representation is needed</span>
+<span class="sd">    (e.g. as a sort key)&quot;&quot;&quot;</span>
+
+    <span class="n">_default_settings</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">settings</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_settings</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;show_hs_label&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;sig_as_ketbra&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Michael Goerz
+      <span class="lastupdated">
+        Last updated on Dec 31, 2020.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

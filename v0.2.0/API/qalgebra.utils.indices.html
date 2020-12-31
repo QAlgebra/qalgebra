@@ -1,0 +1,777 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>qalgebra.utils.indices module &mdash; QAlgebra 0.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/mycss.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/doctr-versions-menu.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="qalgebra.utils.ordering module" href="qalgebra.utils.ordering.html" />
+    <link rel="prev" title="qalgebra.utils.containers module" href="qalgebra.utils.containers.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#usage">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Quantum Algebra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../symbolic_algebra.html">Symbolic Algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../printing.html">The Printing System</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../library_structure.html">Library Structure</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="qalgebra.html">API of the QAlgebra package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.pattern_matching.html">qalgebra.pattern_matching module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.convert.html">qalgebra.convert package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.core.html">qalgebra.core package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.library.html">qalgebra.library package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.printing.html">qalgebra.printing package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.toolbox.html">qalgebra.toolbox package</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="qalgebra.utils.html">qalgebra.utils package</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.utils.check_rules.html">qalgebra.utils.check_rules module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.utils.containers.html">qalgebra.utils.containers module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">qalgebra.utils.indices module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.utils.ordering.html">qalgebra.utils.ordering module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.utils.properties_for_args.html">qalgebra.utils.properties_for_args module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.utils.singleton.html">qalgebra.utils.singleton module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.utils.testing.html">qalgebra.utils.testing module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.utils.unicode.html">qalgebra.utils.unicode module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.utils.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.html#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="qalgebra.html">qalgebra package</a> &raquo;</li>
+        
+          <li><a href="qalgebra.utils.html">qalgebra.utils package</a> &raquo;</li>
+        
+      <li>qalgebra.utils.indices module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-qalgebra.utils.indices">
+<span id="qalgebra-utils-indices-module"></span><h1>qalgebra.utils.indices module<a class="headerlink" href="#module-qalgebra.utils.indices" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Classes:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.utils.indices.FockIndex" title="qalgebra.utils.indices.FockIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FockIndex</span></code></a></p></td>
+<td><p>Symbolic index labeling a basis state in a <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.utils.indices.FockLabel" title="qalgebra.utils.indices.FockLabel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FockLabel</span></code></a></p></td>
+<td><p>Symbolic label that evaluates to the label of a basis state</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.utils.indices.IdxSym" title="qalgebra.utils.indices.IdxSym"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IdxSym</span></code></a></p></td>
+<td><p>Index symbol in an indexed sum or product.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.utils.indices.IndexOverFockSpace" title="qalgebra.utils.indices.IndexOverFockSpace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IndexOverFockSpace</span></code></a></p></td>
+<td><p>Index range over the integer indices of a <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a> basis</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.utils.indices.IndexOverList" title="qalgebra.utils.indices.IndexOverList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IndexOverList</span></code></a></p></td>
+<td><p>Index over a list of explicit values</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.utils.indices.IndexOverRange" title="qalgebra.utils.indices.IndexOverRange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IndexOverRange</span></code></a></p></td>
+<td><p>Index over the inclusive range between two integers</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.utils.indices.IndexRangeBase" title="qalgebra.utils.indices.IndexRangeBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IndexRangeBase</span></code></a></p></td>
+<td><p>Base class for index ranges</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.utils.indices.IntIndex" title="qalgebra.utils.indices.IntIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IntIndex</span></code></a></p></td>
+<td><p>A symbolic label that evaluates to an integer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.utils.indices.SpinIndex" title="qalgebra.utils.indices.SpinIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpinIndex</span></code></a></p></td>
+<td><p>Symbolic label for a spin degree of freedom</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.utils.indices.StrLabel" title="qalgebra.utils.indices.StrLabel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StrLabel</span></code></a></p></td>
+<td><p>Symbolic label that evaluates to a string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.utils.indices.SymbolicLabelBase" title="qalgebra.utils.indices.SymbolicLabelBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SymbolicLabelBase</span></code></a></p></td>
+<td><p>Base class for symbolic labels</p></td>
+</tr>
+</tbody>
+</table>
+<p>Functions:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.utils.indices.product" title="qalgebra.utils.indices.product"><code class="xref py py-obj docutils literal notranslate"><span class="pre">product</span></code></a></p></td>
+<td><p>Cartesian product akin to <a class="reference external" href="https://docs.python.org/3.8/library/itertools.html#itertools.product" title="(in Python v3.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">itertools.product()</span></code></a>, but accepting generator functions</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.utils.indices.yield_from_ranges" title="qalgebra.utils.indices.yield_from_ranges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">yield_from_ranges</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">__all__</span></code>: <a class="reference internal" href="#qalgebra.utils.indices.FockIndex" title="qalgebra.utils.indices.FockIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">FockIndex</span></code></a>, <a class="reference internal" href="#qalgebra.utils.indices.FockLabel" title="qalgebra.utils.indices.FockLabel"><code class="xref py py-class docutils literal notranslate"><span class="pre">FockLabel</span></code></a>, <a class="reference internal" href="#qalgebra.utils.indices.IdxSym" title="qalgebra.utils.indices.IdxSym"><code class="xref py py-class docutils literal notranslate"><span class="pre">IdxSym</span></code></a>, <a class="reference internal" href="#qalgebra.utils.indices.IndexOverFockSpace" title="qalgebra.utils.indices.IndexOverFockSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">IndexOverFockSpace</span></code></a>, <a class="reference internal" href="#qalgebra.utils.indices.IndexOverList" title="qalgebra.utils.indices.IndexOverList"><code class="xref py py-class docutils literal notranslate"><span class="pre">IndexOverList</span></code></a>, <a class="reference internal" href="#qalgebra.utils.indices.IndexOverRange" title="qalgebra.utils.indices.IndexOverRange"><code class="xref py py-class docutils literal notranslate"><span class="pre">IndexOverRange</span></code></a>, <a class="reference internal" href="#qalgebra.utils.indices.IntIndex" title="qalgebra.utils.indices.IntIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntIndex</span></code></a>, <a class="reference internal" href="#qalgebra.utils.indices.SpinIndex" title="qalgebra.utils.indices.SpinIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpinIndex</span></code></a>, <a class="reference internal" href="#qalgebra.utils.indices.StrLabel" title="qalgebra.utils.indices.StrLabel"><code class="xref py py-class docutils literal notranslate"><span class="pre">StrLabel</span></code></a></p>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="qalgebra.utils.indices.IdxSym">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.utils.indices.</code><code class="sig-name descname">IdxSym</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">primed</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/indices.html#IdxSym"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.indices.IdxSym" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.symbol.Symbol" title="(in SymPy v1.7.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sympy.core.symbol.Symbol</span></code></a></p>
+<p>Index symbol in an indexed sum or product.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The label for the symbol. It must be a simple Latin or
+Greek letter, possibly with a subscript, e.g. <code class="docutils literal notranslate"><span class="pre">'i'</span></code>, <code class="docutils literal notranslate"><span class="pre">'mu'</span></code>,
+<code class="docutils literal notranslate"><span class="pre">'gamma_A'</span></code></p></li>
+<li><p><strong>primed</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – Number of prime marks (‘) associated with the symbol</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The symbol can be used in arbitrary algebraic (sympy) expressions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sympy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">IdxSym</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">sqrt(n + 1)</span>
+</pre></div>
+</div>
+<p>By default, the symbol is assumed to represent an integer. If this is
+not the case, you can instantiate explicitly as a non-integer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">IdxSym</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">is_integer</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">IdxSym</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">integer</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">is_integer</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>You may also declare the symbol as positive:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">IdxSym</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">is_positive</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">IdxSym</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">is_positive</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>The <cite>primed</cite> parameter is used to automatically create distinguishable
+indices in products of sums, or more generally if the same index occurs
+in an expression with potentially differnt values:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ascii</span><span class="p">(</span><span class="n">IdxSym</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">primed</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="go">&quot;i&#39;&#39;&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">IdxSym</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="n">IdxSym</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="n">primed</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>It should not be used when creating indices “by hand”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3.8/library/exceptions.html#ValueError" title="(in Python v3.8)"><strong>ValueError</strong></a> – if <cite>name</cite> is not a simple symbol label, or if primed &lt; 0</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3.8/library/exceptions.html#TypeError" title="(in Python v3.8)"><strong>TypeError</strong></a> – if <cite>name</cite> is not a string</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="qalgebra.utils.indices.IdxSym.is_finite">
+<code class="sig-name descname">is_finite</code><em class="property"> = True</em><a class="headerlink" href="#qalgebra.utils.indices.IdxSym.is_finite" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="qalgebra.utils.indices.IdxSym.is_Symbol">
+<code class="sig-name descname">is_Symbol</code><em class="property"> = True</em><a class="headerlink" href="#qalgebra.utils.indices.IdxSym.is_Symbol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="qalgebra.utils.indices.IdxSym.is_symbol">
+<code class="sig-name descname">is_symbol</code><em class="property"> = True</em><a class="headerlink" href="#qalgebra.utils.indices.IdxSym.is_symbol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="qalgebra.utils.indices.IdxSym.is_Atom">
+<code class="sig-name descname">is_Atom</code><em class="property"> = True</em><a class="headerlink" href="#qalgebra.utils.indices.IdxSym.is_Atom" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.utils.indices.IdxSym.primed">
+<em class="property">property </em><code class="sig-name descname">primed</code><a class="headerlink" href="#qalgebra.utils.indices.IdxSym.primed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.utils.indices.IdxSym.incr_primed">
+<code class="sig-name descname">incr_primed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">incr</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/indices.html#IdxSym.incr_primed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.indices.IdxSym.incr_primed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a copy of the index with an incremented <a class="reference internal" href="#qalgebra.utils.indices.IdxSym.primed" title="qalgebra.utils.indices.IdxSym.primed"><code class="xref py py-attr docutils literal notranslate"><span class="pre">primed</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.utils.indices.IdxSym.prime">
+<em class="property">property </em><code class="sig-name descname">prime</code><a class="headerlink" href="#qalgebra.utils.indices.IdxSym.prime" title="Permalink to this definition">¶</a></dt>
+<dd><p>equivalent to <a class="reference internal" href="#qalgebra.utils.indices.IdxSym.incr_primed" title="qalgebra.utils.indices.IdxSym.incr_primed"><code class="xref py py-meth docutils literal notranslate"><span class="pre">incr_primed()</span></code></a> with <code class="docutils literal notranslate"><span class="pre">incr=1</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="qalgebra.utils.indices.IdxSym.name">
+<code class="sig-name descname">name</code><a class="headerlink" href="#qalgebra.utils.indices.IdxSym.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="qalgebra.utils.indices.IdxSym.default_assumptions">
+<code class="sig-name descname">default_assumptions</code><em class="property"> = {'finite': True, 'infinite': False}</em><a class="headerlink" href="#qalgebra.utils.indices.IdxSym.default_assumptions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="qalgebra.utils.indices.IdxSym.is_infinite">
+<code class="sig-name descname">is_infinite</code><em class="property"> = False</em><a class="headerlink" href="#qalgebra.utils.indices.IdxSym.is_infinite" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.utils.indices.IntIndex">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.utils.indices.</code><code class="sig-name descname">IntIndex</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/indices.html#IntIndex"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.indices.IntIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qalgebra.utils.indices.SymbolicLabelBase" title="qalgebra.utils.indices.SymbolicLabelBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.utils.indices.SymbolicLabelBase</span></code></a></p>
+<p>A symbolic label that evaluates to an integer.</p>
+<p>The label can be rendered via <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.substitute" title="qalgebra.core.abstract_algebra.Expression.substitute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">substitute()</span></code></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;i, j&#39;</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">IdxSym</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span> <span class="o">=</span> <span class="n">IntIndex</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span><span class="o">.</span><span class="n">substitute</span><span class="p">({</span><span class="n">i</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span><span class="mi">1</span><span class="p">})</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+<p>An “incomplete” substitution (anything that still leaves a <a class="reference internal" href="#qalgebra.utils.indices.IdxSym" title="qalgebra.utils.indices.IdxSym"><code class="xref py py-class docutils literal notranslate"><span class="pre">IdxSym</span></code></a>
+in the label expression) will result in another <a class="reference internal" href="#qalgebra.utils.indices.IntIndex" title="qalgebra.utils.indices.IntIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntIndex</span></code></a>
+instance:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span><span class="o">.</span><span class="n">substitute</span><span class="p">({</span><span class="n">i</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="go">IntIndex(Add(IdxSym(&#39;j&#39;, integer=True), Integer(1)))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.utils.indices.FockIndex">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.utils.indices.</code><code class="sig-name descname">FockIndex</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/indices.html#FockIndex"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.indices.FockIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qalgebra.utils.indices.IntIndex" title="qalgebra.utils.indices.IntIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.utils.indices.IntIndex</span></code></a></p>
+<p>Symbolic index labeling a basis state in a <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a></p>
+<dl class="py method">
+<dt id="qalgebra.utils.indices.FockIndex.fock_index">
+<em class="property">property </em><code class="sig-name descname">fock_index</code><a class="headerlink" href="#qalgebra.utils.indices.FockIndex.fock_index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.utils.indices.StrLabel">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.utils.indices.</code><code class="sig-name descname">StrLabel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/indices.html#StrLabel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.indices.StrLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qalgebra.utils.indices.SymbolicLabelBase" title="qalgebra.utils.indices.SymbolicLabelBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.utils.indices.SymbolicLabelBase</span></code></a></p>
+<p>Symbolic label that evaluates to a string</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">IdxSym</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">sympy</span><span class="o">.</span><span class="n">IndexedBase</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lbl</span> <span class="o">=</span> <span class="n">StrLabel</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lbl</span><span class="o">.</span><span class="n">substitute</span><span class="p">({</span><span class="n">i</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="go">&#39;A_1&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.utils.indices.FockLabel">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.utils.indices.</code><code class="sig-name descname">FockLabel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em>, <em class="sig-param"><span class="n">hs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/indices.html#FockLabel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.indices.FockLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qalgebra.utils.indices.StrLabel" title="qalgebra.utils.indices.StrLabel"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.utils.indices.StrLabel</span></code></a></p>
+<p>Symbolic label that evaluates to the label of a basis state</p>
+<p>This evaluates first to an index, and then to the label for the basis state
+of the Hilbert space for that index:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hs</span> <span class="o">=</span> <span class="n">LocalSpace</span><span class="p">(</span><span class="s1">&#39;tls&#39;</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">IdxSym</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lbl</span> <span class="o">=</span> <span class="n">FockLabel</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lbl</span><span class="o">.</span><span class="n">substitute</span><span class="p">({</span><span class="n">i</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
+<span class="go">&#39;g&#39;</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="qalgebra.utils.indices.FockLabel.fock_index">
+<em class="property">property </em><code class="sig-name descname">fock_index</code><a class="headerlink" href="#qalgebra.utils.indices.FockLabel.fock_index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.utils.indices.FockLabel.substitute">
+<code class="sig-name descname">substitute</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">var_map</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/indices.html#FockLabel.substitute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.indices.FockLabel.substitute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Substitute in the expression describing the label.</p>
+<p>If the result of the substitution no longer contains any
+<a class="reference internal" href="#qalgebra.utils.indices.IdxSym" title="qalgebra.utils.indices.IdxSym"><code class="xref py py-class docutils literal notranslate"><span class="pre">IdxSym</span></code></a>, this returns a “rendered” label.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.utils.indices.SpinIndex">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.utils.indices.</code><code class="sig-name descname">SpinIndex</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em>, <em class="sig-param"><span class="n">hs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/indices.html#SpinIndex"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.indices.SpinIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qalgebra.utils.indices.StrLabel" title="qalgebra.utils.indices.StrLabel"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.utils.indices.StrLabel</span></code></a></p>
+<p>Symbolic label for a spin degree of freedom</p>
+<p>This evaluates to a string representation of an integer or half-integer.
+For values of e.g.  1, -1, 1/2, -1/2, the rendered resulting string is
+“+1”, “-1”, “+1/2”, “-1/2”, respectively (in agreement with the convention
+for the basis labels in a spin degree of freedom)</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">IdxSym</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hs</span> <span class="o">=</span> <span class="n">SpinSpace</span><span class="p">(</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">spin</span><span class="o">=</span><span class="s1">&#39;1/2&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lbl</span> <span class="o">=</span> <span class="n">SpinIndex</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">hs</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lbl</span><span class="o">.</span><span class="n">substitute</span><span class="p">({</span><span class="n">i</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="go">&#39;+1/2&#39;</span>
+</pre></div>
+</div>
+<p>Rendering an expression that is not integer or half-integer valued results
+in a <a class="reference external" href="https://docs.python.org/3.8/library/exceptions.html#ValueError" title="(in Python v3.8)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a>.</p>
+<dl class="py method">
+<dt id="qalgebra.utils.indices.SpinIndex.fock_index">
+<em class="property">property </em><code class="sig-name descname">fock_index</code><a class="headerlink" href="#qalgebra.utils.indices.SpinIndex.fock_index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.utils.indices.SpinIndex.substitute">
+<code class="sig-name descname">substitute</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">var_map</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/indices.html#SpinIndex.substitute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.indices.SpinIndex.substitute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Substitute in the expression describing the label.</p>
+<p>If the result of the substitution no longer contains any
+<a class="reference internal" href="#qalgebra.utils.indices.IdxSym" title="qalgebra.utils.indices.IdxSym"><code class="xref py py-class docutils literal notranslate"><span class="pre">IdxSym</span></code></a>, this returns a “rendered” label.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.utils.indices.IndexOverList">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.utils.indices.</code><code class="sig-name descname">IndexOverList</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index_symbol</span></em>, <em class="sig-param"><span class="n">values</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/indices.html#IndexOverList"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.indices.IndexOverList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qalgebra.utils.indices.IndexRangeBase" title="qalgebra.utils.indices.IndexRangeBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.utils.indices.IndexRangeBase</span></code></a></p>
+<p>Index over a list of explicit values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index_symbol</strong> (<a class="reference internal" href="#qalgebra.utils.indices.IdxSym" title="qalgebra.utils.indices.IdxSym"><em>IdxSym</em></a>) – The symbol iterating over the value</p></li>
+<li><p><strong>values</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – List of values for the index</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="qalgebra.utils.indices.IndexOverList.iter">
+<code class="sig-name descname">iter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/indices.html#IndexOverList.iter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.indices.IndexOverList.iter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.utils.indices.IndexOverList.substitute">
+<code class="sig-name descname">substitute</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">var_map</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/indices.html#IndexOverList.substitute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.indices.IndexOverList.substitute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.utils.indices.IndexOverList.piecewise_one">
+<code class="sig-name descname">piecewise_one</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/indices.html#IndexOverList.piecewise_one"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.indices.IndexOverList.piecewise_one" title="Permalink to this definition">¶</a></dt>
+<dd><p>Value of 1 for all index values in the range, 0 otherwise</p>
+<p>A <a class="reference external" href="https://docs.sympy.org/latest/modules/functions/elementary.html#sympy.functions.elementary.piecewise.Piecewise" title="(in SymPy v1.7.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Piecewise</span></code></a> object that
+is 1 for any value of <cite>expr</cite> in the range of possible index values,
+and 0 otherwise.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.utils.indices.IndexOverRange">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.utils.indices.</code><code class="sig-name descname">IndexOverRange</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index_symbol</span></em>, <em class="sig-param"><span class="n">start_from</span></em>, <em class="sig-param"><span class="n">to</span></em>, <em class="sig-param"><span class="n">step</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/indices.html#IndexOverRange"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.indices.IndexOverRange" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qalgebra.utils.indices.IndexRangeBase" title="qalgebra.utils.indices.IndexRangeBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.utils.indices.IndexRangeBase</span></code></a></p>
+<p>Index over the inclusive range between two integers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index_symbol</strong> (<a class="reference internal" href="#qalgebra.utils.indices.IdxSym" title="qalgebra.utils.indices.IdxSym"><em>IdxSym</em></a>) – The symbol iterating over the range</p></li>
+<li><p><strong>start_from</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – Starting value for the index</p></li>
+<li><p><strong>to</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – End value of the index</p></li>
+<li><p><strong>step</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – Step width by which index increases</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="qalgebra.utils.indices.IndexOverRange.iter">
+<code class="sig-name descname">iter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/indices.html#IndexOverRange.iter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.indices.IndexOverRange.iter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.utils.indices.IndexOverRange.range">
+<em class="property">property </em><code class="sig-name descname">range</code><a class="headerlink" href="#qalgebra.utils.indices.IndexOverRange.range" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.utils.indices.IndexOverRange.substitute">
+<code class="sig-name descname">substitute</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">var_map</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/indices.html#IndexOverRange.substitute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.indices.IndexOverRange.substitute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.utils.indices.IndexOverRange.piecewise_one">
+<code class="sig-name descname">piecewise_one</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/indices.html#IndexOverRange.piecewise_one"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.indices.IndexOverRange.piecewise_one" title="Permalink to this definition">¶</a></dt>
+<dd><p>Value of 1 for all index values in the range, 0 otherwise</p>
+<p>A <a class="reference external" href="https://docs.sympy.org/latest/modules/functions/elementary.html#sympy.functions.elementary.piecewise.Piecewise" title="(in SymPy v1.7.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Piecewise</span></code></a> object that
+is 1 for any value of <cite>expr</cite> in the range of possible index values,
+and 0 otherwise.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.utils.indices.IndexOverFockSpace">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.utils.indices.</code><code class="sig-name descname">IndexOverFockSpace</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index_symbol</span></em>, <em class="sig-param"><span class="n">hs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/indices.html#IndexOverFockSpace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.indices.IndexOverFockSpace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qalgebra.utils.indices.IndexRangeBase" title="qalgebra.utils.indices.IndexRangeBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.utils.indices.IndexRangeBase</span></code></a></p>
+<p>Index range over the integer indices of a <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a> basis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index_symbol</strong> (<a class="reference internal" href="#qalgebra.utils.indices.IdxSym" title="qalgebra.utils.indices.IdxSym"><em>IdxSym</em></a>) – The symbol iterating over the range</p></li>
+<li><p><strong>hs</strong> (<a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><em>LocalSpace</em></a>) – Hilbert space over whose basis to iterate</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="qalgebra.utils.indices.IndexOverFockSpace.iter">
+<code class="sig-name descname">iter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/indices.html#IndexOverFockSpace.iter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.indices.IndexOverFockSpace.iter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.utils.indices.IndexOverFockSpace.substitute">
+<code class="sig-name descname">substitute</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">var_map</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/indices.html#IndexOverFockSpace.substitute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.indices.IndexOverFockSpace.substitute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.utils.indices.IndexOverFockSpace.piecewise_one">
+<code class="sig-name descname">piecewise_one</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/indices.html#IndexOverFockSpace.piecewise_one"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.indices.IndexOverFockSpace.piecewise_one" title="Permalink to this definition">¶</a></dt>
+<dd><p>Value of 1 for all index values in the range, 0 otherwise</p>
+<p>A <a class="reference external" href="https://docs.sympy.org/latest/modules/functions/elementary.html#sympy.functions.elementary.piecewise.Piecewise" title="(in SymPy v1.7.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Piecewise</span></code></a> object that
+is 1 for any value of <cite>expr</cite> in the range of possible index values,
+and 0 otherwise.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.utils.indices.IndexRangeBase">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.utils.indices.</code><code class="sig-name descname">IndexRangeBase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index_symbol</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/indices.html#IndexRangeBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.indices.IndexRangeBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.8/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Base class for index ranges</p>
+<p>Index ranges occur in indexed sums or products.</p>
+<dl class="py method">
+<dt id="qalgebra.utils.indices.IndexRangeBase.iter">
+<em class="property">abstract </em><code class="sig-name descname">iter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/indices.html#IndexRangeBase.iter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.indices.IndexRangeBase.iter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.utils.indices.IndexRangeBase.substitute">
+<em class="property">abstract </em><code class="sig-name descname">substitute</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">var_map</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/indices.html#IndexRangeBase.substitute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.indices.IndexRangeBase.substitute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.utils.indices.IndexRangeBase.piecewise_one">
+<em class="property">abstract </em><code class="sig-name descname">piecewise_one</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/indices.html#IndexRangeBase.piecewise_one"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.indices.IndexRangeBase.piecewise_one" title="Permalink to this definition">¶</a></dt>
+<dd><p>Value of 1 for all index values in the range, 0 otherwise</p>
+<p>A <a class="reference external" href="https://docs.sympy.org/latest/modules/functions/elementary.html#sympy.functions.elementary.piecewise.Piecewise" title="(in SymPy v1.7.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Piecewise</span></code></a> object that
+is 1 for any value of <cite>expr</cite> in the range of possible index values,
+and 0 otherwise.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.utils.indices.SymbolicLabelBase">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.utils.indices.</code><code class="sig-name descname">SymbolicLabelBase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">expr</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/indices.html#SymbolicLabelBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.indices.SymbolicLabelBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.8/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Base class for symbolic labels</p>
+<p>A symbolic label is a SymPy expression that contains one or more
+<a class="reference internal" href="#qalgebra.utils.indices.IdxSym" title="qalgebra.utils.indices.IdxSym"><code class="xref py py-class docutils literal notranslate"><span class="pre">IdxSym</span></code></a>, and can be rendered into an integer or string label by
+substituting integer values for each <a class="reference internal" href="#qalgebra.utils.indices.IdxSym" title="qalgebra.utils.indices.IdxSym"><code class="xref py py-class docutils literal notranslate"><span class="pre">IdxSym</span></code></a>.</p>
+<p>See <a class="reference internal" href="#qalgebra.utils.indices.IntIndex" title="qalgebra.utils.indices.IntIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntIndex</span></code></a> for an example.</p>
+<dl class="py method">
+<dt id="qalgebra.utils.indices.SymbolicLabelBase.substitute">
+<code class="sig-name descname">substitute</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">var_map</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/indices.html#SymbolicLabelBase.substitute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.indices.SymbolicLabelBase.substitute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Substitute in the expression describing the label.</p>
+<p>If the result of the substitution no longer contains any
+<a class="reference internal" href="#qalgebra.utils.indices.IdxSym" title="qalgebra.utils.indices.IdxSym"><code class="xref py py-class docutils literal notranslate"><span class="pre">IdxSym</span></code></a>, this returns a “rendered” label.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.utils.indices.SymbolicLabelBase.free_symbols">
+<em class="property">property </em><code class="sig-name descname">free_symbols</code><a class="headerlink" href="#qalgebra.utils.indices.SymbolicLabelBase.free_symbols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Free symbols in the expression describing the label</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="qalgebra.utils.indices.product">
+<code class="sig-prename descclassname">qalgebra.utils.indices.</code><code class="sig-name descname">product</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">generators</span></em>, <em class="sig-param"><span class="n">repeat</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/indices.html#product"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.indices.product" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cartesian product akin to <a class="reference external" href="https://docs.python.org/3.8/library/itertools.html#itertools.product" title="(in Python v3.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">itertools.product()</span></code></a>, but accepting
+generator functions</p>
+<p>Unlike <a class="reference external" href="https://docs.python.org/3.8/library/itertools.html#itertools.product" title="(in Python v3.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">itertools.product()</span></code></a> this function does not convert the input
+iterables into tuples. Thus, it can handle large or infinite inputs. As a
+drawback, however, it only works with “restartable” iterables (something
+that <a class="reference external" href="https://docs.python.org/3.8/library/functions.html#iter" title="(in Python v3.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">iter()</span></code></a> can repeatably turn into an iterator, or a generator
+function (but not the generator iterator that is returned by that
+generator function)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>generators</strong> – list of restartable iterators or generator functions</p></li>
+<li><p><strong>repeat</strong> – number of times <cite>generators</cite> should be repeated</p></li>
+</ul>
+</dd>
+</dl>
+<p>Adapted from <a class="reference external" href="https://stackoverflow.com/q/12093364/">https://stackoverflow.com/q/12093364/</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="qalgebra.utils.indices.yield_from_ranges">
+<code class="sig-prename descclassname">qalgebra.utils.indices.</code><code class="sig-name descname">yield_from_ranges</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ranges</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/indices.html#yield_from_ranges"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.indices.yield_from_ranges" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="qalgebra.utils.ordering.html" class="btn btn-neutral float-right" title="qalgebra.utils.ordering module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="qalgebra.utils.containers.html" class="btn btn-neutral float-left" title="qalgebra.utils.containers module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Michael Goerz
+      <span class="lastupdated">
+        Last updated on Dec 31, 2020.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

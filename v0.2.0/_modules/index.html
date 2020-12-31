@@ -1,0 +1,271 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Overview: module code &mdash; QAlgebra 0.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/mycss.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/doctr-versions-menu.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#usage">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Quantum Algebra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../symbolic_algebra.html">Symbolic Algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../printing.html">The Printing System</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../library_structure.html">Library Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../API/qalgebra.html">API of the QAlgebra package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Overview: module code</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>All modules for which code is available</h1>
+<ul><li><a href="qalgebra.html">qalgebra</a></li>
+<ul><li><a href="qalgebra/convert/to_qutip.html">qalgebra.convert.to_qutip</a></li>
+<li><a href="qalgebra/convert/to_sympy_matrix.html">qalgebra.convert.to_sympy_matrix</a></li>
+<li><a href="qalgebra/core/abstract_algebra.html">qalgebra.core.abstract_algebra</a></li>
+<li><a href="qalgebra/core/abstract_quantum_algebra.html">qalgebra.core.abstract_quantum_algebra</a></li>
+<li><a href="qalgebra/core/algebraic_properties.html">qalgebra.core.algebraic_properties</a></li>
+<li><a href="qalgebra/core/exceptions.html">qalgebra.core.exceptions</a></li>
+<li><a href="qalgebra/core/hilbert_space_algebra.html">qalgebra.core.hilbert_space_algebra</a></li>
+<li><a href="qalgebra/core/indexed_operations.html">qalgebra.core.indexed_operations</a></li>
+<li><a href="qalgebra/core/matrix_algebra.html">qalgebra.core.matrix_algebra</a></li>
+<li><a href="qalgebra/core/operator_algebra.html">qalgebra.core.operator_algebra</a></li>
+<li><a href="qalgebra/core/scalar_algebra.html">qalgebra.core.scalar_algebra</a></li>
+<li><a href="qalgebra/core/state_algebra.html">qalgebra.core.state_algebra</a></li>
+<li><a href="qalgebra/core/super_operator_algebra.html">qalgebra.core.super_operator_algebra</a></li>
+<li><a href="qalgebra/library/fock_operators.html">qalgebra.library.fock_operators</a></li>
+<li><a href="qalgebra/library/pauli_matrices.html">qalgebra.library.pauli_matrices</a></li>
+<li><a href="qalgebra/library/spin_algebra.html">qalgebra.library.spin_algebra</a></li>
+<li><a href="qalgebra/pattern_matching.html">qalgebra.pattern_matching</a></li>
+<li><a href="qalgebra/printing.html">qalgebra.printing</a></li>
+<ul><li><a href="qalgebra/printing/asciiprinter.html">qalgebra.printing.asciiprinter</a></li>
+<li><a href="qalgebra/printing/base.html">qalgebra.printing.base</a></li>
+<li><a href="qalgebra/printing/dot.html">qalgebra.printing.dot</a></li>
+<li><a href="qalgebra/printing/latexprinter.html">qalgebra.printing.latexprinter</a></li>
+<li><a href="qalgebra/printing/sreprprinter.html">qalgebra.printing.sreprprinter</a></li>
+<li><a href="qalgebra/printing/sympy.html">qalgebra.printing.sympy</a></li>
+<li><a href="qalgebra/printing/treeprinting.html">qalgebra.printing.treeprinting</a></li>
+<li><a href="qalgebra/printing/unicodeprinter.html">qalgebra.printing.unicodeprinter</a></li>
+</ul><li><a href="qalgebra/toolbox/commutator_manipulation.html">qalgebra.toolbox.commutator_manipulation</a></li>
+<li><a href="qalgebra/toolbox/core.html">qalgebra.toolbox.core</a></li>
+<li><a href="qalgebra/utils/check_rules.html">qalgebra.utils.check_rules</a></li>
+<li><a href="qalgebra/utils/containers.html">qalgebra.utils.containers</a></li>
+<li><a href="qalgebra/utils/indices.html">qalgebra.utils.indices</a></li>
+<li><a href="qalgebra/utils/ordering.html">qalgebra.utils.ordering</a></li>
+<li><a href="qalgebra/utils/properties_for_args.html">qalgebra.utils.properties_for_args</a></li>
+<li><a href="qalgebra/utils/singleton.html">qalgebra.utils.singleton</a></li>
+<li><a href="qalgebra/utils/testing.html">qalgebra.utils.testing</a></li>
+<li><a href="qalgebra/utils/unicode.html">qalgebra.utils.unicode</a></li>
+</ul><li><a href="sympy/core/assumptions.html">sympy.core.assumptions</a></li>
+</ul>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Michael Goerz
+      <span class="lastupdated">
+        Last updated on Dec 31, 2020.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,817 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>qalgebra.core.hilbert_space_algebra module &mdash; QAlgebra 0.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/mycss.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/doctr-versions-menu.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="qalgebra.core.indexed_operations module" href="qalgebra.core.indexed_operations.html" />
+    <link rel="prev" title="qalgebra.core.exceptions module" href="qalgebra.core.exceptions.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#usage">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Quantum Algebra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../symbolic_algebra.html">Symbolic Algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../printing.html">The Printing System</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../library_structure.html">Library Structure</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="qalgebra.html">API of the QAlgebra package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.pattern_matching.html">qalgebra.pattern_matching module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.convert.html">qalgebra.convert package</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="qalgebra.core.html">qalgebra.core package</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.abstract_algebra.html">qalgebra.core.abstract_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html">qalgebra.core.abstract_quantum_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.algebraic_properties.html">qalgebra.core.algebraic_properties module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.exceptions.html">qalgebra.core.exceptions module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">qalgebra.core.hilbert_space_algebra module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.indexed_operations.html">qalgebra.core.indexed_operations module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.matrix_algebra.html">qalgebra.core.matrix_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.operator_algebra.html">qalgebra.core.operator_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.scalar_algebra.html">qalgebra.core.scalar_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.state_algebra.html">qalgebra.core.state_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.super_operator_algebra.html">qalgebra.core.super_operator_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.library.html">qalgebra.library package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.printing.html">qalgebra.printing package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.toolbox.html">qalgebra.toolbox package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.utils.html">qalgebra.utils package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.html#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="qalgebra.html">qalgebra package</a> &raquo;</li>
+        
+          <li><a href="qalgebra.core.html">qalgebra.core package</a> &raquo;</li>
+        
+      <li>qalgebra.core.hilbert_space_algebra module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-qalgebra.core.hilbert_space_algebra">
+<span id="qalgebra-core-hilbert-space-algebra-module"></span><h1>qalgebra.core.hilbert_space_algebra module<a class="headerlink" href="#module-qalgebra.core.hilbert_space_algebra" title="Permalink to this headline">¶</a></h1>
+<p>Core class hierarchy for Hilbert spaces</p>
+<p>This module defines some simple classes to describe simple and
+<em>composite/tensor</em> (i.e., multiple degree of freedom)
+Hilbert spaces of quantum systems.</p>
+<p>For more details see <a class="reference internal" href="../symbolic_algebra.html#hilbert-space-algebra"><span class="std std-ref">Algebraic Manipulations</span></a>.</p>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Classes:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.hilbert_space_algebra.HilbertSpace" title="qalgebra.core.hilbert_space_algebra.HilbertSpace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HilbertSpace</span></code></a></p></td>
+<td><p>Base class for Hilbert spaces</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LocalSpace</span></code></a></p></td>
+<td><p>Hilbert space for a single degree of freedom.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.hilbert_space_algebra.ProductSpace" title="qalgebra.core.hilbert_space_algebra.ProductSpace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProductSpace</span></code></a></p></td>
+<td><p>Tensor product of local Hilbert spaces.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Data:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.hilbert_space_algebra.FullSpace" title="qalgebra.core.hilbert_space_algebra.FullSpace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FullSpace</span></code></a></p></td>
+<td><p>The ‘full space’, i.e. a Hilbert space that includes any other Hilbert space as a tensor factor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.hilbert_space_algebra.TrivialSpace" title="qalgebra.core.hilbert_space_algebra.TrivialSpace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TrivialSpace</span></code></a></p></td>
+<td><p>The ‘nullspace’, i.e. a one dimensional Hilbert space, which is a factor space of every other Hilbert space.</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">__all__</span></code>: <a class="reference internal" href="#qalgebra.core.hilbert_space_algebra.FullSpace" title="qalgebra.core.hilbert_space_algebra.FullSpace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FullSpace</span></code></a>, <a class="reference internal" href="#qalgebra.core.hilbert_space_algebra.HilbertSpace" title="qalgebra.core.hilbert_space_algebra.HilbertSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">HilbertSpace</span></code></a>, <a class="reference internal" href="#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a>, <a class="reference internal" href="#qalgebra.core.hilbert_space_algebra.ProductSpace" title="qalgebra.core.hilbert_space_algebra.ProductSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProductSpace</span></code></a>, <a class="reference internal" href="#qalgebra.core.hilbert_space_algebra.TrivialSpace" title="qalgebra.core.hilbert_space_algebra.TrivialSpace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TrivialSpace</span></code></a></p>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="qalgebra.core.hilbert_space_algebra.HilbertSpace">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.hilbert_space_algebra.</code><code class="sig-name descname">HilbertSpace</code><a class="reference internal" href="../_modules/qalgebra/core/hilbert_space_algebra.html#HilbertSpace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.HilbertSpace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.8/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Base class for Hilbert spaces</p>
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.HilbertSpace.tensor">
+<code class="sig-name descname">tensor</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">others</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/hilbert_space_algebra.html#HilbertSpace.tensor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.HilbertSpace.tensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tensor product between Hilbert spaces</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.HilbertSpace.remove">
+<em class="property">abstract </em><code class="sig-name descname">remove</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/hilbert_space_algebra.html#HilbertSpace.remove"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.HilbertSpace.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a particular factor from a tensor product space.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.HilbertSpace.intersect">
+<em class="property">abstract </em><code class="sig-name descname">intersect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/hilbert_space_algebra.html#HilbertSpace.intersect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.HilbertSpace.intersect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the mutual tensor factors of two Hilbert spaces.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.HilbertSpace.local_factors">
+<em class="property">abstract property </em><code class="sig-name descname">local_factors</code><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.HilbertSpace.local_factors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return tuple of LocalSpace objects that tensored together yield this
+Hilbert space.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.HilbertSpace.isdisjoint">
+<code class="sig-name descname">isdisjoint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/hilbert_space_algebra.html#HilbertSpace.isdisjoint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.HilbertSpace.isdisjoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check whether two Hilbert spaces are disjoint (do not have any
+common local factors). Note that <cite>FullSpace</cite> is <em>not</em> disjoint with any
+other Hilbert space, while <cite>TrivialSpace</cite> <em>is</em> disjoint with any other
+HilbertSpace (even itself)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.HilbertSpace.is_tensor_factor_of">
+<code class="sig-name descname">is_tensor_factor_of</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/hilbert_space_algebra.html#HilbertSpace.is_tensor_factor_of"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.HilbertSpace.is_tensor_factor_of" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if a space is included within a larger tensor product space.
+Also <code class="docutils literal notranslate"><span class="pre">True</span></code> if <code class="docutils literal notranslate"><span class="pre">self</span> <span class="pre">==</span> <span class="pre">other</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> (<a class="reference internal" href="#qalgebra.core.hilbert_space_algebra.HilbertSpace" title="qalgebra.core.hilbert_space_algebra.HilbertSpace"><em>HilbertSpace</em></a>) – Other Hilbert space</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.8/library/functions.html#bool" title="(in Python v3.8)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.HilbertSpace.is_strict_tensor_factor_of">
+<code class="sig-name descname">is_strict_tensor_factor_of</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/hilbert_space_algebra.html#HilbertSpace.is_strict_tensor_factor_of"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.HilbertSpace.is_strict_tensor_factor_of" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if a space is included within a larger tensor product space.
+Not <code class="docutils literal notranslate"><span class="pre">True</span></code> if <code class="docutils literal notranslate"><span class="pre">self</span> <span class="pre">==</span> <span class="pre">other</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.HilbertSpace.dimension">
+<em class="property">property </em><code class="sig-name descname">dimension</code><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.HilbertSpace.dimension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Full dimension of the Hilbert space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.BasisNotSetError" title="qalgebra.core.exceptions.BasisNotSetError"><strong>BasisNotSetError</strong></a> – if the Hilbert space has no defined basis</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.HilbertSpace.has_basis">
+<em class="property">property </em><code class="sig-name descname">has_basis</code><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.HilbertSpace.has_basis" title="Permalink to this definition">¶</a></dt>
+<dd><p>True if the Hilbert space has a basis</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.HilbertSpace.basis_states">
+<em class="property">property </em><code class="sig-name descname">basis_states</code><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.HilbertSpace.basis_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yield an iterator over the states (<a class="reference internal" href="qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.State" title="qalgebra.core.state_algebra.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">State</span></code></a> instances) that
+form the canonical basis of the Hilbert space</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.BasisNotSetError" title="qalgebra.core.exceptions.BasisNotSetError"><strong>BasisNotSetError</strong></a> – if the Hilbert space has no defined basis</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.HilbertSpace.basis_state">
+<code class="sig-name descname">basis_state</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index_or_label</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/hilbert_space_algebra.html#HilbertSpace.basis_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.HilbertSpace.basis_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the basis state with the given index or label.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.BasisNotSetError" title="qalgebra.core.exceptions.BasisNotSetError"><strong>BasisNotSetError</strong></a> – if the Hilbert space has no defined basis</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3.8/library/exceptions.html#IndexError" title="(in Python v3.8)"><strong>IndexError</strong></a> – if there is no basis state with the given index</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3.8/library/exceptions.html#KeyError" title="(in Python v3.8)"><strong>KeyError</strong></a> – if there is not basis state with the given label</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.HilbertSpace.basis_labels">
+<em class="property">property </em><code class="sig-name descname">basis_labels</code><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.HilbertSpace.basis_labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tuple of basis labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.BasisNotSetError" title="qalgebra.core.exceptions.BasisNotSetError"><strong>BasisNotSetError</strong></a> – if the Hilbert space has no defined basis</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.HilbertSpace.is_strict_subfactor_of">
+<em class="property">abstract </em><code class="sig-name descname">is_strict_subfactor_of</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/hilbert_space_algebra.html#HilbertSpace.is_strict_subfactor_of"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.HilbertSpace.is_strict_subfactor_of" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test whether a Hilbert space occures as a strict sub-factor in
+a (larger) Hilbert space</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.HilbertSpace.__len__">
+<code class="sig-name descname">__len__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/hilbert_space_algebra.html#HilbertSpace.__len__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.HilbertSpace.__len__" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of LocalSpace factors / degrees of freedom.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.core.hilbert_space_algebra.LocalSpace">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.hilbert_space_algebra.</code><code class="sig-name descname">LocalSpace</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">label</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">basis</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">dimension</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">local_identifiers</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">order_index</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/hilbert_space_algebra.html#LocalSpace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.LocalSpace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qalgebra.core.hilbert_space_algebra.HilbertSpace" title="qalgebra.core.hilbert_space_algebra.HilbertSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.hilbert_space_algebra.HilbertSpace</span></code></a>, <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression" title="qalgebra.core.abstract_algebra.Expression"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_algebra.Expression</span></code></a></p>
+<p>Hilbert space for a single degree of freedom.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>label</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em> or </em><a class="reference internal" href="qalgebra.utils.indices.html#qalgebra.utils.indices.StrLabel" title="qalgebra.utils.indices.StrLabel"><em>StrLabel</em></a>) – label (subscript) of the
+Hilbert space</p></li>
+<li><p><strong>basis</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#tuple" title="(in Python v3.8)"><em>tuple</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a>) – Set an explicit basis for the Hilbert space
+(tuple of labels for the basis states)</p></li>
+<li><p><strong>dimension</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a>) – Specify the dimension <span class="math notranslate nohighlight">\(n\)</span> of the Hilbert
+space.  This implies a basis numbered from 0  to <span class="math notranslate nohighlight">\(n-1\)</span>.</p></li>
+<li><p><strong>local_identifiers</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – Mapping of class names of
+<a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.LocalOperator" title="qalgebra.core.operator_algebra.LocalOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalOperator</span></code></a> subclasses to identifier names. Used e.g.
+‘b’ instead of the default ‘a’ for the anihilation operator. This
+can be a dict or a dict-compatible structure, e.g. a list/tuple of
+key-value tuples.</p></li>
+<li><p><strong>order_index</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a>) – An optional key that determines the
+preferred order of Hilbert spaces. This also changes the order of
+e.g. sums or products of Operators. Hilbert spaces will be ordered
+from left to right be increasing <cite>order_index</cite>; Hilbert spaces
+without an explicit <cite>order_index</cite> are sorted by their label</p></li>
+</ul>
+</dd>
+</dl>
+<p>A <a class="reference internal" href="#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a> fundamentally has a Fock-space like structure,
+in that its basis states may be understood as an “excitation”.
+The spectrum can be infinite, with levels labeled by integers 0, 1, …:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hs</span> <span class="o">=</span> <span class="n">LocalSpace</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or truncated to a finite dimension:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hs</span> <span class="o">=</span> <span class="n">LocalSpace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hs</span><span class="o">.</span><span class="n">basis_labels</span>
+<span class="go">(&#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;)</span>
+</pre></div>
+</div>
+<p>For finite-dimensional (truncated) Hilbert spaces, we also allow an
+arbitrary alternative labeling of the canonical basis:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hs</span> <span class="o">=</span> <span class="n">LocalSpace</span><span class="p">(</span><span class="s1">&#39;rydberg&#39;</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.LocalSpace.args">
+<em class="property">property </em><code class="sig-name descname">args</code><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.LocalSpace.args" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of arguments, consisting only of <cite>label</cite></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.LocalSpace.label">
+<em class="property">property </em><code class="sig-name descname">label</code><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.LocalSpace.label" title="Permalink to this definition">¶</a></dt>
+<dd><p>Label of the Hilbert space.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.LocalSpace.has_basis">
+<em class="property">property </em><code class="sig-name descname">has_basis</code><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.LocalSpace.has_basis" title="Permalink to this definition">¶</a></dt>
+<dd><p>True if the Hilbert space has a basis.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.LocalSpace.basis_states">
+<em class="property">property </em><code class="sig-name descname">basis_states</code><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.LocalSpace.basis_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yield an iterator over the states (<a class="reference internal" href="qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.BasisKet" title="qalgebra.core.state_algebra.BasisKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasisKet</span></code></a> instances)
+that form the canonical basis of the Hilbert space</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.BasisNotSetError" title="qalgebra.core.exceptions.BasisNotSetError"><strong>BasisNotSetError</strong></a> – if the Hilbert space has no defined basis</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.LocalSpace.basis_state">
+<code class="sig-name descname">basis_state</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index_or_label</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/hilbert_space_algebra.html#LocalSpace.basis_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.LocalSpace.basis_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the basis state with the given index or label.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.BasisNotSetError" title="qalgebra.core.exceptions.BasisNotSetError"><strong>BasisNotSetError</strong></a> – if the Hilbert space has no defined basis</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3.8/library/exceptions.html#IndexError" title="(in Python v3.8)"><strong>IndexError</strong></a> – if there is no basis state with the given index</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3.8/library/exceptions.html#KeyError" title="(in Python v3.8)"><strong>KeyError</strong></a> – if there is not basis state with the given label</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.LocalSpace.basis_labels">
+<em class="property">property </em><code class="sig-name descname">basis_labels</code><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.LocalSpace.basis_labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tuple of basis labels (strings).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.BasisNotSetError" title="qalgebra.core.exceptions.BasisNotSetError"><strong>BasisNotSetError</strong></a> – if the Hilbert space has no defined basis</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.LocalSpace.dimension">
+<em class="property">property </em><code class="sig-name descname">dimension</code><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.LocalSpace.dimension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dimension of the Hilbert space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.BasisNotSetError" title="qalgebra.core.exceptions.BasisNotSetError"><strong>BasisNotSetError</strong></a> – if the Hilbert space has no defined basis</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.LocalSpace.kwargs">
+<em class="property">property </em><code class="sig-name descname">kwargs</code><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.LocalSpace.kwargs" title="Permalink to this definition">¶</a></dt>
+<dd><p>The dictionary of keyword-only arguments for the instantiation of
+the Expression</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.LocalSpace.minimal_kwargs">
+<em class="property">property </em><code class="sig-name descname">minimal_kwargs</code><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.LocalSpace.minimal_kwargs" title="Permalink to this definition">¶</a></dt>
+<dd><p>A “minimal” dictionary of keyword-only arguments, i.e. a subset of
+<cite>kwargs</cite> that may exclude default options</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.LocalSpace.remove">
+<code class="sig-name descname">remove</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/hilbert_space_algebra.html#LocalSpace.remove"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.LocalSpace.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a particular factor from a tensor product space.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.LocalSpace.intersect">
+<code class="sig-name descname">intersect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/hilbert_space_algebra.html#LocalSpace.intersect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.LocalSpace.intersect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the mutual tensor factors of two Hilbert spaces.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.LocalSpace.local_factors">
+<em class="property">property </em><code class="sig-name descname">local_factors</code><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.LocalSpace.local_factors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return tuple of LocalSpace objects that tensored together yield this
+Hilbert space.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.LocalSpace.is_strict_subfactor_of">
+<code class="sig-name descname">is_strict_subfactor_of</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/hilbert_space_algebra.html#LocalSpace.is_strict_subfactor_of"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.LocalSpace.is_strict_subfactor_of" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test whether a Hilbert space occures as a strict sub-factor in
+a (larger) Hilbert space</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.LocalSpace.next_basis_label_or_index">
+<code class="sig-name descname">next_basis_label_or_index</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">label_or_index</span></em>, <em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/hilbert_space_algebra.html#LocalSpace.next_basis_label_or_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.LocalSpace.next_basis_label_or_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given the label or index of a basis state, return the label/index of
+the next basis state.</p>
+<p>More generally, if <cite>n</cite> is given, return the <cite>n</cite>’th next basis state
+label/index; <cite>n</cite> may also be negative to obtain previous basis state
+labels/indices.</p>
+<p>The return type is the same as the type of <cite>label_or_index</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>label_or_index</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em> or </em><a class="reference internal" href="qalgebra.utils.indices.html#qalgebra.utils.indices.SymbolicLabelBase" title="qalgebra.utils.indices.SymbolicLabelBase"><em>SymbolicLabelBase</em></a>) – If <cite>int</cite>, the
+index of a basis state; if <cite>str</cite>, the label of a basis state</p></li>
+<li><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – The increment</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3.8/library/exceptions.html#IndexError" title="(in Python v3.8)"><strong>IndexError</strong></a> – If going beyond the last or first basis state</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3.8/library/exceptions.html#ValueError" title="(in Python v3.8)"><strong>ValueError</strong></a> – If <cite>label</cite> is not a label for any basis state in the
+    Hilbert space</p></li>
+<li><p><a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.BasisNotSetError" title="qalgebra.core.exceptions.BasisNotSetError"><strong>BasisNotSetError</strong></a> – If the Hilbert space has no defined basis</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3.8/library/exceptions.html#TypeError" title="(in Python v3.8)"><strong>TypeError</strong></a> – if <cite>label_or_index</cite> is neither a <a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> nor an
+    <a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, nor a <a class="reference internal" href="qalgebra.utils.indices.html#qalgebra.utils.indices.SymbolicLabelBase" title="qalgebra.utils.indices.SymbolicLabelBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">SymbolicLabelBase</span></code></a></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.core.hilbert_space_algebra.ProductSpace">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.hilbert_space_algebra.</code><code class="sig-name descname">ProductSpace</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">local_spaces</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/hilbert_space_algebra.html#ProductSpace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.ProductSpace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qalgebra.core.hilbert_space_algebra.HilbertSpace" title="qalgebra.core.hilbert_space_algebra.HilbertSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.hilbert_space_algebra.HilbertSpace</span></code></a>, <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Operation" title="qalgebra.core.abstract_algebra.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_algebra.Operation</span></code></a></p>
+<p>Tensor product of local Hilbert spaces.</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hs1</span> <span class="o">=</span> <span class="n">LocalSpace</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hs2</span> <span class="o">=</span> <span class="n">LocalSpace</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hs</span> <span class="o">=</span> <span class="n">hs1</span> <span class="o">*</span> <span class="n">hs2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hs</span><span class="o">.</span><span class="n">basis_labels</span>
+<span class="go">(&#39;0,0&#39;, &#39;0,1&#39;, &#39;1,0&#39;, &#39;1,1&#39;)</span>
+</pre></div>
+</div>
+<dl class="py attribute">
+<dt id="qalgebra.core.hilbert_space_algebra.ProductSpace.simplifications">
+<code class="sig-name descname">simplifications</code><em class="property"> = [&lt;function empty_trivial&gt;, &lt;function assoc&gt;, &lt;function convert_to_spaces&gt;, &lt;function idem&gt;, &lt;function filter_neutral&gt;]</em><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.ProductSpace.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.ProductSpace.create">
+<em class="property">classmethod </em><code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">local_spaces</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/hilbert_space_algebra.html#ProductSpace.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.ProductSpace.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate while applying automatic simplifications.</p>
+<p>Instead of directly instantiating <cite>cls</cite>, it is recommended to use
+<a class="reference internal" href="#qalgebra.core.hilbert_space_algebra.ProductSpace.create" title="qalgebra.core.hilbert_space_algebra.ProductSpace.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a>, which applies simplifications to the args and keyword
+arguments according to the <cite>simplifications</cite> class attribute, and
+returns an appropriate object (which may or may not be an instance of
+the original <cite>cls</cite>).</p>
+<p>Two simplifications of particular importance are <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace" title="qalgebra.core.algebraic_properties.match_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace()</span></code></a>
+and <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace_binary" title="qalgebra.core.algebraic_properties.match_replace_binary"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace_binary()</span></code></a> which apply rule-based
+simplifications.</p>
+<p>The <a class="reference internal" href="qalgebra.toolbox.core.html#qalgebra.toolbox.core.temporary_rules" title="qalgebra.toolbox.core.temporary_rules"><code class="xref py py-func docutils literal notranslate"><span class="pre">temporary_rules()</span></code></a> context manager may be used to allow
+temporary modification of the automatic simplifications that
+<a class="reference internal" href="#qalgebra.core.hilbert_space_algebra.ProductSpace.create" title="qalgebra.core.hilbert_space_algebra.ProductSpace.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a> uses, in particular the rules for
+<a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace" title="qalgebra.core.algebraic_properties.match_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace()</span></code></a> and <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace_binary" title="qalgebra.core.algebraic_properties.match_replace_binary"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace_binary()</span></code></a>. Inside the
+managed context, the <cite>simplifications</cite> class attribute may be
+modified and rules can be managed with <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.add_rule" title="qalgebra.core.abstract_algebra.Expression.add_rule"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_rule()</span></code></a>
+and <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.del_rules" title="qalgebra.core.abstract_algebra.Expression.del_rules"><code class="xref py py-meth docutils literal notranslate"><span class="pre">del_rules()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.ProductSpace.has_basis">
+<em class="property">property </em><code class="sig-name descname">has_basis</code><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.ProductSpace.has_basis" title="Permalink to this definition">¶</a></dt>
+<dd><p>True if the all the local factors of the <cite>ProductSpace</cite> have a
+defined basis</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.ProductSpace.basis_states">
+<em class="property">property </em><code class="sig-name descname">basis_states</code><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.ProductSpace.basis_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yield an iterator over the states (<a class="reference internal" href="qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.TensorKet" title="qalgebra.core.state_algebra.TensorKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">TensorKet</span></code></a> instances)
+that form the canonical basis of the Hilbert space</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.BasisNotSetError" title="qalgebra.core.exceptions.BasisNotSetError"><strong>BasisNotSetError</strong></a> – if the Hilbert space has no defined basis</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.ProductSpace.basis_labels">
+<em class="property">property </em><code class="sig-name descname">basis_labels</code><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.ProductSpace.basis_labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tuple of basis labels. Each basis label consists of the labels of
+the <a class="reference internal" href="qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.BasisKet" title="qalgebra.core.state_algebra.BasisKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasisKet</span></code></a> states that factor the basis state, separated by
+commas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.BasisNotSetError" title="qalgebra.core.exceptions.BasisNotSetError"><strong>BasisNotSetError</strong></a> – if the Hilbert space has no defined basis</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.ProductSpace.basis_state">
+<code class="sig-name descname">basis_state</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index_or_label</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/hilbert_space_algebra.html#ProductSpace.basis_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.ProductSpace.basis_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the basis state with the given index or label.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.BasisNotSetError" title="qalgebra.core.exceptions.BasisNotSetError"><strong>BasisNotSetError</strong></a> – if the Hilbert space has no defined basis</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3.8/library/exceptions.html#IndexError" title="(in Python v3.8)"><strong>IndexError</strong></a> – if there is no basis state with the given index</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3.8/library/exceptions.html#KeyError" title="(in Python v3.8)"><strong>KeyError</strong></a> – if there is not basis state with the given label</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.ProductSpace.dimension">
+<em class="property">property </em><code class="sig-name descname">dimension</code><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.ProductSpace.dimension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dimension of the Hilbert space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.BasisNotSetError" title="qalgebra.core.exceptions.BasisNotSetError"><strong>BasisNotSetError</strong></a> – if the Hilbert space has no defined basis</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.ProductSpace.remove">
+<code class="sig-name descname">remove</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/hilbert_space_algebra.html#ProductSpace.remove"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.ProductSpace.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a particular factor from a tensor product space.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.ProductSpace.local_factors">
+<em class="property">property </em><code class="sig-name descname">local_factors</code><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.ProductSpace.local_factors" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a> instances that make up the product</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.ProductSpace.order_key">
+<em class="property">classmethod </em><code class="sig-name descname">order_key</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/hilbert_space_algebra.html#ProductSpace.order_key"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.ProductSpace.order_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Key by which operands are sorted</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.ProductSpace.intersect">
+<code class="sig-name descname">intersect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/hilbert_space_algebra.html#ProductSpace.intersect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.ProductSpace.intersect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the mutual tensor factors of two Hilbert spaces.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.hilbert_space_algebra.ProductSpace.is_strict_subfactor_of">
+<code class="sig-name descname">is_strict_subfactor_of</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/hilbert_space_algebra.html#ProductSpace.is_strict_subfactor_of"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.ProductSpace.is_strict_subfactor_of" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if a space is included within a larger tensor product space.</p>
+<p>Not <code class="docutils literal notranslate"><span class="pre">True</span></code> if <code class="docutils literal notranslate"><span class="pre">self</span> <span class="pre">==</span> <span class="pre">other</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt id="qalgebra.core.hilbert_space_algebra.FullSpace">
+<code class="sig-prename descclassname">qalgebra.core.hilbert_space_algebra.</code><code class="sig-name descname">FullSpace</code><em class="property"> = FullSpace</em><a class="reference internal" href="../_modules/qalgebra/core/hilbert_space_algebra.html#FullSpace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.FullSpace" title="Permalink to this definition">¶</a></dt>
+<dd><p>The ‘full space’, i.e. a Hilbert space that includes any other Hilbert
+space as a tensor factor.</p>
+<p>The <cite>FullSpace</cite> has no defined basis, any related properties will raise
+<a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.BasisNotSetError" title="qalgebra.core.exceptions.BasisNotSetError"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasisNotSetError</span></code></a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="qalgebra.core.hilbert_space_algebra.TrivialSpace">
+<code class="sig-prename descclassname">qalgebra.core.hilbert_space_algebra.</code><code class="sig-name descname">TrivialSpace</code><em class="property"> = TrivialSpace</em><a class="reference internal" href="../_modules/qalgebra/core/hilbert_space_algebra.html#TrivialSpace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.hilbert_space_algebra.TrivialSpace" title="Permalink to this definition">¶</a></dt>
+<dd><p>The ‘nullspace’, i.e. a one dimensional Hilbert space, which is a factor
+space of every other Hilbert space.</p>
+<p>This is the Hilbert space of scalars.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="qalgebra.core.indexed_operations.html" class="btn btn-neutral float-right" title="qalgebra.core.indexed_operations module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="qalgebra.core.exceptions.html" class="btn btn-neutral float-left" title="qalgebra.core.exceptions module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Michael Goerz
+      <span class="lastupdated">
+        Last updated on Dec 31, 2020.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

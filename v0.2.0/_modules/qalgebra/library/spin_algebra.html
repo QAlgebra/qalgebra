@@ -1,0 +1,741 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>qalgebra.library.spin_algebra &mdash; QAlgebra 0.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/mycss.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/doctr-versions-menu.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html#usage">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Quantum Algebra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../symbolic_algebra.html">Symbolic Algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../printing.html">The Printing System</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../history.html">History</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../library_structure.html">Library Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../API/qalgebra.html">API of the QAlgebra package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../qalgebra.html">qalgebra</a> &raquo;</li>
+        
+      <li>qalgebra.library.spin_algebra</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for qalgebra.library.spin_algebra</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Definitions for an algebra on spin (angular momentum) Hilbert spaces, both</span>
+<span class="sd">for integer and half-integer spin&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABCMeta</span>
+<span class="kn">from</span> <span class="nn">collections.__init__</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
+
+<span class="kn">import</span> <span class="nn">sympy</span>
+<span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">sympify</span>
+
+<span class="kn">from</span> <span class="nn">..core.hilbert_space_algebra</span> <span class="kn">import</span> <span class="n">LocalSpace</span>
+<span class="kn">from</span> <span class="nn">..core.operator_algebra</span> <span class="kn">import</span> <span class="n">LocalOperator</span><span class="p">,</span> <span class="n">PseudoInverse</span>
+<span class="kn">from</span> <span class="nn">..core.state_algebra</span> <span class="kn">import</span> <span class="n">BasisKet</span>
+<span class="kn">from</span> <span class="nn">..utils.indices</span> <span class="kn">import</span> <span class="n">SpinIndex</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;SpinSpace&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SpinBasisKet&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SpinOperator&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Jz&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Jplus&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Jminus&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">__private__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Jpjmcoeff&#39;</span><span class="p">,</span> <span class="s1">&#39;Jzjmcoeff&#39;</span><span class="p">,</span> <span class="s1">&#39;Jmjmcoeff&#39;</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="SpinSpace"><a class="viewcode-back" href="../../../API/qalgebra.library.spin_algebra.html#qalgebra.library.spin_algebra.SpinSpace">[docs]</a><span class="k">class</span> <span class="nc">SpinSpace</span><span class="p">(</span><span class="n">LocalSpace</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A Hilbert space for an integer or half-integer spin system.</span>
+
+<span class="sd">    For a given spin $N$, the resulting Hilbert space has dimension $2 N + 1$</span>
+<span class="sd">    with levels labeled from $-N$ to $+N$ (as strings)</span>
+
+<span class="sd">    For an integer spin::</span>
+
+<span class="sd">        &gt;&gt;&gt; hs = SpinSpace(label=0, spin=1)</span>
+<span class="sd">        &gt;&gt;&gt; hs.dimension</span>
+<span class="sd">        3</span>
+<span class="sd">        &gt;&gt;&gt; hs.basis_labels</span>
+<span class="sd">        (&#39;-1&#39;, &#39;0&#39;, &#39;+1&#39;)</span>
+
+<span class="sd">    For a half-integer  spin::</span>
+
+<span class="sd">        &gt;&gt;&gt; hs = SpinSpace(label=0, spin=sympy.Rational(3, 2))</span>
+<span class="sd">        &gt;&gt;&gt; hs.spin</span>
+<span class="sd">        3/2</span>
+<span class="sd">        &gt;&gt;&gt; hs.dimension</span>
+<span class="sd">        4</span>
+<span class="sd">        &gt;&gt;&gt; hs.basis_labels</span>
+<span class="sd">        (&#39;-3/2&#39;, &#39;-1/2&#39;, &#39;+1/2&#39;, &#39;+3/2&#39;)</span>
+
+<span class="sd">    For convenience, you may also give `spin` as a tuple or a string::</span>
+
+<span class="sd">        &gt;&gt;&gt; hs = SpinSpace(label=0, spin=(3, 2))</span>
+<span class="sd">        &gt;&gt;&gt; assert hs == SpinSpace(label=0, spin=sympy.Rational(3, 2))</span>
+<span class="sd">        &gt;&gt;&gt; hs = SpinSpace(label=0, spin=&#39;3/2&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; assert hs == SpinSpace(label=0, spin=(3, 2))</span>
+
+<span class="sd">    You may use custom labels, e.g.::</span>
+
+<span class="sd">        &gt;&gt;&gt; hs = SpinSpace(label=&#39;s&#39;, spin=&#39;1/2&#39;, basis=(&#39;-&#39;, &#39;+&#39;))</span>
+<span class="sd">        &gt;&gt;&gt; hs.basis_labels</span>
+<span class="sd">        (&#39;-&#39;, &#39;+&#39;)</span>
+
+<span class="sd">    The labels &quot;up&quot; and &quot;down&quot; are recognized and printed as the appropritate</span>
+<span class="sd">    arrow symbols::</span>
+
+<span class="sd">        &gt;&gt;&gt; hs = SpinSpace(label=&#39;s&#39;, spin=&#39;1/2&#39;, basis=(&#39;down&#39;, &#39;up&#39;))</span>
+<span class="sd">        &gt;&gt;&gt; unicode(BasisKet(&#39;up&#39;, hs=hs))</span>
+<span class="sd">        &#39;|↑⟩⁽ˢ⁾&#39;</span>
+<span class="sd">        &gt;&gt;&gt; unicode(BasisKet(&#39;down&#39;, hs=hs))</span>
+<span class="sd">        &#39;|↓⟩⁽ˢ⁾&#39;</span>
+
+<span class="sd">    Raises:</span>
+
+<span class="sd">        ValueError: if `spin` is not an integer or half-integer greater than</span>
+<span class="sd">            zero</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_basis_label_types</span> <span class="o">=</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">SpinIndex</span><span class="p">)</span>  <span class="c1"># acceptable types for labels</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">label</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">spin</span><span class="p">,</span>
+        <span class="n">basis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">local_identifiers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">order_index</span><span class="o">=</span><span class="kc">None</span>
+    <span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">spin</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+            <span class="n">spin</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">sympify</span><span class="p">(</span><span class="n">spin</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">spin</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">spin</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">sympify</span><span class="p">(</span><span class="n">spin</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_spin</span> <span class="o">=</span> <span class="n">spin</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">spin</span><span class="p">)</span><span class="o">.</span><span class="n">is_integer</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;spin </span><span class="si">%s</span><span class="s2"> must be an integer or half-integer&quot;</span> <span class="o">%</span> <span class="n">spin</span>
+            <span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">dimension</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">spin</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;spin </span><span class="si">%s</span><span class="s2"> must be an integer or half-integer&quot;</span> <span class="o">%</span> <span class="n">spin</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">dimension</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;spin </span><span class="si">%s</span><span class="s2"> must be greater than zero&quot;</span> <span class="o">%</span> <span class="n">spin</span><span class="p">)</span>
+        <span class="n">bottom</span> <span class="o">=</span> <span class="o">-</span><span class="n">spin</span>
+        <span class="k">if</span> <span class="n">basis</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">basis</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="n">SpinIndex</span><span class="o">.</span><span class="n">_static_render</span><span class="p">(</span><span class="n">bottom</span> <span class="o">+</span> <span class="n">n</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dimension</span><span class="p">)</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># sometimes people don&#39;t think and use some of the &quot;canonical&quot; TLS</span>
+            <span class="c1"># labels in the wrong order. We can catch it, so why not?</span>
+            <span class="k">if</span> <span class="n">basis</span> <span class="o">==</span> <span class="p">(</span><span class="s1">&#39;up&#39;</span><span class="p">,</span> <span class="s1">&#39;down&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">basis</span> <span class="o">==</span> <span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;Invalid basis: you&#39;ve switched </span><span class="si">%s</span><span class="s2"> and </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">basis</span>
+                <span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+            <span class="n">basis</span><span class="o">=</span><span class="n">basis</span><span class="p">,</span>
+            <span class="n">dimension</span><span class="o">=</span><span class="n">dimension</span><span class="p">,</span>
+            <span class="n">local_identifiers</span><span class="o">=</span><span class="n">local_identifiers</span><span class="p">,</span>
+            <span class="n">order_index</span><span class="o">=</span><span class="n">order_index</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># rewrite the kwargs from super()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_kwargs</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="p">(</span><span class="s1">&#39;spin&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_spin</span><span class="p">),</span>
+                <span class="p">(</span><span class="s1">&#39;local_identifiers&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sorted_local_identifiers</span><span class="p">),</span>
+                <span class="p">(</span><span class="s1">&#39;order_index&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_order_index</span><span class="p">),</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_minimal_kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_kwargs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">local_identifiers</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minimal_kwargs</span><span class="p">[</span><span class="s1">&#39;local_identifiers&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">order_index</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minimal_kwargs</span><span class="p">[</span><span class="s1">&#39;order_index&#39;</span><span class="p">]</span>
+
+<div class="viewcode-block" id="SpinSpace.next_basis_label_or_index"><a class="viewcode-back" href="../../../API/qalgebra.library.spin_algebra.html#qalgebra.library.spin_algebra.SpinSpace.next_basis_label_or_index">[docs]</a>    <span class="k">def</span> <span class="nf">next_basis_label_or_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_or_index</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Given the label or index of a basis state, return the label</span>
+<span class="sd">        the next basis state.</span>
+
+<span class="sd">        More generally, if `n` is given, return the `n`&#39;th next basis state</span>
+<span class="sd">        label/index; `n` may also be negative to obtain previous basis state</span>
+<span class="sd">        labels. Returns a :class:`str` label if `label_or_index` is a</span>
+<span class="sd">        :class:`str` or :class:`int`, or a :class:`.SpinIndex` if</span>
+<span class="sd">        `label_or_index` is a :class:`.SpinIndex`.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            label_or_index (int or str or SpinIndex): If `int`, the</span>
+<span class="sd">                zero-based index of a basis state; if `str`, the label of a</span>
+<span class="sd">                basis state</span>
+<span class="sd">            n (int): The increment</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            IndexError: If going beyond the last or first basis state</span>
+<span class="sd">            ValueError: If `label` is not a label for any basis state in the</span>
+<span class="sd">                Hilbert space</span>
+<span class="sd">            .BasisNotSetError: If the Hilbert space has no defined basis</span>
+<span class="sd">            TypeError: if `label_or_index` is neither a :class:`str` nor an</span>
+<span class="sd">                :class:`int`, nor a :class:`.SpinIndex`</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            This differs from its super-method only by never returning an</span>
+<span class="sd">            integer index (which is not accepted when instantiating a</span>
+<span class="sd">            :class:`.BasisKet` for a :class:`.SpinSpace`)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">label_or_index</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="n">new_index</span> <span class="o">=</span> <span class="n">label_or_index</span> <span class="o">+</span> <span class="n">n</span>
+            <span class="k">if</span> <span class="n">new_index</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;index </span><span class="si">%d</span><span class="s2"> &lt; 0&quot;</span> <span class="o">%</span> <span class="n">new_index</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">new_index</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dimension</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span>
+                    <span class="s2">&quot;index </span><span class="si">%d</span><span class="s2"> out of range for basis </span><span class="si">%s</span><span class="s2">&quot;</span>
+                    <span class="o">%</span> <span class="p">(</span><span class="n">new_index</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_basis</span><span class="p">)</span>
+                <span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">basis_labels</span><span class="p">[</span><span class="n">new_index</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">label_or_index</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">label_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">basis_labels</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">label_or_index</span><span class="p">)</span>
+            <span class="n">new_index</span> <span class="o">=</span> <span class="n">label_index</span> <span class="o">+</span> <span class="n">n</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">new_index</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">new_index</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_basis</span><span class="p">)):</span>
+                <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span>
+                    <span class="s2">&quot;index </span><span class="si">%d</span><span class="s2"> out of range for basis </span><span class="si">%s</span><span class="s2">&quot;</span>
+                    <span class="o">%</span> <span class="p">(</span><span class="n">new_index</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_basis</span><span class="p">)</span>
+                <span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">basis_labels</span><span class="p">[</span><span class="n">new_index</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">label_or_index</span><span class="p">,</span> <span class="n">SpinIndex</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">label_or_index</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="n">label_or_index</span><span class="o">.</span><span class="n">expr</span> <span class="o">+</span> <span class="n">n</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">spin</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Rational</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The spin-number associated with the :class:`.SpinSpace`</span>
+
+<span class="sd">        This can be a SymPy integer or a half-integer.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_spin</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">multiplicity</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The multiplicity of the Hilbert space, $2 S + 1$.</span>
+
+<span class="sd">        This is equivalent to the dimension::</span>
+
+<span class="sd">            &gt;&gt;&gt; hs = SpinSpace(&#39;s&#39;, spin=sympy.Rational(3, 2))</span>
+<span class="sd">            &gt;&gt;&gt; hs.multiplicity == 4 == hs.dimension</span>
+<span class="sd">            True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_spin</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span></div>
+
+
+<div class="viewcode-block" id="SpinBasisKet"><a class="viewcode-back" href="../../../API/qalgebra.library.spin_algebra.html#qalgebra.library.spin_algebra.SpinBasisKet">[docs]</a><span class="k">def</span> <span class="nf">SpinBasisKet</span><span class="p">(</span><span class="o">*</span><span class="n">numer_denom</span><span class="p">,</span> <span class="n">hs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Constructor for a :class:`.BasisKet` for a :class:`.SpinSpace`.</span>
+
+<span class="sd">    For a half-integer spin system::</span>
+
+<span class="sd">        &gt;&gt;&gt; hs = SpinSpace(&#39;s&#39;, spin=(3, 2))</span>
+<span class="sd">        &gt;&gt;&gt; assert SpinBasisKet(1, 2, hs=hs) == BasisKet(&quot;+1/2&quot;, hs=hs)</span>
+
+<span class="sd">    For an integer spin system::</span>
+
+<span class="sd">        &gt;&gt;&gt; hs = SpinSpace(&#39;s&#39;, spin=1)</span>
+<span class="sd">        &gt;&gt;&gt; assert SpinBasisKet(1, hs=hs) == BasisKet(&quot;+1&quot;, hs=hs)</span>
+
+<span class="sd">    Note that ``BasisKet(1, hs=hs)`` with an integer index (which would</span>
+<span class="sd">    hypothetically refer to ``BasisKet(&quot;0&quot;, hs=hs)`` is not allowed for spin</span>
+<span class="sd">    systems::</span>
+
+<span class="sd">        &gt;&gt;&gt; BasisKet(1, hs=hs)</span>
+<span class="sd">        Traceback (most recent call last):</span>
+<span class="sd">            ...</span>
+<span class="sd">        TypeError: label_or_index must be an instance of one of str, SpinIndex; not int</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        TypeError: if `hs` is not a :class:`.SpinSpace` or the wrong number of</span>
+<span class="sd">            positional arguments is given</span>
+<span class="sd">        ValueError: if any of the positional arguments are out range for the</span>
+<span class="sd">            given `hs`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">spin_numer</span><span class="p">,</span> <span class="n">spin_denom</span> <span class="o">=</span> <span class="n">hs</span><span class="o">.</span><span class="n">spin</span><span class="o">.</span><span class="n">as_numer_denom</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+            <span class="s2">&quot;hs=</span><span class="si">%s</span><span class="s2"> for SpinBasisKet must be a SpinSpace instance&quot;</span> <span class="o">%</span> <span class="n">hs</span>
+        <span class="p">)</span>
+    <span class="k">assert</span> <span class="n">spin_denom</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">spin_denom</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># integer spin</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">numer_denom</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                <span class="s2">&quot;SpinBasisKet requires exactly one positional argument for an &quot;</span>
+                <span class="s2">&quot;integer-spin Hilbert space&quot;</span>
+            <span class="p">)</span>
+        <span class="n">numer</span> <span class="o">=</span> <span class="n">numer_denom</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">numer</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">spin_numer</span> <span class="ow">or</span> <span class="n">numer</span> <span class="o">&gt;</span> <span class="n">spin_numer</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;spin quantum number </span><span class="si">%s</span><span class="s2"> must be in range (</span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">)&quot;</span>
+                <span class="o">%</span> <span class="p">(</span><span class="n">numer</span><span class="p">,</span> <span class="o">-</span><span class="n">spin_numer</span><span class="p">,</span> <span class="n">spin_numer</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">numer</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">numer</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;+&quot;</span> <span class="o">+</span> <span class="n">label</span>
+        <span class="k">return</span> <span class="n">BasisKet</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># half-integer spin</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">numer_denom</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                <span class="s2">&quot;SpinBasisKet requires exactly two positional arguments for a &quot;</span>
+                <span class="s2">&quot;half-integer-spin Hilbert space&quot;</span>
+            <span class="p">)</span>
+        <span class="n">numer</span><span class="p">,</span> <span class="n">denom</span> <span class="o">=</span> <span class="n">numer_denom</span>
+        <span class="n">numer</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">numer</span><span class="p">)</span>
+        <span class="n">denom</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">denom</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">denom</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;The second positional argument (denominator of the spin &quot;</span>
+                <span class="s2">&quot;quantum number) must be 2, not </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">denom</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">numer</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">spin_numer</span> <span class="ow">or</span> <span class="n">numer</span> <span class="o">&gt;</span> <span class="n">spin_numer</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;spin quantum number </span><span class="si">%s</span><span class="s2">/</span><span class="si">%s</span><span class="s2"> must be in range (</span><span class="si">%s</span><span class="s2">/2, </span><span class="si">%s</span><span class="s2">/2)&quot;</span>
+                <span class="o">%</span> <span class="p">(</span><span class="n">numer</span><span class="p">,</span> <span class="n">denom</span><span class="p">,</span> <span class="o">-</span><span class="n">spin_numer</span><span class="p">,</span> <span class="n">spin_numer</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">numer</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">numer</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;+&quot;</span> <span class="o">+</span> <span class="n">label</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">label</span> <span class="o">+</span> <span class="s2">&quot;/2&quot;</span>
+        <span class="k">return</span> <span class="n">BasisKet</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SpinOperator"><a class="viewcode-back" href="../../../API/qalgebra.library.spin_algebra.html#qalgebra.library.spin_algebra.SpinOperator">[docs]</a><span class="k">class</span> <span class="nc">SpinOperator</span><span class="p">(</span><span class="n">LocalOperator</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base class for operators in a spin space&quot;&quot;&quot;</span>
+
+    <span class="n">_hs_cls</span> <span class="o">=</span> <span class="n">SpinSpace</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">hs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="p">,</span> <span class="n">SpinSpace</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                <span class="s2">&quot;hs </span><span class="si">%s</span><span class="s2"> must be an instance of SpinSpace&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span>
+            <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Jz"><a class="viewcode-back" href="../../../API/qalgebra.library.spin_algebra.html#qalgebra.library.spin_algebra.Jz">[docs]</a><span class="k">class</span> <span class="nc">Jz</span><span class="p">(</span><span class="n">SpinOperator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Spin (angular momentum) operator in z-direction</span>
+
+<span class="sd">    $\Op{J}_z$ is the $z$ component of a general spin operator acting</span>
+<span class="sd">    on a particular :class:`SpinSpace` `hs` of freedom with well defined spin</span>
+<span class="sd">    quantum number $s$.  It is Hermitian::</span>
+
+<span class="sd">        &gt;&gt;&gt; hs = SpinSpace(1, spin=(1, 2))</span>
+<span class="sd">        &gt;&gt;&gt; print(ascii(Jz(hs=hs).adjoint()))</span>
+<span class="sd">        J_z^(1)</span>
+
+<span class="sd">    :class:`Jz`, :class:`Jplus` and :class:`Jminus` satisfy the angular</span>
+<span class="sd">    momentum commutator algebra::</span>
+
+<span class="sd">        &gt;&gt;&gt; print(ascii((Jz(hs=hs) * Jplus(hs=hs) -</span>
+<span class="sd">        ...              Jplus(hs=hs)*Jz(hs=hs)).expand()))</span>
+<span class="sd">        J_+^(1)</span>
+
+<span class="sd">        &gt;&gt;&gt; print(ascii((Jz(hs=hs) * Jminus(hs=hs) -</span>
+<span class="sd">        ...              Jminus(hs=hs)*Jz(hs=hs)).expand()))</span>
+<span class="sd">        -J_-^(1)</span>
+
+<span class="sd">        &gt;&gt;&gt; print(ascii((Jplus(hs=hs) * Jminus(hs=hs)</span>
+<span class="sd">        ...              - Jminus(hs=hs)*Jplus(hs=hs)).expand()))</span>
+<span class="sd">        2 * J_z^(1)</span>
+<span class="sd">        &gt;&gt;&gt; Jplus(hs=hs).dag() == Jminus(hs=hs)</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; Jminus(hs=hs).dag() == Jplus(hs=hs)</span>
+<span class="sd">        True</span>
+
+<span class="sd">    Printers should represent this operator with the default identifier::</span>
+
+<span class="sd">        &gt;&gt;&gt; Jz._identifier</span>
+<span class="sd">        &#39;J_z&#39;</span>
+
+<span class="sd">    A custom identifier may be define using `hs`&#39;s `local_identifiers`</span>
+<span class="sd">    argument.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_identifier</span> <span class="o">=</span> <span class="s1">&#39;J_z&#39;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">hs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">_pseudo_inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">PseudoInverse</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Jplus"><a class="viewcode-back" href="../../../API/qalgebra.library.spin_algebra.html#qalgebra.library.spin_algebra.Jplus">[docs]</a><span class="k">class</span> <span class="nc">Jplus</span><span class="p">(</span><span class="n">SpinOperator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raising operator of a spin space</span>
+
+<span class="sd">    $\Op{J}_{+} = \Op{J}_x + i \op{J}_y$ is the raising ladder operator</span>
+<span class="sd">    of a general spin operator acting on a particular :class:`SpinSpace` `hs`</span>
+<span class="sd">    with well defined spin quantum number $s$.  It&#39;s adjoint is the</span>
+<span class="sd">    lowering operator::</span>
+
+<span class="sd">        &gt;&gt;&gt; hs = SpinSpace(1, spin=(1, 2))</span>
+<span class="sd">        &gt;&gt;&gt; print(ascii(Jplus(hs=hs).adjoint()))</span>
+<span class="sd">        J_-^(1)</span>
+
+<span class="sd">    :class:`Jz`, :class:`Jplus` and :class:`Jminus` satisfy that angular</span>
+<span class="sd">    momentum commutator algebra, see :class:`Jz`</span>
+
+<span class="sd">    Printers should represent this operator with the default identifier::</span>
+
+<span class="sd">        &gt;&gt;&gt; Jplus._identifier</span>
+<span class="sd">        &#39;J_+&#39;</span>
+
+<span class="sd">    A custom identifier may be define using `hs`&#39;s `local_identifiers`</span>
+<span class="sd">    argument.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_identifier</span> <span class="o">=</span> <span class="s1">&#39;J_+&#39;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">hs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Jminus</span><span class="p">(</span><span class="n">hs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_pseudo_inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">PseudoInverse</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Jminus"><a class="viewcode-back" href="../../../API/qalgebra.library.spin_algebra.html#qalgebra.library.spin_algebra.Jminus">[docs]</a><span class="k">class</span> <span class="nc">Jminus</span><span class="p">(</span><span class="n">SpinOperator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Lowering operator on a spin space</span>
+
+<span class="sd">    $\Op{J}_{-} = \Op{J}_x - i \op{J}_y$ is the lowering ladder operator of</span>
+<span class="sd">    a general spin operator acting on a particular :class:`SpinSpace` `hs`</span>
+<span class="sd">    with well defined spin quantum number $s$.  It&#39;s adjoint is the raising</span>
+<span class="sd">    operator::</span>
+
+<span class="sd">        &gt;&gt;&gt; hs = SpinSpace(1, spin=(1, 2))</span>
+<span class="sd">        &gt;&gt;&gt; print(ascii(Jminus(hs=hs).adjoint()))</span>
+<span class="sd">        J_+^(1)</span>
+
+<span class="sd">    :class:`Jz`, :class:`Jplus` and :class:`Jminus` satisfy that angular</span>
+<span class="sd">    momentum commutator algebra, see :class:`Jz`.</span>
+
+<span class="sd">    Printers should represent this operator with the default identifier::</span>
+
+<span class="sd">        &gt;&gt;&gt; Jminus._identifier</span>
+<span class="sd">        &#39;J_-&#39;</span>
+
+<span class="sd">    A custom identifier may be define using `hs`&#39;s `local_identifiers`</span>
+<span class="sd">    argument.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_identifier</span> <span class="o">=</span> <span class="s1">&#39;J_-&#39;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">hs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Jplus</span><span class="p">(</span><span class="n">hs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_pseudo_inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">PseudoInverse</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Jpjmcoeff"><a class="viewcode-back" href="../../../API/qalgebra.library.spin_algebra.html#qalgebra.library.spin_algebra.Jpjmcoeff">[docs]</a><span class="k">def</span> <span class="nf">Jpjmcoeff</span><span class="p">(</span><span class="n">ls</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">shift</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Expr</span><span class="p">:</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Eigenvalue of the $\Op{J}_{+}$ (:class:`Jplus`) operator</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \Op{J}_{+} \ket{s, m} = \sqrt{s (s+1) - m (m+1)} \ket{s, m}</span>
+
+<span class="sd">    where the multiplicity $s$ is implied by the size of the Hilbert space</span>
+<span class="sd">    `ls`: there are $2s+1$ eigenstates with $m = -s, -s+1, \dots, s$.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ls (LocalSpace): The Hilbert space in which the $\Op{J}_{+}$ operator</span>
+<span class="sd">            acts.</span>
+<span class="sd">        m (str or int): If str, the label of the basis state of `hs` to which</span>
+<span class="sd">            the operator is applied. If integer together with ``shift=True``,</span>
+<span class="sd">            the zero-based index of the basis state. Otherwise, directly the</span>
+<span class="sd">            quantum number $m$.</span>
+<span class="sd">        shift (bool): If True for a integer value of `m`, treat `m` as the</span>
+<span class="sd">            zero-based index of the basis state (i.e., shift `m` down by $s$ to</span>
+<span class="sd">            obtain the quantum number $m$)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ls</span><span class="p">,</span> <span class="n">SpinSpace</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">dimension</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">sympify</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="k">assert</span> <span class="n">n</span> <span class="o">==</span> <span class="nb">int</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">basis_labels</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">-</span> <span class="n">s</span>  <span class="c1"># m is now Sympy expression</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">shift</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">m</span> <span class="o">&lt;</span> <span class="n">n</span>
+            <span class="n">m</span> <span class="o">=</span> <span class="n">m</span> <span class="o">-</span> <span class="n">s</span>
+    <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">m</span> <span class="o">*</span> <span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="Jzjmcoeff"><a class="viewcode-back" href="../../../API/qalgebra.library.spin_algebra.html#qalgebra.library.spin_algebra.Jzjmcoeff">[docs]</a><span class="k">def</span> <span class="nf">Jzjmcoeff</span><span class="p">(</span><span class="n">ls</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">shift</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Expr</span><span class="p">:</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Eigenvalue of the $\Op{J}_z$ (:class:`Jz`) operator</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \Op{J}_{z} \ket{s, m} = m \ket{s, m}</span>
+
+<span class="sd">    See also :func:`Jpjmcoeff`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ls</span><span class="p">,</span> <span class="n">SpinSpace</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">dimension</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">sympify</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="k">assert</span> <span class="n">n</span> <span class="o">==</span> <span class="nb">int</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">ls</span><span class="o">.</span><span class="n">basis</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">-</span> <span class="n">s</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">shift</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">m</span> <span class="o">&lt;</span> <span class="n">n</span>
+            <span class="k">return</span> <span class="n">m</span> <span class="o">-</span> <span class="n">s</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">sympify</span><span class="p">(</span><span class="n">m</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Jmjmcoeff"><a class="viewcode-back" href="../../../API/qalgebra.library.spin_algebra.html#qalgebra.library.spin_algebra.Jmjmcoeff">[docs]</a><span class="k">def</span> <span class="nf">Jmjmcoeff</span><span class="p">(</span><span class="n">ls</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">shift</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Expr</span><span class="p">:</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Eigenvalue of the $\Op{J}_{-}$ (:class:`Jminus`) operator</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \Op{J}_{-} \ket{s, m} = \sqrt{s (s+1) - m (m-1)} \ket{s, m}</span>
+
+<span class="sd">    See also :func:`Jpjmcoeff`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ls</span><span class="p">,</span> <span class="n">SpinSpace</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">dimension</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">sympify</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="k">assert</span> <span class="n">n</span> <span class="o">==</span> <span class="nb">int</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">basis</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">-</span> <span class="n">s</span>  <span class="c1"># m is now Sympy expression</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">shift</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">m</span> <span class="o">&lt;</span> <span class="n">n</span>
+            <span class="n">m</span> <span class="o">=</span> <span class="n">m</span> <span class="o">-</span> <span class="n">s</span>
+    <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">m</span> <span class="o">*</span> <span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Michael Goerz
+      <span class="lastupdated">
+        Last updated on Dec 31, 2020.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

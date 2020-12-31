@@ -1,0 +1,455 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>qalgebra.library.fock_operators &mdash; QAlgebra 0.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/mycss.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/doctr-versions-menu.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html#usage">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Quantum Algebra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../symbolic_algebra.html">Symbolic Algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../printing.html">The Printing System</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../history.html">History</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../library_structure.html">Library Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../API/qalgebra.html">API of the QAlgebra package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../qalgebra.html">qalgebra</a> &raquo;</li>
+        
+      <li>qalgebra.library.fock_operators</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for qalgebra.library.fock_operators</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Collection of operators that act on a bosonic Fock space&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABCMeta</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
+
+<span class="kn">from</span> <span class="nn">..core.algebraic_properties</span> <span class="kn">import</span> <span class="n">implied_local_space</span><span class="p">,</span> <span class="n">match_replace</span>
+<span class="kn">from</span> <span class="nn">..core.hilbert_space_algebra</span> <span class="kn">import</span> <span class="n">LocalSpace</span>
+<span class="kn">from</span> <span class="nn">..core.operator_algebra</span> <span class="kn">import</span> <span class="n">LocalOperator</span><span class="p">,</span> <span class="n">PseudoInverse</span>
+<span class="kn">from</span> <span class="nn">..utils.properties_for_args</span> <span class="kn">import</span> <span class="n">properties_for_args</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Destroy&#39;</span><span class="p">,</span> <span class="s1">&#39;Create&#39;</span><span class="p">,</span> <span class="s1">&#39;Phase&#39;</span><span class="p">,</span> <span class="s1">&#39;Displace&#39;</span><span class="p">,</span> <span class="s1">&#39;Squeeze&#39;</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="Destroy"><a class="viewcode-back" href="../../../API/qalgebra.library.fock_operators.html#qalgebra.library.fock_operators.Destroy">[docs]</a><span class="k">class</span> <span class="nc">Destroy</span><span class="p">(</span><span class="n">LocalOperator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Bosonic annihilation operator</span>
+
+<span class="sd">    It obeys the bosonic commutation relation::</span>
+
+<span class="sd">        &gt;&gt;&gt; Destroy(hs=1) * Create(hs=1) - Create(hs=1) * Destroy(hs=1)</span>
+<span class="sd">        IdentityOperator</span>
+<span class="sd">        &gt;&gt;&gt; Destroy(hs=1) * Create(hs=2) - Create(hs=2) * Destroy(hs=1)</span>
+<span class="sd">        ZeroOperator</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_identifier</span> <span class="o">=</span> <span class="s1">&#39;a&#39;</span>
+    <span class="n">_dagger</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">_rx_identifier</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;^[A-Za-z][A-Za-z0-9]*$&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">hs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Create</span><span class="p">(</span><span class="n">hs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_pseudo_inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">PseudoInverse</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">identifier</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The identifier (symbol) that is used when printing the annihilation</span>
+<span class="sd">        operator. This is identical to the identifier of :class:`Create`. A</span>
+<span class="sd">        custom identifier for both :class:`Destroy` and :class:`Create` can be</span>
+<span class="sd">        set through the `local_identifiers` parameter of the associated Hilbert</span>
+<span class="sd">        space::</span>
+
+<span class="sd">            &gt;&gt;&gt; hs_custom = LocalSpace(0, local_identifiers={&#39;Destroy&#39;: &#39;b&#39;})</span>
+<span class="sd">            &gt;&gt;&gt; Create(hs=hs_custom).identifier</span>
+<span class="sd">            &#39;b&#39;</span>
+<span class="sd">            &gt;&gt;&gt; Destroy(hs=hs_custom).identifier</span>
+<span class="sd">            &#39;b&#39;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">identifier</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hs</span><span class="o">.</span><span class="n">_local_identifiers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_hs</span><span class="o">.</span><span class="n">_local_identifiers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Create&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_identifier</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rx_identifier</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">identifier</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;identifier &#39;</span><span class="si">%s</span><span class="s2">&#39; does not match pattern &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span>
+                <span class="o">%</span> <span class="p">(</span><span class="n">identifier</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rx_identifier</span><span class="o">.</span><span class="n">pattern</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">identifier</span></div>
+
+
+<div class="viewcode-block" id="Create"><a class="viewcode-back" href="../../../API/qalgebra.library.fock_operators.html#qalgebra.library.fock_operators.Create">[docs]</a><span class="k">class</span> <span class="nc">Create</span><span class="p">(</span><span class="n">LocalOperator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Bosonic creation operator</span>
+
+<span class="sd">    This is the adjoint of :class:`Destroy`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_identifier</span> <span class="o">=</span> <span class="s1">&#39;a&#39;</span>
+    <span class="n">_dagger</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">_rx_identifier</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;^[A-Za-z][A-Za-z0-9]*$&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">hs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Destroy</span><span class="p">(</span><span class="n">hs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_pseudo_inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">PseudoInverse</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">identifier</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The identifier (symbols) that is used when printing the creation</span>
+<span class="sd">        operator. This is identical to the identifier of :class:`Destroy`&quot;&quot;&quot;</span>
+        <span class="n">identifier</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hs</span><span class="o">.</span><span class="n">_local_identifiers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_hs</span><span class="o">.</span><span class="n">_local_identifiers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Destroy&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_identifier</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rx_identifier</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">identifier</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;identifier &#39;</span><span class="si">%s</span><span class="s2">&#39; does not match pattern &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span>
+                <span class="o">%</span> <span class="p">(</span><span class="n">identifier</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rx_identifier</span><span class="o">.</span><span class="n">pattern</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">identifier</span></div>
+
+
+<div class="viewcode-block" id="Phase"><a class="viewcode-back" href="../../../API/qalgebra.library.fock_operators.html#qalgebra.library.fock_operators.Phase">[docs]</a><span class="nd">@properties_for_args</span>
+<span class="k">class</span> <span class="nc">Phase</span><span class="p">(</span><span class="n">LocalOperator</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Unitary &quot;phase&quot; operator</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \op{P}_{\rm hs}(\phi) =</span>
+<span class="sd">        \exp\left(i \phi \Op{a}_{\rm hs}^\dagger \Op{a}_{\rm hs}\right)</span>
+
+<span class="sd">    where :math:`a_{\rm hs}` is the annihilation operator acting on the</span>
+<span class="sd">    :class:`.LocalSpace` `hs`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        phase (Scalar): the phase $\phi$</span>
+<span class="sd">        hs (HilbertSpace or int or str): The Hilbert space on which the</span>
+<span class="sd">            operator acts</span>
+
+<span class="sd">    Printers should represent this operator with the default identifier::</span>
+
+<span class="sd">        &gt;&gt;&gt; Phase._identifier</span>
+<span class="sd">        &#39;Phase&#39;</span>
+
+<span class="sd">    A custom identifier may be define using `hs`&#39;s `local_identifiers`</span>
+<span class="sd">    argument.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_identifier</span> <span class="o">=</span> <span class="s1">&#39;Phase&#39;</span>
+    <span class="n">_arg_names</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;phase&#39;</span><span class="p">,)</span>
+    <span class="n">_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">implied_local_space</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;hs&#39;</span><span class="p">]),</span>
+        <span class="n">match_replace</span><span class="p">,</span>
+    <span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Phase</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">phase</span><span class="o">.</span><span class="n">conjugate</span><span class="p">(),</span> <span class="n">hs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_pseudo_inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Phase</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">phase</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Displace"><a class="viewcode-back" href="../../../API/qalgebra.library.fock_operators.html#qalgebra.library.fock_operators.Displace">[docs]</a><span class="nd">@properties_for_args</span>
+<span class="k">class</span> <span class="nc">Displace</span><span class="p">(</span><span class="n">LocalOperator</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Unitary coherent displacement operator.</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \op{D}_{\rm hs}(\alpha) =</span>
+<span class="sd">        \exp\left({\alpha \Op{a}_{\rm hs}^\dagger -</span>
+<span class="sd">                   \alpha^* \Op{a}_{\rm hs}}\right)</span>
+
+<span class="sd">    where :math:`\Op{a}_{\rm hs}` is the annihilation operator acting on the</span>
+<span class="sd">    :class:`.LocalSpace` `hs`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        displacement (Scalar): the displacement amplitude $\alpha$</span>
+<span class="sd">        hs (HilbertSpace or int or str): The Hilbert space on which the</span>
+<span class="sd">            operator acts</span>
+
+<span class="sd">    Printers should represent this operator with the default identifier::</span>
+
+<span class="sd">        &gt;&gt;&gt; Displace._identifier</span>
+<span class="sd">        &#39;D&#39;</span>
+
+<span class="sd">    A custom identifier may be define using `hs`&#39;s `local_identifiers`</span>
+<span class="sd">    argument.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_identifier</span> <span class="o">=</span> <span class="s1">&#39;D&#39;</span>
+    <span class="n">_nargs</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">_arg_names</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;displacement&#39;</span><span class="p">,)</span>
+    <span class="n">_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">implied_local_space</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;hs&#39;</span><span class="p">]),</span>
+        <span class="n">match_replace</span><span class="p">,</span>
+    <span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Displace</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">displacement</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
+
+    <span class="n">_pseudo_inverse</span> <span class="o">=</span> <span class="n">_adjoint</span></div>
+
+
+<div class="viewcode-block" id="Squeeze"><a class="viewcode-back" href="../../../API/qalgebra.library.fock_operators.html#qalgebra.library.fock_operators.Squeeze">[docs]</a><span class="nd">@properties_for_args</span>
+<span class="k">class</span> <span class="nc">Squeeze</span><span class="p">(</span><span class="n">LocalOperator</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Unitary squeezing operator.</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \Op{S}_{\rm hs}(\eta) =</span>
+<span class="sd">        \exp {\left( \frac{\eta}{2} \left(\Op{a}_{\rm hs}^\dagger\right)^2 -</span>
+<span class="sd">                     \frac{\eta^*}{2} {\Op{a}_{\rm hs}}^2 \right)}</span>
+
+<span class="sd">    where :math:`\Op{a}_{\rm hs}` is the annihilation operator acting on the</span>
+<span class="sd">    :class:`.LocalSpace` `hs`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        squeezing_factor (Scalar): the squeezing factor $\eta$</span>
+<span class="sd">        hs (HilbertSpace or int or str): The Hilbert space on which the</span>
+<span class="sd">            operator acts</span>
+
+<span class="sd">    Printers should represent this operator with the default identifier::</span>
+
+<span class="sd">        &gt;&gt;&gt; Squeeze._identifier</span>
+<span class="sd">        &#39;Squeeze&#39;</span>
+
+<span class="sd">    A custom identifier may be define using `hs`&#39;s `local_identifiers`</span>
+<span class="sd">    argument.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_identifier</span> <span class="o">=</span> <span class="s2">&quot;Squeeze&quot;</span>
+    <span class="n">_arg_names</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;squeezing_factor&#39;</span><span class="p">,)</span>
+    <span class="n">_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="n">simplifications</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">implied_local_space</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;hs&#39;</span><span class="p">]),</span>
+        <span class="n">match_replace</span><span class="p">,</span>
+    <span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Squeeze</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">squeezing_factor</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
+
+    <span class="n">_pseudo_inverse</span> <span class="o">=</span> <span class="n">_adjoint</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Michael Goerz
+      <span class="lastupdated">
+        Last updated on Dec 31, 2020.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

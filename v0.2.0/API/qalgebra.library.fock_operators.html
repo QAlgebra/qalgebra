@@ -1,0 +1,500 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>qalgebra.library.fock_operators module &mdash; QAlgebra 0.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/mycss.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/doctr-versions-menu.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="qalgebra.library.pauli_matrices module" href="qalgebra.library.pauli_matrices.html" />
+    <link rel="prev" title="qalgebra.library package" href="qalgebra.library.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#usage">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Quantum Algebra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../symbolic_algebra.html">Symbolic Algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../printing.html">The Printing System</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../library_structure.html">Library Structure</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="qalgebra.html">API of the QAlgebra package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.pattern_matching.html">qalgebra.pattern_matching module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.convert.html">qalgebra.convert package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.core.html">qalgebra.core package</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="qalgebra.library.html">qalgebra.library package</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">qalgebra.library.fock_operators module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.library.pauli_matrices.html">qalgebra.library.pauli_matrices module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.library.spin_algebra.html">qalgebra.library.spin_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.library.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.printing.html">qalgebra.printing package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.toolbox.html">qalgebra.toolbox package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.utils.html">qalgebra.utils package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.html#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="qalgebra.html">qalgebra package</a> &raquo;</li>
+        
+          <li><a href="qalgebra.library.html">qalgebra.library package</a> &raquo;</li>
+        
+      <li>qalgebra.library.fock_operators module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-qalgebra.library.fock_operators">
+<span id="qalgebra-library-fock-operators-module"></span><h1>qalgebra.library.fock_operators module<a class="headerlink" href="#module-qalgebra.library.fock_operators" title="Permalink to this headline">¶</a></h1>
+<p>Collection of operators that act on a bosonic Fock space</p>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Classes:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.library.fock_operators.Create" title="qalgebra.library.fock_operators.Create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Create</span></code></a></p></td>
+<td><p>Bosonic creation operator</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.library.fock_operators.Destroy" title="qalgebra.library.fock_operators.Destroy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Destroy</span></code></a></p></td>
+<td><p>Bosonic annihilation operator</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.library.fock_operators.Displace" title="qalgebra.library.fock_operators.Displace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Displace</span></code></a></p></td>
+<td><p>Unitary coherent displacement operator.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.library.fock_operators.Phase" title="qalgebra.library.fock_operators.Phase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Phase</span></code></a></p></td>
+<td><p>Unitary “phase” operator</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.library.fock_operators.Squeeze" title="qalgebra.library.fock_operators.Squeeze"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Squeeze</span></code></a></p></td>
+<td><p>Unitary squeezing operator.</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">__all__</span></code>: <a class="reference internal" href="#qalgebra.library.fock_operators.Create" title="qalgebra.library.fock_operators.Create"><code class="xref py py-class docutils literal notranslate"><span class="pre">Create</span></code></a>, <a class="reference internal" href="#qalgebra.library.fock_operators.Destroy" title="qalgebra.library.fock_operators.Destroy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Destroy</span></code></a>, <a class="reference internal" href="#qalgebra.library.fock_operators.Displace" title="qalgebra.library.fock_operators.Displace"><code class="xref py py-class docutils literal notranslate"><span class="pre">Displace</span></code></a>, <a class="reference internal" href="#qalgebra.library.fock_operators.Phase" title="qalgebra.library.fock_operators.Phase"><code class="xref py py-class docutils literal notranslate"><span class="pre">Phase</span></code></a>, <a class="reference internal" href="#qalgebra.library.fock_operators.Squeeze" title="qalgebra.library.fock_operators.Squeeze"><code class="xref py py-class docutils literal notranslate"><span class="pre">Squeeze</span></code></a></p>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="qalgebra.library.fock_operators.Destroy">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.library.fock_operators.</code><code class="sig-name descname">Destroy</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">hs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/library/fock_operators.html#Destroy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.library.fock_operators.Destroy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.LocalOperator" title="qalgebra.core.operator_algebra.LocalOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.operator_algebra.LocalOperator</span></code></a></p>
+<p>Bosonic annihilation operator</p>
+<p>It obeys the bosonic commutation relation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Destroy</span><span class="p">(</span><span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">Create</span><span class="p">(</span><span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">Create</span><span class="p">(</span><span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">Destroy</span><span class="p">(</span><span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">IdentityOperator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Destroy</span><span class="p">(</span><span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">Create</span><span class="p">(</span><span class="n">hs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">Create</span><span class="p">(</span><span class="n">hs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">Destroy</span><span class="p">(</span><span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">ZeroOperator</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="qalgebra.library.fock_operators.Destroy.identifier">
+<em class="property">property </em><code class="sig-name descname">identifier</code><a class="headerlink" href="#qalgebra.library.fock_operators.Destroy.identifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>The identifier (symbol) that is used when printing the annihilation
+operator. This is identical to the identifier of <a class="reference internal" href="#qalgebra.library.fock_operators.Create" title="qalgebra.library.fock_operators.Create"><code class="xref py py-class docutils literal notranslate"><span class="pre">Create</span></code></a>. A
+custom identifier for both <a class="reference internal" href="#qalgebra.library.fock_operators.Destroy" title="qalgebra.library.fock_operators.Destroy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Destroy</span></code></a> and <a class="reference internal" href="#qalgebra.library.fock_operators.Create" title="qalgebra.library.fock_operators.Create"><code class="xref py py-class docutils literal notranslate"><span class="pre">Create</span></code></a> can be
+set through the <cite>local_identifiers</cite> parameter of the associated Hilbert
+space:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hs_custom</span> <span class="o">=</span> <span class="n">LocalSpace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">local_identifiers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Destroy&#39;</span><span class="p">:</span> <span class="s1">&#39;b&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Create</span><span class="p">(</span><span class="n">hs</span><span class="o">=</span><span class="n">hs_custom</span><span class="p">)</span><span class="o">.</span><span class="n">identifier</span>
+<span class="go">&#39;b&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Destroy</span><span class="p">(</span><span class="n">hs</span><span class="o">=</span><span class="n">hs_custom</span><span class="p">)</span><span class="o">.</span><span class="n">identifier</span>
+<span class="go">&#39;b&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.library.fock_operators.Create">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.library.fock_operators.</code><code class="sig-name descname">Create</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">hs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/library/fock_operators.html#Create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.library.fock_operators.Create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.LocalOperator" title="qalgebra.core.operator_algebra.LocalOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.operator_algebra.LocalOperator</span></code></a></p>
+<p>Bosonic creation operator</p>
+<p>This is the adjoint of <a class="reference internal" href="#qalgebra.library.fock_operators.Destroy" title="qalgebra.library.fock_operators.Destroy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Destroy</span></code></a>.</p>
+<dl class="py method">
+<dt id="qalgebra.library.fock_operators.Create.identifier">
+<em class="property">property </em><code class="sig-name descname">identifier</code><a class="headerlink" href="#qalgebra.library.fock_operators.Create.identifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>The identifier (symbols) that is used when printing the creation
+operator. This is identical to the identifier of <a class="reference internal" href="#qalgebra.library.fock_operators.Destroy" title="qalgebra.library.fock_operators.Destroy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Destroy</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.library.fock_operators.Phase">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.library.fock_operators.</code><code class="sig-name descname">Phase</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">hs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/library/fock_operators.html#Phase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.library.fock_operators.Phase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.LocalOperator" title="qalgebra.core.operator_algebra.LocalOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.operator_algebra.LocalOperator</span></code></a></p>
+<p>Unitary “phase” operator</p>
+<div class="math notranslate nohighlight">
+\[\op{P}_{\rm hs}(\phi) =
+\exp\left(i \phi \Op{a}_{\rm hs}^\dagger \Op{a}_{\rm hs}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(a_{\rm hs}\)</span> is the annihilation operator acting on the
+<a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a> <cite>hs</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>phase</strong> (<a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><em>Scalar</em></a>) – the phase <span class="math notranslate nohighlight">\(\phi\)</span></p></li>
+<li><p><strong>hs</strong> (<a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.HilbertSpace" title="qalgebra.core.hilbert_space_algebra.HilbertSpace"><em>HilbertSpace</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The Hilbert space on which the
+operator acts</p></li>
+</ul>
+</dd>
+</dl>
+<p>Printers should represent this operator with the default identifier:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Phase</span><span class="o">.</span><span class="n">_identifier</span>
+<span class="go">&#39;Phase&#39;</span>
+</pre></div>
+</div>
+<p>A custom identifier may be define using <cite>hs</cite>’s <cite>local_identifiers</cite>
+argument.</p>
+<dl class="py attribute">
+<dt id="qalgebra.library.fock_operators.Phase.simplifications">
+<code class="sig-name descname">simplifications</code><em class="property"> = [&lt;function implied_local_space.&lt;locals&gt;.kwargs_to_local_space&gt;, &lt;function match_replace&gt;]</em><a class="headerlink" href="#qalgebra.library.fock_operators.Phase.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.library.fock_operators.Phase.phase">
+<em class="property">property </em><code class="sig-name descname">phase</code><a class="headerlink" href="#qalgebra.library.fock_operators.Phase.phase" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <cite>phase</cite> argument, as a <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code></a> instance.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.library.fock_operators.Displace">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.library.fock_operators.</code><code class="sig-name descname">Displace</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">hs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/library/fock_operators.html#Displace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.library.fock_operators.Displace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.LocalOperator" title="qalgebra.core.operator_algebra.LocalOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.operator_algebra.LocalOperator</span></code></a></p>
+<p>Unitary coherent displacement operator.</p>
+<div class="math notranslate nohighlight">
+\[\op{D}_{\rm hs}(\alpha) =
+\exp\left({\alpha \Op{a}_{\rm hs}^\dagger -
+           \alpha^* \Op{a}_{\rm hs}}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Op{a}_{\rm hs}\)</span> is the annihilation operator acting on the
+<a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a> <cite>hs</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>displacement</strong> (<a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><em>Scalar</em></a>) – the displacement amplitude <span class="math notranslate nohighlight">\(\alpha\)</span></p></li>
+<li><p><strong>hs</strong> (<a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.HilbertSpace" title="qalgebra.core.hilbert_space_algebra.HilbertSpace"><em>HilbertSpace</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The Hilbert space on which the
+operator acts</p></li>
+</ul>
+</dd>
+</dl>
+<p>Printers should represent this operator with the default identifier:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Displace</span><span class="o">.</span><span class="n">_identifier</span>
+<span class="go">&#39;D&#39;</span>
+</pre></div>
+</div>
+<p>A custom identifier may be define using <cite>hs</cite>’s <cite>local_identifiers</cite>
+argument.</p>
+<dl class="py attribute">
+<dt id="qalgebra.library.fock_operators.Displace.simplifications">
+<code class="sig-name descname">simplifications</code><em class="property"> = [&lt;function implied_local_space.&lt;locals&gt;.kwargs_to_local_space&gt;, &lt;function match_replace&gt;]</em><a class="headerlink" href="#qalgebra.library.fock_operators.Displace.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.library.fock_operators.Displace.displacement">
+<em class="property">property </em><code class="sig-name descname">displacement</code><a class="headerlink" href="#qalgebra.library.fock_operators.Displace.displacement" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <cite>displacement</cite> argument, as a <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code></a> instance.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.library.fock_operators.Squeeze">
+<em class="property">class </em><code class="sig-prename descclassname">qalgebra.library.fock_operators.</code><code class="sig-name descname">Squeeze</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="n">hs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/library/fock_operators.html#Squeeze"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.library.fock_operators.Squeeze" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.LocalOperator" title="qalgebra.core.operator_algebra.LocalOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.operator_algebra.LocalOperator</span></code></a></p>
+<p>Unitary squeezing operator.</p>
+<div class="math notranslate nohighlight">
+\[\Op{S}_{\rm hs}(\eta) =
+\exp {\left( \frac{\eta}{2} \left(\Op{a}_{\rm hs}^\dagger\right)^2 -
+             \frac{\eta^*}{2} {\Op{a}_{\rm hs}}^2 \right)}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Op{a}_{\rm hs}\)</span> is the annihilation operator acting on the
+<a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a> <cite>hs</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>squeezing_factor</strong> (<a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><em>Scalar</em></a>) – the squeezing factor <span class="math notranslate nohighlight">\(\eta\)</span></p></li>
+<li><p><strong>hs</strong> (<a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.HilbertSpace" title="qalgebra.core.hilbert_space_algebra.HilbertSpace"><em>HilbertSpace</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The Hilbert space on which the
+operator acts</p></li>
+</ul>
+</dd>
+</dl>
+<p>Printers should represent this operator with the default identifier:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Squeeze</span><span class="o">.</span><span class="n">_identifier</span>
+<span class="go">&#39;Squeeze&#39;</span>
+</pre></div>
+</div>
+<p>A custom identifier may be define using <cite>hs</cite>’s <cite>local_identifiers</cite>
+argument.</p>
+<dl class="py attribute">
+<dt id="qalgebra.library.fock_operators.Squeeze.simplifications">
+<code class="sig-name descname">simplifications</code><em class="property"> = [&lt;function implied_local_space.&lt;locals&gt;.kwargs_to_local_space&gt;, &lt;function match_replace&gt;]</em><a class="headerlink" href="#qalgebra.library.fock_operators.Squeeze.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.library.fock_operators.Squeeze.squeezing_factor">
+<em class="property">property </em><code class="sig-name descname">squeezing_factor</code><a class="headerlink" href="#qalgebra.library.fock_operators.Squeeze.squeezing_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <cite>squeezing_factor</cite> argument, as a <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code></a> instance.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="qalgebra.library.pauli_matrices.html" class="btn btn-neutral float-right" title="qalgebra.library.pauli_matrices module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="qalgebra.library.html" class="btn btn-neutral float-left" title="qalgebra.library package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Michael Goerz
+      <span class="lastupdated">
+        Last updated on Dec 31, 2020.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

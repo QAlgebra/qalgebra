@@ -1,0 +1,863 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>qalgebra package &mdash; QAlgebra 0.2.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/mycss.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/doctr-versions-menu.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="qalgebra.pattern_matching module" href="qalgebra.pattern_matching.html" />
+    <link rel="prev" title="Library Structure" href="../library_structure.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#usage">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Quantum Algebra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../symbolic_algebra.html">Symbolic Algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../printing.html">The Printing System</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../library_structure.html">Library Structure</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API of the QAlgebra package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.pattern_matching.html">qalgebra.pattern_matching module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.convert.html">qalgebra.convert package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.core.html">qalgebra.core package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.library.html">qalgebra.library package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.printing.html">qalgebra.printing package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.toolbox.html">qalgebra.toolbox package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.utils.html">qalgebra.utils package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>qalgebra package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-qalgebra">
+<span id="qalgebra-package"></span><h1>qalgebra package<a class="headerlink" href="#module-qalgebra" title="Permalink to this headline">¶</a></h1>
+<p>Main QAlgebra package</p>
+<p>The <a class="reference internal" href="#module-qalgebra" title="qalgebra"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qalgebra</span></code></a> package exposes all of QAlgebra’s functionality for easy
+interactive or programmative use.</p>
+<p>For interactive usage, the package should be initialized as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">qalgebra</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">qalgebra</span><span class="o">.</span><span class="n">init_printing</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>QNET provides a “flat” API. That is, after</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">qalgebra</span>
+</pre></div>
+</div>
+<p>all submodules are directly accessible, e.g.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">qalgebra</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">operator_algebra</span><span class="o">.</span><span class="n">OperatorSymbol</span>
+<span class="go">&lt;class &#39;qalgebra.core.operator_algebra.OperatorSymbol&#39;&gt;</span>
+</pre></div>
+</div>
+<p>Furthermore, every package exports the “public” symbols of any of its
+submodules/subpackages (public symbols are those listed in
+<a class="reference external" href="https://docs.python.org/3.8/tutorial/modules.html#importing-from-a-package">__all__</a>)</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">qalgebra</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">operator_algebra</span><span class="o">.</span><span class="n">OperatorSymbol</span> <span class="ow">is</span>
+<span class="gp">... </span> <span class="n">qalgebra</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">OperatorSymbol</span> <span class="ow">is</span> <span class="n">qalgebra</span><span class="o">.</span><span class="n">OperatorSymbol</span> <span class="ow">is</span>
+<span class="gp">... </span> <span class="n">qalgebra</span><span class="o">.</span><span class="n">OperatorSymbol</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>In an interactive context (and only there!), a star import such as</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qalgebra</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>may be useful.</p>
+<p>Submodules:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="qalgebra.pattern_matching.html">qalgebra.pattern_matching module</a></li>
+</ul>
+</div>
+<p>Subpackages:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="qalgebra.convert.html">qalgebra.convert package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qalgebra.core.html">qalgebra.core package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qalgebra.library.html">qalgebra.library package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qalgebra.printing.html">qalgebra.printing package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qalgebra.toolbox.html">qalgebra.toolbox package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qalgebra.utils.html">qalgebra.utils package</a></li>
+</ul>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">__all__</span></code> Exceptions:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.AlgebraError" title="qalgebra.core.exceptions.AlgebraError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AlgebraError</span></code></a></p></td>
+<td><p>Base class for all algebraic errors.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.AlgebraException" title="qalgebra.core.exceptions.AlgebraException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AlgebraException</span></code></a></p></td>
+<td><p>Base class for all algebraic exceptions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.BasisNotSetError" title="qalgebra.core.exceptions.BasisNotSetError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">BasisNotSetError</span></code></a></p></td>
+<td><p>Raised if the basis or a Hilbert space dimension is unavailable.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.CannotSimplify" title="qalgebra.core.exceptions.CannotSimplify"><code class="xref py py-exc docutils literal notranslate"><span class="pre">CannotSimplify</span></code></a></p></td>
+<td><p>Raised when a rule cannot further simplify an expression.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.CannotSymbolicallyDiagonalize" title="qalgebra.core.exceptions.CannotSymbolicallyDiagonalize"><code class="xref py py-exc docutils literal notranslate"><span class="pre">CannotSymbolicallyDiagonalize</span></code></a></p></td>
+<td><p>Matrix cannot be diagonalized analytically.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.InfiniteSumError" title="qalgebra.core.exceptions.InfiniteSumError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">InfiniteSumError</span></code></a></p></td>
+<td><p>Raised when expanding a sum into an infinite number of terms.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.NoConjugateMatrix" title="qalgebra.core.exceptions.NoConjugateMatrix"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NoConjugateMatrix</span></code></a></p></td>
+<td><p>Raised when entries of <a class="reference internal" href="qalgebra.core.matrix_algebra.html#qalgebra.core.matrix_algebra.Matrix" title="qalgebra.core.matrix_algebra.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix</span></code></a> have no defined conjugate.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.NonSquareMatrix" title="qalgebra.core.exceptions.NonSquareMatrix"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NonSquareMatrix</span></code></a></p></td>
+<td><p>Raised when a <a class="reference internal" href="qalgebra.core.matrix_algebra.html#qalgebra.core.matrix_algebra.Matrix" title="qalgebra.core.matrix_algebra.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix</span></code></a> fails to be square.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.OverlappingSpaces" title="qalgebra.core.exceptions.OverlappingSpaces"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OverlappingSpaces</span></code></a></p></td>
+<td><p>Raised when objects fail to be in separate Hilbert spaces.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.SpaceTooLargeError" title="qalgebra.core.exceptions.SpaceTooLargeError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">SpaceTooLargeError</span></code></a></p></td>
+<td><p>Raised when objects fail to be have overlapping Hilbert spaces.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.UnequalSpaces" title="qalgebra.core.exceptions.UnequalSpaces"><code class="xref py py-exc docutils literal notranslate"><span class="pre">UnequalSpaces</span></code></a></p></td>
+<td><p>Raised when objects fail to be in the same Hilbert space.</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">__all__</span></code> Classes:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.Adjoint" title="qalgebra.core.operator_algebra.Adjoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">Adjoint</span></code></a></p></td>
+<td><p>Symbolic Adjoint of an operator</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.BasisKet" title="qalgebra.core.state_algebra.BasisKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasisKet</span></code></a></p></td>
+<td><p>Local basis state, identified by index or label</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.Bra" title="qalgebra.core.state_algebra.Bra"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bra</span></code></a></p></td>
+<td><p>The associated dual/adjoint state for any ket</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.BraKet" title="qalgebra.core.state_algebra.BraKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">BraKet</span></code></a></p></td>
+<td><p>The symbolic inner product between two states</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.CoherentStateKet" title="qalgebra.core.state_algebra.CoherentStateKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">CoherentStateKet</span></code></a></p></td>
+<td><p>Local coherent state, labeled by a complex amplitude <span class="math notranslate nohighlight">\(\alpha\)</span>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.Commutator" title="qalgebra.core.operator_algebra.Commutator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Commutator</span></code></a></p></td>
+<td><p>Commutator of two operators</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.library.fock_operators.html#qalgebra.library.fock_operators.Create" title="qalgebra.library.fock_operators.Create"><code class="xref py py-class docutils literal notranslate"><span class="pre">Create</span></code></a></p></td>
+<td><p>Bosonic creation operator</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.library.fock_operators.html#qalgebra.library.fock_operators.Destroy" title="qalgebra.library.fock_operators.Destroy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Destroy</span></code></a></p></td>
+<td><p>Bosonic annihilation operator</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.library.fock_operators.html#qalgebra.library.fock_operators.Displace" title="qalgebra.library.fock_operators.Displace"><code class="xref py py-class docutils literal notranslate"><span class="pre">Displace</span></code></a></p></td>
+<td><p>Unitary coherent displacement operator.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression" title="qalgebra.core.abstract_algebra.Expression"><code class="xref py py-class docutils literal notranslate"><span class="pre">Expression</span></code></a></p></td>
+<td><p>Base class for all QAlgebra Expressions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.utils.indices.html#qalgebra.utils.indices.FockIndex" title="qalgebra.utils.indices.FockIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">FockIndex</span></code></a></p></td>
+<td><p>Symbolic index labeling a basis state in a <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.utils.indices.html#qalgebra.utils.indices.FockLabel" title="qalgebra.utils.indices.FockLabel"><code class="xref py py-class docutils literal notranslate"><span class="pre">FockLabel</span></code></a></p></td>
+<td><p>Symbolic label that evaluates to the label of a basis state</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.HilbertSpace" title="qalgebra.core.hilbert_space_algebra.HilbertSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">HilbertSpace</span></code></a></p></td>
+<td><p>Base class for Hilbert spaces</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.utils.indices.html#qalgebra.utils.indices.IdxSym" title="qalgebra.utils.indices.IdxSym"><code class="xref py py-class docutils literal notranslate"><span class="pre">IdxSym</span></code></a></p></td>
+<td><p>Index symbol in an indexed sum or product.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.utils.indices.html#qalgebra.utils.indices.IndexOverFockSpace" title="qalgebra.utils.indices.IndexOverFockSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">IndexOverFockSpace</span></code></a></p></td>
+<td><p>Index range over the integer indices of a <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a> basis</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.utils.indices.html#qalgebra.utils.indices.IndexOverList" title="qalgebra.utils.indices.IndexOverList"><code class="xref py py-class docutils literal notranslate"><span class="pre">IndexOverList</span></code></a></p></td>
+<td><p>Index over a list of explicit values</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.utils.indices.html#qalgebra.utils.indices.IndexOverRange" title="qalgebra.utils.indices.IndexOverRange"><code class="xref py py-class docutils literal notranslate"><span class="pre">IndexOverRange</span></code></a></p></td>
+<td><p>Index over the inclusive range between two integers</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.indexed_operations.html#qalgebra.core.indexed_operations.IndexedSum" title="qalgebra.core.indexed_operations.IndexedSum"><code class="xref py py-class docutils literal notranslate"><span class="pre">IndexedSum</span></code></a></p></td>
+<td><p>Base class for indexed sums.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.utils.indices.html#qalgebra.utils.indices.IntIndex" title="qalgebra.utils.indices.IntIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntIndex</span></code></a></p></td>
+<td><p>A symbolic label that evaluates to an integer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.library.spin_algebra.html#qalgebra.library.spin_algebra.Jminus" title="qalgebra.library.spin_algebra.Jminus"><code class="xref py py-class docutils literal notranslate"><span class="pre">Jminus</span></code></a></p></td>
+<td><p>Lowering operator on a spin space</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.library.spin_algebra.html#qalgebra.library.spin_algebra.Jplus" title="qalgebra.library.spin_algebra.Jplus"><code class="xref py py-class docutils literal notranslate"><span class="pre">Jplus</span></code></a></p></td>
+<td><p>Raising operator of a spin space</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.library.spin_algebra.html#qalgebra.library.spin_algebra.Jz" title="qalgebra.library.spin_algebra.Jz"><code class="xref py py-class docutils literal notranslate"><span class="pre">Jz</span></code></a></p></td>
+<td><p>Spin (angular momentum) operator in z-direction</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.KetBra" title="qalgebra.core.state_algebra.KetBra"><code class="xref py py-class docutils literal notranslate"><span class="pre">KetBra</span></code></a></p></td>
+<td><p>Outer product of two states</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.KetIndexedSum" title="qalgebra.core.state_algebra.KetIndexedSum"><code class="xref py py-class docutils literal notranslate"><span class="pre">KetIndexedSum</span></code></a></p></td>
+<td><p>Indexed sum over Kets.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.KetPlus" title="qalgebra.core.state_algebra.KetPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">KetPlus</span></code></a></p></td>
+<td><p>Sum of states.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.KetSymbol" title="qalgebra.core.state_algebra.KetSymbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">KetSymbol</span></code></a></p></td>
+<td><p>Symbolic state.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.LocalKet" title="qalgebra.core.state_algebra.LocalKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalKet</span></code></a></p></td>
+<td><p>A state on a <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.LocalOperator" title="qalgebra.core.operator_algebra.LocalOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalOperator</span></code></a></p></td>
+<td><p>Base class for “known” operators on a <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.LocalSigma" title="qalgebra.core.operator_algebra.LocalSigma"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSigma</span></code></a></p></td>
+<td><p>Level flip operator between two levels of a <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a></p></td>
+<td><p>Hilbert space for a single degree of freedom.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.pattern_matching.html#qalgebra.pattern_matching.MatchDict" title="qalgebra.pattern_matching.MatchDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">MatchDict</span></code></a></p></td>
+<td><p>Result of a <a class="reference internal" href="qalgebra.pattern_matching.html#qalgebra.pattern_matching.Pattern.match" title="qalgebra.pattern_matching.Pattern.match"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Pattern.match()</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.matrix_algebra.html#qalgebra.core.matrix_algebra.Matrix" title="qalgebra.core.matrix_algebra.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix</span></code></a></p></td>
+<td><p>Matrix of Expressions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.NullSpaceProjector" title="qalgebra.core.operator_algebra.NullSpaceProjector"><code class="xref py py-class docutils literal notranslate"><span class="pre">NullSpaceProjector</span></code></a></p></td>
+<td><p>Projection operator onto the nullspace of its operand.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Operation" title="qalgebra.core.abstract_algebra.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operation</span></code></a></p></td>
+<td><p>Base class for “operations”</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></a></p></td>
+<td><p>Base class for all quantum operators.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.OperatorDerivative" title="qalgebra.core.operator_algebra.OperatorDerivative"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorDerivative</span></code></a></p></td>
+<td><p>Symbolic partial derivative of an operator</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.OperatorIndexedSum" title="qalgebra.core.operator_algebra.OperatorIndexedSum"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorIndexedSum</span></code></a></p></td>
+<td><p>Indexed sum over operators</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.OperatorPlus" title="qalgebra.core.operator_algebra.OperatorPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorPlus</span></code></a></p></td>
+<td><p>Sum of Operators</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.OperatorPlusMinusCC" title="qalgebra.core.operator_algebra.OperatorPlusMinusCC"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorPlusMinusCC</span></code></a></p></td>
+<td><p>An operator plus or minus its complex conjugate.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.OperatorSymbol" title="qalgebra.core.operator_algebra.OperatorSymbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorSymbol</span></code></a></p></td>
+<td><p>Symbolic operator</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.OperatorTimes" title="qalgebra.core.operator_algebra.OperatorTimes"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorTimes</span></code></a></p></td>
+<td><p>Product of operators</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.OperatorTimesKet" title="qalgebra.core.state_algebra.OperatorTimesKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorTimesKet</span></code></a></p></td>
+<td><p>Product of an operator and a state.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.OperatorTrace" title="qalgebra.core.operator_algebra.OperatorTrace"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorTrace</span></code></a></p></td>
+<td><p>(Partial) trace of an operator</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.pattern_matching.html#qalgebra.pattern_matching.Pattern" title="qalgebra.pattern_matching.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a></p></td>
+<td><p>Pattern for matching an expression.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.library.fock_operators.html#qalgebra.library.fock_operators.Phase" title="qalgebra.library.fock_operators.Phase"><code class="xref py py-class docutils literal notranslate"><span class="pre">Phase</span></code></a></p></td>
+<td><p>Unitary “phase” operator</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.ProductSpace" title="qalgebra.core.hilbert_space_algebra.ProductSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProductSpace</span></code></a></p></td>
+<td><p>Tensor product of local Hilbert spaces.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.PseudoInverse" title="qalgebra.core.operator_algebra.PseudoInverse"><code class="xref py py-class docutils literal notranslate"><span class="pre">PseudoInverse</span></code></a></p></td>
+<td><p>Unevaluated pseudo-inverse <span class="math notranslate nohighlight">\(\Op{X}^+\)</span> of an operator <span class="math notranslate nohighlight">\(\Op{X}\)</span>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumAdjoint" title="qalgebra.core.abstract_quantum_algebra.QuantumAdjoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumAdjoint</span></code></a></p></td>
+<td><p>Base class for adjoints of quantum expressions</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumDerivative" title="qalgebra.core.abstract_quantum_algebra.QuantumDerivative"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumDerivative</span></code></a></p></td>
+<td><p>Symbolic partial derivative.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumExpression" title="qalgebra.core.abstract_quantum_algebra.QuantumExpression"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumExpression</span></code></a></p></td>
+<td><p>Base class for expressions associated with a Hilbert space</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum" title="qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumIndexedSum</span></code></a></p></td>
+<td><p>Base class for indexed sums of quantum expressions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumOperation" title="qalgebra.core.abstract_quantum_algebra.QuantumOperation"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumOperation</span></code></a></p></td>
+<td><p>Base class for operations on quantum expression</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumPlus" title="qalgebra.core.abstract_quantum_algebra.QuantumPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumPlus</span></code></a></p></td>
+<td><p>General implementation of addition of quantum expressions</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumSymbol" title="qalgebra.core.abstract_quantum_algebra.QuantumSymbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumSymbol</span></code></a></p></td>
+<td><p>Symbolic element of an algebra.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumTimes" title="qalgebra.core.abstract_quantum_algebra.QuantumTimes"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumTimes</span></code></a></p></td>
+<td><p>General implementation of product of quantum expressions</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.super_operator_algebra.html#qalgebra.core.super_operator_algebra.SPost" title="qalgebra.core.super_operator_algebra.SPost"><code class="xref py py-class docutils literal notranslate"><span class="pre">SPost</span></code></a></p></td>
+<td><p>Linear post-multiplication operator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.super_operator_algebra.html#qalgebra.core.super_operator_algebra.SPre" title="qalgebra.core.super_operator_algebra.SPre"><code class="xref py py-class docutils literal notranslate"><span class="pre">SPre</span></code></a></p></td>
+<td><p>Linear pre-multiplication operator</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code></a></p></td>
+<td><p>Base class for Scalars</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.ScalarDerivative" title="qalgebra.core.scalar_algebra.ScalarDerivative"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarDerivative</span></code></a></p></td>
+<td><p>Symbolic partial derivative of a scalar</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.ScalarExpression" title="qalgebra.core.scalar_algebra.ScalarExpression"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarExpression</span></code></a></p></td>
+<td><p>Base class for scalars with non-scalar arguments</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.ScalarIndexedSum" title="qalgebra.core.scalar_algebra.ScalarIndexedSum"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarIndexedSum</span></code></a></p></td>
+<td><p>Indexed sum over scalars.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.ScalarPlus" title="qalgebra.core.scalar_algebra.ScalarPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarPlus</span></code></a></p></td>
+<td><p>Sum of scalars</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.ScalarPower" title="qalgebra.core.scalar_algebra.ScalarPower"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarPower</span></code></a></p></td>
+<td><p>A scalar raised to a power.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.ScalarTimes" title="qalgebra.core.scalar_algebra.ScalarTimes"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarTimes</span></code></a></p></td>
+<td><p>Product of scalars</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.ScalarTimesKet" title="qalgebra.core.state_algebra.ScalarTimesKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarTimesKet</span></code></a></p></td>
+<td><p>Product of a <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code></a> coefficient and a ket</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.ScalarTimesOperator" title="qalgebra.core.operator_algebra.ScalarTimesOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarTimesOperator</span></code></a></p></td>
+<td><p>Product of a <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code></a> coefficient and an <a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression" title="qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarTimesQuantumExpression</span></code></a></p></td>
+<td><p>Product of a <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code></a> and a <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumExpression" title="qalgebra.core.abstract_quantum_algebra.QuantumExpression"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumExpression</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.super_operator_algebra.html#qalgebra.core.super_operator_algebra.ScalarTimesSuperOperator" title="qalgebra.core.super_operator_algebra.ScalarTimesSuperOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarTimesSuperOperator</span></code></a></p></td>
+<td><p>Product of a <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code></a> coefficient and a <a class="reference internal" href="qalgebra.core.super_operator_algebra.html#qalgebra.core.super_operator_algebra.SuperOperator" title="qalgebra.core.super_operator_algebra.SuperOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">SuperOperator</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.ScalarValue" title="qalgebra.core.scalar_algebra.ScalarValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarValue</span></code></a></p></td>
+<td><p>Wrapper around a numeric or symbolic value</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation" title="qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation"><code class="xref py py-class docutils literal notranslate"><span class="pre">SingleQuantumOperation</span></code></a></p></td>
+<td><p>Base class for operations on a single quantum expression</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.utils.singleton.html#qalgebra.utils.singleton.Singleton" title="qalgebra.utils.singleton.Singleton"><code class="xref py py-class docutils literal notranslate"><span class="pre">Singleton</span></code></a></p></td>
+<td><p>Metaclass for singletons.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.utils.indices.html#qalgebra.utils.indices.SpinIndex" title="qalgebra.utils.indices.SpinIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpinIndex</span></code></a></p></td>
+<td><p>Symbolic label for a spin degree of freedom</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.library.spin_algebra.html#qalgebra.library.spin_algebra.SpinOperator" title="qalgebra.library.spin_algebra.SpinOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpinOperator</span></code></a></p></td>
+<td><p>Base class for operators in a spin space</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.library.spin_algebra.html#qalgebra.library.spin_algebra.SpinSpace" title="qalgebra.library.spin_algebra.SpinSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpinSpace</span></code></a></p></td>
+<td><p>A Hilbert space for an integer or half-integer spin system.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.library.fock_operators.html#qalgebra.library.fock_operators.Squeeze" title="qalgebra.library.fock_operators.Squeeze"><code class="xref py py-class docutils literal notranslate"><span class="pre">Squeeze</span></code></a></p></td>
+<td><p>Unitary squeezing operator.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.State" title="qalgebra.core.state_algebra.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">State</span></code></a></p></td>
+<td><p>Base class for states in a Hilbert space</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.StateDerivative" title="qalgebra.core.state_algebra.StateDerivative"><code class="xref py py-class docutils literal notranslate"><span class="pre">StateDerivative</span></code></a></p></td>
+<td><p>Symbolic partial derivative of a state</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.utils.indices.html#qalgebra.utils.indices.StrLabel" title="qalgebra.utils.indices.StrLabel"><code class="xref py py-class docutils literal notranslate"><span class="pre">StrLabel</span></code></a></p></td>
+<td><p>Symbolic label that evaluates to a string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.super_operator_algebra.html#qalgebra.core.super_operator_algebra.SuperAdjoint" title="qalgebra.core.super_operator_algebra.SuperAdjoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">SuperAdjoint</span></code></a></p></td>
+<td><p>Adjoint of a super-operator.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.super_operator_algebra.html#qalgebra.core.super_operator_algebra.SuperOperator" title="qalgebra.core.super_operator_algebra.SuperOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">SuperOperator</span></code></a></p></td>
+<td><p>Base class for super-operators</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.super_operator_algebra.html#qalgebra.core.super_operator_algebra.SuperOperatorDerivative" title="qalgebra.core.super_operator_algebra.SuperOperatorDerivative"><code class="xref py py-class docutils literal notranslate"><span class="pre">SuperOperatorDerivative</span></code></a></p></td>
+<td><p>Symbolic partial derivative of a super-operator</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.super_operator_algebra.html#qalgebra.core.super_operator_algebra.SuperOperatorPlus" title="qalgebra.core.super_operator_algebra.SuperOperatorPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">SuperOperatorPlus</span></code></a></p></td>
+<td><p>A sum of super-operators</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.super_operator_algebra.html#qalgebra.core.super_operator_algebra.SuperOperatorSymbol" title="qalgebra.core.super_operator_algebra.SuperOperatorSymbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">SuperOperatorSymbol</span></code></a></p></td>
+<td><p>Symbolic super-operator</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.super_operator_algebra.html#qalgebra.core.super_operator_algebra.SuperOperatorTimes" title="qalgebra.core.super_operator_algebra.SuperOperatorTimes"><code class="xref py py-class docutils literal notranslate"><span class="pre">SuperOperatorTimes</span></code></a></p></td>
+<td><p>Product of super-operators</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.super_operator_algebra.html#qalgebra.core.super_operator_algebra.SuperOperatorTimesOperator" title="qalgebra.core.super_operator_algebra.SuperOperatorTimesOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">SuperOperatorTimesOperator</span></code></a></p></td>
+<td><p>Application of a super-operator to an operator.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.TensorKet" title="qalgebra.core.state_algebra.TensorKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">TensorKet</span></code></a></p></td>
+<td><p>A tensor product of kets.</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">__all__</span></code> Functions:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.KroneckerDelta" title="qalgebra.core.scalar_algebra.KroneckerDelta"><code class="xref py py-func docutils literal notranslate"><span class="pre">KroneckerDelta</span></code></a></p></td>
+<td><p>Kronecker delta symbol.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.LocalProjector" title="qalgebra.core.operator_algebra.LocalProjector"><code class="xref py py-func docutils literal notranslate"><span class="pre">LocalProjector</span></code></a></p></td>
+<td><p>A projector onto a specific level of a <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.library.pauli_matrices.html#qalgebra.library.pauli_matrices.PauliX" title="qalgebra.library.pauli_matrices.PauliX"><code class="xref py py-func docutils literal notranslate"><span class="pre">PauliX</span></code></a></p></td>
+<td><p>Pauli-type X-operator.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.library.pauli_matrices.html#qalgebra.library.pauli_matrices.PauliY" title="qalgebra.library.pauli_matrices.PauliY"><code class="xref py py-func docutils literal notranslate"><span class="pre">PauliY</span></code></a></p></td>
+<td><p>Pauli-type Y-operator</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.library.pauli_matrices.html#qalgebra.library.pauli_matrices.PauliZ" title="qalgebra.library.pauli_matrices.PauliZ"><code class="xref py py-func docutils literal notranslate"><span class="pre">PauliZ</span></code></a></p></td>
+<td><p>Pauli-type Z-operator</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.library.spin_algebra.html#qalgebra.library.spin_algebra.SpinBasisKet" title="qalgebra.library.spin_algebra.SpinBasisKet"><code class="xref py py-func docutils literal notranslate"><span class="pre">SpinBasisKet</span></code></a></p></td>
+<td><p>Constructor for a <a class="reference internal" href="qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.BasisKet" title="qalgebra.core.state_algebra.BasisKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasisKet</span></code></a> for a <a class="reference internal" href="qalgebra.library.spin_algebra.html#qalgebra.library.spin_algebra.SpinSpace" title="qalgebra.library.spin_algebra.SpinSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpinSpace</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.Sum" title="qalgebra.core.abstract_quantum_algebra.Sum"><code class="xref py py-func docutils literal notranslate"><span class="pre">Sum</span></code></a></p></td>
+<td><p>Instantiator for an arbitrary indexed sum.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.adjoint" title="qalgebra.core.operator_algebra.adjoint"><code class="xref py py-func docutils literal notranslate"><span class="pre">adjoint</span></code></a></p></td>
+<td><p>Return the adjoint of an obj.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.super_operator_algebra.html#qalgebra.core.super_operator_algebra.anti_commutator" title="qalgebra.core.super_operator_algebra.anti_commutator"><code class="xref py py-func docutils literal notranslate"><span class="pre">anti_commutator</span></code></a></p></td>
+<td><p>If <code class="docutils literal notranslate"><span class="pre">B</span> <span class="pre">!=</span> <span class="pre">None</span></code>, return the anti-commutator <span class="math notranslate nohighlight">\(\{A,B\}\)</span>, otherwise return the super-operator <span class="math notranslate nohighlight">\(\{A,\cdot\}\)</span>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.printing.html#qalgebra.printing.ascii" title="qalgebra.printing.ascii"><code class="xref py py-func docutils literal notranslate"><span class="pre">ascii</span></code></a></p></td>
+<td><p>Return an ASCII representation of the given object / expression</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.matrix_algebra.html#qalgebra.core.matrix_algebra.block_matrix" title="qalgebra.core.matrix_algebra.block_matrix"><code class="xref py py-func docutils literal notranslate"><span class="pre">block_matrix</span></code></a></p></td>
+<td><p>Generate the operator matrix with quadrants</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.super_operator_algebra.html#qalgebra.core.super_operator_algebra.commutator" title="qalgebra.core.super_operator_algebra.commutator"><code class="xref py py-func docutils literal notranslate"><span class="pre">commutator</span></code></a></p></td>
+<td><p>Commutator of <cite>A</cite> and <cite>B</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.printing.html#qalgebra.printing.configure_printing" title="qalgebra.printing.configure_printing"><code class="xref py py-func docutils literal notranslate"><span class="pre">configure_printing</span></code></a></p></td>
+<td><p>Context manager for temporarily changing the printing system.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.convert.to_qutip.html#qalgebra.convert.to_qutip.convert_to_qutip" title="qalgebra.convert.to_qutip.convert_to_qutip"><code class="xref py py-func docutils literal notranslate"><span class="pre">convert_to_qutip</span></code></a></p></td>
+<td><p>Convert a QAlgebra expression to a qutip object</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.convert.to_sympy_matrix.html#qalgebra.convert.to_sympy_matrix.convert_to_sympy_matrix" title="qalgebra.convert.to_sympy_matrix.convert_to_sympy_matrix"><code class="xref py py-func docutils literal notranslate"><span class="pre">convert_to_sympy_matrix</span></code></a></p></td>
+<td><p>Convert a QAlgebra expression to an explicit <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">x</span> <span class="pre">n</span></code> instance of <cite>sympy.Matrix</cite>, where <code class="docutils literal notranslate"><span class="pre">n</span></code> is the dimension of <cite>full_space</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.decompose_space" title="qalgebra.core.operator_algebra.decompose_space"><code class="xref py py-func docutils literal notranslate"><span class="pre">decompose_space</span></code></a></p></td>
+<td><p>Simplifies OperatorTrace expressions over tensor-product spaces by turning it into iterated partial traces.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.matrix_algebra.html#qalgebra.core.matrix_algebra.diagm" title="qalgebra.core.matrix_algebra.diagm"><code class="xref py py-func docutils literal notranslate"><span class="pre">diagm</span></code></a></p></td>
+<td><p>Generalizes the diagonal matrix creation capabilities of <cite>numpy.diag</cite> to <a class="reference internal" href="qalgebra.core.matrix_algebra.html#qalgebra.core.matrix_algebra.Matrix" title="qalgebra.core.matrix_algebra.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix</span></code></a> objects.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.printing.dot.html#qalgebra.printing.dot.dotprint" title="qalgebra.printing.dot.dotprint"><code class="xref py py-func docutils literal notranslate"><span class="pre">dotprint</span></code></a></p></td>
+<td><p>Return the DOT (graph) description of an Expression tree as a string.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.toolbox.commutator_manipulation.html#qalgebra.toolbox.commutator_manipulation.expand_commutators_leibniz" title="qalgebra.toolbox.commutator_manipulation.expand_commutators_leibniz"><code class="xref py py-func docutils literal notranslate"><span class="pre">expand_commutators_leibniz</span></code></a></p></td>
+<td><p>Recursively expand commutators in <cite>expr</cite> according to the Leibniz rule.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.factor_coeff" title="qalgebra.core.operator_algebra.factor_coeff"><code class="xref py py-func docutils literal notranslate"><span class="pre">factor_coeff</span></code></a></p></td>
+<td><p>Factor out coefficients of all factors.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.factor_for_trace" title="qalgebra.core.operator_algebra.factor_for_trace"><code class="xref py py-func docutils literal notranslate"><span class="pre">factor_for_trace</span></code></a></p></td>
+<td><p>Factor <cite>ls</cite> out of <cite>op</cite> for easy tracing.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.get_coeffs" title="qalgebra.core.operator_algebra.get_coeffs"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_coeffs</span></code></a></p></td>
+<td><p>Create a dictionary with all Operator terms of the expression (understood as a sum) as keys and their coefficients as values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.matrix_algebra.html#qalgebra.core.matrix_algebra.hstackm" title="qalgebra.core.matrix_algebra.hstackm"><code class="xref py py-func docutils literal notranslate"><span class="pre">hstackm</span></code></a></p></td>
+<td><p>Generalizes <cite>numpy.hstack</cite> to <a class="reference internal" href="qalgebra.core.matrix_algebra.html#qalgebra.core.matrix_algebra.Matrix" title="qalgebra.core.matrix_algebra.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix</span></code></a> objects.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.matrix_algebra.html#qalgebra.core.matrix_algebra.identity_matrix" title="qalgebra.core.matrix_algebra.identity_matrix"><code class="xref py py-func docutils literal notranslate"><span class="pre">identity_matrix</span></code></a></p></td>
+<td><p>Generate the N-dimensional identity matrix.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.printing.html#qalgebra.printing.init_printing" title="qalgebra.printing.init_printing"><code class="xref py py-func docutils literal notranslate"><span class="pre">init_printing</span></code></a></p></td>
+<td><p>Initialize the printing system.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.printing.html#qalgebra.printing.latex" title="qalgebra.printing.latex"><code class="xref py py-func docutils literal notranslate"><span class="pre">latex</span></code></a></p></td>
+<td><p>Return a LaTeX representation of the given object / expression</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.super_operator_algebra.html#qalgebra.core.super_operator_algebra.lindblad" title="qalgebra.core.super_operator_algebra.lindblad"><code class="xref py py-func docutils literal notranslate"><span class="pre">lindblad</span></code></a></p></td>
+<td><p>Return the super-operator Lindblad term of the Lindblad operator <cite>C</cite></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.super_operator_algebra.html#qalgebra.core.super_operator_algebra.liouvillian" title="qalgebra.core.super_operator_algebra.liouvillian"><code class="xref py py-func docutils literal notranslate"><span class="pre">liouvillian</span></code></a></p></td>
+<td><p>Return the Liouvillian super-operator associated with <cite>H</cite> and <cite>Ls</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.pattern_matching.html#qalgebra.pattern_matching.match_pattern" title="qalgebra.pattern_matching.match_pattern"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_pattern</span></code></a></p></td>
+<td><p>Recursively match <cite>expr</cite> with the given <cite>expr_or_pattern</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.toolbox.core.html#qalgebra.toolbox.core.no_instance_caching" title="qalgebra.toolbox.core.no_instance_caching"><code class="xref py py-func docutils literal notranslate"><span class="pre">no_instance_caching</span></code></a></p></td>
+<td><p>Temporarily disable instance caching in <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.pattern_matching.html#qalgebra.pattern_matching.pattern" title="qalgebra.pattern_matching.pattern"><code class="xref py py-func docutils literal notranslate"><span class="pre">pattern</span></code></a></p></td>
+<td><p>‘Flat’ constructor for <a class="reference internal" href="qalgebra.pattern_matching.html#qalgebra.pattern_matching.Pattern" title="qalgebra.pattern_matching.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.pattern_matching.html#qalgebra.pattern_matching.pattern_head" title="qalgebra.pattern_matching.pattern_head"><code class="xref py py-func docutils literal notranslate"><span class="pre">pattern_head</span></code></a></p></td>
+<td><p>Constructor for a <a class="reference internal" href="qalgebra.pattern_matching.html#qalgebra.pattern_matching.Pattern" title="qalgebra.pattern_matching.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a> matching a <a class="reference internal" href="qalgebra.pattern_matching.html#qalgebra.pattern_matching.ProtoExpr" title="qalgebra.pattern_matching.ProtoExpr"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProtoExpr</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.printing.treeprinting.html#qalgebra.printing.treeprinting.print_tree" title="qalgebra.printing.treeprinting.print_tree"><code class="xref py py-func docutils literal notranslate"><span class="pre">print_tree</span></code></a></p></td>
+<td><p>Print a tree representation of the structure of <cite>expr</cite></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.rewrite_with_operator_pm_cc" title="qalgebra.core.operator_algebra.rewrite_with_operator_pm_cc"><code class="xref py py-func docutils literal notranslate"><span class="pre">rewrite_with_operator_pm_cc</span></code></a></p></td>
+<td><p>Try to rewrite expr using <a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.OperatorPlusMinusCC" title="qalgebra.core.operator_algebra.OperatorPlusMinusCC"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorPlusMinusCC</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.utils.singleton.html#qalgebra.utils.singleton.singleton_object" title="qalgebra.utils.singleton.singleton_object"><code class="xref py py-func docutils literal notranslate"><span class="pre">singleton_object</span></code></a></p></td>
+<td><p>Class decorator that transforms (and replaces) a class definition (which must have a Singleton metaclass) with the actual singleton object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.sqrt" title="qalgebra.core.scalar_algebra.sqrt"><code class="xref py py-func docutils literal notranslate"><span class="pre">sqrt</span></code></a></p></td>
+<td><p>Square root of a <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code></a> or scalar value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.printing.html#qalgebra.printing.srepr" title="qalgebra.printing.srepr"><code class="xref py py-func docutils literal notranslate"><span class="pre">srepr</span></code></a></p></td>
+<td><p>Render the given expression into a string that can be evaluated in an appropriate context to re-instantiate an identical expression.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.substitute" title="qalgebra.core.abstract_algebra.substitute"><code class="xref py py-func docutils literal notranslate"><span class="pre">substitute</span></code></a></p></td>
+<td><p>Substitute symbols or (sub-)expressions with the given replacements.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.toolbox.core.html#qalgebra.toolbox.core.symbols" title="qalgebra.toolbox.core.symbols"><code class="xref py py-func docutils literal notranslate"><span class="pre">symbols</span></code></a></p></td>
+<td><p>The <a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.symbol.symbols" title="(in SymPy v1.7.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">symbols()</span></code></a> function from SymPy.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.toolbox.core.html#qalgebra.toolbox.core.temporary_instance_cache" title="qalgebra.toolbox.core.temporary_instance_cache"><code class="xref py py-func docutils literal notranslate"><span class="pre">temporary_instance_cache</span></code></a></p></td>
+<td><p>Use a temporary cache for instances in <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.toolbox.core.html#qalgebra.toolbox.core.temporary_rules" title="qalgebra.toolbox.core.temporary_rules"><code class="xref py py-func docutils literal notranslate"><span class="pre">temporary_rules</span></code></a></p></td>
+<td><p>Allow temporary modification of rules for <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.printing.html#qalgebra.printing.tex" title="qalgebra.printing.tex"><code class="xref py py-func docutils literal notranslate"><span class="pre">tex</span></code></a></p></td>
+<td><p>Alias for <a class="reference internal" href="qalgebra.printing.html#qalgebra.printing.latex" title="qalgebra.printing.latex"><code class="xref py py-func docutils literal notranslate"><span class="pre">latex()</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-func docutils literal notranslate"><span class="pre">tr</span></code></a></p></td>
+<td><p>Instantiate while applying automatic simplifications.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.printing.treeprinting.html#qalgebra.printing.treeprinting.tree" title="qalgebra.printing.treeprinting.tree"><code class="xref py py-func docutils literal notranslate"><span class="pre">tree</span></code></a></p></td>
+<td><p>Give the output of <cite>tree</cite> as a multiline string, using line drawings to visualize the hierarchy of expressions (similar to the <code class="docutils literal notranslate"><span class="pre">tree</span></code> unix command line program for showing directory trees)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.printing.html#qalgebra.printing.unicode" title="qalgebra.printing.unicode"><code class="xref py py-func docutils literal notranslate"><span class="pre">unicode</span></code></a></p></td>
+<td><p>Return a unicode representation of the given object / expression</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.matrix_algebra.html#qalgebra.core.matrix_algebra.vstackm" title="qalgebra.core.matrix_algebra.vstackm"><code class="xref py py-func docutils literal notranslate"><span class="pre">vstackm</span></code></a></p></td>
+<td><p>Generalizes <cite>numpy.vstack</cite> to <a class="reference internal" href="qalgebra.core.matrix_algebra.html#qalgebra.core.matrix_algebra.Matrix" title="qalgebra.core.matrix_algebra.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix</span></code></a> objects.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.pattern_matching.html#qalgebra.pattern_matching.wc" title="qalgebra.pattern_matching.wc"><code class="xref py py-func docutils literal notranslate"><span class="pre">wc</span></code></a></p></td>
+<td><p>Constructor for a wildcard-<a class="reference internal" href="qalgebra.pattern_matching.html#qalgebra.pattern_matching.Pattern" title="qalgebra.pattern_matching.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.matrix_algebra.html#qalgebra.core.matrix_algebra.zerosm" title="qalgebra.core.matrix_algebra.zerosm"><code class="xref py py-func docutils literal notranslate"><span class="pre">zerosm</span></code></a></p></td>
+<td><p>Generalizes <code class="docutils literal notranslate"><span class="pre">numpy.zeros</span></code> to <a class="reference internal" href="qalgebra.core.matrix_algebra.html#qalgebra.core.matrix_algebra.Matrix" title="qalgebra.core.matrix_algebra.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix</span></code></a> objects.</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">__all__</span></code> Data:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.FullSpace" title="qalgebra.core.hilbert_space_algebra.FullSpace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FullSpace</span></code></a></p></td>
+<td><p>The ‘full space’, i.e.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.IdentityOperator" title="qalgebra.core.operator_algebra.IdentityOperator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">II</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">IdentityOperator</span></code> constant (singleton) object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.IdentityOperator" title="qalgebra.core.operator_algebra.IdentityOperator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IdentityOperator</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">IdentityOperator</span></code> constant (singleton) object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.super_operator_algebra.html#qalgebra.core.super_operator_algebra.IdentitySuperOperator" title="qalgebra.core.super_operator_algebra.IdentitySuperOperator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IdentitySuperOperator</span></code></a></p></td>
+<td><p>Neutral element for product of super-operators</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.One" title="qalgebra.core.scalar_algebra.One"><code class="xref py py-obj docutils literal notranslate"><span class="pre">One</span></code></a></p></td>
+<td><p>The neutral element with respect to scalar multiplication</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.utils.singleton.html#qalgebra.utils.singleton.SingletonType" title="qalgebra.utils.singleton.SingletonType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SingletonType</span></code></a></p></td>
+<td><p>A dummy type that for checking whether an object is a Singleton.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.TrivialKet" title="qalgebra.core.state_algebra.TrivialKet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TrivialKet</span></code></a></p></td>
+<td><p>TrivialKet constant (singleton) object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.TrivialSpace" title="qalgebra.core.hilbert_space_algebra.TrivialSpace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TrivialSpace</span></code></a></p></td>
+<td><p>The ‘nullspace’, i.e.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Zero" title="qalgebra.core.scalar_algebra.Zero"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Zero</span></code></a></p></td>
+<td><p>The neutral element with respect to scalar addition</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.state_algebra.html#qalgebra.core.state_algebra.ZeroKet" title="qalgebra.core.state_algebra.ZeroKet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ZeroKet</span></code></a></p></td>
+<td><p>ZeroKet constant (singleton) object for the null-state.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.ZeroOperator" title="qalgebra.core.operator_algebra.ZeroOperator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ZeroOperator</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ZeroOperator</span></code> constant (singleton) object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.core.super_operator_algebra.html#qalgebra.core.super_operator_algebra.ZeroSuperOperator" title="qalgebra.core.super_operator_algebra.ZeroSuperOperator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ZeroSuperOperator</span></code></a></p></td>
+<td><p>Neutral element for sum of super-operators</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="qalgebra.init_algebra">
+<code class="sig-prename descclassname">qalgebra.</code><code class="sig-name descname">init_algebra</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">default_hs_cls</span><span class="o">=</span><span class="default_value">'LocalSpace'</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra.html#init_algebra"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.init_algebra" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the algebra system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>default_hs_cls</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – The name of the <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a> subclass
+that should be used when implicitly creating Hilbert spaces, e.g.
+in <a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.OperatorSymbol" title="qalgebra.core.operator_algebra.OperatorSymbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorSymbol</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="qalgebra.pattern_matching.html" class="btn btn-neutral float-right" title="qalgebra.pattern_matching module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../library_structure.html" class="btn btn-neutral float-left" title="Library Structure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Michael Goerz
+      <span class="lastupdated">
+        Last updated on Dec 31, 2020.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
