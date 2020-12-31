@@ -21,7 +21,7 @@ __all__ = []  # will be extended by _import_submodules
 
 __known_refs__ = {}
 
-__version__ = '0.2.0-rc1'
+__version__ = '0.2.0'
 
 
 def _git_version():
