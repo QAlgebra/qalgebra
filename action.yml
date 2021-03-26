@@ -1,0 +1,20 @@
+name: 'docs-build-action'
+description: 'Build the documentation for QAlgebra'
+author: Michael Goerz
+inputs:
+  run:
+    description: Arbitrary bash codes to be executed
+    required: true
+    default: 'make docs'
+runs:
+  using: docker
+  image: 'docker://docker.pkg.github.com/goerz-testing/docs-build-env-docker/docs-build-env-docker:scientific'
+  entrypoint: /bin/bash
+  args:
+    - -eo
+    - pipefail
+    - -c
+    - ${{ inputs.run }}
+branding:
+  icon: book
+  color: blue
