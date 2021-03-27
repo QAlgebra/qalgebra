@@ -104,7 +104,7 @@ def lualatex(texfile):
     subprocess.run(
         [
             'lualatex',
-            '--interaction=nonstopmode',
+            '--interaction=batchmode',
             '--halt-on-error',
             texfile.name,
         ],
