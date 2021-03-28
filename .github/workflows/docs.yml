@@ -8,7 +8,7 @@ jobs:
     name: Build Sphinx docs
     runs-on: ubuntu-18.04
     container:
-      image: docker.pkg.github.com/goerz-docker/docs-build-env/docs-build-env:latest
+      image: docker.pkg.github.com/goerz-docker/docs-build-env/docs-build-env:scientific
       credentials:
         username: ${{ github.repository_owner }}
         password: ${{ secrets.GITHUB_TOKEN }}
