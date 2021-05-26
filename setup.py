@@ -58,7 +58,7 @@ dev_requirements = [
     'pytest-xdist',
     'qutip',
     'recommonmark',
-    'sphinx',
+    'sphinx<4.0',
     'sphinx-autobuild',
     'sphinx-autodoc-typehints',
     'sphinx-copybutton',
