@@ -57,7 +57,7 @@ nitpick_ignore = [('py:class', 'callable')]
 extensions = [
     'graphviz_ext',
     'inheritance_diagram',
-    'doctr_versions_menu',
+    'docs_versions_menu',
     'nbsphinx',
     'recommonmark',
     'sphinx.ext.autodoc',
@@ -361,7 +361,7 @@ nbsphinx_prolog = r"""
     '<<GIT_TAG>>', git_tag
 )
 
-doctr_versions_menu_conf = {'menu_title': 'Docs'}
+docs_versions_menu_conf = {'menu_title': 'Docs'}
 
 # -- Options for LaTeX output -------------------------------------------------
 

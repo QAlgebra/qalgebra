@@ -186,7 +186,7 @@ jobs:
           python-version: 3.8
 
       - name: Install deploy requirements
-        run: pip install git+https://github.com/goerz/doctr_versions_menu.git@master#egg=doctr_versions_menu
+        run: pip install docs_versions_menu
 
       - name: Get branch name
         shell: bash
@@ -229,8 +229,8 @@ jobs:
           name: _downloads
           path: ./${{ env.BRANCH_NAME }}/
 
-      - name: Run doctr-versions-menu
-        run: doctr-versions-menu
+      - name: Run docs-versions-menu
+        run: docs-versions-menu
 
       - name: Get the previous commit message
         id: get_previous_commit
