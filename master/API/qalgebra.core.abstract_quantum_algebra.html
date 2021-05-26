@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>qalgebra.core.abstract_quantum_algebra module &mdash; QAlgebra 0.2.0+dev (84ee789) documentation</title>
+  <title>qalgebra.core.abstract_quantum_algebra module &mdash; QAlgebra 0.2.0+dev (e7641ef) documentation</title>
   
 
   
@@ -18,7 +18,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -33,7 +36,7 @@
         <script src="../_static/doctools.js"></script>
         <script src="../_static/clipboard.min.js"></script>
         <script src="../_static/copybutton.js"></script>
-        <script src="../_static/doctr-versions-menu.js"></script>
+        <script src="../_static/docs-versions-menu.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
@@ -58,7 +61,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> QAlgebra
+            <a href="../index.html" class="icon icon-home"> QAlgebra
           
 
           
@@ -315,12 +318,12 @@ and superoperators.</p>
 <h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression">
-<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.abstract_quantum_algebra.</code><code class="sig-name descname">ScalarTimesQuantumExpression</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">coeff</span></em>, <em class="sig-param"><span class="n">term</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#ScalarTimesQuantumExpression"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.abstract_quantum_algebra.</span></code><code class="sig-name descname"><span class="pre">ScalarTimesQuantumExpression</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coeff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">term</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#ScalarTimesQuantumExpression"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qalgebra.core.abstract_quantum_algebra.QuantumExpression" title="qalgebra.core.abstract_quantum_algebra.QuantumExpression"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumExpression</span></code></a>, <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Operation" title="qalgebra.core.abstract_algebra.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_algebra.Operation</span></code></a></p>
 <p>Product of a <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code></a> and a <a class="reference internal" href="#qalgebra.core.abstract_quantum_algebra.QuantumExpression" title="qalgebra.core.abstract_quantum_algebra.QuantumExpression"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumExpression</span></code></a></p>
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression.create">
-<em class="property">classmethod </em><code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">coeff</span></em>, <em class="sig-param"><span class="n">term</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#ScalarTimesQuantumExpression.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression.create" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coeff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">term</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#ScalarTimesQuantumExpression.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression.create" title="Permalink to this definition">¶</a></dt>
 <dd><p>Instantiate while applying automatic simplifications.</p>
 <p>Instead of directly instantiating <cite>cls</cite>, it is recommended to use
 <a class="reference internal" href="#qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression.create" title="qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a>, which applies simplifications to the args and keyword
@@ -341,23 +344,23 @@ and <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalg
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression.coeff">
-<em class="property">property </em><code class="sig-name descname">coeff</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression.coeff" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">coeff</span></code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression.coeff" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression.term">
-<em class="property">property </em><code class="sig-name descname">term</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression.term" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">term</span></code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression.term" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression.free_symbols">
-<em class="property">property </em><code class="sig-name descname">free_symbols</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression.free_symbols" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">free_symbols</span></code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression.free_symbols" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set of free SymPy symbols contained within the expression.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression.space">
-<em class="property">property </em><code class="sig-name descname">space</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression.space" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">space</span></code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression.space" title="Permalink to this definition">¶</a></dt>
 <dd><p>The <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.HilbertSpace" title="qalgebra.core.hilbert_space_algebra.HilbertSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">HilbertSpace</span></code></a> on which the operator acts
 non-trivially</p>
 </dd></dl>
@@ -366,12 +369,12 @@ non-trivially</p>
 
 <dl class="py class">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumExpression">
-<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.abstract_quantum_algebra.</code><code class="sig-name descname">QuantumExpression</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumExpression"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumExpression" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.abstract_quantum_algebra.</span></code><code class="sig-name descname"><span class="pre">QuantumExpression</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumExpression"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumExpression" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression" title="qalgebra.core.abstract_algebra.Expression"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_algebra.Expression</span></code></a></p>
 <p>Base class for expressions associated with a Hilbert space</p>
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumExpression.is_zero">
-<em class="property">property </em><code class="sig-name descname">is_zero</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumExpression.is_zero" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">is_zero</span></code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumExpression.is_zero" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check whether the expression is equal to zero.</p>
 <p>Specifically, this checks whether the expression is equal to the
 neutral element for the addition within the algebra. This does not
@@ -386,26 +389,26 @@ generally imply equality with a scalar zero:</p>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumExpression.space">
-<em class="property">abstract property </em><code class="sig-name descname">space</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumExpression.space" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">abstract</span> <span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">space</span></code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumExpression.space" title="Permalink to this definition">¶</a></dt>
 <dd><p>The <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.HilbertSpace" title="qalgebra.core.hilbert_space_algebra.HilbertSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">HilbertSpace</span></code></a> on which the operator acts
 non-trivially</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumExpression.adjoint">
-<code class="sig-name descname">adjoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumExpression.adjoint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumExpression.adjoint" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">adjoint</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumExpression.adjoint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumExpression.adjoint" title="Permalink to this definition">¶</a></dt>
 <dd><p>The Hermitian adjoint of the Expression</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumExpression.dag">
-<code class="sig-name descname">dag</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumExpression.dag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumExpression.dag" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">dag</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumExpression.dag"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumExpression.dag" title="Permalink to this definition">¶</a></dt>
 <dd><p>Alias for <a class="reference internal" href="#qalgebra.core.abstract_quantum_algebra.QuantumExpression.adjoint" title="qalgebra.core.abstract_quantum_algebra.QuantumExpression.adjoint"><code class="xref py py-meth docutils literal notranslate"><span class="pre">adjoint()</span></code></a></p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumExpression.expand">
-<code class="sig-name descname">expand</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumExpression.expand"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumExpression.expand" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">expand</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumExpression.expand"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumExpression.expand" title="Permalink to this definition">¶</a></dt>
 <dd><p>Expand out distributively all products of sums.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -416,21 +419,21 @@ non-trivially</p>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumExpression.simplify_scalar">
-<code class="sig-name descname">simplify_scalar</code><span class="sig-paren">(</span><em class="sig-param">func=&lt;function simplify&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumExpression.simplify_scalar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumExpression.simplify_scalar" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">simplify_scalar</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">func=&lt;function</span> <span class="pre">simplify&gt;</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumExpression.simplify_scalar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumExpression.simplify_scalar" title="Permalink to this definition">¶</a></dt>
 <dd><p>Simplify all scalar symbolic (SymPy) coefficients by appyling <cite>func</cite>
 to them</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumExpression.diff">
-<code class="sig-name descname">diff</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sym</span></em>, <em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">expand_simplify</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumExpression.diff"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumExpression.diff" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">diff</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sym</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expand_simplify</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumExpression.diff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumExpression.diff" title="Permalink to this definition">¶</a></dt>
 <dd><p>Differentiate by scalar parameter <cite>sym</cite>.</p>
 <p>The derivative is trivially zero if <cite>sym</cite> is not in
 <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.free_symbols" title="qalgebra.core.abstract_algebra.Expression.free_symbols"><code class="xref py py-attr docutils literal notranslate"><span class="pre">free_symbols</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>sym</strong> (<a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.symbol.Symbol" title="(in SymPy v1.7.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Symbol</span></code></a>) – What to differentiate by.</p></li>
+<li><p><strong>sym</strong> (<a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.symbol.Symbol" title="(in SymPy v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Symbol</span></code></a>) – What to differentiate by.</p></li>
 <li><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – How often to differentiate</p></li>
 <li><p><strong>expand_simplify</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – Whether to simplify the result.</p></li>
 </ul>
@@ -443,7 +446,7 @@ to them</p>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumExpression.series_expand">
-<code class="sig-name descname">series_expand</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">param</span></em>, <em class="sig-param"><span class="n">about</span></em>, <em class="sig-param"><span class="n">order</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumExpression.series_expand"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumExpression.series_expand" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">series_expand</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">about</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumExpression.series_expand"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumExpression.series_expand" title="Permalink to this definition">¶</a></dt>
 <dd><p>Expand the expression as a truncated power series in a
 scalar parameter.</p>
 <p>When expanding an expr for a parameter <span class="math notranslate nohighlight">\(x\)</span> about the point <span class="math notranslate nohighlight">\(x_0\)</span> up to
@@ -453,7 +456,7 @@ order <span class="math notranslate nohighlight">\(N\)</span>, the resulting coe
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>param</strong> (<a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.symbol.Symbol" title="(in SymPy v1.7.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Symbol</span></code></a>) – Expansion parameter <span class="math notranslate nohighlight">\(x\)</span></p></li>
+<li><p><strong>param</strong> (<a class="reference external" href="https://docs.sympy.org/latest/modules/core.html#sympy.core.symbol.Symbol" title="(in SymPy v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Symbol</span></code></a>) – Expansion parameter <span class="math notranslate nohighlight">\(x\)</span></p></li>
 <li><p><strong>about</strong> (<a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><em>Scalar</em></a>) – Point <span class="math notranslate nohighlight">\(x_0\)</span> about which to expand</p></li>
 <li><p><strong>order</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – Maximum order <span class="math notranslate nohighlight">\(N\)</span> of expansion (&gt;= 0)</p></li>
 </ul>
@@ -484,14 +487,14 @@ coefficients:</p>
 
 <dl class="py class">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumOperation">
-<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.abstract_quantum_algebra.</code><code class="sig-name descname">QuantumOperation</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">operands</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumOperation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumOperation" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.abstract_quantum_algebra.</span></code><code class="sig-name descname"><span class="pre">QuantumOperation</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">operands</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumOperation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumOperation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qalgebra.core.abstract_quantum_algebra.QuantumExpression" title="qalgebra.core.abstract_quantum_algebra.QuantumExpression"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumExpression</span></code></a>, <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Operation" title="qalgebra.core.abstract_algebra.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_algebra.Operation</span></code></a></p>
 <p>Base class for operations on quantum expression</p>
 <p>These are operations on quantum expressions within the same fundamental
 set.</p>
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumOperation.space">
-<em class="property">property </em><code class="sig-name descname">space</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumOperation.space" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">space</span></code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumOperation.space" title="Permalink to this definition">¶</a></dt>
 <dd><p>Hilbert space of the operation result</p>
 </dd></dl>
 
@@ -499,12 +502,12 @@ set.</p>
 
 <dl class="py class">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumPlus">
-<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.abstract_quantum_algebra.</code><code class="sig-name descname">QuantumPlus</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">operands</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumPlus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumPlus" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.abstract_quantum_algebra.</span></code><code class="sig-name descname"><span class="pre">QuantumPlus</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">operands</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumPlus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumPlus" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qalgebra.core.abstract_quantum_algebra.QuantumOperation" title="qalgebra.core.abstract_quantum_algebra.QuantumOperation"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumOperation</span></code></a></p>
 <p>General implementation of addition of quantum expressions</p>
 <dl class="py attribute">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumPlus.order_key">
-<code class="sig-name descname">order_key</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumPlus.order_key" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">order_key</span></code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumPlus.order_key" title="Permalink to this definition">¶</a></dt>
 <dd><p>alias of <a class="reference internal" href="qalgebra.utils.ordering.html#qalgebra.utils.ordering.FullCommutativeHSOrder" title="qalgebra.utils.ordering.FullCommutativeHSOrder"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.utils.ordering.FullCommutativeHSOrder</span></code></a></p>
 </dd></dl>
 
@@ -512,18 +515,18 @@ set.</p>
 
 <dl class="py class">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumTimes">
-<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.abstract_quantum_algebra.</code><code class="sig-name descname">QuantumTimes</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">operands</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumTimes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumTimes" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.abstract_quantum_algebra.</span></code><code class="sig-name descname"><span class="pre">QuantumTimes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">operands</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumTimes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumTimes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qalgebra.core.abstract_quantum_algebra.QuantumOperation" title="qalgebra.core.abstract_quantum_algebra.QuantumOperation"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumOperation</span></code></a></p>
 <p>General implementation of product of quantum expressions</p>
 <dl class="py attribute">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumTimes.order_key">
-<code class="sig-name descname">order_key</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumTimes.order_key" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">order_key</span></code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumTimes.order_key" title="Permalink to this definition">¶</a></dt>
 <dd><p>alias of <a class="reference internal" href="qalgebra.utils.ordering.html#qalgebra.utils.ordering.DisjunctCommutativeHSOrder" title="qalgebra.utils.ordering.DisjunctCommutativeHSOrder"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.utils.ordering.DisjunctCommutativeHSOrder</span></code></a></p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumTimes.factor_for_space">
-<code class="sig-name descname">factor_for_space</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">spc</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumTimes.factor_for_space"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumTimes.factor_for_space" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">factor_for_space</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumTimes.factor_for_space"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumTimes.factor_for_space" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a tuple of two products, where the first product contains the
 given Hilbert space, and the second product is disjunct from it.</p>
 </dd></dl>
@@ -532,12 +535,12 @@ given Hilbert space, and the second product is disjunct from it.</p>
 
 <dl class="py class">
 <dt id="qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation">
-<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.abstract_quantum_algebra.</code><code class="sig-name descname">SingleQuantumOperation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">op</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#SingleQuantumOperation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.abstract_quantum_algebra.</span></code><code class="sig-name descname"><span class="pre">SingleQuantumOperation</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">op</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#SingleQuantumOperation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qalgebra.core.abstract_quantum_algebra.QuantumOperation" title="qalgebra.core.abstract_quantum_algebra.QuantumOperation"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumOperation</span></code></a></p>
 <p>Base class for operations on a single quantum expression</p>
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation.operand">
-<em class="property">property </em><code class="sig-name descname">operand</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation.operand" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">operand</span></code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation.operand" title="Permalink to this definition">¶</a></dt>
 <dd><p>The operator that the operation acts on</p>
 </dd></dl>
 
@@ -545,14 +548,14 @@ given Hilbert space, and the second product is disjunct from it.</p>
 
 <dl class="py class">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumAdjoint">
-<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.abstract_quantum_algebra.</code><code class="sig-name descname">QuantumAdjoint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">op</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumAdjoint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumAdjoint" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.abstract_quantum_algebra.</span></code><code class="sig-name descname"><span class="pre">QuantumAdjoint</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">op</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumAdjoint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumAdjoint" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation" title="qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation</span></code></a></p>
 <p>Base class for adjoints of quantum expressions</p>
 </dd></dl>
 
 <dl class="py class">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumSymbol">
-<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.abstract_quantum_algebra.</code><code class="sig-name descname">QuantumSymbol</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">label</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">sym_args</span></em>, <em class="sig-param"><span class="n">hs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumSymbol"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumSymbol" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.abstract_quantum_algebra.</span></code><code class="sig-name descname"><span class="pre">QuantumSymbol</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">sym_args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumSymbol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumSymbol" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qalgebra.core.abstract_quantum_algebra.QuantumExpression" title="qalgebra.core.abstract_quantum_algebra.QuantumExpression"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumExpression</span></code></a></p>
 <p>Symbolic element of an algebra.</p>
 <dl class="field-list simple">
@@ -572,38 +575,38 @@ type of the implicit Hilbert space is set by <a class="reference internal" href=
 </dl>
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumSymbol.label">
-<em class="property">property </em><code class="sig-name descname">label</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumSymbol.label" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">label</span></code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumSymbol.label" title="Permalink to this definition">¶</a></dt>
 <dd><p>Label of the symbol.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumSymbol.args">
-<em class="property">property </em><code class="sig-name descname">args</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumSymbol.args" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">args</span></code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumSymbol.args" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tuple of positional arguments, consisting of the label and possible
 <cite>sym_args</cite>.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumSymbol.kwargs">
-<em class="property">property </em><code class="sig-name descname">kwargs</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumSymbol.kwargs" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">kwargs</span></code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumSymbol.kwargs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Dict of keyword arguments, containing only <cite>hs</cite>.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumSymbol.sym_args">
-<em class="property">property </em><code class="sig-name descname">sym_args</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumSymbol.sym_args" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">sym_args</span></code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumSymbol.sym_args" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tuple of <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code></a> arguments of the symbol.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumSymbol.space">
-<em class="property">property </em><code class="sig-name descname">space</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumSymbol.space" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">space</span></code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumSymbol.space" title="Permalink to this definition">¶</a></dt>
 <dd><p>The Hilbert space associated with the symbol.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumSymbol.free_symbols">
-<em class="property">property </em><code class="sig-name descname">free_symbols</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumSymbol.free_symbols" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">free_symbols</span></code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumSymbol.free_symbols" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set of free SymPy symbols contained within the expression.</p>
 <p>These are all the symbol with respect to which the symbol has a
 non-zero derivative, see <a class="reference internal" href="#qalgebra.core.abstract_quantum_algebra.QuantumExpression.diff" title="qalgebra.core.abstract_quantum_algebra.QuantumExpression.diff"><code class="xref py py-meth docutils literal notranslate"><span class="pre">diff()</span></code></a>.</p>
@@ -613,12 +616,12 @@ non-zero derivative, see <a class="reference internal" href="#qalgebra.core.abst
 
 <dl class="py class">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum">
-<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.abstract_quantum_algebra.</code><code class="sig-name descname">QuantumIndexedSum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">term</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">ranges</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumIndexedSum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.abstract_quantum_algebra.</span></code><code class="sig-name descname"><span class="pre">QuantumIndexedSum</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">term</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranges</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumIndexedSum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="qalgebra.core.indexed_operations.html#qalgebra.core.indexed_operations.IndexedSum" title="qalgebra.core.indexed_operations.IndexedSum"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.indexed_operations.IndexedSum</span></code></a>, <a class="reference internal" href="#qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation" title="qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation</span></code></a></p>
 <p>Base class for indexed sums of quantum expressions.</p>
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum.space">
-<em class="property">property </em><code class="sig-name descname">space</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum.space" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">space</span></code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum.space" title="Permalink to this definition">¶</a></dt>
 <dd><p>The Hilbert space of the sum’s term.</p>
 </dd></dl>
 
@@ -626,7 +629,7 @@ non-zero derivative, see <a class="reference internal" href="#qalgebra.core.abst
 
 <dl class="py class">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumDerivative">
-<em class="property">class </em><code class="sig-prename descclassname">qalgebra.core.abstract_quantum_algebra.</code><code class="sig-name descname">QuantumDerivative</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">op</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">derivs</span></em>, <em class="sig-param"><span class="n">vals</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumDerivative"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumDerivative" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.abstract_quantum_algebra.</span></code><code class="sig-name descname"><span class="pre">QuantumDerivative</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">op</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">derivs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumDerivative"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumDerivative" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation" title="qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.SingleQuantumOperation</span></code></a></p>
 <p>Symbolic partial derivative.</p>
 <div class="math notranslate nohighlight">
@@ -661,12 +664,12 @@ explicitly, the explicit form is preferred over the abstract
 </div>
 <dl class="py attribute">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumDerivative.simplifications">
-<code class="sig-name descname">simplifications</code><em class="property"> = [&lt;function derivative_via_diff&gt;]</em><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumDerivative.simplifications" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">simplifications</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[&lt;function</span> <span class="pre">derivative_via_diff&gt;]</span></em><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumDerivative.simplifications" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumDerivative.create">
-<em class="property">classmethod </em><code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">op</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">derivs</span></em>, <em class="sig-param"><span class="n">vals</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumDerivative.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumDerivative.create" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">op</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">derivs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumDerivative.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumDerivative.create" title="Permalink to this definition">¶</a></dt>
 <dd><p>Instantiate the derivative.</p>
 <p>This is done by repeatedly calling the <code class="docutils literal notranslate"><span class="pre">_diff</span></code> method of a
 <a class="reference internal" href="#qalgebra.core.abstract_quantum_algebra.QuantumExpression" title="qalgebra.core.abstract_quantum_algebra.QuantumExpression"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumExpression</span></code></a> <cite>op</cite> and evaluating the result at the given
@@ -675,58 +678,58 @@ explicitly, the explicit form is preferred over the abstract
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumDerivative.kwargs">
-<em class="property">property </em><code class="sig-name descname">kwargs</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumDerivative.kwargs" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">kwargs</span></code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumDerivative.kwargs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Keyword arguments for the instantiation of the derivative</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumDerivative.minimal_kwargs">
-<em class="property">property </em><code class="sig-name descname">minimal_kwargs</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumDerivative.minimal_kwargs" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">minimal_kwargs</span></code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumDerivative.minimal_kwargs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Minimal keyword arguments for the instantiation of the derivative
 (excluding defaults)</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumDerivative.evaluate_at">
-<code class="sig-name descname">evaluate_at</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vals</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumDerivative.evaluate_at"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumDerivative.evaluate_at" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">evaluate_at</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vals</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#QuantumDerivative.evaluate_at"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumDerivative.evaluate_at" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluate the derivative at a specific point</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumDerivative.derivs">
-<em class="property">property </em><code class="sig-name descname">derivs</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumDerivative.derivs" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">derivs</span></code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumDerivative.derivs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mapping of symbols to the order of the derivative with respect to
 that symbol. Keys are ordered alphanumerically.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumDerivative.syms">
-<em class="property">property </em><code class="sig-name descname">syms</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumDerivative.syms" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">syms</span></code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumDerivative.syms" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set of symbols with respect to which the derivative is taken</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumDerivative.vals">
-<em class="property">property </em><code class="sig-name descname">vals</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumDerivative.vals" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">vals</span></code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumDerivative.vals" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mapping of symbols to values for which the derivative is to be
 evaluated. Keys are ordered alphanumerically.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumDerivative.free_symbols">
-<em class="property">property </em><code class="sig-name descname">free_symbols</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumDerivative.free_symbols" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">free_symbols</span></code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumDerivative.free_symbols" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set of free SymPy symbols contained within the expression.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumDerivative.bound_symbols">
-<em class="property">property </em><code class="sig-name descname">bound_symbols</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumDerivative.bound_symbols" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">bound_symbols</span></code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumDerivative.bound_symbols" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set of Sympy symbols that are eliminated by evaluation.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="qalgebra.core.abstract_quantum_algebra.QuantumDerivative.n">
-<em class="property">property </em><code class="sig-name descname">n</code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumDerivative.n" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">n</span></code><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.QuantumDerivative.n" title="Permalink to this definition">¶</a></dt>
 <dd><p>The total order of the derivative.</p>
 <p>This is the sum of the order values in <a class="reference internal" href="#qalgebra.core.abstract_quantum_algebra.QuantumDerivative.derivs" title="qalgebra.core.abstract_quantum_algebra.QuantumDerivative.derivs"><code class="xref py py-attr docutils literal notranslate"><span class="pre">derivs</span></code></a></p>
 </dd></dl>
@@ -735,7 +738,7 @@ evaluated. Keys are ordered alphanumerically.</p>
 
 <dl class="py function">
 <dt id="qalgebra.core.abstract_quantum_algebra.Sum">
-<code class="sig-prename descclassname">qalgebra.core.abstract_quantum_algebra.</code><code class="sig-name descname">Sum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">idx</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#Sum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.Sum" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">qalgebra.core.abstract_quantum_algebra.</span></code><code class="sig-name descname"><span class="pre">Sum</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#Sum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.Sum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Instantiator for an arbitrary indexed sum.</p>
 <p>This returns a function that instantiates the appropriate
 <a class="reference internal" href="#qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum" title="qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumIndexedSum</span></code></a> subclass for a given term expression. It is the
@@ -816,7 +819,7 @@ the elements in that tuple or list:</p>
 
 <dl class="py function">
 <dt id="qalgebra.core.abstract_quantum_algebra.ensure_local_space">
-<code class="sig-prename descclassname">qalgebra.core.abstract_quantum_algebra.</code><code class="sig-name descname">ensure_local_space</code><span class="sig-paren">(</span><em class="sig-param">hs</em>, <em class="sig-param">cls=&lt;class 'qalgebra.core.hilbert_space_algebra.LocalSpace'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#ensure_local_space"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.ensure_local_space" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">qalgebra.core.abstract_quantum_algebra.</span></code><code class="sig-name descname"><span class="pre">ensure_local_space</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">hs</span></em>, <em class="sig-param"><span class="pre">cls=&lt;class</span> <span class="pre">'qalgebra.core.hilbert_space_algebra.LocalSpace'&gt;</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_quantum_algebra.html#ensure_local_space"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_quantum_algebra.ensure_local_space" title="Permalink to this definition">¶</a></dt>
 <dd><p>Ensure that the given <cite>hs</cite> is an instance of <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a>.</p>
 <p>If <cite>hs</cite> an instance of <a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> or <a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, it will be converted
 to a <cite>cls</cite> (if possible). If it already is an instace of <cite>cls</cite>, <cite>hs</cite>
@@ -868,25 +871,18 @@ should be converted. Must be a subclass of <a class="reference internal" href="q
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="qalgebra.core.algebraic_properties.html" class="btn btn-neutral float-right" title="qalgebra.core.algebraic_properties module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="qalgebra.core.abstract_algebra.html" class="btn btn-neutral float-left" title="qalgebra.core.abstract_algebra module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="qalgebra.core.algebraic_properties.html" class="btn btn-neutral float-right" title="qalgebra.core.algebraic_properties module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="qalgebra.core.abstract_algebra.html" class="btn btn-neutral float-left" title="qalgebra.core.abstract_algebra module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, Michael Goerz
+        &#169; Copyright 2021, Michael Goerz.
       <span class="lastupdated">
-        Last updated on Dec 31, 2020.
+        Last updated on May 26, 2021.
       </span>
 
     </p>
@@ -894,14 +890,13 @@ should be converted. Must be a subclass of <a class="reference internal" href="q
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

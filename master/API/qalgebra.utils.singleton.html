@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>qalgebra.utils.singleton module &mdash; QAlgebra 0.2.0+dev (84ee789) documentation</title>
+  <title>qalgebra.utils.singleton module &mdash; QAlgebra 0.2.0+dev (e7641ef) documentation</title>
   
 
   
@@ -18,7 +18,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -33,10 +36,8 @@
         <script src="../_static/doctools.js"></script>
         <script src="../_static/clipboard.min.js"></script>
         <script src="../_static/copybutton.js"></script>
-        <script src="../_static/doctr-versions-menu.js"></script>
+        <script src="../_static/docs-versions-menu.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -58,7 +59,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> QAlgebra
+            <a href="../index.html" class="icon icon-home"> QAlgebra
           
 
           
@@ -322,7 +323,7 @@ singletons, a custom documenter will have to be registered. The Sphinx
 <h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="qalgebra.utils.singleton.singleton_object">
-<code class="sig-prename descclassname">qalgebra.utils.singleton.</code><code class="sig-name descname">singleton_object</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/singleton.html#singleton_object"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.singleton.singleton_object" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">qalgebra.utils.singleton.</span></code><code class="sig-name descname"><span class="pre">singleton_object</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/singleton.html#singleton_object"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.utils.singleton.singleton_object" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class decorator that transforms (and replaces) a class definition (which
 must have a Singleton metaclass) with the actual singleton object. Ensures
 that the resulting object can still be “instantiated” (i.e., called),
@@ -337,7 +338,7 @@ compare equal only to itself.</p>
 
 <dl class="py class">
 <dt id="qalgebra.utils.singleton.Singleton">
-<em class="property">class </em><code class="sig-prename descclassname">qalgebra.utils.singleton.</code><code class="sig-name descname">Singleton</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">bases</span></em>, <em class="sig-param"><span class="n">namespace</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/singleton.html#Singleton"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.singleton.Singleton" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.utils.singleton.</span></code><code class="sig-name descname"><span class="pre">Singleton</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bases</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/singleton.html#Singleton"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.utils.singleton.Singleton" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.8/library/abc.html#abc.ABCMeta" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABCMeta</span></code></a></p>
 <p>Metaclass for singletons.</p>
 <p>Any instantiation of a singleton class yields the exact same object, e.g.:</p>
@@ -358,7 +359,7 @@ compare equal only to itself.</p>
 
 <dl class="py data">
 <dt id="qalgebra.utils.singleton.SingletonType">
-<code class="sig-prename descclassname">qalgebra.utils.singleton.</code><code class="sig-name descname">SingletonType</code><em class="property"> = &lt;class 'qalgebra.utils.singleton.SingletonType'&gt;</em><a class="reference internal" href="../_modules/qalgebra/utils/singleton.html#SingletonType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qalgebra.utils.singleton.SingletonType" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">qalgebra.utils.singleton.</span></code><code class="sig-name descname"><span class="pre">SingletonType</span></code><em class="property"> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'qalgebra.utils.singleton.SingletonType'&gt;</span></em><a class="reference internal" href="../_modules/qalgebra/utils/singleton.html#SingletonType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.utils.singleton.SingletonType" title="Permalink to this definition">¶</a></dt>
 <dd><p>A dummy type that for checking whether an object is a Singleton.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">SingletonType</span><span class="p">)</span>
 </pre></div>
@@ -373,25 +374,18 @@ compare equal only to itself.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="qalgebra.utils.testing.html" class="btn btn-neutral float-right" title="qalgebra.utils.testing module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="qalgebra.utils.properties_for_args.html" class="btn btn-neutral float-left" title="qalgebra.utils.properties_for_args module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="qalgebra.utils.testing.html" class="btn btn-neutral float-right" title="qalgebra.utils.testing module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="qalgebra.utils.properties_for_args.html" class="btn btn-neutral float-left" title="qalgebra.utils.properties_for_args module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, Michael Goerz
+        &#169; Copyright 2021, Michael Goerz.
       <span class="lastupdated">
-        Last updated on Dec 31, 2020.
+        Last updated on May 26, 2021.
       </span>
 
     </p>
@@ -399,14 +393,13 @@ compare equal only to itself.</p>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

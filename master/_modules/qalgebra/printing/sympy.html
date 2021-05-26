@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>qalgebra.printing.sympy &mdash; QAlgebra 0.2.0+dev (84ee789) documentation</title>
+  <title>qalgebra.printing.sympy &mdash; QAlgebra 0.2.0+dev (e7641ef) documentation</title>
   
 
   
@@ -18,7 +18,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -33,10 +36,8 @@
         <script src="../../../_static/doctools.js"></script>
         <script src="../../../_static/clipboard.min.js"></script>
         <script src="../../../_static/copybutton.js"></script>
-        <script src="../../../_static/doctr-versions-menu.js"></script>
+        <script src="../../../_static/docs-versions-menu.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -56,7 +57,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> QAlgebra
+            <a href="../../../index.html" class="icon icon-home"> QAlgebra
           
 
           
@@ -239,7 +240,7 @@
 <span class="nb">delattr</span><span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">Indexed</span><span class="p">,</span> <span class="s1">&#39;_sympystr&#39;</span><span class="p">)</span>  <span class="c1"># not sure how else to override printer</span>
 
 
-<div class="viewcode-block" id="derationalize_denom"><a class="viewcode-back" href="../../../API/qalgebra.printing.sympy.html#qalgebra.printing.asciiprinter.derationalize_denom">[docs]</a><span class="k">def</span> <span class="nf">derationalize_denom</span><span class="p">(</span><span class="n">expr</span><span class="p">):</span>
+<div class="viewcode-block" id="derationalize_denom"><a class="viewcode-back" href="../../../API/qalgebra.printing.sympy.html#qalgebra.printing.sympy.derationalize_denom">[docs]</a><span class="k">def</span> <span class="nf">derationalize_denom</span><span class="p">(</span><span class="n">expr</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Try to de-rationalize the denominator of the given expression.</span>
 
 <span class="sd">    The purpose is to allow to reconstruct e.g. ``1/sqrt(2)`` from</span>
@@ -285,7 +286,7 @@
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;expr is not a Mul instance&quot;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="SympyStrPrinter"><a class="viewcode-back" href="../../../API/qalgebra.printing.sympy.html#qalgebra.printing.asciiprinter.SympyStrPrinter">[docs]</a><span class="k">class</span> <span class="nc">SympyStrPrinter</span><span class="p">(</span><span class="n">StrPrinter</span><span class="p">):</span>
+<div class="viewcode-block" id="SympyStrPrinter"><a class="viewcode-back" href="../../../API/qalgebra.printing.sympy.html#qalgebra.printing.sympy.SympyStrPrinter">[docs]</a><span class="k">class</span> <span class="nc">SympyStrPrinter</span><span class="p">(</span><span class="n">StrPrinter</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Variation of sympy ``StrPrinter`` that derationalizes denominators.</span>
 
 <span class="sd">    Additionally, it contains the following modifications:</span>
@@ -365,7 +366,7 @@
             <span class="k">return</span> <span class="n">res</span></div>
 
 
-<div class="viewcode-block" id="SympyLatexPrinter"><a class="viewcode-back" href="../../../API/qalgebra.printing.sympy.html#qalgebra.printing.asciiprinter.SympyLatexPrinter">[docs]</a><span class="k">class</span> <span class="nc">SympyLatexPrinter</span><span class="p">(</span><span class="n">LatexPrinter</span><span class="p">):</span>
+<div class="viewcode-block" id="SympyLatexPrinter"><a class="viewcode-back" href="../../../API/qalgebra.printing.sympy.html#qalgebra.printing.sympy.SympyLatexPrinter">[docs]</a><span class="k">class</span> <span class="nc">SympyLatexPrinter</span><span class="p">(</span><span class="n">LatexPrinter</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Variation of sympy ``LatexPrinter`` that derationalizes denominators.</span>
 
 <span class="sd">    Additionally, it contains the following modifications:</span>
@@ -462,7 +463,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_print</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">base</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;_{</span><span class="si">%s</span><span class="s1">}&#39;</span> <span class="o">%</span> <span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="SympyUnicodePrinter"><a class="viewcode-back" href="../../../API/qalgebra.printing.sympy.html#qalgebra.printing.asciiprinter.SympyUnicodePrinter">[docs]</a><span class="k">class</span> <span class="nc">SympyUnicodePrinter</span><span class="p">(</span><span class="n">SympyStrPrinter</span><span class="p">):</span>
+<div class="viewcode-block" id="SympyUnicodePrinter"><a class="viewcode-back" href="../../../API/qalgebra.printing.sympy.html#qalgebra.printing.sympy.SympyUnicodePrinter">[docs]</a><span class="k">class</span> <span class="nc">SympyUnicodePrinter</span><span class="p">(</span><span class="n">SympyStrPrinter</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Printer that represents SymPy expressions as (single-line) unicode</span>
 <span class="sd">    strings.</span>
 
@@ -679,7 +680,7 @@
             <span class="k">return</span> <span class="n">res</span></div>
 
 
-<div class="viewcode-block" id="SympyReprPrinter"><a class="viewcode-back" href="../../../API/qalgebra.printing.sympy.html#qalgebra.printing.asciiprinter.SympyReprPrinter">[docs]</a><span class="k">class</span> <span class="nc">SympyReprPrinter</span><span class="p">(</span><span class="n">ReprPrinter</span><span class="p">):</span>
+<div class="viewcode-block" id="SympyReprPrinter"><a class="viewcode-back" href="../../../API/qalgebra.printing.sympy.html#qalgebra.printing.sympy.SympyReprPrinter">[docs]</a><span class="k">class</span> <span class="nc">SympyReprPrinter</span><span class="p">(</span><span class="n">ReprPrinter</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Representation printer with support for</span>
 <span class="sd">    :class:`.IdxSym`&quot;&quot;&quot;</span>
 
@@ -717,16 +718,14 @@
            
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, Michael Goerz
+        &#169; Copyright 2021, Michael Goerz.
       <span class="lastupdated">
-        Last updated on Dec 31, 2020.
+        Last updated on May 26, 2021.
       </span>
 
     </p>
@@ -734,14 +733,13 @@
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
