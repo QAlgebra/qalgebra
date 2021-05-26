@@ -31,231 +31,50 @@ jobs:
           zip-folder --debug --auto-root --outfile "qalgebra-docs-$VERSION.zip" docs/_build/html
           mv docs/_build/latex/qalgebra.pdf "qalgebra-docs-$VERSION.pdf"
           mv docs/_build/epub/QAlgebra.epub "qalgebra-docs-$VERSION.epub"
+          touch docs/_build/html/_downloads
           echo ::set-output name=VERSION::$VERSION
 
-      - uses: actions/upload-artifact@v2
-        name: Upload documentation artifacts
-        with:
-          name: qalgebra-docs
-          # We need at least two files in the artifact to avoid a weird
-          # double-zip file. Hence README.md
-          path: |
-            README.md
-            ./qalgebra-docs-${{ steps.build.outputs.VERSION }}.*
-
-  create_github_release:
-    name: Create a Github Release
-    runs-on: ubuntu-18.04
-    if: startsWith(github.ref, 'refs/tags/v')
-    needs: build_docs
-    steps:
-
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - uses: actions/setup-python@v2
-        name: Install Python 3.8
-        with:
-          python-version: 3.8
-
-      - name: Get the version
-        id: get_version
-        run: echo ::set-output name=VERSION::$(python -c 'print([line.split("=")[-1].strip()[1:-1] for line in open("./src/qalgebra/__init__.py", encoding="utf8").readlines() if line.startswith("__version__")][0], end="")')
-
-      - name: Get tag name
+      - name: Make a Github release and set _downloads links
         shell: bash
-        run: |
-          echo ${{ github.ref }}
-          echo "TAG_NAME=$(echo ${GITHUB_REF##*/} | tr / -)" >> $GITHUB_ENV
-          cat $GITHUB_ENV
-
-      - name: Check that tag is release
-        run: test "v${{ steps.get_version.outputs.VERSION }}" == "${{ env.TAG_NAME }}"
-
-      - uses: actions/download-artifact@v2
-        name: Download qalgebra-docs artifact
-        with:
-          name: qalgebra-docs
-          path: _qalgebra_docs
-
-      - name: Check for html (zip) artifact
-        id: zip_artifact_file
-        run: |
-          echo ::set-output name=filepath::$(ls _qalgebra_docs/*.zip | head -n1)
-          echo ::set-output name=basename::$(ls _qalgebra_docs/*.zip | head -n1 | xargs basename)
-
-      - name: Check for pdf artifact
-        id: pdf_artifact_file
-        run: |
-          echo ::set-output name=filepath::$(ls _qalgebra_docs/*.pdf | head -n1)
-          echo ::set-output name=basename::$(ls _qalgebra_docs/*.pdf | head -n1 | xargs basename)
-
-      - name: Check for epub artifact
-        id: epub_artifact_file
-        run: |
-          echo ::set-output name=filepath::$(ls _qalgebra_docs/*.epub | head -n1)
-          echo ::set-output name=basename::$(ls _qalgebra_docs/*.pepub | head -n1 | xargs basename)
-
-      - name: Get Release Notes
-        run: git tag -l --format='%(contents:body)' ${{ env.TAG_NAME}} | tee .RELEASE_NOTES.md
-
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ env.TAG_NAME}}
-          release_name: Release ${{ steps.get_version.outputs.VERSION }}
-          body_path: .RELEASE_NOTES.md
-          draft: false
-          prerelease: false
-
-      - name: Upload html (zip) asset
-        id: upload-release-asset-zip
-        if: ${{ steps.zip_artifact_file.outputs.filepath != '' }}
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ steps.zip_artifact_file.outputs.filepath }}
-          asset_name: ${{ steps.zip_artifact_file.outputs.basename }}
-          asset_content_type: application/zip
-
-      - name: Add html asset to _downloads file
-        if: ${{ steps.zip_artifact_file.outputs.filepath != '' }}
-        run: |
-          echo "[html]: ${{ steps.upload-release-asset-zip.outputs.browser_download_url }}" >> _downloads
-
-      - name: Upload pdf asset
-        id: upload-release-asset-pdf
-        if: ${{ steps.pdf_artifact_file.outputs.filepath != '' }}
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ steps.pdf_artifact_file.outputs.filepath }}
-          asset_name: ${{ steps.pdf_artifact_file.outputs.basename }}
-          asset_content_type: application/pdf
-
-      - name: Add pdf asset to _downloads file
-        if: ${{ steps.pdf_artifact_file.outputs.filepath != '' }}
-        run: |
-          echo "[pdf]: ${{ steps.upload-release-asset-pdf.outputs.browser_download_url }}" >> _downloads
-
-      - name: Upload epub asset
-        id: upload-release-asset-epub
-        if: ${{ steps.epub_artifact_file.outputs.filepath != '' }}
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ steps.epub_artifact_file.outputs.filepath }}
-          asset_name: ${{ steps.epub_artifact_file.outputs.basename }}
-          asset_content_type: application/epub+zip
-
-      - name: Add epub asset to _downloads file
-        if: ${{ steps.epub_artifact_file.outputs.filepath != '' }}
-        run: |
-          echo "[epub]: ${{ steps.upload-release-asset-epub.outputs.browser_download_url }}" >> _downloads
-
-      - name: Show _downloads
-        run: cat _downloads
-
-      - uses: actions/upload-artifact@v2
-        name: Create _downloads artifact
-        with:
-          name: _downloads
-          path: |
-            _downloads
-
-
-  deploy_gh_pages:
-    name: Deploy documentation to gh-pages
-    if: always() && needs.build_docs.result == 'success' && (github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/'))
-    runs-on: ubuntu-18.04
-    needs: [build_docs, create_github_release]
-    steps:
-
-      - uses: actions/setup-python@v2
-        name: Install Python 3.8
-        with:
-          python-version: 3.8
-
-      - name: Install deploy requirements
-        run: pip install docs_versions_menu
-
-      - name: Get branch name
-        shell: bash
-        run: |
-          echo ${{ github.ref }}
-          echo "BRANCH_NAME=$(echo ${GITHUB_REF##*/} | tr / -)" >> $GITHUB_ENV
-          cat $GITHUB_ENV
-
-      - uses: actions/checkout@v2
-        name: Check out gh-pages branch (full history)
-        with:
-          ref: gh-pages
-          fetch-depth: 0
-
-      - uses: actions/download-artifact@v2
-        name: Download qalgebra-docs artifact
-        with:
-          name: qalgebra-docs
-          path: _qalgebra_docs
-
-      - name: Unzip html documentation
-        working-directory: _qalgebra_docs
-        shell: bash
-        run: |
-          unzip *.zip -d _unzip
-          mv _unzip/* _unzip/${{ env.BRANCH_NAME }}
-
-      - name: Rsync html documentation into place
-        run: rsync -av --delete _qalgebra_docs/_unzip/${{ env.BRANCH_NAME }}/ ./${{ env.BRANCH_NAME }}/
-
-      - name: Remove artifact files
-        shell: bash
-        run: rm -rf _qalgebra_docs
-
-      - uses: actions/download-artifact@v2
-        name: Put _downloads file
         if: startsWith(github.ref, 'refs/tags/v')
-        continue-on-error: true
-        with:
-          name: _downloads
-          path: ./${{ env.BRANCH_NAME }}/
-
-      - name: Run docs-versions-menu
-        run: docs-versions-menu
-
-      - name: Get the previous commit message
-        id: get_previous_commit
         run: |
-          git log --format=%B -n 1 | tee .git/_github_actions_commit_msg
-          echo ::set-output name=log::$(cat .git/_github_actions_commit_msg)
-          echo ::set-output name=lastline::$(cat .git/_github_actions_commit_msg | grep -v '^$' | tail -n1)
-          echo ::set-output name=author::$(git log --format=%an -n 1)
+          set -x
+          git fetch --tags --force  # restore tag info that actions/checkout pruned
+          tag_name="${GITHUB_REF##*/}"
+          release_title=$(git tag -l --format='%(contents:subject)' "$tag_name")
+          git tag -l --format='%(contents:body)' "$tag_name" | tee RELEASE_NOTES.md
+          gh release create "$tag_name" ./qalgebra-docs-${{ steps.build.outputs.VERSION }}.* --notes-file RELEASE_NOTES.md --title="$release_title"
+          epub=$(gh api "repos/${{ github.repository }}/releases/tags/$tag_name" | jq '.assets[] | .browser_download_url' | sed 's/"//g' | grep 'epub$')
+          pdf=$(gh api "repos/${{ github.repository }}/releases/tags/$tag_name" | jq '.assets[] | .browser_download_url' | sed 's/"//g' | grep 'pdf$')
+          zip=$(gh api "repos/${{ github.repository }}/releases/tags/$tag_name" | jq '.assets[] | .browser_download_url' | sed 's/"//g' | grep 'zip$')
+          echo "[html]: $zip" >> docs/_build/html/_downloads
+          echo "[epub]: $epub" >> docs/_build/html/_downloads
+          echo "[pdf]: $pdf" >> docs/_build/html/_downloads
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Set git configuration
+      - name: Deploy documentation to gh-pages
+        if: github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/')
         shell: bash
         run: |
+          set -x
+          # Clone gh-pages
+          git clone --branch gh-pages https://github.com/${{ github.repository }} gh-pages
+          # Run rsync
+          branch_name=$(echo ${GITHUB_REF##*/} | tr / -)
+          rsync -av --delete "./docs/_build/html/" "./gh-pages/$branch_name/"
+          # Run docs-versions-menu
+          cd gh-pages
+          docs-versions-menu
+          # Commit and push
           git config user.name github-actions
           git config user.email github-actions@github.com
-
-      - name: Commit changes
-        shell: bash
-        run: |
-          echo "Committing to gh-pages"
-          echo "# GIT ADD"
           git add -A --verbose
-          echo "# GIT STATUS"
           git status
-          echo "# GIT COMMIT"
-          if [[ "${{ steps.get_previous_commit.outputs.author }}" == "github-actions"* && "${{ steps.get_previous_commit.outputs.lastline }}" == *"${{ github.ref }}"* ]];
+          git log --format=%B -n 1 | tee .git/_github_actions_commit_msg
+          loglastline=$(cat .git/_github_actions_commit_msg | grep -v '^$' | tail -n1)
+          logauthor=$(git log --format=%an -n 1)
+          if [[ "$logauthor" == "github-actions"* && "$loglastline" == *"${{ github.ref }}"* ]];
           then
             # we ammend if the previous commit was down by Github Actions and was based on the same branch/tag name
             echo "Amending previous commit"
@@ -266,6 +85,17 @@ jobs:
             git commit --verbose -m "Auto-update from Github Actions Workflow" -m "Deployed from commit ${GITHUB_SHA} (${GITHUB_REF})"
           fi
           git log -n 1
+          git push --verbose --force https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/${{ github.repository }} gh-pages
+        env:
+          DOCS_VERSIONS_MENU_DEBUG: 'true'
+          GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Push changes
-        run: git push --verbose --force
+      - uses: actions/upload-artifact@v2
+        name: Upload documentation artifacts
+        with:
+          name: qalgebra-docs
+          path: |
+            RELEASE_NOTES.md
+            ./docs/_build/html/_downloads
+            ./qalgebra-docs-${{ steps.build.outputs.VERSION }}.*
