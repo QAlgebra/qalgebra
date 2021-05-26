@@ -1,0 +1,495 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>qalgebra.printing.dot &mdash; QAlgebra 0.2.0+dev (20ec971) documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/mycss.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/docs-versions-menu.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0+dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html#usage">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Quantum Algebra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../symbolic_algebra.html">Symbolic Algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../printing.html">The Printing System</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../history.html">History</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../library_structure.html">Library Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../API/qalgebra.html">API of the QAlgebra package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../qalgebra.html">qalgebra</a> &raquo;</li>
+        
+          <li><a href="../printing.html">qalgebra.printing</a> &raquo;</li>
+        
+      <li>qalgebra.printing.dot</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for qalgebra.printing.dot</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;`DOT`_ printer for Expressions.</span>
+
+<span class="sd">This module provides the :func:`dotprint` function that generates a `DOT`_</span>
+<span class="sd">diagram for a given expression. For example::</span>
+
+<span class="sd">    &gt;&gt;&gt; A = OperatorSymbol(&quot;A&quot;, hs=1)</span>
+<span class="sd">    &gt;&gt;&gt; B = OperatorSymbol(&quot;B&quot;, hs=1)</span>
+<span class="sd">    &gt;&gt;&gt; expr = 2 * (A + B)</span>
+<span class="sd">    &gt;&gt;&gt; with configure_printing(str_format=&#39;unicode&#39;):</span>
+<span class="sd">    ...     dot = dotprint(expr)</span>
+<span class="sd">    &gt;&gt;&gt; dot.strip() == r&#39;&#39;&#39;</span>
+<span class="sd">    ... digraph{</span>
+<span class="sd">    ...</span>
+<span class="sd">    ... # Graph style</span>
+<span class="sd">    ... &quot;ordering&quot;=&quot;out&quot;</span>
+<span class="sd">    ... &quot;rankdir&quot;=&quot;TD&quot;</span>
+<span class="sd">    ...</span>
+<span class="sd">    ... #########</span>
+<span class="sd">    ... # Nodes #</span>
+<span class="sd">    ... #########</span>
+<span class="sd">    ...</span>
+<span class="sd">    ... &quot;node_(0, 0)&quot; [&quot;label&quot;=&quot;ScalarTimesOperator&quot;];</span>
+<span class="sd">    ... &quot;node_(1, 0)&quot; [&quot;label&quot;=&quot;2&quot;];</span>
+<span class="sd">    ... &quot;node_(1, 1)&quot; [&quot;label&quot;=&quot;OperatorPlus&quot;];</span>
+<span class="sd">    ... &quot;node_(2, 0)&quot; [&quot;label&quot;=&quot;Â⁽¹⁾&quot;];</span>
+<span class="sd">    ... &quot;node_(2, 1)&quot; [&quot;label&quot;=&quot;B̂⁽¹⁾&quot;];</span>
+<span class="sd">    ...</span>
+<span class="sd">    ... #########</span>
+<span class="sd">    ... # Edges #</span>
+<span class="sd">    ... #########</span>
+<span class="sd">    ...</span>
+<span class="sd">    ... &quot;node_(0, 0)&quot; -&gt; &quot;node_(1, 0)&quot;</span>
+<span class="sd">    ... &quot;node_(0, 0)&quot; -&gt; &quot;node_(1, 1)&quot;</span>
+<span class="sd">    ... &quot;node_(1, 1)&quot; -&gt; &quot;node_(2, 0)&quot;</span>
+<span class="sd">    ... &quot;node_(1, 1)&quot; -&gt; &quot;node_(2, 1)&quot;</span>
+<span class="sd">    ... }&#39;&#39;&#39;.strip()</span>
+<span class="sd">    True</span>
+
+<span class="sd">The ``dot`` commandline program renders the code into an image:</span>
+
+<span class="sd">.. figure:: ../_static/dotprint.svg</span>
+
+<span class="sd">The various options of :func:`dotprint` allow for arbitrary customization of</span>
+<span class="sd">the graph&#39;s structural and visual properties.</span>
+
+<span class="sd">.. _DOT: http://www.graphviz.org</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+
+<span class="kn">from</span> <span class="nn">qalgebra.core.abstract_algebra</span> <span class="kn">import</span> <span class="n">Expression</span><span class="p">,</span> <span class="n">Operation</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">__private__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dotprint&#39;</span><span class="p">,</span> <span class="s1">&#39;expr_labelfunc&#39;</span><span class="p">]</span>
+
+<span class="n">template</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">digraph{</span>
+
+<span class="s1"># Graph style</span>
+<span class="si">%(graphstyle)s</span><span class="s1"></span>
+
+<span class="s1">#########</span>
+<span class="s1"># Nodes #</span>
+<span class="s1">#########</span>
+
+<span class="si">%(nodes)s</span><span class="s1"></span>
+
+<span class="s1">#########</span>
+<span class="s1"># Edges #</span>
+<span class="s1">#########</span>
+
+<span class="si">%(edges)s</span><span class="s1"></span>
+<span class="s1">}</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+
+<span class="k">def</span> <span class="nf">_attrprint</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;, &#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Print a dictionary of attributes in the DOT format&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">delimiter</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="s1">&#39;&quot;</span><span class="si">%s</span><span class="s1">&quot;=&quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+
+
+<span class="k">def</span> <span class="nf">_styleof</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">styles</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Merge style dictionaries in order&quot;&quot;&quot;</span>
+    <span class="n">style</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">expr_filter</span><span class="p">,</span> <span class="n">sty</span> <span class="ow">in</span> <span class="n">styles</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">expr_filter</span><span class="p">(</span><span class="n">expr</span><span class="p">):</span>
+            <span class="n">style</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">sty</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">style</span>
+
+
+<span class="k">def</span> <span class="nf">_node_id</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">idfunc</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">idfunc</span><span class="p">(</span><span class="n">expr</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">repeat</span><span class="p">:</span>
+        <span class="n">res</span> <span class="o">+=</span> <span class="s1">&#39;_</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">location</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span>
+
+
+<div class="viewcode-block" id="expr_labelfunc"><a class="viewcode-back" href="../../../API/qalgebra.printing.dot.html#qalgebra.printing.dot.expr_labelfunc">[docs]</a><span class="k">def</span> <span class="nf">expr_labelfunc</span><span class="p">(</span><span class="n">leaf_renderer</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="nb">str</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Factory for function ``labelfunc(expr, is_leaf)``</span>
+
+<span class="sd">    It has the following behavior:</span>
+
+<span class="sd">    * If ``is_leaf`` is True, return ``leaf_renderer(expr)``.</span>
+
+<span class="sd">    * Otherwise,</span>
+
+<span class="sd">      - if `expr` is an Expression, return a custom string similar to</span>
+<span class="sd">        :func:`~qalgebra.printing.srepr`, but with an ellipsis for ``args``</span>
+<span class="sd">      - otherwise, return ``fallback(expr)``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_labelfunc</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">is_leaf</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">is_leaf</span><span class="p">:</span>
+            <span class="n">label</span> <span class="o">=</span> <span class="n">leaf_renderer</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">Expression</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">label</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">(..., </span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                    <span class="n">expr</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+                    <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                        <span class="p">[</span>
+                            <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+                            <span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                        <span class="p">]</span>
+                    <span class="p">),</span>
+                <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">label</span> <span class="o">=</span> <span class="n">fallback</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">label</span>
+
+    <span class="k">return</span> <span class="n">_labelfunc</span></div>
+
+
+<span class="k">def</span> <span class="nf">_op_children</span><span class="p">(</span><span class="n">expr</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">Operation</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">expr</span><span class="o">.</span><span class="n">operands</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span>
+
+
+<div class="viewcode-block" id="dotprint"><a class="viewcode-back" href="../../../API/qalgebra.printing.dot.html#qalgebra.printing.dot.dotprint">[docs]</a><span class="k">def</span> <span class="nf">dotprint</span><span class="p">(</span>
+    <span class="n">expr</span><span class="p">,</span>
+    <span class="n">styles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">maxdepth</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">repeat</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">labelfunc</span><span class="o">=</span><span class="n">expr_labelfunc</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span>
+    <span class="n">idfunc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">get_children</span><span class="o">=</span><span class="n">_op_children</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the DOT (graph) description of an Expression tree as a string.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        expr (object): The expression to render into a graph. Typically an</span>
+<span class="sd">            instance of :class:`.Expression`, but</span>
+<span class="sd">            with appropriate `get_children`, `labelfunc`, and `id_func`, this</span>
+<span class="sd">            could be any tree-like object</span>
+<span class="sd">        styles (list or None): A list of tuples ``(expr_filter, style_dict)``</span>
+<span class="sd">            where ``expr_filter`` is a callable and ``style_dict`` is a list</span>
+<span class="sd">            of `DOT`_ node properties that should be used when rendering a node</span>
+<span class="sd">            for which ``expr_filter(expr)`` return True.</span>
+<span class="sd">        maxdepth (int or None): The maximum depth of the resulting tree (any</span>
+<span class="sd">            node at `maxdepth` will be drawn as a leaf)</span>
+<span class="sd">        repeat (bool): By default, if identical sub-expressions occur in</span>
+<span class="sd">            multiple locations (as identified by `idfunc`, they will be</span>
+<span class="sd">            repeated in the graph. If ``repeat=False`` is given, each unique</span>
+<span class="sd">            (sub-)expression is only drawn once.  The resulting graph may no</span>
+<span class="sd">            longer be a proper tree, as recurring expressions will have</span>
+<span class="sd">            multiple parents.</span>
+<span class="sd">        labelfunc (callable): A function that receives `expr` and a boolean</span>
+<span class="sd">            ``is_leaf`` and returns the label of the corresponding node in the</span>
+<span class="sd">            graph. Defaults to ``expr_labelfunc(str, str)``.</span>
+<span class="sd">        idfunc (callable or None): A function that returns the ID of the node</span>
+<span class="sd">            representing a given expression. Expressions for which `idfunc`</span>
+<span class="sd">            returns identical results are considered identical if `repeat` is</span>
+<span class="sd">            False. The default value None uses a function that is appropriate</span>
+<span class="sd">            to a single standalone DOT file. If this is insufficient, something</span>
+<span class="sd">            like ``hash`` or ``str`` would make a good `idfunc`.</span>
+<span class="sd">        get_children (callable): A function that return a list of</span>
+<span class="sd">            sub-expressions (the children of `expr`). Defaults to the operands</span>
+<span class="sd">            of an :class:`.Operation` (thus, anything that is not an operation</span>
+<span class="sd">            is a leaf)</span>
+<span class="sd">        kwargs: All further keyword arguments set custom `DOT`_ graph</span>
+<span class="sd">            attributes</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: a multiline str representing a graph in the `DOT`_ language</span>
+
+<span class="sd">    Notes:</span>
+<span class="sd">        The node `styles` are additive. For example, consider the following</span>
+<span class="sd">        custom styles::</span>
+
+<span class="sd">            styles = [</span>
+<span class="sd">                (lambda expr: isinstance(expr, SCALAR_TYPES),</span>
+<span class="sd">                    {&#39;color&#39;: &#39;blue&#39;, &#39;shape&#39;: &#39;box&#39;, &#39;fontsize&#39;: 12}),</span>
+<span class="sd">                (lambda expr: isinstance(expr, Expression),</span>
+<span class="sd">                    {&#39;color&#39;: &#39;red&#39;, &#39;shape&#39;: &#39;box&#39;, &#39;fontsize&#39;: 12}),</span>
+<span class="sd">                (lambda expr: isinstance(expr, Operation),</span>
+<span class="sd">                    {&#39;color&#39;: &#39;black&#39;, &#39;shape&#39;: &#39;ellipse&#39;})]</span>
+
+<span class="sd">        For Operations (which are a subclass of Expression) the color and shape</span>
+<span class="sd">        are overwritten, while the fontsize 12 is inherited.</span>
+
+<span class="sd">        Keyword arguments are directly translated into graph styles. For</span>
+<span class="sd">        example, in order to produce a horizontal instead of vertical graph,</span>
+<span class="sd">        use ``dotprint(..., rankdir=&#39;LR&#39;)``.</span>
+
+<span class="sd">    See also:</span>
+<span class="sd">        :func:`sympy.printing.dot.dotprint` provides an equivalent function for</span>
+<span class="sd">        SymPy expressions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># the routine is called &#39;dotprint&#39; to match sympy (even though most of the</span>
+    <span class="c1"># similar routines for the other printers are called e.g. &#39;latex&#39;, not</span>
+    <span class="c1"># &#39;latexprint&#39;</span>
+    <span class="k">if</span> <span class="n">idfunc</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">repeat</span><span class="p">:</span>
+            <span class="n">idfunc</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">expr</span><span class="p">:</span> <span class="s1">&#39;node&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">idfunc</span> <span class="o">=</span> <span class="nb">hash</span>
+    <span class="n">graphstyle</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;rankdir&#39;</span><span class="p">:</span> <span class="s1">&#39;TD&#39;</span><span class="p">,</span> <span class="s1">&#39;ordering&#39;</span><span class="p">:</span> <span class="s1">&#39;out&#39;</span><span class="p">}</span>
+    <span class="n">graphstyle</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">nodes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">edges</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">level</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">pos_counter</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>  <span class="c1"># level =&gt; current pos</span>
+    <span class="n">stack</span> <span class="o">=</span> <span class="p">[(</span><span class="n">level</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">expr</span><span class="p">)]</span>
+    <span class="k">if</span> <span class="n">styles</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">styles</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">level</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">expr</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">node_id</span> <span class="o">=</span> <span class="n">_node_id</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">pos</span><span class="p">),</span> <span class="n">idfunc</span><span class="p">,</span> <span class="n">repeat</span><span class="p">)</span>
+        <span class="n">children</span> <span class="o">=</span> <span class="n">get_children</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+        <span class="n">is_leaf</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">children</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">maxdepth</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">level</span> <span class="o">&gt;=</span> <span class="n">maxdepth</span><span class="p">:</span>
+            <span class="n">is_leaf</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">style</span> <span class="o">=</span> <span class="n">_styleof</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">styles</span><span class="p">)</span>
+        <span class="n">style</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">labelfunc</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">is_leaf</span><span class="p">)</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&quot;</span><span class="si">%s</span><span class="s1">&quot; [</span><span class="si">%s</span><span class="s1">];&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">node_id</span><span class="p">,</span> <span class="n">_attrprint</span><span class="p">(</span><span class="n">style</span><span class="p">)))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_leaf</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">expr_sub</span> <span class="ow">in</span> <span class="n">children</span><span class="p">:</span>
+                    <span class="n">i_sub</span> <span class="o">=</span> <span class="n">pos_counter</span><span class="p">[</span><span class="n">level</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+                    <span class="n">id_sub</span> <span class="o">=</span> <span class="n">_node_id</span><span class="p">(</span>
+                        <span class="n">expr_sub</span><span class="p">,</span> <span class="p">(</span><span class="n">level</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i_sub</span><span class="p">),</span> <span class="n">idfunc</span><span class="p">,</span> <span class="n">repeat</span>
+                    <span class="p">)</span>
+                    <span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&quot;</span><span class="si">%s</span><span class="s1">&quot; -&gt; &quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">node_id</span><span class="p">,</span> <span class="n">id_sub</span><span class="p">))</span>
+                    <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">level</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i_sub</span><span class="p">,</span> <span class="n">expr_sub</span><span class="p">))</span>
+                    <span class="n">pos_counter</span><span class="p">[</span><span class="n">level</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">template</span> <span class="o">%</span> <span class="p">{</span>
+        <span class="s1">&#39;graphstyle&#39;</span><span class="p">:</span> <span class="n">_attrprint</span><span class="p">(</span><span class="n">graphstyle</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;nodes&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nodes</span><span class="p">),</span>
+        <span class="s1">&#39;edges&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">edges</span><span class="p">),</span>
+    <span class="p">}</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Michael Goerz.
+      <span class="lastupdated">
+        Last updated on May 26, 2021.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

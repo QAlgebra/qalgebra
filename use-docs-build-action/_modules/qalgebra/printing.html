@@ -1,0 +1,828 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>qalgebra.printing &mdash; QAlgebra 0.2.0+dev (20ec971) documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/mycss.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/docs-versions-menu.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0+dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../readme.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../readme.html#usage">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Quantum Algebra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../symbolic_algebra.html">Symbolic Algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../printing.html">The Printing System</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../history.html">History</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../library_structure.html">Library Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/qalgebra.html">API of the QAlgebra package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../qalgebra.html">qalgebra</a> &raquo;</li>
+        
+      <li>qalgebra.printing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for qalgebra.printing</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Printing system for QAlgebra Expressions and related objects&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">configparser</span>
+<span class="kn">import</span> <span class="nn">importlib</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">contextmanager</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+
+<span class="kn">from</span> <span class="nn">sympy.interactive.printing</span> <span class="kn">import</span> <span class="n">init_printing</span> <span class="k">as</span> <span class="n">sympy_init_printing</span>
+<span class="kn">from</span> <span class="nn">sympy.printing.printer</span> <span class="kn">import</span> <span class="n">Printer</span> <span class="k">as</span> <span class="n">SympyPrinter</span>
+
+<span class="kn">from</span> <span class="nn">.asciiprinter</span> <span class="kn">import</span> <span class="n">QalgebraAsciiPrinter</span>
+<span class="kn">from</span> <span class="nn">.base</span> <span class="kn">import</span> <span class="n">QalgebraBasePrinter</span>
+<span class="kn">from</span> <span class="nn">.dot</span> <span class="kn">import</span> <span class="n">dotprint</span>
+<span class="kn">from</span> <span class="nn">.latexprinter</span> <span class="kn">import</span> <span class="n">QalgebraLatexPrinter</span>
+<span class="kn">from</span> <span class="nn">.sreprprinter</span> <span class="kn">import</span> <span class="n">IndentedSReprPrinter</span><span class="p">,</span> <span class="n">QalgebraSReprPrinter</span>
+<span class="kn">from</span> <span class="nn">.treeprinting</span> <span class="kn">import</span> <span class="n">print_tree</span><span class="p">,</span> <span class="n">tree</span>
+<span class="kn">from</span> <span class="nn">.unicodeprinter</span> <span class="kn">import</span> <span class="n">QalgebraUnicodePrinter</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;init_printing&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;configure_printing&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ascii&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;unicode&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;latex&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;tex&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;srepr&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dotprint&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;tree&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;print_tree&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">__private__</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">__known_refs__</span> <span class="o">=</span> <span class="p">{}</span>
+
+
+<span class="k">def</span> <span class="nf">_printer_cls</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">class_address</span><span class="p">,</span> <span class="n">require_base</span><span class="o">=</span><span class="n">QalgebraBasePrinter</span><span class="p">):</span>
+    <span class="n">module_name</span><span class="p">,</span> <span class="n">class_name</span> <span class="o">=</span> <span class="n">class_address</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">mod</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">module_name</span><span class="p">)</span>
+        <span class="bp">cls</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">class_name</span><span class="p">)</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">ImportError</span><span class="p">,</span> <span class="ne">AttributeError</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> &#39;</span><span class="si">%s</span><span class="s2">&#39; does not exist&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">class_address</span><span class="p">))</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">require_base</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">issubclass</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">require_base</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> &#39;</span><span class="si">%s</span><span class="s2">&#39; must be a subclass of </span><span class="si">%s</span><span class="s2">&quot;</span>
+                    <span class="o">%</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">class_address</span><span class="p">,</span> <span class="n">require_base</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+                <span class="p">)</span>
+    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> &#39;</span><span class="si">%s</span><span class="s2">&#39; must be a class&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">class_address</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">cls</span>
+
+
+<div class="viewcode-block" id="init_printing"><a class="viewcode-back" href="../../API/qalgebra.printing.html#qalgebra.printing.init_printing">[docs]</a><span class="k">def</span> <span class="nf">init_printing</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">reset</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">init_sympy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Initialize the printing system.</span>
+
+<span class="sd">    This determines the behavior of the :func:`ascii`, :func:`unicode`,</span>
+<span class="sd">    and :func:`latex` functions, as well as the ``__str__`` and ``__repr__`` of</span>
+<span class="sd">    any :class:`.Expression`.</span>
+
+<span class="sd">    The routine may be called in one of two forms. First,</span>
+
+<span class="sd">    ::</span>
+
+<span class="sd">        init_printing(</span>
+<span class="sd">            str_format=&lt;str_fmt&gt;, repr_format=&lt;repr_fmt&gt;,</span>
+<span class="sd">            caching=&lt;use_caching&gt;, **settings)</span>
+
+<span class="sd">    provides a simplified, &quot;manual&quot; setup with the following parameters.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        str_format (str): Format for ``__str__`` representation of an</span>
+<span class="sd">            :class:`.Expression`. One of &#39;ascii&#39;, &#39;unicode&#39;, &#39;latex&#39;, &#39;srepr&#39;,</span>
+<span class="sd">            &#39;indsrepr&#39; (&quot;indented `srepr`&quot;), or &#39;tree&#39;. The string</span>
+<span class="sd">            representation will be affected by the settings for the</span>
+<span class="sd">            corresponding print routine, e.g. :func:`unicode` for</span>
+<span class="sd">            ``str_format=&#39;unicode&#39;``</span>
+<span class="sd">        repr_format (str): Like `str_format`, but for ``__repr__``. This is</span>
+<span class="sd">            what gets displayed in an interactive (I)Python session.</span>
+<span class="sd">        caching (bool): By default, the printing functions  (:func:`ascii`,</span>
+<span class="sd">            :func:`unicode`, :func:`latex`) cache their result for any</span>
+<span class="sd">            expression and sub-expression. This is both for efficiency and to</span>
+<span class="sd">            give the ability to to supply custom strings for subexpression by</span>
+<span class="sd">            passing a `cache` parameter to the printing functions. Initializing</span>
+<span class="sd">            the printing system with ``caching=False`` disables this</span>
+<span class="sd">            possibility.</span>
+<span class="sd">        settings: Any setting understood by any of the printing routines.</span>
+
+<span class="sd">    Second,</span>
+
+<span class="sd">    ::</span>
+
+<span class="sd">        init_printing(inifile=&lt;path_to_file&gt;)</span>
+
+
+<span class="sd">    allows for more detailed settings through a config file, see the</span>
+<span class="sd">    :ref:`notes on using an INI file &lt;ini_file_printing&gt;`.</span>
+
+<span class="sd">    If `str_format` or `repr_format` are not given, they will be set to</span>
+<span class="sd">    &#39;unicode&#39; if the current terminal is known to support an UTF8 (accordig to</span>
+<span class="sd">    ``sys.stdout.encoding``), and &#39;ascii&#39; otherwise.</span>
+
+<span class="sd">    Generally, :func:`init_printing` should be called only once at the</span>
+<span class="sd">    beginning of a script or notebook. If it is called multiple times, any</span>
+<span class="sd">    settings accumulate. To avoid this and to reset the printing system to the</span>
+<span class="sd">    defaults, you may pass ``reset=True``.  In a Jupyter notebook, expressions</span>
+<span class="sd">    are rendered graphically via LaTeX, using the settings as they affect the</span>
+<span class="sd">    :func:`latex` printer.</span>
+
+<span class="sd">    The SymPy :func:`sympy.interactive.printing.init_printing` routine is</span>
+<span class="sd">    called automatically, unless `init_sympy` is given as ``False``.</span>
+
+<span class="sd">    See also:</span>
+<span class="sd">        :func:`configure_printing` allows to temporarily change the printing</span>
+<span class="sd">        system from what was configured in :func:`init_printing`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># return either None (default) or a dict of frozen attributes if</span>
+    <span class="c1"># ``_freeze=True`` is given as a keyword argument (internal use in</span>
+    <span class="c1"># `configure_printing` only)</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">reset</span><span class="p">:</span>
+        <span class="n">SympyPrinter</span><span class="o">.</span><span class="n">_global_settings</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="n">init_sympy</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;repr_format&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;unicode&#39;</span><span class="p">:</span>
+            <span class="n">sympy_init_printing</span><span class="p">(</span><span class="n">use_unicode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;repr_format&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;ascii&#39;</span><span class="p">:</span>
+            <span class="n">sympy_init_printing</span><span class="p">(</span><span class="n">use_unicode</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sympy_init_printing</span><span class="p">()</span>  <span class="c1"># let sympy decide by itself</span>
+    <span class="k">if</span> <span class="s1">&#39;inifile&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="n">invalid_kwargs</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="s1">&#39;_freeze&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">_freeze</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;_freeze&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">invalid_kwargs</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_freeze</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">invalid_kwargs</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="n">invalid_kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                <span class="s2">&quot;The `inifile` argument cannot be combined with any &quot;</span>
+                <span class="s2">&quot;other keyword arguments&quot;</span>
+            <span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+            <span class="s2">&quot;Initializating printing from INI file </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;inifile&#39;</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">_init_printing_from_file</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;inifile&#39;</span><span class="p">],</span> <span class="n">_freeze</span><span class="o">=</span><span class="n">_freeze</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+            <span class="s2">&quot;Initializating printing with direct settings: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">_init_printing</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">_init_printing</span><span class="p">(</span>
+    <span class="n">str_format</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">repr_format</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">caching</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">ascii_printer</span><span class="o">=</span><span class="s1">&#39;qalgebra.printing.asciiprinter.QalgebraAsciiPrinter&#39;</span><span class="p">,</span>
+    <span class="n">ascii_sympy_printer</span><span class="o">=</span><span class="s1">&#39;qalgebra.printing.sympy.SympyStrPrinter&#39;</span><span class="p">,</span>
+    <span class="n">ascii_settings</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">unicode_printer</span><span class="o">=</span><span class="s1">&#39;qalgebra.printing.unicodeprinter.QalgebraUnicodePrinter&#39;</span><span class="p">,</span>
+    <span class="n">unicode_sympy_printer</span><span class="o">=</span><span class="s1">&#39;qalgebra.printing.sympy.SympyUnicodePrinter&#39;</span><span class="p">,</span>
+    <span class="n">unicode_settings</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">latex_printer</span><span class="o">=</span><span class="s1">&#39;qalgebra.printing.latexprinter.QalgebraLatexPrinter&#39;</span><span class="p">,</span>
+    <span class="n">latex_sympy_printer</span><span class="o">=</span><span class="s1">&#39;qalgebra.printing.sympy.SympyLatexPrinter&#39;</span><span class="p">,</span>
+    <span class="n">latex_settings</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">_freeze</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">settings</span>
+<span class="p">):</span>
+    <span class="c1"># Note: the *_printer args are undocumented, it&#39;s preferable to use them</span>
+    <span class="c1"># through an INI file only</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+    <span class="n">freeze</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">dict</span><span class="p">)</span>
+    <span class="n">freeze</span><span class="p">[</span><span class="n">SympyPrinter</span><span class="p">][</span>
+        <span class="s1">&#39;_global_settings&#39;</span>
+    <span class="p">]</span> <span class="o">=</span> <span class="n">SympyPrinter</span><span class="o">.</span><span class="n">_global_settings</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="c1"># Putting the settings in the _global_settings dict for SympyPrinter makes</span>
+    <span class="c1"># sure that any setting that is acceptable to any Printer that is newly</span>
+    <span class="c1"># instantiated is used automatically. Settings in _global_settings that are</span>
+    <span class="c1"># not in the _default_settings of a Printer will be silently ignored.</span>
+    <span class="n">SympyPrinter</span><span class="o">.</span><span class="n">set_global_settings</span><span class="p">(</span><span class="o">**</span><span class="n">settings</span><span class="p">)</span>
+    <span class="c1"># Note that this is the *only* mechanism by which we handle the settings;</span>
+    <span class="c1"># no settings are passed to any specific Printer below -- Printer-specific</span>
+    <span class="c1"># settings are possible only when using an INI file.</span>
+
+    <span class="n">freeze</span><span class="p">[</span><span class="n">QalgebraBasePrinter</span><span class="p">][</span>
+        <span class="s1">&#39;_allow_caching&#39;</span>
+    <span class="p">]</span> <span class="o">=</span> <span class="n">QalgebraBasePrinter</span><span class="o">.</span><span class="n">_allow_caching</span>
+    <span class="n">QalgebraBasePrinter</span><span class="o">.</span><span class="n">_allow_caching</span> <span class="o">=</span> <span class="n">caching</span>
+
+    <span class="n">print_map</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="c1"># print fct     printer cls     sympy printer class           settings</span>
+        <span class="s1">&#39;ascii&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">ascii_printer</span><span class="p">,</span> <span class="n">ascii_sympy_printer</span><span class="p">,</span> <span class="n">ascii_settings</span><span class="p">),</span>
+        <span class="s1">&#39;unicode&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">unicode_printer</span><span class="p">,</span> <span class="n">unicode_sympy_printer</span><span class="p">,</span> <span class="n">unicode_settings</span><span class="p">),</span>
+        <span class="s1">&#39;latex&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">latex_printer</span><span class="p">,</span> <span class="n">latex_sympy_printer</span><span class="p">,</span> <span class="n">latex_settings</span><span class="p">),</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">print_map</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+
+        <span class="n">print_func</span> <span class="o">=</span> <span class="n">_PRINT_FUNC</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+        <span class="n">qalgebra_printer_address</span><span class="p">,</span> <span class="n">sympy_printer_address</span><span class="p">,</span> <span class="n">settings</span> <span class="o">=</span> <span class="n">print_map</span><span class="p">[</span>
+            <span class="n">name</span>
+        <span class="p">]</span>
+        <span class="k">if</span> <span class="n">settings</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">settings</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">print_func</span><span class="p">,</span> <span class="s1">&#39;_printer_cls&#39;</span><span class="p">):</span>
+            <span class="n">freeze</span><span class="p">[</span><span class="n">print_func</span><span class="p">][</span><span class="s1">&#39;_printer_cls&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">print_func</span><span class="o">.</span><span class="n">_printer_cls</span>
+            <span class="n">freeze</span><span class="p">[</span><span class="n">print_func</span><span class="o">.</span><span class="n">_printer_cls</span><span class="p">][</span>
+                <span class="s1">&#39;sympy_printer_cls&#39;</span>
+            <span class="p">]</span> <span class="o">=</span> <span class="n">print_func</span><span class="o">.</span><span class="n">_printer_cls</span><span class="o">.</span><span class="n">sympy_printer_cls</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">print_func</span><span class="p">,</span> <span class="s1">&#39;printer&#39;</span><span class="p">):</span>
+            <span class="n">freeze</span><span class="p">[</span><span class="n">print_func</span><span class="p">][</span><span class="s1">&#39;printer&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">print_func</span><span class="o">.</span><span class="n">printer</span>
+
+        <span class="n">print_func</span><span class="o">.</span><span class="n">_printer_cls</span> <span class="o">=</span> <span class="n">_printer_cls</span><span class="p">(</span>
+            <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;_printer&#39;</span><span class="p">,</span> <span class="n">qalgebra_printer_address</span>
+        <span class="p">)</span>
+        <span class="n">print_func</span><span class="o">.</span><span class="n">_printer_cls</span><span class="o">.</span><span class="n">sympy_printer_cls</span> <span class="o">=</span> <span class="n">_printer_cls</span><span class="p">(</span>
+            <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;_sympy_printer&#39;</span><span class="p">,</span>
+            <span class="n">sympy_printer_address</span><span class="p">,</span>
+            <span class="n">require_base</span><span class="o">=</span><span class="n">SympyPrinter</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="c1"># instantiation of sympy_printer happens in init-routine (which is why</span>
+        <span class="c1"># the sympy_printer_cls must be set first!)</span>
+        <span class="n">print_func</span><span class="o">.</span><span class="n">printer</span> <span class="o">=</span> <span class="n">print_func</span><span class="o">.</span><span class="n">_printer_cls</span><span class="p">(</span><span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">)</span>
+
+    <span class="c1"># set up the __str__ and __repr__ printers</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">has_unicode</span> <span class="o">=</span> <span class="s2">&quot;UTF-8&quot;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">encoding</span>
+    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+        <span class="n">has_unicode</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Terminal supports unicode: </span><span class="si">%s</span><span class="s2"> (autodetect)&quot;</span><span class="p">,</span> <span class="n">has_unicode</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">repr_format</span> <span class="o">==</span> <span class="s1">&#39;unicode&#39;</span><span class="p">:</span>
+        <span class="n">has_unicode</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">_PRINT_FUNC</span><span class="p">[</span><span class="s1">&#39;tree&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">unicode</span><span class="o">=</span><span class="n">has_unicode</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">str_format</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">str_format</span> <span class="o">=</span> <span class="s1">&#39;unicode&#39;</span> <span class="k">if</span> <span class="n">has_unicode</span> <span class="k">else</span> <span class="s1">&#39;ascii&#39;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Setting __str__ format to </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">str_format</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">str_func</span> <span class="o">=</span> <span class="n">_PRINT_FUNC</span><span class="p">[</span><span class="n">str_format</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;str_format must be one of </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_PRINT_FUNC</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="p">)</span>
+    <span class="k">if</span> <span class="n">repr_format</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">repr_format</span> <span class="o">=</span> <span class="s1">&#39;unicode&#39;</span> <span class="k">if</span> <span class="n">has_unicode</span> <span class="k">else</span> <span class="s1">&#39;ascii&#39;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Setting __repr__ format to </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">repr_format</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">repr_func</span> <span class="o">=</span> <span class="n">_PRINT_FUNC</span><span class="p">[</span><span class="n">repr_format</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;repr_format must be one of </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_PRINT_FUNC</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="p">)</span>
+    <span class="kn">from</span> <span class="nn">qalgebra.core.abstract_algebra</span> <span class="kn">import</span> <span class="n">Expression</span>
+
+    <span class="n">freeze</span><span class="p">[</span><span class="n">Expression</span><span class="p">][</span><span class="s1">&#39;__str__&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Expression</span><span class="o">.</span><span class="fm">__str__</span>
+    <span class="n">freeze</span><span class="p">[</span><span class="n">Expression</span><span class="p">][</span><span class="s1">&#39;__repr__&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Expression</span><span class="o">.</span><span class="fm">__repr__</span>
+    <span class="n">freeze</span><span class="p">[</span><span class="n">Expression</span><span class="p">][</span><span class="s1">&#39;_repr_latex_&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Expression</span><span class="o">.</span><span class="n">_repr_latex_</span>
+    <span class="n">Expression</span><span class="o">.</span><span class="fm">__str__</span> <span class="o">=</span> <span class="k">lambda</span> <span class="bp">self</span><span class="p">:</span> <span class="n">str_func</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="n">Expression</span><span class="o">.</span><span class="fm">__repr__</span> <span class="o">=</span> <span class="k">lambda</span> <span class="bp">self</span><span class="p">:</span> <span class="n">repr_func</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="n">Expression</span><span class="o">.</span><span class="n">_repr_latex_</span> <span class="o">=</span> <span class="k">lambda</span> <span class="bp">self</span><span class="p">:</span> <span class="s2">&quot;$&quot;</span> <span class="o">+</span> <span class="n">latex</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;$&quot;</span>
+    <span class="k">if</span> <span class="n">_freeze</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">freeze</span>
+
+
+<span class="k">def</span> <span class="nf">_init_printing_from_file</span><span class="p">(</span><span class="n">inifile</span><span class="p">,</span> <span class="n">_freeze</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">(</span><span class="n">interpolation</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">BOOLEAN_STATES</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;true&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s1">&#39;True&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s1">&#39;false&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s1">&#39;False&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">inifile</span><span class="p">)</span>
+    <span class="n">kwargs</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">dict</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">section</span> <span class="ow">in</span> <span class="n">config</span><span class="o">.</span><span class="n">sections</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">section</span> <span class="o">==</span> <span class="s1">&#39;DEFAULT&#39;</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">allowed_sections</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;global&#39;</span><span class="p">,</span> <span class="s1">&#39;ascii&#39;</span><span class="p">,</span> <span class="s1">&#39;unicode&#39;</span><span class="p">,</span> <span class="s1">&#39;latex&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">section</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">allowed_sections</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Invalid section </span><span class="si">%s</span><span class="s2"> in </span><span class="si">%s</span><span class="s2">. Allowed sections are </span><span class="si">%s</span><span class="s2">&quot;</span>
+                <span class="o">%</span> <span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">inifile</span><span class="p">,</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">allowed_sections</span><span class="p">))</span>
+            <span class="p">)</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">config</span><span class="p">[</span><span class="n">section</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">config</span><span class="o">.</span><span class="n">BOOLEAN_STATES</span><span class="p">:</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">BOOLEAN_STATES</span><span class="p">[</span><span class="n">val</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">section</span> <span class="o">==</span> <span class="s1">&#39;global&#39;</span><span class="p">:</span>
+                <span class="n">kwargs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;printer&#39;</span><span class="p">:</span>
+                    <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_printer&quot;</span> <span class="o">%</span> <span class="n">section</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+                <span class="k">elif</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;sympy_printer&#39;</span><span class="p">:</span>
+                    <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_sympy_printer&quot;</span> <span class="o">%</span> <span class="n">section</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_settings&quot;</span> <span class="o">%</span> <span class="n">section</span><span class="p">][</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+    <span class="k">return</span> <span class="n">_init_printing</span><span class="p">(</span><span class="n">_freeze</span><span class="o">=</span><span class="n">_freeze</span><span class="p">,</span> <span class="o">**</span><span class="nb">dict</span><span class="p">(</span><span class="n">kwargs</span><span class="p">))</span>
+
+
+<div class="viewcode-block" id="configure_printing"><a class="viewcode-back" href="../../API/qalgebra.printing.html#qalgebra.printing.configure_printing">[docs]</a><span class="nd">@contextmanager</span>
+<span class="k">def</span> <span class="nf">configure_printing</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Context manager for temporarily changing the printing system.</span>
+
+<span class="sd">    This takes the same parameters as :func:`init_printing`</span>
+
+<span class="sd">    Example:</span>
+
+<span class="sd">        &gt;&gt;&gt; A = OperatorSymbol(&#39;A&#39;, hs=1); B = OperatorSymbol(&#39;B&#39;, hs=1)</span>
+<span class="sd">        &gt;&gt;&gt; with configure_printing(show_hs_label=False):</span>
+<span class="sd">        ...     print(ascii(A + B))</span>
+<span class="sd">        A + B</span>
+<span class="sd">        &gt;&gt;&gt; print(ascii(A + B))</span>
+<span class="sd">        A^(1) + B^(1)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">freeze</span> <span class="o">=</span> <span class="n">init_printing</span><span class="p">(</span><span class="n">_freeze</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">yield</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">obj</span><span class="p">,</span> <span class="n">attr_map</span> <span class="ow">in</span> <span class="n">freeze</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">attr</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">attr_map</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ascii"><a class="viewcode-back" href="../../API/qalgebra.printing.html#qalgebra.printing.ascii">[docs]</a><span class="k">def</span> <span class="nf">ascii</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return an ASCII representation of the given object / expression</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        expr: Expression to print</span>
+<span class="sd">        cache (dict or None): dictionary to use for caching</span>
+<span class="sd">        show_hs_label (bool or str): Whether to a label for the Hilbert space</span>
+<span class="sd">            of `expr`. By default (``show_hs_label=True``), the label is shown</span>
+<span class="sd">            as a superscript. It can be shown as a subscript with</span>
+<span class="sd">            ``show_hs_label=&#39;subscript&#39;`` or suppressed entirely</span>
+<span class="sd">            (``show_hs_label=False``)</span>
+<span class="sd">        sig_as_ketbra (bool): Whether to render instances of</span>
+<span class="sd">            :class:`.LocalSigma` as a ket-bra (default), or as an operator</span>
+<span class="sd">            symbol</span>
+
+<span class="sd">    Examples:</span>
+
+<span class="sd">        &gt;&gt;&gt; A = OperatorSymbol(&#39;A&#39;, hs=1); B = OperatorSymbol(&#39;B&#39;, hs=1)</span>
+<span class="sd">        &gt;&gt;&gt; ascii(A + B)</span>
+<span class="sd">        &#39;A^(1) + B^(1)&#39;</span>
+<span class="sd">        &gt;&gt;&gt; ascii(A + B, cache={A: &#39;A&#39;, B: &#39;B&#39;})</span>
+<span class="sd">        &#39;A + B&#39;</span>
+<span class="sd">        &gt;&gt;&gt; ascii(A + B, show_hs_label=&#39;subscript&#39;)</span>
+<span class="sd">        &#39;A_(1) + B_(1)&#39;</span>
+<span class="sd">        &gt;&gt;&gt; ascii(A + B, show_hs_label=False)</span>
+<span class="sd">        &#39;A + B&#39;</span>
+<span class="sd">        &gt;&gt;&gt; ascii(LocalSigma(0, 1, hs=1))</span>
+<span class="sd">        &#39;|0&gt;&lt;1|^(1)&#39;</span>
+<span class="sd">        &gt;&gt;&gt; ascii(LocalSigma(0, 1, hs=1), sig_as_ketbra=False)</span>
+<span class="sd">        &#39;sigma_0,1^(1)&#39;</span>
+
+<span class="sd">    Note that the accepted parameters and their default values may be changed</span>
+<span class="sd">    through :func:`init_printing` or :func:`configure_printing`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cache</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">ascii</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">printer</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">_printer_cls</span><span class="p">(</span><span class="n">cache</span><span class="p">,</span> <span class="n">settings</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">printer</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+        <span class="c1"># init_printing was not called. Setting up defaults</span>
+        <span class="n">ascii</span><span class="o">.</span><span class="n">_printer_cls</span> <span class="o">=</span> <span class="n">QalgebraAsciiPrinter</span>
+        <span class="n">ascii</span><span class="o">.</span><span class="n">printer</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">_printer_cls</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">ascii</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">cache</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="unicode"><a class="viewcode-back" href="../../API/qalgebra.printing.html#qalgebra.printing.unicode">[docs]</a><span class="k">def</span> <span class="nf">unicode</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a unicode representation of the given object / expression</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        expr: Expression to print</span>
+<span class="sd">        cache (dict or None): dictionary to use for caching</span>
+<span class="sd">        show_hs_label (bool or str): Whether to a label for the Hilbert space</span>
+<span class="sd">            of `expr`. By default (``show_hs_label=True``), the label is shown</span>
+<span class="sd">            as a superscript. It can be shown as a subscript with</span>
+<span class="sd">            ``show_hs_label=&#39;subscript&#39;`` or suppressed entirely</span>
+<span class="sd">            (``show_hs_label=False``)</span>
+<span class="sd">        sig_as_ketbra (bool): Whether to render instances of</span>
+<span class="sd">            :class:`.LocalSigma` as a ket-bra (default), or as an operator</span>
+<span class="sd">            symbol</span>
+<span class="sd">        unicode_sub_super (bool): Whether to try to use unicode symbols for</span>
+<span class="sd">            sub- or superscripts if possible</span>
+<span class="sd">        unicode_op_hats (bool): Whether to draw unicode hats on single-letter</span>
+<span class="sd">            operator symbols</span>
+
+<span class="sd">    Examples:</span>
+
+<span class="sd">        &gt;&gt;&gt; A = OperatorSymbol(&#39;A&#39;, hs=1); B = OperatorSymbol(&#39;B&#39;, hs=1)</span>
+<span class="sd">        &gt;&gt;&gt; unicode(A + B)</span>
+<span class="sd">        &#39;Â⁽¹⁾ + B̂⁽¹⁾&#39;</span>
+<span class="sd">        &gt;&gt;&gt; unicode(A + B, cache={A: &#39;A&#39;, B: &#39;B&#39;})</span>
+<span class="sd">        &#39;A + B&#39;</span>
+<span class="sd">        &gt;&gt;&gt; unicode(A + B, show_hs_label=&#39;subscript&#39;)</span>
+<span class="sd">        &#39;Â₍₁₎ + B̂₍₁₎&#39;</span>
+<span class="sd">        &gt;&gt;&gt; unicode(A + B, show_hs_label=False)</span>
+<span class="sd">        &#39;Â + B̂&#39;</span>
+<span class="sd">        &gt;&gt;&gt; unicode(LocalSigma(0, 1, hs=1))</span>
+<span class="sd">        &#39;|0⟩⟨1|⁽¹⁾&#39;</span>
+<span class="sd">        &gt;&gt;&gt; unicode(LocalSigma(0, 1, hs=1), sig_as_ketbra=False)</span>
+<span class="sd">        &#39;σ̂_0,1^(1)&#39;</span>
+<span class="sd">        &gt;&gt;&gt; unicode(A + B, unicode_sub_super=False)</span>
+<span class="sd">        &#39;Â^(1) + B̂^(1)&#39;</span>
+<span class="sd">        &gt;&gt;&gt; unicode(A + B, unicode_op_hats=False)</span>
+<span class="sd">        &#39;A⁽¹⁾ + B⁽¹⁾&#39;</span>
+
+<span class="sd">    Note that the accepted parameters and their default values may be changed</span>
+<span class="sd">    through :func:`init_printing` or :func:`configure_printing`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cache</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">unicode</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">printer</span> <span class="o">=</span> <span class="n">unicode</span><span class="o">.</span><span class="n">_printer_cls</span><span class="p">(</span><span class="n">cache</span><span class="p">,</span> <span class="n">settings</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">printer</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+        <span class="c1"># init_printing was not called. Setting up defaults</span>
+        <span class="n">unicode</span><span class="o">.</span><span class="n">_printer_cls</span> <span class="o">=</span> <span class="n">QalgebraUnicodePrinter</span>
+        <span class="n">unicode</span><span class="o">.</span><span class="n">printer</span> <span class="o">=</span> <span class="n">unicode</span><span class="o">.</span><span class="n">_printer_cls</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">unicode</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">cache</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="latex"><a class="viewcode-back" href="../../API/qalgebra.printing.html#qalgebra.printing.latex">[docs]</a><span class="k">def</span> <span class="nf">latex</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return a LaTeX representation of the given object / expression</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        expr: Expression to print</span>
+<span class="sd">        cache (dict or None): dictionary to use for caching</span>
+<span class="sd">        show_hs_label (bool or str): Whether to a label for the Hilbert space</span>
+<span class="sd">            of `expr`. By default (``show_hs_label=True``), the label is shown</span>
+<span class="sd">            as a superscript. It can be shown as a subscript with</span>
+<span class="sd">            ``show_hs_label=&#39;subscript&#39;`` or suppressed entirely</span>
+<span class="sd">            (``show_hs_label=False``)</span>
+<span class="sd">        tex_op_macro (str): macro to use for formatting operator symbols.</span>
+<span class="sd">            Must accept &#39;name&#39; as a format key.</span>
+<span class="sd">        tex_textop_macro (str): macro to use for formatting multi-letter</span>
+<span class="sd">            operator names.</span>
+<span class="sd">        tex_sop_macro (str): macro to use for formattign super-operator symbols</span>
+<span class="sd">        tex_textsop_macro (str): macro to use for formatting multi-letter</span>
+<span class="sd">            super-operator names</span>
+<span class="sd">        tex_identity_sym (str): macro for the identity symbol</span>
+<span class="sd">        tex_use_braket (bool): If True, use macros from the</span>
+<span class="sd">            `braket package</span>
+<span class="sd">            &lt;https://ctan.org/tex-archive/macros/latex/contrib/braket&gt;`_. Note</span>
+<span class="sd">            that this will not automatically render in IPython Notebooks, but</span>
+<span class="sd">            it is recommended when generating latex for a document.</span>
+<span class="sd">        tex_frac_for_spin_labels (bool): Whether to use &#39;\frac&#39; when printing</span>
+<span class="sd">            basis state labels for spin Hilbert spaces</span>
+
+
+<span class="sd">    Examples:</span>
+
+<span class="sd">        &gt;&gt;&gt; A = OperatorSymbol(&#39;A&#39;, hs=1); B = OperatorSymbol(&#39;B&#39;, hs=1)</span>
+<span class="sd">        &gt;&gt;&gt; latex(A + B)</span>
+<span class="sd">        &#39;\\hat{A}^{(1)} + \\hat{B}^{(1)}&#39;</span>
+<span class="sd">        &gt;&gt;&gt; latex(A + B, cache={A: &#39;A&#39;, B: &#39;B&#39;})</span>
+<span class="sd">        &#39;A + B&#39;</span>
+<span class="sd">        &gt;&gt;&gt; latex(A + B, show_hs_label=&#39;subscript&#39;)</span>
+<span class="sd">        &#39;\\hat{A}_{(1)} + \\hat{B}_{(1)}&#39;</span>
+<span class="sd">        &gt;&gt;&gt; latex(A + B, show_hs_label=False)</span>
+<span class="sd">        &#39;\\hat{A} + \\hat{B}&#39;</span>
+<span class="sd">        &gt;&gt;&gt; latex(LocalSigma(0, 1, hs=1))</span>
+<span class="sd">        &#39;\\left\\lvert 0 \\middle\\rangle\\!\\middle\\langle 1 \\right\\rvert^{(1)}&#39;</span>
+<span class="sd">        &gt;&gt;&gt; latex(LocalSigma(0, 1, hs=1), sig_as_ketbra=False)</span>
+<span class="sd">        &#39;\\hat{\\sigma}_{0,1}^{(1)}&#39;</span>
+<span class="sd">        &gt;&gt;&gt; latex(A + B, tex_op_macro=r&#39;\Op{{{name}}}&#39;)</span>
+<span class="sd">        &#39;\\Op{A}^{(1)} + \\Op{B}^{(1)}&#39;</span>
+<span class="sd">        &gt;&gt;&gt; CNOT = OperatorSymbol(&#39;CNOT&#39;, hs=1)</span>
+<span class="sd">        &gt;&gt;&gt; latex(CNOT)</span>
+<span class="sd">        &#39;\\text{CNOT}^{(1)}&#39;</span>
+<span class="sd">        &gt;&gt;&gt; latex(CNOT, tex_textop_macro=r&#39;\Op{{{name}}}&#39;)</span>
+<span class="sd">        &#39;\\Op{CNOT}^{(1)}&#39;</span>
+
+<span class="sd">        &gt;&gt;&gt; A = SuperOperatorSymbol(&#39;A&#39;, hs=1)</span>
+<span class="sd">        &gt;&gt;&gt; latex(A)</span>
+<span class="sd">        &#39;\\mathrm{A}^{(1)}&#39;</span>
+<span class="sd">        &gt;&gt;&gt; latex(A, tex_sop_macro=r&#39;\SOp{{{name}}}&#39;)</span>
+<span class="sd">        &#39;\\SOp{A}^{(1)}&#39;</span>
+<span class="sd">        &gt;&gt;&gt; Lindbladian = SuperOperatorSymbol(&#39;Lindbladian&#39;, hs=1)</span>
+<span class="sd">        &gt;&gt;&gt; latex(Lindbladian)</span>
+<span class="sd">        &#39;\\mathrm{Lindbladian}^{(1)}&#39;</span>
+<span class="sd">        &gt;&gt;&gt; latex(Lindbladian, tex_textsop_macro=r&#39;\SOp{{{name}}}&#39;)</span>
+<span class="sd">        &#39;\\SOp{Lindbladian}^{(1)}&#39;</span>
+
+<span class="sd">        &gt;&gt;&gt; latex(IdentityOperator)</span>
+<span class="sd">        &#39;\\mathbb{1}&#39;</span>
+<span class="sd">        &gt;&gt;&gt; latex(IdentityOperator, tex_identity_sym=r&#39;\identity&#39;)</span>
+<span class="sd">        &#39;\\identity&#39;</span>
+<span class="sd">        &gt;&gt;&gt; latex(LocalSigma(0, 1, hs=1), tex_use_braket=True)</span>
+<span class="sd">        &#39;\\Ket{0}\\!\\Bra{1}^{(1)}&#39;</span>
+
+<span class="sd">        &gt;&gt;&gt; spin = SpinSpace(&#39;s&#39;, spin=(1, 2))</span>
+<span class="sd">        &gt;&gt;&gt; up = SpinBasisKet(1, 2, hs=spin)</span>
+<span class="sd">        &gt;&gt;&gt; latex(up)</span>
+<span class="sd">        &#39;\\left\\lvert +1/2 \\right\\rangle^{(s)}&#39;</span>
+<span class="sd">        &gt;&gt;&gt; latex(up, tex_frac_for_spin_labels=True)</span>
+<span class="sd">        &#39;\\left\\lvert +\\frac{1}{2} \\right\\rangle^{(s)}&#39;</span>
+
+<span class="sd">    Note that the accepted parameters and their default values may be changed</span>
+<span class="sd">    through :func:`init_printing` or :func:`configure_printing`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cache</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">latex</span><span class="o">.</span><span class="n">printer</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">printer</span> <span class="o">=</span> <span class="n">latex</span><span class="o">.</span><span class="n">_printer_cls</span><span class="p">(</span><span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">,</span> <span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">printer</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+        <span class="c1"># init_printing was not called. Setting up defaults</span>
+        <span class="n">latex</span><span class="o">.</span><span class="n">_printer_cls</span> <span class="o">=</span> <span class="n">QalgebraLatexPrinter</span>
+        <span class="n">latex</span><span class="o">.</span><span class="n">printer</span> <span class="o">=</span> <span class="n">latex</span><span class="o">.</span><span class="n">_printer_cls</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">latex</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="tex"><a class="viewcode-back" href="../../API/qalgebra.printing.html#qalgebra.printing.tex">[docs]</a><span class="k">def</span> <span class="nf">tex</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Alias for :func:`.latex`.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">latex</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">cache</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="srepr"><a class="viewcode-back" href="../../API/qalgebra.printing.html#qalgebra.printing.srepr">[docs]</a><span class="k">def</span> <span class="nf">srepr</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">indented</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Render the given expression into a string that can be evaluated in an</span>
+<span class="sd">    appropriate context to re-instantiate an identical expression. If</span>
+<span class="sd">    `indented` is False (default), the resulting string is a single line.</span>
+<span class="sd">    Otherwise, the result is a multiline string, and each positional and</span>
+<span class="sd">    keyword argument of each :class:`.Expression` is on a separate line,</span>
+<span class="sd">    recursively indented to produce a tree-like output. The `cache` may be used</span>
+<span class="sd">    to generate more readable expressions.</span>
+
+<span class="sd">    Example::</span>
+
+<span class="sd">        &gt;&gt;&gt; hs = LocalSpace(&#39;1&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; A = OperatorSymbol(&#39;A&#39;, hs=hs); B = OperatorSymbol(&#39;B&#39;, hs=hs)</span>
+<span class="sd">        &gt;&gt;&gt; expr = A + B</span>
+<span class="sd">        &gt;&gt;&gt; srepr(expr)</span>
+<span class="sd">        &quot;OperatorPlus(OperatorSymbol(&#39;A&#39;, hs=LocalSpace(&#39;1&#39;)), OperatorSymbol(&#39;B&#39;, hs=LocalSpace(&#39;1&#39;)))&quot;</span>
+<span class="sd">        &gt;&gt;&gt; eval(srepr(expr)) == expr</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; srepr(expr, cache={hs:&#39;hs&#39;})</span>
+<span class="sd">        &quot;OperatorPlus(OperatorSymbol(&#39;A&#39;, hs=hs), OperatorSymbol(&#39;B&#39;, hs=hs))&quot;</span>
+<span class="sd">        &gt;&gt;&gt; eval(srepr(expr, cache={hs:&#39;hs&#39;})) == expr</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; print(srepr(expr, indented=True))</span>
+<span class="sd">        OperatorPlus(</span>
+<span class="sd">            OperatorSymbol(</span>
+<span class="sd">                &#39;A&#39;,</span>
+<span class="sd">                hs=LocalSpace(</span>
+<span class="sd">                    &#39;1&#39;)),</span>
+<span class="sd">            OperatorSymbol(</span>
+<span class="sd">                &#39;B&#39;,</span>
+<span class="sd">                hs=LocalSpace(</span>
+<span class="sd">                    &#39;1&#39;)))</span>
+<span class="sd">        &gt;&gt;&gt; eval(srepr(expr, indented=True)) == expr</span>
+<span class="sd">        True</span>
+
+<span class="sd">    See also:</span>
+<span class="sd">        :func:`.print_tree`, respectively :func:`.tree`, produces an output</span>
+<span class="sd">        similar to the indented :func:`srepr`, for interactive use. Their result</span>
+<span class="sd">        cannot be evaluated and the exact output depends on</span>
+<span class="sd">        :func:`init_printing`.</span>
+
+<span class="sd">        :func:`.dotprint` provides a way to graphically</span>
+<span class="sd">        explore the tree structure of an expression.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">indented</span><span class="p">:</span>
+        <span class="n">printer</span> <span class="o">=</span> <span class="n">IndentedSReprPrinter</span><span class="p">(</span><span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">printer</span> <span class="o">=</span> <span class="n">QalgebraSReprPrinter</span><span class="p">(</span><span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">printer</span><span class="o">.</span><span class="n">doprint</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span></div>
+
+
+<span class="c1"># Map acceptable values for `str_format` and `repr`_format in</span>
+<span class="c1"># `init_printing` to a print function</span>
+<span class="n">_PRINT_FUNC</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;ascii&#39;</span><span class="p">:</span> <span class="n">ascii</span><span class="p">,</span>
+    <span class="s1">&#39;unicode&#39;</span><span class="p">:</span> <span class="n">unicode</span><span class="p">,</span>
+    <span class="s1">&#39;latex&#39;</span><span class="p">:</span> <span class="n">latex</span><span class="p">,</span>
+    <span class="s1">&#39;tex&#39;</span><span class="p">:</span> <span class="n">latex</span><span class="p">,</span>
+    <span class="s1">&#39;srepr&#39;</span><span class="p">:</span> <span class="n">srepr</span><span class="p">,</span>
+    <span class="s1">&#39;indsrepr&#39;</span><span class="p">:</span> <span class="n">partial</span><span class="p">(</span><span class="n">srepr</span><span class="p">,</span> <span class="n">indented</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s1">&#39;tree&#39;</span><span class="p">:</span> <span class="n">tree</span><span class="p">,</span>  <span class="c1"># init_printing will modify this for unicode support</span>
+<span class="p">}</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Michael Goerz.
+      <span class="lastupdated">
+        Last updated on May 26, 2021.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

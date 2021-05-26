@@ -1,0 +1,658 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>qalgebra.printing package &mdash; QAlgebra 0.2.0+dev (20ec971) documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/mycss.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/docs-versions-menu.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="qalgebra.printing.asciiprinter module" href="qalgebra.printing.asciiprinter.html" />
+    <link rel="prev" title="qalgebra.library.spin_algebra module" href="qalgebra.library.spin_algebra.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0+dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#usage">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Quantum Algebra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../symbolic_algebra.html">Symbolic Algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../printing.html">The Printing System</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../library_structure.html">Library Structure</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="qalgebra.html">API of the QAlgebra package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.pattern_matching.html">qalgebra.pattern_matching module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.convert.html">qalgebra.convert package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.core.html">qalgebra.core package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.library.html">qalgebra.library package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">qalgebra.printing package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.printing.asciiprinter.html">qalgebra.printing.asciiprinter module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.printing.base.html">qalgebra.printing.base module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.printing.dot.html">qalgebra.printing.dot module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.printing.latexprinter.html">qalgebra.printing.latexprinter module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.printing.sreprprinter.html">qalgebra.printing.sreprprinter module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.printing.sympy.html">qalgebra.printing.sympy module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.printing.treeprinting.html">qalgebra.printing.treeprinting module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.printing.unicodeprinter.html">qalgebra.printing.unicodeprinter module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.toolbox.html">qalgebra.toolbox package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.utils.html">qalgebra.utils package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.html#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="qalgebra.html">qalgebra package</a> &raquo;</li>
+        
+      <li>qalgebra.printing package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-qalgebra.printing">
+<span id="qalgebra-printing-package"></span><h1>qalgebra.printing package<a class="headerlink" href="#module-qalgebra.printing" title="Permalink to this headline">¶</a></h1>
+<p>Printing system for QAlgebra Expressions and related objects</p>
+<p>Submodules:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="qalgebra.printing.asciiprinter.html">qalgebra.printing.asciiprinter module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qalgebra.printing.base.html">qalgebra.printing.base module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qalgebra.printing.dot.html">qalgebra.printing.dot module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qalgebra.printing.latexprinter.html">qalgebra.printing.latexprinter module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qalgebra.printing.sreprprinter.html">qalgebra.printing.sreprprinter module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qalgebra.printing.sympy.html">qalgebra.printing.sympy module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qalgebra.printing.treeprinting.html">qalgebra.printing.treeprinting module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qalgebra.printing.unicodeprinter.html">qalgebra.printing.unicodeprinter module</a></li>
+</ul>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">__all__</span></code> Functions:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.printing.ascii" title="qalgebra.printing.ascii"><code class="xref py py-func docutils literal notranslate"><span class="pre">ascii</span></code></a></p></td>
+<td><p>Return an ASCII representation of the given object / expression</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.printing.configure_printing" title="qalgebra.printing.configure_printing"><code class="xref py py-func docutils literal notranslate"><span class="pre">configure_printing</span></code></a></p></td>
+<td><p>Context manager for temporarily changing the printing system.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.printing.dot.html#qalgebra.printing.dot.dotprint" title="qalgebra.printing.dot.dotprint"><code class="xref py py-func docutils literal notranslate"><span class="pre">dotprint</span></code></a></p></td>
+<td><p>Return the DOT (graph) description of an Expression tree as a string.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.printing.init_printing" title="qalgebra.printing.init_printing"><code class="xref py py-func docutils literal notranslate"><span class="pre">init_printing</span></code></a></p></td>
+<td><p>Initialize the printing system.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.printing.latex" title="qalgebra.printing.latex"><code class="xref py py-func docutils literal notranslate"><span class="pre">latex</span></code></a></p></td>
+<td><p>Return a LaTeX representation of the given object / expression</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="qalgebra.printing.treeprinting.html#qalgebra.printing.treeprinting.print_tree" title="qalgebra.printing.treeprinting.print_tree"><code class="xref py py-func docutils literal notranslate"><span class="pre">print_tree</span></code></a></p></td>
+<td><p>Print a tree representation of the structure of <cite>expr</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.printing.srepr" title="qalgebra.printing.srepr"><code class="xref py py-func docutils literal notranslate"><span class="pre">srepr</span></code></a></p></td>
+<td><p>Render the given expression into a string that can be evaluated in an appropriate context to re-instantiate an identical expression.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.printing.tex" title="qalgebra.printing.tex"><code class="xref py py-func docutils literal notranslate"><span class="pre">tex</span></code></a></p></td>
+<td><p>Alias for <a class="reference internal" href="#qalgebra.printing.latex" title="qalgebra.printing.latex"><code class="xref py py-func docutils literal notranslate"><span class="pre">latex()</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="qalgebra.printing.treeprinting.html#qalgebra.printing.treeprinting.tree" title="qalgebra.printing.treeprinting.tree"><code class="xref py py-func docutils literal notranslate"><span class="pre">tree</span></code></a></p></td>
+<td><p>Give the output of <cite>tree</cite> as a multiline string, using line drawings to visualize the hierarchy of expressions (similar to the <code class="docutils literal notranslate"><span class="pre">tree</span></code> unix command line program for showing directory trees)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.printing.unicode" title="qalgebra.printing.unicode"><code class="xref py py-func docutils literal notranslate"><span class="pre">unicode</span></code></a></p></td>
+<td><p>Return a unicode representation of the given object / expression</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="qalgebra.printing.ascii">
+<code class="sig-prename descclassname"><span class="pre">qalgebra.printing.</span></code><code class="sig-name descname"><span class="pre">ascii</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">settings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing.html#ascii"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.printing.ascii" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an ASCII representation of the given object / expression</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expr</strong> – Expression to print</p></li>
+<li><p><strong>cache</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a>) – dictionary to use for caching</p></li>
+<li><p><strong>show_hs_label</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Whether to a label for the Hilbert space
+of <cite>expr</cite>. By default (<code class="docutils literal notranslate"><span class="pre">show_hs_label=True</span></code>), the label is shown
+as a superscript. It can be shown as a subscript with
+<code class="docutils literal notranslate"><span class="pre">show_hs_label='subscript'</span></code> or suppressed entirely
+(<code class="docutils literal notranslate"><span class="pre">show_hs_label=False</span></code>)</p></li>
+<li><p><strong>sig_as_ketbra</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – Whether to render instances of
+<a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.LocalSigma" title="qalgebra.core.operator_algebra.LocalSigma"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSigma</span></code></a> as a ket-bra (default), or as an operator
+symbol</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">OperatorSymbol</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span> <span class="n">B</span> <span class="o">=</span> <span class="n">OperatorSymbol</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ascii</span><span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">)</span>
+<span class="go">&#39;A^(1) + B^(1)&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ascii</span><span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="p">{</span><span class="n">A</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">B</span><span class="p">:</span> <span class="s1">&#39;B&#39;</span><span class="p">})</span>
+<span class="go">&#39;A + B&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ascii</span><span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">,</span> <span class="n">show_hs_label</span><span class="o">=</span><span class="s1">&#39;subscript&#39;</span><span class="p">)</span>
+<span class="go">&#39;A_(1) + B_(1)&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ascii</span><span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">,</span> <span class="n">show_hs_label</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">&#39;A + B&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ascii</span><span class="p">(</span><span class="n">LocalSigma</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="go">&#39;|0&gt;&lt;1|^(1)&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ascii</span><span class="p">(</span><span class="n">LocalSigma</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">sig_as_ketbra</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">&#39;sigma_0,1^(1)&#39;</span>
+</pre></div>
+</div>
+<p>Note that the accepted parameters and their default values may be changed
+through <a class="reference internal" href="#qalgebra.printing.init_printing" title="qalgebra.printing.init_printing"><code class="xref py py-func docutils literal notranslate"><span class="pre">init_printing()</span></code></a> or <a class="reference internal" href="#qalgebra.printing.configure_printing" title="qalgebra.printing.configure_printing"><code class="xref py py-func docutils literal notranslate"><span class="pre">configure_printing()</span></code></a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="qalgebra.printing.configure_printing">
+<code class="sig-prename descclassname"><span class="pre">qalgebra.printing.</span></code><code class="sig-name descname"><span class="pre">configure_printing</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing.html#configure_printing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.printing.configure_printing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Context manager for temporarily changing the printing system.</p>
+<p>This takes the same parameters as <a class="reference internal" href="#qalgebra.printing.init_printing" title="qalgebra.printing.init_printing"><code class="xref py py-func docutils literal notranslate"><span class="pre">init_printing()</span></code></a></p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">OperatorSymbol</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span> <span class="n">B</span> <span class="o">=</span> <span class="n">OperatorSymbol</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">configure_printing</span><span class="p">(</span><span class="n">show_hs_label</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">ascii</span><span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">))</span>
+<span class="go">A + B</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">ascii</span><span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">))</span>
+<span class="go">A^(1) + B^(1)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="qalgebra.printing.init_printing">
+<code class="sig-prename descclassname"><span class="pre">qalgebra.printing.</span></code><code class="sig-name descname"><span class="pre">init_printing</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_sympy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing.html#init_printing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.printing.init_printing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the printing system.</p>
+<p>This determines the behavior of the <a class="reference internal" href="#qalgebra.printing.ascii" title="qalgebra.printing.ascii"><code class="xref py py-func docutils literal notranslate"><span class="pre">ascii()</span></code></a>, <a class="reference internal" href="#qalgebra.printing.unicode" title="qalgebra.printing.unicode"><code class="xref py py-func docutils literal notranslate"><span class="pre">unicode()</span></code></a>,
+and <a class="reference internal" href="#qalgebra.printing.latex" title="qalgebra.printing.latex"><code class="xref py py-func docutils literal notranslate"><span class="pre">latex()</span></code></a> functions, as well as the <code class="docutils literal notranslate"><span class="pre">__str__</span></code> and <code class="docutils literal notranslate"><span class="pre">__repr__</span></code> of
+any <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression" title="qalgebra.core.abstract_algebra.Expression"><code class="xref py py-class docutils literal notranslate"><span class="pre">Expression</span></code></a>.</p>
+<p>The routine may be called in one of two forms. First,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">init_printing</span><span class="p">(</span>
+    <span class="n">str_format</span><span class="o">=&lt;</span><span class="n">str_fmt</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">repr_format</span><span class="o">=&lt;</span><span class="n">repr_fmt</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="n">caching</span><span class="o">=&lt;</span><span class="n">use_caching</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>provides a simplified, “manual” setup with the following parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>str_format</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Format for <code class="docutils literal notranslate"><span class="pre">__str__</span></code> representation of an
+<a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression" title="qalgebra.core.abstract_algebra.Expression"><code class="xref py py-class docutils literal notranslate"><span class="pre">Expression</span></code></a>. One of ‘ascii’, ‘unicode’, ‘latex’, ‘srepr’,
+‘indsrepr’ (“indented <cite>srepr</cite>”), or ‘tree’. The string
+representation will be affected by the settings for the
+corresponding print routine, e.g. <a class="reference internal" href="#qalgebra.printing.unicode" title="qalgebra.printing.unicode"><code class="xref py py-func docutils literal notranslate"><span class="pre">unicode()</span></code></a> for
+<code class="docutils literal notranslate"><span class="pre">str_format='unicode'</span></code></p></li>
+<li><p><strong>repr_format</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Like <cite>str_format</cite>, but for <code class="docutils literal notranslate"><span class="pre">__repr__</span></code>. This is
+what gets displayed in an interactive (I)Python session.</p></li>
+<li><p><strong>caching</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – By default, the printing functions  (<a class="reference internal" href="#qalgebra.printing.ascii" title="qalgebra.printing.ascii"><code class="xref py py-func docutils literal notranslate"><span class="pre">ascii()</span></code></a>,
+<a class="reference internal" href="#qalgebra.printing.unicode" title="qalgebra.printing.unicode"><code class="xref py py-func docutils literal notranslate"><span class="pre">unicode()</span></code></a>, <a class="reference internal" href="#qalgebra.printing.latex" title="qalgebra.printing.latex"><code class="xref py py-func docutils literal notranslate"><span class="pre">latex()</span></code></a>) cache their result for any
+expression and sub-expression. This is both for efficiency and to
+give the ability to to supply custom strings for subexpression by
+passing a <cite>cache</cite> parameter to the printing functions. Initializing
+the printing system with <code class="docutils literal notranslate"><span class="pre">caching=False</span></code> disables this
+possibility.</p></li>
+<li><p><strong>settings</strong> – Any setting understood by any of the printing routines.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Second,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">init_printing</span><span class="p">(</span><span class="n">inifile</span><span class="o">=&lt;</span><span class="n">path_to_file</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>allows for more detailed settings through a config file, see the
+<a class="reference internal" href="../printing.html#ini-file-printing"><span class="std std-ref">notes on using an INI file</span></a>.</p>
+<p>If <cite>str_format</cite> or <cite>repr_format</cite> are not given, they will be set to
+‘unicode’ if the current terminal is known to support an UTF8 (accordig to
+<code class="docutils literal notranslate"><span class="pre">sys.stdout.encoding</span></code>), and ‘ascii’ otherwise.</p>
+<p>Generally, <a class="reference internal" href="#qalgebra.printing.init_printing" title="qalgebra.printing.init_printing"><code class="xref py py-func docutils literal notranslate"><span class="pre">init_printing()</span></code></a> should be called only once at the
+beginning of a script or notebook. If it is called multiple times, any
+settings accumulate. To avoid this and to reset the printing system to the
+defaults, you may pass <code class="docutils literal notranslate"><span class="pre">reset=True</span></code>.  In a Jupyter notebook, expressions
+are rendered graphically via LaTeX, using the settings as they affect the
+<a class="reference internal" href="#qalgebra.printing.latex" title="qalgebra.printing.latex"><code class="xref py py-func docutils literal notranslate"><span class="pre">latex()</span></code></a> printer.</p>
+<p>The SymPy <a class="reference external" href="https://docs.sympy.org/latest/modules/interactive.html#sympy.interactive.printing.init_printing" title="(in SymPy v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">sympy.interactive.printing.init_printing()</span></code></a> routine is
+called automatically, unless <cite>init_sympy</cite> is given as <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qalgebra.printing.configure_printing" title="qalgebra.printing.configure_printing"><code class="xref py py-func docutils literal notranslate"><span class="pre">configure_printing()</span></code></a> allows to temporarily change the printing
+system from what was configured in <a class="reference internal" href="#qalgebra.printing.init_printing" title="qalgebra.printing.init_printing"><code class="xref py py-func docutils literal notranslate"><span class="pre">init_printing()</span></code></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="qalgebra.printing.latex">
+<code class="sig-prename descclassname"><span class="pre">qalgebra.printing.</span></code><code class="sig-name descname"><span class="pre">latex</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">settings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing.html#latex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.printing.latex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a LaTeX representation of the given object / expression</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expr</strong> – Expression to print</p></li>
+<li><p><strong>cache</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a>) – dictionary to use for caching</p></li>
+<li><p><strong>show_hs_label</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Whether to a label for the Hilbert space
+of <cite>expr</cite>. By default (<code class="docutils literal notranslate"><span class="pre">show_hs_label=True</span></code>), the label is shown
+as a superscript. It can be shown as a subscript with
+<code class="docutils literal notranslate"><span class="pre">show_hs_label='subscript'</span></code> or suppressed entirely
+(<code class="docutils literal notranslate"><span class="pre">show_hs_label=False</span></code>)</p></li>
+<li><p><strong>tex_op_macro</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – macro to use for formatting operator symbols.
+Must accept ‘name’ as a format key.</p></li>
+<li><p><strong>tex_textop_macro</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – macro to use for formatting multi-letter
+operator names.</p></li>
+<li><p><strong>tex_sop_macro</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – macro to use for formattign super-operator symbols</p></li>
+<li><p><strong>tex_textsop_macro</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – macro to use for formatting multi-letter
+super-operator names</p></li>
+<li><p><strong>tex_identity_sym</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – macro for the identity symbol</p></li>
+<li><p><strong>tex_use_braket</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – If True, use macros from the
+<a class="reference external" href="https://ctan.org/tex-archive/macros/latex/contrib/braket">braket package</a>. Note
+that this will not automatically render in IPython Notebooks, but
+it is recommended when generating latex for a document.</p></li>
+<li><p><strong>tex_frac_for_spin_labels</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – Whether to use ‘frac’ when printing
+basis state labels for spin Hilbert spaces</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">OperatorSymbol</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span> <span class="n">B</span> <span class="o">=</span> <span class="n">OperatorSymbol</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latex</span><span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">)</span>
+<span class="go">&#39;\\hat{A}^{(1)} + \\hat{B}^{(1)}&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latex</span><span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="p">{</span><span class="n">A</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">B</span><span class="p">:</span> <span class="s1">&#39;B&#39;</span><span class="p">})</span>
+<span class="go">&#39;A + B&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latex</span><span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">,</span> <span class="n">show_hs_label</span><span class="o">=</span><span class="s1">&#39;subscript&#39;</span><span class="p">)</span>
+<span class="go">&#39;\\hat{A}_{(1)} + \\hat{B}_{(1)}&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latex</span><span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">,</span> <span class="n">show_hs_label</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">&#39;\\hat{A} + \\hat{B}&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latex</span><span class="p">(</span><span class="n">LocalSigma</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="go">&#39;\\left\\lvert 0 \\middle\\rangle\\!\\middle\\langle 1 \\right\\rvert^{(1)}&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latex</span><span class="p">(</span><span class="n">LocalSigma</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">sig_as_ketbra</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">&#39;\\hat{\\sigma}_{0,1}^{(1)}&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latex</span><span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">,</span> <span class="n">tex_op_macro</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;\Op{{</span><span class="si">{name}</span><span class="s1">}}&#39;</span><span class="p">)</span>
+<span class="go">&#39;\\Op{A}^{(1)} + \\Op{B}^{(1)}&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CNOT</span> <span class="o">=</span> <span class="n">OperatorSymbol</span><span class="p">(</span><span class="s1">&#39;CNOT&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latex</span><span class="p">(</span><span class="n">CNOT</span><span class="p">)</span>
+<span class="go">&#39;\\text{CNOT}^{(1)}&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latex</span><span class="p">(</span><span class="n">CNOT</span><span class="p">,</span> <span class="n">tex_textop_macro</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;\Op{{</span><span class="si">{name}</span><span class="s1">}}&#39;</span><span class="p">)</span>
+<span class="go">&#39;\\Op{CNOT}^{(1)}&#39;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">SuperOperatorSymbol</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latex</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="go">&#39;\\mathrm{A}^{(1)}&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latex</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">tex_sop_macro</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;\SOp{{</span><span class="si">{name}</span><span class="s1">}}&#39;</span><span class="p">)</span>
+<span class="go">&#39;\\SOp{A}^{(1)}&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Lindbladian</span> <span class="o">=</span> <span class="n">SuperOperatorSymbol</span><span class="p">(</span><span class="s1">&#39;Lindbladian&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latex</span><span class="p">(</span><span class="n">Lindbladian</span><span class="p">)</span>
+<span class="go">&#39;\\mathrm{Lindbladian}^{(1)}&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latex</span><span class="p">(</span><span class="n">Lindbladian</span><span class="p">,</span> <span class="n">tex_textsop_macro</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;\SOp{{</span><span class="si">{name}</span><span class="s1">}}&#39;</span><span class="p">)</span>
+<span class="go">&#39;\\SOp{Lindbladian}^{(1)}&#39;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">latex</span><span class="p">(</span><span class="n">IdentityOperator</span><span class="p">)</span>
+<span class="go">&#39;\\mathbb{1}&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latex</span><span class="p">(</span><span class="n">IdentityOperator</span><span class="p">,</span> <span class="n">tex_identity_sym</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;\identity&#39;</span><span class="p">)</span>
+<span class="go">&#39;\\identity&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latex</span><span class="p">(</span><span class="n">LocalSigma</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">tex_use_braket</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">&#39;\\Ket{0}\\!\\Bra{1}^{(1)}&#39;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">spin</span> <span class="o">=</span> <span class="n">SpinSpace</span><span class="p">(</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">spin</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">up</span> <span class="o">=</span> <span class="n">SpinBasisKet</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">spin</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latex</span><span class="p">(</span><span class="n">up</span><span class="p">)</span>
+<span class="go">&#39;\\left\\lvert +1/2 \\right\\rangle^{(s)}&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latex</span><span class="p">(</span><span class="n">up</span><span class="p">,</span> <span class="n">tex_frac_for_spin_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">&#39;\\left\\lvert +\\frac{1}{2} \\right\\rangle^{(s)}&#39;</span>
+</pre></div>
+</div>
+<p>Note that the accepted parameters and their default values may be changed
+through <a class="reference internal" href="#qalgebra.printing.init_printing" title="qalgebra.printing.init_printing"><code class="xref py py-func docutils literal notranslate"><span class="pre">init_printing()</span></code></a> or <a class="reference internal" href="#qalgebra.printing.configure_printing" title="qalgebra.printing.configure_printing"><code class="xref py py-func docutils literal notranslate"><span class="pre">configure_printing()</span></code></a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="qalgebra.printing.srepr">
+<code class="sig-prename descclassname"><span class="pre">qalgebra.printing.</span></code><code class="sig-name descname"><span class="pre">srepr</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indented</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing.html#srepr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.printing.srepr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Render the given expression into a string that can be evaluated in an
+appropriate context to re-instantiate an identical expression. If
+<cite>indented</cite> is False (default), the resulting string is a single line.
+Otherwise, the result is a multiline string, and each positional and
+keyword argument of each <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression" title="qalgebra.core.abstract_algebra.Expression"><code class="xref py py-class docutils literal notranslate"><span class="pre">Expression</span></code></a> is on a separate line,
+recursively indented to produce a tree-like output. The <cite>cache</cite> may be used
+to generate more readable expressions.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hs</span> <span class="o">=</span> <span class="n">LocalSpace</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">OperatorSymbol</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">);</span> <span class="n">B</span> <span class="o">=</span> <span class="n">OperatorSymbol</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expr</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">B</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">srepr</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+<span class="go">&quot;OperatorPlus(OperatorSymbol(&#39;A&#39;, hs=LocalSpace(&#39;1&#39;)), OperatorSymbol(&#39;B&#39;, hs=LocalSpace(&#39;1&#39;)))&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">eval</span><span class="p">(</span><span class="n">srepr</span><span class="p">(</span><span class="n">expr</span><span class="p">))</span> <span class="o">==</span> <span class="n">expr</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">srepr</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="p">{</span><span class="n">hs</span><span class="p">:</span><span class="s1">&#39;hs&#39;</span><span class="p">})</span>
+<span class="go">&quot;OperatorPlus(OperatorSymbol(&#39;A&#39;, hs=hs), OperatorSymbol(&#39;B&#39;, hs=hs))&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">eval</span><span class="p">(</span><span class="n">srepr</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="p">{</span><span class="n">hs</span><span class="p">:</span><span class="s1">&#39;hs&#39;</span><span class="p">}))</span> <span class="o">==</span> <span class="n">expr</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">srepr</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">indented</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="go">OperatorPlus(</span>
+<span class="go">    OperatorSymbol(</span>
+<span class="go">        &#39;A&#39;,</span>
+<span class="go">        hs=LocalSpace(</span>
+<span class="go">            &#39;1&#39;)),</span>
+<span class="go">    OperatorSymbol(</span>
+<span class="go">        &#39;B&#39;,</span>
+<span class="go">        hs=LocalSpace(</span>
+<span class="go">            &#39;1&#39;)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">eval</span><span class="p">(</span><span class="n">srepr</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">indented</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span> <span class="o">==</span> <span class="n">expr</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="qalgebra.printing.treeprinting.html#qalgebra.printing.treeprinting.print_tree" title="qalgebra.printing.treeprinting.print_tree"><code class="xref py py-func docutils literal notranslate"><span class="pre">print_tree()</span></code></a>, respectively <a class="reference internal" href="qalgebra.printing.treeprinting.html#qalgebra.printing.treeprinting.tree" title="qalgebra.printing.treeprinting.tree"><code class="xref py py-func docutils literal notranslate"><span class="pre">tree()</span></code></a>, produces an output
+similar to the indented <a class="reference internal" href="#qalgebra.printing.srepr" title="qalgebra.printing.srepr"><code class="xref py py-func docutils literal notranslate"><span class="pre">srepr()</span></code></a>, for interactive use. Their result
+cannot be evaluated and the exact output depends on
+<a class="reference internal" href="#qalgebra.printing.init_printing" title="qalgebra.printing.init_printing"><code class="xref py py-func docutils literal notranslate"><span class="pre">init_printing()</span></code></a>.</p>
+<p><a class="reference internal" href="qalgebra.printing.dot.html#qalgebra.printing.dot.dotprint" title="qalgebra.printing.dot.dotprint"><code class="xref py py-func docutils literal notranslate"><span class="pre">dotprint()</span></code></a> provides a way to graphically
+explore the tree structure of an expression.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="qalgebra.printing.tex">
+<code class="sig-prename descclassname"><span class="pre">qalgebra.printing.</span></code><code class="sig-name descname"><span class="pre">tex</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">settings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing.html#tex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.printing.tex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for <a class="reference internal" href="#qalgebra.printing.latex" title="qalgebra.printing.latex"><code class="xref py py-func docutils literal notranslate"><span class="pre">latex()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="qalgebra.printing.unicode">
+<code class="sig-prename descclassname"><span class="pre">qalgebra.printing.</span></code><code class="sig-name descname"><span class="pre">unicode</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">settings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/printing.html#unicode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.printing.unicode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a unicode representation of the given object / expression</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expr</strong> – Expression to print</p></li>
+<li><p><strong>cache</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a>) – dictionary to use for caching</p></li>
+<li><p><strong>show_hs_label</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Whether to a label for the Hilbert space
+of <cite>expr</cite>. By default (<code class="docutils literal notranslate"><span class="pre">show_hs_label=True</span></code>), the label is shown
+as a superscript. It can be shown as a subscript with
+<code class="docutils literal notranslate"><span class="pre">show_hs_label='subscript'</span></code> or suppressed entirely
+(<code class="docutils literal notranslate"><span class="pre">show_hs_label=False</span></code>)</p></li>
+<li><p><strong>sig_as_ketbra</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – Whether to render instances of
+<a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.LocalSigma" title="qalgebra.core.operator_algebra.LocalSigma"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSigma</span></code></a> as a ket-bra (default), or as an operator
+symbol</p></li>
+<li><p><strong>unicode_sub_super</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – Whether to try to use unicode symbols for
+sub- or superscripts if possible</p></li>
+<li><p><strong>unicode_op_hats</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – Whether to draw unicode hats on single-letter
+operator symbols</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">OperatorSymbol</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span> <span class="n">B</span> <span class="o">=</span> <span class="n">OperatorSymbol</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">unicode</span><span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">)</span>
+<span class="go">&#39;Â⁽¹⁾ + B̂⁽¹⁾&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">unicode</span><span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="p">{</span><span class="n">A</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">B</span><span class="p">:</span> <span class="s1">&#39;B&#39;</span><span class="p">})</span>
+<span class="go">&#39;A + B&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">unicode</span><span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">,</span> <span class="n">show_hs_label</span><span class="o">=</span><span class="s1">&#39;subscript&#39;</span><span class="p">)</span>
+<span class="go">&#39;Â₍₁₎ + B̂₍₁₎&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">unicode</span><span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">,</span> <span class="n">show_hs_label</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">&#39;Â + B̂&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">unicode</span><span class="p">(</span><span class="n">LocalSigma</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="go">&#39;|0⟩⟨1|⁽¹⁾&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">unicode</span><span class="p">(</span><span class="n">LocalSigma</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">sig_as_ketbra</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">&#39;σ̂_0,1^(1)&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">unicode</span><span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">,</span> <span class="n">unicode_sub_super</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">&#39;Â^(1) + B̂^(1)&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">unicode</span><span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">,</span> <span class="n">unicode_op_hats</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">&#39;A⁽¹⁾ + B⁽¹⁾&#39;</span>
+</pre></div>
+</div>
+<p>Note that the accepted parameters and their default values may be changed
+through <a class="reference internal" href="#qalgebra.printing.init_printing" title="qalgebra.printing.init_printing"><code class="xref py py-func docutils literal notranslate"><span class="pre">init_printing()</span></code></a> or <a class="reference internal" href="#qalgebra.printing.configure_printing" title="qalgebra.printing.configure_printing"><code class="xref py py-func docutils literal notranslate"><span class="pre">configure_printing()</span></code></a></p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="qalgebra.printing.asciiprinter.html" class="btn btn-neutral float-right" title="qalgebra.printing.asciiprinter module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="qalgebra.library.spin_algebra.html" class="btn btn-neutral float-left" title="qalgebra.library.spin_algebra module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Michael Goerz.
+      <span class="lastupdated">
+        Last updated on May 26, 2021.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

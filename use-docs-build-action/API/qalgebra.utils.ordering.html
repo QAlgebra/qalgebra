@@ -1,0 +1,394 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>qalgebra.utils.ordering module &mdash; QAlgebra 0.2.0+dev (20ec971) documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/mycss.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/docs-versions-menu.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="qalgebra.utils.properties_for_args module" href="qalgebra.utils.properties_for_args.html" />
+    <link rel="prev" title="qalgebra.utils.indices module" href="qalgebra.utils.indices.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0+dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#usage">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Quantum Algebra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../symbolic_algebra.html">Symbolic Algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../printing.html">The Printing System</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../library_structure.html">Library Structure</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="qalgebra.html">API of the QAlgebra package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.pattern_matching.html">qalgebra.pattern_matching module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.convert.html">qalgebra.convert package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.core.html">qalgebra.core package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.library.html">qalgebra.library package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.printing.html">qalgebra.printing package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.toolbox.html">qalgebra.toolbox package</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="qalgebra.utils.html">qalgebra.utils package</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.utils.check_rules.html">qalgebra.utils.check_rules module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.utils.containers.html">qalgebra.utils.containers module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.utils.indices.html">qalgebra.utils.indices module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">qalgebra.utils.ordering module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.utils.properties_for_args.html">qalgebra.utils.properties_for_args module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.utils.singleton.html">qalgebra.utils.singleton module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.utils.testing.html">qalgebra.utils.testing module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.utils.unicode.html">qalgebra.utils.unicode module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.utils.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.html#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="qalgebra.html">qalgebra package</a> &raquo;</li>
+        
+          <li><a href="qalgebra.utils.html">qalgebra.utils package</a> &raquo;</li>
+        
+      <li>qalgebra.utils.ordering module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-qalgebra.utils.ordering">
+<span id="qalgebra-utils-ordering-module"></span><h1>qalgebra.utils.ordering module<a class="headerlink" href="#module-qalgebra.utils.ordering" title="Permalink to this headline">¶</a></h1>
+<p>The <cite>ordering</cite> package implements the default canonical ordering for sums and
+products of operators, states, and superoperators.</p>
+<p>To the extent that commutativity rules allow this, the ordering defined here
+groups objects of the same Hilbert space together, and orders these groups in
+the same order that the Hilbert spaces occur in a <cite>ProductSpace</cite>
+(lexicographically/by <cite>order_index</cite>/by complexity). Objects within the same
+Hilbert space (again, assuming they commute) are ordered by the <cite>KeyTuple</cite>
+value that <cite>expr_order_key</cite> returns for each object. Note that <cite>expr_order_key</cite>
+defers to the object’s <cite>_order_key</cite> property, if available. This property
+should be defined for all QAlgebra Expressions, generally ordering objects
+according to their type, then their label (if any), then their pre-factor then
+any other properties.</p>
+<p>We assume that quantum operations have either full commutativity (sums, or
+products of states), or commutativity of objects only in different Hilbert
+spaces (e.g. products of operators). The former is handled by
+<cite>FullCommutativeHSOrder</cite>, the latter by <cite>DisjunctCommutativeHSOrder</cite>. Theses
+classes serve as the <cite>order_key</cite> for sums and products (e.g. <cite>OperatorPlus</cite> and
+similar classes)</p>
+<p>A user may implement a custom ordering by subclassing (or replacing)
+<cite>FullCommutativeHSOrder</cite> and/or <cite>DisjunctCommutativeHSOrder</cite>, and assigning
+their replacements to all the desired algebraic classes.</p>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Classes:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.utils.ordering.DisjunctCommutativeHSOrder" title="qalgebra.utils.ordering.DisjunctCommutativeHSOrder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DisjunctCommutativeHSOrder</span></code></a></p></td>
+<td><p>Auxiliary class that generates the correct pseudo-order relation for operator products.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.utils.ordering.FullCommutativeHSOrder" title="qalgebra.utils.ordering.FullCommutativeHSOrder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FullCommutativeHSOrder</span></code></a></p></td>
+<td><p>Auxiliary class that generates the correct pseudo-order relation for operator sums.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.utils.ordering.KeyTuple" title="qalgebra.utils.ordering.KeyTuple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">KeyTuple</span></code></a></p></td>
+<td><p>A tuple that allows for ordering, facilitating the default ordering of Operations.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Functions:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.utils.ordering.expr_order_key" title="qalgebra.utils.ordering.expr_order_key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">expr_order_key</span></code></a></p></td>
+<td><p>A default order key for arbitrary expressions</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="qalgebra.utils.ordering.KeyTuple">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.utils.ordering.</span></code><code class="sig-name descname"><span class="pre">KeyTuple</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/ordering.html#KeyTuple"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.utils.ordering.KeyTuple" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#tuple" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p>
+<p>A tuple that allows for ordering, facilitating the default ordering of
+Operations. It differs from a normal tuple in that it falls back to string
+comparison if any elements are not directly comparable</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="qalgebra.utils.ordering.expr_order_key">
+<code class="sig-prename descclassname"><span class="pre">qalgebra.utils.ordering.</span></code><code class="sig-name descname"><span class="pre">expr_order_key</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/ordering.html#expr_order_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.utils.ordering.expr_order_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>A default order key for arbitrary expressions</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.utils.ordering.DisjunctCommutativeHSOrder">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.utils.ordering.</span></code><code class="sig-name descname"><span class="pre">DisjunctCommutativeHSOrder</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">op</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">op_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/ordering.html#DisjunctCommutativeHSOrder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.utils.ordering.DisjunctCommutativeHSOrder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.8/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Auxiliary class that generates the correct pseudo-order relation for
+operator products.  Only operators acting on disjoint Hilbert spaces
+are commuted to reflect the order the local factors have in the total
+Hilbert space. I.e., <code class="docutils literal notranslate"><span class="pre">sorted(factors,</span> <span class="pre">key=DisjunctCommutativeHSOrder)</span></code>
+achieves this ordering.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.utils.ordering.FullCommutativeHSOrder">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.utils.ordering.</span></code><code class="sig-name descname"><span class="pre">FullCommutativeHSOrder</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">op</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">op_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/utils/ordering.html#FullCommutativeHSOrder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.utils.ordering.FullCommutativeHSOrder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.8/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Auxiliary class that generates the correct pseudo-order relation for
+operator sums.  Operators are first ordered by their Hilbert space, then by
+their order-key; <code class="docutils literal notranslate"><span class="pre">sorted(factors,</span> <span class="pre">key=FullCommutativeHSOrder)</span></code>
+achieves this ordering.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="qalgebra.utils.properties_for_args.html" class="btn btn-neutral float-right" title="qalgebra.utils.properties_for_args module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="qalgebra.utils.indices.html" class="btn btn-neutral float-left" title="qalgebra.utils.indices module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Michael Goerz.
+      <span class="lastupdated">
+        Last updated on May 26, 2021.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

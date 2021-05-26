@@ -1,0 +1,739 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>qalgebra.convert.to_qutip &mdash; QAlgebra 0.2.0+dev (20ec971) documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/mycss.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/docs-versions-menu.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0+dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html#usage">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Quantum Algebra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../symbolic_algebra.html">Symbolic Algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../printing.html">The Printing System</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../history.html">History</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../library_structure.html">Library Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../API/qalgebra.html">API of the QAlgebra package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../qalgebra.html">qalgebra</a> &raquo;</li>
+        
+      <li>qalgebra.convert.to_qutip</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for qalgebra.convert.to_qutip</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Conversion of QAlgebra expressions to qutip objects.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">reduce</span>
+
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">arange</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">cos</span> <span class="k">as</span> <span class="n">np_cos</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">diag</span> <span class="k">as</span> <span class="n">np_diag</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sin</span> <span class="k">as</span> <span class="n">np_sin</span>
+<span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">pinv</span><span class="p">,</span> <span class="n">svd</span>
+<span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">csr_matrix</span>
+<span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">symbols</span>
+<span class="kn">from</span> <span class="nn">sympy.utilities.lambdify</span> <span class="kn">import</span> <span class="n">lambdify</span>
+
+<span class="kn">from</span> <span class="nn">..core.abstract_algebra</span> <span class="kn">import</span> <span class="n">Operation</span>
+<span class="kn">from</span> <span class="nn">..core.exceptions</span> <span class="kn">import</span> <span class="n">AlgebraError</span>
+<span class="kn">from</span> <span class="nn">..core.hilbert_space_algebra</span> <span class="kn">import</span> <span class="n">TrivialSpace</span>
+<span class="kn">from</span> <span class="nn">..core.operator_algebra</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Adjoint</span><span class="p">,</span>
+    <span class="n">IdentityOperator</span><span class="p">,</span>
+    <span class="n">LocalOperator</span><span class="p">,</span>
+    <span class="n">LocalSigma</span><span class="p">,</span>
+    <span class="n">NullSpaceProjector</span><span class="p">,</span>
+    <span class="n">Operator</span><span class="p">,</span>
+    <span class="n">OperatorPlus</span><span class="p">,</span>
+    <span class="n">OperatorTimes</span><span class="p">,</span>
+    <span class="n">OperatorTrace</span><span class="p">,</span>
+    <span class="n">PseudoInverse</span><span class="p">,</span>
+    <span class="n">ScalarTimesOperator</span><span class="p">,</span>
+    <span class="n">ZeroOperator</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">..core.scalar_algebra</span> <span class="kn">import</span> <span class="n">ScalarValue</span><span class="p">,</span> <span class="n">is_scalar</span>
+<span class="kn">from</span> <span class="nn">..core.state_algebra</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">BasisKet</span><span class="p">,</span>
+    <span class="n">BraKet</span><span class="p">,</span>
+    <span class="n">CoherentStateKet</span><span class="p">,</span>
+    <span class="n">KetBra</span><span class="p">,</span>
+    <span class="n">KetPlus</span><span class="p">,</span>
+    <span class="n">OperatorTimesKet</span><span class="p">,</span>
+    <span class="n">ScalarTimesKet</span><span class="p">,</span>
+    <span class="n">State</span><span class="p">,</span>
+    <span class="n">TensorKet</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">..core.super_operator_algebra</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">IdentitySuperOperator</span><span class="p">,</span>
+    <span class="n">ScalarTimesSuperOperator</span><span class="p">,</span>
+    <span class="n">SPost</span><span class="p">,</span>
+    <span class="n">SPre</span><span class="p">,</span>
+    <span class="n">SuperOperator</span><span class="p">,</span>
+    <span class="n">SuperOperatorPlus</span><span class="p">,</span>
+    <span class="n">SuperOperatorTimes</span><span class="p">,</span>
+    <span class="n">SuperOperatorTimesOperator</span><span class="p">,</span>
+    <span class="n">ZeroSuperOperator</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">..library.fock_operators</span> <span class="kn">import</span> <span class="n">Create</span><span class="p">,</span> <span class="n">Destroy</span><span class="p">,</span> <span class="n">Displace</span><span class="p">,</span> <span class="n">Phase</span><span class="p">,</span> <span class="n">Squeeze</span>
+<span class="kn">from</span> <span class="nn">..library.spin_algebra</span> <span class="kn">import</span> <span class="n">Jminus</span><span class="p">,</span> <span class="n">Jplus</span><span class="p">,</span> <span class="n">Jz</span>
+
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">qutip</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="c1"># we want QAlgebra to be importable even if qutip is not installed. In this</span>
+    <span class="c1"># case, and exception will occur when any of the qutip conversion routines</span>
+    <span class="c1"># are called</span>
+    <span class="k">pass</span>
+
+
+<span class="n">DENSE_DIMENSION_LIMIT</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;convert_to_qutip&#39;</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="convert_to_qutip"><a class="viewcode-back" href="../../../API/qalgebra.convert.to_qutip.html#qalgebra.convert.to_qutip.convert_to_qutip">[docs]</a><span class="k">def</span> <span class="nf">convert_to_qutip</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">full_space</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert a QAlgebra expression to a qutip object</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        expr: a QAlgebra expression</span>
+<span class="sd">        full_space (HilbertSpace): The</span>
+<span class="sd">            Hilbert space in which `expr` is defined. If not given,</span>
+<span class="sd">            ``expr.space`` is used. The Hilbert space must have a well-defined</span>
+<span class="sd">            basis.</span>
+<span class="sd">        mapping (dict): A mapping of any (sub-)expression to either a</span>
+<span class="sd">            `quip.Qobj` directly, or to a callable that will convert the</span>
+<span class="sd">            expression into a `qutip.Qobj`. Useful for e.g. supplying objects</span>
+<span class="sd">            for symbols</span>
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: if `expr` is not in `full_space`, or if `expr` cannot be</span>
+<span class="sd">            converted.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">full_space</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">full_space</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">space</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">expr</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">is_tensor_factor_of</span><span class="p">(</span><span class="n">full_space</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;expr &#39;</span><span class="si">%s</span><span class="s2">&#39; must be in full_space </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">full_space</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="k">if</span> <span class="n">full_space</span> <span class="o">==</span> <span class="n">TrivialSpace</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">AlgebraError</span><span class="p">(</span>
+            <span class="s2">&quot;Cannot convert object in TrivialSpace to qutip. &quot;</span>
+            <span class="s2">&quot;You may pass a non-trivial `full_space`&quot;</span>
+        <span class="p">)</span>
+    <span class="k">if</span> <span class="n">mapping</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">expr</span> <span class="ow">in</span> <span class="n">mapping</span><span class="p">:</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">mapping</span><span class="p">[</span><span class="n">expr</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span> <span class="n">qutip</span><span class="o">.</span><span class="n">Qobj</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">ret</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">assert</span> <span class="n">callable</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">ret</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">expr</span> <span class="ow">is</span> <span class="n">IdentityOperator</span><span class="p">:</span>
+        <span class="n">local_spaces</span> <span class="o">=</span> <span class="n">full_space</span><span class="o">.</span><span class="n">local_factors</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">local_spaces</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;full_space </span><span class="si">%s</span><span class="s2"> does not have local factors&quot;</span> <span class="o">%</span> <span class="n">full_space</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">qutip</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span>
+                <span class="o">*</span><span class="p">[</span><span class="n">qutip</span><span class="o">.</span><span class="n">qeye</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dimension</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">local_spaces</span><span class="p">]</span>
+            <span class="p">)</span>
+    <span class="k">elif</span> <span class="n">expr</span> <span class="ow">is</span> <span class="n">ZeroOperator</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">qutip</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span>
+            <span class="o">*</span><span class="p">[</span>
+                <span class="n">qutip</span><span class="o">.</span><span class="n">Qobj</span><span class="p">(</span><span class="n">csr_matrix</span><span class="p">((</span><span class="n">s</span><span class="o">.</span><span class="n">dimension</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">dimension</span><span class="p">)))</span>
+                <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">full_space</span><span class="o">.</span><span class="n">local_factors</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">LocalOperator</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_convert_local_operator_to_qutip</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">Operator</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">Operation</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_convert_operator_operation_to_qutip</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">OperatorTrace</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Cannot convert OperatorTrace to &#39;</span> <span class="s1">&#39;qutip&#39;</span><span class="p">)</span>
+        <span class="c1"># actually, this is perfectly doable in principle, but requires a bit</span>
+        <span class="c1"># of work</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">State</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_convert_ket_to_qutip</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">SuperOperator</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_convert_superoperator_to_qutip</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">Operation</span><span class="p">):</span>
+        <span class="c1"># This is assumed to be an Operation on states, as we have handled all</span>
+        <span class="c1"># other Operations above. Eventually, a StateOperation should be</span>
+        <span class="c1"># defined as a common superclass for the Operations in the state</span>
+        <span class="c1"># algebra</span>
+        <span class="k">return</span> <span class="n">_convert_state_operation_to_qutip</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Cannot convert &#39;</span><span class="si">%s</span><span class="s2">&#39; of type </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">expr</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">expr</span><span class="p">))</span>
+        <span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">_convert_local_operator_to_qutip</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert a LocalOperator instance to qutip.&quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">full_space</span><span class="o">.</span><span class="n">dimension</span>
+    <span class="k">if</span> <span class="n">full_space</span> <span class="o">!=</span> <span class="n">expr</span><span class="o">.</span><span class="n">space</span><span class="p">:</span>
+        <span class="n">all_spaces</span> <span class="o">=</span> <span class="n">full_space</span><span class="o">.</span><span class="n">local_factors</span>
+        <span class="n">own_space_index</span> <span class="o">=</span> <span class="n">all_spaces</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">qutip</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span>
+            <span class="o">*</span><span class="p">(</span>
+                <span class="p">[</span><span class="n">qutip</span><span class="o">.</span><span class="n">qeye</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dimension</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">all_spaces</span><span class="p">[:</span><span class="n">own_space_index</span><span class="p">]]</span>
+                <span class="o">+</span> <span class="p">[</span><span class="n">convert_to_qutip</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">expr</span><span class="o">.</span><span class="n">space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span><span class="p">)]</span>
+                <span class="o">+</span> <span class="p">[</span>
+                    <span class="n">qutip</span><span class="o">.</span><span class="n">qeye</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dimension</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">all_spaces</span><span class="p">[</span><span class="n">own_space_index</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:]</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">Create</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">qutip</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">Jz</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">qutip</span><span class="o">.</span><span class="n">jmat</span><span class="p">((</span><span class="n">expr</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">dimension</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">Jplus</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">qutip</span><span class="o">.</span><span class="n">jmat</span><span class="p">((</span><span class="n">expr</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">dimension</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">Jminus</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">qutip</span><span class="o">.</span><span class="n">jmat</span><span class="p">((</span><span class="n">expr</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">dimension</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">Destroy</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">qutip</span><span class="o">.</span><span class="n">destroy</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">Phase</span><span class="p">):</span>
+        <span class="n">arg</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">np_cos</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">np_sin</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">qutip</span><span class="o">.</span><span class="n">Qobj</span><span class="p">(</span><span class="n">np_diag</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">Displace</span><span class="p">):</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">qutip</span><span class="o">.</span><span class="n">displace</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">Squeeze</span><span class="p">):</span>
+        <span class="n">eta</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">qutip</span><span class="o">.</span><span class="n">displace</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">eta</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">LocalSigma</span><span class="p">):</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">j</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">k</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">basis_labels</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">basis_labels</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        <span class="n">ket</span> <span class="o">=</span> <span class="n">qutip</span><span class="o">.</span><span class="n">basis</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+        <span class="n">bra</span> <span class="o">=</span> <span class="n">qutip</span><span class="o">.</span><span class="n">basis</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span><span class="o">.</span><span class="n">dag</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">ket</span> <span class="o">*</span> <span class="n">bra</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Cannot convert &#39;</span><span class="si">%s</span><span class="s2">&#39; of type </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">expr</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">expr</span><span class="p">))</span>
+        <span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_convert_operator_operation_to_qutip</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">OperatorPlus</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span>
+            <span class="p">(</span>
+                <span class="n">convert_to_qutip</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">operands</span>
+            <span class="p">),</span>
+            <span class="mi">0</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">OperatorTimes</span><span class="p">):</span>
+        <span class="c1"># if any factor acts non-locally, we need to expand distributively.</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">space</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">operands</span><span class="p">):</span>
+            <span class="n">se</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">se</span> <span class="o">==</span> <span class="n">expr</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;Cannot represent as QuTiP object: </span><span class="si">{!s}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+                <span class="p">)</span>
+            <span class="k">return</span> <span class="n">convert_to_qutip</span><span class="p">(</span><span class="n">se</span><span class="p">,</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span><span class="p">)</span>
+        <span class="n">all_spaces</span> <span class="o">=</span> <span class="n">full_space</span><span class="o">.</span><span class="n">local_factors</span>
+        <span class="n">by_space</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">ck</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">ls</span> <span class="ow">in</span> <span class="n">all_spaces</span><span class="p">:</span>
+            <span class="c1"># group factors by associated local space</span>
+            <span class="n">ls_ops</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">convert_to_qutip</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">o</span><span class="o">.</span><span class="n">space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">operands</span>
+                <span class="k">if</span> <span class="n">o</span><span class="o">.</span><span class="n">space</span> <span class="o">==</span> <span class="n">ls</span>
+            <span class="p">]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ls_ops</span><span class="p">):</span>
+                <span class="c1"># compute factor associated with local space</span>
+                <span class="n">by_space</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="n">ls_ops</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+                <span class="n">ck</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ls_ops</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># if trivial action, take identity matrix</span>
+                <span class="n">by_space</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">qutip</span><span class="o">.</span><span class="n">qeye</span><span class="p">(</span><span class="n">ls</span><span class="o">.</span><span class="n">dimension</span><span class="p">))</span>
+        <span class="k">assert</span> <span class="n">ck</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">operands</span><span class="p">)</span>
+        <span class="c1"># combine local factors in tensor product</span>
+        <span class="k">return</span> <span class="n">qutip</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="o">*</span><span class="n">by_space</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">Adjoint</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">convert_to_qutip</span><span class="p">(</span>
+            <span class="n">qutip</span><span class="o">.</span><span class="n">dag</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">ScalarTimesOperator</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">coeff</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">coeff</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                <span class="s2">&quot;Scalar coefficient &#39;</span><span class="si">%s</span><span class="s2">&#39; is not numerical&quot;</span> <span class="o">%</span> <span class="n">expr</span><span class="o">.</span><span class="n">coeff</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">coeff</span> <span class="o">*</span> <span class="n">convert_to_qutip</span><span class="p">(</span>
+            <span class="n">expr</span><span class="o">.</span><span class="n">term</span><span class="p">,</span> <span class="n">full_space</span><span class="o">=</span><span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">PseudoInverse</span><span class="p">):</span>
+        <span class="n">mo</span> <span class="o">=</span> <span class="n">convert_to_qutip</span><span class="p">(</span>
+            <span class="n">expr</span><span class="o">.</span><span class="n">operand</span><span class="p">,</span> <span class="n">full_space</span><span class="o">=</span><span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">full_space</span><span class="o">.</span><span class="n">dimension</span> <span class="o">&lt;=</span> <span class="n">DENSE_DIMENSION_LIMIT</span><span class="p">:</span>
+            <span class="n">arr</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+            <span class="n">piarr</span> <span class="o">=</span> <span class="n">pinv</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+            <span class="n">pimo</span> <span class="o">=</span> <span class="n">qutip</span><span class="o">.</span><span class="n">Qobj</span><span class="p">(</span><span class="n">piarr</span><span class="p">)</span>
+            <span class="n">pimo</span><span class="o">.</span><span class="n">dims</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">dims</span>
+            <span class="n">pimo</span><span class="o">.</span><span class="n">isherm</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">isherm</span>
+            <span class="n">pimo</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="s1">&#39;oper&#39;</span>
+            <span class="k">return</span> <span class="n">pimo</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+            <span class="s2">&quot;Only implemented for smaller state &quot;</span> <span class="s2">&quot;spaces&quot;</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">NullSpaceProjector</span><span class="p">):</span>
+        <span class="n">mo</span> <span class="o">=</span> <span class="n">convert_to_qutip</span><span class="p">(</span>
+            <span class="n">expr</span><span class="o">.</span><span class="n">operand</span><span class="p">,</span> <span class="n">full_space</span><span class="o">=</span><span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">full_space</span><span class="o">.</span><span class="n">dimension</span> <span class="o">&lt;=</span> <span class="n">DENSE_DIMENSION_LIMIT</span><span class="p">:</span>
+            <span class="n">arr</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+            <span class="c1"># compute Singular Value Decomposition</span>
+            <span class="n">U</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">Vh</span> <span class="o">=</span> <span class="n">svd</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+            <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-8</span> <span class="o">*</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">zero_svs</span> <span class="o">=</span> <span class="n">s</span> <span class="o">&lt;</span> <span class="n">tol</span>
+            <span class="n">Vhzero</span> <span class="o">=</span> <span class="n">Vh</span><span class="p">[</span><span class="n">zero_svs</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="n">PKarr</span> <span class="o">=</span> <span class="n">Vhzero</span><span class="o">.</span><span class="n">conjugate</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Vhzero</span><span class="p">)</span>
+            <span class="n">PKmo</span> <span class="o">=</span> <span class="n">qutip</span><span class="o">.</span><span class="n">Qobj</span><span class="p">(</span><span class="n">PKarr</span><span class="p">)</span>
+            <span class="n">PKmo</span><span class="o">.</span><span class="n">dims</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">dims</span>
+            <span class="n">PKmo</span><span class="o">.</span><span class="n">isherm</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">PKmo</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="s1">&#39;oper&#39;</span>
+            <span class="k">return</span> <span class="n">PKmo</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+            <span class="s2">&quot;Only implemented for smaller state &quot;</span> <span class="s2">&quot;spaces&quot;</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Cannot convert &#39;</span><span class="si">%s</span><span class="s2">&#39; of type </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">expr</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">expr</span><span class="p">))</span>
+        <span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_convert_state_operation_to_qutip</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">full_space</span> <span class="o">!=</span> <span class="n">expr</span><span class="o">.</span><span class="n">space</span><span class="p">:</span>
+        <span class="n">all_spaces</span> <span class="o">=</span> <span class="n">full_space</span><span class="o">.</span><span class="n">local_factors</span>
+        <span class="n">own_space_index</span> <span class="o">=</span> <span class="n">all_spaces</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">qutip</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span>
+            <span class="o">*</span><span class="p">(</span>
+                <span class="p">[</span><span class="n">qutip</span><span class="o">.</span><span class="n">qeye</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dimension</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">all_spaces</span><span class="p">[:</span><span class="n">own_space_index</span><span class="p">]]</span>
+                <span class="o">+</span> <span class="n">convert_to_qutip</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">expr</span><span class="o">.</span><span class="n">space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span><span class="p">)</span>
+                <span class="o">+</span> <span class="p">[</span>
+                    <span class="n">qutip</span><span class="o">.</span><span class="n">qeye</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dimension</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">all_spaces</span><span class="p">[</span><span class="n">own_space_index</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:]</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">BraKet</span><span class="p">):</span>
+        <span class="n">bq</span> <span class="o">=</span> <span class="n">convert_to_qutip</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">bra</span><span class="p">,</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span><span class="p">)</span>
+        <span class="n">kq</span> <span class="o">=</span> <span class="n">convert_to_qutip</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">ket</span><span class="p">,</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">bq</span> <span class="o">*</span> <span class="n">kq</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">KetBra</span><span class="p">):</span>
+        <span class="n">bq</span> <span class="o">=</span> <span class="n">convert_to_qutip</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">bra</span><span class="p">,</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span><span class="p">)</span>
+        <span class="n">kq</span> <span class="o">=</span> <span class="n">convert_to_qutip</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">ket</span><span class="p">,</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">kq</span> <span class="o">*</span> <span class="n">bq</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Cannot convert &#39;</span><span class="si">%s</span><span class="s2">&#39; of type </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">expr</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">expr</span><span class="p">))</span>
+        <span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_convert_ket_to_qutip</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">full_space</span><span class="o">.</span><span class="n">dimension</span>
+    <span class="k">if</span> <span class="n">full_space</span> <span class="o">!=</span> <span class="n">expr</span><span class="o">.</span><span class="n">space</span><span class="p">:</span>
+        <span class="n">all_spaces</span> <span class="o">=</span> <span class="n">full_space</span><span class="o">.</span><span class="n">local_factors</span>
+        <span class="n">own_space_index</span> <span class="o">=</span> <span class="n">all_spaces</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
+        <span class="n">factors</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="p">[</span><span class="n">qutip</span><span class="o">.</span><span class="n">qeye</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dimension</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">all_spaces</span><span class="p">[:</span><span class="n">own_space_index</span><span class="p">]]</span>
+            <span class="o">+</span> <span class="p">[</span><span class="n">convert_to_qutip</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">expr</span><span class="o">.</span><span class="n">space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span><span class="p">)]</span>
+            <span class="o">+</span> <span class="p">[</span>
+                <span class="n">qutip</span><span class="o">.</span><span class="n">qeye</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dimension</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">all_spaces</span><span class="p">[</span><span class="n">own_space_index</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:]</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">qutip</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="o">*</span><span class="n">factors</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">KetPlus</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span>
+            <span class="p">(</span>
+                <span class="n">convert_to_qutip</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">operands</span>
+            <span class="p">),</span>
+            <span class="mi">0</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">TensorKet</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">space</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">operands</span><span class="p">):</span>
+            <span class="n">se</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">se</span> <span class="o">==</span> <span class="n">expr</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;Cannot represent as QuTiP &quot;</span> <span class="s2">&quot;object: </span><span class="si">{!s}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+                <span class="p">)</span>
+            <span class="k">return</span> <span class="n">convert_to_qutip</span><span class="p">(</span><span class="n">se</span><span class="p">,</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span><span class="p">)</span>
+        <span class="n">factors</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">convert_to_qutip</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">o</span><span class="o">.</span><span class="n">space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">operands</span>
+        <span class="p">]</span>
+        <span class="k">return</span> <span class="n">qutip</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="o">*</span><span class="n">factors</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">ScalarTimesKet</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">complex</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">coeff</span><span class="p">)</span> <span class="o">*</span> <span class="n">convert_to_qutip</span><span class="p">(</span>
+            <span class="n">expr</span><span class="o">.</span><span class="n">term</span><span class="p">,</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">OperatorTimesKet</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">convert_to_qutip</span><span class="p">(</span>
+            <span class="n">expr</span><span class="o">.</span><span class="n">coeff</span><span class="p">,</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span>
+        <span class="p">)</span> <span class="o">*</span> <span class="n">convert_to_qutip</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">term</span><span class="p">,</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">BasisKet</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">qutip</span><span class="o">.</span><span class="n">basis</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">dimension</span><span class="p">,</span> <span class="n">expr</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Cannot convert &#39;</span><span class="si">%s</span><span class="s2">&#39; of type </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">expr</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">expr</span><span class="p">))</span>
+        <span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_convert_superoperator_to_qutip</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">full_space</span> <span class="o">!=</span> <span class="n">expr</span><span class="o">.</span><span class="n">space</span><span class="p">:</span>
+        <span class="n">all_spaces</span> <span class="o">=</span> <span class="n">full_space</span><span class="o">.</span><span class="n">local_factors</span>
+        <span class="n">own_space_index</span> <span class="o">=</span> <span class="n">all_spaces</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">qutip</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span>
+            <span class="o">*</span><span class="p">(</span>
+                <span class="p">[</span><span class="n">qutip</span><span class="o">.</span><span class="n">qeye</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dimension</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">all_spaces</span><span class="p">[:</span><span class="n">own_space_index</span><span class="p">]]</span>
+                <span class="o">+</span> <span class="n">convert_to_qutip</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">expr</span><span class="o">.</span><span class="n">space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span><span class="p">)</span>
+                <span class="o">+</span> <span class="p">[</span>
+                    <span class="n">qutip</span><span class="o">.</span><span class="n">qeye</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dimension</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">all_spaces</span><span class="p">[</span><span class="n">own_space_index</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:]</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">IdentitySuperOperator</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">qutip</span><span class="o">.</span><span class="n">spre</span><span class="p">(</span>
+            <span class="n">qutip</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span>
+                <span class="o">*</span><span class="p">[</span><span class="n">qutip</span><span class="o">.</span><span class="n">qeye</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dimension</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">full_space</span><span class="o">.</span><span class="n">local_factors</span><span class="p">]</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">SuperOperatorPlus</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span>
+            <span class="p">(</span>
+                <span class="n">convert_to_qutip</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">operands</span>
+            <span class="p">),</span>
+            <span class="mi">0</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">SuperOperatorTimes</span><span class="p">):</span>
+        <span class="n">ops_qutip</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">convert_to_qutip</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">expr</span><span class="o">.</span><span class="n">operands</span>
+        <span class="p">]</span>
+        <span class="k">return</span> <span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="n">ops_qutip</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">ScalarTimesSuperOperator</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">complex</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">coeff</span><span class="p">)</span> <span class="o">*</span> <span class="n">convert_to_qutip</span><span class="p">(</span>
+            <span class="n">expr</span><span class="o">.</span><span class="n">term</span><span class="p">,</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">SPre</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">qutip</span><span class="o">.</span><span class="n">spre</span><span class="p">(</span>
+            <span class="n">convert_to_qutip</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">SPost</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">qutip</span><span class="o">.</span><span class="n">spost</span><span class="p">(</span>
+            <span class="n">convert_to_qutip</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">operands</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">SuperOperatorTimesOperator</span><span class="p">):</span>
+        <span class="n">sop</span><span class="p">,</span> <span class="n">op</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">operands</span>
+        <span class="k">return</span> <span class="n">convert_to_qutip</span><span class="p">(</span>
+            <span class="n">sop</span><span class="p">,</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span>
+        <span class="p">)</span> <span class="o">*</span> <span class="n">convert_to_qutip</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">ZeroSuperOperator</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">qutip</span><span class="o">.</span><span class="n">spre</span><span class="p">(</span>
+            <span class="n">convert_to_qutip</span><span class="p">(</span><span class="n">ZeroOperator</span><span class="p">,</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">mapping</span><span class="o">=</span><span class="n">mapping</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Cannot convert &#39;</span><span class="si">%s</span><span class="s2">&#39; of type </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">expr</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">expr</span><span class="p">))</span>
+        <span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_time_dependent_to_qutip</span><span class="p">(</span>
+    <span class="n">op</span><span class="p">,</span>
+    <span class="n">full_space</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">time_symbol</span><span class="o">=</span><span class="n">symbols</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="n">convert_as</span><span class="o">=</span><span class="s1">&#39;pyfunc&#39;</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert a possiblty time-dependent operator into the nested-list</span>
+<span class="sd">    structure required by QuTiP&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">full_space</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">full_space</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">space</span>
+    <span class="k">if</span> <span class="n">time_symbol</span> <span class="ow">in</span> <span class="n">op</span><span class="o">.</span><span class="n">free_symbols</span><span class="p">:</span>
+        <span class="n">op</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">OperatorPlus</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">op</span><span class="o">.</span><span class="n">operands</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">time_symbol</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">o</span><span class="o">.</span><span class="n">free_symbols</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                            <span class="n">convert_to_qutip</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">full_space</span><span class="o">=</span><span class="n">full_space</span><span class="p">)</span>
+                        <span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">convert_to_qutip</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">full_space</span><span class="o">=</span><span class="n">full_space</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">op</span><span class="o">.</span><span class="n">operands</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">time_symbol</span> <span class="ow">in</span> <span class="n">o</span><span class="o">.</span><span class="n">free_symbols</span><span class="p">:</span>
+                    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="n">_time_dependent_to_qutip</span><span class="p">(</span>
+                            <span class="n">o</span><span class="p">,</span> <span class="n">full_space</span><span class="p">,</span> <span class="n">time_symbol</span><span class="p">,</span> <span class="n">convert_as</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span>
+            <span class="k">return</span> <span class="n">result</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">ScalarTimesOperator</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span>
+            <span class="n">op</span><span class="o">.</span><span class="n">coeff</span><span class="p">,</span> <span class="n">ScalarValue</span>
+        <span class="p">):</span>
+            <span class="k">if</span> <span class="n">convert_as</span> <span class="o">==</span> <span class="s1">&#39;pyfunc&#39;</span><span class="p">:</span>
+                <span class="n">func_no_args</span> <span class="o">=</span> <span class="n">lambdify</span><span class="p">(</span><span class="n">time_symbol</span><span class="p">,</span> <span class="n">op</span><span class="o">.</span><span class="n">coeff</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+                <span class="k">if</span> <span class="p">{</span><span class="n">time_symbol</span><span class="p">}</span> <span class="o">==</span> <span class="n">op</span><span class="o">.</span><span class="n">coeff</span><span class="o">.</span><span class="n">free_symbols</span><span class="p">:</span>
+
+                    <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+                        <span class="c1"># args are ignored for increased efficiency, since we</span>
+                        <span class="c1"># know there are no free symbols except t</span>
+                        <span class="k">return</span> <span class="n">func_no_args</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+                <span class="k">else</span><span class="p">:</span>
+
+                    <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+                        <span class="k">return</span> <span class="n">func_no_args</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+
+                <span class="n">coeff</span> <span class="o">=</span> <span class="n">func</span>
+            <span class="k">elif</span> <span class="n">convert_as</span> <span class="o">==</span> <span class="s1">&#39;str&#39;</span><span class="p">:</span>
+                <span class="c1"># a bit of a hack to replace imaginary unit</span>
+                <span class="c1"># TODO: we can probably use one of the sympy code generation</span>
+                <span class="c1"># routines, or lambdify with &#39;numexpr&#39; to implement this in a</span>
+                <span class="c1"># more robust way</span>
+                <span class="n">coeff</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="s2">&quot;(1.0j)&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">coeff</span><span class="o">.</span><span class="n">val</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="p">(</span>
+                        <span class="s2">&quot;Invalid value &#39;</span><span class="si">%s</span><span class="s2">&#39; for `convert_as`, must &quot;</span>
+                        <span class="s2">&quot;be one of &#39;str&#39;, &#39;pyfunc&#39;&quot;</span>
+                    <span class="p">)</span>
+                    <span class="o">%</span> <span class="n">convert_as</span>
+                <span class="p">)</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">convert_to_qutip</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">term</span><span class="p">,</span> <span class="n">full_space</span><span class="p">),</span> <span class="n">coeff</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;op cannot be expressed in qutip. It must have &quot;</span>
+                <span class="s2">&quot;the structure op = sum_i f_i(t) * op_i&quot;</span>
+            <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">convert_to_qutip</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">full_space</span><span class="o">=</span><span class="n">full_space</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Michael Goerz.
+      <span class="lastupdated">
+        Last updated on May 26, 2021.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

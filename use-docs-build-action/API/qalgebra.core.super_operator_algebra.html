@@ -1,0 +1,684 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>qalgebra.core.super_operator_algebra module &mdash; QAlgebra 0.2.0+dev (20ec971) documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/mycss.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/docs-versions-menu.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="qalgebra.library package" href="qalgebra.library.html" />
+    <link rel="prev" title="qalgebra.core.state_algebra module" href="qalgebra.core.state_algebra.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0+dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#usage">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Quantum Algebra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../symbolic_algebra.html">Symbolic Algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../printing.html">The Printing System</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../library_structure.html">Library Structure</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="qalgebra.html">API of the QAlgebra package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.pattern_matching.html">qalgebra.pattern_matching module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.convert.html">qalgebra.convert package</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="qalgebra.core.html">qalgebra.core package</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.abstract_algebra.html">qalgebra.core.abstract_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html">qalgebra.core.abstract_quantum_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.algebraic_properties.html">qalgebra.core.algebraic_properties module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.exceptions.html">qalgebra.core.exceptions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html">qalgebra.core.hilbert_space_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.indexed_operations.html">qalgebra.core.indexed_operations module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.matrix_algebra.html">qalgebra.core.matrix_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.operator_algebra.html">qalgebra.core.operator_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.scalar_algebra.html">qalgebra.core.scalar_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.state_algebra.html">qalgebra.core.state_algebra module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">qalgebra.core.super_operator_algebra module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.library.html">qalgebra.library package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.printing.html">qalgebra.printing package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.toolbox.html">qalgebra.toolbox package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.utils.html">qalgebra.utils package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.html#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="qalgebra.html">qalgebra package</a> &raquo;</li>
+        
+          <li><a href="qalgebra.core.html">qalgebra.core package</a> &raquo;</li>
+        
+      <li>qalgebra.core.super_operator_algebra module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-qalgebra.core.super_operator_algebra">
+<span id="qalgebra-core-super-operator-algebra-module"></span><h1>qalgebra.core.super_operator_algebra module<a class="headerlink" href="#module-qalgebra.core.super_operator_algebra" title="Permalink to this headline">¶</a></h1>
+<p>The specification of a quantum mechanics symbolic super-operator algebra.
+See <a class="reference internal" href="../symbolic_algebra.html#super-operator-algebra"><span class="std std-ref">Super-Operator Algebra</span></a> for more details.</p>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Classes:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.super_operator_algebra.SPost" title="qalgebra.core.super_operator_algebra.SPost"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SPost</span></code></a></p></td>
+<td><p>Linear post-multiplication operator.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.super_operator_algebra.SPre" title="qalgebra.core.super_operator_algebra.SPre"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SPre</span></code></a></p></td>
+<td><p>Linear pre-multiplication operator</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.super_operator_algebra.ScalarTimesSuperOperator" title="qalgebra.core.super_operator_algebra.ScalarTimesSuperOperator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScalarTimesSuperOperator</span></code></a></p></td>
+<td><p>Product of a <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code></a> coefficient and a <a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperOperator" title="qalgebra.core.super_operator_algebra.SuperOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">SuperOperator</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperAdjoint" title="qalgebra.core.super_operator_algebra.SuperAdjoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SuperAdjoint</span></code></a></p></td>
+<td><p>Adjoint of a super-operator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperCommutativeHSOrder" title="qalgebra.core.super_operator_algebra.SuperCommutativeHSOrder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SuperCommutativeHSOrder</span></code></a></p></td>
+<td><p>Ordering class that acts like DisjunctCommutativeHSOrder, but also commutes any <cite>SPost</cite> and <cite>SPre</cite></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperOperator" title="qalgebra.core.super_operator_algebra.SuperOperator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SuperOperator</span></code></a></p></td>
+<td><p>Base class for super-operators</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperOperatorDerivative" title="qalgebra.core.super_operator_algebra.SuperOperatorDerivative"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SuperOperatorDerivative</span></code></a></p></td>
+<td><p>Symbolic partial derivative of a super-operator</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperOperatorPlus" title="qalgebra.core.super_operator_algebra.SuperOperatorPlus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SuperOperatorPlus</span></code></a></p></td>
+<td><p>A sum of super-operators</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperOperatorSymbol" title="qalgebra.core.super_operator_algebra.SuperOperatorSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SuperOperatorSymbol</span></code></a></p></td>
+<td><p>Symbolic super-operator</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperOperatorTimes" title="qalgebra.core.super_operator_algebra.SuperOperatorTimes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SuperOperatorTimes</span></code></a></p></td>
+<td><p>Product of super-operators</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperOperatorTimesOperator" title="qalgebra.core.super_operator_algebra.SuperOperatorTimesOperator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SuperOperatorTimesOperator</span></code></a></p></td>
+<td><p>Application of a super-operator to an operator.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Functions:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.super_operator_algebra.anti_commutator" title="qalgebra.core.super_operator_algebra.anti_commutator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">anti_commutator</span></code></a></p></td>
+<td><p>If <code class="docutils literal notranslate"><span class="pre">B</span> <span class="pre">!=</span> <span class="pre">None</span></code>, return the anti-commutator <span class="math notranslate nohighlight">\(\{A,B\}\)</span>, otherwise return the super-operator <span class="math notranslate nohighlight">\(\{A,\cdot\}\)</span>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.super_operator_algebra.commutator" title="qalgebra.core.super_operator_algebra.commutator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">commutator</span></code></a></p></td>
+<td><p>Commutator of <cite>A</cite> and <cite>B</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.super_operator_algebra.lindblad" title="qalgebra.core.super_operator_algebra.lindblad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lindblad</span></code></a></p></td>
+<td><p>Return the super-operator Lindblad term of the Lindblad operator <cite>C</cite></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.super_operator_algebra.liouvillian" title="qalgebra.core.super_operator_algebra.liouvillian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">liouvillian</span></code></a></p></td>
+<td><p>Return the Liouvillian super-operator associated with <cite>H</cite> and <cite>Ls</cite></p></td>
+</tr>
+</tbody>
+</table>
+<p>Data:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.super_operator_algebra.IdentitySuperOperator" title="qalgebra.core.super_operator_algebra.IdentitySuperOperator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IdentitySuperOperator</span></code></a></p></td>
+<td><p>Neutral element for product of super-operators</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.super_operator_algebra.ZeroSuperOperator" title="qalgebra.core.super_operator_algebra.ZeroSuperOperator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ZeroSuperOperator</span></code></a></p></td>
+<td><p>Neutral element for sum of super-operators</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">__all__</span></code>: <a class="reference internal" href="#qalgebra.core.super_operator_algebra.IdentitySuperOperator" title="qalgebra.core.super_operator_algebra.IdentitySuperOperator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IdentitySuperOperator</span></code></a>, <a class="reference internal" href="#qalgebra.core.super_operator_algebra.SPost" title="qalgebra.core.super_operator_algebra.SPost"><code class="xref py py-class docutils literal notranslate"><span class="pre">SPost</span></code></a>, <a class="reference internal" href="#qalgebra.core.super_operator_algebra.SPre" title="qalgebra.core.super_operator_algebra.SPre"><code class="xref py py-class docutils literal notranslate"><span class="pre">SPre</span></code></a>, <a class="reference internal" href="#qalgebra.core.super_operator_algebra.ScalarTimesSuperOperator" title="qalgebra.core.super_operator_algebra.ScalarTimesSuperOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarTimesSuperOperator</span></code></a>, <a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperAdjoint" title="qalgebra.core.super_operator_algebra.SuperAdjoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">SuperAdjoint</span></code></a>, <a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperOperator" title="qalgebra.core.super_operator_algebra.SuperOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">SuperOperator</span></code></a>, <a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperOperatorDerivative" title="qalgebra.core.super_operator_algebra.SuperOperatorDerivative"><code class="xref py py-class docutils literal notranslate"><span class="pre">SuperOperatorDerivative</span></code></a>, <a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperOperatorPlus" title="qalgebra.core.super_operator_algebra.SuperOperatorPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">SuperOperatorPlus</span></code></a>, <a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperOperatorSymbol" title="qalgebra.core.super_operator_algebra.SuperOperatorSymbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">SuperOperatorSymbol</span></code></a>, <a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperOperatorTimes" title="qalgebra.core.super_operator_algebra.SuperOperatorTimes"><code class="xref py py-class docutils literal notranslate"><span class="pre">SuperOperatorTimes</span></code></a>, <a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperOperatorTimesOperator" title="qalgebra.core.super_operator_algebra.SuperOperatorTimesOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">SuperOperatorTimesOperator</span></code></a>, <a class="reference internal" href="#qalgebra.core.super_operator_algebra.ZeroSuperOperator" title="qalgebra.core.super_operator_algebra.ZeroSuperOperator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ZeroSuperOperator</span></code></a>, <a class="reference internal" href="#qalgebra.core.super_operator_algebra.anti_commutator" title="qalgebra.core.super_operator_algebra.anti_commutator"><code class="xref py py-func docutils literal notranslate"><span class="pre">anti_commutator</span></code></a>, <a class="reference internal" href="#qalgebra.core.super_operator_algebra.commutator" title="qalgebra.core.super_operator_algebra.commutator"><code class="xref py py-func docutils literal notranslate"><span class="pre">commutator</span></code></a>, <a class="reference internal" href="#qalgebra.core.super_operator_algebra.lindblad" title="qalgebra.core.super_operator_algebra.lindblad"><code class="xref py py-func docutils literal notranslate"><span class="pre">lindblad</span></code></a>, <a class="reference internal" href="#qalgebra.core.super_operator_algebra.liouvillian" title="qalgebra.core.super_operator_algebra.liouvillian"><code class="xref py py-func docutils literal notranslate"><span class="pre">liouvillian</span></code></a></p>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="qalgebra.core.super_operator_algebra.SPost">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.super_operator_algebra.</span></code><code class="sig-name descname"><span class="pre">SPost</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/super_operator_algebra.html#SPost"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.super_operator_algebra.SPost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperOperator" title="qalgebra.core.super_operator_algebra.SuperOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.super_operator_algebra.SuperOperator</span></code></a>, <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Operation" title="qalgebra.core.abstract_algebra.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_algebra.Operation</span></code></a></p>
+<p>Linear post-multiplication operator.</p>
+<p>Acting <code class="docutils literal notranslate"><span class="pre">SPost(A)</span></code> on an operator <code class="docutils literal notranslate"><span class="pre">B</span></code> just yields the reversed
+product <code class="docutils literal notranslate"><span class="pre">B</span> <span class="pre">*</span> <span class="pre">A</span></code>.</p>
+<dl class="py attribute">
+<dt id="qalgebra.core.super_operator_algebra.SPost.simplifications">
+<code class="sig-name descname"><span class="pre">simplifications</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[&lt;function</span> <span class="pre">match_replace&gt;]</span></em><a class="headerlink" href="#qalgebra.core.super_operator_algebra.SPost.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.super_operator_algebra.SPost.space">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">space</span></code><a class="headerlink" href="#qalgebra.core.super_operator_algebra.SPost.space" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.HilbertSpace" title="qalgebra.core.hilbert_space_algebra.HilbertSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">HilbertSpace</span></code></a> on which the operator acts
+non-trivially</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.core.super_operator_algebra.SPre">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.super_operator_algebra.</span></code><code class="sig-name descname"><span class="pre">SPre</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/super_operator_algebra.html#SPre"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.super_operator_algebra.SPre" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperOperator" title="qalgebra.core.super_operator_algebra.SuperOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.super_operator_algebra.SuperOperator</span></code></a>, <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Operation" title="qalgebra.core.abstract_algebra.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_algebra.Operation</span></code></a></p>
+<p>Linear pre-multiplication operator</p>
+<p>Acting <code class="docutils literal notranslate"><span class="pre">SPre(A)</span></code> on an operator <code class="docutils literal notranslate"><span class="pre">B</span></code> just yields the product <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">*</span> <span class="pre">B</span></code></p>
+<dl class="py attribute">
+<dt id="qalgebra.core.super_operator_algebra.SPre.simplifications">
+<code class="sig-name descname"><span class="pre">simplifications</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[&lt;function</span> <span class="pre">match_replace&gt;]</span></em><a class="headerlink" href="#qalgebra.core.super_operator_algebra.SPre.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.super_operator_algebra.SPre.space">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">space</span></code><a class="headerlink" href="#qalgebra.core.super_operator_algebra.SPre.space" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.HilbertSpace" title="qalgebra.core.hilbert_space_algebra.HilbertSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">HilbertSpace</span></code></a> on which the operator acts
+non-trivially</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.core.super_operator_algebra.ScalarTimesSuperOperator">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.super_operator_algebra.</span></code><code class="sig-name descname"><span class="pre">ScalarTimesSuperOperator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coeff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">term</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/super_operator_algebra.html#ScalarTimesSuperOperator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.super_operator_algebra.ScalarTimesSuperOperator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperOperator" title="qalgebra.core.super_operator_algebra.SuperOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.super_operator_algebra.SuperOperator</span></code></a>, <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression" title="qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression</span></code></a></p>
+<p>Product of a <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code></a> coefficient and a <a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperOperator" title="qalgebra.core.super_operator_algebra.SuperOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">SuperOperator</span></code></a>.</p>
+<dl class="py attribute">
+<dt id="qalgebra.core.super_operator_algebra.ScalarTimesSuperOperator.simplifications">
+<code class="sig-name descname"><span class="pre">simplifications</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[&lt;function</span> <span class="pre">match_replace&gt;]</span></em><a class="headerlink" href="#qalgebra.core.super_operator_algebra.ScalarTimesSuperOperator.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.core.super_operator_algebra.SuperAdjoint">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.super_operator_algebra.</span></code><code class="sig-name descname"><span class="pre">SuperAdjoint</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">operand</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/super_operator_algebra.html#SuperAdjoint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.super_operator_algebra.SuperAdjoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumAdjoint" title="qalgebra.core.abstract_quantum_algebra.QuantumAdjoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumAdjoint</span></code></a>, <a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperOperator" title="qalgebra.core.super_operator_algebra.SuperOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.super_operator_algebra.SuperOperator</span></code></a></p>
+<p>Adjoint of a super-operator.</p>
+<p>The mathematical notation for this is typically</p>
+<div class="math notranslate nohighlight">
+\[{\rm SuperAdjoint}(\mathcal{L}) =: \mathcal{L}^*\]</div>
+<p>and for any super operator <span class="math notranslate nohighlight">\(\mathcal{L}\)</span>, its super-adjoint
+<span class="math notranslate nohighlight">\(\mathcal{L}^*\)</span> satisfies for any pair of operators <span class="math notranslate nohighlight">\(M,N\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[{\rm Tr}[M (\mathcal{L}N)] = Tr[(\mathcal{L}^*M)  N]\]</div>
+<dl class="py attribute">
+<dt id="qalgebra.core.super_operator_algebra.SuperAdjoint.simplifications">
+<code class="sig-name descname"><span class="pre">simplifications</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[&lt;function</span> <span class="pre">delegate_to_method.&lt;locals&gt;._delegate_to_method&gt;]</span></em><a class="headerlink" href="#qalgebra.core.super_operator_algebra.SuperAdjoint.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.core.super_operator_algebra.SuperOperator">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.super_operator_algebra.</span></code><code class="sig-name descname"><span class="pre">SuperOperator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/super_operator_algebra.html#SuperOperator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.super_operator_algebra.SuperOperator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumExpression" title="qalgebra.core.abstract_quantum_algebra.QuantumExpression"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumExpression</span></code></a></p>
+<p>Base class for super-operators</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.core.super_operator_algebra.SuperOperatorPlus">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.super_operator_algebra.</span></code><code class="sig-name descname"><span class="pre">SuperOperatorPlus</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">operands</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/super_operator_algebra.html#SuperOperatorPlus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.super_operator_algebra.SuperOperatorPlus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumPlus" title="qalgebra.core.abstract_quantum_algebra.QuantumPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumPlus</span></code></a>, <a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperOperator" title="qalgebra.core.super_operator_algebra.SuperOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.super_operator_algebra.SuperOperator</span></code></a></p>
+<p>A sum of super-operators</p>
+<dl class="py attribute">
+<dt id="qalgebra.core.super_operator_algebra.SuperOperatorPlus.simplifications">
+<code class="sig-name descname"><span class="pre">simplifications</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[&lt;function</span> <span class="pre">assoc&gt;,</span> <span class="pre">&lt;function</span> <span class="pre">orderby&gt;,</span> <span class="pre">&lt;function</span> <span class="pre">collect_summands&gt;,</span> <span class="pre">&lt;function</span> <span class="pre">match_replace_binary&gt;]</span></em><a class="headerlink" href="#qalgebra.core.super_operator_algebra.SuperOperatorPlus.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.core.super_operator_algebra.SuperOperatorSymbol">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.super_operator_algebra.</span></code><code class="sig-name descname"><span class="pre">SuperOperatorSymbol</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">sym_args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/super_operator_algebra.html#SuperOperatorSymbol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.super_operator_algebra.SuperOperatorSymbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumSymbol" title="qalgebra.core.abstract_quantum_algebra.QuantumSymbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumSymbol</span></code></a>, <a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperOperator" title="qalgebra.core.super_operator_algebra.SuperOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.super_operator_algebra.SuperOperator</span></code></a></p>
+<p>Symbolic super-operator</p>
+<p>See <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumSymbol" title="qalgebra.core.abstract_quantum_algebra.QuantumSymbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumSymbol</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.core.super_operator_algebra.SuperOperatorTimes">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.super_operator_algebra.</span></code><code class="sig-name descname"><span class="pre">SuperOperatorTimes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">operands</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/super_operator_algebra.html#SuperOperatorTimes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.super_operator_algebra.SuperOperatorTimes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumTimes" title="qalgebra.core.abstract_quantum_algebra.QuantumTimes"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumTimes</span></code></a>, <a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperOperator" title="qalgebra.core.super_operator_algebra.SuperOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.super_operator_algebra.SuperOperator</span></code></a></p>
+<p>Product of super-operators</p>
+<dl class="py attribute">
+<dt id="qalgebra.core.super_operator_algebra.SuperOperatorTimes.simplifications">
+<code class="sig-name descname"><span class="pre">simplifications</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[&lt;function</span> <span class="pre">assoc&gt;,</span> <span class="pre">&lt;function</span> <span class="pre">orderby&gt;,</span> <span class="pre">&lt;function</span> <span class="pre">filter_neutral&gt;,</span> <span class="pre">&lt;function</span> <span class="pre">match_replace_binary&gt;]</span></em><a class="headerlink" href="#qalgebra.core.super_operator_algebra.SuperOperatorTimes.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="qalgebra.core.super_operator_algebra.SuperOperatorTimes.order_key">
+<code class="sig-name descname"><span class="pre">order_key</span></code><a class="headerlink" href="#qalgebra.core.super_operator_algebra.SuperOperatorTimes.order_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperCommutativeHSOrder" title="qalgebra.core.super_operator_algebra.SuperCommutativeHSOrder"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.super_operator_algebra.SuperCommutativeHSOrder</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.super_operator_algebra.SuperOperatorTimes.create">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">ops</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/super_operator_algebra.html#SuperOperatorTimes.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.super_operator_algebra.SuperOperatorTimes.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate while applying automatic simplifications.</p>
+<p>Instead of directly instantiating <cite>cls</cite>, it is recommended to use
+<a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperOperatorTimes.create" title="qalgebra.core.super_operator_algebra.SuperOperatorTimes.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a>, which applies simplifications to the args and keyword
+arguments according to the <cite>simplifications</cite> class attribute, and
+returns an appropriate object (which may or may not be an instance of
+the original <cite>cls</cite>).</p>
+<p>Two simplifications of particular importance are <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace" title="qalgebra.core.algebraic_properties.match_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace()</span></code></a>
+and <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace_binary" title="qalgebra.core.algebraic_properties.match_replace_binary"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace_binary()</span></code></a> which apply rule-based
+simplifications.</p>
+<p>The <a class="reference internal" href="qalgebra.toolbox.core.html#qalgebra.toolbox.core.temporary_rules" title="qalgebra.toolbox.core.temporary_rules"><code class="xref py py-func docutils literal notranslate"><span class="pre">temporary_rules()</span></code></a> context manager may be used to allow
+temporary modification of the automatic simplifications that
+<a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperOperatorTimes.create" title="qalgebra.core.super_operator_algebra.SuperOperatorTimes.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a> uses, in particular the rules for
+<a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace" title="qalgebra.core.algebraic_properties.match_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace()</span></code></a> and <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace_binary" title="qalgebra.core.algebraic_properties.match_replace_binary"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace_binary()</span></code></a>. Inside the
+managed context, the <cite>simplifications</cite> class attribute may be
+modified and rules can be managed with <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.add_rule" title="qalgebra.core.abstract_algebra.Expression.add_rule"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_rule()</span></code></a>
+and <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.del_rules" title="qalgebra.core.abstract_algebra.Expression.del_rules"><code class="xref py py-meth docutils literal notranslate"><span class="pre">del_rules()</span></code></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.core.super_operator_algebra.SuperOperatorTimesOperator">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.super_operator_algebra.</span></code><code class="sig-name descname"><span class="pre">SuperOperatorTimesOperator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">op</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/super_operator_algebra.html#SuperOperatorTimesOperator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.super_operator_algebra.SuperOperatorTimesOperator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.operator_algebra.Operator</span></code></a>, <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Operation" title="qalgebra.core.abstract_algebra.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_algebra.Operation</span></code></a></p>
+<p>Application of a super-operator to an operator.</p>
+<p>The result of this operation an <a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code></a>.</p>
+<dl class="py attribute">
+<dt id="qalgebra.core.super_operator_algebra.SuperOperatorTimesOperator.simplifications">
+<code class="sig-name descname"><span class="pre">simplifications</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[&lt;function</span> <span class="pre">match_replace&gt;]</span></em><a class="headerlink" href="#qalgebra.core.super_operator_algebra.SuperOperatorTimesOperator.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.super_operator_algebra.SuperOperatorTimesOperator.space">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">space</span></code><a class="headerlink" href="#qalgebra.core.super_operator_algebra.SuperOperatorTimesOperator.space" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.HilbertSpace" title="qalgebra.core.hilbert_space_algebra.HilbertSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">HilbertSpace</span></code></a> on which the operator acts
+non-trivially</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.super_operator_algebra.SuperOperatorTimesOperator.sop">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">sop</span></code><a class="headerlink" href="#qalgebra.core.super_operator_algebra.SuperOperatorTimesOperator.sop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.super_operator_algebra.SuperOperatorTimesOperator.op">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">op</span></code><a class="headerlink" href="#qalgebra.core.super_operator_algebra.SuperOperatorTimesOperator.op" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="qalgebra.core.super_operator_algebra.anti_commutator">
+<code class="sig-prename descclassname"><span class="pre">qalgebra.core.super_operator_algebra.</span></code><code class="sig-name descname"><span class="pre">anti_commutator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/super_operator_algebra.html#anti_commutator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.super_operator_algebra.anti_commutator" title="Permalink to this definition">¶</a></dt>
+<dd><p>If <code class="docutils literal notranslate"><span class="pre">B</span> <span class="pre">!=</span> <span class="pre">None</span></code>, return the anti-commutator <span class="math notranslate nohighlight">\(\{A,B\}\)</span>, otherwise
+return the super-operator <span class="math notranslate nohighlight">\(\{A,\cdot\}\)</span>.  The super-operator
+<span class="math notranslate nohighlight">\(\{A,\cdot\}\)</span> maps any other operator <code class="docutils literal notranslate"><span class="pre">B</span></code> to the anti-commutator
+<span class="math notranslate nohighlight">\(\{A, B\} = A B + B A\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> – The first operator to form all anti-commutators of.</p></li>
+<li><p><strong>B</strong> – The second operator to form the anti-commutator of, or None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The linear superoperator <span class="math notranslate nohighlight">\([A,\cdot]\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperOperator" title="qalgebra.core.super_operator_algebra.SuperOperator">SuperOperator</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="qalgebra.core.super_operator_algebra.commutator">
+<code class="sig-prename descclassname"><span class="pre">qalgebra.core.super_operator_algebra.</span></code><code class="sig-name descname"><span class="pre">commutator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/super_operator_algebra.html#commutator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.super_operator_algebra.commutator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Commutator of <cite>A</cite> and <cite>B</cite></p>
+<p>If <code class="docutils literal notranslate"><span class="pre">B</span> <span class="pre">!=</span> <span class="pre">None</span></code>, return the commutator <span class="math notranslate nohighlight">\([A,B]\)</span>, otherwise return
+the super-operator <span class="math notranslate nohighlight">\([A,\cdot]\)</span>.  The super-operator <span class="math notranslate nohighlight">\([A,\cdot]\)</span>
+maps any other operator <code class="docutils literal notranslate"><span class="pre">B</span></code> to the commutator <span class="math notranslate nohighlight">\([A, B] = A B - B A\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> – The first operator to form the commutator of.</p></li>
+<li><p><strong>B</strong> – The second operator to form the commutator of, or None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The linear superoperator <span class="math notranslate nohighlight">\([A,\cdot]\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperOperator" title="qalgebra.core.super_operator_algebra.SuperOperator">SuperOperator</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="qalgebra.core.super_operator_algebra.lindblad">
+<code class="sig-prename descclassname"><span class="pre">qalgebra.core.super_operator_algebra.</span></code><code class="sig-name descname"><span class="pre">lindblad</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">C</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/super_operator_algebra.html#lindblad"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.super_operator_algebra.lindblad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the super-operator Lindblad term of the Lindblad operator <cite>C</cite></p>
+<p>Return <code class="docutils literal notranslate"><span class="pre">SPre(C)</span> <span class="pre">*</span> <span class="pre">SPost(C.adjoint())</span> <span class="pre">-</span> <span class="pre">(1/2)</span> <span class="pre">*</span>
+<span class="pre">santi_commutator(C.adjoint()*C)</span></code>.  These are the super-operators
+<span class="math notranslate nohighlight">\(\mathcal{D}[C]\)</span> that form the collapse terms of a Master-Equation.
+Applied to an operator <span class="math notranslate nohighlight">\(X\)</span> they yield</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{D}[C] X
+    = C X C^\dagger - {1\over 2} (C^\dagger C X + X C^\dagger C)\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>C</strong> (<a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><em>Operator</em></a>) – The associated collapse operator</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The Lindblad collapse generator.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperOperator" title="qalgebra.core.super_operator_algebra.SuperOperator">SuperOperator</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="qalgebra.core.super_operator_algebra.liouvillian">
+<code class="sig-prename descclassname"><span class="pre">qalgebra.core.super_operator_algebra.</span></code><code class="sig-name descname"><span class="pre">liouvillian</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">H</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/super_operator_algebra.html#liouvillian"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.super_operator_algebra.liouvillian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the Liouvillian super-operator associated with <cite>H</cite> and <cite>Ls</cite></p>
+<p>The Liouvillian <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> generates the Markovian-dynamics of a
+system via the Master equation:</p>
+<div class="math notranslate nohighlight">
+\[\dot{\rho} = \mathcal{L}\rho
+    = -i[H,\rho] + \sum_{j=1}^n \mathcal{D}[L_j] \rho\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>H</strong> (<a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><em>Operator</em></a>) – The associated Hamilton operator</p></li>
+<li><p><strong>Ls</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a><em> or </em><a class="reference internal" href="qalgebra.core.matrix_algebra.html#qalgebra.core.matrix_algebra.Matrix" title="qalgebra.core.matrix_algebra.Matrix"><em>Matrix</em></a>) – A sequence of Lindblad operators.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The Liouvillian super-operator.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperOperator" title="qalgebra.core.super_operator_algebra.SuperOperator">SuperOperator</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt id="qalgebra.core.super_operator_algebra.IdentitySuperOperator">
+<code class="sig-prename descclassname"><span class="pre">qalgebra.core.super_operator_algebra.</span></code><code class="sig-name descname"><span class="pre">IdentitySuperOperator</span></code><em class="property"> <span class="pre">=</span> <span class="pre">IdentitySuperOperator</span></em><a class="reference internal" href="../_modules/qalgebra/core/super_operator_algebra.html#IdentitySuperOperator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.super_operator_algebra.IdentitySuperOperator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Neutral element for product of super-operators</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="qalgebra.core.super_operator_algebra.ZeroSuperOperator">
+<code class="sig-prename descclassname"><span class="pre">qalgebra.core.super_operator_algebra.</span></code><code class="sig-name descname"><span class="pre">ZeroSuperOperator</span></code><em class="property"> <span class="pre">=</span> <span class="pre">ZeroSuperOperator</span></em><a class="reference internal" href="../_modules/qalgebra/core/super_operator_algebra.html#ZeroSuperOperator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.super_operator_algebra.ZeroSuperOperator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Neutral element for sum of super-operators</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.core.super_operator_algebra.SuperOperatorDerivative">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.super_operator_algebra.</span></code><code class="sig-name descname"><span class="pre">SuperOperatorDerivative</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">op</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">derivs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/super_operator_algebra.html#SuperOperatorDerivative"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.super_operator_algebra.SuperOperatorDerivative" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumDerivative" title="qalgebra.core.abstract_quantum_algebra.QuantumDerivative"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumDerivative</span></code></a>, <a class="reference internal" href="#qalgebra.core.super_operator_algebra.SuperOperator" title="qalgebra.core.super_operator_algebra.SuperOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.super_operator_algebra.SuperOperator</span></code></a></p>
+<p>Symbolic partial derivative of a super-operator</p>
+<p>See <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumDerivative" title="qalgebra.core.abstract_quantum_algebra.QuantumDerivative"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumDerivative</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.core.super_operator_algebra.SuperCommutativeHSOrder">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.super_operator_algebra.</span></code><code class="sig-name descname"><span class="pre">SuperCommutativeHSOrder</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">op</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">op_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/super_operator_algebra.html#SuperCommutativeHSOrder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.super_operator_algebra.SuperCommutativeHSOrder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.utils.ordering.html#qalgebra.utils.ordering.DisjunctCommutativeHSOrder" title="qalgebra.utils.ordering.DisjunctCommutativeHSOrder"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.utils.ordering.DisjunctCommutativeHSOrder</span></code></a></p>
+<p>Ordering class that acts like DisjunctCommutativeHSOrder, but also
+commutes any <cite>SPost</cite> and <cite>SPre</cite></p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="qalgebra.library.html" class="btn btn-neutral float-right" title="qalgebra.library package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="qalgebra.core.state_algebra.html" class="btn btn-neutral float-left" title="qalgebra.core.state_algebra module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Michael Goerz.
+      <span class="lastupdated">
+        Last updated on May 26, 2021.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,776 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>qalgebra.core.abstract_algebra module &mdash; QAlgebra 0.2.0+dev (20ec971) documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/mycss.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/docs-versions-menu.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="qalgebra.core.abstract_quantum_algebra module" href="qalgebra.core.abstract_quantum_algebra.html" />
+    <link rel="prev" title="qalgebra.core package" href="qalgebra.core.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0+dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#usage">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Quantum Algebra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../symbolic_algebra.html">Symbolic Algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../printing.html">The Printing System</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../library_structure.html">Library Structure</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="qalgebra.html">API of the QAlgebra package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.pattern_matching.html">qalgebra.pattern_matching module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.convert.html">qalgebra.convert package</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="qalgebra.core.html">qalgebra.core package</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">qalgebra.core.abstract_algebra module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html">qalgebra.core.abstract_quantum_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.algebraic_properties.html">qalgebra.core.algebraic_properties module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.exceptions.html">qalgebra.core.exceptions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html">qalgebra.core.hilbert_space_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.indexed_operations.html">qalgebra.core.indexed_operations module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.matrix_algebra.html">qalgebra.core.matrix_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.operator_algebra.html">qalgebra.core.operator_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.scalar_algebra.html">qalgebra.core.scalar_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.state_algebra.html">qalgebra.core.state_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.super_operator_algebra.html">qalgebra.core.super_operator_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.library.html">qalgebra.library package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.printing.html">qalgebra.printing package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.toolbox.html">qalgebra.toolbox package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.utils.html">qalgebra.utils package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.html#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="qalgebra.html">qalgebra package</a> &raquo;</li>
+        
+          <li><a href="qalgebra.core.html">qalgebra.core package</a> &raquo;</li>
+        
+      <li>qalgebra.core.abstract_algebra module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-qalgebra.core.abstract_algebra">
+<span id="qalgebra-core-abstract-algebra-module"></span><h1>qalgebra.core.abstract_algebra module<a class="headerlink" href="#module-qalgebra.core.abstract_algebra" title="Permalink to this headline">¶</a></h1>
+<p>Base classes for all Expressions and Operations.</p>
+<p>The abstract algebra package provides the foundation for
+symbolic algebra of quantum objects or circuits. All symbolic objects are
+an instance of <a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression" title="qalgebra.core.abstract_algebra.Expression"><code class="xref py py-class docutils literal notranslate"><span class="pre">Expression</span></code></a>. Algebraic combinations of atomic
+expressions are instances of <a class="reference internal" href="#qalgebra.core.abstract_algebra.Operation" title="qalgebra.core.abstract_algebra.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operation</span></code></a>. In this way, any symbolic
+expression is a tree of operations, with children of each node defined through
+the <a class="reference internal" href="#qalgebra.core.abstract_algebra.Operation.operands" title="qalgebra.core.abstract_algebra.Operation.operands"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Operation.operands</span></code></a> attribute, and the leaves being atomic
+expressions.</p>
+<p>See <a class="reference internal" href="../symbolic_algebra.html#abstract-algebra"><span class="std std-ref">Expressions and Operations</span></a> for design details and usage.</p>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Classes:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression" title="qalgebra.core.abstract_algebra.Expression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Expression</span></code></a></p></td>
+<td><p>Base class for all QAlgebra Expressions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.abstract_algebra.Operation" title="qalgebra.core.abstract_algebra.Operation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Operation</span></code></a></p></td>
+<td><p>Base class for “operations”</p></td>
+</tr>
+</tbody>
+</table>
+<p>Functions:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.abstract_algebra.substitute" title="qalgebra.core.abstract_algebra.substitute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">substitute</span></code></a></p></td>
+<td><p>Substitute symbols or (sub-)expressions with the given replacements.</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">__all__</span></code>: <a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression" title="qalgebra.core.abstract_algebra.Expression"><code class="xref py py-class docutils literal notranslate"><span class="pre">Expression</span></code></a>, <a class="reference internal" href="#qalgebra.core.abstract_algebra.Operation" title="qalgebra.core.abstract_algebra.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operation</span></code></a>, <a class="reference internal" href="#qalgebra.core.abstract_algebra.substitute" title="qalgebra.core.abstract_algebra.substitute"><code class="xref py py-func docutils literal notranslate"><span class="pre">substitute</span></code></a></p>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="qalgebra.core.abstract_algebra.Expression">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.abstract_algebra.</span></code><code class="sig-name descname"><span class="pre">Expression</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_algebra.html#Expression"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_algebra.Expression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.8/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Base class for all QAlgebra Expressions.</p>
+<p>Expressions should generally be instantiated using the <a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a> class
+method, which takes into account the algebraic properties of the Expression
+and and applies simplifications. It also uses memoization to cache all
+known (sub-)expression. This is possible because expressions are intended
+to be immutable. Any changes to an expression should be made through e.g.
+<a class="reference internal" href="#qalgebra.core.abstract_algebra.substitute" title="qalgebra.core.abstract_algebra.substitute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">substitute()</span></code></a> or <a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.apply_rule" title="qalgebra.core.abstract_algebra.Expression.apply_rule"><code class="xref py py-meth docutils literal notranslate"><span class="pre">apply_rule()</span></code></a>, which returns a new modified
+expression.</p>
+<p>Every expression has a well-defined list of positional and keyword
+arguments that uniquely determine the expression and that may be accessed
+through the <a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.args" title="qalgebra.core.abstract_algebra.Expression.args"><code class="xref py py-attr docutils literal notranslate"><span class="pre">args</span></code></a> and <a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.kwargs" title="qalgebra.core.abstract_algebra.Expression.kwargs"><code class="xref py py-attr docutils literal notranslate"><span class="pre">kwargs</span></code></a> property. That is,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">expr</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="o">*</span><span class="n">expr</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">expr</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>will return and object identical to <cite>expr</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Class Attributes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>instance_caching</strong> (<em>bool</em>) – Flag to indicate whether the <a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a>
+class method should cache the instantiation of instances. If True,
+repeated calls to <a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a> with the same arguments return
+instantly, instead of re-evaluating all simplifications and rules.</p></li>
+<li><p><strong>simplifications</strong> (<em>list</em>) – List of callable simplifications that
+<a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a> will use to process its positional and keyword
+arguments. Each callable must take three parameters (the class, the
+list <cite>args</cite> of positional arguments given to <a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a> and a
+dictionary <cite>kwargs</cite> of keyword arguments given to <a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a>)
+and return either a tuple of new <cite>args</cite> and <cite>kwargs</cite> (which are
+then handed to the next callable), or an <a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression" title="qalgebra.core.abstract_algebra.Expression"><code class="xref py py-class docutils literal notranslate"><span class="pre">Expression</span></code></a> (which
+is directly returned as the result of the call to <a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a>).
+The built-in available simplification callables are in
+<a class="reference internal" href="qalgebra.core.algebraic_properties.html#module-qalgebra.core.algebraic_properties" title="qalgebra.core.algebraic_properties"><code class="xref py py-mod docutils literal notranslate"><span class="pre">algebraic_properties</span></code></a></p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="qalgebra.core.abstract_algebra.Expression.simplifications">
+<code class="sig-name descname"><span class="pre">simplifications</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#qalgebra.core.abstract_algebra.Expression.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="qalgebra.core.abstract_algebra.Expression.instance_caching">
+<code class="sig-name descname"><span class="pre">instance_caching</span></code><em class="property"> <span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#qalgebra.core.abstract_algebra.Expression.instance_caching" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.abstract_algebra.Expression.create">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_algebra.html#Expression.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_algebra.Expression.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate while applying automatic simplifications.</p>
+<p>Instead of directly instantiating <cite>cls</cite>, it is recommended to use
+<a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a>, which applies simplifications to the args and keyword
+arguments according to the <cite>simplifications</cite> class attribute, and
+returns an appropriate object (which may or may not be an instance of
+the original <cite>cls</cite>).</p>
+<p>Two simplifications of particular importance are <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace" title="qalgebra.core.algebraic_properties.match_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace()</span></code></a>
+and <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace_binary" title="qalgebra.core.algebraic_properties.match_replace_binary"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace_binary()</span></code></a> which apply rule-based
+simplifications.</p>
+<p>The <a class="reference internal" href="qalgebra.toolbox.core.html#qalgebra.toolbox.core.temporary_rules" title="qalgebra.toolbox.core.temporary_rules"><code class="xref py py-func docutils literal notranslate"><span class="pre">temporary_rules()</span></code></a> context manager may be used to allow
+temporary modification of the automatic simplifications that
+<a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a> uses, in particular the rules for
+<a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace" title="qalgebra.core.algebraic_properties.match_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace()</span></code></a> and <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace_binary" title="qalgebra.core.algebraic_properties.match_replace_binary"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace_binary()</span></code></a>. Inside the
+managed context, the <cite>simplifications</cite> class attribute may be
+modified and rules can be managed with <a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.add_rule" title="qalgebra.core.abstract_algebra.Expression.add_rule"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_rule()</span></code></a>
+and <a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.del_rules" title="qalgebra.core.abstract_algebra.Expression.del_rules"><code class="xref py py-meth docutils literal notranslate"><span class="pre">del_rules()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.abstract_algebra.Expression.add_rule">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">add_rule</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replacement</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_algebra.html#Expression.add_rule"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_algebra.Expression.add_rule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an algebraic rule for <a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a> to the class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Name of the rule. This is used for debug logging to
+allow an analysis of which rules where applied when creating an
+expression. The <cite>name</cite> can be arbitrary, but it must be unique.
+Built-in rules have names <code class="docutils literal notranslate"><span class="pre">'Rxxx'</span></code> where <code class="docutils literal notranslate"><span class="pre">x</span></code> is a digit</p></li>
+<li><p><strong>pattern</strong> (<a class="reference internal" href="qalgebra.pattern_matching.html#qalgebra.pattern_matching.Pattern" title="qalgebra.pattern_matching.Pattern"><em>Pattern</em></a>) – A pattern constructed by <a class="reference internal" href="qalgebra.pattern_matching.html#qalgebra.pattern_matching.pattern_head" title="qalgebra.pattern_matching.pattern_head"><code class="xref py py-func docutils literal notranslate"><span class="pre">pattern_head()</span></code></a>
+to match a <a class="reference internal" href="qalgebra.pattern_matching.html#qalgebra.pattern_matching.ProtoExpr" title="qalgebra.pattern_matching.ProtoExpr"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProtoExpr</span></code></a></p></li>
+<li><p><strong>replacement</strong> (<em>callable</em>) – callable that takes the wildcard names
+defined in <cite>pattern</cite> as keyword arguments and returns an
+evaluated expression.</p></li>
+<li><p><strong>attr</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Name of the class attribute to which to add the
+rule. If None, one of <code class="docutils literal notranslate"><span class="pre">'_rules'</span></code>, <code class="docutils literal notranslate"><span class="pre">'_binary_rules'</span></code> is
+automatically chosen</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3.8/library/exceptions.html#TypeError" title="(in Python v3.8)"><strong>TypeError</strong></a> – if <cite>name</cite> is not a <a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> or <cite>pattern</cite> is not a
+    <a class="reference internal" href="qalgebra.pattern_matching.html#qalgebra.pattern_matching.Pattern" title="qalgebra.pattern_matching.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a> instance</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3.8/library/exceptions.html#ValueError" title="(in Python v3.8)"><strong>ValueError</strong></a> – if <cite>pattern</cite> is not set up to match a
+    <a class="reference internal" href="qalgebra.pattern_matching.html#qalgebra.pattern_matching.ProtoExpr" title="qalgebra.pattern_matching.ProtoExpr"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProtoExpr</span></code></a>; if there there is already a rule with the
+    same <cite>name</cite>; if <cite>replacement</cite> is not a callable or does not
+    take all the wildcard names in <cite>pattern</cite> as arguments</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3.8/library/exceptions.html#AttributeError" title="(in Python v3.8)"><strong>AttributeError</strong></a> – If invalid <cite>attr</cite></p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The “automatic” rules added by this method are applied <em>before</em>
+expressions are instantiated (against a corresponding
+<a class="reference internal" href="qalgebra.pattern_matching.html#qalgebra.pattern_matching.ProtoExpr" title="qalgebra.pattern_matching.ProtoExpr"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProtoExpr</span></code></a>). In contrast,
+<a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.apply_rules" title="qalgebra.core.abstract_algebra.Expression.apply_rules"><code class="xref py py-meth docutils literal notranslate"><span class="pre">apply_rules()</span></code></a>/<a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.apply_rule" title="qalgebra.core.abstract_algebra.Expression.apply_rule"><code class="xref py py-meth docutils literal notranslate"><span class="pre">apply_rule()</span></code></a> are applied to fully
+instantiated objects.</p>
+<p>The <a class="reference internal" href="qalgebra.toolbox.core.html#qalgebra.toolbox.core.temporary_rules" title="qalgebra.toolbox.core.temporary_rules"><code class="xref py py-func docutils literal notranslate"><span class="pre">temporary_rules()</span></code></a> context manager may be used to create
+a context in which rules may be defined locally.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.abstract_algebra.Expression.show_rules">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">show_rules</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_algebra.html#Expression.show_rules"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_algebra.Expression.show_rules" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print algebraic rules used by <a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-class docutils literal notranslate"><span class="pre">create</span></code></a>.</p>
+<p>Print a summary of the algebraic rules with the given names, or all
+rules if not names a given.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>names</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Names of rules to show</p></li>
+<li><p><strong>attr</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Name of the class attribute from which to get
+the rules. Cf. <a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.add_rule" title="qalgebra.core.abstract_algebra.Expression.add_rule"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_rule()</span></code></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.8/library/exceptions.html#AttributeError" title="(in Python v3.8)"><strong>AttributeError</strong></a> – If invalid <cite>attr</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.abstract_algebra.Expression.del_rules">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">del_rules</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_algebra.html#Expression.del_rules"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_algebra.Expression.del_rules" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete algebraic rules used by <a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a></p>
+<p>Remove the rules with the given <cite>names</cite>, or all rules if no names are
+given</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>names</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Names of rules to delete</p></li>
+<li><p><strong>attr</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Name of the class attribute from which to
+delete the rules. Cf. <a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.add_rule" title="qalgebra.core.abstract_algebra.Expression.add_rule"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_rule()</span></code></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3.8/library/exceptions.html#KeyError" title="(in Python v3.8)"><strong>KeyError</strong></a> – If any rules in <cite>names</cite> does not exist</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3.8/library/exceptions.html#AttributeError" title="(in Python v3.8)"><strong>AttributeError</strong></a> – If invalid <cite>attr</cite></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.abstract_algebra.Expression.rules">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">rules</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_algebra.html#Expression.rules"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_algebra.Expression.rules" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterable of rule names used by <a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>attr</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Name of the class attribute to which to get the
+names. If None, one of <code class="docutils literal notranslate"><span class="pre">'_rules'</span></code>, <code class="docutils literal notranslate"><span class="pre">'_binary_rules'</span></code> is
+automatically chosen</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.abstract_algebra.Expression.args">
+<em class="property"><span class="pre">abstract</span> <span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">args</span></code><a class="headerlink" href="#qalgebra.core.abstract_algebra.Expression.args" title="Permalink to this definition">¶</a></dt>
+<dd><p>The tuple of positional arguments for the instantiation of the
+Expression</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.abstract_algebra.Expression.kwargs">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">kwargs</span></code><a class="headerlink" href="#qalgebra.core.abstract_algebra.Expression.kwargs" title="Permalink to this definition">¶</a></dt>
+<dd><p>The dictionary of keyword-only arguments for the instantiation of
+the Expression</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.abstract_algebra.Expression.minimal_kwargs">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">minimal_kwargs</span></code><a class="headerlink" href="#qalgebra.core.abstract_algebra.Expression.minimal_kwargs" title="Permalink to this definition">¶</a></dt>
+<dd><p>A “minimal” dictionary of keyword-only arguments, i.e. a subset of
+<cite>kwargs</cite> that may exclude default options</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.abstract_algebra.Expression.substitute">
+<code class="sig-name descname"><span class="pre">substitute</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var_map</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_algebra.html#Expression.substitute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_algebra.Expression.substitute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Substitute sub-expressions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>var_map</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – Dictionary with entries of the form
+<code class="docutils literal notranslate"><span class="pre">{expr:</span> <span class="pre">substitution}</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.abstract_algebra.Expression.doit">
+<code class="sig-name descname"><span class="pre">doit</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_algebra.html#Expression.doit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_algebra.Expression.doit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rewrite (sub-)expressions in a more explicit form</p>
+<p>Return a modified expression that is more explicit than the original
+expression. The definition of “more explicit” is decided by the
+relevant subclass, e.g. a <a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.Commutator.doit" title="qalgebra.core.operator_algebra.Commutator.doit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Commutator</span></code></a> is
+written out according to its definition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>classes</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – an optional list of classes. If given,
+only (sub-)expressions that an instance of one of the classes
+in the list will be rewritten.</p></li>
+<li><p><strong>recursive</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – If True, also rewrite any sub-expressions of any
+rewritten expression. Note that <a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.doit" title="qalgebra.core.abstract_algebra.Expression.doit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">doit()</span></code></a> always recurses
+into sub-expressions of expressions not affected by it.</p></li>
+<li><p><strong>kwargs</strong> – Any remaining keyword arguments may be used by the
+<a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.doit" title="qalgebra.core.abstract_algebra.Expression.doit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">doit()</span></code></a> method of a particular expression.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>Consider the following expression:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">IndexedBase</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">IdxSym</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">);</span> <span class="n">N</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;N&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Asym</span><span class="p">,</span> <span class="n">Csym</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;A, C&#39;</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">IndexedBase</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">OperatorSymbol</span><span class="p">(</span><span class="n">StrLabel</span><span class="p">(</span><span class="n">Asym</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">hs</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="n">OperatorSymbol</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">C</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">OperatorSymbol</span><span class="p">(</span><span class="n">StrLabel</span><span class="p">(</span><span class="n">Csym</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">hs</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="n">expr</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">unicode</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">show_hs_label</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expr</span> <span class="o">=</span> <span class="n">Sum</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)(</span><span class="n">Commutator</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">B</span><span class="p">)</span> <span class="o">+</span> <span class="n">C</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="o">/</span> <span class="n">N</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">show</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+<span class="go">1/N (∑_{i=1}^{3} (Ĉ_i + [Â_i, B̂]))</span>
+</pre></div>
+</div>
+<p>Calling <a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.doit" title="qalgebra.core.abstract_algebra.Expression.doit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">doit()</span></code></a> without parameters rewrites both the indexed
+sum and the commutator:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">show</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">doit</span><span class="p">())</span>
+<span class="go">1/N (Ĉ₁ + Ĉ₂ + Ĉ₃ + Â₁ B̂ + Â₂ B̂ + Â₃ B̂ - B̂ Â₁ - B̂ Â₂ - B̂ Â₃)</span>
+</pre></div>
+</div>
+<p>A non-recursive call only expands the sum, as it does not recurse
+into the expanded summands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">show</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">doit</span><span class="p">(</span><span class="n">recursive</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="go">1/N (Ĉ₁ + Ĉ₂ + Ĉ₃ + [Â₁, B̂] + [Â₂, B̂] + [Â₃, B̂])</span>
+</pre></div>
+</div>
+<p>We can selectively expand only the sum or only the commutator:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">show</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">doit</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="n">IndexedSum</span><span class="p">]))</span>
+<span class="go">1/N (Ĉ₁ + Ĉ₂ + Ĉ₃ + [Â₁, B̂] + [Â₂, B̂] + [Â₃, B̂])</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">show</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">doit</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="n">Commutator</span><span class="p">]))</span>
+<span class="go">1/N (∑_{i=1}^{3} (Ĉ_i - B̂ Â_i + Â_i B̂))</span>
+</pre></div>
+</div>
+<p>Also we can pass a keyword argument that expands the sum only to
+the 2nd term, as documented in <a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.Commutator.doit" title="qalgebra.core.operator_algebra.Commutator.doit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Commutator.doit()</span></code></a></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">show</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">doit</span><span class="p">(</span><span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="n">IndexedSum</span><span class="p">],</span> <span class="n">max_terms</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="go">1/N (Ĉ₁ + Ĉ₂ + [Â₁, B̂] + [Â₂, B̂])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.abstract_algebra.Expression.apply">
+<code class="sig-name descname"><span class="pre">apply</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_algebra.html#Expression.apply"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_algebra.Expression.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply <cite>func</cite> to expression.</p>
+<p>Equivalent to <code class="docutils literal notranslate"><span class="pre">func(self,</span> <span class="pre">*args,</span> <span class="pre">**kwargs)</span></code>. This method exists for
+easy chaining:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="n">OperatorSymbol</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expr</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="n">Commutator</span><span class="p">(</span><span class="n">A</span> <span class="o">*</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span> <span class="o">*</span> <span class="n">D</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">expr</span><span class="p">:</span> <span class="n">expr</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">expand_commutators_leibniz</span><span class="p">,</span> <span class="n">expand_expr</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">substitute</span><span class="p">({</span><span class="n">A</span><span class="p">:</span> <span class="n">IdentityOperator</span><span class="p">}))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.abstract_algebra.Expression.apply_rules">
+<code class="sig-name descname"><span class="pre">apply_rules</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rules</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_algebra.html#Expression.apply_rules"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_algebra.Expression.apply_rules" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rebuild the expression while applying a list of rules.</p>
+<p>The rules are applied against the instantiated expression, and any
+sub-expressions if <cite>recursive</cite> is True. Rule application is best though
+of as a pattern-based substitution. This is different from the
+<em>automatic</em> rules that <a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a> uses (see <a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.add_rule" title="qalgebra.core.abstract_algebra.Expression.add_rule"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_rule()</span></code></a>),
+which are applied <em>before</em> expressions are instantiated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rules</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/collections.html#collections.OrderedDict" title="(in Python v3.8)"><em>OrderedDict</em></a>) – List of rules or
+dictionary mapping names to rules, where each rule is a tuple
+(<a class="reference internal" href="qalgebra.pattern_matching.html#qalgebra.pattern_matching.Pattern" title="qalgebra.pattern_matching.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a>, replacement callable), cf.
+<a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.apply_rule" title="qalgebra.core.abstract_algebra.Expression.apply_rule"><code class="xref py py-meth docutils literal notranslate"><span class="pre">apply_rule()</span></code></a></p></li>
+<li><p><strong>recursive</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – If true (default), apply rules to all arguments
+and keyword arguments of the expression. Otherwise, only the
+expression itself will be re-instantiated.</p></li>
+</ul>
+</dd>
+</dl>
+<p>If <cite>rules</cite> is a dictionary, the keys (rules names) are used only for
+debug logging, to allow an analysis of which rules lead to the final
+form of an expression.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.abstract_algebra.Expression.apply_rule">
+<code class="sig-name descname"><span class="pre">apply_rule</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replacement</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_algebra.html#Expression.apply_rule"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_algebra.Expression.apply_rule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply a single rules to the expression</p>
+<p>This is equivalent to <a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.apply_rules" title="qalgebra.core.abstract_algebra.Expression.apply_rules"><code class="xref py py-meth docutils literal notranslate"><span class="pre">apply_rules()</span></code></a> with
+<code class="docutils literal notranslate"><span class="pre">rules=[(pattern,</span> <span class="pre">replacement)]</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pattern</strong> (<a class="reference internal" href="qalgebra.pattern_matching.html#qalgebra.pattern_matching.Pattern" title="qalgebra.pattern_matching.Pattern"><em>Pattern</em></a>) – A pattern containing one or more wildcards</p></li>
+<li><p><strong>replacement</strong> (<em>callable</em>) – A callable that takes the wildcard names in
+<cite>pattern</cite> as keyword arguments, and returns a replacement for
+any expression that <cite>pattern</cite> matches.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>Consider the following Heisenberg Hamiltonian:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tls</span> <span class="o">=</span> <span class="n">SpinSpace</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">spin</span><span class="o">=</span><span class="s1">&#39;1/2&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;i, j, n&#39;</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">IdxSym</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">J</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">sympy</span><span class="o">.</span><span class="n">IndexedBase</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">Sig</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">OperatorSymbol</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">StrLabel</span><span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">Indexed</span><span class="p">(</span><span class="s1">&#39;sigma&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">)),</span> <span class="n">hs</span><span class="o">=</span><span class="n">tls</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">H</span> <span class="o">=</span> <span class="o">-</span> <span class="n">Sum</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">tls</span><span class="p">)(</span><span class="n">Sum</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">tls</span><span class="p">)(</span>
+<span class="gp">... </span>    <span class="n">J</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">Sig</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="n">Sig</span><span class="p">(</span><span class="n">j</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">unicode</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+<span class="go">&#39;- (∑_{i,j ∈ ℌₛ} J_ij σ̂_i^(s) σ̂_j^(s))&#39;</span>
+</pre></div>
+</div>
+<p>We can transform this into a classical Hamiltonian by replacing the
+operators with scalars:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">H_classical</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">apply_rule</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">pattern</span><span class="p">(</span><span class="n">OperatorSymbol</span><span class="p">,</span> <span class="n">wc</span><span class="p">(</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="n">head</span><span class="o">=</span><span class="n">StrLabel</span><span class="p">)),</span>
+<span class="gp">... </span>    <span class="k">lambda</span> <span class="n">label</span><span class="p">:</span> <span class="n">label</span><span class="o">.</span><span class="n">expr</span> <span class="o">*</span> <span class="n">IdentityOperator</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">unicode</span><span class="p">(</span><span class="n">H_classical</span><span class="p">)</span>
+<span class="go">&#39;- (∑_{i,j ∈ ℌₛ} J_ij σ_i σ_j)&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.abstract_algebra.Expression.rebuild">
+<code class="sig-name descname"><span class="pre">rebuild</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_algebra.html#Expression.rebuild"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_algebra.Expression.rebuild" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recursively re-instantiate the expression.</p>
+<p>This is generally used within a managed context such as
+<a class="reference internal" href="qalgebra.toolbox.core.html#qalgebra.toolbox.core.temporary_rules" title="qalgebra.toolbox.core.temporary_rules"><code class="xref py py-func docutils literal notranslate"><span class="pre">temporary_rules()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.abstract_algebra.Expression.free_symbols">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">free_symbols</span></code><a class="headerlink" href="#qalgebra.core.abstract_algebra.Expression.free_symbols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set of free SymPy symbols contained within the expression.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.abstract_algebra.Expression.bound_symbols">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">bound_symbols</span></code><a class="headerlink" href="#qalgebra.core.abstract_algebra.Expression.bound_symbols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set of bound SymPy symbols in the expression.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.abstract_algebra.Expression.all_symbols">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">all_symbols</span></code><a class="headerlink" href="#qalgebra.core.abstract_algebra.Expression.all_symbols" title="Permalink to this definition">¶</a></dt>
+<dd><p>Combination of <a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.free_symbols" title="qalgebra.core.abstract_algebra.Expression.free_symbols"><code class="xref py py-attr docutils literal notranslate"><span class="pre">free_symbols</span></code></a> and <a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression.bound_symbols" title="qalgebra.core.abstract_algebra.Expression.bound_symbols"><code class="xref py py-attr docutils literal notranslate"><span class="pre">bound_symbols</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.abstract_algebra.Expression.__ne__">
+<code class="sig-name descname"><span class="pre">__ne__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_algebra.html#Expression.__ne__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_algebra.Expression.__ne__" title="Permalink to this definition">¶</a></dt>
+<dd><p>If it is well-defined (i.e. boolean), simply return
+the negation of <code class="docutils literal notranslate"><span class="pre">self.__eq__(other)</span></code>
+Otherwise return NotImplemented.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.core.abstract_algebra.Operation">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.abstract_algebra.</span></code><code class="sig-name descname"><span class="pre">Operation</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">operands</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_algebra.html#Operation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_algebra.Operation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qalgebra.core.abstract_algebra.Expression" title="qalgebra.core.abstract_algebra.Expression"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_algebra.Expression</span></code></a></p>
+<p>Base class for “operations”</p>
+<p>Operations are Expressions that act algebraically on other expressions
+(their “operands”).</p>
+<p>Operations differ from more general Expressions by the convention that the
+arguments of the Operator are exactly the operands (which must be members
+of the algebra!) Any other parameters (non-operands) that may be required
+must be given as keyword-arguments.</p>
+<dl class="py method">
+<dt id="qalgebra.core.abstract_algebra.Operation.operands">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">operands</span></code><a class="headerlink" href="#qalgebra.core.abstract_algebra.Operation.operands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tuple of operands of the operation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.abstract_algebra.Operation.args">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">args</span></code><a class="headerlink" href="#qalgebra.core.abstract_algebra.Operation.args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for operands</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="qalgebra.core.abstract_algebra.substitute">
+<code class="sig-prename descclassname"><span class="pre">qalgebra.core.abstract_algebra.</span></code><code class="sig-name descname"><span class="pre">substitute</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_map</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/abstract_algebra.html#substitute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.abstract_algebra.substitute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Substitute symbols or (sub-)expressions with the given replacements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expr</strong> – The expression in which to perform the substitution</p></li>
+<li><p><strong>var_map</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – The substitution dictionary.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="qalgebra.core.abstract_quantum_algebra.html" class="btn btn-neutral float-right" title="qalgebra.core.abstract_quantum_algebra module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="qalgebra.core.html" class="btn btn-neutral float-left" title="qalgebra.core package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Michael Goerz.
+      <span class="lastupdated">
+        Last updated on May 26, 2021.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

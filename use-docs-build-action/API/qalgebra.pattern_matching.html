@@ -1,0 +1,622 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>qalgebra.pattern_matching module &mdash; QAlgebra 0.2.0+dev (20ec971) documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/mycss.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/docs-versions-menu.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="qalgebra.convert package" href="qalgebra.convert.html" />
+    <link rel="prev" title="qalgebra package" href="qalgebra.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0+dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#usage">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Quantum Algebra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../symbolic_algebra.html">Symbolic Algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../printing.html">The Printing System</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../library_structure.html">Library Structure</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="qalgebra.html">API of the QAlgebra package</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">qalgebra.pattern_matching module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.convert.html">qalgebra.convert package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.core.html">qalgebra.core package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.library.html">qalgebra.library package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.printing.html">qalgebra.printing package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.toolbox.html">qalgebra.toolbox package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.utils.html">qalgebra.utils package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.html#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="qalgebra.html">qalgebra package</a> &raquo;</li>
+        
+      <li>qalgebra.pattern_matching module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-qalgebra.pattern_matching">
+<span id="qalgebra-pattern-matching-module"></span><h1>qalgebra.pattern_matching module<a class="headerlink" href="#module-qalgebra.pattern_matching" title="Permalink to this headline">¶</a></h1>
+<p>QNET’s pattern matching engine.</p>
+<p>Patterns may be constructed by either instantiating a <a class="reference internal" href="#qalgebra.pattern_matching.Pattern" title="qalgebra.pattern_matching.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a> instance
+directly, or (preferred) by calling the <a class="reference internal" href="#qalgebra.pattern_matching.pattern" title="qalgebra.pattern_matching.pattern"><code class="xref py py-func docutils literal notranslate"><span class="pre">pattern()</span></code></a>, <a class="reference internal" href="#qalgebra.pattern_matching.pattern_head" title="qalgebra.pattern_matching.pattern_head"><code class="xref py py-func docutils literal notranslate"><span class="pre">pattern_head()</span></code></a>,
+or <a class="reference internal" href="#qalgebra.pattern_matching.wc" title="qalgebra.pattern_matching.wc"><code class="xref py py-func docutils literal notranslate"><span class="pre">wc()</span></code></a> helper routines.</p>
+<p>The pattern may then be matched against an expression using
+<a class="reference internal" href="#qalgebra.pattern_matching.match_pattern" title="qalgebra.pattern_matching.match_pattern"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_pattern()</span></code></a>. The result of a match is a <a class="reference internal" href="#qalgebra.pattern_matching.MatchDict" title="qalgebra.pattern_matching.MatchDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">MatchDict</span></code></a> object,
+which evaluates to True or False in a boolean context to indicate the success
+or failure of the match (or alternatively, through the <cite>success</cite> attribute).
+The <a class="reference internal" href="#qalgebra.pattern_matching.MatchDict" title="qalgebra.pattern_matching.MatchDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">MatchDict</span></code></a> object also maps any wildcard names to the expression
+that the corresponding wildcard Pattern matches.</p>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Classes:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.pattern_matching.MatchDict" title="qalgebra.pattern_matching.MatchDict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MatchDict</span></code></a></p></td>
+<td><p>Result of a <a class="reference internal" href="#qalgebra.pattern_matching.Pattern.match" title="qalgebra.pattern_matching.Pattern.match"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Pattern.match()</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.pattern_matching.Pattern" title="qalgebra.pattern_matching.Pattern"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pattern</span></code></a></p></td>
+<td><p>Pattern for matching an expression.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.pattern_matching.ProtoExpr" title="qalgebra.pattern_matching.ProtoExpr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProtoExpr</span></code></a></p></td>
+<td><p>Object representing an un-instantiated <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression" title="qalgebra.core.abstract_algebra.Expression"><code class="xref py py-class docutils literal notranslate"><span class="pre">Expression</span></code></a>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Functions:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.pattern_matching.match_pattern" title="qalgebra.pattern_matching.match_pattern"><code class="xref py py-obj docutils literal notranslate"><span class="pre">match_pattern</span></code></a></p></td>
+<td><p>Recursively match <cite>expr</cite> with the given <cite>expr_or_pattern</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.pattern_matching.pattern" title="qalgebra.pattern_matching.pattern"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pattern</span></code></a></p></td>
+<td><p>‘Flat’ constructor for <a class="reference internal" href="#qalgebra.pattern_matching.Pattern" title="qalgebra.pattern_matching.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.pattern_matching.pattern_head" title="qalgebra.pattern_matching.pattern_head"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pattern_head</span></code></a></p></td>
+<td><p>Constructor for a <a class="reference internal" href="#qalgebra.pattern_matching.Pattern" title="qalgebra.pattern_matching.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a> matching a <a class="reference internal" href="#qalgebra.pattern_matching.ProtoExpr" title="qalgebra.pattern_matching.ProtoExpr"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProtoExpr</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.pattern_matching.wc" title="qalgebra.pattern_matching.wc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">wc</span></code></a></p></td>
+<td><p>Constructor for a wildcard-<a class="reference internal" href="#qalgebra.pattern_matching.Pattern" title="qalgebra.pattern_matching.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a>.</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">__all__</span></code>: <a class="reference internal" href="#qalgebra.pattern_matching.MatchDict" title="qalgebra.pattern_matching.MatchDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">MatchDict</span></code></a>, <a class="reference internal" href="#qalgebra.pattern_matching.Pattern" title="qalgebra.pattern_matching.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a>, <a class="reference internal" href="#qalgebra.pattern_matching.match_pattern" title="qalgebra.pattern_matching.match_pattern"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_pattern</span></code></a>, <a class="reference internal" href="#qalgebra.pattern_matching.pattern" title="qalgebra.pattern_matching.pattern"><code class="xref py py-func docutils literal notranslate"><span class="pre">pattern</span></code></a>, <a class="reference internal" href="#qalgebra.pattern_matching.pattern_head" title="qalgebra.pattern_matching.pattern_head"><code class="xref py py-func docutils literal notranslate"><span class="pre">pattern_head</span></code></a>, <a class="reference internal" href="#qalgebra.pattern_matching.wc" title="qalgebra.pattern_matching.wc"><code class="xref py py-func docutils literal notranslate"><span class="pre">wc</span></code></a></p>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="qalgebra.pattern_matching.MatchDict">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.pattern_matching.</span></code><code class="sig-name descname"><span class="pre">MatchDict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/pattern_matching.html#MatchDict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.pattern_matching.MatchDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.8/library/collections.html#collections.OrderedDict" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">collections.OrderedDict</span></code></a></p>
+<p>Result of a <a class="reference internal" href="#qalgebra.pattern_matching.Pattern.match" title="qalgebra.pattern_matching.Pattern.match"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Pattern.match()</span></code></a>.</p>
+<p>Dictionary of wildcard names to expressions. Once the value for a key is
+set, attempting to set it again with a different value raises a
+<a class="reference external" href="https://docs.python.org/3.8/library/exceptions.html#KeyError" title="(in Python v3.8)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">KeyError</span></code></a>.  The attribute <cite>merge_lists</cite> may be set to modify this
+behavior for values that are lists: If it is set to a value different from
+zero, two lists that are set via the same key are merged. If <cite>merge_lists</cite>
+is negative, the new values are appended to the existing values; if it is
+positive, the new values are prepended.</p>
+<p>In a boolean context, a <a class="reference internal" href="#qalgebra.pattern_matching.MatchDict" title="qalgebra.pattern_matching.MatchDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">MatchDict</span></code></a> always evaluates as True (even
+if empty, unlike a normal dictionary), unless the <cite>success</cite> attribute is
+explicitly set to False (which a failed <a class="reference internal" href="#qalgebra.pattern_matching.Pattern.match" title="qalgebra.pattern_matching.Pattern.match"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Pattern.match()</span></code></a> should
+do)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>success</strong> (<em>bool</em>) – Value of the <a class="reference internal" href="#qalgebra.pattern_matching.MatchDict" title="qalgebra.pattern_matching.MatchDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">MatchDict</span></code></a> object in a boolean
+context: <code class="docutils literal notranslate"><span class="pre">bool(match)</span> <span class="pre">==</span> <span class="pre">match.success</span></code></p></li>
+<li><p><strong>reason</strong> (<em>str</em>) – If <cite>success</cite> is False, string explaining why the match
+failed</p></li>
+<li><p><strong>merge_lists</strong> (<em>int</em>) – Code that indicates how to combine multiple values
+that are lists</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="qalgebra.pattern_matching.MatchDict.update">
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">others</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/pattern_matching.html#MatchDict.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.pattern_matching.MatchDict.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update dict with entries from <cite>other</cite></p>
+<p>If <cite>other</cite> has an attribute <code class="docutils literal notranslate"><span class="pre">success=False</span></code> and <code class="docutils literal notranslate"><span class="pre">reason</span></code>, those
+attributes are copied as well</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.pattern_matching.Pattern">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.pattern_matching.</span></code><code class="sig-name descname"><span class="pre">Pattern</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">head</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wc_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conditions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/pattern_matching.html#Pattern"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.pattern_matching.Pattern" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.8/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Pattern for matching an expression.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>head</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#type" title="(in Python v3.8)"><em>type</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a>) – The type (or tuple of types) of the expression
+that can be matched. If None, any type of Expression
+matches</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a>) – List or tuple of positional arguments of the
+matched Expression (cf. <cite>Expression.args</cite>). Each element is an
+expression (to be matched exactly) or another Pattern instance
+(matched recursively). If None, no arguments are checked</p></li>
+<li><p><strong>kwargs</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a>) – Dictionary of keyword arguments of the
+expression (cf. <cite>Expression.kwargs</cite>). As for <cite>args</cite>, each value is
+an expression or Pattern instance.</p></li>
+<li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – If the pattern is used to match the arguments of an
+expression, code to indicate how many arguments the Pattern can
+consume: <cite>Pattern.single</cite>, <cite>Pattern.one_or_more</cite>,
+<cite>Pattern.zero_or_more</cite></p></li>
+<li><p><strong>wc_name</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a>) – If pattern matches an expression, key in the
+resulting <a class="reference internal" href="#qalgebra.pattern_matching.MatchDict" title="qalgebra.pattern_matching.MatchDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">MatchDict</span></code></a> for the expression. If None, the match
+will not be recorded in the result</p></li>
+<li><p><strong>conditions</strong> (<em>List</em><em>[</em><em>callable</em><em>]</em><em>, or </em><a class="reference external" href="https://docs.python.org/3.8/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a>) – If not None, a list of
+callables that take <cite>expr</cite> and return a boolean value. If the
+return value is False, the pattern is determined not to match
+<cite>expr</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For (sub-)patterns that occur nested in the <cite>args</cite> attribute of another
+pattern, only the first or last sub-pattern may have a <cite>mode</cite> other
+than <cite>Pattern.single</cite>. This also implies that only one of the <cite>args</cite>
+may have a <cite>mode</cite> other than <cite>Pattern.single</cite>. This restrictions
+ensures that patterns can be matched without backtracking, thus
+guaranteeing numerical efficiency.</p>
+</div>
+<dl class="py attribute">
+<dt id="qalgebra.pattern_matching.Pattern.single">
+<code class="sig-name descname"><span class="pre">single</span></code><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#qalgebra.pattern_matching.Pattern.single" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="qalgebra.pattern_matching.Pattern.one_or_more">
+<code class="sig-name descname"><span class="pre">one_or_more</span></code><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#qalgebra.pattern_matching.Pattern.one_or_more" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="qalgebra.pattern_matching.Pattern.zero_or_more">
+<code class="sig-name descname"><span class="pre">zero_or_more</span></code><em class="property"> <span class="pre">=</span> <span class="pre">3</span></em><a class="headerlink" href="#qalgebra.pattern_matching.Pattern.zero_or_more" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.pattern_matching.Pattern.extended_arg_patterns">
+<code class="sig-name descname"><span class="pre">extended_arg_patterns</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/pattern_matching.html#Pattern.extended_arg_patterns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.pattern_matching.Pattern.extended_arg_patterns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterator over patterns for positional arguments to be matched.</p>
+<p>This yields the elements of <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.args" title="qalgebra.core.abstract_algebra.Expression.args"><code class="xref py py-attr docutils literal notranslate"><span class="pre">args</span></code></a>, extended by
+their <cite>mode</cite> value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.pattern_matching.Pattern.match">
+<code class="sig-name descname"><span class="pre">match</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/pattern_matching.html#Pattern.match"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.pattern_matching.Pattern.match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Match the given expression (recursively).</p>
+<p>Returns a <a class="reference internal" href="#qalgebra.pattern_matching.MatchDict" title="qalgebra.pattern_matching.MatchDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">MatchDict</span></code></a> instance that maps any wildcard names to
+the expressions that the corresponding wildcard pattern matches. For
+(sub-)pattern that have a <cite>mode</cite> attribute other than <cite>Pattern.single</cite>,
+the wildcard name is mapped to a list of all matched expression.</p>
+<p>If the match is successful, the resulting <a class="reference internal" href="#qalgebra.pattern_matching.MatchDict" title="qalgebra.pattern_matching.MatchDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">MatchDict</span></code></a> instance
+will evaluate to True in a boolean context. If the match is not
+successful, it will evaluate as False, and the reason for failure is
+available in the <cite>reason</cite> attribute of the <a class="reference internal" href="#qalgebra.pattern_matching.MatchDict" title="qalgebra.pattern_matching.MatchDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">MatchDict</span></code></a> object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qalgebra.pattern_matching.MatchDict" title="qalgebra.pattern_matching.MatchDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">MatchDict</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.pattern_matching.Pattern.findall">
+<code class="sig-name descname"><span class="pre">findall</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/pattern_matching.html#Pattern.findall"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.pattern_matching.Pattern.findall" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of all matching (sub-)expressions in <cite>expr</cite></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qalgebra.pattern_matching.Pattern.finditer" title="qalgebra.pattern_matching.Pattern.finditer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">finditer()</span></code></a> yields the matches (<a class="reference internal" href="#qalgebra.pattern_matching.MatchDict" title="qalgebra.pattern_matching.MatchDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">MatchDict</span></code></a> instances)
+for the matched expressions.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.pattern_matching.Pattern.finditer">
+<code class="sig-name descname"><span class="pre">finditer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/pattern_matching.html#Pattern.finditer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.pattern_matching.Pattern.finditer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an iterator over all matches in <cite>expr</cite></p>
+<p>Iterate over all <a class="reference internal" href="#qalgebra.pattern_matching.MatchDict" title="qalgebra.pattern_matching.MatchDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">MatchDict</span></code></a> results of matches for any
+matching (sub-)expressions in <cite>expr</cite>. The order of the matches conforms
+to the equivalent matched expressions returned by <a class="reference internal" href="#qalgebra.pattern_matching.Pattern.findall" title="qalgebra.pattern_matching.Pattern.findall"><code class="xref py py-meth docutils literal notranslate"><span class="pre">findall()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.pattern_matching.Pattern.wc_names">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">wc_names</span></code><a class="headerlink" href="#qalgebra.pattern_matching.Pattern.wc_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set of all wildcard names occurring in the pattern.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="qalgebra.pattern_matching.match_pattern">
+<code class="sig-prename descclassname"><span class="pre">qalgebra.pattern_matching.</span></code><code class="sig-name descname"><span class="pre">match_pattern</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr_or_pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/pattern_matching.html#match_pattern"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.pattern_matching.match_pattern" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recursively match <cite>expr</cite> with the given <cite>expr_or_pattern</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expr_or_pattern</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a>) – either a direct expression (equal to <cite>expr</cite> for a
+successful match), or an instance of <a class="reference internal" href="#qalgebra.pattern_matching.Pattern" title="qalgebra.pattern_matching.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a>.</p></li>
+<li><p><strong>expr</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a>) – the expression to be matched</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#qalgebra.pattern_matching.MatchDict" title="qalgebra.pattern_matching.MatchDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">MatchDict</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="qalgebra.pattern_matching.pattern">
+<code class="sig-prename descclassname"><span class="pre">qalgebra.pattern_matching.</span></code><code class="sig-name descname"><span class="pre">pattern</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">head</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wc_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conditions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/pattern_matching.html#pattern"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.pattern_matching.pattern" title="Permalink to this definition">¶</a></dt>
+<dd><p>‘Flat’ constructor for <a class="reference internal" href="#qalgebra.pattern_matching.Pattern" title="qalgebra.pattern_matching.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a>.</p>
+<p>Positional and keyword arguments are mapped into <cite>args</cite> and <cite>kwargs</cite>,
+respectively. Useful for defining rules that match an instantiated
+Expression with specific arguments</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qalgebra.pattern_matching.Pattern" title="qalgebra.pattern_matching.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="qalgebra.pattern_matching.pattern_head">
+<code class="sig-prename descclassname"><span class="pre">qalgebra.pattern_matching.</span></code><code class="sig-name descname"><span class="pre">pattern_head</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conditions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wc_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/pattern_matching.html#pattern_head"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.pattern_matching.pattern_head" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor for a <a class="reference internal" href="#qalgebra.pattern_matching.Pattern" title="qalgebra.pattern_matching.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a> matching a <a class="reference internal" href="#qalgebra.pattern_matching.ProtoExpr" title="qalgebra.pattern_matching.ProtoExpr"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProtoExpr</span></code></a>.</p>
+<p>The patterns associated with <code class="docutils literal notranslate"><span class="pre">_rules</span></code> and <cite>_binary_rules`</cite>
+of an <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression" title="qalgebra.core.abstract_algebra.Expression"><code class="xref py py-class docutils literal notranslate"><span class="pre">Expression</span></code></a> subclass, or those passed to
+<a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.add_rule" title="qalgebra.core.abstract_algebra.Expression.add_rule"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Expression.add_rule()</span></code></a>, must be instantiated through this
+routine. The function does not allow to set a wildcard name
+(<cite>wc_name</cite> must not be given / be None)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qalgebra.pattern_matching.Pattern" title="qalgebra.pattern_matching.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="qalgebra.pattern_matching.wc">
+<code class="sig-prename descclassname"><span class="pre">qalgebra.pattern_matching.</span></code><code class="sig-name descname"><span class="pre">wc</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'_'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">head</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conditions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/pattern_matching.html#wc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.pattern_matching.wc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor for a wildcard-<a class="reference internal" href="#qalgebra.pattern_matching.Pattern" title="qalgebra.pattern_matching.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a>.</p>
+<p>Helper function to create a Pattern object with an emphasis on wildcard
+patterns, if we don’t care about the arguments of the matched expressions
+(otherwise, use <a class="reference internal" href="#qalgebra.pattern_matching.pattern" title="qalgebra.pattern_matching.pattern"><code class="xref py py-func docutils literal notranslate"><span class="pre">pattern()</span></code></a>)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name_mode</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Combined <cite>wc_name</cite> and <cite>mode</cite> for <a class="reference internal" href="#qalgebra.pattern_matching.Pattern" title="qalgebra.pattern_matching.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a>
+constructor argument. See below for syntax</p></li>
+<li><p><strong>head</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#type" title="(in Python v3.8)"><em>type</em></a><em>, or </em><a class="reference external" href="https://docs.python.org/3.8/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a>) – See <a class="reference internal" href="#qalgebra.pattern_matching.Pattern" title="qalgebra.pattern_matching.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a></p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a>) – See <a class="reference internal" href="#qalgebra.pattern_matching.Pattern" title="qalgebra.pattern_matching.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a></p></li>
+<li><p><strong>kwargs</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a>) – See <a class="reference internal" href="#qalgebra.pattern_matching.Pattern" title="qalgebra.pattern_matching.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a></p></li>
+<li><p><strong>conditions</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3.8/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a>) – See <a class="reference internal" href="#qalgebra.pattern_matching.Pattern" title="qalgebra.pattern_matching.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a></p></li>
+</ul>
+</dd>
+</dl>
+<p>The <cite>name_mode</cite> argument uses trailing underscored to indicate the <cite>mode</cite>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">A</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Pattern(wc_name=&quot;A&quot;,</span> <span class="pre">mode=Pattern.single,</span> <span class="pre">...)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">A_</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Pattern(wc_name=&quot;A&quot;,</span> <span class="pre">mode=Pattern.single,</span> <span class="pre">...)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">B__</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Pattern(wc_name=&quot;B&quot;,</span> <span class="pre">mode=Pattern.one_or_more,</span> <span class="pre">...)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">B___</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Pattern(wc_name=&quot;C&quot;,</span> <span class="pre">mode=Pattern.zero_or_more,</span> <span class="pre">...)</span></code></p></li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#qalgebra.pattern_matching.Pattern" title="qalgebra.pattern_matching.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.pattern_matching.ProtoExpr">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.pattern_matching.</span></code><code class="sig-name descname"><span class="pre">ProtoExpr</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/pattern_matching.html#ProtoExpr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.pattern_matching.ProtoExpr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.8/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">collections.abc.Sequence</span></code></a></p>
+<p>Object representing an un-instantiated <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression" title="qalgebra.core.abstract_algebra.Expression"><code class="xref py py-class docutils literal notranslate"><span class="pre">Expression</span></code></a>.</p>
+<p>A <a class="reference internal" href="#qalgebra.pattern_matching.ProtoExpr" title="qalgebra.pattern_matching.ProtoExpr"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProtoExpr</span></code></a> may be matched by a <a class="reference internal" href="#qalgebra.pattern_matching.Pattern" title="qalgebra.pattern_matching.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a> created via
+<a class="reference internal" href="#qalgebra.pattern_matching.pattern_head" title="qalgebra.pattern_matching.pattern_head"><code class="xref py py-func docutils literal notranslate"><span class="pre">pattern_head()</span></code></a>. This is used in <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Expression.create()</span></code></a>: before an
+expression is instantiated, a <a class="reference internal" href="#qalgebra.pattern_matching.ProtoExpr" title="qalgebra.pattern_matching.ProtoExpr"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProtoExpr</span></code></a> is constructed with the
+positional and keyword arguments passed to <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a>.
+Then, this <a class="reference internal" href="#qalgebra.pattern_matching.ProtoExpr" title="qalgebra.pattern_matching.ProtoExpr"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProtoExpr</span></code></a> is matched against all the automatic rules
+<a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a> knows about.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a>) – positional arguments that would be used in the
+instantiation of the Expression</p></li>
+<li><p><strong>kwargs</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – keyword arguments. Will we converted to an
+<a class="reference external" href="https://docs.python.org/3.8/library/collections.html#collections.OrderedDict" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">OrderedDict</span></code></a></p></li>
+<li><p><strong>cls</strong> – The class of the Expression that will ultimately
+be instantiated, or None if the class is unknown.</p></li>
+</ul>
+</dd>
+</dl>
+<p>The combined values of <cite>args</cite> and <cite>kwargs</cite> are accessible as a (mutable)
+sequence.</p>
+<dl class="py method">
+<dt id="qalgebra.pattern_matching.ProtoExpr.instantiate">
+<code class="sig-name descname"><span class="pre">instantiate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/pattern_matching.html#ProtoExpr.instantiate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.pattern_matching.ProtoExpr.instantiate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an instantiated Expression.</p>
+<p>Equivalent to <code class="docutils literal notranslate"><span class="pre">cls.create(*self.args,</span> <span class="pre">**self.kwargs)</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cls</strong> – The class of the instantiated expression. If not
+given, <code class="docutils literal notranslate"><span class="pre">self.cls</span></code> will be used.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.pattern_matching.ProtoExpr.from_expr">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_expr</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/pattern_matching.html#ProtoExpr.from_expr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.pattern_matching.ProtoExpr.from_expr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate proto-expression from the given Expression.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="qalgebra.convert.html" class="btn btn-neutral float-right" title="qalgebra.convert package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="qalgebra.html" class="btn btn-neutral float-left" title="qalgebra package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Michael Goerz.
+      <span class="lastupdated">
+        Last updated on May 26, 2021.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

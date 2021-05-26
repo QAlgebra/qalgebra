@@ -1,0 +1,381 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>qalgebra.toolbox.core &mdash; QAlgebra 0.2.0+dev (20ec971) documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/mycss.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/docs-versions-menu.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0+dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html#usage">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Quantum Algebra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../symbolic_algebra.html">Symbolic Algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../printing.html">The Printing System</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../history.html">History</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../library_structure.html">Library Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../API/qalgebra.html">API of the QAlgebra package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../qalgebra.html">qalgebra</a> &raquo;</li>
+        
+      <li>qalgebra.toolbox.core</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for qalgebra.toolbox.core</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
+<span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">contextmanager</span>
+
+<span class="kn">import</span> <span class="nn">sympy</span>
+
+<span class="kn">from</span> <span class="nn">..core.abstract_algebra</span> <span class="kn">import</span> <span class="n">Expression</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;no_instance_caching&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;temporary_instance_cache&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;temporary_rules&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;symbols&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<div class="viewcode-block" id="no_instance_caching"><a class="viewcode-back" href="../../../API/qalgebra.toolbox.core.html#qalgebra.toolbox.core.no_instance_caching">[docs]</a><span class="nd">@contextmanager</span>
+<span class="k">def</span> <span class="nf">no_instance_caching</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Temporarily disable instance caching in :meth:`~.Expression.create`</span>
+
+<span class="sd">    Within the managed context, :meth:`~.Expression.create` will not use any</span>
+<span class="sd">    caching, for any class.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># this assumes that no sub-class of Expression shadows</span>
+    <span class="c1"># Expression.instance_caching</span>
+    <span class="n">orig_flag</span> <span class="o">=</span> <span class="n">Expression</span><span class="o">.</span><span class="n">instance_caching</span>
+    <span class="n">Expression</span><span class="o">.</span><span class="n">instance_caching</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">yield</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">Expression</span><span class="o">.</span><span class="n">instance_caching</span> <span class="o">=</span> <span class="n">orig_flag</span></div>
+
+
+<div class="viewcode-block" id="temporary_instance_cache"><a class="viewcode-back" href="../../../API/qalgebra.toolbox.core.html#qalgebra.toolbox.core.temporary_instance_cache">[docs]</a><span class="nd">@contextmanager</span>
+<span class="k">def</span> <span class="nf">temporary_instance_cache</span><span class="p">(</span><span class="o">*</span><span class="n">classes</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Use a temporary cache for instances in :meth:`~.Expression.create`</span>
+
+<span class="sd">    The instance cache used by :meth:`~.Expression.create` for any of the given</span>
+<span class="sd">    `classes` will be cleared upon entering the managed context, and restored</span>
+<span class="sd">    on leaving it.  That is, no cached instances from outside of the managed</span>
+<span class="sd">    context will be used within the managed context, and vice versa</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">orig_instances</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span>
+        <span class="n">orig_instances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_instances</span><span class="p">)</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_instances</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">yield</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">classes</span><span class="p">):</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">_instances</span> <span class="o">=</span> <span class="n">orig_instances</span><span class="p">[</span><span class="n">i</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="temporary_rules"><a class="viewcode-back" href="../../../API/qalgebra.toolbox.core.html#qalgebra.toolbox.core.temporary_rules">[docs]</a><span class="nd">@contextmanager</span>
+<span class="k">def</span> <span class="nf">temporary_rules</span><span class="p">(</span><span class="o">*</span><span class="n">classes</span><span class="p">,</span> <span class="n">clear</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Allow temporary modification of rules for :meth:`~.Expression.create`</span>
+
+<span class="sd">    For every one of the given `classes`, protect the rules (processed by</span>
+<span class="sd">    :func:`.match_replace` or :func:`.match_replace_binary`) associated with</span>
+<span class="sd">    that class from modification beyond the managed context.</span>
+<span class="sd">    Implies :func:`temporary_instance_cache`. If `clear` is given as</span>
+<span class="sd">    True, all existing rules are temporarily cleared from the given classes on</span>
+<span class="sd">    entering the managed context.</span>
+
+<span class="sd">    Within the managed context, :meth:`~.Expression.add_rule` may be used for</span>
+<span class="sd">    any class in `classes` to define local rules, or</span>
+<span class="sd">    :meth:`~.Expression.del_rules` to disable specific existing rules (assuming</span>
+<span class="sd">    `clear` is False). Upon leaving the managed context all original rules will</span>
+<span class="sd">    be restored, removing any local rules.</span>
+
+<span class="sd">    The `classes`&#39; :obj:`simplifications &lt;.Expression&gt;` attribute is also</span>
+<span class="sd">    protected from permanent modification. Locally modifying</span>
+<span class="sd">    :obj:`simplifications &lt;.Expression&gt;` should be done with care, but allows</span>
+<span class="sd">    complete control over the creation of expressions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">orig_instances</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">orig_rules</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">orig_binary_rules</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">orig_simplifications</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span>
+        <span class="n">orig_instances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_instances</span><span class="p">)</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_instances</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">orig_simplifications</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">simplifications</span><span class="p">)</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">simplifications</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">simplifications</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">orig_rules</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_rules</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">clear</span><span class="p">:</span>
+                <span class="bp">cls</span><span class="o">.</span><span class="n">_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">([])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">cls</span><span class="o">.</span><span class="n">_rules</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_rules</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="n">orig_rules</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">orig_binary_rules</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_binary_rules</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">clear</span><span class="p">:</span>
+                <span class="bp">cls</span><span class="o">.</span><span class="n">_binary_rules</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">([])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">cls</span><span class="o">.</span><span class="n">_binary_rules</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_binary_rules</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="n">orig_binary_rules</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">yield</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">classes</span><span class="p">):</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">_instances</span> <span class="o">=</span> <span class="n">orig_instances</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">simplifications</span> <span class="o">=</span> <span class="n">orig_simplifications</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">orig_rules</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">cls</span><span class="o">.</span><span class="n">_rules</span> <span class="o">=</span> <span class="n">orig_rules</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">orig_binary_rules</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">cls</span><span class="o">.</span><span class="n">_binary_rules</span> <span class="o">=</span> <span class="n">orig_binary_rules</span><span class="p">[</span><span class="n">i</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="symbols"><a class="viewcode-back" href="../../../API/qalgebra.toolbox.core.html#qalgebra.toolbox.core.symbols">[docs]</a><span class="k">def</span> <span class="nf">symbols</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The :func:`~sympy.core.symbol.symbols` function from SymPy.</span>
+
+<span class="sd">    This can be used to generate QNET symbols as well::</span>
+
+<span class="sd">        &gt;&gt;&gt; A, B, C = symbols(&#39;A B C&#39;, cls=OperatorSymbol, hs=0)</span>
+<span class="sd">        &gt;&gt;&gt; srepr(A)</span>
+<span class="sd">        &quot;OperatorSymbol(&#39;A&#39;, hs=LocalSpace(&#39;0&#39;))&quot;</span>
+
+<span class="sd">    Basically, the `cls` keyword argument can be any instantiator, i.e. a class</span>
+<span class="sd">    or callable that receives a symbol name as the single positional argument.</span>
+<span class="sd">    Any keyword arguments not handled by :func:`symbols` directly (see</span>
+<span class="sd">    :func:`sympy.core.symbol.symbols` documentation) is passed on to the</span>
+<span class="sd">    instantiator. Obviously, this is extremely flexible.</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        :func:`symbols` does not pass *positional* arguments to the</span>
+<span class="sd">        instantiator. Two possible workarounds to create symbols with e.g. a</span>
+<span class="sd">        scalar argument are::</span>
+
+<span class="sd">            &gt;&gt;&gt; t = symbols(&#39;t&#39;, positive=True)</span>
+<span class="sd">            &gt;&gt;&gt; A_t, B_t = symbols(</span>
+<span class="sd">            ...     &#39;A B&#39;, cls=lambda s: OperatorSymbol(s, t, hs=0))</span>
+<span class="sd">            &gt;&gt;&gt; srepr(A_t, cache={t: &#39;t&#39;})</span>
+<span class="sd">            &quot;OperatorSymbol(&#39;A&#39;, t, hs=LocalSpace(&#39;0&#39;))&quot;</span>
+<span class="sd">            &gt;&gt;&gt; A_t, B_t = (OperatorSymbol(s, t, hs=0) for s in (&#39;A&#39;, &#39;B&#39;))</span>
+<span class="sd">            &gt;&gt;&gt; srepr(B_t, cache={t: &#39;t&#39;})</span>
+<span class="sd">            &quot;OperatorSymbol(&#39;B&#39;, t, hs=LocalSpace(&#39;0&#39;))&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># this wraps the sympy symbols function (instead of just importing and</span>
+    <span class="c1"># exposing it directly) solely for the extra documentation</span>
+    <span class="k">return</span> <span class="n">sympy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Michael Goerz.
+      <span class="lastupdated">
+        Last updated on May 26, 2021.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

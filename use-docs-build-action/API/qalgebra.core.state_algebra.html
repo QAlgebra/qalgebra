@@ -1,0 +1,910 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>qalgebra.core.state_algebra module &mdash; QAlgebra 0.2.0+dev (20ec971) documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/mycss.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/docs-versions-menu.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"extensions": ["tex2jax.js"], "jax": ["input/TeX", "output/SVG"], "TeX": {"extensions": ["AMSmath.js", "AMSsymbols.js"], "Macros": {"tr": ["{\\operatorname{tr}}", 0], "Tr": ["{\\operatorname{tr}}", 0], "diag": ["{\\operatorname{diag}}", 0], "abs": ["{\\operatorname{abs}}", 0], "pop": ["{\\operatorname{pop}}", 0], "SLH": ["{\\operatorname{SLH}}", 0], "aux": ["{\\text{aux}}", 0], "opt": ["{\\text{opt}}", 0], "tgt": ["{\\text{tgt}}", 0], "init": ["{\\text{init}}", 0], "lab": ["{\\text{lab}}", 0], "rwa": ["{\\text{rwa}}", 0], "fwhm": ["{\\text{fwhm}}", 0], "bra": ["{\\langle#1\\vert}", 1], "ket": ["{\\vert#1\\rangle}", 1], "Bra": ["{\\left\\langle#1\\right\\vert}", 1], "Braket": ["{\\left\\langle #1\\vphantom{#2} \\mid #2\\vphantom{#1}\\right\\rangle}", 2], "Ket": ["{\\left\\vert#1\\right\\rangle}", 1], "mat": ["{\\mathbf{#1}}", 1], "op": ["{\\hat{#1}}", 1], "Op": ["{\\hat{#1}}", 1], "dd": ["{\\,\\text{d}}", 0], "daggered": ["{^{\\dagger}}", 0], "transposed": ["{^{\\text{T}}}", 0], "Liouville": ["{\\mathcal{L}}", 0], "DynMap": ["{\\mathcal{E}}", 0], "identity": ["{\\mathbf{1}}", 0], "Norm": ["{\\lVert#1\\rVert}", 1], "Abs": ["{\\left\\vert#1\\right\\vert}", 1], "avg": ["{\\langle#1\\rangle}", 1], "Avg": ["{\\left\\langle#1\\right\\rangle}", 1], "AbsSq": ["{\\left\\vert#1\\right\\vert^2}", 1], "Re": ["{\\operatorname{Re}}", 0], "Im": ["{\\operatorname{Im}}", 0], "Real": ["{\\mathbb{R}}", 0], "Complex": ["{\\mathbb{C}}", 0], "Integer": ["{\\mathbb{N}}", 0]}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="qalgebra.core.super_operator_algebra module" href="qalgebra.core.super_operator_algebra.html" />
+    <link rel="prev" title="qalgebra.core.scalar_algebra module" href="qalgebra.core.scalar_algebra.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> QAlgebra
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0+dev
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#usage">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Quantum Algebra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../symbolic_algebra.html">Symbolic Algebra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../printing.html">The Printing System</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../library_structure.html">Library Structure</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="qalgebra.html">API of the QAlgebra package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.pattern_matching.html">qalgebra.pattern_matching module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.convert.html">qalgebra.convert package</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="qalgebra.core.html">qalgebra.core package</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.abstract_algebra.html">qalgebra.core.abstract_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html">qalgebra.core.abstract_quantum_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.algebraic_properties.html">qalgebra.core.algebraic_properties module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.exceptions.html">qalgebra.core.exceptions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html">qalgebra.core.hilbert_space_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.indexed_operations.html">qalgebra.core.indexed_operations module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.matrix_algebra.html">qalgebra.core.matrix_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.operator_algebra.html">qalgebra.core.operator_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.scalar_algebra.html">qalgebra.core.scalar_algebra module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">qalgebra.core.state_algebra module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.super_operator_algebra.html">qalgebra.core.super_operator_algebra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qalgebra.core.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.library.html">qalgebra.library package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.printing.html">qalgebra.printing package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.toolbox.html">qalgebra.toolbox package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.utils.html">qalgebra.utils package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qalgebra.html#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QAlgebra</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="qalgebra.html">qalgebra package</a> &raquo;</li>
+        
+          <li><a href="qalgebra.core.html">qalgebra.core package</a> &raquo;</li>
+        
+      <li>qalgebra.core.state_algebra module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-qalgebra.core.state_algebra">
+<span id="qalgebra-core-state-algebra-module"></span><h1>qalgebra.core.state_algebra module<a class="headerlink" href="#module-qalgebra.core.state_algebra" title="Permalink to this headline">¶</a></h1>
+<p>This module implements the algebra of states in a Hilbert space</p>
+<p>For more details see <a class="reference internal" href="../symbolic_algebra.html#state-algebra"><span class="std std-ref">State (Ket-) Algebra</span></a>.</p>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Classes:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.state_algebra.BasisKet" title="qalgebra.core.state_algebra.BasisKet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BasisKet</span></code></a></p></td>
+<td><p>Local basis state, identified by index or label</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.state_algebra.Bra" title="qalgebra.core.state_algebra.Bra"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Bra</span></code></a></p></td>
+<td><p>The associated dual/adjoint state for any ket</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.state_algebra.BraKet" title="qalgebra.core.state_algebra.BraKet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BraKet</span></code></a></p></td>
+<td><p>The symbolic inner product between two states</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.state_algebra.CoherentStateKet" title="qalgebra.core.state_algebra.CoherentStateKet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CoherentStateKet</span></code></a></p></td>
+<td><p>Local coherent state, labeled by a complex amplitude <span class="math notranslate nohighlight">\(\alpha\)</span>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.state_algebra.KetBra" title="qalgebra.core.state_algebra.KetBra"><code class="xref py py-obj docutils literal notranslate"><span class="pre">KetBra</span></code></a></p></td>
+<td><p>Outer product of two states</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.state_algebra.KetIndexedSum" title="qalgebra.core.state_algebra.KetIndexedSum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">KetIndexedSum</span></code></a></p></td>
+<td><p>Indexed sum over Kets.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.state_algebra.KetPlus" title="qalgebra.core.state_algebra.KetPlus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">KetPlus</span></code></a></p></td>
+<td><p>Sum of states.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.state_algebra.KetSymbol" title="qalgebra.core.state_algebra.KetSymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">KetSymbol</span></code></a></p></td>
+<td><p>Symbolic state.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.state_algebra.LocalKet" title="qalgebra.core.state_algebra.LocalKet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LocalKet</span></code></a></p></td>
+<td><p>A state on a <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.state_algebra.OperatorTimesKet" title="qalgebra.core.state_algebra.OperatorTimesKet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OperatorTimesKet</span></code></a></p></td>
+<td><p>Product of an operator and a state.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.state_algebra.ScalarTimesKet" title="qalgebra.core.state_algebra.ScalarTimesKet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScalarTimesKet</span></code></a></p></td>
+<td><p>Product of a <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code></a> coefficient and a ket</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.state_algebra.State" title="qalgebra.core.state_algebra.State"><code class="xref py py-obj docutils literal notranslate"><span class="pre">State</span></code></a></p></td>
+<td><p>Base class for states in a Hilbert space</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.state_algebra.StateDerivative" title="qalgebra.core.state_algebra.StateDerivative"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StateDerivative</span></code></a></p></td>
+<td><p>Symbolic partial derivative of a state</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.state_algebra.TensorKet" title="qalgebra.core.state_algebra.TensorKet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TensorKet</span></code></a></p></td>
+<td><p>A tensor product of kets.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Data:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qalgebra.core.state_algebra.TrivialKet" title="qalgebra.core.state_algebra.TrivialKet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TrivialKet</span></code></a></p></td>
+<td><p>TrivialKet constant (singleton) object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qalgebra.core.state_algebra.ZeroKet" title="qalgebra.core.state_algebra.ZeroKet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ZeroKet</span></code></a></p></td>
+<td><p>ZeroKet constant (singleton) object for the null-state.</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">__all__</span></code>: <a class="reference internal" href="#qalgebra.core.state_algebra.BasisKet" title="qalgebra.core.state_algebra.BasisKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasisKet</span></code></a>, <a class="reference internal" href="#qalgebra.core.state_algebra.Bra" title="qalgebra.core.state_algebra.Bra"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bra</span></code></a>, <a class="reference internal" href="#qalgebra.core.state_algebra.BraKet" title="qalgebra.core.state_algebra.BraKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">BraKet</span></code></a>, <a class="reference internal" href="#qalgebra.core.state_algebra.CoherentStateKet" title="qalgebra.core.state_algebra.CoherentStateKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">CoherentStateKet</span></code></a>, <a class="reference internal" href="#qalgebra.core.state_algebra.KetBra" title="qalgebra.core.state_algebra.KetBra"><code class="xref py py-class docutils literal notranslate"><span class="pre">KetBra</span></code></a>, <a class="reference internal" href="#qalgebra.core.state_algebra.KetIndexedSum" title="qalgebra.core.state_algebra.KetIndexedSum"><code class="xref py py-class docutils literal notranslate"><span class="pre">KetIndexedSum</span></code></a>, <a class="reference internal" href="#qalgebra.core.state_algebra.KetPlus" title="qalgebra.core.state_algebra.KetPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">KetPlus</span></code></a>, <a class="reference internal" href="#qalgebra.core.state_algebra.KetSymbol" title="qalgebra.core.state_algebra.KetSymbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">KetSymbol</span></code></a>, <a class="reference internal" href="#qalgebra.core.state_algebra.LocalKet" title="qalgebra.core.state_algebra.LocalKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalKet</span></code></a>, <a class="reference internal" href="#qalgebra.core.state_algebra.OperatorTimesKet" title="qalgebra.core.state_algebra.OperatorTimesKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorTimesKet</span></code></a>, <a class="reference internal" href="#qalgebra.core.state_algebra.ScalarTimesKet" title="qalgebra.core.state_algebra.ScalarTimesKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarTimesKet</span></code></a>, <a class="reference internal" href="#qalgebra.core.state_algebra.State" title="qalgebra.core.state_algebra.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">State</span></code></a>, <a class="reference internal" href="#qalgebra.core.state_algebra.StateDerivative" title="qalgebra.core.state_algebra.StateDerivative"><code class="xref py py-class docutils literal notranslate"><span class="pre">StateDerivative</span></code></a>, <a class="reference internal" href="#qalgebra.core.state_algebra.TensorKet" title="qalgebra.core.state_algebra.TensorKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">TensorKet</span></code></a>, <a class="reference internal" href="#qalgebra.core.state_algebra.TrivialKet" title="qalgebra.core.state_algebra.TrivialKet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TrivialKet</span></code></a>, <a class="reference internal" href="#qalgebra.core.state_algebra.ZeroKet" title="qalgebra.core.state_algebra.ZeroKet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ZeroKet</span></code></a></p>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="qalgebra.core.state_algebra.BasisKet">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.state_algebra.</span></code><code class="sig-name descname"><span class="pre">BasisKet</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label_or_index</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#BasisKet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.state_algebra.BasisKet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qalgebra.core.state_algebra.LocalKet" title="qalgebra.core.state_algebra.LocalKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.state_algebra.LocalKet</span></code></a>, <a class="reference internal" href="#qalgebra.core.state_algebra.KetSymbol" title="qalgebra.core.state_algebra.KetSymbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.state_algebra.KetSymbol</span></code></a></p>
+<p>Local basis state, identified by index or label</p>
+<p>Basis kets are orthornormal, and the <a class="reference internal" href="#qalgebra.core.state_algebra.BasisKet.next" title="qalgebra.core.state_algebra.BasisKet.next"><code class="xref py py-meth docutils literal notranslate"><span class="pre">next()</span></code></a> and <a class="reference internal" href="#qalgebra.core.state_algebra.BasisKet.prev" title="qalgebra.core.state_algebra.BasisKet.prev"><code class="xref py py-meth docutils literal notranslate"><span class="pre">prev()</span></code></a> methods
+can be used to move between basis states.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>label_or_index</strong> – If <cite>str</cite>, the label of the basis state (must be an
+element of <cite>hs.basis_labels</cite>). If <cite>int</cite>, the (zero-based)
+index of the basis state. This works if <cite>hs</cite> has an unknown
+dimension. For a symbolic index, <cite>label_or_index</cite> can be an
+instance of an appropriate subclass of
+<a class="reference internal" href="qalgebra.utils.indices.html#qalgebra.utils.indices.SymbolicLabelBase" title="qalgebra.utils.indices.SymbolicLabelBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">SymbolicLabelBase</span></code></a></p></li>
+<li><p><strong>hs</strong> (<a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><em>LocalSpace</em></a>) – The Hilbert space in which the basis is defined</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3.8/library/exceptions.html#ValueError" title="(in Python v3.8)"><strong>ValueError</strong></a> – if <cite>label_or_index</cite> is not in the Hilbert space</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3.8/library/exceptions.html#TypeError" title="(in Python v3.8)"><strong>TypeError</strong></a> – if <cite>label_or_index</cite> is not of an appropriate type</p></li>
+<li><p><a class="reference internal" href="qalgebra.core.exceptions.html#qalgebra.core.exceptions.BasisNotSetError" title="qalgebra.core.exceptions.BasisNotSetError"><strong>BasisNotSetError</strong></a> – if <cite>label_or_index</cite> is a <cite>str</cite> but no basis is
+    defined for <cite>hs</cite></p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Basis states that are instantiated via a label or via an index are
+equivalent:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hs</span> <span class="o">=</span> <span class="n">LocalSpace</span><span class="p">(</span><span class="s1">&#39;tls&#39;</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">BasisKet</span><span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span> <span class="o">==</span> <span class="n">BasisKet</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">ascii</span><span class="p">(</span><span class="n">BasisKet</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)))</span>
+<span class="go">|g&gt;^(tls)</span>
+</pre></div>
+</div>
+<p>When instantiating the <a class="reference internal" href="#qalgebra.core.state_algebra.BasisKet" title="qalgebra.core.state_algebra.BasisKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasisKet</span></code></a> via
+<a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.create" title="qalgebra.core.abstract_algebra.Expression.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a>, an integer label outside the range of the
+underlying Hilbert space results in a <a class="reference internal" href="#qalgebra.core.state_algebra.ZeroKet" title="qalgebra.core.state_algebra.ZeroKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">ZeroKet</span></code></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">BasisKet</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">ZeroKet</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">BasisKet</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">LocalSpace</span><span class="p">(</span><span class="s1">&#39;tls&#39;</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="go">ZeroKet</span>
+</pre></div>
+</div>
+</div>
+<dl class="py attribute">
+<dt id="qalgebra.core.state_algebra.BasisKet.simplifications">
+<code class="sig-name descname"><span class="pre">simplifications</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[&lt;function</span> <span class="pre">basis_ket_zero_outside_hs&gt;]</span></em><a class="headerlink" href="#qalgebra.core.state_algebra.BasisKet.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.BasisKet.args">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">args</span></code><a class="headerlink" href="#qalgebra.core.state_algebra.BasisKet.args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tuple containing <cite>label_or_index</cite> as its only element.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.BasisKet.index">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">index</span></code><a class="headerlink" href="#qalgebra.core.state_algebra.BasisKet.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>The index of the state in the Hilbert space basis.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hs</span> <span class="o">=</span> <span class="n">LocalSpace</span><span class="p">(</span><span class="s1">&#39;tls&#39;</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">BasisKet</span><span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span><span class="o">.</span><span class="n">index</span>
+<span class="go">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">BasisKet</span><span class="p">(</span><span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span><span class="o">.</span><span class="n">index</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">BasisKet</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span><span class="o">.</span><span class="n">index</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+<p>For a <a class="reference internal" href="#qalgebra.core.state_algebra.BasisKet" title="qalgebra.core.state_algebra.BasisKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasisKet</span></code></a> with an indexed label, this may return a sympy
+expression:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hs</span> <span class="o">=</span> <span class="n">SpinSpace</span><span class="p">(</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">spin</span><span class="o">=</span><span class="s1">&#39;3/2&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">IdxSym</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lbl</span> <span class="o">=</span> <span class="n">SpinIndex</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">hs</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ket</span> <span class="o">=</span> <span class="n">BasisKet</span><span class="p">(</span><span class="n">lbl</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ket</span><span class="o">.</span><span class="n">index</span>
+<span class="go">i/2 + 3/2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.BasisKet.next">
+<code class="sig-name descname"><span class="pre">next</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#BasisKet.next"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.state_algebra.BasisKet.next" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move up by <cite>n</cite> steps in the Hilbert space.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hs</span> <span class="o">=</span>  <span class="n">LocalSpace</span><span class="p">(</span><span class="s1">&#39;tls&#39;</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ascii</span><span class="p">(</span><span class="n">BasisKet</span><span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span><span class="o">.</span><span class="n">next</span><span class="p">())</span>
+<span class="go">&#39;|e&gt;^(tls)&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ascii</span><span class="p">(</span><span class="n">BasisKet</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span><span class="o">.</span><span class="n">next</span><span class="p">())</span>
+<span class="go">&#39;|e&gt;^(tls)&#39;</span>
+</pre></div>
+</div>
+<p>We can also go multiple steps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hs</span> <span class="o">=</span>  <span class="n">LocalSpace</span><span class="p">(</span><span class="s1">&#39;ten&#39;</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ascii</span><span class="p">(</span><span class="n">BasisKet</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span><span class="o">.</span><span class="n">next</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="go">&#39;|2&gt;^(ten)&#39;</span>
+</pre></div>
+</div>
+<p>An increment that leads out of the Hilbert space returns zero:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">BasisKet</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span><span class="o">.</span><span class="n">next</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">ZeroKet</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.BasisKet.prev">
+<code class="sig-name descname"><span class="pre">prev</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#BasisKet.prev"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.state_algebra.BasisKet.prev" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move down by <cite>n</cite> steps in the Hilbert space, cf. <a class="reference internal" href="#qalgebra.core.state_algebra.BasisKet.next" title="qalgebra.core.state_algebra.BasisKet.next"><code class="xref py py-meth docutils literal notranslate"><span class="pre">next()</span></code></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hs</span> <span class="o">=</span>  <span class="n">LocalSpace</span><span class="p">(</span><span class="s1">&#39;3l&#39;</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ascii</span><span class="p">(</span><span class="n">BasisKet</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span><span class="o">.</span><span class="n">prev</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="go">&#39;|g&gt;^(3l)&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">BasisKet</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="n">hs</span><span class="p">)</span><span class="o">.</span><span class="n">prev</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">ZeroKet</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.core.state_algebra.Bra">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.state_algebra.</span></code><code class="sig-name descname"><span class="pre">Bra</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ket</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#Bra"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.state_algebra.Bra" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qalgebra.core.state_algebra.State" title="qalgebra.core.state_algebra.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.state_algebra.State</span></code></a>, <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumAdjoint" title="qalgebra.core.abstract_quantum_algebra.QuantumAdjoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumAdjoint</span></code></a></p>
+<p>The associated dual/adjoint state for any ket</p>
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.Bra.ket">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ket</span></code><a class="headerlink" href="#qalgebra.core.state_algebra.Bra.ket" title="Permalink to this definition">¶</a></dt>
+<dd><p>The original <a class="reference internal" href="#qalgebra.core.state_algebra.State" title="qalgebra.core.state_algebra.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">State</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.Bra.bra">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">bra</span></code><a class="headerlink" href="#qalgebra.core.state_algebra.Bra.bra" title="Permalink to this definition">¶</a></dt>
+<dd><p>The bra associated with a ket</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.Bra.operand">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">operand</span></code><a class="headerlink" href="#qalgebra.core.state_algebra.Bra.operand" title="Permalink to this definition">¶</a></dt>
+<dd><p>The original <a class="reference internal" href="#qalgebra.core.state_algebra.State" title="qalgebra.core.state_algebra.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">State</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.Bra.isket">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">isket</span></code><a class="headerlink" href="#qalgebra.core.state_algebra.Bra.isket" title="Permalink to this definition">¶</a></dt>
+<dd><p>False, by defintion</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.Bra.isbra">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">isbra</span></code><a class="headerlink" href="#qalgebra.core.state_algebra.Bra.isbra" title="Permalink to this definition">¶</a></dt>
+<dd><p>True, by definition</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.Bra.label">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">label</span></code><a class="headerlink" href="#qalgebra.core.state_algebra.Bra.label" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.core.state_algebra.BraKet">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.state_algebra.</span></code><code class="sig-name descname"><span class="pre">BraKet</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bra</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ket</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#BraKet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.state_algebra.BraKet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.ScalarExpression" title="qalgebra.core.scalar_algebra.ScalarExpression"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.scalar_algebra.ScalarExpression</span></code></a>, <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Operation" title="qalgebra.core.abstract_algebra.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_algebra.Operation</span></code></a></p>
+<p>The symbolic inner product between two states</p>
+<p>This mathermatically corresponds to:</p>
+<div class="math notranslate nohighlight">
+\[\langle b | k \rangle\]</div>
+<p>which we define to be linear in the state <span class="math notranslate nohighlight">\(k\)</span> and anti-linear in
+<span class="math notranslate nohighlight">\(b\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bra</strong> (<a class="reference internal" href="#qalgebra.core.state_algebra.State" title="qalgebra.core.state_algebra.State"><em>State</em></a>) – The anti-linear state argument. Note that this is <em>not</em> a
+<a class="reference internal" href="#qalgebra.core.state_algebra.Bra" title="qalgebra.core.state_algebra.Bra"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bra</span></code></a> instance.</p></li>
+<li><p><strong>ket</strong> (<a class="reference internal" href="#qalgebra.core.state_algebra.State" title="qalgebra.core.state_algebra.State"><em>State</em></a>) – The linear state argument.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="qalgebra.core.state_algebra.BraKet.simplifications">
+<code class="sig-name descname"><span class="pre">simplifications</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[&lt;function</span> <span class="pre">match_replace&gt;]</span></em><a class="headerlink" href="#qalgebra.core.state_algebra.BraKet.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.BraKet.ket">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ket</span></code><a class="headerlink" href="#qalgebra.core.state_algebra.BraKet.ket" title="Permalink to this definition">¶</a></dt>
+<dd><p>The ket of the braket</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.BraKet.bra">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">bra</span></code><a class="headerlink" href="#qalgebra.core.state_algebra.BraKet.bra" title="Permalink to this definition">¶</a></dt>
+<dd><p>The bra of the braket (<a class="reference internal" href="#qalgebra.core.state_algebra.Bra" title="qalgebra.core.state_algebra.Bra"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bra</span></code></a> instance)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.core.state_algebra.CoherentStateKet">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.state_algebra.</span></code><code class="sig-name descname"><span class="pre">CoherentStateKet</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ampl</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#CoherentStateKet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.state_algebra.CoherentStateKet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qalgebra.core.state_algebra.LocalKet" title="qalgebra.core.state_algebra.LocalKet"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.state_algebra.LocalKet</span></code></a></p>
+<p>Local coherent state, labeled by a complex amplitude <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\ket{\alpha}
+= \exp\left[ \alpha \Op{a}^\dagger - \alpha^* \Op{a} \right] \ket{0}
+= \Op{D}(\alpha) \ket{0}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Op{D}\)</span> is the displacement operator, see <a class="reference internal" href="qalgebra.library.fock_operators.html#qalgebra.library.fock_operators.Displace" title="qalgebra.library.fock_operators.Displace"><code class="xref py py-class docutils literal notranslate"><span class="pre">Displace</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hs</strong> (<a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><em>LocalSpace</em></a>) – The local Hilbert space degree of freedom.</p></li>
+<li><p><strong>ampl</strong> (<a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><em>Scalar</em></a>) – The coherent displacement amplitude <span class="math notranslate nohighlight">\(\alpha\)</span>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.CoherentStateKet.args">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">args</span></code><a class="headerlink" href="#qalgebra.core.state_algebra.CoherentStateKet.args" title="Permalink to this definition">¶</a></dt>
+<dd><p>The tuple of positional arguments for the instantiation of the
+Expression</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.CoherentStateKet.ampl">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ampl</span></code><a class="headerlink" href="#qalgebra.core.state_algebra.CoherentStateKet.ampl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.CoherentStateKet.to_fock_representation">
+<code class="sig-name descname"><span class="pre">to_fock_representation</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index_symbol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'n'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_terms</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#CoherentStateKet.to_fock_representation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.state_algebra.CoherentStateKet.to_fock_representation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the coherent state written out as an indexed sum over Fock
+basis states</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.core.state_algebra.State">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.state_algebra.</span></code><code class="sig-name descname"><span class="pre">State</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#State"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.state_algebra.State" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumExpression" title="qalgebra.core.abstract_quantum_algebra.QuantumExpression"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumExpression</span></code></a></p>
+<p>Base class for states in a Hilbert space</p>
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.State.isket">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">isket</span></code><a class="headerlink" href="#qalgebra.core.state_algebra.State.isket" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether the state represents a ket</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.State.isbra">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">isbra</span></code><a class="headerlink" href="#qalgebra.core.state_algebra.State.isbra" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wether the state represents a bra (adjoint ket)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.State.bra">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">bra</span></code><a class="headerlink" href="#qalgebra.core.state_algebra.State.bra" title="Permalink to this definition">¶</a></dt>
+<dd><p>The bra associated with a ket</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.State.ket">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ket</span></code><a class="headerlink" href="#qalgebra.core.state_algebra.State.ket" title="Permalink to this definition">¶</a></dt>
+<dd><p>The ket associated with a bra</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.core.state_algebra.KetBra">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.state_algebra.</span></code><code class="sig-name descname"><span class="pre">KetBra</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ket</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bra</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#KetBra"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.state_algebra.KetBra" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.core.operator_algebra.html#qalgebra.core.operator_algebra.Operator" title="qalgebra.core.operator_algebra.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.operator_algebra.Operator</span></code></a>, <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Operation" title="qalgebra.core.abstract_algebra.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_algebra.Operation</span></code></a></p>
+<p>Outer product of two states</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ket</strong> (<a class="reference internal" href="#qalgebra.core.state_algebra.State" title="qalgebra.core.state_algebra.State"><em>State</em></a>) – The left factor in the product</p></li>
+<li><p><strong>bra</strong> (<a class="reference internal" href="#qalgebra.core.state_algebra.State" title="qalgebra.core.state_algebra.State"><em>State</em></a>) – The right factor in the product. Note that this is <em>not</em> a
+<a class="reference internal" href="#qalgebra.core.state_algebra.Bra" title="qalgebra.core.state_algebra.Bra"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bra</span></code></a> instance.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="qalgebra.core.state_algebra.KetBra.simplifications">
+<code class="sig-name descname"><span class="pre">simplifications</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[&lt;function</span> <span class="pre">match_replace&gt;]</span></em><a class="headerlink" href="#qalgebra.core.state_algebra.KetBra.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.KetBra.ket">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ket</span></code><a class="headerlink" href="#qalgebra.core.state_algebra.KetBra.ket" title="Permalink to this definition">¶</a></dt>
+<dd><p>The left factor in the product</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.KetBra.bra">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">bra</span></code><a class="headerlink" href="#qalgebra.core.state_algebra.KetBra.bra" title="Permalink to this definition">¶</a></dt>
+<dd><p>The co-state right factor in the product</p>
+<p>This is a <a class="reference internal" href="#qalgebra.core.state_algebra.Bra" title="qalgebra.core.state_algebra.Bra"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bra</span></code></a> instance (unlike the <cite>bra</cite> given to the
+constructor</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.KetBra.space">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">space</span></code><a class="headerlink" href="#qalgebra.core.state_algebra.KetBra.space" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Hilbert space of the states being multiplied</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.core.state_algebra.KetPlus">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.state_algebra.</span></code><code class="sig-name descname"><span class="pre">KetPlus</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">operands</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#KetPlus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.state_algebra.KetPlus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qalgebra.core.state_algebra.State" title="qalgebra.core.state_algebra.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.state_algebra.State</span></code></a>, <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumPlus" title="qalgebra.core.abstract_quantum_algebra.QuantumPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumPlus</span></code></a></p>
+<p>Sum of states.</p>
+<dl class="py attribute">
+<dt id="qalgebra.core.state_algebra.KetPlus.simplifications">
+<code class="sig-name descname"><span class="pre">simplifications</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[&lt;function</span> <span class="pre">accept_bras&gt;,</span> <span class="pre">&lt;function</span> <span class="pre">assoc&gt;,</span> <span class="pre">&lt;function</span> <span class="pre">orderby&gt;,</span> <span class="pre">&lt;function</span> <span class="pre">collect_summands&gt;,</span> <span class="pre">&lt;function</span> <span class="pre">match_replace_binary&gt;]</span></em><a class="headerlink" href="#qalgebra.core.state_algebra.KetPlus.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="qalgebra.core.state_algebra.KetPlus.order_key">
+<code class="sig-name descname"><span class="pre">order_key</span></code><a class="headerlink" href="#qalgebra.core.state_algebra.KetPlus.order_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="qalgebra.utils.ordering.html#qalgebra.utils.ordering.FullCommutativeHSOrder" title="qalgebra.utils.ordering.FullCommutativeHSOrder"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.utils.ordering.FullCommutativeHSOrder</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.core.state_algebra.KetSymbol">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.state_algebra.</span></code><code class="sig-name descname"><span class="pre">KetSymbol</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">sym_args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#KetSymbol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.state_algebra.KetSymbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumSymbol" title="qalgebra.core.abstract_quantum_algebra.QuantumSymbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumSymbol</span></code></a>, <a class="reference internal" href="#qalgebra.core.state_algebra.State" title="qalgebra.core.state_algebra.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.state_algebra.State</span></code></a></p>
+<p>Symbolic state.</p>
+<p>See <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumSymbol" title="qalgebra.core.abstract_quantum_algebra.QuantumSymbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumSymbol</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.core.state_algebra.LocalKet">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.state_algebra.</span></code><code class="sig-name descname"><span class="pre">LocalKet</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#LocalKet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.state_algebra.LocalKet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qalgebra.core.state_algebra.State" title="qalgebra.core.state_algebra.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.state_algebra.State</span></code></a></p>
+<p>A state on a <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a>.</p>
+<p>This does not include operations, even if these operations only involve
+states acting on the same local space</p>
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.LocalKet.space">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">space</span></code><a class="headerlink" href="#qalgebra.core.state_algebra.LocalKet.space" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.HilbertSpace" title="qalgebra.core.hilbert_space_algebra.HilbertSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">HilbertSpace</span></code></a> on which the operator acts
+non-trivially</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.LocalKet.kwargs">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">kwargs</span></code><a class="headerlink" href="#qalgebra.core.state_algebra.LocalKet.kwargs" title="Permalink to this definition">¶</a></dt>
+<dd><p>The dictionary of keyword-only arguments for the instantiation of
+the Expression</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.core.state_algebra.OperatorTimesKet">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.state_algebra.</span></code><code class="sig-name descname"><span class="pre">OperatorTimesKet</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">operator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ket</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#OperatorTimesKet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.state_algebra.OperatorTimesKet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qalgebra.core.state_algebra.State" title="qalgebra.core.state_algebra.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.state_algebra.State</span></code></a>, <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Operation" title="qalgebra.core.abstract_algebra.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_algebra.Operation</span></code></a></p>
+<p>Product of an operator and a state.</p>
+<dl class="py attribute">
+<dt id="qalgebra.core.state_algebra.OperatorTimesKet.simplifications">
+<code class="sig-name descname"><span class="pre">simplifications</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[&lt;function</span> <span class="pre">match_replace&gt;]</span></em><a class="headerlink" href="#qalgebra.core.state_algebra.OperatorTimesKet.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.OperatorTimesKet.space">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">space</span></code><a class="headerlink" href="#qalgebra.core.state_algebra.OperatorTimesKet.space" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.HilbertSpace" title="qalgebra.core.hilbert_space_algebra.HilbertSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">HilbertSpace</span></code></a> on which the operator acts
+non-trivially</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.OperatorTimesKet.operator">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">operator</span></code><a class="headerlink" href="#qalgebra.core.state_algebra.OperatorTimesKet.operator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.OperatorTimesKet.ket">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ket</span></code><a class="headerlink" href="#qalgebra.core.state_algebra.OperatorTimesKet.ket" title="Permalink to this definition">¶</a></dt>
+<dd><p>The ket associated with a bra</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.core.state_algebra.ScalarTimesKet">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.state_algebra.</span></code><code class="sig-name descname"><span class="pre">ScalarTimesKet</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coeff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">term</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#ScalarTimesKet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.state_algebra.ScalarTimesKet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qalgebra.core.state_algebra.State" title="qalgebra.core.state_algebra.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.state_algebra.State</span></code></a>, <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression" title="qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.ScalarTimesQuantumExpression</span></code></a></p>
+<p>Product of a <a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code></a> coefficient and a ket</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coeff</strong> (<a class="reference internal" href="qalgebra.core.scalar_algebra.html#qalgebra.core.scalar_algebra.Scalar" title="qalgebra.core.scalar_algebra.Scalar"><em>Scalar</em></a>) – coefficient</p></li>
+<li><p><strong>term</strong> (<a class="reference internal" href="#qalgebra.core.state_algebra.State" title="qalgebra.core.state_algebra.State"><em>State</em></a>) – the ket that is multiplied</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="qalgebra.core.state_algebra.ScalarTimesKet.simplifications">
+<code class="sig-name descname"><span class="pre">simplifications</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[&lt;function</span> <span class="pre">match_replace&gt;]</span></em><a class="headerlink" href="#qalgebra.core.state_algebra.ScalarTimesKet.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.ScalarTimesKet.create">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coeff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">term</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#ScalarTimesKet.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.state_algebra.ScalarTimesKet.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate while applying automatic simplifications.</p>
+<p>Instead of directly instantiating <cite>cls</cite>, it is recommended to use
+<a class="reference internal" href="#qalgebra.core.state_algebra.ScalarTimesKet.create" title="qalgebra.core.state_algebra.ScalarTimesKet.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a>, which applies simplifications to the args and keyword
+arguments according to the <cite>simplifications</cite> class attribute, and
+returns an appropriate object (which may or may not be an instance of
+the original <cite>cls</cite>).</p>
+<p>Two simplifications of particular importance are <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace" title="qalgebra.core.algebraic_properties.match_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace()</span></code></a>
+and <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace_binary" title="qalgebra.core.algebraic_properties.match_replace_binary"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace_binary()</span></code></a> which apply rule-based
+simplifications.</p>
+<p>The <a class="reference internal" href="qalgebra.toolbox.core.html#qalgebra.toolbox.core.temporary_rules" title="qalgebra.toolbox.core.temporary_rules"><code class="xref py py-func docutils literal notranslate"><span class="pre">temporary_rules()</span></code></a> context manager may be used to allow
+temporary modification of the automatic simplifications that
+<a class="reference internal" href="#qalgebra.core.state_algebra.ScalarTimesKet.create" title="qalgebra.core.state_algebra.ScalarTimesKet.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a> uses, in particular the rules for
+<a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace" title="qalgebra.core.algebraic_properties.match_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace()</span></code></a> and <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace_binary" title="qalgebra.core.algebraic_properties.match_replace_binary"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace_binary()</span></code></a>. Inside the
+managed context, the <cite>simplifications</cite> class attribute may be
+modified and rules can be managed with <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.add_rule" title="qalgebra.core.abstract_algebra.Expression.add_rule"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_rule()</span></code></a>
+and <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.del_rules" title="qalgebra.core.abstract_algebra.Expression.del_rules"><code class="xref py py-meth docutils literal notranslate"><span class="pre">del_rules()</span></code></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.core.state_algebra.TensorKet">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.state_algebra.</span></code><code class="sig-name descname"><span class="pre">TensorKet</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">operands</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#TensorKet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.state_algebra.TensorKet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qalgebra.core.state_algebra.State" title="qalgebra.core.state_algebra.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.state_algebra.State</span></code></a>, <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumTimes" title="qalgebra.core.abstract_quantum_algebra.QuantumTimes"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumTimes</span></code></a></p>
+<p>A tensor product of kets.</p>
+<p>Each ket must belong to different degree of freedom (<a class="reference internal" href="qalgebra.core.hilbert_space_algebra.html#qalgebra.core.hilbert_space_algebra.LocalSpace" title="qalgebra.core.hilbert_space_algebra.LocalSpace"><code class="xref py py-class docutils literal notranslate"><span class="pre">LocalSpace</span></code></a>).</p>
+<dl class="py attribute">
+<dt id="qalgebra.core.state_algebra.TensorKet.simplifications">
+<code class="sig-name descname"><span class="pre">simplifications</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[&lt;function</span> <span class="pre">accept_bras&gt;,</span> <span class="pre">&lt;function</span> <span class="pre">assoc&gt;,</span> <span class="pre">&lt;function</span> <span class="pre">orderby&gt;,</span> <span class="pre">&lt;function</span> <span class="pre">filter_neutral&gt;,</span> <span class="pre">&lt;function</span> <span class="pre">match_replace_binary&gt;]</span></em><a class="headerlink" href="#qalgebra.core.state_algebra.TensorKet.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="qalgebra.core.state_algebra.TensorKet.order_key">
+<code class="sig-name descname"><span class="pre">order_key</span></code><a class="headerlink" href="#qalgebra.core.state_algebra.TensorKet.order_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="qalgebra.utils.ordering.html#qalgebra.utils.ordering.FullCommutativeHSOrder" title="qalgebra.utils.ordering.FullCommutativeHSOrder"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.utils.ordering.FullCommutativeHSOrder</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.TensorKet.create">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">ops</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#TensorKet.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.state_algebra.TensorKet.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate while applying automatic simplifications.</p>
+<p>Instead of directly instantiating <cite>cls</cite>, it is recommended to use
+<a class="reference internal" href="#qalgebra.core.state_algebra.TensorKet.create" title="qalgebra.core.state_algebra.TensorKet.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a>, which applies simplifications to the args and keyword
+arguments according to the <cite>simplifications</cite> class attribute, and
+returns an appropriate object (which may or may not be an instance of
+the original <cite>cls</cite>).</p>
+<p>Two simplifications of particular importance are <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace" title="qalgebra.core.algebraic_properties.match_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace()</span></code></a>
+and <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace_binary" title="qalgebra.core.algebraic_properties.match_replace_binary"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace_binary()</span></code></a> which apply rule-based
+simplifications.</p>
+<p>The <a class="reference internal" href="qalgebra.toolbox.core.html#qalgebra.toolbox.core.temporary_rules" title="qalgebra.toolbox.core.temporary_rules"><code class="xref py py-func docutils literal notranslate"><span class="pre">temporary_rules()</span></code></a> context manager may be used to allow
+temporary modification of the automatic simplifications that
+<a class="reference internal" href="#qalgebra.core.state_algebra.TensorKet.create" title="qalgebra.core.state_algebra.TensorKet.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a> uses, in particular the rules for
+<a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace" title="qalgebra.core.algebraic_properties.match_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace()</span></code></a> and <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace_binary" title="qalgebra.core.algebraic_properties.match_replace_binary"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace_binary()</span></code></a>. Inside the
+managed context, the <cite>simplifications</cite> class attribute may be
+modified and rules can be managed with <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.add_rule" title="qalgebra.core.abstract_algebra.Expression.add_rule"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_rule()</span></code></a>
+and <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.del_rules" title="qalgebra.core.abstract_algebra.Expression.del_rules"><code class="xref py py-meth docutils literal notranslate"><span class="pre">del_rules()</span></code></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt id="qalgebra.core.state_algebra.TrivialKet">
+<code class="sig-prename descclassname"><span class="pre">qalgebra.core.state_algebra.</span></code><code class="sig-name descname"><span class="pre">TrivialKet</span></code><em class="property"> <span class="pre">=</span> <span class="pre">TrivialKet</span></em><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#TrivialKet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.state_algebra.TrivialKet" title="Permalink to this definition">¶</a></dt>
+<dd><p>TrivialKet constant (singleton) object.
+This is the neutral element under the state tensor-product.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="qalgebra.core.state_algebra.ZeroKet">
+<code class="sig-prename descclassname"><span class="pre">qalgebra.core.state_algebra.</span></code><code class="sig-name descname"><span class="pre">ZeroKet</span></code><em class="property"> <span class="pre">=</span> <span class="pre">ZeroKet</span></em><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#ZeroKet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.state_algebra.ZeroKet" title="Permalink to this definition">¶</a></dt>
+<dd><p>ZeroKet constant (singleton) object for the null-state.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.core.state_algebra.KetIndexedSum">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.state_algebra.</span></code><code class="sig-name descname"><span class="pre">KetIndexedSum</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">term</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranges</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#KetIndexedSum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.state_algebra.KetIndexedSum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#qalgebra.core.state_algebra.State" title="qalgebra.core.state_algebra.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.state_algebra.State</span></code></a>, <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum" title="qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumIndexedSum</span></code></a></p>
+<p>Indexed sum over Kets.</p>
+<dl class="py attribute">
+<dt id="qalgebra.core.state_algebra.KetIndexedSum.simplifications">
+<code class="sig-name descname"><span class="pre">simplifications</span></code><em class="property"> <span class="pre">=</span> <span class="pre">[&lt;function</span> <span class="pre">assoc_indexed&gt;,</span> <span class="pre">&lt;function</span> <span class="pre">indexed_sum_over_kronecker&gt;,</span> <span class="pre">&lt;function</span> <span class="pre">indexed_sum_over_const&gt;,</span> <span class="pre">&lt;function</span> <span class="pre">match_replace&gt;]</span></em><a class="headerlink" href="#qalgebra.core.state_algebra.KetIndexedSum.simplifications" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="qalgebra.core.state_algebra.KetIndexedSum.create">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">term</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranges</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#KetIndexedSum.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.state_algebra.KetIndexedSum.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate while applying automatic simplifications.</p>
+<p>Instead of directly instantiating <cite>cls</cite>, it is recommended to use
+<a class="reference internal" href="#qalgebra.core.state_algebra.KetIndexedSum.create" title="qalgebra.core.state_algebra.KetIndexedSum.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a>, which applies simplifications to the args and keyword
+arguments according to the <cite>simplifications</cite> class attribute, and
+returns an appropriate object (which may or may not be an instance of
+the original <cite>cls</cite>).</p>
+<p>Two simplifications of particular importance are <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace" title="qalgebra.core.algebraic_properties.match_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace()</span></code></a>
+and <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace_binary" title="qalgebra.core.algebraic_properties.match_replace_binary"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace_binary()</span></code></a> which apply rule-based
+simplifications.</p>
+<p>The <a class="reference internal" href="qalgebra.toolbox.core.html#qalgebra.toolbox.core.temporary_rules" title="qalgebra.toolbox.core.temporary_rules"><code class="xref py py-func docutils literal notranslate"><span class="pre">temporary_rules()</span></code></a> context manager may be used to allow
+temporary modification of the automatic simplifications that
+<a class="reference internal" href="#qalgebra.core.state_algebra.KetIndexedSum.create" title="qalgebra.core.state_algebra.KetIndexedSum.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a> uses, in particular the rules for
+<a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace" title="qalgebra.core.algebraic_properties.match_replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace()</span></code></a> and <a class="reference internal" href="qalgebra.core.algebraic_properties.html#qalgebra.core.algebraic_properties.match_replace_binary" title="qalgebra.core.algebraic_properties.match_replace_binary"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_replace_binary()</span></code></a>. Inside the
+managed context, the <cite>simplifications</cite> class attribute may be
+modified and rules can be managed with <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.add_rule" title="qalgebra.core.abstract_algebra.Expression.add_rule"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_rule()</span></code></a>
+and <a class="reference internal" href="qalgebra.core.abstract_algebra.html#qalgebra.core.abstract_algebra.Expression.del_rules" title="qalgebra.core.abstract_algebra.Expression.del_rules"><code class="xref py py-meth docutils literal notranslate"><span class="pre">del_rules()</span></code></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="qalgebra.core.state_algebra.StateDerivative">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">qalgebra.core.state_algebra.</span></code><code class="sig-name descname"><span class="pre">StateDerivative</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">op</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">derivs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qalgebra/core/state_algebra.html#StateDerivative"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qalgebra.core.state_algebra.StateDerivative" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumDerivative" title="qalgebra.core.abstract_quantum_algebra.QuantumDerivative"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.abstract_quantum_algebra.QuantumDerivative</span></code></a>, <a class="reference internal" href="#qalgebra.core.state_algebra.State" title="qalgebra.core.state_algebra.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">qalgebra.core.state_algebra.State</span></code></a></p>
+<p>Symbolic partial derivative of a state</p>
+<p>See <a class="reference internal" href="qalgebra.core.abstract_quantum_algebra.html#qalgebra.core.abstract_quantum_algebra.QuantumDerivative" title="qalgebra.core.abstract_quantum_algebra.QuantumDerivative"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumDerivative</span></code></a>.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="qalgebra.core.super_operator_algebra.html" class="btn btn-neutral float-right" title="qalgebra.core.super_operator_algebra module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="qalgebra.core.scalar_algebra.html" class="btn btn-neutral float-left" title="qalgebra.core.scalar_algebra module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Michael Goerz.
+      <span class="lastupdated">
+        Last updated on May 26, 2021.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
